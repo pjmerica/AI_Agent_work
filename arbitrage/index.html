@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Prediction Market Arbitrage</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Prediction Market Arbitrage</h1>
+      <p class="subtitle">Matches identical bets across platforms and surfaces price differences</p>
+    </header>
+
+    <div class="platforms">
+      <div class="platform-status">
+        <span class="platform-label">Polymarket</span>
+        <span class="status" id="statusPolymarket">—</span>
+      </div>
+      <div class="platform-status">
+        <span class="platform-label">PredictIt</span>
+        <span class="status" id="statusPredictit">—</span>
+      </div>
+      <div class="platform-status">
+        <span class="platform-label">Kalshi</span>
+        <span class="status" id="statusKalshi">—</span>
+      </div>
+    </div>
+
+    <div class="toolbar">
+      <span id="count" class="meta">Searching…</span>
+      <label class="filter-label">
+        <input type="checkbox" id="arbOnly" />
+        Show arbitrage only
+      </label>
+    </div>
+
+    <div class="grid" id="grid"></div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

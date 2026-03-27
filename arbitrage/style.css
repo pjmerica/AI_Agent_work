@@ -1,0 +1,214 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: #0f0f13;
+  color: #e2e2f0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  min-height: 100vh;
+  padding: 40px 20px;
+}
+
+.container {
+  max-width: 920px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+header h1 {
+  font-size: 26px;
+  font-weight: 700;
+  color: #fff;
+}
+
+.subtitle {
+  font-size: 14px;
+  color: #6a6a8a;
+  margin-top: 5px;
+}
+
+/* Platform status row */
+.platforms {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.platform-status {
+  background: #1a1a24;
+  border: 1px solid #2e2e42;
+  border-radius: 8px;
+  padding: 10px 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.platform-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #a0a0c0;
+}
+
+.status { font-size: 12px; color: #6a6a8a; }
+.status.loading { color: #f0a500; }
+.status.ok      { color: #4ade80; }
+.status.error   { color: #f87171; }
+
+/* Toolbar */
+.toolbar {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.meta { font-size: 13px; color: #6a6a8a; flex: 1; }
+
+.filter-label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  color: #a0a0c0;
+  cursor: pointer;
+  user-select: none;
+}
+
+.filter-label input { cursor: pointer; accent-color: #5b4cf5; }
+
+/* Cards */
+.grid {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.card {
+  background: #1a1a24;
+  border: 1px solid #2e2e42;
+  border-radius: 12px;
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  transition: border-color 0.2s;
+}
+
+.card.arb {
+  border-color: #4ade80;
+  box-shadow: 0 0 14px rgba(74, 222, 128, 0.08);
+}
+
+.card-title {
+  font-size: 15px;
+  font-weight: 500;
+  color: #e2e2f0;
+  line-height: 1.45;
+}
+
+.arb-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: rgba(74, 222, 128, 0.12);
+  color: #4ade80;
+  border: 1px solid rgba(74, 222, 128, 0.35);
+  border-radius: 6px;
+  padding: 4px 10px;
+  font-size: 12px;
+  font-weight: 600;
+  width: fit-content;
+}
+
+/* Market comparison row */
+.markets {
+  display: grid;
+  grid-template-columns: 1fr 56px 1fr;
+  align-items: center;
+  gap: 10px;
+}
+
+.market {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.platform-name {
+  font-size: 11px;
+  font-weight: 700;
+  color: #6a6a8a;
+  text-transform: uppercase;
+  letter-spacing: 0.7px;
+}
+
+.prices {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.price {
+  font-size: 13px;
+  font-family: "Courier New", monospace;
+  padding: 3px 8px;
+  border-radius: 4px;
+  background: #12121a;
+  color: #c8c8e0;
+  border: 1px solid transparent;
+}
+
+.price.cheaper {
+  border-color: #5b4cf5;
+  color: #a48fff;
+  background: rgba(91, 76, 245, 0.15);
+}
+
+.market-link {
+  display: inline-block;
+  font-size: 12px;
+  color: #5b4cf5;
+  text-decoration: none;
+  transition: color 0.15s;
+}
+
+.market-link:hover { color: #a48fff; text-decoration: underline; }
+
+/* Delta column */
+.divider {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.diff {
+  font-size: 11px;
+  color: #6a6a8a;
+  background: #12121a;
+  padding: 4px 6px;
+  border-radius: 5px;
+  white-space: nowrap;
+  text-align: center;
+}
+
+.diff.notable { color: #f0a500; background: rgba(240, 165, 0, 0.1); }
+.diff.large   { color: #f87171; background: rgba(248, 113, 113, 0.1); }
+
+.match-score {
+  font-size: 11px;
+  color: #3a3a5a;
+}
+
+.empty {
+  color: #6a6a8a;
+  font-size: 14px;
+  text-align: center;
+  padding: 60px 20px;
+}
+
+@media (max-width: 560px) {
+  .markets { grid-template-columns: 1fr; }
+  .divider { align-items: flex-start; }
+}
