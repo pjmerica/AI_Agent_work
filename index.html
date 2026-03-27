@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Agent Work</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #0f0f13;
+      color: #e2e2f0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 20px;
+    }
+
+    .container {
+      max-width: 600px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    header h1 { font-size: 28px; font-weight: 700; color: #fff; }
+    header p  { font-size: 14px; color: #6a6a8a; margin-top: 6px; }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 12px;
+    }
+
+    a.card {
+      background: #1a1a24;
+      border: 1px solid #2e2e42;
+      border-radius: 12px;
+      padding: 20px;
+      text-decoration: none;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      transition: border-color 0.2s, background 0.2s;
+    }
+
+    a.card:hover {
+      border-color: #5b4cf5;
+      background: #1e1e2e;
+    }
+
+    .card-title {
+      font-size: 15px;
+      font-weight: 600;
+      color: #e2e2f0;
+    }
+
+    .card-desc {
+      font-size: 13px;
+      color: #6a6a8a;
+      line-height: 1.5;
+    }
+
+    .card-arrow {
+      font-size: 13px;
+      color: #5b4cf5;
+      margin-top: 6px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>AI Agent Work</h1>
+      <p>Widgets, experiments, and projects.</p>
+    </header>
+
+    <div class="grid">
+      <a class="card" href="arbitrage/">
+        <div class="card-title">Prediction Market Arbitrage</div>
+        <div class="card-desc">Matches bets across Polymarket, PredictIt, and Kalshi. Surfaces price differences and arbitrage opportunities.</div>
+        <div class="card-arrow">Open →</div>
+      </a>
+
+      <a class="card" href="color-picker/">
+        <div class="card-title">Color Picker</div>
+        <div class="card-desc">Pick a color and copy its HEX, RGB, or HSL value to your clipboard.</div>
+        <div class="card-arrow">Open →</div>
+      </a>
+
+      <a class="card" href="widget/">
+        <div class="card-title">AI Chat Widget</div>
+        <div class="card-desc">A demo chat interface — wire it up to the Claude API to make it real.</div>
+        <div class="card-arrow">Open →</div>
+      </a>
+    </div>
+  </div>
+</body>
+</html>
