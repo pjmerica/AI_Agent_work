@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Color Picker</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="widget">
+    <h2>Color Picker</h2>
+
+    <div class="swatch-wrapper">
+      <input type="color" id="colorInput" value="#5b4cf5" />
+      <div class="swatch" id="swatch"></div>
+    </div>
+
+    <div class="values">
+      <div class="value-row" id="hexRow">
+        <span class="label">HEX</span>
+        <span class="value" id="hexVal">#5b4cf5</span>
+        <button class="copy-btn" data-target="hexVal">Copy</button>
+      </div>
+      <div class="value-row" id="rgbRow">
+        <span class="label">RGB</span>
+        <span class="value" id="rgbVal">rgb(91, 76, 245)</span>
+        <button class="copy-btn" data-target="rgbVal">Copy</button>
+      </div>
+      <div class="value-row" id="hslRow">
+        <span class="label">HSL</span>
+        <span class="value" id="hslVal">hsl(245, 90%, 63%)</span>
+        <button class="copy-btn" data-target="hslVal">Copy</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="color-picker.js"></script>
+</body>
+</html>
