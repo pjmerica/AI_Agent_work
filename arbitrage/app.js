@@ -17,7 +17,7 @@ function diffClass(d) {
 }
 
 function renderPair(pair) {
-  const { polymarket: pm, kalshi: km, score, diff, arb, arbProfit, buyYesOn, buyNoOn } = pair;
+  const { polymarket: pm, predictit: km, score, diff, arb, arbProfit, buyYesOn, buyNoOn } = pair;
   const pmCheaper = pm.yesPrice <= km.yesPrice;
 
   const card = document.createElement('div');
@@ -45,13 +45,13 @@ function renderPair(pair) {
       </div>
 
       <div class="market">
-        <div class="platform-name">Kalshi</div>
+        <div class="platform-name">PredictIt</div>
         <div class="prices">
           <span class="price${!pmCheaper ? ' cheaper' : ''}">YES ${pct(km.yesPrice)}</span>
           <span class="price">NO ${pct(km.noPrice)}</span>
         </div>
         <div class="kalshi-title">${esc(km.title)}</div>
-        <a href="${esc(km.url)}" target="_blank" rel="noopener" class="market-link">View on Kalshi →</a>
+        <a href="${esc(km.url)}" target="_blank" rel="noopener" class="market-link">View on PredictIt →</a>
       </div>
     </div>
     <div class="match-score">Match confidence: ${score}%</div>
@@ -71,7 +71,7 @@ async function main() {
     const data = await res.json();
 
     const arbCount = data.matches.filter(m => m.arb).length;
-    count.textContent   = `${data.matchCount} matched pairs · ${arbCount} arb opportunities · ${data.polymarketCount} Polymarket + ${data.kalshiCount} Kalshi markets`;
+    count.textContent   = `${data.matchCount} matched pairs · ${arbCount} arb opportunities · ${data.polymarketCount} Polymarket + ${data.predictitCount} PredictIt markets`;
     updated.textContent = 'Last updated: ' + new Date(data.lastUpdated).toLocaleString();
 
     grid.innerHTML = '';

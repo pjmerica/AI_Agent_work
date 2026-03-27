@@ -19,9 +19,6 @@ jobs:
           node-version: '20'
 
       - name: Fetch and match markets
-        env:
-          KALSHI_EMAIL:    ${{ secrets.KALSHI_EMAIL }}
-          KALSHI_PASSWORD: ${{ secrets.KALSHI_PASSWORD }}
         run: node scripts/scrape.js
 
       - name: Commit updated data
