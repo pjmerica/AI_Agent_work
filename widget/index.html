@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Agent Widget</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="widget">
+    <div class="widget-header">
+      <span class="status-dot"></span>
+      <h2>AI Agent</h2>
+    </div>
+
+    <div class="chat-window" id="chatWindow">
+      <div class="message agent">
+        <span>Hello! I'm your AI agent. How can I help you today?</span>
+      </div>
+    </div>
+
+    <div class="input-row">
+      <input
+        type="text"
+        id="userInput"
+        placeholder="Type a message..."
+        autocomplete="off"
+      />
+      <button id="sendBtn">Send</button>
+    </div>
+  </div>
+
+  <script src="widget.js"></script>
+</body>
+</html>
