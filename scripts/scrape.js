@@ -47,7 +47,7 @@ function normalize(title) {
 function tokenize(title) {
   return normalize(title)
     .split(' ')
-    .filter(w => w.length > 1 && !STOP.has(w));
+    .filter(w => w.length > 1 && !STOP.has(w) && !/^\d+$/.test(w)); // strip pure numbers (years, dates)
 }
 
 function jaccard(a, b) {
@@ -57,6 +57,51 @@ function jaccard(a, b) {
   const inter = [...sa].filter(w => sb.has(w)).length;
   const union = new Set([...sa, ...sb]).size;
   return inter / union;
+}
+
+// Words that look capitalized but are not meaningful named entities
+const SKIP_CAPS = new Set([
+  'Will', 'The', 'A', 'An', 'Is', 'Are', 'Was', 'Can', 'Do', 'Does', 'Did',
+  'By', 'In', 'Or', 'And', 'Of', 'Be', 'To', 'For', 'If', 'As', 'At', 'On',
+  'With', 'From', 'That', 'This', 'Which', 'Who', 'What', 'When', 'Where',
+  'How', 'But', 'Not', 'No', 'Yes', 'New', 'Next', 'Get',
+  // months — we don't want "April" to create a false entity match
+  'January','February','March','April','May','June','July','August',
+  'September','October','November','December',
+  'Jan','Feb','Mar','Apr','Jun','Jul','Aug','Sep','Oct','Nov','Dec',
+  // generic political/geographic words that create false positives
+  'Republican','Democratic','Democrat','Senate','House','Congress',
+  'President','Governor','Election','Primary','Nominee','Nomination',
+  'Prime','Minister','United','Kingdom','States','America',
+  'North','South','East','West','Party','Office','Federal',
+  'Trump','Biden','Obama',  // too common across both platforms to be useful
+]);
+
+// Extract named entities from the ORIGINAL (un-normalised) title.
+// Only two-word proper noun bigrams count as valid entities to avoid false matches on
+// single common words like "China", "Trump", "April", numbers, etc.
+function extractEntities(title) {
+  const entities = new Set();
+  const words = title.replace(/["""'']/g, '').split(/\s+/);
+
+  for (let i = 0; i < words.length - 1; i++) {
+    const w1 = words[i].replace(/[^a-zA-Z]/g, '');
+    const w2 = words[i + 1].replace(/[^a-zA-Z]/g, '');
+    if (w1.length < 2 || w2.length < 2) continue;
+    if (!w1[0] || w1[0] !== w1[0].toUpperCase()) continue;
+    if (!w2[0] || w2[0] !== w2[0].toUpperCase()) continue;
+    if (SKIP_CAPS.has(w1) || SKIP_CAPS.has(w2)) continue;
+    // both words are capitalized and meaningful → bigram entity
+    entities.add((w1 + ' ' + w2).toLowerCase());
+  }
+
+  return entities;
+}
+
+function entityOverlap(titleA, titleB) {
+  const ea = extractEntities(titleA);
+  const eb = extractEntities(titleB);
+  return [...ea].filter(e => eb.has(e)).length;
 }
 
 // ── Fetchers ──────────────────────────────────────────────────────────────────
@@ -97,58 +142,94 @@ async function fetchPredictit() {
   const markets = [];
   for (const m of data.markets || []) {
     if (m.status !== 'Open') continue;
-    // Only binary markets (single open contract) for clean YES/NO comparison
     const open = (m.contracts || []).filter(c => c.status === 'Open');
-    if (open.length !== 1) continue;
-    const c = open[0];
-    const yesPrice = c.bestBuyYesCost;
-    const noPrice  = c.bestBuyNoCost;
-    if (yesPrice == null || noPrice == null) continue;
-    markets.push({
-      platform: 'PredictIt',
-      title:    m.name,
-      yesPrice,
-      noPrice,
-      url:    m.url,
-      volume: null,
-    });
+    if (!open.length) continue;
+
+    if (open.length === 1) {
+      // Simple binary market — use the market name as the title
+      const c = open[0];
+      if (c.bestBuyYesCost == null || c.bestBuyNoCost == null) continue;
+      markets.push({
+        platform: 'PredictIt',
+        title:    m.name,
+        yesPrice: c.bestBuyYesCost,
+        noPrice:  c.bestBuyNoCost,
+        url:      m.url,
+        volume:   null,
+      });
+    } else {
+      // Multi-contract market (e.g. "Who wins 2028 Dem nom?") —
+      // treat each candidate contract as its own YES/NO question
+      for (const c of open) {
+        if (c.bestBuyYesCost == null || c.bestBuyNoCost == null) continue;
+        const name = c.name || c.shortName || '';
+        // Convert "Who will X?" → "Will [Name] X?"
+        let title = m.name
+          .replace(/^Who will\s+/i,    `Will ${name} `)
+          .replace(/^Who is\s+/i,      `Is ${name} `)
+          .replace(/^Which \w+ will\s+/i, `Will ${name} `);
+        if (title === m.name) title = `Will ${name} — ${m.name}`;
+        markets.push({
+          platform: 'PredictIt',
+          title,
+          yesPrice: c.bestBuyYesCost,
+          noPrice:  c.bestBuyNoCost,
+          url:      m.url,
+          volume:   null,
+        });
+      }
+    }
   }
   return markets;
 }
 
 // ── Matching ──────────────────────────────────────────────────────────────────
-const THRESHOLD = 0.18;
+// A valid match requires:
+//   1. At least 1 shared named entity (same person/org/place)
+//   2. Jaccard word similarity >= JACCARD_MIN
+const JACCARD_MIN  = 0.32;
+const MIN_ENTITIES = 1;
+
+function score(pmTitle, piTitle) {
+  const j = jaccard(pmTitle, piTitle);
+  const e = entityOverlap(pmTitle, piTitle);
+  if (e < MIN_ENTITIES) return 0;
+  if (j < JACCARD_MIN)  return 0;
+  // Combined score weights entity overlap heavily
+  return j + e * 0.3;
+}
 
 function findMatches(polyMarkets, piMarkets) {
-  const pairs = [];
+  const pairs  = [];
   const usedPI = new Set();
 
   for (const pm of polyMarkets) {
-    let best = null;
-    let bestScore = THRESHOLD;
+    let best = null, bestScore = 0;
 
     for (const pi of piMarkets) {
-      const score = jaccard(pm.title, pi.title);
-      if (score > bestScore) { bestScore = score; best = pi; }
+      const s = score(pm.title, pi.title);
+      if (s > bestScore) { bestScore = s; best = pi; }
     }
 
-    if (!best || usedPI.has(best.url)) continue;
-    usedPI.add(best.url);
+    if (!best || bestScore === 0 || usedPI.has(best.url + best.title)) continue;
+    usedPI.add(best.url + best.title);
 
-    const diff = Math.abs(pm.yesPrice - best.yesPrice);
+    const jScore = jaccard(pm.title, best.title);
+    const diff   = Math.abs(pm.yesPrice - best.yesPrice);
     const [cheap, dear] = pm.yesPrice <= best.yesPrice ? [pm, best] : [best, pm];
     const arbCost   = cheap.yesPrice + (1 - dear.yesPrice);
     const arbProfit = (1 - arbCost) * 100;
 
     pairs.push({
-      polymarket:  pm,
-      predictit:   best,
-      score:       Math.round(bestScore * 100),
-      diff:        Math.round(diff * 100 * 10) / 10,
-      arb:         arbCost < 0.995,
-      arbProfit:   Math.round(arbProfit * 10) / 10,
-      buyYesOn:    cheap.platform,
-      buyNoOn:     dear.platform,
+      polymarket: pm,
+      predictit:  best,
+      score:      Math.round(jScore * 100),
+      entities:   entityOverlap(pm.title, best.title),
+      diff:       Math.round(diff * 100 * 10) / 10,
+      arb:        arbCost < 0.995,
+      arbProfit:  Math.round(arbProfit * 10) / 10,
+      buyYesOn:   cheap.platform,
+      buyNoOn:    dear.platform,
     });
   }
 
