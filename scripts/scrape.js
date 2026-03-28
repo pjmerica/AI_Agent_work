@@ -184,18 +184,42 @@ async function fetchPredictit() {
 }
 
 // ── Matching ──────────────────────────────────────────────────────────────────
-// A valid match requires:
-//   1. At least 1 shared named entity (same person/org/place)
-//   2. Jaccard word similarity >= JACCARD_MIN
 const JACCARD_MIN  = 0.32;
 const MIN_ENTITIES = 1;
 
+// Reject pairs where the two markets are clearly asking about DIFFERENT stages
+// of the same event (e.g. first-round placement vs. winning outright, or
+// announcing a run vs. winning a nomination).
+const STAGE_GROUPS = [
+  ['first round', 'second round', 'runoff', 'first place', 'qualify for', 'advance from'],
+  ['announce', 'run for', 'candidacy', 'declare'],
+];
+
+function stagesCompatible(titleA, titleB) {
+  const a = titleA.toLowerCase();
+  const b = titleB.toLowerCase();
+  for (const group of STAGE_GROUPS) {
+    const inA = group.some(w => a.includes(w));
+    const inB = group.some(w => b.includes(w));
+    if (inA !== inB) return false; // one has the stage word, the other doesn't
+  }
+  // Primary vs. general election: reject if one is about a primary and the
+  // other is about the general election (contains "election" but not "primary")
+  const aPrimary = a.includes('primary');
+  const bPrimary = b.includes('primary');
+  const aGeneral  = a.includes('election') && !aPrimary;
+  const bGeneral  = b.includes('election') && !bPrimary;
+  if (aPrimary && bGeneral) return false;
+  if (bPrimary && aGeneral) return false;
+  return true;
+}
+
 function score(pmTitle, piTitle) {
+  if (!stagesCompatible(pmTitle, piTitle)) return 0;
   const j = jaccard(pmTitle, piTitle);
   const e = entityOverlap(pmTitle, piTitle);
   if (e < MIN_ENTITIES) return 0;
   if (j < JACCARD_MIN)  return 0;
-  // Combined score weights entity overlap heavily
   return j + e * 0.3;
 }
 
