@@ -1,0 +1,157 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #0f0f13;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+.widget {
+  width: 360px;
+  background: #1a1a24;
+  border: 1px solid #2e2e42;
+  border-radius: 16px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+h2 {
+  color: #e2e2f0;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+/* Die buttons */
+.dice-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+}
+
+.die-btn {
+  background: #12121a;
+  border: 1px solid #2e2e42;
+  border-radius: 8px;
+  color: #a0a0c0;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 10px 0;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s, color 0.15s;
+}
+
+.die-btn:hover  { background: #22223a; color: #e2e2f0; }
+.die-btn.active {
+  background: #5b4cf5;
+  border-color: #5b4cf5;
+  color: #fff;
+}
+
+/* Quantity stepper */
+.count-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.count-row label {
+  font-size: 13px;
+  color: #6a6a8a;
+}
+
+.stepper {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.stepper button {
+  width: 28px;
+  height: 28px;
+  background: #2e2e42;
+  border: none;
+  border-radius: 6px;
+  color: #e2e2f0;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.15s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.stepper button:hover { background: #3e3e5a; }
+
+#countDisplay {
+  font-size: 15px;
+  font-weight: 600;
+  color: #e2e2f0;
+  min-width: 20px;
+  text-align: center;
+}
+
+/* Result */
+.result-area {
+  background: #12121a;
+  border: 1px solid #2e2e42;
+  border-radius: 10px;
+  padding: 16px;
+  min-height: 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.result-total {
+  font-size: 40px;
+  font-weight: 700;
+  color: #5b4cf5;
+  line-height: 1;
+  transition: transform 0.15s;
+}
+
+.result-total.pop { transform: scale(1.2); }
+
+.result-rolls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  justify-content: center;
+}
+
+.roll-pill {
+  background: #1a1a24;
+  border: 1px solid #2e2e42;
+  border-radius: 4px;
+  padding: 2px 8px;
+  font-size: 12px;
+  color: #6a6a8a;
+  font-family: "Courier New", monospace;
+}
+
+.roll-pill.max { border-color: #4ade80; color: #4ade80; }
+.roll-pill.min { border-color: #f87171; color: #f87171; }
+
+/* Roll button */
+.roll-btn {
+  background: #5b4cf5;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 12px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s, transform 0.1s;
+}
+
+.roll-btn:hover:not(:disabled)  { background: #4a3de0; }
+.roll-btn:active:not(:disabled) { transform: scale(0.97); }
+.roll-btn:disabled { opacity: 0.35; cursor: not-allowed; }

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dice Roller</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="widget">
+    <h2>Dice Roller</h2>
+
+    <div class="dice-grid">
+      <button class="die-btn" data-sides="4">d4</button>
+      <button class="die-btn" data-sides="6">d6</button>
+      <button class="die-btn" data-sides="8">d8</button>
+      <button class="die-btn" data-sides="10">d10</button>
+      <button class="die-btn" data-sides="12">d12</button>
+      <button class="die-btn" data-sides="20">d20</button>
+      <button class="die-btn" data-sides="100">d100</button>
+    </div>
+
+    <div class="count-row">
+      <label>Quantity</label>
+      <div class="stepper">
+        <button id="decBtn">−</button>
+        <span id="countDisplay">1</span>
+        <button id="incBtn">+</button>
+      </div>
+    </div>
+
+    <div class="result-area" id="resultArea">
+      <div class="result-total" id="total">—</div>
+      <div class="result-rolls" id="rolls"></div>
+    </div>
+
+    <button class="roll-btn" id="rollBtn" disabled>Roll</button>
+  </div>
+
+  <script src="dice.js"></script>
+</body>
+</html>
