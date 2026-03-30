@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+  <title>Poker Night</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ── Setup ─────────────────────────────────────── -->
+  <div id="screen-setup" class="screen active">
+    <div class="panel">
+      <h1>Poker Night</h1>
+      <p class="sub">Texas Hold'em · Pass &amp; Play</p>
+
+      <div class="field-group">
+        <label>Players (2–8)</label>
+        <div id="playerFields">
+          <input class="player-input" type="text" placeholder="Player 1" />
+          <input class="player-input" type="text" placeholder="Player 2" />
+        </div>
+        <button id="addPlayerBtn" class="btn-ghost">+ Add player</button>
+      </div>
+
+      <div class="row-2">
+        <div class="field">
+          <label>Starting chips</label>
+          <input id="startChips" type="number" value="1000" min="100" step="100" />
+        </div>
+        <div class="field">
+          <label>Big blind</label>
+          <input id="bigBlind" type="number" value="20" min="2" step="2" />
+        </div>
+      </div>
+
+      <button id="startBtn" class="btn-primary">Deal 'em</button>
+    </div>
+  </div>
+
+  <!-- ── Privacy handoff ───────────────────────────── -->
+  <div id="screen-privacy" class="screen">
+    <div class="panel center">
+      <div class="card-back-stack">
+        <div class="cb"></div><div class="cb"></div>
+      </div>
+      <h2 id="privacyName"></h2>
+      <p class="sub">Your turn — tap to see your cards</p>
+      <button id="showCardsBtn" class="btn-primary">Show my cards</button>
+    </div>
+  </div>
+
+  <!-- ── Main game ─────────────────────────────────── -->
+  <div id="screen-play" class="screen">
+    <div class="game-layout">
+
+      <div class="top-bar">
+        <span id="phaseLabel" class="phase-label"></span>
+        <span id="potLabel" class="pot-label"></span>
+      </div>
+
+      <!-- Community cards -->
+      <div class="community-area">
+        <div id="communityCards" class="card-row"></div>
+      </div>
+
+      <!-- Player strip -->
+      <div id="playerStrip" class="player-strip"></div>
+
+      <!-- Active player's hole cards -->
+      <div class="hole-section">
+        <div class="hole-label" id="holeLabel"></div>
+        <div id="holeCards" class="card-row"></div>
+        <div id="handStrength" class="hand-strength"></div>
+      </div>
+
+      <!-- Actions -->
+      <div class="actions" id="actions"></div>
+
+      <!-- Raise slider (hidden until raise clicked) -->
+      <div id="raisePanel" class="raise-panel hidden">
+        <input id="raiseSlider" type="range" />
+        <div class="raise-row">
+          <span id="raiseDisplay"></span>
+          <button id="confirmRaise" class="btn-primary">Raise to <span id="raiseToLabel"></span></button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ── Showdown ───────────────────────────────────── -->
+  <div id="screen-showdown" class="screen">
+    <div class="panel">
+      <h2 id="showdownTitle"></h2>
+      <div id="communityFinal" class="card-row center-row"></div>
+      <div id="showdownPlayers"></div>
+      <button id="nextHandBtn" class="btn-primary">Next hand</button>
+      <button id="newGameBtn"  class="btn-ghost">New game</button>
+    </div>
+  </div>
+
+  <script src="poker.js"></script>
+</body>
+</html>
