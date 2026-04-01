@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Definitive Glizzy Ranking System</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header>
+    <div class="header-inner">
+      <div class="logo">🌭</div>
+      <div>
+        <h1>The Definitive Glizzy Ranking System</h1>
+        <p class="tagline">Cross-referenced rankings of America's greatest hot dog spots</p>
+      </div>
+    </div>
+    <div class="tabs">
+      <button class="tab active" data-tab="cities">City Rankings</button>
+      <button class="tab" data-tab="restaurants">Top Spots</button>
+      <button class="tab" data-tab="methodology">Methodology</button>
+    </div>
+  </header>
+
+  <!-- ── City Rankings ─────────────────────────────────────────────────── -->
+  <section id="tab-cities" class="tab-content active">
+    <div class="container">
+      <div class="section-intro">
+        <h2>Best Cities for Glizzys</h2>
+        <p>Ranked by the <strong>Glizzy Score</strong> — a composite metric weighing spot density, source citations, style originality, heritage, and awards. See <a href="#" onclick="switchTab('methodology')">Methodology</a> for full formula.</p>
+      </div>
+      <div id="cityList"></div>
+    </div>
+  </section>
+
+  <!-- ── Restaurant Rankings ──────────────────────────────────────────── -->
+  <section id="tab-restaurants" class="tab-content">
+    <div class="container">
+      <div class="section-intro">
+        <h2>Top Hot Dog Spots in America</h2>
+        <p>Ranked by cross-source citations. Filter by style or state.</p>
+        <div class="filters">
+          <input type="text" id="searchBox" placeholder="Search spots…" />
+          <select id="styleFilter"><option value="">All styles</option></select>
+          <select id="stateFilter"><option value="">All states</option></select>
+        </div>
+      </div>
+      <div id="restaurantList"></div>
+    </div>
+  </section>
+
+  <!-- ── Methodology ──────────────────────────────────────────────────── -->
+  <section id="tab-methodology" class="tab-content">
+    <div class="container">
+      <div class="methodology">
+        <h2>The Glizzy Score™ — Methodology</h2>
+        <p>No single list can capture the true glory of America's glizzy landscape. The Glizzy Score aggregates data across sources and weights multiple factors:</p>
+
+        <h3>Formula</h3>
+        <div class="formula">
+          GlizzyScore = (spotCount × 12) + (avgSources × 8) + (stylePoints × 6) + (heritagePoints × 4) + (awardsPoints × 5)
+        </div>
+
+        <h3>Factor Breakdown</h3>
+        <div class="factor-grid">
+          <div class="factor">
+            <div class="factor-icon">📍</div>
+            <div class="factor-name">Spot Density (×12)</div>
+            <div class="factor-desc">How many nationally-recognized hot dog spots does the city have? More top spots = more glizzy culture.</div>
+          </div>
+          <div class="factor">
+            <div class="factor-icon">📰</div>
+            <div class="factor-name">Source Citations (×8)</div>
+            <div class="factor-desc">Average number of authoritative food publications (Eater, Thrillist, Food & Wine, Serious Eats, etc.) citing spots from this city.</div>
+          </div>
+          <div class="factor">
+            <div class="factor-icon">🎨</div>
+            <div class="factor-name">Style Originality (×6)</div>
+            <div class="factor-desc">Does the city have its OWN iconic hot dog style? Chicago, Detroit, and Tucson all get maximum points here.</div>
+          </div>
+          <div class="factor">
+            <div class="factor-icon">🏛️</div>
+            <div class="factor-name">Heritage (×4)</div>
+            <div class="factor-desc">How old is the oldest notable spot? Cities with century-old institutions earn more heritage points.</div>
+          </div>
+          <div class="factor">
+            <div class="factor-icon">🏆</div>
+            <div class="factor-name">Awards (×5)</div>
+            <div class="factor-desc">James Beard Awards, national landmark status, Travel Channel features, and other recognition.</div>
+          </div>
+        </div>
+
+        <h3>Sources Consulted</h3>
+        <ul class="source-list">
+          <li>Thrillist — "Best Hot Dogs in America"</li>
+          <li>Food & Wine — "America's Best Hot Dog Joints"</li>
+          <li>Serious Eats — Regional hot dog guides</li>
+          <li>LoveFood — "America's Best Hot Dog Joints"</li>
+          <li>Fodor's — "Best Hot Dog Stands in the US"</li>
+          <li>TasteAtlas — Best Rated Hot Dogs in USA</li>
+          <li>Yelp — Top Hot Dog Spots</li>
+          <li>Gayot — Best Hot Dog Stands in the USA</li>
+          <li>Wikipedia — List of Hot Dog Restaurants</li>
+          <li>James Beard Foundation — America's Classics</li>
+        </ul>
+
+        <p class="disclaimer">The Glizzy Score is a proprietary metric developed by the DGRS research team. Results are definitive and not subject to debate. No ketchup was harmed in the making of this ranking.</p>
+      </div>
+    </div>
+  </section>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
