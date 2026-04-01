@@ -1,16 +1,16 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --bg:      #0a1a0f;
-  --felt:    #0d2416;
-  --panel:   #111d15;
-  --border:  #1e3d28;
-  --accent:  #2ecc71;
-  --accent2: #e74c3c;
-  --gold:    #f0c040;
-  --text:    #d4f0dc;
-  --muted:   #5a8a6a;
-  --card-bg: #f5f0e8;
+  --bg:      #080b14;
+  --felt:    #0d1120;
+  --panel:   #10152a;
+  --border:  #1e2a4a;
+  --accent:  #e05555;
+  --accent2: #e05555;
+  --gold:    #f5c842;
+  --text:    #dce6ff;
+  --muted:   #5a6a9a;
+  --card-bg: #f8f4ee;
 }
 
 body {
@@ -58,7 +58,7 @@ h2 { font-size: 20px; font-weight: 700; color: var(--text); }
   outline: none;
   transition: border-color 0.15s;
 }
-.player-input:focus, input:focus { border-color: var(--accent); }
+.player-input:focus, input:focus { border-color: var(--gold); }
 
 .row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
 .field { display: flex; flex-direction: column; gap: 6px; }
@@ -97,8 +97,8 @@ h2 { font-size: 20px; font-weight: 700; color: var(--text); }
 .cb {
   position: absolute;
   width: 70px; height: 100px;
-  background: #1a5c30;
-  border: 2px solid #2ecc71;
+  background: #1a1f4a;
+  border: 2px solid #e05555;
   border-radius: 8px;
 }
 .cb:first-child { top: 0; left: 0; transform: rotate(-5deg); }
@@ -161,8 +161,8 @@ h2 { font-size: 20px; font-weight: 700; color: var(--text); }
 .card.red { color: #c0392b; }
 .card.black { color: #1a1a2e; }
 .card.back {
-  background: #1a5c30;
-  border-color: #2ecc71;
+  background: #1a1f4a;
+  border-color: #e05555;
 }
 .card.placeholder {
   background: rgba(255,255,255,0.05);
@@ -220,8 +220,8 @@ h2 { font-size: 20px; font-weight: 700; color: var(--text); }
 }
 .act-btn:active { transform: scale(0.96); }
 .act-fold  { background: #3d1515; color: #f87171; border: 1px solid #5a2020; }
-.act-check { background: #0d2416; color: var(--accent); border: 1px solid var(--border); }
-.act-call  { background: #0d2416; color: var(--accent); border: 1px solid var(--accent); }
+.act-check { background: #0d1120; color: var(--accent); border: 1px solid var(--border); }
+.act-call  { background: #0d1120; color: var(--accent); border: 1px solid var(--accent); }
 .act-raise { background: var(--gold); color: #1a1200; }
 
 /* ── Raise panel ─────────────────────────────────────── */
@@ -245,7 +245,7 @@ input[type="range"] {
   flex-direction: column;
   gap: 6px;
 }
-.showdown-player.winner { border-color: var(--gold); background: #1a1a00; }
+.showdown-player.winner { border-color: var(--gold); background: #1a1600; }
 .sd-header { display: flex; justify-content: space-between; align-items: center; }
 .sd-name   { font-weight: 700; font-size: 14px; }
 .sd-chips  { font-size: 13px; color: var(--gold); }
