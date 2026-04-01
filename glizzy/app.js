@@ -1,4 +1,4 @@
-const { RESTAURANTS, CITIES_RAW } = window.GLIZZY_DATA;
+let RESTAURANTS, CITIES_RAW;
 
 // ── Glizzy Score calculation ──────────────────────────────────────────────────
 function computeCityScores() {
@@ -165,6 +165,9 @@ function esc(s) {
 }
 
 // ── Init ──────────────────────────────────────────────────────────────────────
-renderCities();
-populateFilters();
-renderRestaurants();
+document.addEventListener('DOMContentLoaded', () => {
+  ({ RESTAURANTS, CITIES_RAW } = window.GLIZZY_DATA);
+  renderCities();
+  populateFilters();
+  renderRestaurants();
+});
