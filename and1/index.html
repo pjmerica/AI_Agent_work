@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>And-1 Analysis — NBA's Greatest Foul Artists</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header>
+    <div class="header-inner">
+      <div class="logo">🏀</div>
+      <div class="header-text">
+        <h1>And-1 Analysis</h1>
+        <p class="tagline">Who draws fouls, who finishes through contact, and who makes the bonus shot</p>
+      </div>
+    </div>
+    <div class="ai-disclaimer">🤖 Data compiled by an AI agent from 82games.com, Fadeaway World, Fox Sports, and Basketball Reference. No free throws were personally attempted in the making of this analysis.</div>
+    <div class="tabs">
+      <button class="tab active" data-tab="kings">Career And-1 Kings</button>
+      <button class="tab" data-tab="rate">And-1 Conversion Rate</button>
+      <button class="tab" data-tab="bonus">Bonus Free Throw</button>
+      <button class="tab" data-tab="rulechange">Rule Change Impact</button>
+      <button class="tab" data-tab="current">Current Leaders</button>
+      <button class="tab" data-tab="methodology">Methodology</button>
+    </div>
+  </header>
+
+  <!-- ── Career And-1 Kings ─────────────────────────────────────────────────── -->
+  <section id="tab-kings" class="tab-content active">
+    <div class="container">
+      <div class="section-intro">
+        <h2>Career And-1 Kings</h2>
+        <p>The greatest at drawing fouls, finishing through contact, and making life miserable for defenders. Ranked by overall and-1 dominance — volume, rate, and impact on the game. Note: comprehensive play-by-play and-1 tracking only exists from the 2004-05 season onward; pre-2005 players are ranked on career FTA volume as the best available proxy.</p>
+      </div>
+      <div id="kingsList"></div>
+    </div>
+  </section>
+
+  <!-- ── And-1 Conversion Rate ─────────────────────────────────────────────── -->
+  <section id="tab-rate" class="tab-content">
+    <div class="container">
+      <div class="section-intro">
+        <h2>And-1 Conversion Rate</h2>
+        <p>Who makes the shot at the highest rate when fouled on a field goal attempt? This measures "and-1s made / total shooting fouls drawn" — the ability to complete the basket even while getting hit. Source: 82games.com, 2004-05 and 2005-06 seasons. Minimum 50 shooting fouls drawn.</p>
+      </div>
+      <p id="leagueAvgNote"></p>
+      <div id="rateList"></div>
+    </div>
+  </section>
+
+  <!-- ── Bonus FT ────────────────────────────────────────────────────────────── -->
+  <section id="tab-bonus" class="tab-content">
+    <div class="container">
+      <div class="section-intro">
+        <h2>Bonus Free Throw Conversion</h2>
+        <p>After you make the and-1, you still have to convert the bonus free throw. Who ices it, and who blows it? Source: 82games.com, 2004-05 and 2005-06 seasons. A player's bonus FT% closely tracks their regular FT% — there is no significant "clutch" effect on the bonus FT, just baseline shooting ability.</p>
+      </div>
+      <div class="ft-split">
+        <div>
+          <div class="ft-section-title green">✅ Best Bonus FT%</div>
+          <div id="bonusBest"></div>
+        </div>
+        <div>
+          <div class="ft-section-title red">❌ Worst Bonus FT%</div>
+          <div id="bonusWorst"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Rule Change Impact ────────────────────────────────────────────────── -->
+  <section id="tab-rulechange" class="tab-content">
+    <div class="container">
+      <div class="section-intro">
+        <h2>The 2021-22 Rule Change</h2>
+        <p>The NBA cracked down on foul-baiting in 2021-22, banning "non-basketball moves" designed purely to draw fouls. The impact was immediate and severe for the league's top foul-drawing artists.</p>
+      </div>
+      <div class="rc-desc" id="ruleChangeDesc"></div>
+      <div class="rc-header">
+        <div>Player</div>
+        <div>FTA/game (before → after)</div>
+        <div>Visual</div>
+      </div>
+      <div id="ruleChangeTable"></div>
+    </div>
+  </section>
+
+  <!-- ── Current Leaders ───────────────────────────────────────────────────── -->
+  <section id="tab-current" class="tab-content">
+    <div class="container">
+      <div class="section-intro">
+        <h2>Current Leaders — 2024-25 Season</h2>
+        <p>Who's drawing the most fouls right now? Ranked by total fouls drawn. Source: Fox Sports NBA Misc Stats, 2024-25 regular season.</p>
+      </div>
+      <div class="cur-grid" id="currentList"></div>
+    </div>
+  </section>
+
+  <!-- ── Methodology ───────────────────────────────────────────────────────── -->
+  <section id="tab-methodology" class="tab-content">
+    <div class="container">
+      <div class="methodology">
+        <h2>Methodology & Data Sources</h2>
+
+        <p>This analysis focuses on three distinct skills that combine to define the ultimate and-1 artist:</p>
+
+        <h3>1. Volume: Drawing Fouls</h3>
+        <div class="caveat-box">
+          Measured by <strong>fouls drawn per game (FDPG)</strong> and <strong>career free throw attempts (FTA)</strong>. A high FTA total means a player consistently put themselves in position to draw shooting fouls. Career FTA is the best proxy for pre-2005 players where play-by-play data doesn't exist.
+        </div>
+
+        <h3>2. Conversion Rate: Making the Shot While Fouled</h3>
+        <div class="caveat-box">
+          Measured as <strong>and-1s made / total shooting fouls drawn</strong>. From 82games.com for the 2004-05 and 2005-06 seasons — the earliest available play-by-play based and-1 tracking data. The <strong>league average</strong> in 2005-06 was <strong>28.2%</strong> of shooting fouls resulted in a completed basket. Players above 40% are elite finishers through contact.
+        </div>
+
+        <h3>3. Bonus Free Throw: Completing the Three-Point Play</h3>
+        <div class="caveat-box">
+          Measured as <strong>bonus FT made / bonus FT attempted</strong> specifically on and-1 situations. Research confirms a player's bonus FT% closely mirrors their career FT% — <strong>there is no significant "clutch effect"</strong> on the bonus free throw. The best bonus FT shooters are simply the best free throw shooters overall.
+        </div>
+
+        <h3>The Great Paradox: Shaquille O'Neal</h3>
+        <div class="caveat-box">
+          Shaq had the <strong>highest and-1 rate per shot attempt in the league</strong> in 2005-06 (8.5% of all his shot attempts ended in a made basket + foul drawn) and a 54.9% and-1 rate (% of shooting fouls that became and-1s). Yet he converted the bonus free throw at only 47.9% — far below the 72.7% league average. Defenders famously fouled him <em>intentionally</em> before he could release (Hack-a-Shaq) precisely because they feared the and-1.
+        </div>
+
+        <h3>Data Limitations</h3>
+        <p>Play-by-play and-1 tracking only exists from ~2004-05 onward. No public database publishes a clean career and-1 total leaderboard. The three-point shooting fouls drawn data (Harden: 521 career) covers from approximately 2013-14 onward per NBA tracking. Pre-2005 era legends (Malone, Jordan, Chamberlain) are ranked on FTA volume only.</p>
+
+        <h3>Sources</h3>
+        <ul class="source-list">
+          <li>82games.com — And-1 stats, shooting fouls drawn, bonus FT conversion (2004-05, 2005-06)</li>
+          <li>Fadeaway World — "Harden is the all-time leader in 3-point shooting fouls drawn" (Oct 2021)</li>
+          <li>Fox Sports NBA Misc Stats — Fouls Drawn leaders 2023-24, 2024-25, 2025-26</li>
+          <li>Basketball-Reference — Career FTA, FT%, and season stats</li>
+          <li>HoopsHype — Harden FTA/game vs Wilt Chamberlain comparison</li>
+          <li>Clutch Points / CBS Sports / SI — 2021-22 NBA rule change impact analysis</li>
+          <li>The F5 / Substack — Trae Young 3-point shooting foul profile</li>
+        </ul>
+
+        <p class="disclaimer">This analysis was compiled by an AI agent. All statistics are sourced from the outlets listed above. Historical comparisons across eras are inherently approximate due to tracking data limitations. No free throws were missed in the making of this page. (Ben Wallace was not consulted.)</p>
+      </div>
+    </div>
+  </section>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
