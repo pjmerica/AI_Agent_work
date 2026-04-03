@@ -5,10 +5,10 @@
 // Version tracking
 window.NFL_INJURY_DATA = {
 
-  version: "1.5",
+  version: "1.6",
   lastUpdated: "2026-04-02",
-  totalPlayers: 29,
-  confirmed: 14,
+  totalPlayers: 30,
+  confirmed: 15,
   refuted: 4,
   mixed: 6,
   noflag: 5,
@@ -1171,6 +1171,46 @@ window.NFL_INJURY_DATA = {
         { text: "Hunter Henry — Wikipedia", url: "https://en.wikipedia.org/wiki/Hunter_Henry" },
         { text: "Hunter Henry injury history analysis — Pats Pulpit", url: "https://www.patspulpit.com/2021/4/8/22373324/injury-history-analysis-patriots-hunter-henry-free-agency" },
         { text: "Hunter Henry torn ACL — ESPN", url: "https://www.espn.com/nfl/story/_/id/23575900/hunter-henry-la-chargers-suffers-season-ending-torn-acl" }
+      ]
+    },
+
+    {
+      id: "miller-braxton",
+      name: "Braxton Miller",
+      pos: "WR",
+      college: "Ohio State",
+      draftYear: 2016,
+      pickNumber: 85,
+      round: 3,
+      team: "Houston Texans",
+      verdict: "CONFIRMED",
+
+      preDraftInjury: "Two shoulder surgeries at Ohio State — tore labrum in the 2014 Orange Bowl, then re-tore the same labrum in August 2014 preseason drills while attempting to return. Left arm so damaged he could not throw over 40 yards — had to abandon his QB position entirely and convert to WR for the 2016 draft.",
+      preDraftDetails: [
+        "2014 Orange Bowl: Suffered torn labrum in his throwing shoulder while completing a touchdown pass — surgery required",
+        "August 2014: Attempted to return during preseason drills — re-tore the SAME labrum in the same shoulder",
+        "After two surgeries, medical evaluation determined he could no longer throw over 40 yards with accuracy — career as a QB at Ohio State was over",
+        "Converted to wide receiver for the 2015 season — was evaluated as a WR prospect for the 2016 draft",
+        "Teams were divided: his athleticism was elite but his shoulder history at Ohio State was a significant red flag at WR",
+        "Fell from projected 2nd-round WR to 85th overall (3rd round) due to the shoulder concerns"
+      ],
+      draftImpact: "Fell from projected 2nd round to 85th overall — the dual shoulder surgeries cost him approximately $500K-1M in draft slot value.",
+      projectedWithoutInjury: "2nd-round pick as a pure athlete/WR prospect based on combine performance (top-3 in three agility drills).",
+
+      nflCareerSummary: "2 NFL seasons with Houston Texans (2016-2017). In his ROOKIE year, suffered a shoulder injury in Week 13 — the same shoulder region flagged pre-draft — and was placed on injured reserve. Waived before the 2018 season. Career: 34 catches, 261 yards in 21 games.",
+      nflInjuries: [
+        "2016 (rookie): Shoulder injury in Week 13 vs. Green Bay Packers — placed on IR",
+        "The shoulder that required two surgeries at Ohio State was injured again in his first NFL season",
+        "Career effectively ended with waiver in 2018 after two seasons without establishing himself"
+      ],
+      gamesPlayed: 21,
+      careerLength: "2016–2017 (2 seasons, 21 games)",
+      verdictExplanation: "A precise CONFIRMED case: the exact shoulder that was surgically repaired TWICE at Ohio State was injured again in Miller's first NFL season. His career never recovered. The pre-draft concern — that the labrum might not hold up to the physical demands of professional football — proved correct in Year 1. He is also a unique case study in how a college injury can force a complete position change, fundamentally altering a prospect's NFL career path.",
+
+      sources: [
+        { text: "Braxton Miller — Wikipedia", url: "https://en.wikipedia.org/wiki/Braxton_Miller" },
+        { text: "Miller shoulder injury updates — Bleacher Report", url: "https://bleacherreport.com/articles/2664626-braxton-miller-injury-updates-on-texans-wrs-shoulder-and-return" },
+        { text: "How Miller made the move from QB to WR — ESPN", url: "https://www.espn.com/college-football/story/_/id/14156636/how-ohio-state-braxton-miller-made-move-quarterback-wide-receiver" }
       ]
     }
   ],
