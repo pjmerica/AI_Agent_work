@@ -5,13 +5,13 @@
 // Version tracking
 window.NFL_INJURY_DATA = {
 
-  version: "1.3",
+  version: "1.4",
   lastUpdated: "2026-04-02",
-  totalPlayers: 25,
+  totalPlayers: 27,
   confirmed: 13,
   refuted: 4,
   mixed: 6,
-  noflag: 2,
+  noflag: 4,
 
   // ── VERDICT KEY ─────────────────────────────────────────────────────────────
   // CONFIRMED — Pre-draft injury/concern accurately predicted significant NFL
@@ -1011,6 +1011,85 @@ window.NFL_INJURY_DATA = {
       sources: [
         { text: "Jake Butt — Wikipedia", url: "https://en.wikipedia.org/wiki/Jake_Butt" },
         { text: "Jaylon Smith, Jake Butt on skipping bowl games — Sports Illustrated", url: "https://www.si.com/nfl/2018/12/06/jaylon-smith-jake-butt-skipping-bowl-games-injuries-draft-mccaffrey-fournette" }
+      ]
+    },
+
+    {
+      id: "beckham-odell",
+      name: "Odell Beckham Jr.",
+      pos: "WR",
+      college: "LSU",
+      draftYear: 2014,
+      pickNumber: 12,
+      round: 1,
+      team: "New York Giants",
+      verdict: "NOFLAG",
+
+      preDraftInjury: "NONE — Beckham had no documented pre-draft injury concerns. His hamstring injuries began AFTER the draft during rookie camp and pre-season. Included as a counter-example.",
+      preDraftDetails: [
+        "Was considered one of the cleanest medical prospects at WR in the 2014 class",
+        "No injury flag from his time at LSU — was drafted 12th overall without any medical hesitation",
+        "His hamstring issues began in June 2014 (post-draft) during rookie offseason workouts — not a pre-draft issue",
+        "He later revealed he played his entire 2014 rookie season with TWO hamstring tears (semitendinosus and bicep belly) — both sustained post-draft",
+        "LESSON: A player can be medically clean at the draft and still develop recurring injury issues that had no warning signs"
+      ],
+      draftImpact: "No medical impact — went #12 overall as a can't-miss prospect.",
+      projectedWithoutInjury: "Same — #12 overall was always the floor for his talent level.",
+
+      nflCareerSummary: "One of the most electrifying WRs in NFL history — famous one-handed catch, multiple Pro Bowls — but career repeatedly derailed by injuries across multiple teams. Four different NFL teams in 10 seasons.",
+      nflInjuries: [
+        "2014 (rookie): Two hamstring tears sustained post-draft — played through both all season",
+        "2017: Fractured ankle (Jones fracture) in Week 5 — missed rest of season",
+        "2020 (Browns): Torn ACL in Week 7 — missed rest of season",
+        "2022 (Rams): Tore ACL AGAIN in Super Bowl LVI — suffered the injury while making a key 4th-quarter catch in the Rams' Super Bowl win",
+        "Persistent bone-on-bone ankle issues drove his market value down significantly in free agency years"
+      ],
+      gamesPlayed: 96,
+      careerLength: "2014–2023 (10 seasons, significant gaps due to injury)",
+      verdictExplanation: "Beckham is one of the most compelling NOFLAG counter-examples. His pre-draft medical was clean — there was no warning the hamstring would become a recurring issue, or that he'd suffer two torn ACLs over his career. The pre-draft medical evaluation system simply cannot detect future susceptibility to soft tissue and joint injuries. OBJ's career proves that elite athletes with clean medicals are not immune to injury-defined careers.",
+
+      sources: [
+        { text: "Odell Beckham Jr. — Wikipedia", url: "https://en.wikipedia.org/wiki/Odell_Beckham_Jr." },
+        { text: "Beckham admits playing with two hamstring tears in rookie season — Bleacher Report", url: "https://bleacherreport.com/articles/2279100-odell-beckham-admits-to-playing-with-two-tears-in-hamstring-during-rookie-season" },
+        { text: "OBJ injury history — DraftSharks", url: "https://www.draftsharks.com/fantasy/injury-history/odell-beckham-jr/6942" }
+      ]
+    },
+
+    {
+      id: "nelson-jordy",
+      name: "Jordy Nelson",
+      pos: "WR",
+      college: "Kansas State",
+      draftYear: 2008,
+      pickNumber: 36,
+      round: 2,
+      team: "Green Bay Packers",
+      verdict: "NOFLAG",
+
+      preDraftInjury: "NONE — Nelson had no pre-draft injury concerns. Selected in the 2nd round for talent reasons, not medical ones. Included as a counter-example of career-altering injury with no pre-draft warning.",
+      preDraftDetails: [
+        "Played for Kansas State with no documented significant injury history — was considered a physically durable route runner",
+        "Fell to the 2nd round primarily due to questions about speed (4.51 40-yard dash) and competition level, not health",
+        "Teams had no medical concerns about his knees, hamstrings, or any major injury risk",
+        "Became Aaron Rodgers' most trusted receiver over 9 seasons — the pre-draft medical was simply not a factor"
+      ],
+      draftImpact: "2nd-round selection was about athletic profile (speed concerns), not injury history.",
+      projectedWithoutInjury: "Same range — his draft position was determined by scheme fit and speed, not health.",
+
+      nflCareerSummary: "One of Aaron Rodgers' most important weapons — multiple Pro Bowls, Super Bowl champion (XLV). Then suffered a devastating torn ACL in 2015 preseason that cost him an entire season. Came back and had one of the greatest WR comeback seasons in history in 2016 (97 catches, 1,257 yards, 14 TDs). Retired as a Packer after 2018.",
+      nflInjuries: [
+        "August 23, 2015: Torn ACL in preseason game vs. Pittsburgh Steelers — missed entire 2015 season",
+        "The injury was a complete surprise — no history of knee issues heading into it",
+        "2016: Full comeback — 97 catches, 1,257 yards, 14 TDs, one of the greatest WR comeback seasons ever",
+        "No significant recurring knee issues after the recovery — the ACL held"
+      ],
+      gamesPlayed: 128,
+      careerLength: "2008–2018 (11 seasons, 1 lost to ACL)",
+      verdictExplanation: "Jordy Nelson is a NOFLAG success story — in the sense that a clean medical didn't prevent the devastating 2015 ACL tear, but also that the injury didn't permanently derail his career. His 2016 comeback season was legendary. Teams cannot detect all future ACL risk — and Nelson's case shows that even when a clean-medical player suffers a catastrophic injury, recovery is possible. Compare with Marcus Lattimore (pre-draft concern → never played) to see the full spectrum.",
+
+      sources: [
+        { text: "Jordy Nelson — Wikipedia", url: "https://en.wikipedia.org/wiki/Jordy_Nelson" },
+        { text: "Jordy Nelson career stats — Pro Football Reference", url: "https://www.pro-football-reference.com/players/N/NelsJo00.htm" }
       ]
     }
   ],
