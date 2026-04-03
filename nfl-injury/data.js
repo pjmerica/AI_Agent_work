@@ -5,13 +5,13 @@
 // Version tracking
 window.NFL_INJURY_DATA = {
 
-  version: "1.6",
-  lastUpdated: "2026-04-02",
-  totalPlayers: 30,
-  confirmed: 15,
-  refuted: 4,
-  mixed: 6,
-  noflag: 5,
+  version: "1.7",
+  lastUpdated: "2026-04-03",
+  totalPlayers: 35,
+  confirmed: 17,
+  refuted: 5,
+  mixed: 7,
+  noflag: 6,
 
   // ── VERDICT KEY ─────────────────────────────────────────────────────────────
   // CONFIRMED — Pre-draft injury/concern accurately predicted significant NFL
@@ -1171,6 +1171,217 @@ window.NFL_INJURY_DATA = {
         { text: "Hunter Henry — Wikipedia", url: "https://en.wikipedia.org/wiki/Hunter_Henry" },
         { text: "Hunter Henry injury history analysis — Pats Pulpit", url: "https://www.patspulpit.com/2021/4/8/22373324/injury-history-analysis-patriots-hunter-henry-free-agency" },
         { text: "Hunter Henry torn ACL — ESPN", url: "https://www.espn.com/nfl/story/_/id/23575900/hunter-henry-la-chargers-suffers-season-ending-torn-acl" }
+      ]
+    },
+
+    // ── 2000 ─────────────────────────────────────────────────────────────────
+    {
+      id: "lewis-jamal",
+      name: "Jamal Lewis",
+      pos: "RB",
+      college: "Tennessee",
+      draftYear: 2000,
+      pickNumber: 5,
+      round: 1,
+      team: "Baltimore Ravens",
+      verdict: "MIXED",
+
+      preDraftInjury: "Torn ACL in his sophomore season at Tennessee (1998) — limited him to 4 games; some scouts flagged durability concerns when Baltimore selected him 5th overall in 2000",
+      preDraftDetails: [
+        "1998 (Tennessee sophomore season): Tore his ACL — was limited to just 4 games; this was a documented pre-draft injury concern",
+        "Despite ACL in college, Lewis came back to have a strong senior season at Tennessee before declaring for the draft",
+        "Some analysts noted the Ravens 'were criticized by some for drafting Lewis that high' given his injury history",
+        "Lewis was highly productive at Tennessee when healthy — the question was whether his knee would hold up in the NFL",
+      ],
+      draftImpact: "Mild to moderate — some criticism that the Ravens reached at #5 given the ACL history, but Lewis was still considered a top-5 RB talent.",
+      projectedWithoutInjury: "Still a top-5 pick — his talent was never in question, only durability.",
+
+      nflCareerSummary: "Remarkable career despite the ACL concern being partially validated early. In 2003 rushed for 2,066 yards — the second-most in a single season in NFL history. But also missed the entire 2001 season (his 2nd year) with another ACL tear in training camp. A 10-year career with 10,607 rushing yards, a Super Bowl ring (2000), and a single-season rushing record.",
+      nflInjuries: [
+        "2001 (Year 2): Tore ACL in training camp — missed the entire season; confirmed the pre-draft durability concern",
+        "The 2001 ACL was the same knee concern that had worried scouts pre-draft",
+        "Returned in 2002 to rush for 1,327 yards — then exploded for 2,066 yards in 2003",
+        "The pre-draft concern materialized (2001 ACL) but Lewis overcame it to have a Hall of Fame-caliber career",
+      ],
+      gamesPlayed: 131,
+      careerLength: "2000–2009 (10 seasons, 1 lost to ACL)",
+      verdictExplanation: "MIXED — the pre-draft ACL concern was validated early (he tore it again in Year 2), but Lewis overcame it to become one of the greatest RBs in NFL history. His 2003 season with 2,066 rushing yards is one of the most productive in league history. This case illustrates a key nuance: a pre-draft concern being 'confirmed' in the short term doesn't mean the player can't still have an elite career. Lewis sits in the middle — injury concern materialized, but long-term NFL impact was overwhelmingly positive.",
+
+      sources: [
+        { text: "Jamal Lewis — Wikipedia", url: "https://en.wikipedia.org/wiki/Jamal_Lewis_(American_football)" },
+        { text: "Lewis tears ACL, out for season — ESPN", url: "https://www.espn.com/nfl/news/2001/0808/1236913.html" },
+        { text: "Jamal Lewis career — Pro Football Reference", url: "https://www.pro-football-reference.com/players/L/LewiJa00.htm" },
+      ]
+    },
+
+    // ── 2008 ─────────────────────────────────────────────────────────────────
+    {
+      id: "stewart-jonathan",
+      name: "Jonathan Stewart",
+      pos: "RB",
+      college: "Oregon",
+      draftYear: 2008,
+      pickNumber: 13,
+      round: 1,
+      team: "Carolina Panthers",
+      verdict: "REFUTED",
+
+      preDraftInjury: "Big toe surgery in March 2008 — played his entire senior season at Oregon with the injury before having surgery 6 weeks before the draft; teams concerned about his mobility and whether it would affect his speed",
+      preDraftDetails: [
+        "Stewart played through a significant toe injury his entire senior season at Oregon (2007)",
+        "March 12, 2008: Underwent surgery on his big toe — was expected to be out 4-6 months, meaning he would not fully recover before his first NFL training camp",
+        "Did not attend his own Pro Day — scouts came to Oregon but he was in a walking boot and did not participate",
+        "Ran a 4.46 40-yard dash at the Combine WITH the injured toe before having surgery",
+        "Was ranked among the top 3 RBs in the draft despite the injury, alongside Darren McFadden and Rashard Mendenhall",
+        "Panthers still drafted him 13th overall — a testament to his ability overcoming the medical concern",
+      ],
+      draftImpact: "Some slide from projected top-10 to #13 — the toe injury contributed to some teams downgrading him. Still a top-15 pick.",
+      projectedWithoutInjury: "Likely a top-10 pick without the toe concern.",
+
+      nflCareerSummary: "10-year career with the Carolina Panthers, rushing for 7,318 yards. Was Jonathan Stewart in the same backfield with Deangelo Williams, forming one of the NFL's best RB duos in 2008-2012. Career hampered by various injuries but the toe issue that worried pre-draft evaluators never became a persistent problem.",
+      nflInjuries: [
+        "Various knee and ankle injuries throughout career — but NOT linked to the pre-draft toe concern",
+        "2013: Foot injury (stress fracture) — distinct from the 2008 pre-draft toe issue",
+        "Multiple seasons disrupted by injuries but managed to play 10 NFL seasons",
+        "The specific toe surgery that worried teams pre-draft was not a recurring problem",
+      ],
+      gamesPlayed: 112,
+      careerLength: "2008–2017 (10 seasons)",
+      verdictExplanation: "REFUTED — the pre-draft toe surgery concern did not materialize as a recurring NFL issue. Stewart had a healthy, productive 10-year career with 7,318 rushing yards. While he did miss games to various injuries, none were directly linked to the toe that was surgically repaired before the draft. Teams that passed on him based on the toe concern missed out on a solid starter.",
+
+      sources: [
+        { text: "Jonathan Stewart — Wikipedia", url: "https://en.wikipedia.org/wiki/Jonathan_Stewart" },
+        { text: "Stewart toe surgery — 247Sports", url: "https://247sports.com/nfl/carolina-panthers/Article/Jonathan-Stewart-2008-NFL-Draft-Panthers-experience-131475516/" },
+        { text: "Jonathan Stewart career — Pro Football Reference", url: "https://www.pro-football-reference.com/players/S/StewJo00.htm" },
+      ]
+    },
+
+    // ── 2012 ─────────────────────────────────────────────────────────────────
+    {
+      id: "richardson-trent",
+      name: "Trent Richardson",
+      pos: "RB",
+      college: "Alabama",
+      draftYear: 2012,
+      pickNumber: 3,
+      round: 1,
+      team: "Cleveland Browns",
+      verdict: "CONFIRMED",
+
+      preDraftInjury: "Torn meniscus in the BCS National Championship Game (January 2012) — required knee surgery in February 2012, causing him to miss the NFL Combine drills; then needed a second arthroscopic knee surgery in August 2012 before his first NFL game",
+      preDraftDetails: [
+        "January 9, 2012 (BCS National Championship vs. LSU): Tore his meniscus — required surgery in February 2012",
+        "Did not participate in any drills at the 2012 NFL Combine due to the knee surgery — scouts saw his speed and agility only on film",
+        "Despite the meniscus tear, Richardson was still considered the top RB prospect — some called him a 'sure-thing' pick",
+        "August 9, 2012: Underwent a SECOND arthroscopic knee surgery (to remove cartilage fragments) before even playing a regular-season NFL game",
+        "Missed the entire preseason with the second knee procedure",
+        "The pattern of two knee procedures before a single NFL snap was a notable red flag in retrospect",
+      ],
+      draftImpact: "The injury did not significantly affect his draft position — the Browns took him 3rd overall and later traded up to get him, paying a premium. His talent overcame the medical concern in draft evaluations.",
+      projectedWithoutInjury: "#1-3 pick regardless — Richardson was the consensus top RB.",
+
+      nflCareerSummary: "One of the most cited draft busts in NFL history. In 3 seasons (Cleveland 2012-2013, Indianapolis 2013-2014), rushed for just 2,032 yards. Was traded from Cleveland to Indianapolis after just 2 games of the 2013 season for a 2014 first-round pick. Career ended at age 25. The knee issues that surfaced pre-draft never allowed him to develop the burst and explosion scouts had seen at Alabama.",
+      nflInjuries: [
+        "2012 (Year 1): Arthroscopic knee surgery in August; still started and rushed for 950 yards but showed diminished burst",
+        "2013: Traded to Colts mid-season after poor play — widely attributed to knee-related loss of explosiveness",
+        "Career numbers: 614 carries, 2,032 yards, 19 TDs across 5 seasons — well below expectations for a #3 overall pick",
+        "Evaluators noted he lost the elite burst and explosion that defined him at Alabama — consistent with knee cartilage issues",
+      ],
+      gamesPlayed: 55,
+      careerLength: "2012–2016 (5 seasons)",
+      verdictExplanation: "CONFIRMED — the meniscus tear and two pre-NFL knee surgeries foreshadowed an NFL career defined by diminished explosiveness. Richardson was drafted on the promise of his Alabama tape, but the knee issues that began in the National Championship Game never fully healed. His career 3.3 yards-per-carry average and early exit from the league at age 25 align directly with the knee cartilage pattern established before he took his first NFL snap.",
+
+      sources: [
+        { text: "Trent Richardson — Wikipedia", url: "https://en.wikipedia.org/wiki/Trent_Richardson" },
+        { text: "Richardson knee surgery before 2012 season — ESPN", url: "https://www.pro-football-reference.com/players/R/RichTr00.htm" },
+        { text: "Rise and fall of Trent Richardson — National Football Post", url: "https://www.nationalfootballpost.com/2008-2018-nfp-archive/nfp-fresh-voices/the-rise-and-fall-of-trent-richardson/" },
+      ]
+    },
+
+    // ── 2013 (additional) ────────────────────────────────────────────────────
+    {
+      id: "hunter-justin",
+      name: "Justin Hunter",
+      pos: "WR",
+      college: "Tennessee",
+      draftYear: 2013,
+      pickNumber: 34,
+      round: 2,
+      team: "Tennessee Titans",
+      verdict: "CONFIRMED",
+
+      preDraftInjury: "Torn ACL at Tennessee (September 2011) — suffered the injury on his first catch of the game vs. Florida in his sophomore year; missed the remainder of the season and required full ACL reconstruction",
+      preDraftDetails: [
+        "September 2011 (sophomore season, vs. Florida): Tore his ACL on literally his first catch of the game — had been leading the SEC in receptions per game before the injury",
+        "Missed the remainder of the 2011 season after ACL reconstruction surgery",
+        "Was projected by most analysts as a first-round pick before the draft — the ACL history was the primary concern cited in his pre-draft evaluations",
+        "WalterFootball scouting report explicitly noted the 2011 ACL as a concern for NFL durability",
+        "At the 2013 Combine, Hunter did not complete all drills — listed as dealing with a shoulder and calf issue in addition to the ACL history",
+        "Fell from first-round projections to the 34th overall pick (2nd round) — the ACL history was a primary reason",
+        "The Titans took him 34th despite the injury history — viewed as a high-upside gamble on a physically gifted deep threat",
+      ],
+      draftImpact: "Fell approximately 10-20 spots from pre-draft first-round projections to 34th overall — the ACL scare directly depressed his draft stock.",
+      projectedWithoutInjury: "Late first round (picks 20-32) based on his physical tools and production before the injury.",
+
+      nflCareerSummary: "Disappointing NFL career that never lived up to his physical potential. In 4 seasons with the Titans (2013-2016), played 60 games with just 85 catches for 1,349 yards — well below expectations for a high-upside 2nd-round WR. Was never able to consistently replicate the explosive play that made him a first-round prospect. Spent time with Miami and Buffalo before brief stints with Pittsburgh and Buffalo again.",
+      nflInjuries: [
+        "Various minor injuries throughout NFL career — the ACL itself did not re-tear",
+        "But never developed the consistent explosiveness that defined him before the 2011 ACL — scouts who flagged the injury were right that something changed",
+        "Never reached 400 receiving yards in any single NFL season",
+        "Released by the Titans in 2016 after failing to develop into the WR1 they hoped for",
+      ],
+      gamesPlayed: 60,
+      careerLength: "2013–2018 (6 seasons, never a starter)",
+      verdictExplanation: "CONFIRMED — Hunter's pre-draft ACL was the defining factor in his NFL career arc. He fell out of the first round specifically because of the injury history, and his NFL career never produced the breakout season that would have validated a first-round investment. Whether the ACL directly limited his physical abilities or simply disrupted his development, the scouts who downgraded him based on the injury were proven correct: he never became the elite deep threat his physical tools suggested.",
+
+      sources: [
+        { text: "Justin Hunter — Wikipedia", url: "https://en.wikipedia.org/wiki/Justin_Hunter" },
+        { text: "Hunter ACL injury at Tennessee — ESPN", url: "https://www.espn.com/college-football/story/_/id/6990078/tennessee-volunteers-lose-justin-hunter-season-torn-acl" },
+        { text: "2013 Draft: Hunter prospect profile — Niners Nation", url: "https://www.ninersnation.com/2013/2/13/3983294/nfl-draft-2013-justin-hunter-scouting-report" },
+      ]
+    },
+
+    // ── 2018 (additional) ────────────────────────────────────────────────────
+    {
+      id: "penny-rashaad",
+      name: "Rashaad Penny",
+      pos: "RB",
+      college: "San Diego State",
+      draftYear: 2018,
+      pickNumber: 27,
+      round: 1,
+      team: "Seattle Seahawks",
+      verdict: "NOFLAG",
+
+      preDraftInjury: "NONE — Penny passed all pre-draft medicals with no injury concerns. He rushed for 2,248 yards and 23 TDs as a senior at San Diego State, finishing 5th in Heisman voting. Included as a counter-example.",
+      preDraftDetails: [
+        "Penny had no documented pre-draft injury concerns at San Diego State — was viewed as a healthy, powerful RB prospect",
+        "Led all FBS players in rushing yards in the 2017 regular season — 2,248 yards and 23 TDs",
+        "Finished 5th in Heisman Trophy voting; named a first-team All-American",
+        "The criticism surrounding his pick at #27 was about scheme fit and competition level (Mountain West), not health",
+        "Selected 27th overall by the Seahawks — drew immediate criticism as a reach from some draft analysts, but no injury concerns",
+        "LESSON: Even a physically dominant, fully-healthy 1st-round RB can see his career derailed by injury that no pre-draft exam could have detected",
+      ],
+      draftImpact: "No medical impact — went 27th overall. Some analysts criticized the selection as a reach but that was about value, not health.",
+      projectedWithoutInjury: "Same range — his medical record was clean.",
+
+      nflCareerSummary: "Career derailed by a torn ACL in Week 14 of his second NFL season (2019). Spent three seasons recovering and backing up Chris Carson before finally breaking out in late 2021 with 5 consecutive 100+ yard games. Injuries continued to limit him — missed significant time in 2022 and 2023. Retired after the 2023 season. Never became the feature back the Seahawks drafted him to be.",
+      nflInjuries: [
+        "2018 (rookie): Limited to 85 yards on 27 carries — largely a backup",
+        "2019 (Year 2, Week 14): Torn ACL vs. Los Angeles Rams — ruled out for the season; MRI confirmed 'additional damage' beyond the ACL",
+        "2020: On PUP list through most of the year — appeared in only 3 games",
+        "2021: Finally healthy — electrifying run with 5 straight 100-yard games late in season",
+        "2022: Multiple injuries limited him to 4 games; never recaptured 2021 form",
+        "Retired after 2023 season",
+      ],
+      gamesPlayed: 48,
+      careerLength: "2018–2023 (6 seasons, career limited by ACL and subsequent injuries)",
+      verdictExplanation: "NOFLAG — Penny had a completely clean pre-draft medical record and no injury concerns were raised. His torn ACL in his second NFL season was not predictable from any pre-draft evaluation. This case shows the limits of health-based draft analysis: even a physically dominant, fully-healthy prospect can have their career derailed. His late 2021 breakout also complicates the narrative — he showed his talent was real, but the injury burden was simply too much to overcome consistently.",
+
+      sources: [
+        { text: "Rashaad Penny — Wikipedia", url: "https://en.wikipedia.org/wiki/Rashaad_Penny" },
+        { text: "Penny torn ACL vs. Rams 2019 — Bleacher Report", url: "https://bleacherreport.com/articles/2866207-seahawks-rashaad-penny-out-for-season-after-suffering-acl-injury-vs-rams" },
+        { text: "Re-visiting the Rashaad Penny pick — Seaside Joe", url: "https://www.seasidejoe.com/p/rashaad-penny-seahawks-draft-revisited" },
       ]
     },
 
