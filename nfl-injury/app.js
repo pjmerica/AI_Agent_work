@@ -10,7 +10,8 @@ function verdictBadge(v) {
   const map = {
     CONFIRMED: { cls: 'verdict-confirmed', icon: '🔴', label: 'Concern Confirmed' },
     REFUTED:   { cls: 'verdict-refuted',   icon: '🟢', label: 'Concern Refuted'   },
-    MIXED:     { cls: 'verdict-mixed',     icon: '🟡', label: 'Mixed Result'       }
+    MIXED:     { cls: 'verdict-mixed',     icon: '🟡', label: 'Mixed Result'       },
+    NOFLAG:    { cls: 'verdict-noflag',    icon: '🔵', label: 'No Pre-Draft Flag'  }
   };
   const m = map[v] || map.MIXED;
   return `<span class="verdict ${m.cls}">${m.icon} ${m.label}</span>`;
@@ -24,8 +25,8 @@ function sourceLinks(sources) {
 }
 
 function renderPlayerCard(p) {
-  const verdictClass = { CONFIRMED: 'verdict-confirmed-card', REFUTED: 'verdict-refuted-card', MIXED: 'verdict-mixed-card' }[p.verdict];
-  const verdictBoxClass = { CONFIRMED: 'confirmed', REFUTED: 'refuted', MIXED: 'mixed' }[p.verdict];
+  const verdictClass = { CONFIRMED: 'verdict-confirmed-card', REFUTED: 'verdict-refuted-card', MIXED: 'verdict-mixed-card', NOFLAG: 'verdict-noflag-card' }[p.verdict];
+  const verdictBoxClass = { CONFIRMED: 'confirmed', REFUTED: 'refuted', MIXED: 'mixed', NOFLAG: 'noflag' }[p.verdict];
 
   const pickStr = p.pickNumber
     ? `<span class="pick-badge">Rd ${p.round}, Pick #${p.pickNumber} → ${esc(p.team)}</span>`
@@ -90,10 +91,12 @@ function renderOverview(players) {
   const total     = players.length;
 
   // Summary stats
+  const noflag = players.filter(p => p.verdict === 'NOFLAG').length;
   document.getElementById('statTotal').textContent     = total;
   document.getElementById('statConfirmed').textContent = confirmed;
   document.getElementById('statRefuted').textContent   = refuted;
   document.getElementById('statMixed').textContent     = mixed;
+  document.getElementById('statNoflag').textContent    = noflag;
   document.getElementById('statPct').textContent       = Math.round((confirmed / total) * 100) + '%';
 
   // Findings
@@ -104,7 +107,7 @@ function renderOverview(players) {
 
   // Overview grid
   document.getElementById('overviewGrid').innerHTML = players.map(p => {
-    const bgClass = { CONFIRMED: 'confirmed-bg', REFUTED: 'refuted-bg', MIXED: 'mixed-bg' }[p.verdict];
+    const bgClass = { CONFIRMED: 'confirmed-bg', REFUTED: 'refuted-bg', MIXED: 'mixed-bg', NOFLAG: 'noflag-bg' }[p.verdict];
     return `
       <div class="ov-card ${bgClass}" onclick="switchTab('players'); scrollToPlayer('${esc(p.id)}')">
         <div class="ov-name">${esc(p.name)}</div>

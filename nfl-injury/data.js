@@ -5,12 +5,13 @@
 // Version tracking
 window.NFL_INJURY_DATA = {
 
-  version: "1.1",
+  version: "1.2",
   lastUpdated: "2026-04-02",
-  totalPlayers: 19,
-  confirmed: 10,
-  refuted: 3,
+  totalPlayers: 23,
+  confirmed: 12,
+  refuted: 4,
   mixed: 6,
+  noflag: 1,
 
   // ── VERDICT KEY ─────────────────────────────────────────────────────────────
   // CONFIRMED — Pre-draft injury/concern accurately predicted significant NFL
@@ -758,6 +759,177 @@ window.NFL_INJURY_DATA = {
         { text: "Eric Ebron — Wikipedia", url: "https://en.wikipedia.org/wiki/Eric_Ebron" },
         { text: "Eric Ebron career stats — Pro Football Reference", url: "https://www.pro-football-reference.com/players/E/EbroEr00.htm" }
       ]
+    },
+
+    // ══════════════════════════════════════════════════════════════════════════
+    // BATCH 2 ADDITIONS
+    // ══════════════════════════════════════════════════════════════════════════
+    {
+      id: "carter-kijana",
+      name: "Ki-Jana Carter",
+      pos: "RB",
+      college: "Penn State",
+      draftYear: 1995,
+      pickNumber: 1,
+      round: 1,
+      team: "Cincinnati Bengals",
+      verdict: "CONFIRMED",
+
+      preDraftInjury: "Strained right Achilles tendon flagged before the preseason — ignored by the Bengals, who had 'some injury issues in his past' per reporting at the time",
+      preDraftDetails: [
+        "The Bengals acknowledged being aware of 'some injury issues in his past' when they selected him #1 overall",
+        "Strained his right Achilles tendon before preseason — missed Cincinnati's first two preseason games as a result",
+        "Despite the Achilles concern, was viewed as the most dominant college back in years — 7.8 yards per carry, 23 TDs as a Penn State junior",
+        "Bengals took him #1 overall, signing him to a 7-year, $19.2 million deal with a then-NFL-record $7.125 million signing bonus"
+      ],
+      draftImpact: "Achilles concern was flagged but overridden by his elite talent — still went #1 overall.",
+      projectedWithoutInjury: "Same — was always the consensus #1 pick regardless of the Achilles.",
+
+      nflCareerSummary: "One of the most catastrophic draft busts in NFL history — not due to talent but due to relentless injuries. In 7 NFL seasons, played just 59 games and rushed for 1,144 yards total. Played meaningful football for less than one full season combined.",
+      nflInjuries: [
+        "1995 preseason: Tore ACL in his LEFT knee on only his 3rd carry — missed entire rookie season",
+        "1996: Returned but knee was never the same; limited role",
+        "1997: Torn rotator cuff — missed most of season",
+        "1998: Broken left wrist — missed games",
+        "1999: Dislocated right kneecap — more missed time",
+        "Seven seasons, five different significant injuries to multiple body parts"
+      ],
+      gamesPlayed: 59,
+      careerLength: "1995–2001 (7 seasons, played meaningful football in fewer than 2)",
+      verdictExplanation: "The pre-draft Achilles concern was a signal of a body prone to injury that the Bengals ignored due to elite talent. What followed was one of the most injury-cursed careers in NFL history — five different serious injuries to different body parts across seven seasons. The pre-draft flag was a small preview of a much larger pattern.",
+
+      sources: [
+        { text: "Ki-Jana Carter — Wikipedia", url: "https://en.wikipedia.org/wiki/Ki-Jana_Carter" },
+        { text: "Ki-Jana Carter: Ready to Ramble — Sports Illustrated Vault 1996", url: "https://vault.si.com/vault/1996/06/24/ready-to-ramble-the-bengals-ki-jana-carter-his-first-year-erased-by-injury-is-jumping-back-into-the-fray" },
+        { text: "Catching Up With Ki-Jana Carter — The Big Lead", url: "https://www.thebiglead.com/posts/catching-up-with-ki-jana-carter-who-went-from-penn-state-star-to-nfl-draft-bust-due-to-injuries-01dm8qesjf2r" }
+      ]
+    },
+
+    {
+      id: "metcalf-dk",
+      name: "D.K. Metcalf",
+      pos: "WR",
+      college: "Ole Miss",
+      draftYear: 2019,
+      pickNumber: 64,
+      round: 2,
+      team: "Seattle Seahawks",
+      verdict: "REFUTED",
+
+      preDraftInjury: "Broken vertebra in his neck suffered October 13, 2018 against Alabama — surgeon initially told him he would never play football again",
+      preDraftDetails: [
+        "October 13, 2018: Tackled while returning a kickoff against Alabama; scans revealed a fractured vertebra in his neck",
+        "Doctors initially told Metcalf he would never play football again — the injury was considered potentially career-ending and life-altering",
+        "Underwent neck surgery in October 2018; cleared for all football activity January 25, 2019 — less than 3 months before the draft",
+        "Had only played 21 games in 3 college seasons due to various injuries — the neck fracture was just the latest",
+        "Ran a 4.33-second 40-yard dash at the combine despite the recent neck surgery, but durability questions lingered",
+        "Multiple teams completely removed him from their first-round draft boards due to the neck surgery",
+        "The Seahawks traded up to select him 64th overall — the 9th WR taken — despite his first-round talent"
+      ],
+      draftImpact: "Fell from projected top-10 pick to 64th overall — lost an estimated $15-20M due to neck injury concerns. Nine WRs were selected before him, most of whom were lesser talents.",
+      projectedWithoutInjury: "Top-10 overall pick based on size (6'4\", 229 lbs), speed (4.33 40), and explosiveness.",
+
+      nflCareerSummary: "Became one of the elite WRs in the NFL — multiple Pro Bowls, multiple 1,000-yard seasons, and a key piece of Seattle's offense for 6+ seasons. The neck injury that caused teams to pass on him has not been a recurring problem.",
+      nflInjuries: [
+        "2021: Knee injury required surgery — missed some time but returned",
+        "The neck fracture has not recurred or caused chronic NFL problems",
+        "Has been one of the more durable top WRs in the league relative to his concern level entering the draft"
+      ],
+      gamesPlayed: 102,
+      careerLength: "2019–present (6+ seasons, multiple Pro Bowls)",
+      verdictExplanation: "A clear REFUTED case — and one of the most dramatic in draft history. Teams who removed Metcalf from their boards due to a neck fracture missed out on a Pro Bowl receiver. His recovery was complete. The pre-draft concern, while medically legitimate, dramatically overstated the long-term risk. The Seahawks' willingness to take the risk at #64 is one of the great value picks of the modern era.",
+
+      sources: [
+        { text: "D.K. Metcalf — Wikipedia", url: "https://en.wikipedia.org/wiki/DK_Metcalf" },
+        { text: "DK Metcalf out for season with neck injury — ESPN", url: "https://www.espn.com/college-football/story/_/id/24990276/ole-miss-wr-dk-metcalf-season-neck-injury" },
+        { text: "Metcalf cleared for all activity after neck surgery — Bleacher Report", url: "https://bleacherreport.com/articles/2817617-nfl-draft-prospect-dk-metcalf-cleared-for-all-activity-after-neck-surgery" },
+        { text: "How did NFL teams let DK Metcalf fall? — Bleacher Report", url: "https://bleacherreport.com/articles/2914427-scouts-take-how-did-nfl-teams-miss-and-let-dk-metcalf-fall-in-the-draft" },
+        { text: "DK Metcalf overcame heartbreaking injury — Seattle Times", url: "https://www.seattletimes.com/sports/seahawks/how-receiver-dk-metcalf-overcame-a-heartbreaking-injury-to-become-a-seahawks-rookie-sensation/" }
+      ]
+    },
+
+    {
+      id: "williams-mike-wr",
+      name: "Mike Williams",
+      pos: "WR",
+      college: "Clemson",
+      draftYear: 2017,
+      pickNumber: 7,
+      round: 1,
+      team: "Los Angeles Chargers",
+      verdict: "CONFIRMED",
+
+      preDraftInjury: "Herniated disk — reportedly sustained at or before the combine/pro day workouts but concealed so as not to affect his draft stock",
+      preDraftDetails: [
+        "A herniated disk was discovered at Williams' first rookie minicamp practice in May 2017 — but reports suggest the injury pre-dates his draft selection",
+        "One source said 'it's possible the injury was sustained at the combine and during his pro day but he did a good enough job masking it so that teams would not know'",
+        "Was selected 7th overall by the Chargers — the second WR taken in the 2017 draft — without the disk being disclosed",
+        "At Clemson, Williams had missed the entire 2015 season due to a neck injury that required surgery (separate from the disk issue)",
+        "The combination of a prior neck surgery at Clemson and a concealed herniated disk represents a significant undisclosed injury history"
+      ],
+      draftImpact: "Minimal at draft — went #7 overall. But the concealed disk meant the Chargers paid $17M+ guaranteed for a player with an undisclosed herniated disk.",
+      projectedWithoutInjury: "Would still have been a top-10 pick based on Clemson production (National Championship, 98 catches).",
+
+      nflCareerSummary: "Injury-defined career spanning 7 seasons with the Chargers, Buccaneers, Bears, and Saints. Had productive seasons (2018: 43 rec/664 yds, 2019: 49 rec/1,001 yds) but repeatedly lost to injury. Career ended with torn ACL in 2023.",
+      nflInjuries: [
+        "2017 (rookie): Herniated disk — inactive for first 6 games of season, returned limited",
+        "2020: Torn ACL — missed most of season",
+        "2022: Back fracture — back injuries continued to accumulate throughout career",
+        "2023: Torn ACL — career-ending injury at age 28",
+        "The back/disk that was present at draft has been a chronic issue throughout his NFL career"
+      ],
+      gamesPlayed: 78,
+      careerLength: "2017–2023 (7 seasons, multiple IR stints)",
+      verdictExplanation: "CONFIRMED — and made more troubling by the concealment. The herniated disk that was (reportedly) present at the draft became a recurring theme: Williams had back/disk issues through his NFL career and suffered multiple ACL tears. Like John Ross, the injury that teams didn't know about was already there when he was drafted. His career was repeatedly derailed by the very issues that pre-dated his selection.",
+
+      sources: [
+        { text: "Mike Williams WR — Wikipedia", url: "https://en.wikipedia.org/wiki/Mike_Williams_(wide_receiver,_born_1994)" },
+        { text: "Chargers WR Williams might need season-ending back surgery — ESPN", url: "https://www.espn.com/nfl/story/_/id/20105594/mike-williams-los-angeles-chargers-need-surgery" },
+        { text: "Mike Williams: Chargers Rookie Could Miss Season — Sports Illustrated", url: "https://www.si.com/nfl/2017/07/19/mike-williams-chargers-back-injury-update" },
+        { text: "Mike Williams injury history — DraftSharks", url: "https://www.draftsharks.com/fantasy/injury-history/mike-williams/7759" }
+      ]
+    },
+
+    {
+      id: "rogers-charles",
+      name: "Charles Rogers",
+      pos: "WR",
+      college: "Michigan State",
+      draftYear: 2003,
+      pickNumber: 2,
+      round: 1,
+      team: "Detroit Lions",
+      verdict: "NOFLAG",
+
+      preDraftInjury: "NONE — Rogers passed all pre-draft medicals. He is included as a counter-example: a player with a CLEAN bill of health whose NFL career was destroyed by injuries anyway.",
+      preDraftDetails: [
+        "Rogers had no documented pre-draft injury concerns — was viewed as a physically healthy, elite WR prospect",
+        "At Michigan State: 2,821 career receiving yards and 27 receiving touchdowns in 3 seasons — no significant injury history",
+        "Was considered one of the safest WR selections available — the Lions took him #2 overall, one pick ahead of future Hall of Famer Andre Johnson",
+        "Detroit paid him as a franchise WR — his career collapse had nothing to do with pre-draft medical concerns",
+        "LESSON: Even a clean medical record cannot predict future injury — Rogers illustrates the limits of pre-draft health evaluation"
+      ],
+      draftImpact: "No draft impact from medical concerns — went #2 overall as expected.",
+      projectedWithoutInjury: "#2 overall — clean medicals did not change his trajectory.",
+
+      nflCareerSummary: "One of the most devastating NFL busts — not because of character concerns flagged pre-draft, but because of injuries that could not have been predicted. In 3 seasons, played 15 games total. Never played again after being cut in 2005. Died in 2019 at age 38 following years of personal struggles stemming from the pain management addiction triggered by his injuries.",
+      nflInjuries: [
+        "2003 (Year 1): Broke his clavicle during a one-on-one drill in practice — missed the rest of the season after 5 games",
+        "2004 (Year 2): Broke the EXACT SAME clavicle on the 3rd play of the season opener vs. Chicago Bears — missed entire season",
+        "Two broken clavicles in the same location in back-to-back seasons — an extraordinary run of bad luck",
+        "Pain management from repeated surgeries led to Vicodin addiction",
+        "2005: Suspended 4 games for 3rd violation of NFL substance abuse policy",
+        "Cut by Lions before 2006 — never played another NFL game; died at age 38 in 2019"
+      ],
+      gamesPlayed: 15,
+      careerLength: "2003–2005 (3 seasons, 15 games total)",
+      verdictExplanation: "The most important counter-example in this dataset. Rogers had NO pre-draft flag — and yet suffered one of the most catastrophic injury-driven career collapses in NFL history. This case is critical for the overall analysis: pre-draft medical evaluations cannot predict all forms of injury. A player can pass every physical and still have their career shattered by injuries the team could not have anticipated. The pre-draft exam is not a crystal ball.",
+
+      sources: [
+        { text: "Charles Rogers — Wikipedia", url: "https://en.wikipedia.org/wiki/Charles_Rogers_(wide_receiver)" },
+        { text: "Charles Rogers' death: a tragic end — Sports Illustrated", url: "https://www.si.com/nfl/2019/11/12/charles-rogers-death-lions-michigan-state" },
+        { text: "Rogers dies at 38 — CBS Sports", url: "https://www.cbssports.com/nfl/news/charles-rogers-the-second-overall-pick-in-the-2003-nfl-draft-by-the-lions-dies-at-age-38/" }
+      ]
     }
   ],
 
@@ -769,6 +941,9 @@ window.NFL_INJURY_DATA = {
     { type: "refuted",   text: "Rob Gronkowski is the most extreme case of teams overreacting to medical concerns. His back surgery caused him to fall to #42 — he went on to be arguably the greatest TE in NFL history." },
     { type: "neutral",   text: "Arian Foster is the most compelling undrafted case: his pre-draft back injury caused all 32 teams to pass on him, yet he became one of the top RBs of his era before injuries caught up with him at 30." },
     { type: "neutral",   text: "The data suggests a pattern: TRAUMATIC single injuries (broken bones, one-time ACLs) are often survivable. CHRONIC or REPEATED injuries to the same region are far more predictive of NFL problems." },
-    { type: "confirmed", text: "John Ross's case adds a troubling dimension: he admitted to CONCEALING a torn labrum from the Bengals before being drafted 9th overall — the injury eventually ended his NFL career." }
+    { type: "confirmed", text: "John Ross's case adds a troubling dimension: he admitted to CONCEALING a torn labrum from the Bengals before being drafted 9th overall — the injury eventually ended his NFL career." },
+    { type: "refuted",   text: "D.K. Metcalf is the most dramatic REFUTED case: a broken vertebra in his neck caused doctors to tell him he'd never play again and caused teams to remove him from first-round boards. He became a Pro Bowl receiver." },
+    { type: "neutral",   text: "Charles Rogers (2003, #2 overall) is the most important COUNTER-EXAMPLE: he had a completely clean pre-draft medical record, yet broke the same clavicle twice in his first two NFL seasons, developed a Vicodin addiction, and died at 38. Pre-draft medicals cannot predict all injuries." },
+    { type: "neutral",   text: "Ki-Jana Carter (1995, #1 overall) had a minor Achilles concern that the Bengals acknowledged and overrode — he tore his ACL on his 3rd carry in his first preseason game and suffered five separate significant injuries in 7 seasons." }
   ]
 };

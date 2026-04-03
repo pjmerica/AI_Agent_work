@@ -25,6 +25,7 @@
       <div class="summary-stat"><div class="val" id="statConfirmed" style="color:var(--red)">—</div><div class="lbl">Concern Confirmed</div></div>
       <div class="summary-stat"><div class="val" id="statRefuted" style="color:var(--accent)">—</div><div class="lbl">Concern Refuted</div></div>
       <div class="summary-stat"><div class="val" id="statMixed" style="color:var(--yellow)">—</div><div class="lbl">Mixed Result</div></div>
+      <div class="summary-stat"><div class="val" id="statNoflag" style="color:var(--blue)">—</div><div class="lbl">No Pre-Draft Flag</div></div>
       <div class="summary-stat"><div class="val" id="statPct" style="color:var(--red)">—</div><div class="lbl">Confirmed Rate</div></div>
     </div>
 
@@ -72,6 +73,7 @@
         <button class="filter-btn" onclick="applyFilter('CONFIRMED', this)">🔴 Confirmed</button>
         <button class="filter-btn" onclick="applyFilter('REFUTED', this)">🟢 Refuted</button>
         <button class="filter-btn" onclick="applyFilter('MIXED', this)">🟡 Mixed</button>
+        <button class="filter-btn" onclick="applyFilter('NOFLAG', this)">🔵 No Pre-Draft Flag</button>
       </div>
       <div id="playerList"></div>
     </div>
@@ -133,7 +135,8 @@
         <div class="method-box">
           <strong>🔴 CONFIRMED</strong> — The pre-draft injury concern accurately predicted significant NFL injury issues. The player's career was shortened, limited, or ended by injuries — particularly in the same body region flagged pre-draft.<br><br>
           <strong>🟢 REFUTED</strong> — The pre-draft concern did not materialize into significant NFL injury problems. The player had a healthy, productive NFL career despite the red flag.<br><br>
-          <strong>🟡 MIXED</strong> — The pre-draft concern partially materialized. The player had some NFL injury issues but overcame them and still had a meaningful career, or the injuries occurred in different regions than flagged.
+          <strong>🟡 MIXED</strong> — The pre-draft concern partially materialized. The player had some NFL injury issues but overcame them and still had a meaningful career, or the injuries occurred in different regions than flagged.<br><br>
+          <strong>🔵 NO PRE-DRAFT FLAG</strong> — Player had a CLEAN pre-draft medical record but suffered significant career-derailing injuries in the NFL anyway. Included as counter-examples to show the limits of pre-draft medical evaluation. The player had some NFL injury issues but overcame them and still had a meaningful career, or the injuries occurred in different regions than flagged.
         </div>
 
         <h3>Selection Criteria</h3>

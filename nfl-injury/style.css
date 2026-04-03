@@ -134,6 +134,7 @@ header {
 .verdict-confirmed { background: rgba(224,64,64,0.12); color: var(--red); border: 1px solid rgba(224,64,64,0.3); }
 .verdict-refuted   { background: rgba(0,168,107,0.12); color: var(--accent); border: 1px solid rgba(0,168,107,0.3); }
 .verdict-mixed     { background: rgba(245,200,66,0.12); color: var(--yellow); border: 1px solid rgba(245,200,66,0.3); }
+.verdict-noflag    { background: rgba(74,158,255,0.12); color: var(--blue);   border: 1px solid rgba(74,158,255,0.3); }
 
 .pos-badge {
   font-size: 10px;
@@ -175,6 +176,7 @@ header {
 .player-card.verdict-confirmed-card { border-left: 3px solid var(--red); }
 .player-card.verdict-refuted-card   { border-left: 3px solid var(--accent); }
 .player-card.verdict-mixed-card     { border-left: 3px solid var(--yellow); }
+.player-card.verdict-noflag-card    { border-left: 3px solid var(--blue); }
 
 .player-header {
   display: flex;
@@ -258,6 +260,7 @@ header {
 .verdict-box.confirmed { background: rgba(224,64,64,0.06); border: 1px solid rgba(224,64,64,0.2); color: var(--sub); }
 .verdict-box.refuted   { background: rgba(0,168,107,0.06); border: 1px solid rgba(0,168,107,0.2); color: var(--sub); }
 .verdict-box.mixed     { background: rgba(245,200,66,0.06); border: 1px solid rgba(245,200,66,0.2); color: var(--sub); }
+.verdict-box.noflag    { background: rgba(74,158,255,0.06); border: 1px solid rgba(74,158,255,0.2); color: var(--sub); }
 .verdict-box strong    { color: var(--text); }
 
 /* ── Source links ─────────────────────────────────── */
@@ -299,6 +302,7 @@ header {
 .ov-card.confirmed-bg { border-left: 3px solid var(--red); }
 .ov-card.refuted-bg   { border-left: 3px solid var(--accent); }
 .ov-card.mixed-bg     { border-left: 3px solid var(--yellow); }
+.ov-card.noflag-bg    { border-left: 3px solid var(--blue); }
 
 .ov-name   { font-size: 15px; font-weight: 700; color: var(--text); margin-bottom: 4px; }
 .ov-meta   { display: flex; gap: 6px; align-items: center; margin-bottom: 8px; flex-wrap: wrap; }
