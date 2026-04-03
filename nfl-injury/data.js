@@ -5,13 +5,13 @@
 // Version tracking
 window.NFL_INJURY_DATA = {
 
-  version: "1.4",
+  version: "1.5",
   lastUpdated: "2026-04-02",
-  totalPlayers: 27,
-  confirmed: 13,
+  totalPlayers: 29,
+  confirmed: 14,
   refuted: 4,
   mixed: 6,
-  noflag: 4,
+  noflag: 5,
 
   // ── VERDICT KEY ─────────────────────────────────────────────────────────────
   // CONFIRMED — Pre-draft injury/concern accurately predicted significant NFL
@@ -1090,6 +1090,87 @@ window.NFL_INJURY_DATA = {
       sources: [
         { text: "Jordy Nelson — Wikipedia", url: "https://en.wikipedia.org/wiki/Jordy_Nelson" },
         { text: "Jordy Nelson career stats — Pro Football Reference", url: "https://www.pro-football-reference.com/players/N/NelsJo00.htm" }
+      ]
+    },
+
+    {
+      id: "ponder-christian",
+      name: "Christian Ponder",
+      pos: "QB",
+      college: "Florida State",
+      draftYear: 2011,
+      pickNumber: 12,
+      round: 1,
+      team: "Minnesota Vikings",
+      verdict: "CONFIRMED",
+
+      preDraftInjury: "Third-degree AC joint separation (shoulder) vs Clemson in 2009 — required surgery, ended his season; also battled elbow injury in his 2010 senior season and a concussion in his final bowl game",
+      preDraftDetails: [
+        "2009 (vs. Clemson): Suffered a third-degree AC joint separation — the most severe grade of shoulder separation — requiring surgery that ended his sophomore season. He later said publicly: 'Clemson broke me.'",
+        "2010 senior season: Battled a recurring elbow injury throughout — affected his throwing mechanics and velocity",
+        "2010 Chick-fil-A Bowl: Suffered a concussion that forced him to the sideline",
+        "Despite passing MRI tests at the 2011 NFL Combine, his injury history was widely flagged — some analysts considered him a 2nd-round talent selected in the 1st round",
+        "Vikings selected him 12th overall despite the injury history — a decision criticized as a significant reach"
+      ],
+      draftImpact: "The injury history contributed to a sliding evaluation — many scouts had him ranked as a 2nd-round talent. Still went 12th overall in a QB-thin 2011 class.",
+      projectedWithoutInjury: "Top-5 QB talent in 2011 class without the injury history — might have gone top-8.",
+
+      nflCareerSummary: "4 seasons as a starter with the Vikings (2011-2014) — produced flashes but inconsistency and injuries undermined him. He later stated his college shoulder injury changed his entire career: 'I never felt the same after it.' Benched for rookie Teddy Bridgewater in 2014, released in 2015.",
+      nflInjuries: [
+        "2011 (rookie): Elbow/triceps strain — missed games, directly linked to the pre-draft elbow concern",
+        "2012: Hamstring, forearm, and rib injuries throughout season despite starting all 16 games",
+        "2013: Forearm and shoulder injuries limited him again — started only 8 games",
+        "Stated in retirement: his FSU shoulder injury 'never felt the same' and destroyed his confidence as a passer",
+        "The psychological and physical toll of the shoulder surgery at FSU followed him throughout his career"
+      ],
+      gamesPlayed: 49,
+      careerLength: "2011–2016 (4 seasons as a starter, 49 career games)",
+      verdictExplanation: "CONFIRMED — and unusually, Ponder himself confirmed the connection. He stated publicly that the Clemson shoulder injury 'broke him' and that he never felt the same afterward. Pre-draft evaluators who flagged his shoulder surgery were correct: the injury had long-term physical and psychological consequences that defined his NFL career. He is a case study in how a pre-draft shoulder surgery can reshape a QB's confidence and mechanics permanently.",
+
+      sources: [
+        { text: "Christian Ponder — Wikipedia", url: "https://en.wikipedia.org/wiki/Christian_Ponder" },
+        { text: "'Clemson broke me' — Ponder on career injury — Yahoo Sports", url: "https://sports.yahoo.com/article/clemson-broke-christian-ponder-gets-110000465.html" },
+        { text: "Ponder explains why NFL career didn't pan out — SI", url: "https://www.si.com/nfl/vikings/onsi/news/ex-vikings-qb-christian-ponder-explains-why-his-nfl-career-didnt-pan-out" }
+      ]
+    },
+
+    {
+      id: "henry-hunter",
+      name: "Hunter Henry",
+      pos: "TE",
+      college: "Arkansas",
+      draftYear: 2016,
+      pickNumber: 35,
+      round: 2,
+      team: "Los Angeles Chargers",
+      verdict: "NOFLAG",
+
+      preDraftInjury: "NONE — Henry appeared in all 38 possible games in his 3 seasons at Arkansas. He was the John Mackey Award winner (best college TE) entering the 2016 draft with one of the cleanest injury records in his class. Included as a counter-example.",
+      preDraftDetails: [
+        "Played all 38 possible games at Arkansas — no injury absences in his college career",
+        "Won the 2015 John Mackey Award as the nation's best tight end",
+        "Was considered one of the safest picks in the 2016 class from a medical standpoint — first TE selected",
+        "Selected 35th overall by the Chargers as a reliable, durable receiving TE",
+        "LESSON: Henry's model health record in college provided zero warning of the major injury to come in his NFL career"
+      ],
+      draftImpact: "No medical concerns — fell to 35th based on position value and competition in a strong class, not health.",
+      projectedWithoutInjury: "Same — 35th pick was fair market value for a TE in that class.",
+
+      nflCareerSummary: "Proven productive NFL TE when healthy — multiple 700+ yard seasons. Career interrupted by a non-contact torn ACL during 2018 OTAs. Has been more durable since the ACL recovery, with successful stints with the Chargers, Patriots, and Jets.",
+      nflInjuries: [
+        "May 2018: Torn ACL during OTAs — completely non-contact drill; missed entire 2018 season",
+        "The injury came out of nowhere with zero warning signs — not linked to any college injury pattern",
+        "2020: Various minor injuries but remained productive",
+        "Has been largely durable since the ACL recovery — the ligament held"
+      ],
+      gamesPlayed: 98,
+      careerLength: "2016–present (8+ seasons, 1 lost to ACL)",
+      verdictExplanation: "Hunter Henry is a textbook NOFLAG case: perfect college health record, passed all medicals, torn ACL anyway in a non-contact drill. Unlike Marcus Lattimore (whose ACL history was a warning) or Jake Butt (multiple college ACLs), Henry gave teams no information that would have predicted his NFL knee injury. His recovery and continued productivity since make him the healthier counterpart to the Lattimore cautionary tale.",
+
+      sources: [
+        { text: "Hunter Henry — Wikipedia", url: "https://en.wikipedia.org/wiki/Hunter_Henry" },
+        { text: "Hunter Henry injury history analysis — Pats Pulpit", url: "https://www.patspulpit.com/2021/4/8/22373324/injury-history-analysis-patriots-hunter-henry-free-agency" },
+        { text: "Hunter Henry torn ACL — ESPN", url: "https://www.espn.com/nfl/story/_/id/23575900/hunter-henry-la-chargers-suffers-season-ending-torn-acl" }
       ]
     }
   ],
