@@ -5,13 +5,13 @@
 // Version tracking
 window.NFL_INJURY_DATA = {
 
-  version: "1.2",
+  version: "1.3",
   lastUpdated: "2026-04-02",
-  totalPlayers: 23,
-  confirmed: 12,
+  totalPlayers: 25,
+  confirmed: 13,
   refuted: 4,
   mixed: 6,
-  noflag: 1,
+  noflag: 2,
 
   // ── VERDICT KEY ─────────────────────────────────────────────────────────────
   // CONFIRMED — Pre-draft injury/concern accurately predicted significant NFL
@@ -929,6 +929,88 @@ window.NFL_INJURY_DATA = {
         { text: "Charles Rogers — Wikipedia", url: "https://en.wikipedia.org/wiki/Charles_Rogers_(wide_receiver)" },
         { text: "Charles Rogers' death: a tragic end — Sports Illustrated", url: "https://www.si.com/nfl/2019/11/12/charles-rogers-death-lions-michigan-state" },
         { text: "Rogers dies at 38 — CBS Sports", url: "https://www.cbssports.com/nfl/news/charles-rogers-the-second-overall-pick-in-the-2003-nfl-draft-by-the-lions-dies-at-age-38/" }
+      ]
+    },
+
+    {
+      id: "bridgewater-teddy",
+      name: "Teddy Bridgewater",
+      pos: "QB",
+      college: "Louisville",
+      draftYear: 2014,
+      pickNumber: 32,
+      round: 1,
+      team: "Minnesota Vikings",
+      verdict: "NOFLAG",
+
+      preDraftInjury: "NONE — Bridgewater had a completely clean pre-draft medical record. Included as a counter-example: no warning signs could have predicted what happened next.",
+      preDraftDetails: [
+        "Had no documented pre-draft injury concerns at Louisville — was considered one of the healthier and more ready-to-start QB prospects in the 2014 class",
+        "Selected 32nd overall by the Vikings as a franchise QB — no red flags",
+        "Had two solid NFL seasons (2014-2015) with zero significant injury issues",
+        "LESSON: Bridgewater's case is a cautionary tale about the limits of medical evaluation — his most devastating injury was a non-contact event in a routine practice"
+      ],
+      draftImpact: "No medical impact — went #32 overall as expected.",
+      projectedWithoutInjury: "Same range — was always a late first-round QB.",
+
+      nflCareerSummary: "Career defined by one of the most horrific non-contact injuries in NFL history. Missed nearly two full seasons recovering. Came back to play 8 total NFL seasons — including a 5-0 record as Saints starter in 2019 — but never recaptured franchise-QB status.",
+      nflInjuries: [
+        "August 30, 2016: Non-contact drill at Vikings practice — suffered dislocated knee, torn ACL, and 'other structural damage'",
+        "Surgeons described the injury as 'a horribly grotesque injury... almost like a war wound. Everything is blown'",
+        "Was at risk of amputation — surgeons monitored for arterial damage (no arterial damage confirmed)",
+        "Missed entire 2016 season and most of 2017 season — nearly 2 years of recovery",
+        "2020: Signed with Carolina Panthers; suffered torn ACL again in Week 2",
+        "Two torn ACLs in his career — both completely unpredictable from any pre-draft evaluation"
+      ],
+      gamesPlayed: 68,
+      careerLength: "2014–2022 (9 seasons, 2 lost to ACL tears)",
+      verdictExplanation: "Bridgewater had a spotless medical record entering the NFL. His catastrophic 2016 non-contact injury — so severe surgeons feared amputation — is the clearest proof that pre-draft medical evaluation cannot prevent all devastating NFL injuries. He is included to provide analytical balance: a clean bill of health is not a guarantee of NFL durability.",
+
+      sources: [
+        { text: "Teddy Bridgewater — Wikipedia", url: "https://en.wikipedia.org/wiki/Teddy_Bridgewater" },
+        { text: "'This can't be real': Reliving Bridgewater going down — ESPN", url: "https://www.espn.com/nfl/story/_/id/17906491/reliving-moment-minnesota-vikings-qb-teddy-bridgewater-went-2016-nfl" },
+        { text: "Bridgewater dislocates knee, tears ACL in drill — ESPN", url: "https://www.espn.com/nfl/story/_/id/17424174/teddy-bridgewater-suffers-serious-knee-injury-minnesota-vikings-practice" },
+        { text: "Bridgewater shares details of 2016 knee injury — The Viking Age", url: "https://thevikingage.com/teddy-bridgewater-new-details-2016-knee-injury-minnesota-vikings" }
+      ]
+    },
+
+    {
+      id: "butt-jake",
+      name: "Jake Butt",
+      pos: "TE",
+      college: "Michigan",
+      draftYear: 2017,
+      pickNumber: 145,
+      round: 5,
+      team: "Denver Broncos",
+      verdict: "CONFIRMED",
+
+      preDraftInjury: "Torn ACL suffered in the Orange Bowl (January 3, 2017) — his third ACL tear across his college career, causing him to fall from a projected 2nd-round pick to the 5th round",
+      preDraftDetails: [
+        "January 3, 2017 (Orange Bowl vs. Florida State): Tore his ACL — his third ACL-related knee surgery including two in college",
+        "Was considered the best TE in the 2017 draft class before the injury — consensus 2nd-round projection, some had him as late round 1",
+        "Multiple teams refused to invest a meaningful draft pick in a player with three knee surgeries by age 22",
+        "Denver Broncos took the risk at #145 in the 5th round — an extraordinary value pick in theory",
+        "Also known for publicly advocating against playing in bowl games, calling the risk-reward calculation unfair to players whose draft stock depends on staying healthy"
+      ],
+      draftImpact: "Fell from projected 2nd round (or late 1st) to 145th overall — lost an estimated $2-4M in draft money due to the ACL.",
+      projectedWithoutInjury: "Top-50 pick, possibly top-32, based on his consensus ranking as the best TE in the class.",
+
+      nflCareerSummary: "Career never got started. In 4 seasons with Denver, played only 19 games. Suffered additional ACL tears in 2018 AND 2019 — a historic run of the same injury. Released by Broncos in 2021 with a career total of 19 catches and 164 yards.",
+      nflInjuries: [
+        "2017: Placed on IR before season — rehabbing the Orange Bowl ACL tear (missed entire rookie year)",
+        "2018: Tore ACL again — missed most of season (3rd or 4th ACL surgery of his career)",
+        "2019: Tore ACL AGAIN — missed most of season",
+        "Released by Broncos in 2021; never played a meaningful NFL game",
+        "Multiple ACL tears to the same knee — a pattern consistent with pre-draft injury history"
+      ],
+      gamesPlayed: 19,
+      careerLength: "2017–2021 (4 seasons on roster, 19 career games)",
+      verdictExplanation: "One of the most complete CONFIRMED cases in any position. Butt had already suffered multiple ACL injuries in college; the pre-draft warning signs were explicit and alarming. His NFL career was defined by the same knee repeatedly breaking down — the Orange Bowl tear was not an anomaly but part of a pattern that the pre-draft evaluation correctly identified. The Broncos' gamble failed completely.",
+
+      sources: [
+        { text: "Jake Butt — Wikipedia", url: "https://en.wikipedia.org/wiki/Jake_Butt" },
+        { text: "Jaylon Smith, Jake Butt on skipping bowl games — Sports Illustrated", url: "https://www.si.com/nfl/2018/12/06/jaylon-smith-jake-butt-skipping-bowl-games-injuries-draft-mccaffrey-fournette" }
       ]
     }
   ],
