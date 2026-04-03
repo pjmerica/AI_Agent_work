@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Do Pre-Draft Injury Concerns Matter? — NFL Injury Analysis</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header>
+    <div class="header-inner">
+      <div class="logo">🏈</div>
+      <div class="header-text">
+        <h1>Do Pre-Draft Injury Concerns <span>Actually Matter</span>?</h1>
+        <p class="tagline">Analyzing 19 NFL skill-position prospects (QB, RB, WR, TE) drafted 1995–2025 who had documented pre-draft medical concerns — and whether those concerns predicted their NFL injury outcomes.</p>
+      </div>
+    </div>
+    <div class="ai-disclaimer">
+      🤖 This analysis was compiled by an AI agent from Wikipedia, ESPN, Pro Football Reference, Sports Illustrated, NFL.com, NBC Sports, and Bleacher Report. All statistics and facts are sourced — see individual player entries for citations. Last updated April 2026.
+    </div>
+
+    <div class="summary-bar">
+      <div class="summary-stat"><div class="val" id="statTotal">—</div><div class="lbl">Players Analyzed</div></div>
+      <div class="summary-stat"><div class="val" id="statConfirmed" style="color:var(--red)">—</div><div class="lbl">Concern Confirmed</div></div>
+      <div class="summary-stat"><div class="val" id="statRefuted" style="color:var(--accent)">—</div><div class="lbl">Concern Refuted</div></div>
+      <div class="summary-stat"><div class="val" id="statMixed" style="color:var(--yellow)">—</div><div class="lbl">Mixed Result</div></div>
+      <div class="summary-stat"><div class="val" id="statPct" style="color:var(--red)">—</div><div class="lbl">Confirmed Rate</div></div>
+    </div>
+
+    <div class="tabs">
+      <button class="tab active" data-tab="overview">Overview</button>
+      <button class="tab" data-tab="players">All Players</button>
+      <button class="tab" data-tab="qb">QBs</button>
+      <button class="tab" data-tab="rb">RBs</button>
+      <button class="tab" data-tab="wr">WRs</button>
+      <button class="tab" data-tab="te">TEs</button>
+      <button class="tab" data-tab="methodology">Methodology</button>
+    </div>
+  </header>
+
+  <!-- ── Overview ─────────────────────────────────────────────────────────── -->
+  <section id="tab-overview" class="tab-content active">
+    <div class="container">
+      <div class="section-intro">
+        <h2>Key <span>Findings</span></h2>
+        <p>Of the 19 skill-position prospects analyzed, the majority saw their pre-draft injury concerns validated in their NFL careers. However, the data reveals a crucial pattern: the <em>type</em> of injury matters far more than its severity.</p>
+      </div>
+
+      <div class="findings">
+        <h3>What the Data Shows</h3>
+        <ul id="findingsList"></ul>
+      </div>
+
+      <div class="section-intro">
+        <h2>All <span>Cases</span> — Click to view full profile</h2>
+        <p>Sorted by draft year. Click any card to jump to the full player analysis.</p>
+      </div>
+      <div class="overview-grid" id="overviewGrid"></div>
+    </div>
+  </section>
+
+  <!-- ── All Players ───────────────────────────────────────────────────────── -->
+  <section id="tab-players" class="tab-content">
+    <div class="container">
+      <div class="section-intro">
+        <h2>Full Player <span>Profiles</span></h2>
+        <p>Complete pre-draft injury history, draft impact, NFL injury record, and verdict for each player. Sources linked for every entry.</p>
+      </div>
+      <div class="filter-row">
+        <button class="filter-btn active" onclick="applyFilter('ALL', this)">All</button>
+        <button class="filter-btn" onclick="applyFilter('CONFIRMED', this)">🔴 Confirmed</button>
+        <button class="filter-btn" onclick="applyFilter('REFUTED', this)">🟢 Refuted</button>
+        <button class="filter-btn" onclick="applyFilter('MIXED', this)">🟡 Mixed</button>
+      </div>
+      <div id="playerList"></div>
+    </div>
+  </section>
+
+  <!-- ── QBs ───────────────────────────────────────────────────────────────── -->
+  <section id="tab-qb" class="tab-content">
+    <div class="container">
+      <div class="section-intro">
+        <h2>Quarterbacks</h2>
+        <p>QBs with documented pre-draft injury concerns — shoulder issues are the most common red flag for this position.</p>
+      </div>
+      <div id="pos-qb-list"></div>
+    </div>
+  </section>
+
+  <!-- ── RBs ───────────────────────────────────────────────────────────────── -->
+  <section id="tab-rb" class="tab-content">
+    <div class="container">
+      <div class="section-intro">
+        <h2>Running Backs</h2>
+        <p>RBs with documented pre-draft injury concerns — the position with the most extreme cases in both directions (McGahee: thrived; Lattimore: never played a down).</p>
+      </div>
+      <div id="pos-rb-list"></div>
+    </div>
+  </section>
+
+  <!-- ── WRs ───────────────────────────────────────────────────────────────── -->
+  <section id="tab-wr" class="tab-content">
+    <div class="container">
+      <div class="section-intro">
+        <h2>Wide Receivers</h2>
+        <p>WRs with documented pre-draft injury concerns — speed is paramount at this position, making leg and lower-body injuries especially dangerous red flags.</p>
+      </div>
+      <div id="pos-wr-list"></div>
+    </div>
+  </section>
+
+  <!-- ── TEs ───────────────────────────────────────────────────────────────── -->
+  <section id="tab-te" class="tab-content">
+    <div class="container">
+      <div class="section-intro">
+        <h2>Tight Ends</h2>
+        <p>TEs with documented pre-draft injury concerns — Rob Gronkowski is the most compelling case in any position: back surgery caused him to fall to #42, and he became arguably the greatest TE in NFL history.</p>
+      </div>
+      <div id="pos-te-list"></div>
+    </div>
+  </section>
+
+  <!-- ── Methodology ───────────────────────────────────────────────────────── -->
+  <section id="tab-methodology" class="tab-content">
+    <div class="container">
+      <div class="methodology">
+        <h2>Methodology &amp; Approach</h2>
+
+        <p>This analysis examines whether pre-draft injury concerns in college football accurately predict career injury outcomes in the NFL. Players were selected if they had documented, publicly reported medical concerns that influenced their draft evaluation.</p>
+
+        <h3>Verdict Definitions</h3>
+        <div class="method-box">
+          <strong>🔴 CONFIRMED</strong> — The pre-draft injury concern accurately predicted significant NFL injury issues. The player's career was shortened, limited, or ended by injuries — particularly in the same body region flagged pre-draft.<br><br>
+          <strong>🟢 REFUTED</strong> — The pre-draft concern did not materialize into significant NFL injury problems. The player had a healthy, productive NFL career despite the red flag.<br><br>
+          <strong>🟡 MIXED</strong> — The pre-draft concern partially materialized. The player had some NFL injury issues but overcame them and still had a meaningful career, or the injuries occurred in different regions than flagged.
+        </div>
+
+        <h3>Selection Criteria</h3>
+        <div class="method-box">
+          Only players with <strong>publicly documented pre-draft medical concerns</strong> were included — injuries reported in college, flagged at the NFL Combine, or noted by scouts and analysts at the time of the draft. Players with off-field concerns only (character issues, suspensions) were excluded unless they also had documented injury concerns.
+        </div>
+
+        <h3>Key Analytical Caveat: Survivorship Bias</h3>
+        <div class="method-box">
+          This analysis has an inherent <strong>survivorship bias</strong>: players with dramatic pre-draft injury stories are more likely to be documented and known to history. Players who had quiet pre-draft medical flags and either thrived or failed without much publicity are underrepresented. A true statistical study would require access to all NFL Combine medical records — which are confidential.
+        </div>
+
+        <h3>The Critical Finding: Type vs. Severity</h3>
+        <div class="method-box">
+          The most important pattern in this dataset is that <strong>the type of injury matters more than its severity</strong>:
+          <br><br>
+          • <strong>Traumatic one-time injuries</strong> (single broken bone, one ACL tear) are often survivable — Willis McGahee and Michael Bush show that even catastrophic single-event injuries can be overcome.<br>
+          • <strong>Repeated injuries to the same region</strong> are highly predictive — when a player tears the same knee multiple times in college, the NFL pattern almost always continues.<br>
+          • <strong>Chronic/systemic conditions</strong> (back problems, neurological issues) are the most predictive of NFL career impact — Sam Bradford, Percy Harvin, and Jake Locker all had non-traumatic systemic concerns that proved accurate.
+        </div>
+
+        <h3>Data Sources</h3>
+        <div class="method-box">
+          All player information was sourced from publicly available reports at the time of drafting and verified against career records:
+          <br>• Pro Football Reference (career statistics)
+          <br>• ESPN draft coverage and injury reports
+          <br>• Sports Illustrated draft analysis
+          <br>• Wikipedia player articles (cross-referenced with primary sources)
+          <br>• NFL.com official records
+          <br>• NBC Sports / ProFootballTalk injury reports
+          <br>• Bleacher Report draft analysis
+          <br>• DraftSharks injury analysis
+          <br>• Individual club official records where available
+        </div>
+
+        <div class="disclaimer">
+          This analysis was compiled by an AI agent (Claude Opus 4.6) in April 2026. It covers 19 draft classes from 1995-2025 across QB, RB, WR, and TE positions. This is not exhaustive — there are hundreds of additional players with pre-draft medical concerns not yet included. The database will continue to grow. All verdicts represent the AI's analytical judgment based on documented evidence, not official medical assessments.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
