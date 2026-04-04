@@ -5,12 +5,12 @@
 // Version tracking
 window.NFL_INJURY_DATA = {
 
-  version: "2.8",
+  version: "2.9",
   lastUpdated: "2026-04-03",
-  totalPlayers: 54,
+  totalPlayers: 56,
   confirmed: 22,
-  refuted: 12,
-  mixed: 12,
+  refuted: 13,
+  mixed: 13,
   noflag: 8,
 
   // ── VERDICT KEY ─────────────────────────────────────────────────────────────
@@ -2164,6 +2164,83 @@ window.NFL_INJURY_DATA = {
         { text: "Justin Hunter — Wikipedia", url: "https://en.wikipedia.org/wiki/Justin_Hunter" },
         { text: "Hunter career stats — Pro Football Reference", url: "https://www.pro-football-reference.com/players/H/HuntJu00.htm" },
         { text: "Hunter 2015 ankle injury — NFL.com", url: "https://www.nfl.com/news/titans-justin-hunter-broken-ankle-out-for-season-0ap3000000580523" }
+      ]
+    },
+
+    // ── 2022 ─────────────────────────────────────────────────────────────────
+    {
+      id: "williams-jameson",
+      name: "Jameson Williams",
+      pos: "WR",
+      college: "Alabama",
+      draftYear: 2022,
+      pickNumber: 12,
+      round: 1,
+      team: "Detroit Lions",
+      verdict: "MIXED",
+
+      preDraftInjury: "Torn ACL in 2022 College Football Playoff National Championship game — January 2022",
+      preDraftDetails: [
+        "January 10, 2022: Tore ACL in CFP National Championship Game vs. Georgia — ended college career",
+        "Dr. James Andrews performed surgery; noted 'clean tear' with no associated MCL/cartilage damage",
+        "Was the consensus #1 WR in the draft before the injury; tore ACL just 4 months before draft",
+        "Fell to 12th overall despite elite 2021 season (1,572 yards, 15 TDs) — behind London (#8), Wilson (#10), Olave (#11)",
+        "Lions traded up 20 spots to take Williams, betting on his potential over his injury status"
+      ],
+      draftImpact: "Fell from projected top-5 WR (possible top-10 overall) to 12th pick due to ACL recovery — missed entire 2022 regular season",
+      projectedWithoutInjury: "Could have been #1-2 overall WR taken; some had him as top-8 overall pick if healthy",
+
+      nflCareerSummary: "A complicated journey: missed most of 2022 recovering from ACL, then served a 6-game gambling suspension in 2023, but finally broke through in 2024 with 1,000+ receiving yards and 8 TDs in 15 games. Signed a 3-year, $83 million extension in September 2025, confirming his elite status when healthy.",
+      nflInjuries: [
+        "2022: Missed entire regular season on reserve/non-football injury list (ACL rehab)",
+        "2023: 6-game suspension for NFL gambling policy violation",
+        "2024–2025: Largely healthy, established himself as WR1"
+      ],
+      gamesPlayed: 42,
+      careerLength: "2022–present (4 seasons)",
+      verdictExplanation: "A MIXED verdict: the ACL concern fully materialized in the short term — Williams missed his entire rookie year. However, he overcame the injury and proved the Lions' gamble correct in Year 3, becoming a 1,000-yard receiver who signed a massive extension. His path mirrors Gronkowski's — the injury concern was real, cost him a full season, but didn't define his career.",
+
+      sources: [
+        { text: "Jameson Williams — Wikipedia", url: "https://en.wikipedia.org/wiki/Jameson_Williams" },
+        { text: "Williams ACL ahead of schedule — NFL.com", url: "https://www.nfl.com/news/alabama-wr-jameson-williams-says-he-s-ahead-of-schedule-in-return-from-torn-acl" },
+        { text: "Williams 2022 draft profile — Detroit Lions", url: "https://www.detroitlions.com/news/meet-the-prospect-jameson-williams" }
+      ]
+    },
+
+    {
+      id: "london-drake",
+      name: "Drake London",
+      pos: "WR",
+      college: "USC",
+      draftYear: 2022,
+      pickNumber: 8,
+      round: 1,
+      team: "Atlanta Falcons",
+      verdict: "REFUTED",
+
+      preDraftInjury: "Fractured right ankle at USC — October 2021, ended season in Game 8",
+      preDraftDetails: [
+        "October 2021: Fractured right ankle catching a touchdown pass vs. Arizona in Game 8, missed rest of season",
+        "Was on pace for historic season: 11.0 catches/game, 135.5 yards/game, 130+ yards in 6 of 8 games",
+        "Named Pac-12 Offensive Player of the Year despite playing only 8 games",
+        "Ankle fracture was a significant pre-draft concern — teams tested his speed and ankle flexibility",
+        "Falcons cleared him in pre-draft workouts; he participated fully in rookie minicamp with no restrictions"
+      ],
+      draftImpact: "Concern was present but Falcons took him #8 overall — highest-drafted WR by Atlanta since Julio Jones in 2011",
+      projectedWithoutInjury: "May have gone top-5 overall if he had completed a full healthy senior season",
+
+      nflCareerSummary: "Has been consistently productive and healthy for the Falcons. Three seasons: 2022 (72 catches, 866 yards), 2023 (79 catches, 905 yards), 2024 (75 catches, 1,039 yards). The broken ankle has shown no lasting effects on his NFL durability.",
+      nflInjuries: [
+        "2022–2024: No significant injuries; has played in nearly every game"
+      ],
+      gamesPlayed: 49,
+      careerLength: "2022–present (3+ seasons)",
+      verdictExplanation: "A clear REFUTED case: the fractured ankle that raised pre-draft questions has shown zero lasting impact on London's NFL career. He has been one of the most durable receivers in the 2022 draft class and improved his production each year, with his best season (1,039 yards) coming in Year 3.",
+
+      sources: [
+        { text: "Drake London — Wikipedia", url: "https://en.wikipedia.org/wiki/Drake_London" },
+        { text: "London ankle injury — ESPN", url: "https://www.espn.com/college-football/story/_/id/32523488/usc-star-wide-receiver-nfl-prospect-drake-london-miss-rest-season-ankle-injury" },
+        { text: "Falcons draft London #8 — NFL.com", url: "https://www.nfl.com/news/falcons-select-usc-wr-drake-london-with-no-8-overall-pick-in-2022-nfl-draft" }
       ]
     }
   ],
