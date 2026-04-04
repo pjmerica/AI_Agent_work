@@ -5,12 +5,12 @@
 // Version tracking
 window.NFL_INJURY_DATA = {
 
-  version: "1.7",
+  version: "1.8",
   lastUpdated: "2026-04-03",
-  totalPlayers: 35,
-  confirmed: 17,
+  totalPlayers: 38,
+  confirmed: 18,
   refuted: 5,
-  mixed: 7,
+  mixed: 9,
   noflag: 6,
 
   // ── VERDICT KEY ─────────────────────────────────────────────────────────────
@@ -1256,6 +1256,51 @@ window.NFL_INJURY_DATA = {
       ]
     },
 
+    // ── 2011 (additional) ────────────────────────────────────────────────────
+    {
+      id: "jones-julio",
+      name: "Julio Jones",
+      pos: "WR",
+      college: "Alabama",
+      draftYear: 2011,
+      pickNumber: 6,
+      round: 1,
+      team: "Atlanta Falcons",
+      verdict: "MIXED",
+
+      preDraftInjury: "Stress fracture in his foot discovered in an MRI two days before his NFL Combine workout — required surgery immediately after the combine; ran drills anyway and still posted elite numbers",
+      preDraftDetails: [
+        "February 2011 (NFL Combine): An MRI revealed a stress fracture (Jones fracture) in his foot just two days before his scheduled combine workout",
+        "Jones chose to compete at the combine DESPITE the confirmed stress fracture — ran a 4.39 40-yard dash, posted an 11'3\" broad jump and 38.5\" vertical",
+        "Underwent surgery after the combine workout to repair the fracture with a screw",
+        "The surgery was considered successful — 'he should be healed within six to eight weeks' per his agent",
+        "Atlanta Falcons traded up and gave up FIVE draft picks to select Jones 6th overall — they clearly believed the injury was not a long-term concern",
+        "Research has since shown Jones fractures in NFL prospects carry meaningful recurrence risk",
+      ],
+      draftImpact: "Some minor slide possible — but Falcons still gave up a massive trade package (5 picks including two first-rounders from Cleveland) to move up for him at #6.",
+      projectedWithoutInjury: "Top-5 pick easily — one of the most physically gifted WR prospects in years.",
+
+      nflCareerSummary: "All-time great WR — 7× Pro Bowl, 2× All-Pro, 12,896 receiving yards in 12 seasons. But the foot that was fractured pre-draft caused recurring problems: broke his foot again in October 2013 (same region), missing 11 games; had additional foot/hamstring issues throughout career. A MIXED verdict: the concern was real and materialized, but Jones's talent was so extraordinary he still became an all-time great despite it.",
+      nflInjuries: [
+        "October 2013 (Year 3): Fractured his foot — the same pre-draft injury region — requiring IR placement; missed 11 games",
+        "Various hamstring injuries in later career — limited availability from 2014 onward",
+        "2016: Hamstring kept him out of multiple games",
+        "2019: Hamstring issues; managed only 9 games",
+        "2021: Traded to Titans due to cap reasons; hamstring/injury issues continued to limit him",
+        "The foot fracture pattern from the 2011 combine appeared again in his NFL career",
+      ],
+      gamesPlayed: 128,
+      careerLength: "2011–2023 (12 seasons, multiple injury interruptions)",
+      verdictExplanation: "MIXED — the pre-draft foot stress fracture was a legitimate signal that materialized (he broke his foot again in 2013 in the same region), but Jones's Hall of Fame-caliber talent meant he overcame it and still produced one of the greatest WR careers in NFL history. The injury concern was real and recurred; the career impact was partially limited but not career-ending. This is a case study in how even real, validated injury concerns can be overcome by transcendent talent.",
+
+      sources: [
+        { text: "Julio Jones — Wikipedia", url: "https://en.wikipedia.org/wiki/Julio_Jones" },
+        { text: "Jones will have foot surgery, to be OK by draft — ESPN", url: "https://www.espn.com/nfl/draft2011/news/story?id=6175041" },
+        { text: "Jones' devastating foot fracture — Tower Foot & Ankle", url: "https://www.drjamfeet.com/blog/julio-jones-devastating-foot-fracture/" },
+        { text: "Jones Fractures at NFL Combine — PubMed", url: "https://pubmed.ncbi.nlm.nih.gov/30182027/" },
+      ]
+    },
+
     // ── 2012 ─────────────────────────────────────────────────────────────────
     {
       id: "richardson-trent",
@@ -1299,6 +1344,89 @@ window.NFL_INJURY_DATA = {
     },
 
     // ── 2013 (additional) ────────────────────────────────────────────────────
+    {
+      id: "lacy-eddie",
+      name: "Eddie Lacy",
+      pos: "RB",
+      college: "Alabama",
+      draftYear: 2013,
+      pickNumber: 61,
+      round: 2,
+      team: "Green Bay Packers",
+      verdict: "MIXED",
+
+      preDraftInjury: "Small hamstring tear during pre-draft training — caused him to skip both the NFL Combine workouts AND Alabama's Pro Day; teams could not evaluate him in person before the draft",
+      preDraftDetails: [
+        "Suffered a small tear in the tissue around his hamstring during pre-draft preparation in early 2013",
+        "Did not run at the NFL Scouting Combine — one of the most anticipated RBs in the class, and teams couldn't evaluate him",
+        "Also skipped Alabama's Pro Day due to the hamstring — further limiting exposure",
+        "Ran a private workout at Alabama's campus in April 2013 — scouts timed him at 4.59 in the 40, slower than expected",
+        "Was the consensus top RB in the class before the injury — widely projected as a first-round pick",
+        "Fell to 61st overall (2nd round) partly because teams couldn't fully evaluate him; Broncos medicals flagged him (took Montee Ball instead)",
+      ],
+      draftImpact: "Significant fall — from consensus first-round RB to 61st overall. The hamstring concern and inability to work out publicly cost him an estimated $5-10M in draft money.",
+      projectedWithoutInjury: "First round, picks 20-40 range — he was the top-rated RB in the class.",
+
+      nflCareerSummary: "Brilliant rookie season — NFL Offensive Rookie of the Year, Pro Bowl, 1,178 rushing yards. But the body broke down quickly. Weight management became a serious issue and recurring hamstring/ankle injuries limited him. Career over at 26 after just 5 seasons. The physical durability concerns hinted at pre-draft proved valid even though the talent was undeniable.",
+      nflInjuries: [
+        "2014: Ankle injury mid-season, though still managed 1,139 yards",
+        "2015: Ankle and knee injuries; played through them for 758 yards",
+        "2016: Ankle/knee issues plagued the entire season — 830 yards but clearly diminished",
+        "2017: Signed with Seattle Seahawks — hamstring and ankle injuries; rushed for only 179 yards before release",
+        "Career ended at 26 — the hamstring issue pre-draft foreshadowed a body that had difficulty staying healthy",
+      ],
+      gamesPlayed: 63,
+      careerLength: "2013–2017 (5 seasons)",
+      verdictExplanation: "MIXED — Lacy's hamstring concern pre-draft led to a major draft-day fall, but he had an exceptional rookie season that suggested the concern was overblown. However, injuries accumulated throughout his career — primarily ankle and hamstring related — and his career ended early at 26. The pre-draft signal was partially correct: his body was not as durable as his talent suggested, and teams that passed on him in the first round were not entirely wrong to be cautious.",
+
+      sources: [
+        { text: "Eddie Lacy — Wikipedia", url: "https://en.wikipedia.org/wiki/Eddie_Lacy" },
+        { text: "Lacy reportedly won't work out at combine — NFL.com", url: "http://www.nfl.com/news/story/0ap1000000140154/article/eddie-lacy-reportedly-wont-work-out-at-nfl-combine" },
+        { text: "Lacy runs 40 at private workout — ESPN", url: "https://www.espn.com/nfl/draft2013/story/_/id/9160091/nfl-draft-2013-eddie-lacy-alabama-crimson-tide-runs-anticipated-40-yard-dash" },
+      ]
+    },
+
+    {
+      id: "michael-christine",
+      name: "Christine Michael",
+      pos: "RB",
+      college: "Texas A&M",
+      draftYear: 2013,
+      pickNumber: 62,
+      round: 2,
+      team: "Seattle Seahawks",
+      verdict: "CONFIRMED",
+
+      preDraftInjury: "Two major college injuries: broke his tibia against Texas Tech in 2010 (missed final 4 games + bowl game), then tore his ACL against Oklahoma in 2011 (missed final 3 games); scouts noted a long injury track record heading into the 2013 draft",
+      preDraftDetails: [
+        "2010 (Texas A&M sophomore): Broke his right tibia against Texas Tech — missed the last 4 games of the regular season and the bowl game (Cotton Bowl vs. LSU)",
+        "At the time of the 2010 tibia fracture, Michael had been averaging 6 yards per carry and had just recorded three consecutive 100-yard games",
+        "2011 (junior season): Tore his ACL against Oklahoma — missed the final three games of the regular season",
+        "Back-to-back major injuries in consecutive seasons — scouts labeled him a 'first-round talent with second-round concerns'",
+        "WalterFootball and other draft analysts explicitly cited his injury track record as the reason for his 2nd-round projection",
+        "Fell to 62nd overall despite being considered a first-round talent based on his physical tools",
+      ],
+      draftImpact: "Fell from projected first-round talent to 62nd overall — the back-to-back major injuries (tibia, ACL) directly caused the drop.",
+      projectedWithoutInjury: "Late first round to early second round based on his tools and production when healthy.",
+
+      nflCareerSummary: "NFL career never fulfilled his potential. In 5 seasons (Seahawks, Packers, Cowboys, Raiders), rushed for only 441 yards total. Was always buried on depth charts or injured. The injuries that defined his college career continued to hold him back — he never developed into a reliable NFL starter. Released repeatedly despite showing flashes of talent.",
+      nflInjuries: [
+        "Career defined by inability to stay on the field — the pattern established in college continued",
+        "Never started more than 7 games in any single NFL season",
+        "2016: Finally got extended playing time in Seattle (7 starts) but was released mid-season",
+        "Various in-season injuries throughout 5-team NFL journey",
+      ],
+      gamesPlayed: 42,
+      careerLength: "2013–2017 (5 seasons across 5 teams)",
+      verdictExplanation: "CONFIRMED — the injury pattern (broken tibia → torn ACL in back-to-back college seasons) was a direct signal of a body that struggled to stay healthy, and it proved accurate in the NFL. Michael never established himself as a reliable starter and his career total of 441 rushing yards over 5 seasons reflects the same durability issues that scouts flagged pre-draft. Teams that passed on him in the first round citing his injury history were correct.",
+
+      sources: [
+        { text: "Christine Michael — Wikipedia", url: "https://en.wikipedia.org/wiki/Christine_Michael" },
+        { text: "Michael tibia injury at Texas A&M — Bleacher Report", url: "https://bleacherreport.com/articles/1601728-christine-michael-scouting-report-nfl-outlook-for-texas-am-rb" },
+        { text: "Michael 2013 scouting report — WalterFootball", url: "https://walterfootball.com/scoutingreport2013cmichael.php" },
+      ]
+    },
+
     {
       id: "hunter-justin",
       name: "Justin Hunter",
