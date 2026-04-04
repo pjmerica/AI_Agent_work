@@ -5,12 +5,12 @@
 // Version tracking
 window.NFL_INJURY_DATA = {
 
-  version: "1.9",
+  version: "2.0",
   lastUpdated: "2026-04-04",
-  totalPlayers: 40,
+  totalPlayers: 44,
   confirmed: 20,
-  refuted: 5,
-  mixed: 9,
+  refuted: 8,
+  mixed: 10,
   noflag: 6,
 
   // ── VERDICT KEY ─────────────────────────────────────────────────────────────
@@ -1556,6 +1556,126 @@ window.NFL_INJURY_DATA = {
         { text: "Perriman placed on season-ending IR — NFL.com", url: "http://www.nfl.com/news/story/0ap3000000582317/article/ravens-place-breshad-perriman-on-seasonending-ir" },
         { text: "'Slowest healing PCL' — Baltimore Sun", url: "https://www.baltimoresun.com/2015/10/05/breshad-perriman-has-slowest-healing-sprained-pcl-ever-john-harbaugh-says/" },
         { text: "Perriman explains prolonged knee injury — Ravens.com", url: "https://www.baltimoreravens.com/news/breshad-perriman-explains-prolonged-knee-injury-16328997" },
+      ]
+    },
+
+    // ── 2021 ─────────────────────────────────────────────────────────────────
+    {
+      id: "waddle-jaylen",
+      name: "Jaylen Waddle",
+      pos: "WR",
+      college: "Alabama",
+      draftYear: 2021,
+      pickNumber: 6,
+      round: 1,
+      team: "Miami Dolphins",
+      verdict: "REFUTED",
+
+      preDraftInjury: "Fractured right ankle vs. Tennessee (October 24, 2020) — required surgery, missed the rest of Alabama's season including most of their championship run; medicals were 'the first hurdle' per draft evaluators; was visibly limping in the national title game",
+      preDraftDetails: [
+        "October 24, 2020: Broke his right ankle returning a kickoff vs. Tennessee — required surgery, missed the rest of the regular season and most of Alabama's playoff run",
+        "Was visibly limping in the national title game — noted by NFL scouts who saw it on film",
+        "Pre-draft: 'Medicals were noted as the first hurdle for Waddle to clear, with NFL front office types noticing him limping in the national title game'",
+        "Despite the concern, the Dolphins traded up to select him 6th overall — still the consensus top 2-3 WR in the class",
+        "The ankle fracture required surgery and plates/screws — the standard concern is long-term ankle stability",
+      ],
+      draftImpact: "Minor — still went 6th overall. The ankle concern may have created slight uncertainty but didn't dramatically affect his draft position.",
+      projectedWithoutInjury: "Still a top-5 pick — he was one of the fastest players in college football.",
+
+      nflCareerSummary: "The pre-draft ankle concern proved completely unfounded. Waddle set the NFL rookie reception record with 104 catches (breaking Anquan Boldin's record) in 2021. Followed with 1,356 yards and 8 TDs in 2022. Has been one of the most productive WRs in the NFL since entering the league. Traded to Denver in 2026 for a 1st-round pick — reflects his market value.",
+      nflInjuries: [
+        "No significant ankle recurrence — the fractured ankle from 2020 has not been a recurring NFL problem",
+        "2023: Missed 3 games with minor injuries — not related to the pre-draft ankle",
+        "Career has been largely healthy and productive",
+      ],
+      gamesPlayed: 62,
+      careerLength: "2021–present (5 seasons, largely healthy)",
+      verdictExplanation: "REFUTED — the fractured ankle that worried pre-draft evaluators has not been a recurring issue. Waddle set a rookie reception record in Year 1 and has been one of the league's most effective receivers since. Teams that downgraded him based on the ankle fracture missed out on a franchise-level WR. This case echoes Willis McGahee and DK Metcalf — one-time traumatic injuries to highly talented players often do not predict long-term NFL injury patterns.",
+
+      sources: [
+        { text: "Jaylen Waddle — Wikipedia", url: "https://en.wikipedia.org/wiki/Jaylen_Waddle" },
+        { text: "Waddle ankle injury out for season — NFL.com", url: "https://www.nfl.com/news/alabama-wr-jaylen-waddle-out-for-season-with-right-ankle-injury" },
+        { text: "2021 Draft profile: Waddle — Athlon Sports", url: "https://athlonsports.com/nfl/2021-nfl-draft-profile-jaylen-waddle" },
+      ]
+    },
+
+    // ── 2022 ─────────────────────────────────────────────────────────────────
+    {
+      id: "williams-jameson",
+      name: "Jameson Williams",
+      pos: "WR",
+      college: "Alabama",
+      draftYear: 2022,
+      pickNumber: 12,
+      round: 1,
+      team: "Detroit Lions",
+      verdict: "MIXED",
+
+      preDraftInjury: "Torn ACL in the College Football Playoff National Championship Game (January 10, 2022) — suffered the injury on a 40-yard reception; fell from projected top-3 overall pick to 12th",
+      preDraftDetails: [
+        "January 10, 2022 (National Championship vs. Georgia): Tore his ACL on a 40-yard reception in the first half — the injury ended his night and changed his draft trajectory",
+        "Before the injury, was rated as the best WR in the class and a projected top-3 pick by multiple analysts",
+        "Post-injury projections dropped him to the 25-32 range — the Lions moved up in a trade to take him at 12",
+        "Was reportedly 'ahead of schedule' in his ACL recovery and hoped to play Week 1 of his rookie season",
+        "Detroit placed him on the Non-Football Injury list to begin 2022 — he didn't play until Week 13 of his rookie season",
+      ],
+      draftImpact: "Fell approximately 10-20 spots from projected top-3 to 12th overall. Still a first-round pick because his talent was undeniable.",
+      projectedWithoutInjury: "Top-3 pick — widely considered the best WR in the 2022 class before the ACL.",
+
+      nflCareerSummary: "Initially struggled to return from the ACL — played only 4 games in 2022. Suspended by the NFL for gambling violations in 2023, further disrupting development. But eventually broke out in 2024 with 1,001 receiving yards and 7 TDs in 15 games — showing the elite talent that made him a top prospect. Career arc is an ongoing story with some vindication but real early setbacks linked to the ACL.",
+      nflInjuries: [
+        "2022 (rookie): On Non-Football Injury list through Week 12 — missed most of the season due to the pre-draft ACL; 3 catches in 4 games",
+        "2023: Further set back by gambling suspension (several games); limited production",
+        "2024: Career-best 1,001 yards — the ACL appears fully healed",
+        "The ACL clearly slowed his early NFL development, consistent with the pre-draft concern",
+      ],
+      gamesPlayed: 50,
+      careerLength: "2022–present (4 seasons)",
+      verdictExplanation: "MIXED — the ACL clearly impacted his early NFL career (missed most of rookie year, disrupted development), validating the pre-draft concern. But he has since recovered and produced elite numbers in 2024, suggesting he will ultimately overcome it. The verdict reflects the reality: the injury was real, it slowed him, but his talent appears strong enough to overcome it long-term.",
+
+      sources: [
+        { text: "Jameson Williams — Wikipedia", url: "https://en.wikipedia.org/wiki/Jameson_Williams" },
+        { text: "Williams declares for draft with ACL — SI", url: "https://www.si.com/college/2022/01/13/jameson-williams-declares-nfl-draft-alabama-national-title-acl-injury" },
+        { text: "Williams ahead of schedule in recovery — ESPN", url: "https://www.espn.com/nfl/story/_/id/33405905/alabama-wr-jameson-williams-ahead-schedule-recovery-acl-surgery-nfl-draft-looming" },
+      ]
+    },
+
+    {
+      id: "london-drake",
+      name: "Drake London",
+      pos: "WR",
+      college: "USC",
+      draftYear: 2022,
+      pickNumber: 8,
+      round: 1,
+      team: "Atlanta Falcons",
+      verdict: "REFUTED",
+
+      preDraftInjury: "Fractured right ankle in USC's 8th game of the 2021 season — ended his season; teams had concern about his ankle stability going into the draft",
+      preDraftDetails: [
+        "2021 (USC junior season): Fractured his right ankle in game 8 — was having an extraordinary season (88 catches, 1,084 yards, 7 TDs in 8 games; Pac-12 Offensive Player of the Year)",
+        "The ankle fracture ended his season before his junior campaign was complete — teams couldn't evaluate him in games post-injury",
+        "Falcons flew privately to USC to work him out and specifically tested his ankle during drills before drafting him",
+        "Despite the ankle concern, Atlanta used the 8th overall pick — their highest WR selection since Julio Jones in 2011",
+        "Was already being compared to Julio Jones in terms of catch radius and contested ball ability",
+      ],
+      draftImpact: "Minor — still went 8th overall. The ankle may have contributed to some uncertainty but the talent was undeniable.",
+      projectedWithoutInjury: "Top-8 pick regardless — he had WR1 tools.",
+
+      nflCareerSummary: "The ankle concern proved completely unfounded. Solid rookie year (72 catches, 866 yards). Continued to develop — in 2024 had his best season with 100 receptions, 1,271 yards and 9 touchdowns, becoming one of the premier receiving threats in the NFC. The ankle fracture has not been a recurring issue.",
+      nflInjuries: [
+        "Some minor injuries in 2022 early in rookie season but not ankle-related",
+        "2024: 100 catches, 1,271 yards — career best; no significant ankle problems",
+        "The pre-draft ankle fracture has not manifested as an NFL issue",
+      ],
+      gamesPlayed: 55,
+      careerLength: "2022–present (4 seasons, largely healthy)",
+      verdictExplanation: "REFUTED — the fractured ankle that ended London's USC season proved to be a one-time traumatic event with no lasting effects. He has been productive and largely healthy in his NFL career, reaching 1,000+ yards in 2024. Like Waddle and Metcalf before him, a single traumatic bone fracture in college did not predict long-term NFL durability issues. Teams that dropped London in their boards due to the ankle missed on a future WR1.",
+
+      sources: [
+        { text: "Drake London — Wikipedia", url: "https://en.wikipedia.org/wiki/Drake_London" },
+        { text: "Falcons select London 8th overall — NFL.com", url: "https://www.nfl.com/news/falcons-select-usc-wr-drake-london-with-no-8-overall-pick-in-2022-nfl-draft" },
+        { text: "How Falcons decided on London — Falcons.com", url: "https://www.atlantafalcons.com/news/he-checked-all-the-boxes-how-the-falcons-decided-on-drake-london-in-2022-nfl-dra" },
       ]
     },
 
