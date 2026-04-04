@@ -5,13 +5,13 @@
 // Version tracking
 window.NFL_INJURY_DATA = {
 
-  version: "2.1",
+  version: "2.2",
   lastUpdated: "2026-04-04",
-  totalPlayers: 45,
+  totalPlayers: 47,
   confirmed: 21,
-  refuted: 8,
+  refuted: 9,
   mixed: 10,
-  noflag: 6,
+  noflag: 7,
 
   // ── VERDICT KEY ─────────────────────────────────────────────────────────────
   // CONFIRMED — Pre-draft injury/concern accurately predicted significant NFL
@@ -1598,6 +1598,50 @@ window.NFL_INJURY_DATA = {
       ]
     },
 
+    // ── 2016 (additional) ────────────────────────────────────────────────────
+    {
+      id: "thomas-michael",
+      name: "Michael Thomas",
+      pos: "WR",
+      college: "Ohio State",
+      draftYear: 2016,
+      pickNumber: 47,
+      round: 2,
+      team: "New Orleans Saints",
+      verdict: "NOFLAG",
+
+      preDraftInjury: "NONE — Thomas passed all pre-draft medicals with no documented injury concerns. He was selected 47th overall and immediately became one of the most productive receivers in the NFL. Included as a counter-example.",
+      preDraftDetails: [
+        "Had no documented pre-draft injury concerns at Ohio State — was viewed as a polished, physically durable receiver",
+        "Selected 47th overall by the Saints — considered undervalued at that position, went on to be one of the best WR picks of the 2016 class",
+        "His first four NFL seasons were remarkably healthy — he caught 92, 104, 125, and then 149 passes (NFL record) in 2019",
+        "The 2019 season (149 catches) was the most reception-heavy season in NFL history — no injury concerns whatsoever",
+        "LESSON: Thomas is the poster child for NOFLAG in the opposite direction — a 'clean' record gave no warning of the devastating injury to come",
+      ],
+      draftImpact: "No medical concerns — fell to 47th for positional value reasons, not health.",
+      projectedWithoutInjury: "Same — second round for a WR was market value in that era.",
+
+      nflCareerSummary: "One of the most remarkable trajectories in recent NFL history — from record-breaking brilliance to career ruin. Set the NFL single-season reception record with 149 catches in 2019. Then, in the 2020 season opener, suffered an ankle injury (Latavius Murray rolled into him) that led to surgeries his body literally rejected. His body rejected the hardware from BOTH surgeries. Played only 22 games from 2020-2023. Released by Saints in 2024.",
+      nflInjuries: [
+        "September 13, 2020 (season opener): Ankle injury — teammate rolled into his planted ankle during a block",
+        "Surgery required — hardware inserted to repair the ankle",
+        "Body rejected the hardware from the ankle surgery — an extraordinarily rare complication",
+        "Body also rejected hardware from a subsequent toe surgery",
+        "Missed all of 2021 — recovering from the ankle surgeries",
+        "2022: Played just 3 games before toe required another surgery",
+        "The ankle and toe surgeries became career-ending through hardware rejection — not the initial injury itself",
+      ],
+      gamesPlayed: 80,
+      careerLength: "2016–2023 (8 seasons, career derailed by 2020 ankle injury)",
+      verdictExplanation: "NOFLAG — Michael Thomas had no pre-draft medical flags, set the NFL reception record in 2019, then suffered a freak ankle injury in 2020 that his body rejected twice during surgical repair. No pre-draft evaluation could have predicted this outcome. He joins Charles Rogers and Odell Beckham Jr. as examples of players with clean bills of health whose careers were eventually destroyed by injuries that were not foreshadowed by anything in their pre-NFL medical history.",
+
+      sources: [
+        { text: "Michael Thomas — Wikipedia", url: "https://en.wikipedia.org/wiki/Michael_Thomas_(wide_receiver,_born_1993)" },
+        { text: "Thomas: 'My body failed to respond to surgeries' — ESPN", url: "https://www.espn.com/nfl/story/_/id/38283739/saints-michael-thomas-my-body-failed-respond-surgeries" },
+        { text: "Saints WR Thomas details body rejecting hardware — NFL.com", url: "https://www.nfl.com/news/saints-wr-michael-thomas-details-body-rejecting-hardware-from-ankle-toe-surgerie" },
+      ]
+    },
+
     // ── 2021 ─────────────────────────────────────────────────────────────────
     {
       id: "waddle-jaylen",
@@ -1635,6 +1679,47 @@ window.NFL_INJURY_DATA = {
         { text: "Jaylen Waddle — Wikipedia", url: "https://en.wikipedia.org/wiki/Jaylen_Waddle" },
         { text: "Waddle ankle injury out for season — NFL.com", url: "https://www.nfl.com/news/alabama-wr-jaylen-waddle-out-for-season-with-right-ankle-injury" },
         { text: "2021 Draft profile: Waddle — Athlon Sports", url: "https://athlonsports.com/nfl/2021-nfl-draft-profile-jaylen-waddle" },
+      ]
+    },
+
+    // ── 2023 ─────────────────────────────────────────────────────────────────
+    {
+      id: "smith-njigba-jaxon",
+      name: "Jaxon Smith-Njigba",
+      pos: "WR",
+      college: "Ohio State",
+      draftYear: 2023,
+      pickNumber: 20,
+      round: 1,
+      team: "Seattle Seahawks",
+      verdict: "REFUTED",
+
+      preDraftInjury: "Recurring hamstring injury in the 2022 Ohio State season — suffered the injury on his first catch vs. Notre Dame in Week 1; tweaked it again attempting a comeback; missed most of the season; fell from projected top-5/10 pick to 20th overall",
+      preDraftDetails: [
+        "September 3, 2022 (Ohio State vs. Notre Dame, Week 1): Stretched his hamstring awkwardly on a tackle after his first catch; missed the next several weeks",
+        "Attempted a midseason comeback but tweaked the hamstring again — was shelved for the rest of the year",
+        "Only played in 3 games in 2022 — scouts had to rely mostly on his 2021 tape (1,606 yards, 95 catches — the most in Ohio State history)",
+        "Pre-draft: Seahawks GM said they considered him 'easily a top-5 or top-10 player' before the injury, and that the hamstring 'is why he went where he went'",
+        "Fell from projected top-5 to 20th overall — the hamstring concern directly caused him to fall at least 10-15 spots",
+        "Did not run at the combine due to continuing hamstring concern — ran at his Pro Day instead",
+      ],
+      draftImpact: "Fell approximately 15 spots from projected top-5 to 20th overall — the most dramatic draft-day fall of any WR in the 2023 class.",
+      projectedWithoutInjury: "Top-5 pick according to the Seahawks' own GM — a rare public admission of how much the injury moved him.",
+
+      nflCareerSummary: "The hamstring concern proved completely unfounded once healthy. In 2023 (rookie season), played all 17 games with 63 catches and 628 yards. In 2024, exploded with 100 catches for 1,130 yards and 6 TDs — making the Pro Bowl for the first time. A 2024 Pro Bowler, emerging as a top WR in the league. The hamstring has not been a recurring NFL issue.",
+      nflInjuries: [
+        "No significant hamstring recurrence in 2023 or 2024 NFL seasons",
+        "Played 17 games in both 2023 and 2024 — fully healthy",
+        "The pre-draft hamstring concern has not manifested as an NFL problem",
+      ],
+      gamesPlayed: 51,
+      careerLength: "2023–present (3 seasons, fully healthy)",
+      verdictExplanation: "REFUTED — the hamstring injury that cost JSN 14 games in 2022 and caused him to fall from the top-5 to #20 overall has shown no recurrence in the NFL. He was healthy in his first two seasons and made the Pro Bowl in Year 2. This is the latest in a long line of cases showing that a single soft-tissue injury in college often does not predict long-term NFL durability issues, particularly when the underlying talent is elite.",
+
+      sources: [
+        { text: "Jaxon Smith-Njigba — Wikipedia", url: "https://en.wikipedia.org/wiki/Jaxon_Smith-Njigba" },
+        { text: "'Easily a top-5/10 player' — Seahawks GM on JSN's fall — 247Sports", url: "https://247sports.com/college/ohio-state/longformarticle/jaxon-smith-njigba-taken-by-seattle-seahawks-20th-overall-first-round-2023-nfl-draft-ohio-state-buckeyes-football-209122691/" },
+        { text: "Are JSN's hamstring issues behind him? — Sports Injury Central", url: "https://sicscore.com/news/2023-nfl-draft-jaxon-smith-njigba-injury-profile" },
       ]
     },
 
