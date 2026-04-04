@@ -5,11 +5,11 @@
 // Version tracking
 window.NFL_INJURY_DATA = {
 
-  version: "2.3",
+  version: "2.4",
   lastUpdated: "2026-04-04",
-  totalPlayers: 48,
+  totalPlayers: 49,
   confirmed: 21,
-  refuted: 9,
+  refuted: 10,
   mixed: 11,
   noflag: 7,
 
@@ -607,6 +607,47 @@ window.NFL_INJURY_DATA = {
     // ══════════════════════════════════════════════════════════════════════════
     // ADDITIONAL CASES
     // ══════════════════════════════════════════════════════════════════════════
+
+    // ── 2010 (additional) ────────────────────────────────────────────────────
+    {
+      id: "thomas-demaryius",
+      name: "Demaryius Thomas",
+      pos: "WR",
+      college: "Georgia Tech",
+      draftYear: 2010,
+      pickNumber: 22,
+      round: 1,
+      team: "Denver Broncos",
+      verdict: "REFUTED",
+
+      preDraftInjury: "Broke his foot during pre-draft workouts before the 2010 NFL Combine — could not participate in combine drills; the injury created uncertainty for a WR whose elite athleticism was a core selling point",
+      preDraftDetails: [
+        "Broke his foot during pre-draft training workouts before the 2010 NFL Combine",
+        "Unable to participate in any combine drills — scouts had to evaluate him almost entirely from Georgia Tech game tape",
+        "Was considered the #1 or #2 WR in the 2010 class alongside Dez Bryant — the foot injury created real doubt",
+        "Broncos still selected him 22nd overall — the first WR taken in the 2010 draft, even ahead of Dez Bryant at #24",
+        "The foot had been aggravated again in his first NFL training camp, causing further concern in Year 1",
+      ],
+      draftImpact: "Moderate — some teams likely passed on him due to the foot concern. Still went 22nd and was the first WR off the board.",
+      projectedWithoutInjury: "Top-15 pick — he had elite WR size-speed combination.",
+
+      nflCareerSummary: "One of the best WRs of his era — 5× Pro Bowl, 724 career catches, 9,763 receiving yards in 10 seasons with the Broncos. Won Super Bowl 50. Was Peyton Manning's primary target in their record-setting 2013-2014 seasons. The pre-draft foot injury had zero lasting impact on his NFL career. Tragically passed away at age 33 in December 2021.",
+      nflInjuries: [
+        "2011: Torn Achilles in pre-season workout — missed most of 2011 season; some connection to his lower-body injury history",
+        "From 2012-2017, one of the most durable and productive WRs in the NFL",
+        "The original pre-draft broken foot did not become a recurring problem",
+      ],
+      gamesPlayed: 143,
+      careerLength: "2010–2020 (11 seasons, 5× Pro Bowl)",
+      verdictExplanation: "REFUTED — the broken foot that forced Thomas to miss the combine was a non-issue in his NFL career. He became one of the best receivers of his era and the centerpiece of Peyton Manning's offense. Like DK Metcalf, Willis McGahee, and Michael Bush, this case confirms a key pattern: one-time traumatic bone injuries in highly talented players do not reliably predict NFL fragility. Teams that passed on Thomas at the combine due to the foot concern missed out on a 5× Pro Bowl receiver.",
+
+      sources: [
+        { text: "Demaryius Thomas — Wikipedia", url: "https://en.wikipedia.org/wiki/Demaryius_Thomas" },
+        { text: "Thomas a rising star after many injuries — NFL.com", url: "https://www.nfl.com/_amp/demaryius-thomas-a-rising-star-after-many-injuries-09000d5d825db12f" },
+        { text: "Thomas career stats — Pro Football Reference", url: "https://www.pro-football-reference.com/players/T/ThomDe03.htm" },
+      ]
+    },
+
     {
       id: "williams-cadillac",
       name: "Carnell 'Cadillac' Williams",
