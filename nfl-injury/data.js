@@ -5,10 +5,10 @@
 // Version tracking
 window.NFL_INJURY_DATA = {
 
-  version: "2.7",
+  version: "2.8",
   lastUpdated: "2026-04-03",
-  totalPlayers: 53,
-  confirmed: 21,
+  totalPlayers: 54,
+  confirmed: 22,
   refuted: 12,
   mixed: 12,
   noflag: 8,
@@ -2125,6 +2125,45 @@ window.NFL_INJURY_DATA = {
         { text: "Matt Forte — Wikipedia", url: "https://en.wikipedia.org/wiki/Matt_Forte" },
         { text: "Forte 2008 draft profile — Bleacher Report", url: "https://bleacherreport.com/articles/19637-tulanes-matt-forte-will-be-steal-of-the-2008-nfl-draft" },
         { text: "Forte career stats — Pro Football Reference", url: "https://www.pro-football-reference.com/players/F/FortMa00.htm" }
+      ]
+    },
+
+    // ── 2013 ─────────────────────────────────────────────────────────────────
+    {
+      id: "hunter-justin",
+      name: "Justin Hunter",
+      pos: "WR",
+      college: "Tennessee",
+      draftYear: 2013,
+      pickNumber: 34,
+      round: 2,
+      team: "Tennessee Titans",
+      verdict: "CONFIRMED",
+
+      preDraftInjury: "Torn ACL at Tennessee in 2011 — ended season in fourth game",
+      preDraftDetails: [
+        "2011: Tore ACL in 4th game of sophomore season at Tennessee — missed remainder of year",
+        "Returned in 2012 with 73 catches for 1,083 yards and 9 TDs, earning All-SEC honors",
+        "Despite strong 2012 comeback season, ACL history dropped him from potential first-round consideration to 34th overall",
+        "Was considered a top-15 talent by some scouts if fully healthy"
+      ],
+      draftImpact: "Fell from potential first-round pick to 34th overall — the ACL history was the primary reason scouts flagged him as a risk despite elite athleticism",
+      projectedWithoutInjury: "Top-15 to top-20 pick based on pre-injury projections and elite 6-4, 196-lb frame with 4.44 speed",
+
+      nflCareerSummary: "Never lived up to his first-round potential. Played 4 seasons with the Titans, Bills, and Steelers before leaving the NFL. Suffered a lacerated spleen in 2014 and a fractured ankle in 2015 that ended his season. Career totals: 72 catches for 1,108 yards and 10 TDs in 52 games.",
+      nflInjuries: [
+        "2014: Lacerated spleen — sidelined multiple games",
+        "2015: Fractured ankle — season-ending surgery, placed on IR",
+        "Overall injury-prone and never established himself as a starter"
+      ],
+      gamesPlayed: 52,
+      careerLength: "2013–2016 (4 seasons)",
+      verdictExplanation: "A clear CONFIRMED case: the pre-draft ACL was the start of a pattern of injury fragility. Hunter never stayed healthy long enough to live up to his elite physical tools. The ACL concern that caused him to fall to 34th proved prescient — he suffered a lacerated spleen and a fractured ankle in back-to-back seasons before washing out of the league.",
+
+      sources: [
+        { text: "Justin Hunter — Wikipedia", url: "https://en.wikipedia.org/wiki/Justin_Hunter" },
+        { text: "Hunter career stats — Pro Football Reference", url: "https://www.pro-football-reference.com/players/H/HuntJu00.htm" },
+        { text: "Hunter 2015 ankle injury — NFL.com", url: "https://www.nfl.com/news/titans-justin-hunter-broken-ankle-out-for-season-0ap3000000580523" }
       ]
     }
   ],
