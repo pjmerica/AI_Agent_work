@@ -5,12 +5,12 @@
 // Version tracking
 window.NFL_INJURY_DATA = {
 
-  version: "2.2",
+  version: "2.3",
   lastUpdated: "2026-04-04",
-  totalPlayers: 47,
+  totalPlayers: 48,
   confirmed: 21,
   refuted: 9,
-  mixed: 10,
+  mixed: 11,
   noflag: 7,
 
   // ── VERDICT KEY ─────────────────────────────────────────────────────────────
@@ -681,6 +681,47 @@ window.NFL_INJURY_DATA = {
       sources: [
         { text: "Michael Bush — Wikipedia", url: "https://en.wikipedia.org/wiki/Michael_Bush_(running_back)" },
         { text: "Michael Bush career stats — Pro Football Reference", url: "https://www.pro-football-reference.com/players/B/BushMi00.htm" }
+      ]
+    },
+
+    // ── 2009 (additional) ────────────────────────────────────────────────────
+    {
+      id: "crabtree-michael",
+      name: "Michael Crabtree",
+      pos: "WR",
+      college: "Texas Tech",
+      draftYear: 2009,
+      pickNumber: 10,
+      round: 1,
+      team: "San Francisco 49ers",
+      verdict: "MIXED",
+
+      preDraftInjury: "Jones fracture (stress fracture) in his left foot discovered before the 2009 Combine — required surgery to insert a screw, forcing him to miss all pre-draft workouts; fell from projected top-5 to 10th overall",
+      preDraftDetails: [
+        "February 2009: Stress fracture (Jones fracture) in his left foot discovered before the NFL Combine — required surgery; Crabtree stated 'it had been there for a year' and didn't cause pain",
+        "Missed the NFL Combine AND Texas Tech's Pro Day due to the foot surgery — six to ten weeks of recovery",
+        "Had been a consensus top-5 lock before the injury — came off two seasons with 3,127 yards and 41 TDs combined",
+        "The 49ers took him 10th overall, willing to accept the medical risk on the most talented WR in the class",
+        "Research has since shown Jones fractures at the NFL Combine carry meaningful recurrence and long-term foot risk (same fracture type as Julio Jones pre-2011 draft)",
+      ],
+      draftImpact: "Fell from projected top-5 to 10th overall — the foot injury caused at least 5 teams to pass on him.",
+      projectedWithoutInjury: "Top-3 to top-5 pick — he was considered the best WR in a deep class.",
+
+      nflCareerSummary: "Good career, but the Jones fracture foreshadowed ongoing foot and lower-body issues. Played 9 NFL seasons (49ers, Raiders, Ravens) with 567 catches and 6,695 yards. But suffered a torn Achilles in 2013 OTAs — missing the first 12 games of that season. Foot and lower-body fragility persisted throughout his career, consistent with the Jones fracture predicting structural weakness in that region.",
+      nflInjuries: [
+        "2013: Torn Achilles tendon during 49ers OTAs — placed on PUP; missed first 12 games of the season",
+        "Various foot and ankle issues throughout career that disrupted multiple seasons",
+        "143 career games over 9 seasons — productive but injury-interrupted",
+        "The Jones fracture location is associated with higher Achilles tendon stress — the 2013 Achilles tear may have been biomechanically linked",
+      ],
+      gamesPlayed: 143,
+      careerLength: "2009–2018 (10 seasons)",
+      verdictExplanation: "MIXED — the Jones fracture pre-draft was a real signal, but Crabtree overcame it to have a productive career. However, the Achilles tear in 2013 — biomechanically connected to Jones fracture history — validated the concern that the pre-draft foot injury created structural vulnerability. Like Julio Jones (same fracture type), the concern was real and partially materialized, but Crabtree's talent was strong enough to produce a meaningful NFL career despite it.",
+
+      sources: [
+        { text: "Michael Crabtree — Wikipedia", url: "https://en.wikipedia.org/wiki/Michael_Crabtree" },
+        { text: "Crabtree sidelined at combine with foot stress fracture — ESPN", url: "https://www.espn.com/nfl/draft09/news/story?id=3923924" },
+        { text: "Crabtree says foot injury 'wasn't a big deal' — Patriots.com", url: "https://www.patriots.com/news/wr-prospect-crabtree-ready-for-draft-says-foot-injury-wasn-t-a-big-deal-106231" },
       ]
     },
 
