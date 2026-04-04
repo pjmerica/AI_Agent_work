@@ -5,10 +5,10 @@
 // Version tracking
 window.NFL_INJURY_DATA = {
 
-  version: "1.8",
-  lastUpdated: "2026-04-03",
-  totalPlayers: 38,
-  confirmed: 18,
+  version: "1.9",
+  lastUpdated: "2026-04-04",
+  totalPlayers: 40,
+  confirmed: 20,
   refuted: 5,
   mixed: 9,
   noflag: 6,
@@ -1466,6 +1466,96 @@ window.NFL_INJURY_DATA = {
         { text: "Justin Hunter — Wikipedia", url: "https://en.wikipedia.org/wiki/Justin_Hunter" },
         { text: "Hunter ACL injury at Tennessee — ESPN", url: "https://www.espn.com/college-football/story/_/id/6990078/tennessee-volunteers-lose-justin-hunter-season-torn-acl" },
         { text: "2013 Draft: Hunter prospect profile — Niners Nation", url: "https://www.ninersnation.com/2013/2/13/3983294/nfl-draft-2013-justin-hunter-scouting-report" },
+      ]
+    },
+
+    // ── 2014 (additional) ────────────────────────────────────────────────────
+    {
+      id: "lee-marqise",
+      name: "Marqise Lee",
+      pos: "WR",
+      college: "USC",
+      draftYear: 2014,
+      pickNumber: 39,
+      round: 2,
+      team: "Jacksonville Jaguars",
+      verdict: "CONFIRMED",
+
+      preDraftInjury: "Grade II MCL sprain in his left knee during the 2013 USC season — teams 'red-flagged' his knee laxity at the 2014 NFL Combine; fell from projected first-round pick to 39th overall",
+      preDraftDetails: [
+        "2013 season: Suffered a Grade II MCL sprain — missed games and clearly never returned to 100% that year; went from Biletnikoff Award winner (2012) to 57 catches/791 yards",
+        "2014 NFL Combine: Multiple teams red-flagged Lee because of 'laxity in the knee' — his knee was notably unstable on examination",
+        "Ran a slow 40-yard dash (4.53) at the combine — the combination of slow speed and questionable knee scared teams",
+        "Was the reigning Biletnikoff Award winner from 2012, having been the best receiver in college football — the injury dramatically changed his draft trajectory",
+        "Fell from late first-round projections to 39th overall in the 2nd round",
+        "Was such a significant drop that Lee reportedly filed a multi-million dollar insurance claim based on the draft-day slide",
+      ],
+      draftImpact: "Fell from projected first round (20s) to 39th overall. The knee laxity concern at the combine directly cost him an estimated $5-8M in draft money.",
+      projectedWithoutInjury: "Mid-to-late first round — he was a former Biletnikoff winner with elite receiver skills.",
+
+      nflCareerSummary: "Career defined by injuries. In 5 seasons with Jacksonville (2014-2018), was never fully healthy. In 2018 preseason, suffered a devastating tri-ligament tear (ACL + MCL + PCL) in his left knee — the same knee that had been red-flagged at the combine. Missed the entire 2018 season. Released in 2019, career over at 27.",
+      nflInjuries: [
+        "2014 (rookie): Various minor injuries; 37 catches in 12 games",
+        "2015: Hamstring, ankle, and knee issues throughout season",
+        "2016: Continued injury-disrupted production",
+        "2017: His best season — 56 catches, 702 yards — but still missed games",
+        "August 2018 (preseason): Torn ACL, MCL, AND PCL in his left knee — the exact knee that was red-flagged at the combine 4 years earlier",
+        "Missed entire 2018 season; released in 2019; career over at 27",
+      ],
+      gamesPlayed: 60,
+      careerLength: "2014–2018 (5 seasons, career ended by 2018 tri-ligament tear)",
+      verdictExplanation: "CONFIRMED — the knee laxity that teams flagged at the 2014 combine proved to be a legitimate predictor. The same left knee that showed abnormal movement on medical exams eventually gave out in 2018 with a catastrophic tri-ligament tear. Lee was never fully healthy during his NFL career, and the pre-draft red flag in his knee was an accurate early warning of a joint that could not hold up to NFL demands.",
+
+      sources: [
+        { text: "Marqise Lee — Wikipedia", url: "https://en.wikipedia.org/wiki/Marqise_Lee" },
+        { text: "Lee's injuries drop him in NFL Draft — Bleacher Report", url: "https://bleacherreport.com/articles/2052089-marquis-lee-injuries-drop-him-in-nfl-draft-but-lead-to-insurance-payout" },
+        { text: "Teams red-flagged Lee's knee at combine — NFL.com", url: "http://www.nfl.com/news/story/0ap2000000254993/article/usc-wr-marqise-lee-off-crutches-after-knee-injury" },
+        { text: "Jaguars release Lee after injuries — ESPN", url: "https://www.espn.com/nfl/story/_/id/29072775/source-jags-release-oft-injured-wr-marqise-lee" },
+      ]
+    },
+
+    // ── 2015 (additional) ────────────────────────────────────────────────────
+    {
+      id: "perriman-breshad",
+      name: "Breshad Perriman",
+      pos: "WR",
+      college: "UCF",
+      draftYear: 2015,
+      pickNumber: 26,
+      round: 1,
+      team: "Baltimore Ravens",
+      verdict: "CONFIRMED",
+
+      preDraftInjury: "Hamstring injury caused him to skip the 2015 NFL Combine workouts — one of the most physically gifted WRs in the class, but teams had concerns about his injury history and durability going in",
+      preDraftDetails: [
+        "Did not participate in drills at the 2015 NFL Scouting Combine due to a hamstring injury — ran a 4.27 at UCF's Pro Day instead",
+        "The hamstring issue was a warning sign of physical fragility despite his elite athletic tools",
+        "Ravens selected him 26th overall — believed they were getting an elite deep threat who just needed development",
+        "Was considered the most physically gifted WR in the 2015 class based on Pro Day numbers",
+        "But the hamstring at the combine was the first of many injury warnings that would define his Ravens career",
+      ],
+      draftImpact: "Minor draft slide — some teams passed on him at the combine due to the hamstring. Still went in the first round at #26.",
+      projectedWithoutInjury: "Potential top-20 pick with his combination of speed and size.",
+
+      nflCareerSummary: "Never became the player the Ravens drafted. Missed his ENTIRE 2015 rookie season with a PCL injury suffered on Day 1 of training camp — before he played a single NFL game. Coach John Harbaugh called it 'the slowest-healing PCL we have ever seen.' Continued injury issues through 2016 and 2017. Had one good season (2019 with Tampa Bay, 64 catches, 645 yards) but was never consistent. Career over by 2022.",
+      nflInjuries: [
+        "July 30, 2015 (Day 1 of training camp): Partially tore his PCL — missed the ENTIRE 2015 rookie season",
+        "September 2015: Re-aggravated the PCL in pre-game warmups — required arthroscopic surgery",
+        "Coach Harbaugh said it was 'the slowest healing PCL we've ever seen'",
+        "2016: Made NFL debut; inconsistent and limited by continuing injuries",
+        "2017: Season disrupted by injuries, released by Ravens",
+        "2019 (Tampa Bay): His best season — 64 catches, 645 yards",
+        "Career never fulfilled the promise that made him a 1st-round pick",
+      ],
+      gamesPlayed: 72,
+      careerLength: "2015–2022 (8 seasons, Year 1 completely lost to PCL)",
+      verdictExplanation: "CONFIRMED — the hamstring at the combine was the first signal that Perriman's body was fragile, and it proved accurate: he tore his PCL on the first day of training camp before playing a single NFL snap. The injury pattern that began at the combine (hamstring) continued through his career, preventing him from ever becoming the elite deep threat his athletic tools suggested. Teams that viewed the combine hamstring as a red flag were correct.",
+
+      sources: [
+        { text: "Breshad Perriman — Wikipedia", url: "https://en.wikipedia.org/wiki/Breshad_Perriman" },
+        { text: "Perriman placed on season-ending IR — NFL.com", url: "http://www.nfl.com/news/story/0ap3000000582317/article/ravens-place-breshad-perriman-on-seasonending-ir" },
+        { text: "'Slowest healing PCL' — Baltimore Sun", url: "https://www.baltimoresun.com/2015/10/05/breshad-perriman-has-slowest-healing-sprained-pcl-ever-john-harbaugh-says/" },
+        { text: "Perriman explains prolonged knee injury — Ravens.com", url: "https://www.baltimoreravens.com/news/breshad-perriman-explains-prolonged-knee-injury-16328997" },
       ]
     },
 
