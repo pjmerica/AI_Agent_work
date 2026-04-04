@@ -5,12 +5,12 @@
 // Version tracking
 window.NFL_INJURY_DATA = {
 
-  version: "2.5",
-  lastUpdated: "2026-04-04",
-  totalPlayers: 51,
+  version: "2.6",
+  lastUpdated: "2026-04-03",
+  totalPlayers: 52,
   confirmed: 21,
   refuted: 11,
-  mixed: 11,
+  mixed: 12,
   noflag: 8,
 
   // ── VERDICT KEY ─────────────────────────────────────────────────────────────
@@ -2048,6 +2048,44 @@ window.NFL_INJURY_DATA = {
         { text: "Braxton Miller — Wikipedia", url: "https://en.wikipedia.org/wiki/Braxton_Miller" },
         { text: "Miller shoulder injury updates — Bleacher Report", url: "https://bleacherreport.com/articles/2664626-braxton-miller-injury-updates-on-texans-wrs-shoulder-and-return" },
         { text: "How Miller made the move from QB to WR — ESPN", url: "https://www.espn.com/college-football/story/_/id/14156636/how-ohio-state-braxton-miller-made-move-quarterback-wide-receiver" }
+      ]
+    },
+
+    // ── 2000 ─────────────────────────────────────────────────────────────────
+    {
+      id: "lewis-jamal",
+      name: "Jamal Lewis",
+      pos: "RB",
+      college: "Tennessee",
+      draftYear: 2000,
+      pickNumber: 5,
+      round: 1,
+      team: "Baltimore Ravens",
+      verdict: "MIXED",
+
+      preDraftInjury: "Torn lateral collateral ligament (LCL) in right knee at Tennessee (1998)",
+      preDraftDetails: [
+        "1998 sophomore season: Tore lateral collateral ligament in right knee, missed the rest of the season",
+        "Returned in 1999 and rushed for 816 yards and 7 TDs, impressing scouts enough to go #5 overall",
+        "Knee history was a documented concern in 2000 draft evaluations despite his strong comeback season"
+      ],
+      draftImpact: "Knee history was a known factor but Ravens took him #5 overall, believing his junior-year comeback validated his durability",
+      projectedWithoutInjury: "Could have been a top-3 pick with a completely clean bill of health",
+
+      nflCareerSummary: "Had one of the most up-and-down early NFL careers before becoming one of the greatest single-season rushers in NFL history. Torn ACL in first training camp wiped out his entire 2001 season, then exploded for 2,066 rushing yards in 2003 — the second-highest single-season total in NFL history. Helped Ravens win Super Bowl XXXV as a rookie in 2000.",
+      nflInjuries: [
+        "2001: Torn ACL in left knee during training camp — missed entire season",
+        "2004–2005: Various leg injuries limited effectiveness",
+        "2007: Knee issues with Cleveland Browns"
+      ],
+      gamesPlayed: 135,
+      careerLength: "2000–2009 (10 seasons)",
+      verdictExplanation: "A MIXED verdict: the pre-draft knee concern was partially validated — he tore a different knee (left ACL) in his first NFL training camp, losing an entire season. But Lewis overcame the injury concerns to post arguably the greatest single-season rushing performance in NFL history (2,066 yards in 2003) and played 10 productive seasons. His story shows that a knee-injury history doesn't doom a running back, but it can contribute to cumulative leg problems throughout a career.",
+
+      sources: [
+        { text: "Jamal Lewis — Wikipedia", url: "https://en.wikipedia.org/wiki/Jamal_Lewis_(American_football)" },
+        { text: "Lewis career overview — Pro Football Reference", url: "https://www.pro-football-reference.com/players/L/LewiJa00.htm" },
+        { text: "Lewis 2001 knee injury — Baltimore Sun", url: "https://www.baltimoresun.com/news/bs-xpm-2001-08-09-0108090368-story.html" }
       ]
     }
   ],
