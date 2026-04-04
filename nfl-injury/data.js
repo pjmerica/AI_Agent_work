@@ -5,13 +5,13 @@
 // Version tracking
 window.NFL_INJURY_DATA = {
 
-  version: "2.4",
+  version: "2.5",
   lastUpdated: "2026-04-04",
-  totalPlayers: 49,
+  totalPlayers: 51,
   confirmed: 21,
-  refuted: 10,
+  refuted: 11,
   mixed: 11,
-  noflag: 7,
+  noflag: 8,
 
   // ── VERDICT KEY ─────────────────────────────────────────────────────────────
   // CONFIRMED — Pre-draft injury/concern accurately predicted significant NFL
@@ -1882,6 +1882,88 @@ window.NFL_INJURY_DATA = {
         { text: "Drake London — Wikipedia", url: "https://en.wikipedia.org/wiki/Drake_London" },
         { text: "Falcons select London 8th overall — NFL.com", url: "https://www.nfl.com/news/falcons-select-usc-wr-drake-london-with-no-8-overall-pick-in-2022-nfl-draft" },
         { text: "How Falcons decided on London — Falcons.com", url: "https://www.atlantafalcons.com/news/he-checked-all-the-boxes-how-the-falcons-decided-on-drake-london-in-2022-nfl-dra" },
+      ]
+    },
+
+    // ── 2011 (additional) ────────────────────────────────────────────────────
+    {
+      id: "ingram-mark",
+      name: "Mark Ingram II",
+      pos: "RB",
+      college: "Alabama",
+      draftYear: 2011,
+      pickNumber: 28,
+      round: 1,
+      team: "New Orleans Saints",
+      verdict: "REFUTED",
+
+      preDraftInjury: "Reports emerged before the 2011 draft that a knee injury concern 'was more serious than originally thought' — creating pre-draft medical concerns; Ingram publicly stated it was a 'non-issue' and that all teams had accurate information",
+      preDraftDetails: [
+        "Pre-draft reports surfaced that a knee concern may have been more significant than initially disclosed",
+        "Ingram directly addressed the concern, saying it was 'a non-issue' and every team conducting medical evaluations had accurate information",
+        "Was considered the top RB in the 2011 class — first Heisman Trophy winner from Alabama",
+        "Was the first RB drafted in 2011 — at the 28th pick, the latest first overall RB since the AFL-NFL merger (1970)",
+        "The knee concern may have contributed to him lasting until the late first round",
+      ],
+      draftImpact: "Moderate — lasted until #28 in a QB-heavy class. Knee concern likely a factor in some teams passing.",
+      projectedWithoutInjury: "Early-to-mid first round for the Heisman winner and top RB.",
+
+      nflCareerSummary: "12-season NFL career — proved the pre-draft knee concern was overblown. 8,111 rushing yards, 3 Pro Bowl selections. Key contributor to Saints offense for 9 seasons. Also won a Super Bowl with the Saints (Super Bowl XLIV from Year 1). Career ended on his own terms at 32.",
+      nflInjuries: [
+        "Various minor injuries throughout career but never a significant knee injury linked to the pre-draft concern",
+        "2018 (suspension): Missed 4 games for PED violation — but no major injury",
+        "Played 176 games over 12 seasons — remarkably durable given the pre-draft concern",
+      ],
+      gamesPlayed: 176,
+      careerLength: "2011–2022 (12 seasons, 3× Pro Bowl)",
+      verdictExplanation: "REFUTED — the pre-draft knee concern that may have kept Ingram in the late first round proved to be a non-issue. He played 12 seasons, made 3 Pro Bowls, and rushed for over 8,000 yards. Teams that passed on him based on the knee reports missed out on a reliable, long-tenured starter. This case reinforces the pattern: when a player publicly and directly refutes an injury concern, and the talent is elite, teams should be cautious about overweighting the medical flag.",
+
+      sources: [
+        { text: "Mark Ingram II — Wikipedia", url: "https://en.wikipedia.org/wiki/Mark_Ingram_II" },
+        { text: "Ingram addresses knee concern pre-draft — Bleacher Report", url: "https://bleacherreport.com/articles/682325-2011-nfl-draft-br-exclusive-with-saints-rookie-running-back-mark-ingram" },
+        { text: "Ingram career stats — Pro Football Reference", url: "https://www.pro-football-reference.com/players/I/IngrMa01.htm" },
+      ]
+    },
+
+    // ── 2018 (additional) ────────────────────────────────────────────────────
+    {
+      id: "barkley-saquon",
+      name: "Saquon Barkley",
+      pos: "RB",
+      college: "Penn State",
+      draftYear: 2018,
+      pickNumber: 2,
+      round: 1,
+      team: "New York Giants",
+      verdict: "NOFLAG",
+
+      preDraftInjury: "NONE — Barkley had a completely clean pre-draft medical record. He was the consensus #1 non-quarterback prospect in the 2018 draft with no documented injury history at Penn State. Included as a counter-example.",
+      preDraftDetails: [
+        "No documented pre-draft injury concerns — considered the safest skill-position pick in the 2018 draft from a medical standpoint",
+        "Passed all NFL Combine medicals with zero concerns; ran a 4.40 40-yard dash, bench-pressed 29 reps of 225 lbs",
+        "Selected #2 overall by the Giants — the Cleveland Browns reportedly strongly considered him at #1",
+        "Was the first Penn State RB selected in the top-2 since Ki-Jana Carter in 1995 (himself already in this dataset)",
+        "LESSON: Clean pre-draft health record provides no guarantee against major NFL injuries",
+      ],
+      draftImpact: "No medical impact — went #2 overall as expected.",
+      projectedWithoutInjury: "Same — he was #1 overall RB, #2 overall player.",
+
+      nflCareerSummary: "Career interrupted by injuries that no pre-draft evaluation could have predicted. NFL Offensive Rookie of the Year in 2018 (1,307 rushing yards, 91 catches). Tore his ACL in Week 2 of 2020, missing the rest of the season. Had a remarkable comeback in 2022-2023. Signed a big contract with the Eagles in 2024 and had a spectacular 2024 season (2,005 rushing yards, Super Bowl run). A complicated career arc — NOFLAG injuries followed by eventual excellence.",
+      nflInjuries: [
+        "2020 (Week 2): Torn ACL vs. Chicago Bears — missed the entire season",
+        "The torn ACL was a non-contact injury with no connection to any pre-draft flag",
+        "Various ankle and soft tissue injuries throughout career",
+        "2022: Hamstring injuries disrupted the season",
+        "2024: 2,005 rushing yards — one of the best single seasons in NFL history (Eagles)",
+      ],
+      gamesPlayed: 89,
+      careerLength: "2018–present (7 seasons, 1 lost to ACL)",
+      verdictExplanation: "NOFLAG — Barkley had a spotless pre-draft medical record and was the consensus safest skill-position pick in 2018. His torn ACL in 2020 was a non-contact injury with no foreshadowing from any pre-draft evaluation. This case is particularly notable because: (1) it shows the limits of pre-draft health evaluation, and (2) Barkley's eventual excellence (2,005 yards in 2024) demonstrates that even major NFL injuries don't necessarily end careers for sufficiently talented players.",
+
+      sources: [
+        { text: "Saquon Barkley — Wikipedia", url: "https://en.wikipedia.org/wiki/Saquon_Barkley" },
+        { text: "Giants draft Barkley #2 overall — Giants.com", url: "https://www.giants.com/news/giants-draft-penn-state-rb-saquon-barkley" },
+        { text: "Barkley placed on IR with torn ACL — ESPN", url: "https://www.espn.com/nfl/story/_/id/39711876/saquon-barkley-new-york-giants-were-never-built-last" },
       ]
     },
 
