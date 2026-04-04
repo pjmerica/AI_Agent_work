@@ -5,10 +5,10 @@
 // Version tracking
 window.NFL_INJURY_DATA = {
 
-  version: "2.0",
+  version: "2.1",
   lastUpdated: "2026-04-04",
-  totalPlayers: 44,
-  confirmed: 20,
+  totalPlayers: 45,
+  confirmed: 21,
   refuted: 8,
   mixed: 10,
   noflag: 6,
@@ -1344,6 +1344,45 @@ window.NFL_INJURY_DATA = {
     },
 
     // ── 2013 (additional) ────────────────────────────────────────────────────
+    {
+      id: "bernard-giovani",
+      name: "Giovani Bernard",
+      pos: "RB",
+      college: "North Carolina",
+      draftYear: 2013,
+      pickNumber: 37,
+      round: 2,
+      team: "Cincinnati Bengals",
+      verdict: "CONFIRMED",
+
+      preDraftInjury: "Torn ACL as a true freshman at North Carolina in 2010 (Day 3 of practice) — took a redshirt season; pre-draft doctors found 'soreness in the surgically repaired right knee' and required additional examination at the combine",
+      preDraftDetails: [
+        "2010 (UNC freshman, Day 3 of practice): Tore his ACL — missed the entire 2010 season on a medical redshirt",
+        "Was considered one of the best RBs in the 2013 class but the ACL history was a documented concern",
+        "Pre-draft combine: Doctors noted 'soreness in his surgically repaired right knee' and conducted additional examination — an abnormal result for an ACL from 3 years prior",
+        "The lingering soreness in the old ACL was a warning sign that teams noted in their evaluations",
+        "Fell to the 37th overall pick — the ACL history was a factor in some teams' evaluations",
+      ],
+      draftImpact: "Moderate fall from potential first-round talent — fell to 37th. The old ACL and continued knee soreness caused some teams to pass.",
+      projectedWithoutInjury: "Late first-round talent based on his receiving skills and versatility.",
+
+      nflCareerSummary: "8 seasons with the Bengals (2013-2020), primarily as a pass-catching back. Solid career — 3,352 rushing yards, 3,064 receiving yards. But in November 2016, tore his ACL again — the SAME right knee from college — missing the remainder of that season. Two ACL tears in the same knee across college and pro career validated the pre-draft concern about his knee's long-term durability.",
+      nflInjuries: [
+        "2016 (November 20): Tore his ACL again — the same right knee from the 2010 college ACL — vs. Buffalo Bills",
+        "Missed the rest of the 2016 NFL season; the pre-draft knee soreness proved to be an accurate early warning",
+        "Various minor injuries throughout career but the second ACL tear is the defining NFL injury",
+      ],
+      gamesPlayed: 100,
+      careerLength: "2013–2021 (9 seasons, 1 lost to ACL)",
+      verdictExplanation: "CONFIRMED — the pre-draft ACL history and lingering knee soreness that doctors flagged at the combine proved accurate. Bernard tore the same right ACL in the NFL in 2016 that he had torn in college in 2010. The pattern of ACL vulnerability in a specific knee is exactly the kind of pre-draft signal that this analysis validates. Teams that used the ACL history to drop Bernard in their boards were not entirely wrong — though his overall career was still productive.",
+
+      sources: [
+        { text: "Giovani Bernard — Wikipedia", url: "https://en.wikipedia.org/wiki/Giovani_Bernard" },
+        { text: "Bernard 2013 scouting report — WalterFootball", url: "https://walterfootball.com/scoutingreport2013gbernard.php" },
+        { text: "Bernard ACL injury 2016 — NFL.com", url: "https://www.pro-football-reference.com/players/B/BernGi00.htm" },
+      ]
+    },
+
     {
       id: "lacy-eddie",
       name: "Eddie Lacy",
