@@ -5,11 +5,11 @@
 // Version tracking
 window.NFL_INJURY_DATA = {
 
-  version: "2.6",
+  version: "2.7",
   lastUpdated: "2026-04-03",
-  totalPlayers: 52,
+  totalPlayers: 53,
   confirmed: 21,
-  refuted: 11,
+  refuted: 12,
   mixed: 12,
   noflag: 8,
 
@@ -2086,6 +2086,45 @@ window.NFL_INJURY_DATA = {
         { text: "Jamal Lewis — Wikipedia", url: "https://en.wikipedia.org/wiki/Jamal_Lewis_(American_football)" },
         { text: "Lewis career overview — Pro Football Reference", url: "https://www.pro-football-reference.com/players/L/LewiJa00.htm" },
         { text: "Lewis 2001 knee injury — Baltimore Sun", url: "https://www.baltimoresun.com/news/bs-xpm-2001-08-09-0108090368-story.html" }
+      ]
+    },
+
+    // ── 2008 ─────────────────────────────────────────────────────────────────
+    {
+      id: "forte-matt",
+      name: "Matt Forte",
+      pos: "RB",
+      college: "Tulane",
+      draftYear: 2008,
+      pickNumber: 44,
+      round: 2,
+      team: "Chicago Bears",
+      verdict: "REFUTED",
+
+      preDraftInjury: "Knee injury in junior season at Tulane (2006), missed rest of season",
+      preDraftDetails: [
+        "2006 junior season: Knee injury against Marshall University cut his season short",
+        "Scouts flagged the knee history as a durability concern coming into the 2008 draft",
+        "Despite strong senior season (2,127 yards, 23 TDs), fell to 44th overall — 6th RB taken",
+        "Pre-draft analysis cited the knee as one reason he slipped out of the first round"
+      ],
+      draftImpact: "Knee history contributed to falling to Round 2 despite elite college production; was considered a potential first-round talent",
+      projectedWithoutInjury: "Could have been a late first-round pick given his Senior Bowl MVP performance and elite production",
+
+      nflCareerSummary: "Became one of the most productive all-around backs of his era. Played 10 seasons (8 with Bears, 2 with Jets), making two Pro Bowls. Career totals of 12,718 rushing yards and 5,891 receiving yards — over 18,000 total yards from scrimmage. The knee concern proved completely unfounded.",
+      nflInjuries: [
+        "2012: MCL sprain, missed games",
+        "2015: ACL tear, missed most of season",
+        "Generally healthy for most of 10-year career"
+      ],
+      gamesPlayed: 138,
+      careerLength: "2008–2017 (10 seasons)",
+      verdictExplanation: "A clear REFUTED case: the knee injury that caused Forte to fall to Round 2 never recurred as a pattern and didn't limit his 10-year NFL career. He became one of the most complete backs of his generation, proving teams that passed on him in the first round wrong. The one ACL tear he did suffer in 2015 was a single traumatic event, not related to his original college knee concern.",
+
+      sources: [
+        { text: "Matt Forte — Wikipedia", url: "https://en.wikipedia.org/wiki/Matt_Forte" },
+        { text: "Forte 2008 draft profile — Bleacher Report", url: "https://bleacherreport.com/articles/19637-tulanes-matt-forte-will-be-steal-of-the-2008-nfl-draft" },
+        { text: "Forte career stats — Pro Football Reference", url: "https://www.pro-football-reference.com/players/F/FortMa00.htm" }
       ]
     }
   ],
