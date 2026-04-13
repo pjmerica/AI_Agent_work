@@ -329,13 +329,15 @@ select:focus { border-color: var(--accent); }
 
 /* ── City search + select widget ────────────────────────── */
 .city-wrap {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
+  position: relative;
 }
 
 .city-search-wrap {
+  border-radius: 8px !important;
+}
+.city-search-wrap.open {
   border-radius: 8px 8px 0 0 !important;
+  border-bottom-color: transparent !important;
 }
 
 .city-search-wrap input {
@@ -344,23 +346,51 @@ select:focus { border-color: var(--accent); }
   color: var(--text);
   font-size: 13px;
   outline: none;
-  padding: 8px 12px 8px 4px;
+  padding: 8px 4px;
   width: 100%;
+  min-width: 0;
 }
 .city-search-wrap input::placeholder { color: var(--muted); }
 
-#citySelect {
-  border-radius: 0 0 8px 8px;
+.city-clear {
+  padding: 0 10px;
+  color: var(--muted);
+  cursor: pointer;
+  font-size: 12px;
+  flex-shrink: 0;
+  user-select: none;
+}
+.city-clear:hover { color: var(--text); }
+
+.city-dropdown {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0; right: 0;
+  z-index: 100;
+  border: 1px solid var(--accent);
   border-top: none;
-  height: 120px;
-  overflow-y: auto;
+  border-radius: 0 0 8px 8px;
+  overflow: hidden;
+  background: var(--input-bg);
+}
+.city-dropdown.open { display: block; }
+
+#citySelect {
+  width: 100%;
+  border: none;
+  border-radius: 0;
+  background: var(--input-bg);
+  height: 200px;
+  padding: 4px 0;
 }
 #citySelect option {
-  padding: 6px 10px;
+  padding: 7px 12px;
   font-size: 13px;
   cursor: pointer;
 }
-#citySelect option:checked {
+#citySelect option:checked,
+#citySelect option:hover {
   background: var(--accent);
   color: #fff;
 }
