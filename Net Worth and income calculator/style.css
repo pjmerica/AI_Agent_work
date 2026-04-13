@@ -361,6 +361,47 @@ select:focus { border-color: var(--accent); }
   color: var(--accent2);
 }
 
+/* ── Compare tabs ────────────────────────────────────────── */
+.compare-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  margin-bottom: 8px;
+  margin-top: 4px;
+}
+
+.compare-tabs {
+  display: flex;
+  background: var(--input-bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 14px;
+}
+
+.compare-tab {
+  flex: 1;
+  background: transparent;
+  border: none;
+  color: var(--muted);
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 10px 0;
+  transition: color 0.15s, background 0.15s;
+}
+.compare-tab.active { background: var(--accent); color: #fff; }
+.compare-tab:not(.active):hover { color: var(--text); }
+
+.compare-panel { margin-bottom: 8px; }
+.panel-note {
+  font-size: 13px;
+  color: var(--muted);
+  padding: 10px 2px;
+}
+
 /* ── Responsive ──────────────────────────────────────────── */
 @media (max-width: 580px) {
   .input-row   { grid-template-columns: 1fr; }

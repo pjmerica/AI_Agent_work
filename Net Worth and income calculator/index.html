@@ -26,8 +26,8 @@
       <section class="inputs-card">
         <h2 class="section-title">Your Numbers</h2>
 
+        <!-- Row 1: type + age -->
         <div class="input-row">
-          <!-- Household / Individual toggle -->
           <div class="field">
             <label>Measurement</label>
             <div class="toggle-group" id="typeToggle">
@@ -35,37 +35,14 @@
               <button class="toggle-btn" data-val="individual">Individual</button>
             </div>
           </div>
-
-          <!-- Age bracket -->
           <div class="field">
             <label for="ageBracket">Age Group</label>
-            <select id="ageBracket">
-              <!-- filled by JS -->
-            </select>
+            <select id="ageBracket"><!-- filled by JS --></select>
           </div>
         </div>
 
+        <!-- Row 2: income + net worth -->
         <div class="input-row">
-          <!-- State -->
-          <div class="field">
-            <label for="stateSelect">State <span class="field-note">(optional)</span></label>
-            <select id="stateSelect">
-              <option value="">National</option>
-              <!-- filled by JS -->
-            </select>
-          </div>
-          <!-- City -->
-          <div class="field">
-            <label for="citySelect">City <span class="field-note">(optional)</span></label>
-            <select id="citySelect">
-              <option value="">No city</option>
-              <!-- filled by JS -->
-            </select>
-          </div>
-        </div>
-
-        <div class="input-row">
-          <!-- Annual Income -->
           <div class="field">
             <label for="incomeInput">Annual Income</label>
             <div class="input-wrap">
@@ -73,8 +50,6 @@
               <input type="text" id="incomeInput" placeholder="e.g. 75,000" inputmode="numeric" />
             </div>
           </div>
-
-          <!-- Net Worth -->
           <div class="field">
             <label for="networthInput">Net Worth</label>
             <div class="input-wrap">
@@ -84,13 +59,44 @@
           </div>
         </div>
 
+        <!-- Compare against tabs -->
+        <div class="compare-label">Compare against <span class="field-note">(optional)</span></div>
+        <div class="compare-tabs">
+          <button class="compare-tab active" data-tab="national">National</button>
+          <button class="compare-tab" data-tab="state">State</button>
+          <button class="compare-tab" data-tab="city">City</button>
+        </div>
+
+        <div class="compare-panel" id="panel-national">
+          <p class="panel-note">Comparing against the full US population.</p>
+        </div>
+
+        <div class="compare-panel" id="panel-state" style="display:none">
+          <div class="field">
+            <label for="stateSelect">Select a State</label>
+            <select id="stateSelect">
+              <option value="">— Choose state —</option>
+              <!-- filled by JS -->
+            </select>
+          </div>
+        </div>
+
+        <div class="compare-panel" id="panel-city" style="display:none">
+          <div class="field">
+            <label for="citySelect">Select a City</label>
+            <select id="citySelect">
+              <option value="">— Choose city —</option>
+              <!-- filled by JS -->
+            </select>
+          </div>
+        </div>
+
         <button class="calc-btn" id="calcBtn">Calculate My Percentile</button>
       </section>
 
       <!-- ── Results ────────────────────────────────────────────── -->
       <section class="results" id="results" style="display:none">
 
-        <!-- Score cards -->
         <div class="score-grid">
           <div class="score-card" id="incomeCard">
             <div class="score-label">Income Percentile</div>
@@ -104,30 +110,22 @@
           </div>
         </div>
 
-        <!-- Income chart -->
         <div class="chart-section">
           <h3 class="chart-title">Income Distribution</h3>
           <p class="chart-sub" id="incomeChartSub"></p>
-          <div class="chart-wrap">
-            <canvas id="incomeChart"></canvas>
-          </div>
+          <div class="chart-wrap"><canvas id="incomeChart"></canvas></div>
           <div class="legend" id="incomeLegend"></div>
           <div class="stats-row" id="incomeStats"></div>
-          <div class="state-stats-row" id="incomeStateStats"></div>
-          <div class="state-stats-row" id="incomeCityStats"></div>
+          <div class="state-stats-row" id="incomeLocStats"></div>
         </div>
 
-        <!-- Net worth chart -->
         <div class="chart-section">
           <h3 class="chart-title">Net Worth Distribution</h3>
           <p class="chart-sub" id="networthChartSub"></p>
-          <div class="chart-wrap">
-            <canvas id="networthChart"></canvas>
-          </div>
+          <div class="chart-wrap"><canvas id="networthChart"></canvas></div>
           <div class="legend" id="networthLegend"></div>
           <div class="stats-row" id="networthStats"></div>
-          <div class="state-stats-row" id="networthStateStats"></div>
-          <div class="state-stats-row" id="networthCityStats"></div>
+          <div class="state-stats-row" id="networthLocStats"></div>
         </div>
 
       </section>
