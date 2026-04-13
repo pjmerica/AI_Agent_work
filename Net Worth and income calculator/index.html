@@ -16,7 +16,7 @@
         <p class="tagline">Where do you stand compared to the rest of America?</p>
       </div>
     </div>
-    <p class="disclaimer">Net worth: Federal Reserve SCF 2022 · Income: IPUMS CPS 2024 · Percentile anchors via DQYDJ analysis of microdata · All figures nominal USD</p>
+    <p class="disclaimer">Percentiles: Fed SCF 2022 / IPUMS CPS 2024 · State &amp; city income: Census ACS 1-Year 2023 · City net worth estimated from ACS median home value · All figures nominal USD</p>
   </header>
 
   <main>
@@ -48,13 +48,20 @@
         <div class="input-row">
           <!-- State -->
           <div class="field">
-            <label for="stateSelect">State <span class="field-note">(optional — shows state medians)</span></label>
+            <label for="stateSelect">State <span class="field-note">(optional)</span></label>
             <select id="stateSelect">
-              <option value="">All States (National)</option>
+              <option value="">National</option>
               <!-- filled by JS -->
             </select>
           </div>
-          <div class="field"></div>
+          <!-- City -->
+          <div class="field">
+            <label for="citySelect">City <span class="field-note">(optional — 643 cities)</span></label>
+            <select id="citySelect">
+              <option value="">No city selected</option>
+              <!-- filled by JS -->
+            </select>
+          </div>
         </div>
 
         <div class="input-row">
@@ -107,6 +114,7 @@
           <div class="legend" id="incomeLegend"></div>
           <div class="stats-row" id="incomeStats"></div>
           <div class="state-stats-row" id="incomeStateStats"></div>
+          <div class="state-stats-row" id="incomeCityStats"></div>
         </div>
 
         <!-- Net worth chart -->
@@ -119,6 +127,7 @@
           <div class="legend" id="networthLegend"></div>
           <div class="stats-row" id="networthStats"></div>
           <div class="state-stats-row" id="networthStateStats"></div>
+          <div class="state-stats-row" id="networthCityStats"></div>
         </div>
 
       </section>
