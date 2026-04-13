@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>US Wealth & Income Percentile Calculator</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header>
+    <div class="header-inner">
+      <div>
+        <a class="back-link" href="../">← All Projects</a>
+        <h1>US Wealth &amp; Income Percentile</h1>
+        <p class="tagline">Where do you stand compared to the rest of America?</p>
+      </div>
+    </div>
+    <p class="disclaimer">Data: Federal Reserve SCF 2022 (net worth) · Census CPS 2023 (income). All figures in nominal USD.</p>
+  </header>
+
+  <main>
+    <div class="container">
+
+      <!-- ── Inputs ──────────────────────────────────────────────── -->
+      <section class="inputs-card">
+        <h2 class="section-title">Your Numbers</h2>
+
+        <div class="input-row">
+          <!-- Household / Individual toggle -->
+          <div class="field">
+            <label>Measurement</label>
+            <div class="toggle-group" id="typeToggle">
+              <button class="toggle-btn active" data-val="household">Household</button>
+              <button class="toggle-btn" data-val="individual">Individual</button>
+            </div>
+          </div>
+
+          <!-- Age bracket -->
+          <div class="field">
+            <label for="ageBracket">Age Group</label>
+            <select id="ageBracket">
+              <!-- filled by JS -->
+            </select>
+          </div>
+        </div>
+
+        <div class="input-row">
+          <!-- Annual Income -->
+          <div class="field">
+            <label for="incomeInput">Annual Income</label>
+            <div class="input-wrap">
+              <span class="input-prefix">$</span>
+              <input type="text" id="incomeInput" placeholder="e.g. 75,000" inputmode="numeric" />
+            </div>
+          </div>
+
+          <!-- Net Worth -->
+          <div class="field">
+            <label for="networthInput">Net Worth</label>
+            <div class="input-wrap">
+              <span class="input-prefix">$</span>
+              <input type="text" id="networthInput" placeholder="e.g. 250,000" inputmode="numeric" />
+            </div>
+          </div>
+        </div>
+
+        <button class="calc-btn" id="calcBtn">Calculate My Percentile</button>
+      </section>
+
+      <!-- ── Results ────────────────────────────────────────────── -->
+      <section class="results" id="results" style="display:none">
+
+        <!-- Score cards -->
+        <div class="score-grid">
+          <div class="score-card" id="incomeCard">
+            <div class="score-label">Income Percentile</div>
+            <div class="score-value" id="incomePercentile">—</div>
+            <div class="score-sub" id="incomeContext"></div>
+          </div>
+          <div class="score-card" id="networthCard">
+            <div class="score-label">Net Worth Percentile</div>
+            <div class="score-value" id="networthPercentile">—</div>
+            <div class="score-sub" id="networthContext"></div>
+          </div>
+        </div>
+
+        <!-- Income chart -->
+        <div class="chart-section">
+          <h3 class="chart-title">Income Distribution</h3>
+          <p class="chart-sub" id="incomeChartSub"></p>
+          <div class="chart-wrap">
+            <canvas id="incomeChart"></canvas>
+          </div>
+          <div class="legend" id="incomeLegend"></div>
+          <div class="stats-row" id="incomeStats"></div>
+        </div>
+
+        <!-- Net worth chart -->
+        <div class="chart-section">
+          <h3 class="chart-title">Net Worth Distribution</h3>
+          <p class="chart-sub" id="networthChartSub"></p>
+          <div class="chart-wrap">
+            <canvas id="networthChart"></canvas>
+          </div>
+          <div class="legend" id="networthLegend"></div>
+          <div class="stats-row" id="networthStats"></div>
+        </div>
+
+      </section>
+
+    </div>
+  </main>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
