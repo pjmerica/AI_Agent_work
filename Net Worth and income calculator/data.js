@@ -24,7 +24,7 @@
 // family units, so individual vs household is a UI distinction here, not a data one.
 // ─────────────────────────────────────────────────────────────────────────────
 
-const DATA = {
+var DATA = {
 
   // ── NET WORTH (SCF 2022) ───────────────────────────────────────────────────
   // Anchor points: 25th / 50th / 75th / 90th / top-1% from DQYDJ SCF 2022 analysis.
