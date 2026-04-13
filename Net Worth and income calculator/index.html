@@ -56,11 +56,13 @@
           </div>
           <!-- City -->
           <div class="field">
-            <label for="citySelect">City <span class="field-note">(optional — 643 cities)</span></label>
-            <select id="citySelect">
-              <option value="">No city selected</option>
+            <label for="cityInput">City <span class="field-note">(optional — type to search 643 cities)</span></label>
+            <div class="input-wrap" style="background:var(--input-bg)">
+              <input type="text" id="cityInput" list="cityList" placeholder="e.g. Austin, TX" autocomplete="off" style="background:transparent;border:none;color:var(--text);font-size:13px;padding:10px 14px;width:100%;outline:none;" />
+            </div>
+            <datalist id="cityList">
               <!-- filled by JS -->
-            </select>
+            </datalist>
           </div>
         </div>
 

@@ -44,14 +44,19 @@
       });
     stateSel.addEventListener('change', () => {
       stateKey = stateSel.value;
-      // Reset city when state changes
-      cityKey = '';
-      populateCityDropdown(stateKey);
+      cityKey  = '';
+      document.getElementById('cityInput').value = '';
     });
 
-    // City dropdown — populated based on selected state
-    const citySel = document.getElementById('citySelect');
-    citySel.addEventListener('change', () => { cityKey = citySel.value; });
+    // City typeahead — datalist populated on load, value read on calculate
+    const cityInput = document.getElementById('cityInput');
+    const cityList  = document.getElementById('cityList');
+    Object.keys(DATA.cities).sort().forEach(key => {
+      const opt = document.createElement('option');
+      opt.value = key;
+      cityList.appendChild(opt);
+    });
+    // Clear city when state changes (handled in state listener above)
 
     // Number formatting on inputs
     ['incomeInput', 'networthInput'].forEach(id => {
@@ -63,22 +68,6 @@
 
     // Calculate button
     document.getElementById('calcBtn').addEventListener('click', calculate);
-  }
-
-  function populateCityDropdown(stFilter) {
-    const citySel = document.getElementById('citySelect');
-    citySel.innerHTML = '<option value="">No city selected</option>';
-
-    const entries = Object.entries(DATA.cities)
-      .filter(([k]) => !stFilter || k.endsWith(', ' + stFilter))
-      .sort((a, b) => a[0].localeCompare(b[0]));
-
-    entries.forEach(([key]) => {
-      const opt = document.createElement('option');
-      opt.value = key;
-      opt.textContent = key;
-      citySel.appendChild(opt);
-    });
   }
 
   // ── Helpers ──────────────────────────────────────────────────────────────
@@ -139,7 +128,8 @@
 
     ageKey   = document.getElementById('ageBracket').value;
     stateKey = document.getElementById('stateSelect').value;
-    cityKey  = document.getElementById('citySelect').value;
+    const cityInputVal = document.getElementById('cityInput').value.trim();
+    cityKey = DATA.cities[cityInputVal] ? cityInputVal : '';
 
     const incPct = income   ? getPercentile(income,   'income',   type, ageKey) : null;
     const nwPct  = networth ? getPercentile(networth, 'netWorth', type, ageKey) : null;
@@ -359,8 +349,5 @@
 
   // ── Start ────────────────────────────────────────────────────────────────
   document.addEventListener('DOMContentLoaded', init);
-
-  // Populate city dropdown with all cities on load (no state filter)
-  document.addEventListener('DOMContentLoaded', () => populateCityDropdown(''));
 
 })();
