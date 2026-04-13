@@ -442,3 +442,75 @@ const DATA = {
 
 // Individual net worth = same SCF data as household (SCF measures family units)
 DATA.netWorth.individual = DATA.netWorth.household;
+
+// ── STATE DATA ────────────────────────────────────────────────────────────────
+// Household income median: Census Bureau ACS 1-Year 2023 (API: B19013_001E)
+// Individual earnings median: Census Bureau ACS 1-Year 2023 (B20004_001E, all workers)
+// Net worth median: Census Bureau SIPP 2023 / SmartAsset analysis of SIPP data
+//   (43 states available; 7 missing states use national median as fallback)
+// All values in nominal USD.
+//
+// The state data is used to show state-specific medians/means alongside
+// national percentile calculations. Percentile rank is always vs. the US.
+//
+// stateIncomeMeanRatio: ratio of state mean to national mean, derived from
+//   aggregate / household count (ACS B19025 / B11001) — used to scale mean.
+
+DATA.states = {
+  // key: 2-letter code
+  // hhMedian: household income median (ACS 2023)
+  // indMedian: individual earnings median (ACS 2023, all workers)
+  // nwMedian: net worth median (SIPP 2023 / SmartAsset)
+  // nwMean: net worth mean (Empower 2024 where available, else estimated)
+  'AL': { name: 'Alabama',        hhMedian: 62212,  indMedian: 45781, nwMedian: 103500,  nwMean: 310000  },
+  'AK': { name: 'Alaska',         hhMedian: 86631,  indMedian: 53103, nwMedian: 210000,  nwMean: 520000  },
+  'AZ': { name: 'Arizona',        hhMedian: 77315,  indMedian: 50828, nwMedian: 204300,  nwMean: 530000  },
+  'AR': { name: 'Arkansas',       hhMedian: 58700,  indMedian: 42469, nwMedian: 62500,   nwMean: 260000  },
+  'CA': { name: 'California',     hhMedian: 95521,  indMedian: 54363, nwMedian: 273800,  nwMean: 854715  },
+  'CO': { name: 'Colorado',       hhMedian: 92911,  indMedian: 59076, nwMedian: 370000,  nwMean: 680000  },
+  'CT': { name: 'Connecticut',    hhMedian: 91665,  indMedian: 60473, nwMedian: 253100,  nwMean: 919784  },
+  'DE': { name: 'Delaware',       hhMedian: 81361,  indMedian: 51089, nwMedian: 192084,  nwMean: 500000  },
+  'DC': { name: 'Washington D.C.',hhMedian: 108210, indMedian: 93761, nwMedian: 192084,  nwMean: 580000  },
+  'FL': { name: 'Florida',        hhMedian: 73311,  indMedian: 46301, nwMedian: 255100,  nwMean: 590000  },
+  'GA': { name: 'Georgia',        hhMedian: 74632,  indMedian: 49406, nwMedian: 167000,  nwMean: 460000  },
+  'HI': { name: 'Hawaii',         hhMedian: 95322,  indMedian: 51524, nwMedian: 692700,  nwMean: 900000  },
+  'ID': { name: 'Idaho',          hhMedian: 74942,  indMedian: 47035, nwMedian: 313400,  nwMean: 560000  },
+  'IL': { name: 'Illinois',       hhMedian: 80306,  indMedian: 53090, nwMedian: 209500,  nwMean: 701465  },
+  'IN': { name: 'Indiana',        hhMedian: 69477,  indMedian: 48641, nwMedian: 141300,  nwMean: 400000  },
+  'IA': { name: 'Iowa',           hhMedian: 71433,  indMedian: 49828, nwMedian: 177100,  nwMean: 430000  },
+  'KS': { name: 'Kansas',         hhMedian: 70333,  indMedian: 48154, nwMedian: 144200,  nwMean: 390000  },
+  'KY': { name: 'Kentucky',       hhMedian: 61118,  indMedian: 45640, nwMedian: 81900,   nwMean: 290000  },
+  'LA': { name: 'Louisiana',      hhMedian: 58229,  indMedian: 44339, nwMedian: 85230,   nwMean: 290000  },
+  'ME': { name: 'Maine',          hhMedian: 73733,  indMedian: 49548, nwMedian: 303700,  nwMean: 560000  },
+  'MD': { name: 'Maryland',       hhMedian: 98678,  indMedian: 61901, nwMedian: 330500,  nwMean: 690000  },
+  'MA': { name: 'Massachusetts',  hhMedian: 99858,  indMedian: 65055, nwMedian: 394900,  nwMean: 798064  },
+  'MI': { name: 'Michigan',       hhMedian: 69183,  indMedian: 49307, nwMedian: 167000,  nwMean: 430000  },
+  'MN': { name: 'Minnesota',      hhMedian: 85086,  indMedian: 56612, nwMedian: 271300,  nwMean: 590000  },
+  'MS': { name: 'Mississippi',    hhMedian: 54203,  indMedian: 41175, nwMedian: 87280,   nwMean: 260000  },
+  'MO': { name: 'Missouri',       hhMedian: 68545,  indMedian: 47569, nwMedian: 118700,  nwMean: 360000  },
+  'MT': { name: 'Montana',        hhMedian: 70804,  indMedian: 46301, nwMedian: 258100,  nwMean: 530000  },
+  'NE': { name: 'Nebraska',       hhMedian: 74590,  indMedian: 50478, nwMedian: 285800,  nwMean: 540000  },
+  'NV': { name: 'Nevada',         hhMedian: 76364,  indMedian: 46956, nwMedian: 173700,  nwMean: 440000  },
+  'NH': { name: 'New Hampshire',  hhMedian: 96838,  indMedian: 59090, nwMedian: 412600,  nwMean: 735986  },
+  'NJ': { name: 'New Jersey',     hhMedian: 99781,  indMedian: 61141, nwMedian: 312400,  nwMean: 840178  },
+  'NM': { name: 'New Mexico',     hhMedian: 62268,  indMedian: 42156, nwMedian: 77500,   nwMean: 270000  },
+  'NY': { name: 'New York',       hhMedian: 82095,  indMedian: 55643, nwMedian: 132800,  nwMean: 691127  },
+  'NC': { name: 'North Carolina', hhMedian: 70804,  indMedian: 48491, nwMedian: 170400,  nwMean: 430000  },
+  'ND': { name: 'North Dakota',   hhMedian: 76525,  indMedian: 52196, nwMedian: 192084,  nwMean: 480000  },
+  'OH': { name: 'Ohio',           hhMedian: 67769,  indMedian: 50072, nwMedian: 154400,  nwMean: 400000  },
+  'OK': { name: 'Oklahoma',       hhMedian: 62138,  indMedian: 44059, nwMedian: 78510,   nwMean: 280000  },
+  'OR': { name: 'Oregon',         hhMedian: 80160,  indMedian: 51388, nwMedian: 248900,  nwMean: 560000  },
+  'PA': { name: 'Pennsylvania',   hhMedian: 73824,  indMedian: 51475, nwMedian: 207700,  nwMean: 540000  },
+  'RI': { name: 'Rhode Island',   hhMedian: 84972,  indMedian: 55673, nwMedian: 192084,  nwMean: 500000  },
+  'SC': { name: 'South Carolina', hhMedian: 67804,  indMedian: 46397, nwMedian: 129900,  nwMean: 380000  },
+  'SD': { name: 'South Dakota',   hhMedian: 71810,  indMedian: 47960, nwMedian: 192084,  nwMean: 450000  },
+  'TN': { name: 'Tennessee',      hhMedian: 67631,  indMedian: 47036, nwMedian: 172000,  nwMean: 420000  },
+  'TX': { name: 'Texas',          hhMedian: 75780,  indMedian: 50193, nwMedian: 149500,  nwMean: 480000  },
+  'UT': { name: 'Utah',           hhMedian: 93421,  indMedian: 52189, nwMedian: 282800,  nwMean: 580000  },
+  'VT': { name: 'Vermont',        hhMedian: 81211,  indMedian: 52216, nwMedian: 192084,  nwMean: 792981  },
+  'VA': { name: 'Virginia',       hhMedian: 89931,  indMedian: 56944, nwMedian: 219100,  nwMean: 698783  },
+  'WA': { name: 'Washington',     hhMedian: 94605,  indMedian: 61328, nwMedian: 456500,  nwMean: 842139  },
+  'WV': { name: 'West Virginia',  hhMedian: 55948,  indMedian: 43837, nwMedian: 115000,  nwMean: 310000  },
+  'WI': { name: 'Wisconsin',      hhMedian: 74631,  indMedian: 51525, nwMedian: 188000,  nwMean: 470000  },
+  'WY': { name: 'Wyoming',        hhMedian: 72415,  indMedian: 47121, nwMedian: 192084,  nwMean: 470000  }
+};

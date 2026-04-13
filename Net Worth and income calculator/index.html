@@ -46,6 +46,18 @@
         </div>
 
         <div class="input-row">
+          <!-- State -->
+          <div class="field">
+            <label for="stateSelect">State <span class="field-note">(optional — shows state medians)</span></label>
+            <select id="stateSelect">
+              <option value="">All States (National)</option>
+              <!-- filled by JS -->
+            </select>
+          </div>
+          <div class="field"></div>
+        </div>
+
+        <div class="input-row">
           <!-- Annual Income -->
           <div class="field">
             <label for="incomeInput">Annual Income</label>
@@ -94,6 +106,7 @@
           </div>
           <div class="legend" id="incomeLegend"></div>
           <div class="stats-row" id="incomeStats"></div>
+          <div class="state-stats-row" id="incomeStateStats"></div>
         </div>
 
         <!-- Net worth chart -->
@@ -105,6 +118,7 @@
           </div>
           <div class="legend" id="networthLegend"></div>
           <div class="stats-row" id="networthStats"></div>
+          <div class="state-stats-row" id="networthStateStats"></div>
         </div>
 
       </section>

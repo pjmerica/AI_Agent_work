@@ -89,6 +89,7 @@ main { padding: 32px 20px 60px; }
 
 .field { display: flex; flex-direction: column; gap: 8px; }
 .field label { font-size: 12px; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.6px; }
+.field-note { font-size: 10px; font-weight: 400; text-transform: none; letter-spacing: 0; color: var(--muted); opacity: 0.7; }
 
 /* Toggle group */
 .toggle-group {
@@ -325,6 +326,39 @@ select:focus { border-color: var(--accent); }
 .stat-val.you { color: var(--accent2); }
 .stat-val.median-val { color: var(--green); }
 .stat-val.mean-val { color: var(--amber); }
+
+/* ── State stats row ─────────────────────────────────────── */
+.state-stats-row {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+  padding: 12px 14px;
+  background: rgba(91, 76, 245, 0.07);
+  border: 1px solid rgba(91, 76, 245, 0.2);
+  border-radius: 8px;
+}
+.state-stats-row:empty { display: none; }
+
+.state-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  flex: 1;
+  min-width: 120px;
+}
+.state-stat-label {
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.state-stat-val {
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--accent2);
+}
 
 /* ── Responsive ──────────────────────────────────────────── */
 @media (max-width: 580px) {

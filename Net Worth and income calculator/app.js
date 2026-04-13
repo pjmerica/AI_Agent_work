@@ -8,6 +8,7 @@
   // ── State ────────────────────────────────────────────────────────────────
   let type = 'household';   // 'household' | 'individual'
   let ageKey = 'all';
+  let stateKey = '';        // '' = national, else 2-letter code
   let incomeChart = null;
   let networthChart = null;
 
@@ -33,6 +34,17 @@
 
     // Age bracket change
     sel.addEventListener('change', () => { ageKey = sel.value; });
+
+    // Populate state dropdown
+    const stateSel = document.getElementById('stateSelect');
+    const sortedStates = Object.entries(DATA.states).sort((a, b) => a[1].name.localeCompare(b[1].name));
+    sortedStates.forEach(([code, s]) => {
+      const opt = document.createElement('option');
+      opt.value = code;
+      opt.textContent = s.name;
+      stateSel.appendChild(opt);
+    });
+    stateSel.addEventListener('change', () => { stateKey = stateSel.value; });
 
     // Number formatting on inputs
     ['incomeInput', 'networthInput'].forEach(id => {
@@ -123,7 +135,8 @@
       return;
     }
 
-    ageKey = document.getElementById('ageBracket').value;
+    ageKey   = document.getElementById('ageBracket').value;
+    stateKey = document.getElementById('stateSelect').value;
 
     const incPct = income   ? getPercentile(income,   'income',   type, ageKey) : null;
     const nwPct  = networth !== undefined ? getPercentile(networth, 'netWorth', type, ageKey) : null;
@@ -135,23 +148,34 @@
 
   // ── Render Results ───────────────────────────────────────────────────────
   function renderResults(income, networth, incPct, nwPct) {
-    const incDs = DATA.income[type][ageKey];
-    const nwDs  = DATA.netWorth[type][ageKey];
+    const incDs  = DATA.income[type][ageKey];
+    const nwDs   = DATA.netWorth[type][ageKey];
     const ageLbl = DATA.ageBrackets.find(b => b.key === ageKey)?.label || 'All Ages';
+    const stateData = stateKey ? DATA.states[stateKey] : null;
+    const stateLbl  = stateData ? stateData.name : null;
 
     // Score cards
     renderScoreCard('incomeCard', 'incomePercentile', 'incomeContext', income, incPct, incDs, 'income', ageLbl);
     renderScoreCard('networthCard', 'networthPercentile', 'networthContext', networth, nwPct, nwDs, 'net worth', ageLbl);
 
     // Chart subtitles
+    const typeLbl = type === 'household' ? 'Household' : 'Individual';
     document.getElementById('incomeChartSub').textContent =
-      `${type === 'household' ? 'Household' : 'Individual'} income distribution — ${ageLbl}`;
+      `${typeLbl} income distribution — ${ageLbl}${stateLbl ? ' · ' + stateLbl + ' medians shown' : ''}`;
     document.getElementById('networthChartSub').textContent =
-      `${type === 'household' ? 'Household' : 'Individual'} net worth distribution — ${ageLbl}`;
+      `Household net worth distribution — ${ageLbl}${stateLbl ? ' · ' + stateLbl + ' medians shown' : ''}`;
+
+    // State medians for chart reference lines
+    const stateIncomeMedian  = stateData ? (type === 'household' ? stateData.hhMedian  : stateData.indMedian) : null;
+    const stateNwMedian      = stateData ? stateData.nwMedian : null;
 
     // Charts
-    renderBarChart('incomeChart', 'incomeLegend', 'incomeStats', income, incDs, incPct, 'income');
-    renderBarChart('networthChart', 'networthLegend', 'networthStats', networth, nwDs, nwPct, 'net worth');
+    renderBarChart('incomeChart',   'incomeLegend',   'incomeStats',   'incomeStateStats',
+                   income,   incDs, incPct, 'income',    stateIncomeMedian, stateLbl,
+                   stateData ? (type === 'household' ? stateData.hhMedian  : stateData.indMedian) : null);
+    renderBarChart('networthChart', 'networthLegend', 'networthStats', 'networthStateStats',
+                   networth, nwDs,  nwPct,  'net worth', stateNwMedian, stateLbl,
+                   stateData ? stateData.nwMean : null, true);
   }
 
   function renderScoreCard(cardId, valId, subId, value, pct, ds, label, ageLbl) {
@@ -188,7 +212,8 @@
   // ── Bar Chart ─────────────────────────────────────────────────────────────
   // Pure canvas — no Chart.js dependency, keeps it lean and fast
 
-  function renderBarChart(canvasId, legendId, statsId, userValue, ds, userPct, label) {
+  function renderBarChart(canvasId, legendId, statsId, stateStatsId, userValue, ds, userPct, label,
+                          stateMedian, stateLbl, stateMean, isNetWorth) {
     const canvas = document.getElementById(canvasId);
     const ctx = canvas.getContext('2d');
 
@@ -322,9 +347,10 @@
       ctx.fillText(lbl, x, padT - 4);
     }
 
-    drawRefLine(ds.median, COLORS.median, 'Median');
-    drawRefLine(ds.mean,   COLORS.mean,   'Avg');
-    if (userValue) drawRefLine(userValue, COLORS.you, 'You');
+    drawRefLine(ds.median,   COLORS.median,  'Median');
+    drawRefLine(ds.mean,     COLORS.mean,    'Avg');
+    if (stateMedian) drawRefLine(stateMedian, '#a78bfa', 'State');
+    if (userValue)   drawRefLine(userValue,   COLORS.you, 'You');
 
     // ── Legend ──────────────────────────────────────────────────────────────
     const legendEl = document.getElementById(legendId);
@@ -332,8 +358,9 @@
       <div class="legend-item"><div class="legend-dot" style="background:#5b4cf5"></div>Your bracket</div>
       <div class="legend-item"><div class="legend-dot" style="background:#2e2e42"></div>Above you</div>
       <div class="legend-item"><div class="legend-dot" style="background:#2a2a3e"></div>Below you</div>
-      <div class="legend-item"><div class="legend-dot" style="background:#3ecf8e"></div>Median</div>
-      <div class="legend-item"><div class="legend-dot" style="background:#f5a623"></div>Average</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#3ecf8e"></div>US Median</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#f5a623"></div>US Average</div>
+      ${stateMedian ? '<div class="legend-item"><div class="legend-dot" style="background:#a78bfa"></div>State Median</div>' : ''}
     `;
 
     // ── Stats row ─────────────────────────────────────────────────────────
@@ -352,6 +379,23 @@
         <div class="stat-val mean-val">${formatDollars(ds.mean)}</div>
       </div>
     `;
+
+    // ── State stats row ────────────────────────────────────────────────────
+    const stateStatsEl = document.getElementById(stateStatsId);
+    if (stateStatsEl) {
+      if (stateMedian && stateLbl) {
+        const meanHtml = stateMean
+          ? `<div class="state-stat"><div class="state-stat-label">${stateLbl} Average</div><div class="state-stat-val">${formatDollars(stateMean)}</div></div>`
+          : '';
+        stateStatsEl.innerHTML = `
+          <div class="state-stat"><div class="state-stat-label">${stateLbl} Median</div><div class="state-stat-val">${formatDollars(stateMedian)}</div></div>
+          ${meanHtml}
+          <div class="state-stat"><div class="state-stat-label">vs US Median</div><div class="state-stat-val" style="color:${stateMedian >= ds.median ? '#3ecf8e' : '#e84040'}">${stateMedian >= ds.median ? '+' : ''}${formatDollars(stateMedian - ds.median)}</div></div>
+        `;
+      } else {
+        stateStatsEl.innerHTML = '';
+      }
+    }
   }
 
   // ── Start ────────────────────────────────────────────────────────────────
