@@ -56,19 +56,11 @@
           </div>
           <!-- City -->
           <div class="field">
-            <label>City <span class="field-note">(optional — 643 cities)</span></label>
-            <div class="city-wrap" id="cityWrap">
-              <div class="input-wrap city-search-wrap">
-                <span class="input-prefix">🔍</span>
-                <input type="text" id="citySearch" placeholder="Search cities…" autocomplete="off" />
-                <span class="city-clear" id="cityClear" style="display:none">✕</span>
-              </div>
-              <div class="city-dropdown" id="cityDropdown">
-                <select id="citySelect" size="8">
-                  <option value="">— No city —</option>
-                </select>
-              </div>
-            </div>
+            <label for="citySelect">City <span class="field-note">(optional)</span></label>
+            <select id="citySelect">
+              <option value="">No city</option>
+              <!-- filled by JS -->
+            </select>
           </div>
         </div>
 

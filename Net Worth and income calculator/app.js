@@ -45,56 +45,14 @@
     stateSel.addEventListener('change', () => {
       stateKey = stateSel.value;
       cityKey  = '';
-      document.getElementById('citySearch').value = '';
-      document.getElementById('cityClear').style.display = 'none';
+      document.getElementById('citySelect').value = '';
       populateCitySelect('');
     });
 
-    // City search + dropdown
-    const citySearch   = document.getElementById('citySearch');
-    const cityDropdown = document.getElementById('cityDropdown');
-    const citySearchWrap = citySearch.closest('.city-search-wrap');
-    const cityClear    = document.getElementById('cityClear');
-
+    // City select — same pattern as state
     populateCitySelect('');
-
-    function openCityDropdown() {
-      cityDropdown.classList.add('open');
-      citySearchWrap.classList.add('open');
-    }
-    function closeCityDropdown() {
-      cityDropdown.classList.remove('open');
-      citySearchWrap.classList.remove('open');
-    }
-
-    citySearch.addEventListener('focus', openCityDropdown);
-    citySearch.addEventListener('input', e => {
-      openCityDropdown();
-      populateCitySelect(e.target.value.trim().toLowerCase());
-    });
-
     document.getElementById('citySelect').addEventListener('change', e => {
       cityKey = e.target.value;
-      if (cityKey) {
-        citySearch.value = cityKey;
-        cityClear.style.display = 'block';
-      }
-      closeCityDropdown();
-    });
-
-    cityClear.addEventListener('mousedown', e => {
-      e.preventDefault();
-      cityKey = '';
-      citySearch.value = '';
-      cityClear.style.display = 'none';
-      populateCitySelect('');
-    });
-
-    // Close on outside click
-    document.addEventListener('mousedown', e => {
-      if (!document.getElementById('cityWrap').contains(e.target)) {
-        closeCityDropdown();
-      }
     });
     // Clear city when state changes (handled in state listener above)
 
