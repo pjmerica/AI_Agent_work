@@ -73,21 +73,21 @@
 
         <div class="compare-panel" id="panel-state" style="display:none">
           <div class="field">
-            <label for="stateSelect">Select a State</label>
-            <select id="stateSelect">
-              <option value="">— Choose state —</option>
-              <!-- filled by JS -->
-            </select>
+            <label for="stateInput">Select a State</label>
+            <div class="input-wrap">
+              <input type="text" id="stateInput" list="stateList" placeholder="Type to search…" autocomplete="off" />
+            </div>
+            <datalist id="stateList"><!-- filled by JS --></datalist>
           </div>
         </div>
 
         <div class="compare-panel" id="panel-city" style="display:none">
           <div class="field">
-            <label for="citySelect">Select a City</label>
-            <select id="citySelect">
-              <option value="">— Choose city —</option>
-              <!-- filled by JS -->
-            </select>
+            <label for="cityInput">Select a City</label>
+            <div class="input-wrap">
+              <input type="text" id="cityInput" list="cityList" placeholder="Type to search…" autocomplete="off" />
+            </div>
+            <datalist id="cityList"><!-- filled by JS --></datalist>
           </div>
         </div>
 

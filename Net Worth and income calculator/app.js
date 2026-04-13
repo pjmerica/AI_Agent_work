@@ -10,6 +10,7 @@
   let compareTab = 'national';  // 'national' | 'state' | 'city'
   let stateKey   = '';
   let cityKey    = '';
+  const stateMap = {};  // state name -> code
 
   // ── Boot ─────────────────────────────────────────────────────────────────
   function init() {
@@ -42,25 +43,32 @@
       });
     });
 
-    // State dropdown
-    const stateSel = document.getElementById('stateSelect');
+    // State search input + datalist
+    const stateInput = document.getElementById('stateInput');
+    const stateList  = document.getElementById('stateList');
     Object.entries(DATA.states)
       .sort((a, b) => a[1].name.localeCompare(b[1].name))
       .forEach(([code, s]) => {
+        stateMap[s.name] = code;
         const opt = document.createElement('option');
-        opt.value = code; opt.textContent = s.name;
-        stateSel.appendChild(opt);
+        opt.value = s.name;
+        stateList.appendChild(opt);
       });
-    stateSel.addEventListener('change', () => { stateKey = stateSel.value; });
+    stateInput.addEventListener('input', () => {
+      stateKey = stateMap[stateInput.value] || '';
+    });
 
-    // City dropdown
-    const citySel = document.getElementById('citySelect');
+    // City search input + datalist
+    const cityInput = document.getElementById('cityInput');
+    const cityList  = document.getElementById('cityList');
     Object.keys(DATA.cities).sort().forEach(key => {
       const opt = document.createElement('option');
-      opt.value = key; opt.textContent = key;
-      citySel.appendChild(opt);
+      opt.value = key;
+      cityList.appendChild(opt);
     });
-    citySel.addEventListener('change', () => { cityKey = citySel.value; });
+    cityInput.addEventListener('input', () => {
+      cityKey = DATA.cities[cityInput.value] ? cityInput.value : '';
+    });
 
     // Dollar inputs
     ['incomeInput', 'networthInput'].forEach(id => {
@@ -121,8 +129,8 @@
     if (!income && !networth) { alert('Please enter at least one value.'); return; }
 
     ageKey   = document.getElementById('ageBracket').value;
-    stateKey = compareTab === 'state' ? document.getElementById('stateSelect').value : '';
-    cityKey  = compareTab === 'city'  ? document.getElementById('citySelect').value  : '';
+    stateKey = compareTab === 'state' ? (stateMap[document.getElementById('stateInput').value] || '') : '';
+    cityKey  = compareTab === 'city'  ? (DATA.cities[document.getElementById('cityInput').value] ? document.getElementById('cityInput').value : '') : '';
 
     const incPct = income   ? getPercentile(income,   'income',   type, ageKey) : null;
     const nwPct  = networth ? getPercentile(networth, 'netWorth', type, ageKey) : null;
