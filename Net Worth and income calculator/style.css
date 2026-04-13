@@ -327,6 +327,44 @@ select:focus { border-color: var(--accent); }
 .stat-val.median-val { color: var(--green); }
 .stat-val.mean-val { color: var(--amber); }
 
+/* ── City search + select widget ────────────────────────── */
+.city-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.city-search-wrap {
+  border-radius: 8px 8px 0 0 !important;
+}
+
+.city-search-wrap input {
+  background: transparent;
+  border: none;
+  color: var(--text);
+  font-size: 13px;
+  outline: none;
+  padding: 8px 12px 8px 4px;
+  width: 100%;
+}
+.city-search-wrap input::placeholder { color: var(--muted); }
+
+#citySelect {
+  border-radius: 0 0 8px 8px;
+  border-top: none;
+  height: 120px;
+  overflow-y: auto;
+}
+#citySelect option {
+  padding: 6px 10px;
+  font-size: 13px;
+  cursor: pointer;
+}
+#citySelect option:checked {
+  background: var(--accent);
+  color: #fff;
+}
+
 /* ── State stats row ─────────────────────────────────────── */
 .state-stats-row {
   display: flex;

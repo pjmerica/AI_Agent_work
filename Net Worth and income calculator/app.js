@@ -45,16 +45,17 @@
     stateSel.addEventListener('change', () => {
       stateKey = stateSel.value;
       cityKey  = '';
-      document.getElementById('cityInput').value = '';
+      document.getElementById('citySearch').value = '';
+      populateCitySelect('');
     });
 
-    // City typeahead — datalist populated on load, value read on calculate
-    const cityInput = document.getElementById('cityInput');
-    const cityList  = document.getElementById('cityList');
-    Object.keys(DATA.cities).sort().forEach(key => {
-      const opt = document.createElement('option');
-      opt.value = key;
-      cityList.appendChild(opt);
+    // City search + select
+    populateCitySelect('');
+    document.getElementById('citySearch').addEventListener('input', e => {
+      populateCitySelect(e.target.value.trim().toLowerCase());
+    });
+    document.getElementById('citySelect').addEventListener('change', e => {
+      cityKey = e.target.value;
     });
     // Clear city when state changes (handled in state listener above)
 
@@ -68,6 +69,22 @@
 
     // Calculate button
     document.getElementById('calcBtn').addEventListener('click', calculate);
+  }
+
+  function populateCitySelect(query) {
+    const sel = document.getElementById('citySelect');
+    const prev = cityKey;
+    sel.innerHTML = '<option value="">— No city —</option>';
+    Object.keys(DATA.cities)
+      .filter(k => !query || k.toLowerCase().includes(query))
+      .sort()
+      .forEach(key => {
+        const opt = document.createElement('option');
+        opt.value = key;
+        opt.textContent = key;
+        if (key === prev) opt.selected = true;
+        sel.appendChild(opt);
+      });
   }
 
   // ── Helpers ──────────────────────────────────────────────────────────────
@@ -128,8 +145,7 @@
 
     ageKey   = document.getElementById('ageBracket').value;
     stateKey = document.getElementById('stateSelect').value;
-    const cityInputVal = document.getElementById('cityInput').value.trim();
-    cityKey = DATA.cities[cityInputVal] ? cityInputVal : '';
+    cityKey = document.getElementById('citySelect').value || '';
 
     const incPct = income   ? getPercentile(income,   'income',   type, ageKey) : null;
     const nwPct  = networth ? getPercentile(networth, 'netWorth', type, ageKey) : null;
