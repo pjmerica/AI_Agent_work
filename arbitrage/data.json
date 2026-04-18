@@ -1,15 +1,15 @@
 {
-  "lastUpdated": "2026-04-18T02:26:40.084Z",
+  "lastUpdated": "2026-04-18T07:08:23.722Z",
   "polymarketCount": 500,
   "predictitCount": 704,
-  "matchCount": 8,
+  "matchCount": 9,
   "matches": [
     {
       "polymarket": {
         "platform": "Polymarket",
         "title": "Will Joe Shekarchi win the 2026 Rhode Island Governor Democratic primary election?",
-        "yesPrice": 0.017,
-        "noPrice": 0.983,
+        "yesPrice": 0.0055,
+        "noPrice": 0.9945,
         "url": "https://polymarket.com/event/will-joe-shekarchi-win-the-2026-rhode-island-governor-democratic-primary-election",
         "volume": 981.8257370000001
       },
@@ -23,9 +23,9 @@
       },
       "score": 42,
       "entities": 1,
-      "diff": 85.3,
+      "diff": 86.5,
       "arb": true,
-      "arbProfit": 85.3,
+      "arbProfit": 86.5,
       "buyYesOn": "Polymarket",
       "buyNoOn": "PredictIt"
     },
@@ -33,10 +33,10 @@
       "polymarket": {
         "platform": "Polymarket",
         "title": "Will Naftali Bennett be the next Prime Minister of Israel?",
-        "yesPrice": 0.275,
-        "noPrice": 0.725,
+        "yesPrice": 0.285,
+        "noPrice": 0.715,
         "url": "https://polymarket.com/event/will-naftali-bennett-be-the-next-prime-minister-of-israel",
-        "volume": 965674.7236859982
+        "volume": 965798.0536859982
       },
       "predictit": {
         "platform": "PredictIt",
@@ -48,9 +48,34 @@
       },
       "score": 83,
       "entities": 1,
-      "diff": 67.5,
+      "diff": 66.5,
       "arb": true,
-      "arbProfit": 67.5,
+      "arbProfit": 66.5,
+      "buyYesOn": "Polymarket",
+      "buyNoOn": "PredictIt"
+    },
+    {
+      "polymarket": {
+        "platform": "Polymarket",
+        "title": "Will Susie Wiles be the next to leave the Trump Cabinet before 2027?",
+        "yesPrice": 0.0865,
+        "noPrice": 0.9135,
+        "url": "https://polymarket.com/event/will-susie-wiles-be-the-next-to-leave-the-trump-cabinet-before-2027-451",
+        "volume": 938.186987
+      },
+      "predictit": {
+        "platform": "PredictIt",
+        "title": "Will Susie Wiles leave office before July 2026?",
+        "yesPrice": 0.15,
+        "noPrice": 0.94,
+        "url": "https://www.predictit.org/markets/detail/8451/Will-Susie-Wiles-leave-office-before-July-2026",
+        "volume": null
+      },
+      "score": 43,
+      "entities": 1,
+      "diff": 6.4,
+      "arb": true,
+      "arbProfit": 6.4,
       "buyYesOn": "Polymarket",
       "buyNoOn": "PredictIt"
     },
@@ -61,7 +86,7 @@
         "yesPrice": 0.0145,
         "noPrice": 0.9855,
         "url": "https://polymarket.com/event/will-ron-desantis-win-the-2028-us-presidential-election",
-        "volume": 9422126.816959048
+        "volume": 9430108.355373051
       },
       "predictit": {
         "platform": "PredictIt",
@@ -107,36 +132,11 @@
     {
       "polymarket": {
         "platform": "Polymarket",
-        "title": "Will Howard Lutnick be the next to leave the Trump Cabinet before 2027?",
-        "yesPrice": 0.029,
-        "noPrice": 0.971,
-        "url": "https://polymarket.com/event/will-howard-lutnick-be-the-next-to-leave-the-trump-cabinet-before-2027-795",
-        "volume": 981.7831170000002
-      },
-      "predictit": {
-        "platform": "PredictIt",
-        "title": "Will Howard Lutnick be the next Cabinet member to leave office?",
-        "yesPrice": 0.06,
-        "noPrice": 0.98,
-        "url": "https://www.predictit.org/markets/detail/8696/Who-will-be-the-next-Cabinet-member-to-leave-office",
-        "volume": null
-      },
-      "score": 57,
-      "entities": 1,
-      "diff": 3.1,
-      "arb": true,
-      "arbProfit": 3.1,
-      "buyYesOn": "Polymarket",
-      "buyNoOn": "PredictIt"
-    },
-    {
-      "polymarket": {
-        "platform": "Polymarket",
         "title": "Will Ro Khanna win the 2028 Democratic presidential nomination?",
         "yesPrice": 0.0195,
         "noPrice": 0.9805,
         "url": "https://polymarket.com/event/will-ro-khanna-win-the-2028-democratic-presidential-nomination",
-        "volume": 9561074.674729051
+        "volume": 9561125.674729051
       },
       "predictit": {
         "platform": "PredictIt",
@@ -182,6 +182,31 @@
     {
       "polymarket": {
         "platform": "Polymarket",
+        "title": "Will Howard Lutnick be the next to leave the Trump Cabinet before 2027?",
+        "yesPrice": 0.0595,
+        "noPrice": 0.9405,
+        "url": "https://polymarket.com/event/will-howard-lutnick-be-the-next-to-leave-the-trump-cabinet-before-2027-795",
+        "volume": 981.7831170000002
+      },
+      "predictit": {
+        "platform": "PredictIt",
+        "title": "Will Howard Lutnick be the next Cabinet member to leave office?",
+        "yesPrice": 0.06,
+        "noPrice": 0.98,
+        "url": "https://www.predictit.org/markets/detail/8696/Who-will-be-the-next-Cabinet-member-to-leave-office",
+        "volume": null
+      },
+      "score": 57,
+      "entities": 1,
+      "diff": 0.1,
+      "arb": false,
+      "arbProfit": 0.1,
+      "buyYesOn": "Polymarket",
+      "buyNoOn": "PredictIt"
+    },
+    {
+      "polymarket": {
+        "platform": "Polymarket",
         "title": "Will Trump pardon Ghislaine Maxwell before 2027?",
         "yesPrice": 0.06,
         "noPrice": 0.94,
@@ -191,16 +216,16 @@
       "predictit": {
         "platform": "PredictIt",
         "title": "Will Trump pardon Ghislaine Maxwell or commute her sentence before July 2026?",
-        "yesPrice": 0.07,
+        "yesPrice": 0.06,
         "noPrice": 0.97,
         "url": "https://www.predictit.org/markets/detail/8278/Will-Trump-pardon-Ghislaine-Maxwell-or-commute-her-sentence-before-July-2026",
         "volume": null
       },
       "score": 50,
       "entities": 1,
-      "diff": 1,
-      "arb": true,
-      "arbProfit": 1,
+      "diff": 0,
+      "arb": false,
+      "arbProfit": 0,
       "buyYesOn": "Polymarket",
       "buyNoOn": "PredictIt"
     }
