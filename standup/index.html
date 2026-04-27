@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Standup Question Randomizer</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <header>
+      <a href="../" class="back">← Home</a>
+      <h1>Standup Question Randomizer</h1>
+      <p class="subtitle">Icebreakers and check-ins for your daily standup. Click to roll a new one.</p>
+    </header>
+
+    <main>
+      <div class="card">
+        <div class="category-tag" id="category">—</div>
+        <div class="question" id="question">Click below to get a question</div>
+      </div>
+
+      <div class="controls">
+        <button id="roll" class="primary">🎲 New Question</button>
+      </div>
+
+      <section class="filters">
+        <h2>Categories</h2>
+        <div class="chip-group" id="chip-group">
+          <!-- chips injected by JS -->
+        </div>
+      </section>
+
+      <section class="team-mode">
+        <h2>Team Mode</h2>
+        <p class="hint">Add team members and assign questions to each — great for picking who answers what.</p>
+        <div class="team-input">
+          <input type="text" id="member-input" placeholder="Add a name…" maxlength="40" />
+          <button id="add-member">Add</button>
+        </div>
+        <div id="member-list" class="member-list"></div>
+        <button id="assign-all" class="secondary" disabled>Assign Question to Each Member</button>
+        <div id="assignments" class="assignments"></div>
+      </section>
+    </main>
+
+    <footer>
+      <span id="question-count">0</span> questions loaded.
+    </footer>
+  </div>
+
+  <script src="questions.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
