@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NFL News Feed</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <header>
+      <a href="../" class="back">← Home</a>
+      <h1>NFL News Feed</h1>
+      <p class="subtitle">Live headlines from ESPN, NFL.com, ProFootballTalk, and Bleacher Report.</p>
+    </header>
+
+    <div class="toolbar">
+      <div class="controls-row">
+        <button id="refresh" class="primary">↻ Refresh</button>
+        <span class="status" id="status">Loading…</span>
+      </div>
+
+      <div class="search-row">
+        <input type="text" id="search" placeholder="Search headlines…" />
+      </div>
+
+      <details class="filter-section">
+        <summary>Sources <span class="filter-count" id="source-count"></span></summary>
+        <div class="chip-group" id="source-chips"></div>
+      </details>
+
+      <details class="filter-section">
+        <summary>Teams <span class="filter-count" id="team-count"></span></summary>
+        <div class="chip-group" id="team-chips"></div>
+      </details>
+    </div>
+
+    <main>
+      <div id="feed" class="feed"></div>
+      <div id="empty" class="empty hidden">No matching headlines.</div>
+    </main>
+
+    <footer>
+      <span id="article-count">0</span> headlines · <span id="last-updated">—</span>
+    </footer>
+  </div>
+
+  <script src="teams.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
