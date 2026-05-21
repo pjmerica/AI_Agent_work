@@ -1,7 +1,13 @@
 (function () {
   const TEAMS = window.NFL_TEAMS;
   const SOURCES = window.NFL_SOURCES;
-  const PROXY = "https://api.allorigins.win/raw?url=";
+
+  // Proxies tried in order. rss2json returns parsed JSON; the rest return raw XML.
+  const PROXIES = [
+    { kind: "json", url: (u) => `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(u)}` },
+    { kind: "xml",  url: (u) => `https://api.codetabs.com/v1/proxy/?quest=${encodeURIComponent(u)}` },
+    { kind: "xml",  url: (u) => `https://api.allorigins.win/raw?url=${encodeURIComponent(u)}` }
+  ];
 
   // ── State ──────────────────────────────────────────────────────────────────
   const activeSources = new Set(SOURCES.map((s) => s.id));
@@ -80,27 +86,50 @@
 
   // ── Fetch + parse RSS ──────────────────────────────────────────────────────
   async function fetchSource(source) {
-    const url = PROXY + encodeURIComponent(source.url);
-    try {
-      const res = await fetch(url, { cache: "no-store" });
-      if (!res.ok) throw new Error(`HTTP ${res.status}`);
-      const text = await res.text();
-      return parseFeed(text, source);
-    } catch (err) {
-      console.error(`[${source.id}] fetch failed`, err);
-      return [];
+    for (const proxy of PROXIES) {
+      try {
+        const url = proxy.url(source.url);
+        const res = await fetch(url, { cache: "no-store" });
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+
+        let items;
+        if (proxy.kind === "json") {
+          const data = await res.json();
+          if (data.status !== "ok" || !Array.isArray(data.items)) throw new Error("bad JSON shape");
+          items = parseJsonFeed(data.items, source);
+        } else {
+          const text = await res.text();
+          items = parseXmlFeed(text, source);
+        }
+
+        if (items.length > 0) return items;
+        throw new Error("no items parsed");
+      } catch (err) {
+        console.warn(`[${source.id}] proxy failed`, err.message);
+      }
     }
+    console.error(`[${source.id}] all proxies failed`);
+    return [];
   }
 
-  function parseFeed(xmlText, source) {
+  function parseJsonFeed(items, source) {
+    const results = [];
+    items.forEach((item) => {
+      const title = cleanText(item.title || "");
+      const link = (item.link || "").trim();
+      const dateStr = item.pubDate || item.published || "";
+      const date = dateStr ? new Date(dateStr) : null;
+      if (!title || !link) return;
+      results.push({ title, link, date, source, teams: detectTeams(title) });
+    });
+    return results;
+  }
+
+  function parseXmlFeed(xmlText, source) {
     const parser = new DOMParser();
     const doc = parser.parseFromString(xmlText, "text/xml");
-    if (doc.querySelector("parsererror")) {
-      console.warn(`[${source.id}] parse error`);
-      return [];
-    }
+    if (doc.querySelector("parsererror")) return [];
 
-    // Handle both RSS <item> and Atom <entry>
     const items = doc.querySelectorAll("item, entry");
     const results = [];
 
@@ -118,14 +147,7 @@
       const date = dateStr ? new Date(dateStr) : null;
 
       if (!title || !link) return;
-
-      results.push({
-        title,
-        link,
-        date,
-        source,
-        teams: detectTeams(title)
-      });
+      results.push({ title, link, date, source, teams: detectTeams(title) });
     });
 
     return results;
