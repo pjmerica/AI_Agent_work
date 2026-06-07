@@ -1,7 +1,7 @@
-name: NFL Props Scraper
+name: NFL Projections Scraper
 
 on:
-  workflow_dispatch:         # manual-run only — trigger from GitHub Actions UI
+  workflow_dispatch:   # manual-run only — trigger from GitHub Actions UI
 
 permissions:
   contents: write
@@ -16,15 +16,13 @@ jobs:
         with:
           python-version: '3.11'
 
-      - name: Fetch NFL props from The Odds API
-        env:
-          ODDS_API_KEY: ${{ secrets.ODDS_API_KEY }}
-        run: python scripts/fetch_nfl_props.py
+      - name: Scrape FantasyPros season projections
+        run: python scripts/fetch_nfl_projections.py
 
       - name: Commit updated data
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add nfl-props/data.json
-          git diff --staged --quiet || git commit -m "chore: refresh NFL props [skip ci]"
+          git diff --staged --quiet || git commit -m "chore: refresh NFL projections [skip ci]"
           git push

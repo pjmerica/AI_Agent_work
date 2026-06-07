@@ -1,6 +1,6 @@
 (function () {
   // ── State ──────────────────────────────────────────────────────────────────
-  let raw = { players: [], lastUpdated: null, eventCount: 0, playerCount: 0 };
+  let raw = { players: [], lastUpdated: null, playerCount: 0, source: "" };
   let fmt = "ppr";
   let pos = "ALL";
   let search = "";
@@ -15,48 +15,20 @@
   const $fmtGroup = document.getElementById("format-group");
   const $posChips = document.getElementById("pos-chips");
 
-  // ── Market label / format helpers ──────────────────────────────────────────
-  const MARKET_META = {
-    player_pass_yds:           { label: "Pass Yds",   suffix: "" },
-    player_pass_tds:           { label: "Pass TDs",   suffix: "" },
-    player_pass_interceptions: { label: "INTs",       suffix: "" },
-    player_rush_yds:           { label: "Rush Yds",   suffix: "" },
-    player_rush_tds:           { label: "Rush TDs",   suffix: "" },
-    player_rush_attempts:      { label: "Rush Att",   suffix: "" },
-    player_reception_yds:      { label: "Rec Yds",    suffix: "" },
-    player_receptions:         { label: "Rec",        suffix: "" },
-    player_reception_tds:      { label: "Rec TDs",    suffix: "" },
-  };
-
   // ── Fantasy-point math (mirrors Python scraper) ────────────────────────────
-  function ptsForMarket(key, val, format) {
-    if (key === "player_receptions") {
-      if (format === "ppr") return val * 1.0;
-      if (format === "half") return val * 0.5;
-      return 0;
-    }
-    switch (key) {
-      case "player_pass_yds":            return val * 0.04;
-      case "player_pass_tds":            return val * 4;
-      case "player_pass_interceptions":  return val * -2;
-      case "player_rush_yds":            return val * 0.1;
-      case "player_rush_tds":            return val * 6;
-      case "player_reception_yds":       return val * 0.1;
-      case "player_reception_tds":       return val * 6;
-      default:                           return 0;
-    }
-  }
-
-  function projectPlayer(p, format) {
-    let total = 0;
-    const markets = p.markets || {};
-    for (const [k, m] of Object.entries(markets)) {
-      total += ptsForMarket(k, m.line, format);
-    }
-    if (!("player_rush_tds" in markets) && !("player_reception_tds" in markets)) {
-      total += (p.anytime_td_prob || 0) * 6;
-    }
-    return Math.round(total * 100) / 100;
+  function fantasyPoints(stats, format) {
+    let pts = 0;
+    pts += (stats.pass_yds      || 0) * 0.04;
+    pts += (stats.pass_tds      || 0) * 4;
+    pts += (stats.pass_ints     || 0) * -2;
+    pts += (stats.rush_yds      || 0) * 0.1;
+    pts += (stats.rush_tds      || 0) * 6;
+    pts += (stats.rec_yds       || 0) * 0.1;
+    pts += (stats.rec_tds       || 0) * 6;
+    pts += (stats.fumbles_lost  || 0) * -2;
+    if (format === "ppr")        pts += (stats.receptions || 0) * 1.0;
+    else if (format === "half")  pts += (stats.receptions || 0) * 0.5;
+    return Math.round(pts * 100) / 100;
   }
 
   // ── Loaders ────────────────────────────────────────────────────────────────
@@ -66,7 +38,7 @@
       raw = await res.json();
     } catch (e) {
       console.error("Failed to load data.json", e);
-      raw = { players: [], lastUpdated: null, eventCount: 0, playerCount: 0 };
+      raw = { players: [], lastUpdated: null, playerCount: 0 };
     }
     render();
   }
@@ -74,7 +46,7 @@
   // ── Render ─────────────────────────────────────────────────────────────────
   function render() {
     const players = (raw.players || [])
-      .map((p) => ({ ...p, _proj: projectPlayer(p, fmt) }))
+      .map((p) => ({ ...p, _proj: fantasyPoints(p.stats || {}, fmt) }))
       .filter((p) => {
         if (pos === "ALL") return true;
         return p.position === pos;
@@ -83,8 +55,7 @@
         if (!search) return true;
         const s = search.toLowerCase();
         return (p.name || "").toLowerCase().includes(s) ||
-               (p.team || "").toLowerCase().includes(s) ||
-               (p.opponent || "").toLowerCase().includes(s);
+               (p.team || "").toLowerCase().includes(s);
       })
       .sort((a, b) => b._proj - a._proj);
 
@@ -99,7 +70,7 @@
     }
 
     $playerCount.textContent = raw.playerCount || (raw.players || []).length;
-    $eventCount.textContent = raw.eventCount || 0;
+    if ($eventCount) $eventCount.textContent = raw.source || "FantasyPros";
     $lastUpdated.textContent = raw.lastUpdated
       ? new Date(raw.lastUpdated).toLocaleString()
       : "never";
@@ -107,53 +78,49 @@
 
   function buildRow(p, rank) {
     const tr = document.createElement("tr");
-
-    const posClass = "pos-" + (p.position || "?").replace("/", "");
+    const posClass = "pos-" + (p.position || "?");
 
     tr.innerHTML = `
       <td class="rank-num">${rank}</td>
       <td class="player-name">${escapeHtml(p.name)}</td>
       <td><span class="pos-badge ${posClass}">${escapeHtml(p.position || "?")}</span></td>
-      <td class="matchup">${escapeHtml(shortTeam(p.team))} vs ${escapeHtml(shortTeam(p.opponent))}</td>
-      <td class="proj">${p._proj.toFixed(2)}</td>
-      <td>${renderMarkets(p)}</td>
+      <td class="matchup">${escapeHtml(p.team || "—")}</td>
+      <td class="proj">${p._proj.toFixed(1)}</td>
+      <td>${renderStats(p)}</td>
     `;
     return tr;
   }
 
-  function renderMarkets(p) {
+  function renderStats(p) {
+    const s = p.stats || {};
     const parts = [];
-    const order = [
-      "player_pass_yds", "player_pass_tds", "player_pass_interceptions",
-      "player_rush_yds", "player_rush_tds", "player_rush_attempts",
-      "player_reception_yds", "player_receptions", "player_reception_tds"
-    ];
-    for (const k of order) {
-      const m = p.markets?.[k];
-      if (!m) continue;
-      const meta = MARKET_META[k];
-      parts.push(`<span class="market-tag">
-        <span class="mk-label">${meta.label}</span><span class="mk-val">${formatLine(m.line)}</span>
-      </span>`);
-    }
-    if (p.anytime_td_prob > 0) {
-      const pct = Math.round(p.anytime_td_prob * 100);
-      parts.push(`<span class="market-tag">
-        <span class="mk-label">ATD</span><span class="mk-val">${pct}%</span>
-      </span>`);
+    const push = (label, val, decimals = 0) => {
+      if (val && val > 0) {
+        parts.push(`<span class="market-tag">
+          <span class="mk-label">${label}</span><span class="mk-val">${val.toFixed(decimals)}</span>
+        </span>`);
+      }
+    };
+
+    if (p.position === "QB") {
+      push("Pass Yds", s.pass_yds);
+      push("Pass TDs", s.pass_tds, 1);
+      push("INTs", s.pass_ints, 1);
+      push("Rush Yds", s.rush_yds);
+      push("Rush TDs", s.rush_tds, 1);
+    } else if (p.position === "RB") {
+      push("Rush Yds", s.rush_yds);
+      push("Rush TDs", s.rush_tds, 1);
+      push("Rec", s.receptions, 1);
+      push("Rec Yds", s.rec_yds);
+      push("Rec TDs", s.rec_tds, 1);
+    } else if (p.position === "WR" || p.position === "TE") {
+      push("Rec", s.receptions, 1);
+      push("Rec Yds", s.rec_yds);
+      push("Rec TDs", s.rec_tds, 1);
+      if (s.rush_yds > 0) push("Rush Yds", s.rush_yds);
     }
     return `<div class="markets">${parts.join("")}</div>`;
-  }
-
-  function formatLine(v) {
-    if (Number.isInteger(v)) return v.toString();
-    return v.toFixed(1);
-  }
-
-  function shortTeam(name) {
-    if (!name) return "—";
-    const parts = name.split(" ");
-    return parts[parts.length - 1];
   }
 
   function escapeHtml(s) {

@@ -3,15 +3,15 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>NFL Prop Rankings</title>
+  <title>NFL Season Projections</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <div class="container">
     <header>
       <a href="../" class="back">← Home</a>
-      <h1>NFL Prop Rankings</h1>
-      <p class="subtitle">Vegas player props from every major US book, converted to PPR / half-PPR / standard fantasy points. Manually refreshed.</p>
+      <h1>NFL Season Projections</h1>
+      <p class="subtitle">FantasyPros consensus season projections for QB / RB / WR / TE, converted to PPR / half-PPR / standard fantasy points. Use it as a draft cheat sheet.</p>
     </header>
 
     <div class="toolbar">
@@ -27,7 +27,8 @@
         <button class="chip active" data-pos="ALL">All</button>
         <button class="chip" data-pos="QB">QB</button>
         <button class="chip" data-pos="RB">RB</button>
-        <button class="chip" data-pos="WR/TE">WR/TE</button>
+        <button class="chip" data-pos="WR">WR</button>
+        <button class="chip" data-pos="TE">TE</button>
       </div>
     </div>
 
@@ -40,9 +41,9 @@
               <th class="rank">#</th>
               <th>Player</th>
               <th>Pos</th>
-              <th>Matchup</th>
+              <th>Team</th>
               <th class="num sortable" data-sort="proj">Proj <span class="caret">▾</span></th>
-              <th>Prop lines (median)</th>
+              <th>Projected stats</th>
             </tr>
           </thead>
           <tbody id="rows"></tbody>
@@ -52,7 +53,7 @@
 
     <footer>
       <span id="player-count">0</span> players ·
-      <span id="event-count">0</span> games ·
+      Source: <span id="event-count">FantasyPros</span> ·
       Updated <span id="last-updated">—</span>
     </footer>
   </div>
