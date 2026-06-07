@@ -1,9 +1,7 @@
 name: NFL Props Scraper
 
 on:
-  schedule:
-    - cron: '0 */6 * * *'   # every 6 hours
-  workflow_dispatch:         # allow manual run from GitHub UI
+  workflow_dispatch:         # manual-run only — trigger from GitHub Actions UI
 
 permissions:
   contents: write
