@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NFL Prop Rankings</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <header>
+      <a href="../" class="back">← Home</a>
+      <h1>NFL Prop Rankings</h1>
+      <p class="subtitle">Vegas player props from every major US book, converted to PPR / half-PPR / standard fantasy points.</p>
+    </header>
+
+    <div class="toolbar">
+      <div class="format-group" id="format-group">
+        <button class="fmt-btn active" data-fmt="ppr">PPR</button>
+        <button class="fmt-btn" data-fmt="half">Half-PPR</button>
+        <button class="fmt-btn" data-fmt="standard">Standard</button>
+      </div>
+
+      <input type="text" id="search" placeholder="Search player or team…" />
+
+      <div class="chip-group" id="pos-chips">
+        <button class="chip active" data-pos="ALL">All</button>
+        <button class="chip" data-pos="QB">QB</button>
+        <button class="chip" data-pos="RB">RB</button>
+        <button class="chip" data-pos="WR/TE">WR/TE</button>
+      </div>
+    </div>
+
+    <main>
+      <div id="empty" class="empty hidden">No players match.</div>
+      <div class="table-wrap">
+        <table class="rankings">
+          <thead>
+            <tr>
+              <th class="rank">#</th>
+              <th>Player</th>
+              <th>Pos</th>
+              <th>Matchup</th>
+              <th class="num sortable" data-sort="proj">Proj <span class="caret">▾</span></th>
+              <th>Prop lines (median)</th>
+            </tr>
+          </thead>
+          <tbody id="rows"></tbody>
+        </table>
+      </div>
+    </main>
+
+    <footer>
+      <span id="player-count">0</span> players ·
+      <span id="event-count">0</span> games ·
+      Updated <span id="last-updated">—</span>
+    </footer>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

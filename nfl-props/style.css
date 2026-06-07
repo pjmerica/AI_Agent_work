@@ -1,0 +1,217 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: #0f0f13;
+  color: #e2e2f0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  min-height: 100vh;
+  padding: 40px 20px;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+a.back {
+  font-size: 13px;
+  color: #6a6a8a;
+  text-decoration: none;
+  margin-bottom: 16px;
+  display: inline-block;
+}
+a.back:hover { color: #5b4cf5; }
+
+header h1 { font-size: 28px; font-weight: 700; color: #fff; }
+.subtitle { font-size: 14px; color: #6a6a8a; margin-top: 6px; }
+
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+  background: #1a1a24;
+  border: 1px solid #2e2e42;
+  border-radius: 12px;
+  padding: 14px 16px;
+}
+
+.format-group {
+  display: flex;
+  gap: 4px;
+  background: #0f0f13;
+  border: 1px solid #2e2e42;
+  border-radius: 8px;
+  padding: 3px;
+}
+.fmt-btn {
+  font-family: inherit;
+  font-size: 13px;
+  padding: 6px 12px;
+  border: none;
+  background: transparent;
+  color: #a0a0c0;
+  cursor: pointer;
+  border-radius: 6px;
+  font-weight: 600;
+  transition: all 0.15s;
+}
+.fmt-btn.active {
+  background: #5b4cf5;
+  color: white;
+}
+.fmt-btn:hover:not(.active) { color: #e2e2f0; }
+
+#search {
+  flex: 1;
+  min-width: 200px;
+  padding: 8px 12px;
+  font-size: 14px;
+  font-family: inherit;
+  background: #0f0f13;
+  border: 1px solid #2e2e42;
+  border-radius: 8px;
+  color: #e2e2f0;
+  outline: none;
+}
+#search:focus { border-color: #5b4cf5; }
+
+.chip-group {
+  display: flex;
+  gap: 6px;
+}
+
+.chip {
+  font-family: inherit;
+  font-size: 12px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  border: 1px solid #2e2e42;
+  background: #0f0f13;
+  color: #a0a0c0;
+  cursor: pointer;
+  transition: all 0.15s;
+  font-weight: 600;
+}
+.chip:hover { color: #e2e2f0; border-color: #5b4cf5; }
+.chip.active { background: #5b4cf5; border-color: #5b4cf5; color: white; }
+
+.table-wrap {
+  background: #1a1a24;
+  border: 1px solid #2e2e42;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.rankings {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.rankings thead th {
+  text-align: left;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #6a6a8a;
+  background: #14141c;
+  padding: 12px 14px;
+  border-bottom: 1px solid #2e2e42;
+  font-weight: 600;
+}
+
+.rankings th.num { text-align: right; }
+.rankings th.rank { width: 50px; }
+.rankings th.sortable { cursor: pointer; user-select: none; }
+.rankings th.sortable:hover { color: #e2e2f0; }
+.caret { color: #5b4cf5; }
+
+.rankings tbody tr {
+  border-bottom: 1px solid #1f1f2c;
+  transition: background 0.1s;
+}
+.rankings tbody tr:hover { background: #1e1e2e; }
+.rankings tbody tr:last-child { border-bottom: none; }
+
+.rankings td {
+  padding: 12px 14px;
+  font-size: 14px;
+  vertical-align: middle;
+}
+
+.rank-num {
+  color: #6a6a8a;
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+}
+
+.player-name { font-weight: 600; color: #f0f0f8; }
+
+.pos-badge {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: 4px;
+  letter-spacing: 0.5px;
+}
+.pos-QB    { background: rgba(231, 76, 60, 0.18); color: #ff6b6b; }
+.pos-RB    { background: rgba(52, 152, 219, 0.18); color: #5dade2; }
+.pos-WRTE  { background: rgba(46, 204, 113, 0.18); color: #58d68d; }
+.pos-Q     { background: rgba(108, 122, 137, 0.18); color: #95a5a6; }
+
+.matchup { color: #a0a0c0; font-size: 13px; }
+
+.proj {
+  font-variant-numeric: tabular-nums;
+  font-weight: 700;
+  color: #5b4cf5;
+  text-align: right;
+  font-size: 16px;
+}
+
+.markets {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.market-tag {
+  font-size: 11px;
+  padding: 3px 7px;
+  border-radius: 4px;
+  background: #0f0f13;
+  border: 1px solid #2e2e42;
+  color: #a0a0c0;
+  font-variant-numeric: tabular-nums;
+}
+
+.market-tag .mk-label { color: #6a6a8a; margin-right: 4px; }
+.market-tag .mk-val { color: #e2e2f0; font-weight: 600; }
+
+.empty {
+  text-align: center;
+  padding: 40px;
+  color: #6a6a8a;
+  font-size: 14px;
+}
+
+.hidden { display: none; }
+
+footer {
+  text-align: center;
+  font-size: 12px;
+  color: #6a6a8a;
+  padding-top: 16px;
+}
+
+@media (max-width: 700px) {
+  body { padding: 20px 12px; }
+  header h1 { font-size: 22px; }
+  .rankings thead th { padding: 8px; font-size: 10px; }
+  .rankings td { padding: 8px; font-size: 13px; }
+  .matchup { font-size: 11px; }
+}
