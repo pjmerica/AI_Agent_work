@@ -51,7 +51,10 @@ def http_get(url: str) -> str:
 class ProjectionsTableParser(HTMLParser):
     """Pull the #data table out of a FantasyPros projections page.
 
-    Output: self.rows is a list of dicts keyed by header label, with raw cell text.
+    Output: self.rows is a list of lists — each inner list is the raw cell
+    text in column order. The first cell is always the Player cell.
+    Keeping positional (not dict-keyed) because FP repeats header labels
+    like ATT/YDS/TDS across passing AND rushing groups.
     """
 
     def __init__(self):
@@ -64,12 +67,7 @@ class ProjectionsTableParser(HTMLParser):
         self.in_td = False
         self.cur_row: list[str] = []
         self.cur_cell: list[str] = []
-        self.headers: list[str] = []
-        self.header_rows_seen = 0
-        # FantasyPros uses a two-row header (grouped categories above column labels)
-        # We only want the LAST header row before tbody.
-        self.last_header_row: list[str] = []
-        self.rows: list[dict] = []
+        self.rows: list[list[str]] = []
 
     def handle_starttag(self, tag, attrs):
         d = dict(attrs)
@@ -98,22 +96,12 @@ class ProjectionsTableParser(HTMLParser):
             self.in_target_table = False
         elif tag == "thead":
             self.in_thead = False
-            self.headers = self.last_header_row
         elif tag == "tbody":
             self.in_tbody = False
         elif tag == "tr":
             self.in_tr = False
-            if self.in_thead:
-                # Track last header row seen
-                if self.cur_row:
-                    self.last_header_row = self.cur_row[:]
-            elif self.in_tbody:
-                if self.cur_row and self.headers:
-                    # If row is shorter than headers, pad
-                    while len(self.cur_row) < len(self.headers):
-                        self.cur_row.append("")
-                    record = dict(zip(self.headers, self.cur_row))
-                    self.rows.append(record)
+            if self.in_tbody and self.cur_row:
+                self.rows.append(self.cur_row[:])
         elif tag == "th":
             if self.in_thead:
                 self.cur_row.append("".join(self.cur_cell).strip())
@@ -156,18 +144,20 @@ def extract_name_and_team(player_cell: str) -> tuple[str, str]:
 # We map *which raw header label* contains each stat.
 # FantasyPros sometimes uses identical column headers (e.g. ATT for passing AND rushing)
 # so we have to dedupe by position in the header row.
-def collect_stats(rows: list[dict], pos: str) -> list[dict]:
-    """Convert raw FantasyPros rows to a normalized stat dict per player.
+def collect_stats(rows: list[list[str]], pos: str) -> list[dict]:
+    """Convert raw FantasyPros rows (positional) to normalized stat dicts.
 
-    Normalized keys:
-      pass_yds, pass_tds, pass_ints
-      rush_yds, rush_tds
-      rec_yds, rec_tds, receptions
-      fumbles_lost
+    Column layouts (Player is always cell[0]):
+      QB:   Player | ATT CMP YDS TDS INTS | ATT YDS TDS | FL | FPTS
+      RB:   Player | ATT YDS TDS | REC YDS TDS | FL | FPTS
+      WR:   Player | REC YDS TDS | ATT YDS TDS | FL | FPTS
+      TE:   Player | REC YDS TDS | FL | FPTS
     """
     out = []
-    for row in rows:
-        player_raw = row.get("Player", "")
+    for cells in rows:
+        if not cells:
+            continue
+        player_raw = cells[0]
         name, team = extract_name_and_team(player_raw)
         if not name:
             continue
@@ -178,68 +168,46 @@ def collect_stats(rows: list[dict], pos: str) -> list[dict]:
             "rec_yds": 0.0, "rec_tds": 0.0, "receptions": 0.0,
             "fumbles_lost": 0.0,
         }
-
-        # Headers across positions:
-        # QB:   Player | ATT(pass) CMP YDS(pass) TDS(pass) INTS | ATT(rush) YDS(rush) TDS(rush) | FL | FPTS
-        # RB:   Player | ATT YDS TDS | REC YDS TDS | FL | FPTS
-        # WR:   Player | REC YDS TDS | ATT YDS TDS | FL | FPTS
-        # TE:   Player | REC YDS TDS | FL | FPTS
-        # Because some headers repeat, we use the COLUMN ORDER not header dict.
-
-        # Reconstruct ordered cell values:
-        ordered = list(row.values())
-        # The first item is Player. Strip it.
-        if not ordered:
-            continue
-        cells = ordered[1:]  # drop Player col
-        # Drop the trailing FPTS col for safety (we recompute it)
-        # Actually keep it as 'fp_fantasypros' for reference
-        fp_consensus = parse_float(cells[-1]) if cells else 0.0
+        fp_consensus = parse_float(cells[-1]) if len(cells) > 1 else 0.0
 
         if pos == "qb":
-            # passing: ATT(0), CMP(1), YDS(2), TDS(3), INTS(4)
-            # rushing: ATT(5), YDS(6), TDS(7)
-            # FL(8), FPTS(9)
-            if len(cells) >= 10:
-                stats["pass_yds"]  = parse_float(cells[2])
-                stats["pass_tds"]  = parse_float(cells[3])
-                stats["pass_ints"] = parse_float(cells[4])
-                stats["rush_yds"]  = parse_float(cells[6])
-                stats["rush_tds"]  = parse_float(cells[7])
-                stats["fumbles_lost"] = parse_float(cells[8])
+            # Indices: 1 ATT, 2 CMP, 3 pass YDS, 4 pass TDS, 5 INTS,
+            #          6 ATT, 7 rush YDS, 8 rush TDS, 9 FL, 10 FPTS
+            if len(cells) >= 11:
+                stats["pass_yds"]     = parse_float(cells[3])
+                stats["pass_tds"]     = parse_float(cells[4])
+                stats["pass_ints"]    = parse_float(cells[5])
+                stats["rush_yds"]     = parse_float(cells[7])
+                stats["rush_tds"]     = parse_float(cells[8])
+                stats["fumbles_lost"] = parse_float(cells[9])
 
         elif pos == "rb":
-            # rushing: ATT(0), YDS(1), TDS(2)
-            # receiving: REC(3), YDS(4), TDS(5)
-            # FL(6), FPTS(7)
-            if len(cells) >= 8:
-                stats["rush_yds"]   = parse_float(cells[1])
-                stats["rush_tds"]   = parse_float(cells[2])
-                stats["receptions"] = parse_float(cells[3])
-                stats["rec_yds"]    = parse_float(cells[4])
-                stats["rec_tds"]    = parse_float(cells[5])
-                stats["fumbles_lost"] = parse_float(cells[6])
+            # 1 ATT, 2 rush YDS, 3 rush TDS, 4 REC, 5 rec YDS, 6 rec TDS, 7 FL, 8 FPTS
+            if len(cells) >= 9:
+                stats["rush_yds"]     = parse_float(cells[2])
+                stats["rush_tds"]     = parse_float(cells[3])
+                stats["receptions"]   = parse_float(cells[4])
+                stats["rec_yds"]      = parse_float(cells[5])
+                stats["rec_tds"]      = parse_float(cells[6])
+                stats["fumbles_lost"] = parse_float(cells[7])
 
         elif pos == "wr":
-            # receiving: REC(0), YDS(1), TDS(2)
-            # rushing:   ATT(3), YDS(4), TDS(5)
-            # FL(6), FPTS(7)
-            if len(cells) >= 8:
-                stats["receptions"] = parse_float(cells[0])
-                stats["rec_yds"]    = parse_float(cells[1])
-                stats["rec_tds"]    = parse_float(cells[2])
-                stats["rush_yds"]   = parse_float(cells[4])
-                stats["rush_tds"]   = parse_float(cells[5])
-                stats["fumbles_lost"] = parse_float(cells[6])
+            # 1 REC, 2 rec YDS, 3 rec TDS, 4 ATT, 5 rush YDS, 6 rush TDS, 7 FL, 8 FPTS
+            if len(cells) >= 9:
+                stats["receptions"]   = parse_float(cells[1])
+                stats["rec_yds"]      = parse_float(cells[2])
+                stats["rec_tds"]      = parse_float(cells[3])
+                stats["rush_yds"]     = parse_float(cells[5])
+                stats["rush_tds"]     = parse_float(cells[6])
+                stats["fumbles_lost"] = parse_float(cells[7])
 
         elif pos == "te":
-            # receiving: REC(0), YDS(1), TDS(2)
-            # FL(3), FPTS(4)
-            if len(cells) >= 5:
-                stats["receptions"] = parse_float(cells[0])
-                stats["rec_yds"]    = parse_float(cells[1])
-                stats["rec_tds"]    = parse_float(cells[2])
-                stats["fumbles_lost"] = parse_float(cells[3])
+            # 1 REC, 2 rec YDS, 3 rec TDS, 4 FL, 5 FPTS
+            if len(cells) >= 6:
+                stats["receptions"]   = parse_float(cells[1])
+                stats["rec_yds"]      = parse_float(cells[2])
+                stats["rec_tds"]      = parse_float(cells[3])
+                stats["fumbles_lost"] = parse_float(cells[4])
 
         out.append({
             "name": name,
