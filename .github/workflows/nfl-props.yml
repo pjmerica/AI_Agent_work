@@ -16,13 +16,20 @@ jobs:
         with:
           python-version: '3.11'
 
-      - name: Scrape FantasyPros season projections
+      - name: Install Python deps for Clay PDF parser
+        run: pip install pdfplumber
+
+      - name: Scrape FantasyPros consensus projections
         run: python scripts/fetch_nfl_projections.py
+
+      - name: Scrape Mike Clay projections (ESPN PDF)
+        run: python scripts/fetch_clay_projections.py
+        continue-on-error: true
 
       - name: Commit updated data
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add nfl-props/data.json
+          git add nfl-props/data.json nfl-props/clay.json
           git diff --staged --quiet || git commit -m "chore: refresh NFL projections [skip ci]"
           git push

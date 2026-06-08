@@ -28,6 +28,39 @@ a.back:hover { color: #5b4cf5; }
 header h1 { font-size: 28px; font-weight: 700; color: #fff; }
 .subtitle { font-size: 14px; color: #6a6a8a; margin-top: 6px; }
 
+.source-tabs {
+  display: flex;
+  gap: 4px;
+  background: #1a1a24;
+  border: 1px solid #2e2e42;
+  border-radius: 10px;
+  padding: 4px;
+  align-self: flex-start;
+}
+.source-tab {
+  font-family: inherit;
+  font-size: 13px;
+  padding: 8px 14px;
+  border: none;
+  background: transparent;
+  color: #a0a0c0;
+  cursor: pointer;
+  border-radius: 6px;
+  font-weight: 600;
+  transition: all 0.15s;
+}
+.source-tab.active {
+  background: #5b4cf5;
+  color: white;
+}
+.source-tab:hover:not(.active) {
+  color: #e2e2f0;
+}
+.source-tab[data-source="clay"][data-disabled="true"] {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
 .toolbar {
   display: flex;
   flex-wrap: wrap;

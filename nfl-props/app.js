@@ -1,5 +1,8 @@
 (function () {
   // ── State ──────────────────────────────────────────────────────────────────
+  // Cache each source's data after first load
+  const cache = {};
+  let currentSource = "data";   // "data" = FantasyPros consensus, "clay" = Mike Clay
   let raw = { players: [], lastUpdated: null, playerCount: 0, source: "" };
   let fmt = "ppr";
   // Position filter is a Set. Empty = show all.
@@ -33,15 +36,36 @@
   }
 
   // ── Loaders ────────────────────────────────────────────────────────────────
-  async function load() {
+  async function loadSource(srcKey) {
+    if (cache[srcKey]) {
+      raw = cache[srcKey];
+      render();
+      return;
+    }
+    const file = srcKey === "clay" ? "clay.json" : "data.json";
     try {
-      const res = await fetch("data.json?t=" + Date.now(), { cache: "no-store" });
-      raw = await res.json();
+      const res = await fetch(file + "?t=" + Date.now(), { cache: "no-store" });
+      if (!res.ok) throw new Error("HTTP " + res.status);
+      const json = await res.json();
+      cache[srcKey] = json;
+      raw = json;
     } catch (e) {
-      console.error("Failed to load data.json", e);
-      raw = { players: [], lastUpdated: null, playerCount: 0 };
+      console.warn(`Failed to load ${file}`, e);
+      raw = { players: [], lastUpdated: null, playerCount: 0, source: srcKey };
+      // If Clay isn't available, disable that tab
+      if (srcKey === "clay") {
+        const tab = document.querySelector('.source-tab[data-source="clay"]');
+        if (tab) {
+          tab.dataset.disabled = "true";
+          tab.title = "Mike Clay projections not yet scraped — run the workflow with pdfplumber installed";
+        }
+      }
     }
     render();
+  }
+
+  async function load() {
+    await loadSource("data");
   }
 
   // ── Render ─────────────────────────────────────────────────────────────────
@@ -174,6 +198,20 @@
     search = e.target.value.trim();
     render();
   });
+
+  // Source tabs (FantasyPros vs Mike Clay)
+  const $sourceTabs = document.getElementById("source-tabs");
+  if ($sourceTabs) {
+    $sourceTabs.addEventListener("click", (e) => {
+      const tab = e.target.closest(".source-tab");
+      if (!tab) return;
+      if (tab.dataset.disabled === "true") return;
+      document.querySelectorAll(".source-tab").forEach((t) => t.classList.remove("active"));
+      tab.classList.add("active");
+      currentSource = tab.dataset.source;
+      loadSource(currentSource);
+    });
+  }
 
   load();
 })();
