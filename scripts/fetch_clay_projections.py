@@ -60,15 +60,6 @@ def fantasy_points(stats: dict, fmt: str) -> float:
 
 # ── PDF parsing ───────────────────────────────────────────────────────────────
 
-# Team name regex — Clay's pages are titled with team city/name
-TEAM_HEADER_RE = re.compile(r"^(Arizona|Atlanta|Baltimore|Buffalo|Carolina|Chicago|Cincinnati|"
-                            r"Cleveland|Dallas|Denver|Detroit|Green Bay|Houston|Indianapolis|"
-                            r"Jacksonville|Kansas City|Las Vegas|Los Angeles Chargers|"
-                            r"Los Angeles Rams|Miami|Minnesota|New England|New Orleans|"
-                            r"New York Giants|New York Jets|Philadelphia|Pittsburgh|"
-                            r"San Francisco|Seattle|Tampa Bay|Tennessee|Washington)\b",
-                            re.IGNORECASE)
-
 TEAM_ABBR = {
     "Arizona": "ARI", "Atlanta": "ATL", "Baltimore": "BAL", "Buffalo": "BUF",
     "Carolina": "CAR", "Chicago": "CHI", "Cincinnati": "CIN", "Cleveland": "CLE",
@@ -83,14 +74,18 @@ TEAM_ABBR = {
 }
 
 
-# Player name pattern: "<First Last> <POS>"
-# Sometimes Jr./Sr./III/IV included. Position is QB/RB/WR/TE/FB.
-# Followed by 14+ stat columns of integers and decimals.
-PLAYER_LINE_RE = re.compile(
-    r"^([A-Z][a-zA-Z'\-\.]+(?:\s+[A-Z][a-zA-Z'\-\.]+)+(?:\s+(?:Jr\.?|Sr\.?|II|III|IV|V))?)\s+"
-    r"(QB|RB|WR|TE|FB)\s+"
-    r"([-\d\.\s]+)$"
-)
+# Mike Clay's PDF format: each offense row starts with a position code,
+# then the player name (1-4 words), then exactly 16 numeric columns of stats:
+#   Gm | Att Comp Yds TD INT Sk (passing) | Att Yds TD (rushing) | Tgt Rec Yd TD (receiving) | Pts Rk
+# After the Rk column, the defense column for the same row begins with a
+# defensive position code (DI/ED/LB/CB/S) — we stop there.
+
+OFFENSE_POS_PREFIXES = ("QB", "RB", "WR", "TE", "FB")
+DEFENSE_POS_PREFIXES = ("DI", "ED", "LB", "CB", "S", "K", "P")
+
+# Skip "Total" rows
+def is_total_row(name: str) -> bool:
+    return name.strip().lower().startswith("total") or name.strip().lower() == "total"
 
 
 # Column layouts in Mike Clay's PDF (based on his 2024/2025 format):
@@ -99,57 +94,29 @@ PLAYER_LINE_RE = re.compile(
 # WR header: Player POS GP Tgt Rec RecYds RecTD RuAtt RuYds RuTD FUM FPTS
 # TE header: Player POS GP Tgt Rec RecYds RecTD RuAtt RuYds RuTD FUM FPTS
 
-def extract_player_stats(name: str, position: str, nums_str: str, team_abbr: str) -> dict | None:
-    """Parse trailing numeric columns into a stat dict based on position."""
-    nums = nums_str.strip().split()
-    try:
-        floats = [float(x) for x in nums]
-    except ValueError:
+def extract_player_stats(name: str, position: str, nums: list[float], team_abbr: str) -> dict | None:
+    """Parse the 16 offensive stat columns into a normalized stat dict.
+
+    Column order for ALL offensive positions:
+       0=Gm  1=PassAtt  2=PassComp  3=PassYds  4=PassTD  5=PassINT  6=Sk
+       7=RuAtt  8=RuYds  9=RuTD
+       10=Tgt  11=Rec  12=RecYds  13=RecTD
+       14=Pts  15=Rk
+    """
+    if len(nums) < 16:
         return None
 
     stats = {
-        "pass_yds": 0.0, "pass_tds": 0.0, "pass_ints": 0.0,
-        "rush_yds": 0.0, "rush_tds": 0.0,
-        "rec_yds": 0.0, "rec_tds": 0.0, "receptions": 0.0,
-        "fumbles_lost": 0.0,
+        "pass_yds":      nums[3],
+        "pass_tds":      nums[4],
+        "pass_ints":     nums[5],
+        "rush_yds":      nums[8],
+        "rush_tds":      nums[9],
+        "receptions":    nums[11],
+        "rec_yds":       nums[12],
+        "rec_tds":       nums[13],
+        "fumbles_lost":  0.0,   # Clay's PDF doesn't break out FUM in this layout
     }
-
-    # Need enough columns
-    if position == "QB":
-        # GP CMP ATT YDS TD INT RuAtt RuYds RuTD FUM FPTS  → 11 cols
-        if len(floats) >= 11:
-            stats["pass_yds"]     = floats[3]
-            stats["pass_tds"]     = floats[4]
-            stats["pass_ints"]    = floats[5]
-            stats["rush_yds"]     = floats[7]
-            stats["rush_tds"]     = floats[8]
-            stats["fumbles_lost"] = floats[9]
-        else:
-            return None
-    elif position == "RB":
-        # GP RuAtt RuYds RuTD Tgt Rec RecYds RecTD FUM FPTS → 10 cols
-        if len(floats) >= 10:
-            stats["rush_yds"]     = floats[2]
-            stats["rush_tds"]     = floats[3]
-            stats["receptions"]   = floats[5]
-            stats["rec_yds"]      = floats[6]
-            stats["rec_tds"]      = floats[7]
-            stats["fumbles_lost"] = floats[8]
-        else:
-            return None
-    elif position in ("WR", "TE"):
-        # GP Tgt Rec RecYds RecTD RuAtt RuYds RuTD FUM FPTS → 10 cols
-        if len(floats) >= 10:
-            stats["receptions"]   = floats[2]
-            stats["rec_yds"]      = floats[3]
-            stats["rec_tds"]      = floats[4]
-            stats["rush_yds"]     = floats[6]
-            stats["rush_tds"]     = floats[7]
-            stats["fumbles_lost"] = floats[8]
-        else:
-            return None
-    else:
-        return None
 
     return {
         "name": name.strip(),
@@ -161,46 +128,100 @@ def extract_player_stats(name: str, position: str, nums_str: str, team_abbr: str
             "half":     fantasy_points(stats, "half"),
             "standard": fantasy_points(stats, "standard"),
         },
+        "clay_pts": nums[14],   # Clay's own PPR projection for reference
+        "clay_rk":  int(nums[15]),
     }
+
+
+def parse_offense_line(line: str, current_team: str | None) -> dict | None:
+    """Parse a single offense data line. Returns player dict or None.
+
+    Line format:
+       <POS> <Player Name> <16 numeric stat cols> <defensive POS> <defensive data...>
+    """
+    if not current_team:
+        return None
+    parts = line.split()
+    if len(parts) < 18:
+        return None
+    pos = parts[0]
+    if pos not in OFFENSE_POS_PREFIXES:
+        return None
+
+    # Walk tokens after the position, collecting the player name (string tokens)
+    # then 16 numeric tokens.
+    name_tokens: list[str] = []
+    nums: list[float] = []
+    i = 1
+    n = len(parts)
+
+    # First read non-numeric tokens as the name (stop at first float)
+    while i < n:
+        tok = parts[i]
+        if _is_float(tok):
+            break
+        name_tokens.append(tok)
+        i += 1
+
+    if not name_tokens:
+        return None
+
+    # Skip "Total" rows
+    name = " ".join(name_tokens)
+    if is_total_row(name):
+        return None
+
+    # Read exactly 16 numeric tokens
+    while i < n and len(nums) < 16:
+        tok = parts[i]
+        if not _is_float(tok):
+            return None
+        nums.append(float(tok))
+        i += 1
+
+    if len(nums) < 16:
+        return None
+
+    return extract_player_stats(name, pos, nums, current_team)
+
+
+def _is_float(tok: str) -> bool:
+    if not tok:
+        return False
+    try:
+        float(tok)
+        return True
+    except ValueError:
+        return False
+
+
+TEAM_PAGE_TITLE_RE = re.compile(r"^2026\s+(.+?)\s+Projections\s*$", re.IGNORECASE)
 
 
 def parse_pdf(pdf_path: Path) -> list[dict]:
     players = []
     current_team = None
-    debug_lines_printed = 0
 
     with pdfplumber.open(str(pdf_path)) as pdf:
-        for page_num, page in enumerate(pdf.pages, 1):
+        for page in pdf.pages:
             text = page.extract_text() or ""
-            # Debug: dump first lines from a few mid-document pages
-            if page_num in (5, 10, 20) and debug_lines_printed < 60:
-                print(f"--- PAGE {page_num} SAMPLE ---")
-                for ln in text.split("\n")[:25]:
-                    print(f"    {ln!r}")
-                    debug_lines_printed += 1
             for line in text.split("\n"):
-                # Update team context if this line is a team name
-                m = TEAM_HEADER_RE.match(line.strip())
-                if m:
-                    team = m.group(1)
-                    # Disambiguate "Los Angeles" rare case
-                    if team.lower() == "los angeles chargers":
-                        current_team = "LAC"
-                    elif team.lower() == "los angeles rams":
-                        current_team = "LAR"
-                    else:
-                        current_team = TEAM_ABBR.get(team)
+                stripped = line.strip()
+
+                # Page header: "2026 Buffalo Bills Projections"
+                tm = TEAM_PAGE_TITLE_RE.match(stripped)
+                if tm:
+                    team_name = tm.group(1).strip()
+                    # Map "Buffalo Bills" → "Buffalo"
+                    for full_name, abbr in TEAM_ABBR.items():
+                        if team_name.lower().startswith(full_name.lower()):
+                            current_team = abbr
+                            break
                     continue
 
-                # Try player line
-                pm = PLAYER_LINE_RE.match(line.strip())
-                if pm and current_team:
-                    name = pm.group(1)
-                    pos = pm.group(2)
-                    nums = pm.group(3)
-                    p = extract_player_stats(name, pos, nums, current_team)
-                    if p:
-                        players.append(p)
+                p = parse_offense_line(stripped, current_team)
+                if p:
+                    players.append(p)
 
     return players
 
