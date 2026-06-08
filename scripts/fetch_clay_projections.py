@@ -167,10 +167,17 @@ def extract_player_stats(name: str, position: str, nums_str: str, team_abbr: str
 def parse_pdf(pdf_path: Path) -> list[dict]:
     players = []
     current_team = None
+    debug_lines_printed = 0
 
     with pdfplumber.open(str(pdf_path)) as pdf:
         for page_num, page in enumerate(pdf.pages, 1):
             text = page.extract_text() or ""
+            # Debug: dump first lines from a few mid-document pages
+            if page_num in (5, 10, 20) and debug_lines_printed < 60:
+                print(f"--- PAGE {page_num} SAMPLE ---")
+                for ln in text.split("\n")[:25]:
+                    print(f"    {ln!r}")
+                    debug_lines_printed += 1
             for line in text.split("\n"):
                 # Update team context if this line is a team name
                 m = TEAM_HEADER_RE.match(line.strip())
