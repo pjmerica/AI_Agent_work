@@ -2,7 +2,7 @@
   // ── State ──────────────────────────────────────────────────────────────────
   // Cache each source's data after first load
   const cache = {};
-  let currentSource = "data";   // "data" = FantasyPros consensus, "clay" = Mike Clay
+  let currentSource = "aggregated";  // default: combined view
   let raw = { players: [], lastUpdated: null, playerCount: 0, source: "" };
   let fmt = "ppr";
   // Position filter is a Set. Empty = show all.
@@ -36,36 +36,103 @@
   }
 
   // ── Loaders ────────────────────────────────────────────────────────────────
+  async function fetchJson(file) {
+    const res = await fetch(file + "?t=" + Date.now(), { cache: "no-store" });
+    if (!res.ok) throw new Error("HTTP " + res.status);
+    return res.json();
+  }
+
+  function buildAggregated(fp, clay) {
+    // Join by player name (lowercased, basic normalization). Average each stat
+    // across the two sources. If a player only appears in one source, take that.
+    const norm = (s) => (s || "").toLowerCase().replace(/[^a-z0-9 ]/g, "").trim();
+    const byKey = new Map();
+
+    const consume = (player, sourceLabel) => {
+      const key = norm(player.name);
+      if (!key) return;
+      let entry = byKey.get(key);
+      if (!entry) {
+        entry = {
+          name: player.name,
+          team: player.team,
+          position: player.position,
+          stats: { pass_yds: 0, pass_tds: 0, pass_ints: 0, rush_yds: 0, rush_tds: 0, rec_yds: 0, rec_tds: 0, receptions: 0, fumbles_lost: 0 },
+          sources: [],
+        };
+        byKey.set(key, entry);
+      }
+      // Track which sources contributed so we can average correctly
+      entry.sources.push(sourceLabel);
+      // Accumulate; we'll divide by count at the end
+      for (const k of Object.keys(entry.stats)) {
+        entry.stats[k] += (player.stats?.[k] || 0);
+      }
+      // Prefer non-empty team / position
+      if (!entry.team && player.team) entry.team = player.team;
+      if (!entry.position && player.position) entry.position = player.position;
+    };
+
+    (fp?.players || []).forEach((p) => consume(p, "FantasyPros"));
+    (clay?.players || []).forEach((p) => consume(p, "Clay"));
+
+    const out = [];
+    for (const entry of byKey.values()) {
+      const n = entry.sources.length;
+      const avg = {};
+      for (const k of Object.keys(entry.stats)) {
+        avg[k] = Math.round((entry.stats[k] / n) * 10) / 10;
+      }
+      out.push({
+        name: entry.name,
+        team: entry.team,
+        position: entry.position,
+        stats: avg,
+        sources: entry.sources,
+      });
+    }
+
+    return {
+      lastUpdated: fp?.lastUpdated || clay?.lastUpdated || null,
+      season: fp?.season || clay?.season || "",
+      source: "Aggregated (FantasyPros + Mike Clay)",
+      playerCount: out.length,
+      players: out,
+    };
+  }
+
   async function loadSource(srcKey) {
     if (cache[srcKey]) {
       raw = cache[srcKey];
       render();
       return;
     }
-    const file = srcKey === "clay" ? "clay.json" : "data.json";
+
     try {
-      const res = await fetch(file + "?t=" + Date.now(), { cache: "no-store" });
-      if (!res.ok) throw new Error("HTTP " + res.status);
-      const json = await res.json();
-      cache[srcKey] = json;
-      raw = json;
-    } catch (e) {
-      console.warn(`Failed to load ${file}`, e);
-      raw = { players: [], lastUpdated: null, playerCount: 0, source: srcKey };
-      // If Clay isn't available, disable that tab
-      if (srcKey === "clay") {
-        const tab = document.querySelector('.source-tab[data-source="clay"]');
-        if (tab) {
-          tab.dataset.disabled = "true";
-          tab.title = "Mike Clay projections not yet scraped — run the workflow with pdfplumber installed";
-        }
+      if (srcKey === "aggregated") {
+        const [fp, clay] = await Promise.all([
+          cache["data"] ? Promise.resolve(cache["data"]) : fetchJson("data.json").catch(() => null),
+          cache["clay"] ? Promise.resolve(cache["clay"]) : fetchJson("clay.json").catch(() => null),
+        ]);
+        if (fp) cache["data"] = fp;
+        if (clay) cache["clay"] = clay;
+        cache["aggregated"] = buildAggregated(fp, clay);
+        raw = cache["aggregated"];
+      } else {
+        const file = srcKey === "clay" ? "clay.json" : "data.json";
+        const json = await fetchJson(file);
+        cache[srcKey] = json;
+        raw = json;
       }
+    } catch (e) {
+      console.warn(`Failed to load source ${srcKey}`, e);
+      raw = { players: [], lastUpdated: null, playerCount: 0, source: srcKey };
     }
     render();
   }
 
   async function load() {
-    await loadSource("data");
+    await loadSource("aggregated");
   }
 
   // ── Render ─────────────────────────────────────────────────────────────────
