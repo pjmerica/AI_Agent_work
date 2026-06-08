@@ -2,7 +2,8 @@
   // ── State ──────────────────────────────────────────────────────────────────
   let raw = { players: [], lastUpdated: null, playerCount: 0, source: "" };
   let fmt = "ppr";
-  let pos = "ALL";
+  // Position filter is a Set. Empty = show all.
+  const activePos = new Set();
   let search = "";
 
   // ── DOM refs ───────────────────────────────────────────────────────────────
@@ -48,8 +49,8 @@
     const players = (raw.players || [])
       .map((p) => ({ ...p, _proj: fantasyPoints(p.stats || {}, fmt) }))
       .filter((p) => {
-        if (pos === "ALL") return true;
-        return p.position === pos;
+        if (activePos.size === 0) return true;
+        return activePos.has(p.position);
       })
       .filter((p) => {
         if (!search) return true;
@@ -142,9 +143,30 @@
   $posChips.addEventListener("click", (e) => {
     const chip = e.target.closest(".chip");
     if (!chip) return;
-    document.querySelectorAll("#pos-chips .chip").forEach((c) => c.classList.remove("active"));
-    chip.classList.add("active");
-    pos = chip.dataset.pos;
+    const p = chip.dataset.pos;
+
+    if (p === "ALL") {
+      // "All" clears every selection
+      activePos.clear();
+      document.querySelectorAll("#pos-chips .chip").forEach((c) => c.classList.remove("active"));
+      chip.classList.add("active");
+    } else {
+      // Toggle this position; deactivate the "All" chip
+      const allChip = document.querySelector('#pos-chips .chip[data-pos="ALL"]');
+      if (allChip) allChip.classList.remove("active");
+
+      if (activePos.has(p)) {
+        activePos.delete(p);
+        chip.classList.remove("active");
+      } else {
+        activePos.add(p);
+        chip.classList.add("active");
+      }
+
+      // If nothing is selected, fall back to "All"
+      if (activePos.size === 0 && allChip) allChip.classList.add("active");
+    }
+
     render();
   });
 
