@@ -1,15 +1,15 @@
 {
-  "lastUpdated": "2026-06-09T03:30:48.718Z",
+  "lastUpdated": "2026-06-09T09:42:49.569Z",
   "polymarketCount": 100,
-  "predictitCount": 642,
-  "matchCount": 1,
+  "predictitCount": 640,
+  "matchCount": 2,
   "matches": [
     {
       "polymarket": {
         "platform": "Polymarket",
         "title": "Will Andy Biggs win the 2026 Arizona Governor Republican primary election?",
-        "yesPrice": 0.966,
-        "noPrice": 0.034,
+        "yesPrice": 0.9645,
+        "noPrice": 0.0355,
         "url": "https://polymarket.com/event/will-andy-biggs-win-the-2026-arizona-governor-republican-primary-election",
         "volume": 9924.290861000003
       },
@@ -22,6 +22,31 @@
         "volume": null
       },
       "score": 67,
+      "entities": 1,
+      "diff": 0.5,
+      "arb": true,
+      "arbProfit": 0.5,
+      "buyYesOn": "Polymarket",
+      "buyNoOn": "PredictIt"
+    },
+    {
+      "polymarket": {
+        "platform": "Polymarket",
+        "title": "Will Avigdor Lieberman be the next Prime Minister of Israel?",
+        "yesPrice": 0.0465,
+        "noPrice": 0.9535,
+        "url": "https://polymarket.com/event/will-avigdor-lieberman-be-the-next-prime-minister-of-israel",
+        "volume": 990886.8103280012
+      },
+      "predictit": {
+        "platform": "PredictIt",
+        "title": "Will Avigdor Lieberman be the Prime Minister of Israel after the 2026 election?",
+        "yesPrice": 0.05,
+        "noPrice": 0.98,
+        "url": "https://www.predictit.org/markets/detail/8643/Who-will-be-the-Prime-Minister-of-Israel-after-the-2026-election",
+        "volume": null
+      },
+      "score": 83,
       "entities": 1,
       "diff": 0.4,
       "arb": false,
