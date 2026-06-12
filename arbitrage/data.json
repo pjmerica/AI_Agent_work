@@ -1,33 +1,58 @@
 {
-  "lastUpdated": "2026-06-12T14:58:08.947Z",
+  "lastUpdated": "2026-06-12T20:10:40.781Z",
   "polymarketCount": 100,
-  "predictitCount": 622,
-  "matchCount": 1,
+  "predictitCount": 610,
+  "matchCount": 2,
   "matches": [
     {
       "polymarket": {
         "platform": "Polymarket",
         "title": "Will Mike Collins be the Republican nominee for Senate in Georgia?",
-        "yesPrice": 0.93,
-        "noPrice": 0.07,
+        "yesPrice": 0.9305,
+        "noPrice": 0.0695,
         "url": "https://polymarket.com/event/will-mike-collins-be-the-republican-nominee-for-senate-in-georgia",
         "volume": 98828.55380999985
       },
       "predictit": {
         "platform": "PredictIt",
         "title": "Will Mike Collins win the 2026 Georgia Republican Senate nomination?",
-        "yesPrice": 0.94,
-        "noPrice": 0.1,
+        "yesPrice": 0.97,
+        "noPrice": 0.09,
         "url": "https://www.predictit.org/markets/detail/8178/Who-will-win-the-2026-Georgia-Republican-Senate-nomination",
         "volume": null
       },
       "score": 63,
       "entities": 1,
-      "diff": 1,
+      "diff": 3.9,
       "arb": true,
-      "arbProfit": 1,
+      "arbProfit": 3.9,
       "buyYesOn": "Polymarket",
       "buyNoOn": "PredictIt"
+    },
+    {
+      "polymarket": {
+        "platform": "Polymarket",
+        "title": "Will Alex Bores be the democratic nominee for NY-12?",
+        "yesPrice": 0.355,
+        "noPrice": 0.645,
+        "url": "https://polymarket.com/event/will-alex-bores-be-the-democratic-nominee-for-ny-12",
+        "volume": 9882.597124999998
+      },
+      "predictit": {
+        "platform": "PredictIt",
+        "title": "Will Alex Bores win the Democratic nomination in the NY-12 House primary?",
+        "yesPrice": 0.35,
+        "noPrice": 0.7,
+        "url": "https://www.predictit.org/markets/detail/8364/Who-will-win-the-Democratic-nomination-in-the-NY-12-House-primary",
+        "volume": null
+      },
+      "score": 44,
+      "entities": 1,
+      "diff": 0.5,
+      "arb": false,
+      "arbProfit": 0.5,
+      "buyYesOn": "PredictIt",
+      "buyNoOn": "Polymarket"
     }
   ]
 }
