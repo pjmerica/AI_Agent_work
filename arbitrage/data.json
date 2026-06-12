@@ -1,17 +1,17 @@
 {
-  "lastUpdated": "2026-06-11T20:21:46.367Z",
+  "lastUpdated": "2026-06-12T03:57:46.546Z",
   "polymarketCount": 100,
-  "predictitCount": 628,
-  "matchCount": 1,
+  "predictitCount": 625,
+  "matchCount": 2,
   "matches": [
     {
       "polymarket": {
         "platform": "Polymarket",
         "title": "Will Ro Khanna win the 2028 US Presidential Election?",
-        "yesPrice": 0.0105,
-        "noPrice": 0.9895,
+        "yesPrice": 0.0155,
+        "noPrice": 0.9845,
         "url": "https://polymarket.com/event/will-ro-khanna-win-the-2028-us-presidential-election",
-        "volume": 9930973.494990269
+        "volume": 9949645.191656172
       },
       "predictit": {
         "platform": "PredictIt",
@@ -23,9 +23,34 @@
       },
       "score": 50,
       "entities": 1,
-      "diff": 1.9,
+      "diff": 1.5,
       "arb": true,
-      "arbProfit": 2,
+      "arbProfit": 1.5,
+      "buyYesOn": "Polymarket",
+      "buyNoOn": "PredictIt"
+    },
+    {
+      "polymarket": {
+        "platform": "Polymarket",
+        "title": "Will Mike Collins be the Republican nominee for Senate in Georgia?",
+        "yesPrice": 0.9285,
+        "noPrice": 0.0715,
+        "url": "https://polymarket.com/event/will-mike-collins-be-the-republican-nominee-for-senate-in-georgia",
+        "volume": 98807.03482399986
+      },
+      "predictit": {
+        "platform": "PredictIt",
+        "title": "Will Mike Collins win the 2026 Georgia Republican Senate nomination?",
+        "yesPrice": 0.94,
+        "noPrice": 0.1,
+        "url": "https://www.predictit.org/markets/detail/8178/Who-will-win-the-2026-Georgia-Republican-Senate-nomination",
+        "volume": null
+      },
+      "score": 63,
+      "entities": 1,
+      "diff": 1.1,
+      "arb": true,
+      "arbProfit": 1.1,
       "buyYesOn": "Polymarket",
       "buyNoOn": "PredictIt"
     }
