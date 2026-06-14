@@ -536,6 +536,9 @@
     return sorted[base];
   }
 
+  // Per-position sample cap — keeps distributions focused on draftable depth
+  const POS_TOP_N = { QB: 32, RB: 60, WR: 60, TE: 32 };
+
   function renderDistributionChart() {
     destroyChart("distribution");
     const ctx = document.getElementById("chart-distribution");
@@ -544,15 +547,14 @@
     const baseData = cache["aggregated"] || raw;
     const positions = ["QB", "RB", "WR", "TE"];
 
-    // For each position, take only fantasy-startable players (top 36) and
-    // compute quartiles for a manual box-plot rendering via stacked bars.
     const stats = positions.map((pos) => {
+      const topN = POS_TOP_N[pos] || 36;
       const vals = (baseData?.players || [])
         .filter((p) => p.position === pos)
         .map((p) => fantasyPoints(p.stats || {}, fmt))
         .filter((v) => v > 0)
         .sort((a, b) => a - b)
-        .slice(-36);   // top 36 (smallest first because sorted asc)
+        .slice(-topN);   // top N (smallest first because sorted asc)
       if (vals.length === 0) {
         return { pos, min: 0, q1: 0, median: 0, q3: 0, max: 0 };
       }
@@ -616,7 +618,7 @@
         scales: {
           x: { ticks: { color: chartTextColor() }, grid: { color: chartGridColor() } },
           y: {
-            title: { display: true, text: "Projected PPR (top 36 per position)", color: chartTextColor() },
+            title: { display: true, text: "Projected PPR (QB/TE top 32, RB/WR top 60)", color: chartTextColor() },
             ticks: { color: chartTextColor() },
             grid: { color: chartGridColor() },
             beginAtZero: false,
@@ -658,14 +660,17 @@
     const baseData = cache["aggregated"] || raw;
     const positions = ["QB", "RB", "WR", "TE"];
 
-    // Get all player projections per position. Use the wider field
-    // (no top-N cutoff) so the violin reflects the full talent pool.
+    // Cap samples per position to the realistically-draftable depth
+    // (QB/TE start ~32, RB/WR you draft 50-60 deep in deeper leagues).
     const samplesByPos = {};
     for (const pos of positions) {
+      const topN = POS_TOP_N[pos] || 36;
       samplesByPos[pos] = (baseData?.players || [])
         .filter((p) => p.position === pos)
         .map((p) => fantasyPoints(p.stats || {}, fmt))
-        .filter((v) => v > 0);
+        .filter((v) => v > 0)
+        .sort((a, b) => b - a)
+        .slice(0, topN);
     }
 
     const allVals = positions.flatMap((p) => samplesByPos[p]);
