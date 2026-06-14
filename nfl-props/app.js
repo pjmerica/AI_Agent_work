@@ -243,9 +243,7 @@
     btn.classList.add("active");
     fmt = btn.dataset.fmt;
     render();
-    if (currentSource === "viz" && typeof Chart !== "undefined") {
-      // Aggregated cache pre-built fantasy points using the OLD fmt for the
-      // chart datasets; force rebuild by clearing it.
+    if (currentView === "viz" && typeof Chart !== "undefined") {
       cache["aggregated"] = null;
       renderViz();
     }
@@ -301,7 +299,32 @@
     renderViz();
   }
 
-  // Source tabs
+  // ── Top-level view tabs (Rankings / Visualizations) ───────────────────────
+  let currentView = "rankings";
+  const $viewTabs = document.getElementById("view-tabs");
+  const $sourceTabsContainer = document.getElementById("source-tabs");
+
+  if ($viewTabs) {
+    $viewTabs.addEventListener("click", (e) => {
+      const tab = e.target.closest(".view-tab");
+      if (!tab) return;
+      document.querySelectorAll(".view-tab").forEach((t) => t.classList.remove("active"));
+      tab.classList.add("active");
+      currentView = tab.dataset.view;
+
+      if (currentView === "rankings") {
+        // Show source tabs (they only matter for the table view)
+        if ($sourceTabsContainer) $sourceTabsContainer.classList.remove("hidden");
+        showTableView();
+      } else {
+        // Hide source tabs while in viz view
+        if ($sourceTabsContainer) $sourceTabsContainer.classList.add("hidden");
+        showVizView();
+      }
+    });
+  }
+
+  // Source tabs (only meaningful in Rankings view)
   const $sourceTabs = document.getElementById("source-tabs");
   if ($sourceTabs) {
     $sourceTabs.addEventListener("click", (e) => {
@@ -311,12 +334,7 @@
       document.querySelectorAll(".source-tab").forEach((t) => t.classList.remove("active"));
       tab.classList.add("active");
       currentSource = tab.dataset.source;
-      if (currentSource === "viz") {
-        showVizView();
-      } else {
-        showTableView();
-        loadSource(currentSource);
-      }
+      loadSource(currentSource);
     });
   }
 
@@ -608,13 +626,181 @@
     });
   }
 
+  // ── Kernel density estimator for violin plot ───────────────────────────────
+  function kde(samples, bandwidth, gridPoints) {
+    // Gaussian KDE — returns array of {x, y} where y is the density estimate.
+    if (samples.length === 0 || gridPoints.length === 0) return [];
+    const norm = 1 / (samples.length * bandwidth * Math.sqrt(2 * Math.PI));
+    return gridPoints.map((x) => {
+      let s = 0;
+      for (const xi of samples) {
+        const z = (x - xi) / bandwidth;
+        s += Math.exp(-0.5 * z * z);
+      }
+      return { x, y: s * norm };
+    });
+  }
+
+  function silvermanBandwidth(samples) {
+    const n = samples.length;
+    if (n < 2) return 1;
+    const mean = samples.reduce((a, b) => a + b, 0) / n;
+    const variance = samples.reduce((a, b) => a + (b - mean) ** 2, 0) / n;
+    const sd = Math.sqrt(variance);
+    return 1.06 * sd * Math.pow(n, -1 / 5) || 1;
+  }
+
+  function renderViolinChart() {
+    destroyChart("violin");
+    const ctx = document.getElementById("chart-violin");
+    if (!ctx) return;
+
+    const baseData = cache["aggregated"] || raw;
+    const positions = ["QB", "RB", "WR", "TE"];
+
+    // Get all player projections per position. Use the wider field
+    // (no top-N cutoff) so the violin reflects the full talent pool.
+    const samplesByPos = {};
+    for (const pos of positions) {
+      samplesByPos[pos] = (baseData?.players || [])
+        .filter((p) => p.position === pos)
+        .map((p) => fantasyPoints(p.stats || {}, fmt))
+        .filter((v) => v > 0);
+    }
+
+    const allVals = positions.flatMap((p) => samplesByPos[p]);
+    if (allVals.length === 0) return;
+
+    const yMin = 0;
+    const yMax = Math.max(...allVals) * 1.05;
+    const GRID = 60;
+    const grid = [];
+    for (let i = 0; i <= GRID; i++) grid.push(yMin + (yMax - yMin) * (i / GRID));
+
+    // Compute KDE for each position; normalize all to share a common width.
+    const kdeByPos = {};
+    let globalMaxDensity = 0;
+    for (const pos of positions) {
+      const s = samplesByPos[pos];
+      if (s.length < 2) {
+        kdeByPos[pos] = [];
+        continue;
+      }
+      const bw = silvermanBandwidth(s);
+      const points = kde(s, bw, grid);
+      kdeByPos[pos] = points;
+      const localMax = Math.max(...points.map((p) => p.y));
+      if (localMax > globalMaxDensity) globalMaxDensity = localMax;
+    }
+
+    // Each violin is plotted as a closed polygon centered at its category X.
+    // Chart.js category axis uses integer indices, so X centers are 0..3.
+    // We draw each violin as a scatter dataset with showLine=true and fill,
+    // mirroring left and right of the center.
+    const VIOLIN_HALF_WIDTH = 0.42;   // in category-axis units
+
+    const datasets = [];
+    positions.forEach((pos, idx) => {
+      const points = kdeByPos[pos];
+      if (points.length === 0) return;
+      const color = POS_COLORS[pos];
+
+      // Build polygon: go up the right side, then back down the left.
+      const right = points.map((p) => ({
+        x: idx + (p.y / globalMaxDensity) * VIOLIN_HALF_WIDTH,
+        y: p.x,
+      }));
+      const left = [...points]
+        .reverse()
+        .map((p) => ({
+          x: idx - (p.y / globalMaxDensity) * VIOLIN_HALF_WIDTH,
+          y: p.x,
+        }));
+      const polygon = [...right, ...left, right[0]];
+
+      datasets.push({
+        label: pos,
+        data: polygon,
+        showLine: true,
+        fill: true,
+        backgroundColor: color + "55",
+        borderColor: color,
+        borderWidth: 1.5,
+        pointRadius: 0,
+        pointHoverRadius: 0,
+        tension: 0.25,
+      });
+
+      // Median marker
+      const sorted = [...samplesByPos[pos]].sort((a, b) => a - b);
+      const median = quantile(sorted, 0.5);
+      datasets.push({
+        label: pos + " median",
+        data: [
+          { x: idx - VIOLIN_HALF_WIDTH * 0.5, y: median },
+          { x: idx + VIOLIN_HALF_WIDTH * 0.5, y: median },
+        ],
+        showLine: true,
+        borderColor: "#ffffff",
+        borderWidth: 2,
+        pointRadius: 0,
+        fill: false,
+      });
+    });
+
+    charts["violin"] = new Chart(ctx, {
+      type: "scatter",
+      data: { datasets },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: {
+            labels: {
+              color: chartTextColor(),
+              filter: (item) => !item.text.endsWith(" median"),
+            },
+          },
+          tooltip: {
+            callbacks: {
+              title: () => "",
+              label: (ctx) => {
+                const pos = ctx.dataset.label.replace(" median", "");
+                return `${pos}: ~${ctx.raw.y.toFixed(0)} PPR`;
+              },
+            },
+          },
+        },
+        scales: {
+          x: {
+            type: "linear",
+            min: -0.6,
+            max: positions.length - 0.4,
+            ticks: {
+              color: chartTextColor(),
+              stepSize: 1,
+              callback: (val) => positions[val] ?? "",
+            },
+            grid: { color: chartGridColor() },
+          },
+          y: {
+            title: { display: true, text: "Projected PPR", color: chartTextColor() },
+            ticks: { color: chartTextColor() },
+            grid: { color: chartGridColor() },
+            min: 0,
+          },
+        },
+      },
+    });
+  }
+
   async function renderViz() {
     if (typeof Chart === "undefined") {
       console.warn("Chart.js not loaded");
       return;
     }
     await ensureAllSourcesLoaded();
-    // Make sure aggregated is built for the tier + distribution charts
+    // Make sure aggregated is built for the tier + distribution + violin charts
     if (!cache["aggregated"]) {
       cache["aggregated"] = buildAggregated([
         { label: "FantasyPros", data: cache["data"] },
@@ -625,6 +811,7 @@
     renderDisagreementChart();
     renderTiersChart();
     renderDistributionChart();
+    renderViolinChart();
   }
 
   // Position filter inside the viz tab

@@ -14,12 +14,16 @@
       <p class="subtitle">Season-long projections converted to PPR / half-PPR / standard fantasy points. Draft cheat sheet.</p>
     </header>
 
+    <div class="view-tabs" id="view-tabs">
+      <button class="view-tab active" data-view="rankings">Rankings</button>
+      <button class="view-tab" data-view="viz">Visualizations</button>
+    </div>
+
     <div class="source-tabs" id="source-tabs">
       <button class="source-tab active" data-source="aggregated">Aggregated</button>
       <button class="source-tab" data-source="data">FantasyPros Consensus</button>
       <button class="source-tab" data-source="clay">Mike Clay (ESPN)</button>
       <button class="source-tab" data-source="nflcom">NFL.com</button>
-      <button class="source-tab" data-source="viz">Visualizations</button>
     </div>
 
     <div class="toolbar">
@@ -88,6 +92,12 @@
           <h2 class="viz-title">Position Distributions</h2>
           <p class="viz-desc">Box plot of projected PPR for each position. The taller the box, the wider the spread of viable starters.</p>
           <div class="chart-box"><canvas id="chart-distribution"></canvas></div>
+        </section>
+
+        <section class="viz-section">
+          <h2 class="viz-title">Violin Plot by Position</h2>
+          <p class="viz-desc">Density of projected PPR across all players at each position. Wider sections = more players clustered at that point. Reveals tier shapes — bimodal lobes mean clear tiers, smooth taper means a continuum.</p>
+          <div class="chart-box"><canvas id="chart-violin"></canvas></div>
         </section>
       </div>
     </main>
