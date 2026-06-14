@@ -42,9 +42,9 @@
     return res.json();
   }
 
-  function buildAggregated(fp, clay) {
-    // Join by player name (lowercased, basic normalization). Average each stat
-    // across the two sources. If a player only appears in one source, take that.
+  function buildAggregated(sources) {
+    // sources: array of { label, data } where data is the parsed json (or null).
+    // Average each stat across whichever sources contributed for each player.
     const norm = (s) => (s || "").toLowerCase().replace(/[^a-z0-9 ]/g, "").trim();
     const byKey = new Map();
 
@@ -62,19 +62,24 @@
         };
         byKey.set(key, entry);
       }
-      // Track which sources contributed so we can average correctly
       entry.sources.push(sourceLabel);
-      // Accumulate; we'll divide by count at the end
       for (const k of Object.keys(entry.stats)) {
         entry.stats[k] += (player.stats?.[k] || 0);
       }
-      // Prefer non-empty team / position
       if (!entry.team && player.team) entry.team = player.team;
       if (!entry.position && player.position) entry.position = player.position;
     };
 
-    (fp?.players || []).forEach((p) => consume(p, "FantasyPros"));
-    (clay?.players || []).forEach((p) => consume(p, "Clay"));
+    let firstLastUpdated = null;
+    let firstSeason = "";
+    const contributedLabels = [];
+    for (const { label, data } of sources) {
+      if (!data || !data.players || data.players.length === 0) continue;
+      contributedLabels.push(label);
+      if (!firstLastUpdated) firstLastUpdated = data.lastUpdated || null;
+      if (!firstSeason) firstSeason = data.season || "";
+      data.players.forEach((p) => consume(p, label));
+    }
 
     const out = [];
     for (const entry of byKey.values()) {
@@ -93,9 +98,11 @@
     }
 
     return {
-      lastUpdated: fp?.lastUpdated || clay?.lastUpdated || null,
-      season: fp?.season || clay?.season || "",
-      source: "Aggregated (FantasyPros + Mike Clay)",
+      lastUpdated: firstLastUpdated,
+      season: firstSeason,
+      source: contributedLabels.length
+        ? `Aggregated (${contributedLabels.join(" + ")})`
+        : "Aggregated (no sources loaded)",
       playerCount: out.length,
       players: out,
     };
@@ -110,16 +117,23 @@
 
     try {
       if (srcKey === "aggregated") {
-        const [fp, clay] = await Promise.all([
-          cache["data"] ? Promise.resolve(cache["data"]) : fetchJson("data.json").catch(() => null),
-          cache["clay"] ? Promise.resolve(cache["clay"]) : fetchJson("clay.json").catch(() => null),
+        const [fp, clay, nflcom] = await Promise.all([
+          cache["data"]   ? Promise.resolve(cache["data"])   : fetchJson("data.json").catch(() => null),
+          cache["clay"]   ? Promise.resolve(cache["clay"])   : fetchJson("clay.json").catch(() => null),
+          cache["nflcom"] ? Promise.resolve(cache["nflcom"]) : fetchJson("nflcom.json").catch(() => null),
         ]);
-        if (fp) cache["data"] = fp;
-        if (clay) cache["clay"] = clay;
-        cache["aggregated"] = buildAggregated(fp, clay);
+        if (fp)     cache["data"]   = fp;
+        if (clay)   cache["clay"]   = clay;
+        if (nflcom) cache["nflcom"] = nflcom;
+        cache["aggregated"] = buildAggregated([
+          { label: "FantasyPros", data: fp },
+          { label: "Clay",        data: clay },
+          { label: "NFL.com",     data: nflcom },
+        ]);
         raw = cache["aggregated"];
       } else {
-        const file = srcKey === "clay" ? "clay.json" : "data.json";
+        const fileMap = { clay: "clay.json", nflcom: "nflcom.json", data: "data.json" };
+        const file = fileMap[srcKey] || "data.json";
         const json = await fetchJson(file);
         cache[srcKey] = json;
         raw = json;
