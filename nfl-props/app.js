@@ -21,17 +21,65 @@
 
   // ── Player name normalization for cross-source matching ────────────────────
   // Strips: case, punctuation, generational suffixes (Jr/Sr/II/III/IV/V),
-  // and trailing position tags some sources accidentally include.
+  // and resolves common nickname ↔ formal name aliases (Ken→Kenneth, DJ→D J).
+  // Two-stage match:
+  //  1) "key" = full canonical name (best precision)
+  //  2) "altKey" = (firstInitial + lastName) — used to merge nickname forms
+  //     when keys differ.
+
+  // Common first-name aliases. Both directions map to the canonical form.
+  const FIRST_NAME_ALIASES = {
+    "ken": "kenneth",
+    "kenny": "kenneth",
+    "mike": "michael",
+    "matt": "matthew",
+    "nick": "nicholas",
+    "chris": "christopher",
+    "tony": "anthony",
+    "rob": "robert",
+    "bob": "robert",
+    "dan": "daniel",
+    "danny": "daniel",
+    "joe": "joseph",
+    "tom": "thomas",
+    "will": "william",
+    "billy": "william",
+    "bill": "william",
+    "ben": "benjamin",
+    "alex": "alexander",
+    "jon": "jonathan",
+    "tj": "t j",
+    "dj": "d j",
+    "aj": "a j",
+    "cj": "c j",
+    "jk": "j k",
+    "dk": "d k",
+  };
+
   function normPlayerName(s) {
     if (!s) return "";
     let out = s.toLowerCase();
-    // Drop trailing suffixes like "iii", "jr", "sr." after the last name
     out = out.replace(/\s+(jr|sr|ii|iii|iv|v)\.?$/i, "");
-    // Strip remaining punctuation
     out = out.replace(/[^a-z0-9 ]/g, " ");
-    // Collapse whitespace
     out = out.replace(/\s+/g, " ").trim();
+    // Canonicalize the first token if it's a known nickname
+    const parts = out.split(" ");
+    if (parts.length >= 2 && FIRST_NAME_ALIASES[parts[0]]) {
+      parts[0] = FIRST_NAME_ALIASES[parts[0]];
+      out = parts.join(" ");
+    }
     return out;
+  }
+
+  // Secondary key: first letter of first name + last token.
+  // "kenneth walker" → "k walker"; "ken walker" → "k walker".
+  // Use this only as a fallback merge when the primary keys disagree.
+  function altPlayerKey(s) {
+    const n = normPlayerName(s);
+    if (!n) return "";
+    const parts = n.split(" ");
+    if (parts.length < 2) return n;
+    return parts[0][0] + " " + parts[parts.length - 1];
   }
 
   // ── Fantasy-point math (mirrors Python scraper) ────────────────────────────
@@ -59,30 +107,32 @@
 
   function buildAggregated(sources) {
     // sources: array of { label, data } where data is the parsed json (or null).
-    // Average each stat across whichever sources contributed for each player.
-    const norm = normPlayerName;
+    // Stage 1: bucket by primary normalized key.
+    // Stage 2: merge buckets that share the same altKey AND position (catches
+    //          nickname forms like "Ken Walker" vs "Kenneth Walker").
     const byKey = new Map();
 
+    // Each "bucket" stores raw per-source player stat dicts so we can re-average
+    // after the merge stage. (Averaging during accumulation would prevent us
+    // from cleanly combining two buckets later.)
+    const newBucket = (player) => ({
+      name: player.name,
+      team: player.team,
+      position: player.position,
+      contributions: [],   // each entry: { source: label, stats: {...} }
+    });
+
     const consume = (player, sourceLabel) => {
-      const key = norm(player.name);
+      const key = normPlayerName(player.name);
       if (!key) return;
-      let entry = byKey.get(key);
-      if (!entry) {
-        entry = {
-          name: player.name,
-          team: player.team,
-          position: player.position,
-          stats: { pass_yds: 0, pass_tds: 0, pass_ints: 0, rush_yds: 0, rush_tds: 0, rec_yds: 0, rec_tds: 0, receptions: 0, fumbles_lost: 0 },
-          sources: [],
-        };
-        byKey.set(key, entry);
+      let bucket = byKey.get(key);
+      if (!bucket) {
+        bucket = newBucket(player);
+        byKey.set(key, bucket);
       }
-      entry.sources.push(sourceLabel);
-      for (const k of Object.keys(entry.stats)) {
-        entry.stats[k] += (player.stats?.[k] || 0);
-      }
-      if (!entry.team && player.team) entry.team = player.team;
-      if (!entry.position && player.position) entry.position = player.position;
+      bucket.contributions.push({ source: sourceLabel, stats: player.stats || {} });
+      if (!bucket.team && player.team) bucket.team = player.team;
+      if (!bucket.position && player.position) bucket.position = player.position;
     };
 
     let firstLastUpdated = null;
@@ -96,19 +146,49 @@
       data.players.forEach((p) => consume(p, label));
     }
 
-    const out = [];
-    for (const entry of byKey.values()) {
-      const n = entry.sources.length;
-      const avg = {};
-      for (const k of Object.keys(entry.stats)) {
-        avg[k] = Math.round((entry.stats[k] / n) * 10) / 10;
+    // Stage 2: merge nickname-form buckets via altKey + position.
+    // We prefer to keep the bucket whose canonical name is longer (the formal
+    // version, e.g. "kenneth walker" over "k walker" or "ken walker").
+    const altIndex = new Map();   // altKey|position → bucket
+    for (const [key, bucket] of byKey.entries()) {
+      const altKey = altPlayerKey(bucket.name) + "|" + (bucket.position || "");
+      const existing = altIndex.get(altKey);
+      if (!existing) {
+        altIndex.set(altKey, bucket);
+        continue;
       }
+      // Same alt key & position — pick the bucket with the longer canonical
+      // name as the keeper, merge contributions from the other one.
+      const keeper = bucket.name.length >= existing.name.length ? bucket : existing;
+      const dropped = keeper === bucket ? existing : bucket;
+      if (keeper !== existing) altIndex.set(altKey, keeper);
+      // Avoid double-counting if the same source contributed to both buckets
+      const existingSources = new Set(keeper.contributions.map((c) => c.source));
+      for (const c of dropped.contributions) {
+        if (!existingSources.has(c.source)) keeper.contributions.push(c);
+      }
+      // Remove the dropped bucket from the primary map
+      const droppedKey = normPlayerName(dropped.name);
+      if (byKey.get(droppedKey) === dropped) byKey.delete(droppedKey);
+    }
+
+    // Average each bucket's contributions to produce the output stats.
+    const out = [];
+    for (const bucket of byKey.values()) {
+      const n = bucket.contributions.length;
+      if (n === 0) continue;
+      const totals = { pass_yds: 0, pass_tds: 0, pass_ints: 0, rush_yds: 0, rush_tds: 0, rec_yds: 0, rec_tds: 0, receptions: 0, fumbles_lost: 0 };
+      for (const c of bucket.contributions) {
+        for (const k of Object.keys(totals)) totals[k] += (c.stats[k] || 0);
+      }
+      const avg = {};
+      for (const k of Object.keys(totals)) avg[k] = Math.round((totals[k] / n) * 10) / 10;
       out.push({
-        name: entry.name,
-        team: entry.team,
-        position: entry.position,
+        name: bucket.name,
+        team: bucket.team,
+        position: bucket.position,
         stats: avg,
-        sources: entry.sources,
+        sources: bucket.contributions.map((c) => c.source),
       });
     }
 
@@ -368,35 +448,52 @@
     }));
   }
 
-  // Build a per-player map of PPR projections by source, for the current format
+  // Build a per-player map of PPR projections by source, for the current format.
+  // Reuses the aggregated bucket logic so nickname merging stays consistent.
   function buildDisagreementData() {
-    const norm = normPlayerName;
-    const byKey = new Map();
+    // Get the aggregated (merged) players to inherit the merge result, then
+    // re-derive per-source PPR by re-normalizing each raw source against the
+    // same canonical names.
+    if (!cache["aggregated"]) {
+      cache["aggregated"] = buildAggregated([
+        { label: "FantasyPros", data: cache["data"] },
+        { label: "Clay",        data: cache["clay"] },
+        { label: "NFL.com",     data: cache["nflcom"] },
+      ]);
+    }
+    const merged = cache["aggregated"].players;
 
-    const consume = (data, label) => {
+    // Build canonical→player index so we can look up per-source pts by altKey
+    const canonByAlt = new Map();
+    for (const p of merged) {
+      canonByAlt.set(altPlayerKey(p.name) + "|" + (p.position || ""), p);
+    }
+
+    // Walk each raw source and attribute its PPR to the canonical entry
+    const perCanon = new Map();   // canon name → { name, position, perSource: { src: pts } }
+    const attribute = (data, label) => {
       if (!data || !data.players) return;
       for (const p of data.players) {
-        const key = norm(p.name);
-        if (!key) continue;
-        let entry = byKey.get(key);
-        if (!entry) {
-          entry = { name: p.name, position: p.position, team: p.team, perSource: {} };
-          byKey.set(key, entry);
+        const altK = altPlayerKey(p.name) + "|" + (p.position || "");
+        const canon = canonByAlt.get(altK);
+        if (!canon) continue;
+        let row = perCanon.get(canon.name);
+        if (!row) {
+          row = { name: canon.name, position: canon.position, perSource: {} };
+          perCanon.set(canon.name, row);
         }
-        const pts = fantasyPoints(p.stats || {}, fmt);
-        entry.perSource[label] = pts;
-        if (!entry.position && p.position) entry.position = p.position;
+        row.perSource[label] = fantasyPoints(p.stats || {}, fmt);
       }
     };
 
-    consume(cache["data"],   "FantasyPros");
-    consume(cache["clay"],   "Clay");
-    consume(cache["nflcom"], "NFL.com");
+    attribute(cache["data"],   "FantasyPros");
+    attribute(cache["clay"],   "Clay");
+    attribute(cache["nflcom"], "NFL.com");
 
     const rows = [];
-    for (const entry of byKey.values()) {
+    for (const entry of perCanon.values()) {
       const vals = Object.values(entry.perSource).filter((v) => v > 0);
-      if (vals.length < 2) continue;   // need at least two sources to compute spread
+      if (vals.length < 2) continue;
       const max = Math.max(...vals);
       const min = Math.min(...vals);
       const avg = vals.reduce((a, b) => a + b, 0) / vals.length;
