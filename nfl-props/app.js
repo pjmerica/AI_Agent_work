@@ -19,6 +19,21 @@
   const $fmtGroup = document.getElementById("format-group");
   const $posChips = document.getElementById("pos-chips");
 
+  // ── Player name normalization for cross-source matching ────────────────────
+  // Strips: case, punctuation, generational suffixes (Jr/Sr/II/III/IV/V),
+  // and trailing position tags some sources accidentally include.
+  function normPlayerName(s) {
+    if (!s) return "";
+    let out = s.toLowerCase();
+    // Drop trailing suffixes like "iii", "jr", "sr." after the last name
+    out = out.replace(/\s+(jr|sr|ii|iii|iv|v)\.?$/i, "");
+    // Strip remaining punctuation
+    out = out.replace(/[^a-z0-9 ]/g, " ");
+    // Collapse whitespace
+    out = out.replace(/\s+/g, " ").trim();
+    return out;
+  }
+
   // ── Fantasy-point math (mirrors Python scraper) ────────────────────────────
   function fantasyPoints(stats, format) {
     let pts = 0;
@@ -45,7 +60,7 @@
   function buildAggregated(sources) {
     // sources: array of { label, data } where data is the parsed json (or null).
     // Average each stat across whichever sources contributed for each player.
-    const norm = (s) => (s || "").toLowerCase().replace(/[^a-z0-9 ]/g, "").trim();
+    const norm = normPlayerName;
     const byKey = new Map();
 
     const consume = (player, sourceLabel) => {
@@ -355,7 +370,7 @@
 
   // Build a per-player map of PPR projections by source, for the current format
   function buildDisagreementData() {
-    const norm = (s) => (s || "").toLowerCase().replace(/[^a-z0-9 ]/g, "").trim();
+    const norm = normPlayerName;
     const byKey = new Map();
 
     const consume = (data, label) => {
