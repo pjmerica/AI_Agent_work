@@ -19,6 +19,7 @@
       <button class="source-tab" data-source="data">FantasyPros Consensus</button>
       <button class="source-tab" data-source="clay">Mike Clay (ESPN)</button>
       <button class="source-tab" data-source="nflcom">NFL.com</button>
+      <button class="source-tab" data-source="viz">Visualizations</button>
     </div>
 
     <div class="toolbar">
@@ -40,21 +41,54 @@
     </div>
 
     <main>
-      <div id="empty" class="empty hidden">No players match.</div>
-      <div class="table-wrap">
-        <table class="rankings">
-          <thead>
-            <tr>
-              <th class="rank">#</th>
-              <th>Player</th>
-              <th>Pos</th>
-              <th>Team</th>
-              <th class="num sortable" data-sort="proj">Proj <span class="caret">▾</span></th>
-              <th>Projected stats</th>
-            </tr>
-          </thead>
-          <tbody id="rows"></tbody>
-        </table>
+      <div id="table-view">
+        <div id="empty" class="empty hidden">No players match.</div>
+        <div class="table-wrap">
+          <table class="rankings">
+            <thead>
+              <tr>
+                <th class="rank">#</th>
+                <th>Player</th>
+                <th>Pos</th>
+                <th>Team</th>
+                <th class="num sortable" data-sort="proj">Proj <span class="caret">▾</span></th>
+                <th>Projected stats</th>
+              </tr>
+            </thead>
+            <tbody id="rows"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <div id="viz-view" class="hidden">
+        <div id="viz-empty" class="empty hidden">Need at least 2 projection sources loaded to show source disagreement. Run the workflow to refresh.</div>
+
+        <section class="viz-section">
+          <h2 class="viz-title">Source Disagreement</h2>
+          <p class="viz-desc">For each player, the spread (max − min) between projection sources. Bigger bars = sources disagree more. Useful for spotting draft values where one source is bullish vs. consensus.</p>
+          <div class="viz-controls">
+            <div class="chip-group" id="viz-pos-chips">
+              <button class="chip active" data-pos="ALL">All</button>
+              <button class="chip" data-pos="QB">QB</button>
+              <button class="chip" data-pos="RB">RB</button>
+              <button class="chip" data-pos="WR">WR</button>
+              <button class="chip" data-pos="TE">TE</button>
+            </div>
+          </div>
+          <div class="chart-box"><canvas id="chart-disagree"></canvas></div>
+        </section>
+
+        <section class="viz-section">
+          <h2 class="viz-title">Position Tiers — Cliffs &amp; Dropoffs</h2>
+          <p class="viz-desc">Projected PPR for each ranked player at the position. Watch for the cliffs — large vertical drops between consecutive players are tier breaks.</p>
+          <div class="chart-box"><canvas id="chart-tiers"></canvas></div>
+        </section>
+
+        <section class="viz-section">
+          <h2 class="viz-title">Position Distributions</h2>
+          <p class="viz-desc">Box plot of projected PPR for each position. The taller the box, the wider the spread of viable starters.</p>
+          <div class="chart-box"><canvas id="chart-distribution"></canvas></div>
+        </section>
       </div>
     </main>
 
@@ -65,6 +99,7 @@
     </footer>
   </div>
 
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
   <script src="app.js"></script>
 </body>
 </html>

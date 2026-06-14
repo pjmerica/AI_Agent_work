@@ -235,6 +235,42 @@ header h1 { font-size: 28px; font-weight: 700; color: #fff; }
 
 .hidden { display: none; }
 
+/* ── Visualizations tab ──────────────────────────────────────────────────── */
+#viz-view {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.viz-section {
+  background: #1a1a24;
+  border: 1px solid #2e2e42;
+  border-radius: 12px;
+  padding: 20px;
+}
+.viz-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: #f0f0f8;
+  margin-bottom: 6px;
+}
+.viz-desc {
+  font-size: 13px;
+  color: #6a6a8a;
+  line-height: 1.45;
+  margin-bottom: 14px;
+}
+.viz-controls {
+  margin-bottom: 14px;
+}
+.chart-box {
+  position: relative;
+  height: 420px;
+  width: 100%;
+}
+@media (max-width: 600px) {
+  .chart-box { height: 320px; }
+}
+
 footer {
   text-align: center;
   font-size: 12px;

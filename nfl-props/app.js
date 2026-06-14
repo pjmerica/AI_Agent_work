@@ -243,6 +243,12 @@
     btn.classList.add("active");
     fmt = btn.dataset.fmt;
     render();
+    if (currentSource === "viz" && typeof Chart !== "undefined") {
+      // Aggregated cache pre-built fantasy points using the OLD fmt for the
+      // chart datasets; force rebuild by clearing it.
+      cache["aggregated"] = null;
+      renderViz();
+    }
   });
 
   $posChips.addEventListener("click", (e) => {
@@ -280,7 +286,22 @@
     render();
   });
 
-  // Source tabs (FantasyPros vs Mike Clay)
+  // ── View switcher (table view vs viz view) ─────────────────────────────────
+  const $tableView = document.getElementById("table-view");
+  const $vizView = document.getElementById("viz-view");
+
+  function showTableView() {
+    if ($tableView) $tableView.classList.remove("hidden");
+    if ($vizView) $vizView.classList.add("hidden");
+  }
+
+  function showVizView() {
+    if ($tableView) $tableView.classList.add("hidden");
+    if ($vizView) $vizView.classList.remove("hidden");
+    renderViz();
+  }
+
+  // Source tabs
   const $sourceTabs = document.getElementById("source-tabs");
   if ($sourceTabs) {
     $sourceTabs.addEventListener("click", (e) => {
@@ -290,7 +311,332 @@
       document.querySelectorAll(".source-tab").forEach((t) => t.classList.remove("active"));
       tab.classList.add("active");
       currentSource = tab.dataset.source;
-      loadSource(currentSource);
+      if (currentSource === "viz") {
+        showVizView();
+      } else {
+        showTableView();
+        loadSource(currentSource);
+      }
+    });
+  }
+
+  // ── Visualizations ─────────────────────────────────────────────────────────
+  let vizPos = "ALL";
+  const charts = {};
+
+  // Ensure all three source files are loaded for the disagreement chart
+  async function ensureAllSourcesLoaded() {
+    const needs = ["data", "clay", "nflcom"].filter((k) => !cache[k]);
+    if (needs.length === 0) return;
+    const fileMap = { data: "data.json", clay: "clay.json", nflcom: "nflcom.json" };
+    await Promise.all(needs.map(async (k) => {
+      try { cache[k] = await fetchJson(fileMap[k]); }
+      catch (e) { cache[k] = null; }
+    }));
+  }
+
+  // Build a per-player map of PPR projections by source, for the current format
+  function buildDisagreementData() {
+    const norm = (s) => (s || "").toLowerCase().replace(/[^a-z0-9 ]/g, "").trim();
+    const byKey = new Map();
+
+    const consume = (data, label) => {
+      if (!data || !data.players) return;
+      for (const p of data.players) {
+        const key = norm(p.name);
+        if (!key) continue;
+        let entry = byKey.get(key);
+        if (!entry) {
+          entry = { name: p.name, position: p.position, team: p.team, perSource: {} };
+          byKey.set(key, entry);
+        }
+        const pts = fantasyPoints(p.stats || {}, fmt);
+        entry.perSource[label] = pts;
+        if (!entry.position && p.position) entry.position = p.position;
+      }
+    };
+
+    consume(cache["data"],   "FantasyPros");
+    consume(cache["clay"],   "Clay");
+    consume(cache["nflcom"], "NFL.com");
+
+    const rows = [];
+    for (const entry of byKey.values()) {
+      const vals = Object.values(entry.perSource).filter((v) => v > 0);
+      if (vals.length < 2) continue;   // need at least two sources to compute spread
+      const max = Math.max(...vals);
+      const min = Math.min(...vals);
+      const avg = vals.reduce((a, b) => a + b, 0) / vals.length;
+      rows.push({
+        name: entry.name,
+        position: entry.position || "?",
+        spread: Math.round((max - min) * 10) / 10,
+        max, min, avg,
+        perSource: entry.perSource,
+      });
+    }
+    return rows;
+  }
+
+  function destroyChart(name) {
+    if (charts[name]) {
+      charts[name].destroy();
+      charts[name] = null;
+    }
+  }
+
+  function chartTextColor() { return "#a0a0c0"; }
+  function chartGridColor() { return "rgba(110, 110, 140, 0.15)"; }
+
+  const POS_COLORS = {
+    QB: "#ff6b6b", RB: "#5dade2", WR: "#58d68d", TE: "#f5b041",
+  };
+
+  function renderDisagreementChart() {
+    destroyChart("disagree");
+    const ctx = document.getElementById("chart-disagree");
+    if (!ctx) return;
+
+    let rows = buildDisagreementData();
+    if (vizPos !== "ALL") rows = rows.filter((r) => r.position === vizPos);
+    rows.sort((a, b) => b.spread - a.spread);
+    rows = rows.slice(0, 25);
+
+    if (rows.length === 0) {
+      const $empty = document.getElementById("viz-empty");
+      if ($empty) $empty.classList.remove("hidden");
+      return;
+    }
+    document.getElementById("viz-empty")?.classList.add("hidden");
+
+    const labels = rows.map((r) => `${r.name} (${r.position})`);
+    const data = rows.map((r) => r.spread);
+    const colors = rows.map((r) => POS_COLORS[r.position] || "#5b4cf5");
+
+    charts["disagree"] = new Chart(ctx, {
+      type: "bar",
+      data: {
+        labels,
+        datasets: [{
+          label: "Spread (max − min PPR)",
+          data,
+          backgroundColor: colors,
+          borderWidth: 0,
+        }],
+      },
+      options: {
+        indexAxis: "y",
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            callbacks: {
+              afterLabel: (ctx) => {
+                const r = rows[ctx.dataIndex];
+                return Object.entries(r.perSource)
+                  .map(([src, v]) => `  ${src}: ${v.toFixed(1)}`)
+                  .join("\n");
+              },
+            },
+          },
+        },
+        scales: {
+          x: { ticks: { color: chartTextColor() }, grid: { color: chartGridColor() } },
+          y: { ticks: { color: chartTextColor(), font: { size: 11 } }, grid: { display: false } },
+        },
+      },
+    });
+  }
+
+  function renderTiersChart() {
+    destroyChart("tiers");
+    const ctx = document.getElementById("chart-tiers");
+    if (!ctx) return;
+
+    // Use whatever source is currently active (or fall back to aggregated)
+    const baseData = cache["aggregated"] || raw;
+    const players = (baseData?.players || [])
+      .map((p) => ({ ...p, _proj: fantasyPoints(p.stats || {}, fmt) }))
+      .filter((p) => p._proj > 0);
+
+    const positions = ["QB", "RB", "WR", "TE"];
+    const TOP_N = 36;
+
+    const datasets = positions.map((pos) => {
+      const rows = players
+        .filter((p) => p.position === pos)
+        .sort((a, b) => b._proj - a._proj)
+        .slice(0, TOP_N);
+      return {
+        label: pos,
+        data: rows.map((p, i) => ({ x: i + 1, y: p._proj, name: p.name })),
+        borderColor: POS_COLORS[pos],
+        backgroundColor: POS_COLORS[pos],
+        showLine: true,
+        tension: 0.18,
+        pointRadius: 3,
+        pointHoverRadius: 5,
+      };
+    });
+
+    charts["tiers"] = new Chart(ctx, {
+      type: "scatter",
+      data: { datasets },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { labels: { color: chartTextColor() } },
+          tooltip: {
+            callbacks: {
+              label: (ctx) => `${ctx.dataset.label}${ctx.raw.x}: ${ctx.raw.name} — ${ctx.raw.y.toFixed(1)}`,
+            },
+          },
+        },
+        scales: {
+          x: {
+            title: { display: true, text: "Position rank", color: chartTextColor() },
+            ticks: { color: chartTextColor() },
+            grid: { color: chartGridColor() },
+          },
+          y: {
+            title: { display: true, text: "Projected PPR", color: chartTextColor() },
+            ticks: { color: chartTextColor() },
+            grid: { color: chartGridColor() },
+          },
+        },
+      },
+    });
+  }
+
+  function quantile(sorted, q) {
+    const pos = (sorted.length - 1) * q;
+    const base = Math.floor(pos);
+    const rest = pos - base;
+    if (sorted[base + 1] !== undefined) return sorted[base] + rest * (sorted[base + 1] - sorted[base]);
+    return sorted[base];
+  }
+
+  function renderDistributionChart() {
+    destroyChart("distribution");
+    const ctx = document.getElementById("chart-distribution");
+    if (!ctx) return;
+
+    const baseData = cache["aggregated"] || raw;
+    const positions = ["QB", "RB", "WR", "TE"];
+
+    // For each position, take only fantasy-startable players (top 36) and
+    // compute quartiles for a manual box-plot rendering via stacked bars.
+    const stats = positions.map((pos) => {
+      const vals = (baseData?.players || [])
+        .filter((p) => p.position === pos)
+        .map((p) => fantasyPoints(p.stats || {}, fmt))
+        .filter((v) => v > 0)
+        .sort((a, b) => a - b)
+        .slice(-36);   // top 36 (smallest first because sorted asc)
+      if (vals.length === 0) {
+        return { pos, min: 0, q1: 0, median: 0, q3: 0, max: 0 };
+      }
+      return {
+        pos,
+        min:    vals[0],
+        q1:     quantile(vals, 0.25),
+        median: quantile(vals, 0.5),
+        q3:     quantile(vals, 0.75),
+        max:    vals[vals.length - 1],
+      };
+    });
+
+    // Chart.js doesn't ship a box plot, so we fake one with two stacked bar
+    // datasets per position: a transparent "base" bar to min, then two real
+    // segments forming the IQR (q1→median, median→q3), with min/max whiskers
+    // drawn via an extra dataset.
+    const labels = stats.map((s) => s.pos);
+
+    const data_minToQ1   = stats.map((s) => s.q1 - s.min);          // lower whisker
+    const data_q1ToMed   = stats.map((s) => s.median - s.q1);
+    const data_medToQ3   = stats.map((s) => s.q3 - s.median);
+    const data_q3ToMax   = stats.map((s) => s.max - s.q3);          // upper whisker
+    const baseOffset     = stats.map((s) => s.min);                 // invisible spacer
+
+    const posColors = stats.map((s) => POS_COLORS[s.pos]);
+
+    charts["distribution"] = new Chart(ctx, {
+      type: "bar",
+      data: {
+        labels,
+        datasets: [
+          { label: "_offset", data: baseOffset, backgroundColor: "transparent", stack: "box", borderWidth: 0 },
+          { label: "Min → Q1", data: data_minToQ1, backgroundColor: posColors.map((c) => c + "55"), stack: "box", borderWidth: 0 },
+          { label: "Q1 → Median (IQR)", data: data_q1ToMed, backgroundColor: posColors, stack: "box", borderWidth: 0 },
+          { label: "Median → Q3 (IQR)", data: data_medToQ3, backgroundColor: posColors, stack: "box", borderWidth: 0 },
+          { label: "Q3 → Max", data: data_q3ToMax, backgroundColor: posColors.map((c) => c + "55"), stack: "box", borderWidth: 0 },
+        ],
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: {
+            labels: {
+              color: chartTextColor(),
+              filter: (item) => !item.text.startsWith("_"),
+            },
+          },
+          tooltip: {
+            callbacks: {
+              label: (ctx) => {
+                const s = stats[ctx.dataIndex];
+                if (ctx.datasetIndex === 0) return null;
+                if (ctx.dataset.label.startsWith("_")) return null;
+                return `${s.pos}: min ${s.min.toFixed(0)} | Q1 ${s.q1.toFixed(0)} | med ${s.median.toFixed(0)} | Q3 ${s.q3.toFixed(0)} | max ${s.max.toFixed(0)}`;
+              },
+            },
+          },
+        },
+        scales: {
+          x: { ticks: { color: chartTextColor() }, grid: { color: chartGridColor() } },
+          y: {
+            title: { display: true, text: "Projected PPR (top 36 per position)", color: chartTextColor() },
+            ticks: { color: chartTextColor() },
+            grid: { color: chartGridColor() },
+            beginAtZero: false,
+          },
+        },
+      },
+    });
+  }
+
+  async function renderViz() {
+    if (typeof Chart === "undefined") {
+      console.warn("Chart.js not loaded");
+      return;
+    }
+    await ensureAllSourcesLoaded();
+    // Make sure aggregated is built for the tier + distribution charts
+    if (!cache["aggregated"]) {
+      cache["aggregated"] = buildAggregated([
+        { label: "FantasyPros", data: cache["data"] },
+        { label: "Clay",        data: cache["clay"] },
+        { label: "NFL.com",     data: cache["nflcom"] },
+      ]);
+    }
+    renderDisagreementChart();
+    renderTiersChart();
+    renderDistributionChart();
+  }
+
+  // Position filter inside the viz tab
+  const $vizPosChips = document.getElementById("viz-pos-chips");
+  if ($vizPosChips) {
+    $vizPosChips.addEventListener("click", (e) => {
+      const chip = e.target.closest(".chip");
+      if (!chip) return;
+      document.querySelectorAll("#viz-pos-chips .chip").forEach((c) => c.classList.remove("active"));
+      chip.classList.add("active");
+      vizPos = chip.dataset.pos;
+      renderDisagreementChart();
     });
   }
 
