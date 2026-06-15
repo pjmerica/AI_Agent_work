@@ -683,13 +683,11 @@
     const positions = ["QB", "RB", "WR", "TE"];
 
     const stats = positions.map((pos) => {
-      const topN = POS_TOP_N[pos] || 36;
       const vals = (baseData?.players || [])
         .filter((p) => p.position === pos)
         .map((p) => fantasyPoints(p.stats || {}, fmt))
         .filter((v) => v > 0)
-        .sort((a, b) => a - b)
-        .slice(-topN);   // top N (smallest first because sorted asc)
+        .sort((a, b) => a - b);
       if (vals.length === 0) {
         return { pos, min: 0, q1: 0, median: 0, q3: 0, max: 0 };
       }
@@ -753,7 +751,7 @@
         scales: {
           x: { ticks: { color: chartTextColor() }, grid: { color: chartGridColor() } },
           y: {
-            title: { display: true, text: "Projected PPR (QB/TE top 32, RB/WR top 60)", color: chartTextColor() },
+            title: { display: true, text: "Projected PPR (all projected players)", color: chartTextColor() },
             ticks: { color: chartTextColor() },
             grid: { color: chartGridColor() },
             beginAtZero: false,
@@ -834,9 +832,8 @@
       "#666666",   // T9+ — darker grey
     ];
 
-    // Build a player list per position
+    // Build a player list per position (no cap — every projected player shown)
     const datasetsByPos = positions.map((pos, posIdx) => {
-      const topN = POS_TOP_N[pos] || 36;
       const playersInPos = (baseData?.players || [])
         .filter((p) => p.position === pos)
         .map((p) => ({
@@ -844,8 +841,7 @@
           pts: fantasyPoints(p.stats || {}, fmt),
         }))
         .filter((p) => p.pts > 0)
-        .sort((a, b) => b.pts - a.pts)
-        .slice(0, topN);
+        .sort((a, b) => b.pts - a.pts);
 
       if (playersInPos.length === 0) {
         return { pos, points: [], tiers: [] };
