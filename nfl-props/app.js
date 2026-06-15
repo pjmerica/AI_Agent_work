@@ -749,7 +749,32 @@
     });
   }
 
-  // ── Kernel density estimator for violin plot ───────────────────────────────
+  // ── Auto-tier detection (gap-based clustering) ─────────────────────────────
+  // Given a sorted-desc list of PPR values, find indices where the drop
+  // between consecutive values is unusually large. Returns array of tier IDs
+  // (1, 2, 3...) parallel to the input.
+  function detectTiers(sortedDesc, sigmaThreshold = 0.6) {
+    if (sortedDesc.length <= 1) return sortedDesc.map(() => 1);
+    const gaps = [];
+    for (let i = 0; i < sortedDesc.length - 1; i++) {
+      gaps.push(sortedDesc[i] - sortedDesc[i + 1]);
+    }
+    const meanGap = gaps.reduce((a, b) => a + b, 0) / gaps.length;
+    const variance = gaps.reduce((a, b) => a + (b - meanGap) ** 2, 0) / gaps.length;
+    const sd = Math.sqrt(variance) || 1;
+    const cutoff = meanGap + sigmaThreshold * sd;
+
+    const tiers = [1];
+    let tier = 1;
+    for (let i = 1; i < sortedDesc.length; i++) {
+      const gap = sortedDesc[i - 1] - sortedDesc[i];
+      if (gap > cutoff) tier++;
+      tiers.push(tier);
+    }
+    return tiers;
+  }
+
+  // ── Kernel density estimator (kept for any future use) ─────────────────────
   function kde(samples, bandwidth, gridPoints) {
     // Gaussian KDE — returns array of {x, y} where y is the density estimate.
     if (samples.length === 0 || gridPoints.length === 0) return [];
@@ -773,7 +798,169 @@
     return 1.06 * sd * Math.pow(n, -1 / 5) || 1;
   }
 
-  function renderViolinChart() {
+  function renderTierMapChart() {
+    destroyChart("tiermap");
+    const ctx = document.getElementById("chart-tiermap");
+    if (!ctx) return;
+
+    const baseData = cache["aggregated"] || raw;
+    const positions = ["QB", "RB", "WR", "TE"];
+
+    // Tier color palette — darker = better tier
+    const TIER_COLORS = [
+      "#ffffff",   // tier 1 = white/bright
+      "#e8c0ff",
+      "#bf8aff",
+      "#9658e8",
+      "#7142c4",
+      "#5a35a8",
+      "#43288c",
+      "#321e70",
+      "#241654",   // deeper tiers fade darker purple
+    ];
+
+    // Build a player list per position
+    const datasetsByPos = positions.map((pos, posIdx) => {
+      const topN = POS_TOP_N[pos] || 36;
+      const playersInPos = (baseData?.players || [])
+        .filter((p) => p.position === pos)
+        .map((p) => ({
+          name: p.name,
+          pts: fantasyPoints(p.stats || {}, fmt),
+        }))
+        .filter((p) => p.pts > 0)
+        .sort((a, b) => b.pts - a.pts)
+        .slice(0, topN);
+
+      if (playersInPos.length === 0) {
+        return { pos, points: [], tiers: [] };
+      }
+
+      const sortedPts = playersInPos.map((p) => p.pts);
+      const tierIds = detectTiers(sortedPts, 0.6);
+
+      const points = playersInPos.map((p, i) => ({
+        x: posIdx,
+        y: p.pts,
+        name: p.name,
+        rank: i + 1,
+        tier: tierIds[i],
+      }));
+
+      // Compute tier label positions: name of top player in each tier
+      const labelsByTier = new Map();
+      tierIds.forEach((t, i) => {
+        if (!labelsByTier.has(t)) labelsByTier.set(t, []);
+        if (labelsByTier.get(t).length < 3) {
+          labelsByTier.get(t).push({ name: playersInPos[i].name, y: playersInPos[i].pts });
+        }
+      });
+
+      return { pos, points, tiers: tierIds, labelsByTier };
+    });
+
+    // Flatten into one scatter dataset per (position, tier) so we can color by tier
+    const datasets = [];
+    datasetsByPos.forEach(({ pos, points }) => {
+      const byTier = new Map();
+      points.forEach((pt) => {
+        if (!byTier.has(pt.tier)) byTier.set(pt.tier, []);
+        byTier.get(pt.tier).push(pt);
+      });
+      // Jitter X slightly per point for visibility when projections are close
+      const jitter = (i) => ((i % 7) - 3) * 0.018;
+      [...byTier.entries()].sort((a, b) => a[0] - b[0]).forEach(([tier, pts]) => {
+        const color = TIER_COLORS[Math.min(tier - 1, TIER_COLORS.length - 1)];
+        datasets.push({
+          label: `${pos} T${tier}`,
+          data: pts.map((p, i) => ({ x: p.x + jitter(i), y: p.y, name: p.name, rank: p.rank, tier: p.tier })),
+          backgroundColor: color,
+          borderColor: color,
+          pointRadius: 5,
+          pointHoverRadius: 8,
+          showLine: false,
+        });
+      });
+    });
+
+    // Inline name labels for top 3 of each tier — uses an afterDatasetsDraw plugin
+    const labelPlugin = {
+      id: "tier-labels",
+      afterDatasetsDraw(chart) {
+        const { ctx, scales: { x, y } } = chart;
+        ctx.save();
+        ctx.font = "10px -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif";
+        ctx.textBaseline = "middle";
+
+        datasetsByPos.forEach(({ pos, labelsByTier }) => {
+          if (!labelsByTier) return;
+          const posIdx = positions.indexOf(pos);
+          for (const [tier, labels] of labelsByTier.entries()) {
+            labels.forEach((lab, j) => {
+              const px = x.getPixelForValue(posIdx) + 22;
+              const py = y.getPixelForValue(lab.y);
+              ctx.fillStyle = TIER_COLORS[Math.min(tier - 1, TIER_COLORS.length - 1)];
+              // Background pill so the text is readable against the dark theme
+              const text = lab.name;
+              const w = ctx.measureText(text).width;
+              ctx.globalAlpha = 0.12;
+              ctx.fillRect(px - 2, py - 7, w + 6, 14);
+              ctx.globalAlpha = 1;
+              ctx.fillStyle = "#e2e2f0";
+              ctx.fillText(text, px + 1, py);
+            });
+          }
+        });
+        ctx.restore();
+      },
+    };
+
+    charts["tiermap"] = new Chart(ctx, {
+      type: "scatter",
+      data: { datasets },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            callbacks: {
+              title: () => "",
+              label: (ctx) => {
+                const r = ctx.raw;
+                const pos = positions[Math.round(r.x)];
+                return `${r.name} — ${pos}${r.rank} (Tier ${r.tier}) · ${r.y.toFixed(1)} PPR`;
+              },
+            },
+          },
+        },
+        scales: {
+          x: {
+            type: "linear",
+            min: -0.6,
+            max: positions.length - 0.4,
+            ticks: {
+              color: chartTextColor(),
+              stepSize: 1,
+              callback: (val) => positions[Math.round(val)] ?? "",
+            },
+            grid: { color: chartGridColor() },
+          },
+          y: {
+            title: { display: true, text: "Projected PPR", color: chartTextColor() },
+            ticks: { color: chartTextColor() },
+            grid: { color: chartGridColor() },
+            min: 0,
+          },
+        },
+      },
+      plugins: [labelPlugin],
+    });
+  }
+
+  // (Old violin renderer — removed)
+  /*
+  function renderViolinChart_removed() {
     destroyChart("violin");
     const ctx = document.getElementById("chart-violin");
     if (!ctx) return;
@@ -919,6 +1106,7 @@
       },
     });
   }
+  */
 
   async function renderViz() {
     if (typeof Chart === "undefined") {
@@ -936,7 +1124,7 @@
     renderDisagreementChart();
     renderTiersChart();
     renderDistributionChart();
-    renderViolinChart();
+    renderTierMapChart();
   }
 
   // Position filter inside the viz tab
