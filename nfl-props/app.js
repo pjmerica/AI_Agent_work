@@ -552,6 +552,13 @@
     const data = rows.map((r) => r.spread);
     const colors = rows.map((r) => POS_COLORS[r.position] || "#5b4cf5");
 
+    // Give each row enough vertical space so Chart.js doesn't drop labels.
+    // Override the canvas parent height: 22px per row + chrome.
+    const rowHeight = 22;
+    const chartHeight = rows.length * rowHeight + 60;
+    const parent = ctx.parentElement;
+    if (parent) parent.style.height = chartHeight + "px";
+
     charts["disagree"] = new Chart(ctx, {
       type: "bar",
       data: {
@@ -582,7 +589,14 @@
         },
         scales: {
           x: { ticks: { color: chartTextColor() }, grid: { color: chartGridColor() } },
-          y: { ticks: { color: chartTextColor(), font: { size: 11 } }, grid: { display: false } },
+          y: {
+            ticks: {
+              color: chartTextColor(),
+              font: { size: 11 },
+              autoSkip: false,   // force every label to render
+            },
+            grid: { display: false },
+          },
         },
       },
     });
