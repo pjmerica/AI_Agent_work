@@ -838,18 +838,25 @@
     const baseData = cache["aggregated"] || raw;
     const positions = ["QB", "RB", "WR", "TE"];
 
-    // Colorblind-safe palette (Wong/Okabe-Ito) — distinguishable under all
-    // common forms of color vision deficiency. Tier 1 brightest, descending.
+    // Extended colorblind-aware palette. Anchored on Wong/Okabe-Ito for the
+    // top tiers (which matter most for readability) and supplemented with
+    // distinct hues + lightness steps for the long tail of deep tiers.
     const TIER_COLORS = [
-      "#F0E442",   // T1 — yellow (brightest, most "elite")
-      "#E69F00",   // T2 — orange
-      "#D55E00",   // T3 — vermillion
-      "#56B4E9",   // T4 — sky blue
-      "#0072B2",   // T5 — blue
-      "#009E73",   // T6 — bluish green
-      "#CC79A7",   // T7 — reddish purple
-      "#999999",   // T8 — grey
-      "#666666",   // T9+ — darker grey
+      "#F0E442",   // T1  — yellow
+      "#E69F00",   // T2  — orange
+      "#D55E00",   // T3  — vermillion
+      "#56B4E9",   // T4  — sky blue
+      "#0072B2",   // T5  — blue
+      "#009E73",   // T6  — bluish green
+      "#CC79A7",   // T7  — reddish purple
+      "#A6CEE3",   // T8  — light blue
+      "#B2DF8A",   // T9  — light green
+      "#FB9A99",   // T10 — salmon
+      "#FDBF6F",   // T11 — light orange
+      "#CAB2D6",   // T12 — lavender
+      "#FFFF99",   // T13 — pale yellow
+      "#999999",   // T14 — grey
+      "#666666",   // T15+ — darker grey
     ];
 
     // Build a player list per position (no cap — every projected player shown)
@@ -868,7 +875,7 @@
       }
 
       const sortedPts = playersInPos.map((p) => p.pts);
-      const tierIds = detectTiers(sortedPts, 0.6);
+      const tierIds = detectTiers(sortedPts, 1.0);
 
       // Flipped axes: x = projected PPR, y = position slot
       const points = playersInPos.map((p, i) => ({
