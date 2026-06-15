@@ -806,17 +806,18 @@
     const baseData = cache["aggregated"] || raw;
     const positions = ["QB", "RB", "WR", "TE"];
 
-    // Tier color palette — darker = better tier
+    // Colorblind-safe palette (Wong/Okabe-Ito) — distinguishable under all
+    // common forms of color vision deficiency. Tier 1 brightest, descending.
     const TIER_COLORS = [
-      "#ffffff",   // tier 1 = white/bright
-      "#e8c0ff",
-      "#bf8aff",
-      "#9658e8",
-      "#7142c4",
-      "#5a35a8",
-      "#43288c",
-      "#321e70",
-      "#241654",   // deeper tiers fade darker purple
+      "#F0E442",   // T1 — yellow (brightest, most "elite")
+      "#E69F00",   // T2 — orange
+      "#D55E00",   // T3 — vermillion
+      "#56B4E9",   // T4 — sky blue
+      "#0072B2",   // T5 — blue
+      "#009E73",   // T6 — bluish green
+      "#CC79A7",   // T7 — reddish purple
+      "#999999",   // T8 — grey
+      "#666666",   // T9+ — darker grey
     ];
 
     // Build a player list per position
@@ -839,24 +840,17 @@
       const sortedPts = playersInPos.map((p) => p.pts);
       const tierIds = detectTiers(sortedPts, 0.6);
 
+      // Flipped axes: x = projected PPR, y = position slot
       const points = playersInPos.map((p, i) => ({
-        x: posIdx,
-        y: p.pts,
+        x: p.pts,
+        y: posIdx,
         name: p.name,
         rank: i + 1,
         tier: tierIds[i],
+        pos,
       }));
 
-      // Compute tier label positions: name of top player in each tier
-      const labelsByTier = new Map();
-      tierIds.forEach((t, i) => {
-        if (!labelsByTier.has(t)) labelsByTier.set(t, []);
-        if (labelsByTier.get(t).length < 3) {
-          labelsByTier.get(t).push({ name: playersInPos[i].name, y: playersInPos[i].pts });
-        }
-      });
-
-      return { pos, points, tiers: tierIds, labelsByTier };
+      return { pos, points, tiers: tierIds };
     });
 
     // Flatten into one scatter dataset per (position, tier) so we can color by tier
@@ -867,13 +861,20 @@
         if (!byTier.has(pt.tier)) byTier.set(pt.tier, []);
         byTier.get(pt.tier).push(pt);
       });
-      // Jitter X slightly per point for visibility when projections are close
-      const jitter = (i) => ((i % 7) - 3) * 0.018;
+      // Jitter Y slightly per point so dots at similar PPR don't fully overlap
+      const jitter = (i) => ((i % 7) - 3) * 0.045;
       [...byTier.entries()].sort((a, b) => a[0] - b[0]).forEach(([tier, pts]) => {
         const color = TIER_COLORS[Math.min(tier - 1, TIER_COLORS.length - 1)];
         datasets.push({
           label: `${pos} T${tier}`,
-          data: pts.map((p, i) => ({ x: p.x + jitter(i), y: p.y, name: p.name, rank: p.rank, tier: p.tier })),
+          data: pts.map((p, i) => ({
+            x: p.x,
+            y: p.y + jitter(i),
+            name: p.name,
+            rank: p.rank,
+            tier: p.tier,
+            pos: p.pos,
+          })),
           backgroundColor: color,
           borderColor: color,
           pointRadius: 5,
@@ -882,38 +883,6 @@
         });
       });
     });
-
-    // Inline name labels for top 3 of each tier — uses an afterDatasetsDraw plugin
-    const labelPlugin = {
-      id: "tier-labels",
-      afterDatasetsDraw(chart) {
-        const { ctx, scales: { x, y } } = chart;
-        ctx.save();
-        ctx.font = "10px -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif";
-        ctx.textBaseline = "middle";
-
-        datasetsByPos.forEach(({ pos, labelsByTier }) => {
-          if (!labelsByTier) return;
-          const posIdx = positions.indexOf(pos);
-          for (const [tier, labels] of labelsByTier.entries()) {
-            labels.forEach((lab, j) => {
-              const px = x.getPixelForValue(posIdx) + 22;
-              const py = y.getPixelForValue(lab.y);
-              ctx.fillStyle = TIER_COLORS[Math.min(tier - 1, TIER_COLORS.length - 1)];
-              // Background pill so the text is readable against the dark theme
-              const text = lab.name;
-              const w = ctx.measureText(text).width;
-              ctx.globalAlpha = 0.12;
-              ctx.fillRect(px - 2, py - 7, w + 6, 14);
-              ctx.globalAlpha = 1;
-              ctx.fillStyle = "#e2e2f0";
-              ctx.fillText(text, px + 1, py);
-            });
-          }
-        });
-        ctx.restore();
-      },
-    };
 
     charts["tiermap"] = new Chart(ctx, {
       type: "scatter",
@@ -928,8 +897,7 @@
               title: () => "",
               label: (ctx) => {
                 const r = ctx.raw;
-                const pos = positions[Math.round(r.x)];
-                return `${r.name} — ${pos}${r.rank} (Tier ${r.tier}) · ${r.y.toFixed(1)} PPR`;
+                return `${r.name} — ${r.pos}${r.rank} (Tier ${r.tier}) · ${r.x.toFixed(1)} PPR`;
               },
             },
           },
@@ -937,8 +905,16 @@
         scales: {
           x: {
             type: "linear",
+            title: { display: true, text: "Projected PPR", color: chartTextColor() },
+            ticks: { color: chartTextColor() },
+            grid: { color: chartGridColor() },
+            min: 0,
+          },
+          y: {
+            type: "linear",
             min: -0.6,
             max: positions.length - 0.4,
+            reverse: true,   // QB at the top
             ticks: {
               color: chartTextColor(),
               stepSize: 1,
@@ -946,15 +922,8 @@
             },
             grid: { color: chartGridColor() },
           },
-          y: {
-            title: { display: true, text: "Projected PPR", color: chartTextColor() },
-            ticks: { color: chartTextColor() },
-            grid: { color: chartGridColor() },
-            min: 0,
-          },
         },
       },
-      plugins: [labelPlugin],
     });
   }
 
