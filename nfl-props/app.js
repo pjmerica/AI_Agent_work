@@ -146,28 +146,48 @@
       data.players.forEach((p) => consume(p, label));
     }
 
-    // Stage 2: merge nickname-form buckets via altKey + position.
-    // We prefer to keep the bucket whose canonical name is longer (the formal
-    // version, e.g. "kenneth walker" over "k walker" or "ken walker").
-    const altIndex = new Map();   // altKey|position → bucket
+    // Stage 2: merge nickname-form buckets via altKey + position + team.
+    // SAFETY: two RBs both named "B. Robinson" (Bijan vs Brian Robinson Jr.)
+    // would otherwise collapse into one entry. We only merge when:
+    //   (a) altKey + position + team all match, AND
+    //   (b) one canonical first name is a known nickname of the other (or one
+    //       is a prefix of the other, like "ken" → "kenneth").
+    const altIndex = new Map();   // altKey|position|team → bucket
+    const isNicknameMatch = (nameA, nameB) => {
+      const firstA = (nameA.split(" ")[0] || "").toLowerCase();
+      const firstB = (nameB.split(" ")[0] || "").toLowerCase();
+      if (!firstA || !firstB) return false;
+      if (firstA === firstB) return true;
+      // alias map covers ken↔kenneth, mike↔michael, etc.
+      if (FIRST_NAME_ALIASES[firstA] === firstB) return true;
+      if (FIRST_NAME_ALIASES[firstB] === firstA) return true;
+      if (FIRST_NAME_ALIASES[firstA] && FIRST_NAME_ALIASES[firstA] === FIRST_NAME_ALIASES[firstB]) return true;
+      // Prefix match like "ken" → "kenneth"
+      if (firstA.length >= 3 && firstB.startsWith(firstA)) return true;
+      if (firstB.length >= 3 && firstA.startsWith(firstB)) return true;
+      return false;
+    };
+
     for (const [key, bucket] of byKey.entries()) {
-      const altKey = altPlayerKey(bucket.name) + "|" + (bucket.position || "");
+      const altKey = altPlayerKey(bucket.name) + "|" + (bucket.position || "") + "|" + (bucket.team || "");
       const existing = altIndex.get(altKey);
       if (!existing) {
         altIndex.set(altKey, bucket);
         continue;
       }
-      // Same alt key & position — pick the bucket with the longer canonical
-      // name as the keeper, merge contributions from the other one.
+      // Same alt key, position, AND team. Only merge if the first names are
+      // nickname-compatible (catches Ken↔Kenneth Walker, NOT Bijan↔Brian Robinson).
+      if (!isNicknameMatch(bucket.name, existing.name)) {
+        continue;
+      }
+      // Pick the bucket with the longer canonical name as keeper.
       const keeper = bucket.name.length >= existing.name.length ? bucket : existing;
       const dropped = keeper === bucket ? existing : bucket;
       if (keeper !== existing) altIndex.set(altKey, keeper);
-      // Avoid double-counting if the same source contributed to both buckets
       const existingSources = new Set(keeper.contributions.map((c) => c.source));
       for (const c of dropped.contributions) {
         if (!existingSources.has(c.source)) keeper.contributions.push(c);
       }
-      // Remove the dropped bucket from the primary map
       const droppedKey = normPlayerName(dropped.name);
       if (byKey.get(droppedKey) === dropped) byKey.delete(droppedKey);
     }
