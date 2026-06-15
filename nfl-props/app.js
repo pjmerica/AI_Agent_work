@@ -212,22 +212,19 @@
 
     try {
       if (srcKey === "aggregated") {
-        const [fp, clay, nflcom] = await Promise.all([
-          cache["data"]   ? Promise.resolve(cache["data"])   : fetchJson("data.json").catch(() => null),
-          cache["clay"]   ? Promise.resolve(cache["clay"])   : fetchJson("clay.json").catch(() => null),
-          cache["nflcom"] ? Promise.resolve(cache["nflcom"]) : fetchJson("nflcom.json").catch(() => null),
+        const [fp, clay] = await Promise.all([
+          cache["data"] ? Promise.resolve(cache["data"]) : fetchJson("data.json").catch(() => null),
+          cache["clay"] ? Promise.resolve(cache["clay"]) : fetchJson("clay.json").catch(() => null),
         ]);
-        if (fp)     cache["data"]   = fp;
-        if (clay)   cache["clay"]   = clay;
-        if (nflcom) cache["nflcom"] = nflcom;
+        if (fp)   cache["data"] = fp;
+        if (clay) cache["clay"] = clay;
         cache["aggregated"] = buildAggregated([
           { label: "FantasyPros", data: fp },
           { label: "Clay",        data: clay },
-          { label: "NFL.com",     data: nflcom },
         ]);
         raw = cache["aggregated"];
       } else {
-        const fileMap = { clay: "clay.json", nflcom: "nflcom.json", data: "data.json" };
+        const fileMap = { clay: "clay.json", data: "data.json" };
         const file = fileMap[srcKey] || "data.json";
         const json = await fetchJson(file);
         cache[srcKey] = json;
@@ -262,16 +259,9 @@
 
     $rows.innerHTML = "";
     if (players.length === 0) {
-      // Tailor the empty-state message
-      if ((raw.players || []).length === 0) {
-        if (currentSource === "nflcom") {
-          $empty.textContent = "NFL.com hasn't posted 2026 projections yet (they typically go live in late July). The scraper is wired up and ready — re-run the workflow then.";
-        } else {
-          $empty.textContent = "No projections loaded for this source. Try running the scraper workflow.";
-        }
-      } else {
-        $empty.textContent = "No players match the current filters.";
-      }
+      $empty.textContent = (raw.players || []).length === 0
+        ? "No projections loaded for this source. Try running the scraper workflow."
+        : "No players match the current filters.";
       $empty.classList.remove("hidden");
     } else {
       $empty.classList.add("hidden");
@@ -458,11 +448,11 @@
   let vizPos = "ALL";
   const charts = {};
 
-  // Ensure all three source files are loaded for the disagreement chart
+  // Ensure all source files are loaded for the disagreement chart
   async function ensureAllSourcesLoaded() {
-    const needs = ["data", "clay", "nflcom"].filter((k) => !cache[k]);
+    const needs = ["data", "clay"].filter((k) => !cache[k]);
     if (needs.length === 0) return;
-    const fileMap = { data: "data.json", clay: "clay.json", nflcom: "nflcom.json" };
+    const fileMap = { data: "data.json", clay: "clay.json" };
     await Promise.all(needs.map(async (k) => {
       try { cache[k] = await fetchJson(fileMap[k]); }
       catch (e) { cache[k] = null; }
@@ -479,7 +469,6 @@
       cache["aggregated"] = buildAggregated([
         { label: "FantasyPros", data: cache["data"] },
         { label: "Clay",        data: cache["clay"] },
-        { label: "NFL.com",     data: cache["nflcom"] },
       ]);
     }
     const merged = cache["aggregated"].players;
@@ -507,9 +496,8 @@
       }
     };
 
-    attribute(cache["data"],   "FantasyPros");
-    attribute(cache["clay"],   "Clay");
-    attribute(cache["nflcom"], "NFL.com");
+    attribute(cache["data"], "FantasyPros");
+    attribute(cache["clay"], "Clay");
 
     const rows = [];
     for (const entry of perCanon.values()) {
@@ -943,7 +931,6 @@
       cache["aggregated"] = buildAggregated([
         { label: "FantasyPros", data: cache["data"] },
         { label: "Clay",        data: cache["clay"] },
-        { label: "NFL.com",     data: cache["nflcom"] },
       ]);
     }
     renderDisagreementChart();
