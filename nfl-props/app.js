@@ -262,6 +262,16 @@
 
     $rows.innerHTML = "";
     if (players.length === 0) {
+      // Tailor the empty-state message
+      if ((raw.players || []).length === 0) {
+        if (currentSource === "nflcom") {
+          $empty.textContent = "NFL.com hasn't posted 2026 projections yet (they typically go live in late July). The scraper is wired up and ready — re-run the workflow then.";
+        } else {
+          $empty.textContent = "No projections loaded for this source. Try running the scraper workflow.";
+        }
+      } else {
+        $empty.textContent = "No players match the current filters.";
+      }
       $empty.classList.remove("hidden");
     } else {
       $empty.classList.add("hidden");
@@ -429,6 +439,17 @@
       document.querySelectorAll(".source-tab").forEach((t) => t.classList.remove("active"));
       tab.classList.add("active");
       currentSource = tab.dataset.source;
+
+      // If user was on Visualizations, snap back to Rankings since they're
+      // explicitly choosing a source (which only affects the table view).
+      if (currentView !== "rankings") {
+        currentView = "rankings";
+        document.querySelectorAll(".view-tab").forEach((t) => t.classList.remove("active"));
+        document.querySelector('.view-tab[data-view="rankings"]')?.classList.add("active");
+        if ($sourceTabsContainer) $sourceTabsContainer.classList.remove("hidden");
+        showTableView();
+      }
+
       loadSource(currentSource);
     });
   }
