@@ -1,15 +1,40 @@
 {
-  "lastUpdated": "2026-07-09T14:57:49.701Z",
+  "lastUpdated": "2026-07-09T19:45:46.798Z",
   "polymarketCount": 100,
-  "predictitCount": 523,
-  "matchCount": 1,
+  "predictitCount": 536,
+  "matchCount": 2,
   "matches": [
     {
       "polymarket": {
         "platform": "Polymarket",
+        "title": "Will Kim Jong Un be the next leader out before 2027?",
+        "yesPrice": 0.0005,
+        "noPrice": 0.9995,
+        "url": "https://polymarket.com/event/will-kim-jong-un-be-the-next-leader-out-before-2027-275",
+        "volume": 99110.11317600003
+      },
+      "predictit": {
+        "platform": "PredictIt",
+        "title": "Will Kim Jong Un — Which of these 10 Asian leaders will leave office next?",
+        "yesPrice": 0.12,
+        "noPrice": 0.97,
+        "url": "https://www.predictit.org/markets/detail/8533/Which-of-these-10-Asian-leaders-will-leave-office-next",
+        "volume": null
+      },
+      "score": 38,
+      "entities": 2,
+      "diff": 12,
+      "arb": true,
+      "arbProfit": 12,
+      "buyYesOn": "Polymarket",
+      "buyNoOn": "PredictIt"
+    },
+    {
+      "polymarket": {
+        "platform": "Polymarket",
         "title": "Jay Clayton confirmed as Director of National Intelligence by October 31?",
-        "yesPrice": 0.855,
-        "noPrice": 0.145,
+        "yesPrice": 0.875,
+        "noPrice": 0.125,
         "url": "https://polymarket.com/event/jay-clayton-confirmed-as-director-of-national-intelligence-by-october-31-20260611210916708",
         "volume": 993.820202
       },
@@ -23,9 +48,9 @@
       },
       "score": 33,
       "entities": 1,
-      "diff": 10.5,
+      "diff": 8.5,
       "arb": true,
-      "arbProfit": 10.5,
+      "arbProfit": 8.5,
       "buyYesOn": "Polymarket",
       "buyNoOn": "PredictIt"
     }
