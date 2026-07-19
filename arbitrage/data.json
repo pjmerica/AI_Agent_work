@@ -1,7 +1,33 @@
 {
-  "lastUpdated": "2026-07-18T19:02:20.670Z",
+  "lastUpdated": "2026-07-19T02:40:38.206Z",
   "polymarketCount": 100,
-  "predictitCount": 540,
-  "matchCount": 0,
-  "matches": []
+  "predictitCount": 535,
+  "matchCount": 1,
+  "matches": [
+    {
+      "polymarket": {
+        "platform": "Polymarket",
+        "title": "Will Marco Rubio win the 2028 Republican presidential nomination?",
+        "yesPrice": 0.2795,
+        "noPrice": 0.7205,
+        "url": "https://polymarket.com/event/will-marco-rubio-win-the-2028-republican-presidential-nomination",
+        "volume": 9873390.129591608
+      },
+      "predictit": {
+        "platform": "PredictIt",
+        "title": "Will Marco Rubio win the 2028 Republican presidential nomination?",
+        "yesPrice": 0.3,
+        "noPrice": 0.71,
+        "url": "https://www.predictit.org/markets/detail/8152/Who-will-win-the-2028-Republican-presidential-nomination",
+        "volume": null
+      },
+      "score": 100,
+      "entities": 1,
+      "diff": 2,
+      "arb": true,
+      "arbProfit": 2,
+      "buyYesOn": "Polymarket",
+      "buyNoOn": "PredictIt"
+    }
+  ]
 }
