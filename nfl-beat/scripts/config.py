@@ -4,6 +4,27 @@ Feeds that returned zero parseable items when probed are recorded in DEAD_FEEDS
 rather than deleted, so nobody re-adds them expecting them to work.
 """
 
+# SB Nation runs a team blog for all 32 clubs, each with a working RSS feed and
+# daily training-camp coverage ("early camp observations: who has stood out?").
+# This is the beat-level reporting that X would otherwise be the source for --
+# all 32 verified live on 2026-08-02.
+SBN_TEAM_BLOGS = {
+    "ARI": "revengeofthebirds", "ATL": "thefalcoholic", "BAL": "baltimorebeatdown",
+    "BUF": "buffalorumblings", "CAR": "catscratchreader", "CHI": "windycitygridiron",
+    "CIN": "cincyjungle", "CLE": "dawgsbynature", "DAL": "bloggingtheboys",
+    "DEN": "milehighreport", "DET": "prideofdetroit", "GB": "acmepackingcompany",
+    "HOU": "battleredblog", "IND": "stampedeblue", "JAX": "bigcatcountry",
+    "KC": "arrowheadpride", "LV": "silverandblackpride", "LAC": "boltsfromtheblue",
+    "LAR": "turfshowtimes", "MIA": "thephinsider", "MIN": "dailynorseman",
+    "NE": "patspulpit", "NO": "canalstreetchronicles", "NYG": "bigblueview",
+    "NYJ": "ganggreennation", "PHI": "bleedinggreennation",
+    "PIT": "behindthesteelcurtain", "SF": "ninersnation", "SEA": "fieldgulls",
+    "TB": "bucsnation", "TEN": "musiccitymiracles", "WAS": "hogshaven",
+}
+
+TEAM_FEEDS = [(f"https://www.{slug}.com/rss/index.xml", f"SBN {abbr}")
+              for abbr, slug in sorted(SBN_TEAM_BLOGS.items())]
+
 # (url, label). Label is what appears as the source in the digest.
 RSS_FEEDS = [
     ("https://profootballtalk.nbcsports.com/feed/", "ProFootballTalk"),
@@ -35,6 +56,17 @@ MAX_AGE_HOURS_SOCIAL = 48
 # Fantasy relevance vocabulary. Weights are multiplicative on top of a player's
 # sleeper_weight, so "WR4 takes first-team reps" outranks "star WR spoke to media".
 SIGNAL_TERMS = {
+    # Camp-specific observation language. Weighted high because this is where a
+    # depth-chart change is visible weeks before it shows up in a box score --
+    # and before ADP reacts.
+    "training camp": 2.0, "camp report": 2.6, "camp observations": 2.8,
+    "practice report": 2.6, "padded practice": 2.4, "joint practice": 2.4,
+    "11-on-11": 2.6, "7-on-7": 2.2, "team drills": 2.4, "walkthrough": 1.8,
+    "stood out": 2.8, "standing out": 2.8, "made his mark": 2.4,
+    "with the ones": 3.0, "with the twos": 2.4, "ones": 1.6,
+    "starting lineup": 2.6, "unofficial depth chart": 3.0,
+    "position battle": 2.8, "competing for": 2.4, "won the job": 3.0,
+    "practice squad": 1.8, "roster bubble": 2.0, "cut candidate": 2.0,
     # Opportunity opening up -- the highest-value early signal
     "first-team": 3.0, "first team": 3.0, "1st team": 3.0, "starting job": 3.0,
     "starter": 2.2, "promoted": 2.5, "depth chart": 2.5, "climbing": 2.0,

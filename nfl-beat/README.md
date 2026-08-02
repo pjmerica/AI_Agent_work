@@ -37,8 +37,17 @@ Every line in the digest links to its origin. Nothing is asserted unsourced.
 Ian Rapoport, Field Yates, Nathan Jahnke, JJ Zachariason, Mina Kimes,
 Jourdan Rodrigue.
 
-**RSS** — ProFootballTalk, Yahoo NFL, CBS Sports NFL, PFF, ESPN NFL, RotoWire,
-Awful Announcing.
+**RSS (national)** — ProFootballTalk, Yahoo NFL, CBS Sports NFL, PFF, ESPN NFL,
+RotoWire, Awful Announcing.
+
+**RSS (team blogs)** — all 32 SB Nation club blogs, verified live. This is the
+camp-report layer: daily practice observations, unofficial depth charts, position
+battles. Roughly 40% of collected items are camp-related with these on, versus
+16% without. Feeds are fetched in parallel (~18s for all 43 sources).
+
+A bare surname appearing on its own team's blog counts as team context, so
+"Kmet" on Windy City Gridiron resolves without needing "Bears" in the sentence.
+A surname on the *wrong* team's blog is rejected outright.
 
 ### The Athletic
 
@@ -47,9 +56,9 @@ access; its public RSS feed (`theathletic.com/nfl/rss/`) returns zero items as o
 2026-08-02. Nothing behind that paywall is fetched. If you want Athletic content
 in the digest, read it in the browser and paste the relevant bit in yourself.
 
-### X / Twitter (nitter) — disabled
+### X / Twitter — not available
 
-Probed 2026-08-02, all instances non-functional:
+Probed 2026-08-02, all nitter instances non-functional:
 
 | Instance | Result |
 |---|---|
@@ -58,9 +67,20 @@ Probed 2026-08-02, all instances non-functional:
 | `nitter.privacydev.net` | does not resolve |
 | `xcancel.com` | 403 |
 
-The adapter is written and ready. If you find a working public instance, set
-`NITTER_INSTANCE` in `scripts/sources.py` and it activates — no other changes
-needed.
+This is structural, not bad luck. X removed guest API access in 2023, which is
+what every nitter instance depended on — that is why they all died, and why new
+ones tend to last weeks. There is no logged-out way to read tweets.
+
+The remaining options are all bad: scraping with a logged-in session risks a
+ban on whatever account it uses, and the official API is $200/month for a Basic
+tier whose search would likely underperform the free feeds already wired up.
+
+**The team blogs cover this gap.** SB Nation beat writers post the same camp
+observations, often the same people, in a format that is stable and free. That
+is where the camp-report content comes from instead.
+
+The nitter adapter remains in `scripts/sources.py`, disabled. If a working
+public instance ever appears, set `NITTER_INSTANCE` and it activates.
 
 ## Handles
 
@@ -145,3 +165,9 @@ in the text, so "Wilson" doesn't hit half the league.
   name and signal limits this but doesn't eliminate it.
 - **Bluesky volume is thin** (~40 fresh posts/48h across all handles). RSS carries
   most of the load. Many NFL beat writers still post only to X.
+- **The ADP board lists ~627 players as `FA`** who are actually on rosters
+  (Tyreek Hill, Najee Harris, Taysom Hill). Teams are backfilled from the
+  projections where possible, but these veterans aren't in the 2026 projection
+  set, so it can't reach them. Impact is small: only one of the 627
+  (Stefon Diggs, ADP 132) is meaningfully draftable — the rest sit at ADP 200+.
+  The cost is that team-blog disambiguation can't fire for them.

@@ -12,6 +12,7 @@ Disabled path:
 """
 from __future__ import annotations
 
+import concurrent.futures
 import json
 import re
 import time
@@ -216,15 +217,24 @@ def nitter_status() -> str:
 
 
 def collect(handles: list[str], feeds: list[tuple[str, str]],
-            max_age_hours: int = 36, pause: float = 0.3) -> list[Item]:
-    """Gather everything, drop stale items, de-duplicate by URL."""
+            max_age_hours: int = 36, pause: float = 0.3,
+            workers: int = 8) -> list[Item]:
+    """Gather everything, drop stale items, de-duplicate by URL.
+
+    RSS feeds are fetched in parallel -- with 32 team blogs plus the national
+    feeds, serial fetching dominates runtime. Bluesky stays serial and paced,
+    since it is one shared public API rather than 39 separate hosts.
+    """
     out: list[Item] = []
     for h in handles:
         out.extend(bsky_feed(h))
         time.sleep(pause)  # be polite to the public API
-    for url, label in feeds:
-        out.extend(rss_feed(url, label))
-        time.sleep(pause)
+
+    if feeds:
+        with concurrent.futures.ThreadPoolExecutor(max_workers=workers) as ex:
+            for items in ex.map(lambda f: rss_feed(f[0], f[1]), feeds):
+                out.extend(items)
+
     if NITTER_INSTANCE:
         for h in NITTER_HANDLES:
             out.extend(nitter_feed(h))

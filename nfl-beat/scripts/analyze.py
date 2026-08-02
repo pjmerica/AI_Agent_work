@@ -76,6 +76,13 @@ def find_matches(items: list, players: dict[str, Player]) -> list[Match]:
         padded = f" {blob} "
         seen_players: set[str] = set()
 
+        # A team blog ("SBN SF") is implicit team context: a bare surname there
+        # almost certainly refers to that club's player, and rarely to anyone else.
+        feed_team = ""
+        src = getattr(item, "source", "")
+        if src.startswith("SBN "):
+            feed_team = src[4:].strip().lower()
+
         for needle, cands in index.items():
             if f" {needle} " not in padded:
                 continue
@@ -84,10 +91,16 @@ def find_matches(items: list, players: dict[str, Player]) -> list[Match]:
                 if key in seen_players:
                     continue
                 # A bare-surname hit needs corroboration: the player's team must
-                # also appear, otherwise 'Wilson' matches half the league.
+                # appear in the text, or the item must come from that team's blog.
+                # Otherwise 'Wilson' matches half the league.
                 if conf < 0.6:
-                    team_tokens = [p.team.lower()] if p.team else []
-                    if not any(f" {t} " in padded for t in team_tokens if t):
+                    pteam = p.team.lower()
+                    on_team_blog = bool(feed_team and pteam == feed_team)
+                    in_text = bool(pteam) and f" {pteam} " in padded
+                    if not (on_team_blog or in_text):
+                        continue
+                    # Wrong team's blog is positive evidence against the match.
+                    if feed_team and pteam and pteam != feed_team:
                         continue
                 seen_players.add(key)
                 m = Match(player=p, item=item, matched_on=needle)

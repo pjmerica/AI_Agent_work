@@ -17,7 +17,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent))
 
 from analyze import find_matches, group_by_player            # noqa: E402
-from config import MAX_AGE_HOURS_RSS, RSS_FEEDS              # noqa: E402
+from config import MAX_AGE_HOURS_RSS, RSS_FEEDS, TEAM_FEEDS  # noqa: E402
 from players import (UD_ADP, adp_context, load_players,      # noqa: E402
                      resolve_dates)
 from report import write_all                                 # noqa: E402
@@ -38,9 +38,11 @@ def main() -> int:
     dry = "--dry" in sys.argv
 
     handles = load_handles()
-    print(f"→ {len(handles)} verified Bluesky handles, {len(RSS_FEEDS)} RSS feeds")
+    feeds = RSS_FEEDS + TEAM_FEEDS
+    print(f"→ {len(handles)} Bluesky handles, {len(RSS_FEEDS)} national feeds, "
+          f"{len(TEAM_FEEDS)} team blogs")
 
-    items = collect(handles, RSS_FEEDS, max_age_hours=MAX_AGE_HOURS_RSS)
+    items = collect(handles, feeds, max_age_hours=MAX_AGE_HOURS_RSS)
     if not items:
         print("! no items collected -- every source failed. Aborting without writing.")
         return 1

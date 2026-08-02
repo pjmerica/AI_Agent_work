@@ -1,21 +1,53 @@
 {
-  "generated": "2026-08-02T18:57:51.759555+00:00",
+  "generated": "2026-08-02T19:16:33.837498+00:00",
   "stats": {
-    "n_items": 224,
-    "n_players": 22,
-    "n_unpriced": 19,
+    "n_items": 475,
+    "n_players": 90,
+    "n_unpriced": 76,
     "by_source": {
       "Bluesky @minakimes.bsky.social": 36,
       "Bluesky @rapsheet.bsky.social": 13,
       "Bluesky @jourdanrodrigue.bsky.social": 4,
       "Bluesky @lateroundqb.bsky.social": 2,
-      "Bluesky @nateatkins.bsky.social": 12,
+      "Bluesky @nateatkins.bsky.social": 11,
       "Bluesky @ffnatejahnke.bsky.social": 9,
       "ProFootballTalk": 30,
       "Yahoo NFL": 50,
       "CBS Sports NFL": 36,
       "PFF": 17,
-      "Awful Announcing": 15
+      "Awful Announcing": 15,
+      "SBN ARI": 10,
+      "SBN ATL": 6,
+      "SBN BAL": 4,
+      "SBN BUF": 10,
+      "SBN CAR": 5,
+      "SBN CHI": 10,
+      "SBN CIN": 10,
+      "SBN CLE": 10,
+      "SBN DAL": 10,
+      "SBN DEN": 10,
+      "SBN DET": 10,
+      "SBN GB": 10,
+      "SBN HOU": 1,
+      "SBN IND": 10,
+      "SBN JAX": 4,
+      "SBN KC": 10,
+      "SBN LAC": 6,
+      "SBN LAR": 10,
+      "SBN LV": 10,
+      "SBN MIA": 4,
+      "SBN MIN": 4,
+      "SBN NE": 10,
+      "SBN NO": 10,
+      "SBN NYG": 10,
+      "SBN NYJ": 5,
+      "SBN PHI": 10,
+      "SBN PIT": 10,
+      "SBN SEA": 10,
+      "SBN SF": 10,
+      "SBN TB": 2,
+      "SBN TEN": 1,
+      "SBN WAS": 10
     },
     "adp_latest": "2026-08-02",
     "adp_prior": "2026-07-19",
@@ -31,14 +63,16 @@
       "adp_move": -22.2,
       "proj": 77.35050964355469,
       "sleeper_weight": 1.0,
-      "score": 8.51,
+      "score": 13.11,
       "unpriced": false,
       "signals": [
         "carted",
+        "hamstring",
         "injured",
         "injury",
         "out for",
-        "surgery"
+        "surgery",
+        "training camp"
       ],
       "items": [
         {
@@ -64,6 +98,49 @@
       ]
     },
     {
+      "name": "Deshaun Watson",
+      "pos": "QB",
+      "team": "CLE",
+      "adp": 215.2,
+      "adp_prior": 214.8,
+      "adp_move": -0.4,
+      "proj": 64.06472778320312,
+      "sleeper_weight": 1.0,
+      "score": 9.083,
+      "unpriced": true,
+      "signals": [
+        "camp report",
+        "competing for",
+        "first team",
+        "joint practice",
+        "red zone",
+        "starting job",
+        "training camp"
+      ],
+      "items": [
+        {
+          "text": "Deshaun Watson doesn't know why people think he doesn't like Cleveland. Four years ago, when the Browns, Panthers, Falcons, and Saints entered a four-way competition for quarterback Deshaun Watson, Cleveland was the first team to which Watson said, \"No thanks.\"",
+          "url": "https://www.nbcsports.com/nfl/profootballtalk/rumor-mill/news/deshaun-watson-doesnt-know-why-people-think-he-doesnt-like-cleveland",
+          "source": "ProFootballTalk"
+        },
+        {
+          "text": "Cleveland Browns Training Camp Recap: Day 4 &#8211; Red zone drills, TDs, and INTs. Day 4 of Cleveland Browns training camp took place on Saturday, August 1. Both quarterbacks competing to start spoke to the media before practice. Cleveland Browns Training Camp Report &#8211; Day 4 (8/1/26) 1. Watso",
+          "url": "https://www.dawgsbynature.com/cleveland-browns-news/129341/cleveland-browns-training-camp-recap-day-4-red-zone-drills-tds-and-ints",
+          "source": "SBN CLE"
+        },
+        {
+          "text": "Todd Monken updates Browns QB competition, timing on making a decision. At least according to our poll, Cleveland Browns fans feel confident that either they know who the starting quarterback should be already or will after the joint practice and preseason game with the Buffalo Bills: According to G",
+          "url": "https://www.dawgsbynature.com/cleveland-browns-depth-chart-roster/129320/todd-monken-updates-qb-competition-decision-shedeur-sanders-deshaun-watson",
+          "source": "SBN CLE"
+        },
+        {
+          "text": "Browns QB battle: What if Watson or Sanders are not the best options?. The Cleveland Browns are just four days into their latest, but far from greatest, quarterback training camp battle with no clear winner at the moment. That is not completely unsurprising for those who have been following along as",
+          "url": "https://www.dawgsbynature.com/cleveland-browns-news/129398/browns-qb-battle-deshaun-watson-shedeur-sanders-not-best-options",
+          "source": "SBN CLE"
+        }
+      ]
+    },
+    {
       "name": "Tucker Kraft",
       "pos": "TE",
       "team": "GB",
@@ -72,10 +149,13 @@
       "adp_move": 0.5,
       "proj": 91.3322525024414,
       "sleeper_weight": 0.8,
-      "score": 6.697,
+      "score": 8.403,
       "unpriced": true,
       "signals": [
-        "acl"
+        "acl",
+        "ahead of",
+        "injury",
+        "joint practice"
       ],
       "items": [
         {
@@ -87,50 +167,76 @@
           "text": "Matt LaFleur: Tucker Kraft could participate in joint practice with Cardinals. Packers tight end Tucker Kraft was able to ride a bike to the practice field \u2014 and to practice on it \u2014 on Friday, his first work since suffering a torn ACL on November 2.",
           "url": "https://sports.yahoo.com/articles/matt-lafleur-tucker-kraft-could-162846437.html",
           "source": "Yahoo NFL"
+        },
+        {
+          "text": "Packers activate Tucker Kraft off Physically Unable to Perform list. One of the Green Bay Packers\u2019 biggest injury questions to start the 2026 season is now answered. That question revolved around when tight end Tucker Kraft would be cleared to return to practice coming off his torn ACL, and we now h",
+          "url": "https://www.acmepackingcompany.com/green-bay-packers-news/84246/packers-activate-tucker-kraft-off-physically-unable-to-perform-list",
+          "source": "SBN GB"
         }
       ]
     },
     {
-      "name": "Deshaun Watson",
+      "name": "Shedeur Sanders",
       "pos": "QB",
       "team": "CLE",
-      "adp": 215.2,
-      "adp_prior": 214.8,
-      "adp_move": -0.4,
-      "proj": 64.06472778320312,
+      "adp": 213.2,
+      "adp_prior": 214.0,
+      "adp_move": 0.8,
+      "proj": 15.371488571166992,
+      "sleeper_weight": 1.0,
+      "score": 6.892,
+      "unpriced": true,
+      "signals": [
+        "camp report",
+        "competing for",
+        "red zone",
+        "starting job",
+        "training camp"
+      ],
+      "items": [
+        {
+          "text": "Cleveland Browns Training Camp Recap: Day 4 &#8211; Red zone drills, TDs, and INTs. Day 4 of Cleveland Browns training camp took place on Saturday, August 1. Both quarterbacks competing to start spoke to the media before practice. Cleveland Browns Training Camp Report &#8211; Day 4 (8/1/26) 1. Watso",
+          "url": "https://www.dawgsbynature.com/cleveland-browns-news/129341/cleveland-browns-training-camp-recap-day-4-red-zone-drills-tds-and-ints",
+          "source": "SBN CLE"
+        },
+        {
+          "text": "Browns QB competition: Watson came in with \u2018leg up,\u2019 Shedeur has \u2018upward trajectory\u2019. The Cleveland Browns QB competition is the story of the team\u2019s training camp, even if it might be overblown by many fans and media. GM Andrew Berry and HC Todd Monken have made it clear that the only thing that mat",
+          "url": "https://www.dawgsbynature.com/cleveland-browns-news/129289/browns-qb-competition-deshaun-watson-lead-shedeur-sanders-gaining",
+          "source": "SBN CLE"
+        },
+        {
+          "text": "Browns QB battle: What if Watson or Sanders are not the best options?. The Cleveland Browns are just four days into their latest, but far from greatest, quarterback training camp battle with no clear winner at the moment. That is not completely unsurprising for those who have been following along as",
+          "url": "https://www.dawgsbynature.com/cleveland-browns-news/129398/browns-qb-battle-deshaun-watson-shedeur-sanders-not-best-options",
+          "source": "SBN CLE"
+        }
+      ]
+    },
+    {
+      "name": "Cole Kmet",
+      "pos": "TE",
+      "team": "CHI",
+      "adp": 215.9,
+      "adp_prior": 215.9,
+      "adp_move": 0.0,
+      "proj": 50.42478942871094,
       "sleeper_weight": 1.0,
       "score": 5.52,
       "unpriced": true,
       "signals": [
-        "first team"
+        "targets",
+        "took over",
+        "training camp"
       ],
       "items": [
         {
-          "text": "Deshaun Watson doesn't know why people think he doesn't like Cleveland. Four years ago, when the Browns, Panthers, Falcons, and Saints entered a four-way competition for quarterback Deshaun Watson, Cleveland was the first team to which Watson said, \"No thanks.\"",
-          "url": "https://www.nbcsports.com/nfl/profootballtalk/rumor-mill/news/deshaun-watson-doesnt-know-why-people-think-he-doesnt-like-cleveland",
-          "source": "ProFootballTalk"
-        }
-      ]
-    },
-    {
-      "name": "Patrick Mahomes",
-      "pos": "QB",
-      "team": "KC",
-      "adp": 93.6,
-      "adp_prior": 92.8,
-      "adp_move": -0.8,
-      "proj": 260.95941162109375,
-      "sleeper_weight": 0.8,
-      "score": 4.122,
-      "unpriced": true,
-      "signals": [
-        "acl"
-      ],
-      "items": [
+          "text": "Bears&#8217; Cole Kmet just wants to win. Since Ben Johnson took over as head coach of the Chicago Bears, tight end Cole Kmet has seen his opportunities in the passing game shrink, while being asked to do more as a blocker. His 48 targets, 30 receptions, and 347 yards in 2025 were his lowest since h",
+          "url": "https://www.windycitygridiron.com/chicago-bears-news/119840/chicago-bears-cole-kmet-just-wants-to-win-ben-johnson",
+          "source": "SBN CHI"
+        },
         {
-          "text": "Andy Reid: Patrick Mahomes sure looks sharp out there. Chiefs head coach Andy Reid continues to see positive signs from Patrick Mahomes in the quarterback's recovery from a torn ACL.",
-          "url": "https://www.nbcsports.com/nfl/profootballtalk/rumor-mill/news/andy-reid-patrick-mahomes-sure-looks-sharp-out-there",
-          "source": "ProFootballTalk"
+          "text": "Bears Veterans Are Seeing a Different Team Take Shape. The Chicago Bears held multiple player press conferences following Day 4 of training camp on Saturday, including pressers with tight end Cole Kmet and cornerback Jaylon Johnson. Both were selected by Chicago in the 2020 NFL Draft, making them th",
+          "url": "https://www.windycitygridiron.com/chicago-bears-training-camp/119854/bears-veterans-are-seeing-a-different-team-take-shape",
+          "source": "SBN CHI"
         }
       ]
     },
@@ -143,16 +249,711 @@
       "adp_move": null,
       "proj": 5.613704681396484,
       "sleeper_weight": 1.0,
-      "score": 4.0,
+      "score": 5.52,
       "unpriced": true,
       "signals": [
-        "carted"
+        "carted",
+        "injury",
+        "training camp"
       ],
       "items": [
         {
           "text": "NFL news, live updates: Ricky Pearsall to miss season for 49ers; Bills' C.J. Gardner-Johnson, Chiefs rookie Cyrus Allen carted off with injuries. Follow along with the latest NFL news and updates from training camps around the league.",
           "url": "https://sports.yahoo.com/nfl/live/nfl-news-live-updates-ricky-pearsall-to-miss-season-for-49ers-bills-cj-gardner-johnson-chiefs-rookie-cyrus-allen-carted-off-with-injuries-120227168.html",
           "source": "Yahoo NFL"
+        },
+        {
+          "text": "Chiefs rookie WR Cyrus Allen leaves Saturday\u2019s practice with an injury. Midway through Saturday\u2019s training camp session at Missouri Western State University in St. Joseph, rookie wide receiver Cyrus Allen collided with cornerback Kaiir Elam on a punt drill. Allen reportedly stayed down on the play b",
+          "url": "https://www.arrowheadpride.com/kansas-city-chiefs-injuries/206732/chiefs-rookie-wr-cyrus-allen-leaves-saturdays-practice-with-an-injury",
+          "source": "SBN KC"
+        }
+      ]
+    },
+    {
+      "name": "Geno Smith",
+      "pos": "QB",
+      "team": "NYJ",
+      "adp": 186.5,
+      "adp_prior": 185.3,
+      "adp_move": -1.2,
+      "proj": 68.50546264648438,
+      "sleeper_weight": 1.0,
+      "score": 5.437,
+      "unpriced": true,
+      "signals": [
+        "breakout",
+        "did not practice",
+        "training camp"
+      ],
+      "items": [
+        {
+          "text": "New York Jets News: Geno Smith shines at Jets training camp. Happy Sunday, Jets fans! The Jets have their first day off since training camp began. While the team did not practice on Friday, there was still classroom instruction and meetings. Today the Jets do not have anything on the schedule. This ",
+          "url": "https://www.ganggreennation.com/new-york-jets-news/95285/new-york-jets-news-geno-smith-shines-at-jets-training-camp",
+          "source": "SBN NYJ"
+        },
+        {
+          "text": "New York Jets 2026 preview: Geno Smith returns, David Bailey offers plenty of promise. The New York Jets enter the 2026 NFL season with a new-look roster led by Geno Smith and one of the NFL's most promising rookie classes. PFF breaks down the Jets' key additions, breakout candidates, roster strengt",
+          "url": "https://www.pff.com/news/nfl-new-york-jets-2026-preview/",
+          "source": "PFF"
+        }
+      ]
+    },
+    {
+      "name": "Erick All",
+      "pos": "TE",
+      "team": "CIN",
+      "adp": 215.5,
+      "adp_prior": 215.9,
+      "adp_move": 0.4,
+      "proj": 14.342707633972168,
+      "sleeper_weight": 1.0,
+      "score": 5.408,
+      "unpriced": true,
+      "signals": [
+        "camp report",
+        "training camp"
+      ],
+      "items": [
+        {
+          "text": "Bengals News (8/2): Maxx Crosby Worth 2 First-Round Picks for Cincinnati?. Bengals News Bengals get another Maxx Crosby trade suggestion The Cincinnati Bengals trading for Dexter Lawrence sort of kept the floodgates open for suggestions that the team should make other big splash moves around Joe Bur",
+          "url": "https://www.cincyjungle.com/cincinnati-bengals-news/195277/bengals-news-8-2-maxx-crosby-worth-2-first-round-picks-for-cincinnati",
+          "source": "SBN CIN"
+        }
+      ]
+    },
+    {
+      "name": "Kendrick Law",
+      "pos": "WR",
+      "team": "DET",
+      "adp": null,
+      "adp_prior": null,
+      "adp_move": null,
+      "proj": 5.9719014167785645,
+      "sleeper_weight": 1.0,
+      "score": 5.152,
+      "unpriced": true,
+      "signals": [
+        "acl",
+        "injury",
+        "training camp"
+      ],
+      "items": [
+        {
+          "text": "Reports: Lions rookie Jimmy Rolder out \u2018a while,\u2019 but injury not \u2018severe\u2019. The Detroit Lions\u2019 2026 NFL Draft class has already been hit with two significant injuries. Back in the spring, fifth-round pick Kendrick Law suffered a season-ending ACL injury. And on Friday, fourth-round pick Jimmy Rolder ",
+          "url": "https://www.prideofdetroit.com/detroit-lions-injuries/168171/detroit-lions-rookie-jimmy-rolder-training-camp-injury-update",
+          "source": "SBN DET"
+        }
+      ]
+    },
+    {
+      "name": "Patrick Mahomes",
+      "pos": "QB",
+      "team": "KC",
+      "adp": 93.6,
+      "adp_prior": 92.8,
+      "adp_move": -0.8,
+      "proj": 260.95941162109375,
+      "sleeper_weight": 0.8,
+      "score": 5.145,
+      "unpriced": true,
+      "signals": [
+        "acl",
+        "training camp"
+      ],
+      "items": [
+        {
+          "text": "Andy Reid: Patrick Mahomes sure looks sharp out there. Chiefs head coach Andy Reid continues to see positive signs from Patrick Mahomes in the quarterback's recovery from a torn ACL.",
+          "url": "https://www.nbcsports.com/nfl/profootballtalk/rumor-mill/news/andy-reid-patrick-mahomes-sure-looks-sharp-out-there",
+          "source": "ProFootballTalk"
+        },
+        {
+          "text": "Chiefs training camp notebook Day 4: Defense is challenging Mahomes. For the fourth consecutive day in St. Joe, Kansas City Chiefs players, coaches and fans were treated to a cool morning; this practice was breezy but sunny, and lasted roughly two hours. The team is looking ahead to a rest day on Su",
+          "url": "https://www.arrowheadpride.com/kansas-city-chiefs-analysis/206738/chiefs-training-camp-notebook-day-4-defense-challenging-mahomes",
+          "source": "SBN KC"
+        }
+      ]
+    },
+    {
+      "name": "Sean Mannion",
+      "pos": "QB",
+      "team": "FA",
+      "adp": 216.0,
+      "adp_prior": null,
+      "adp_move": null,
+      "proj": null,
+      "sleeper_weight": 1.0,
+      "score": 4.96,
+      "unpriced": true,
+      "signals": [
+        "training camp"
+      ],
+      "items": [
+        {
+          "text": "Sean Mannion sets Eagles training camp expectations, talks Jalen Hurts, and more. The Eagles were back on the practice field on Saturday, but before taking the field, new offensive coordinator Sean Mannion spoke to reporters \u2014 in just his second time speaking to Philly media since being hired. He ex",
+          "url": "https://www.bleedinggreennation.com/news/178367/sean-mannion-sets-eagles-training-camp-expectations-talks-jalen-hurts-and-more",
+          "source": "SBN PHI"
+        },
+        {
+          "text": "Eagles\u2019 reborn running game can take pressure off Jalen Hurts. As training camp opens this week, there is no player on the Eagles under the microscope more than Jalen Hurts. The entire fanbase is intently studying Sean Mannion\u2019s new offense and how their Super Bowl winning quarterback will evolve in",
+          "url": "https://www.bleedinggreennation.com/philadelphia-eagles-analysis/178297/eagles-reborn-running-game-can-take-pressure-off-jalen-hurts",
+          "source": "SBN PHI"
+        }
+      ]
+    },
+    {
+      "name": "David Blough",
+      "pos": "QB",
+      "team": "FA",
+      "adp": 216.0,
+      "adp_prior": null,
+      "adp_move": null,
+      "proj": null,
+      "sleeper_weight": 1.0,
+      "score": 4.96,
+      "unpriced": true,
+      "signals": [
+        "training camp"
+      ],
+      "items": [
+        {
+          "text": "How the Washington Commanders might utilize 12 and 13 personnel this season. During the early days of training camp, ESPN reporter John Keim caught up with Ben Sinnott to discuss how offensive coordinator David Blough plans to utilize the Commanders tight ends this season. Clearly, Sinnott was excit",
+          "url": "https://www.hogshaven.com/washington-commanders-analysis/427724/washington-commanders-david-blough-tight-endsmight-utilize-12-13-personnel-ben-sinnott-john-bates-chig-okonkwo",
+          "source": "SBN WAS"
+        },
+        {
+          "text": "How being \u2018multiple\u2019 will help Washington Commanders\u2019 offense, defense. Tyler\u2019 Take: New coordinators, talent give Commanders the ability to be \u2018multiple\u2019 With training camp now underway, the guessing game of what Washington\u2019s new offense and defense will look like this season is almost over. Earlie",
+          "url": "https://www.hogshaven.com/washington-commanders-analysis/427284/tyler-take-new-coordinators-added-talent-commanders-ability-multiple-both-side-ball",
+          "source": "SBN WAS"
+        }
+      ]
+    },
+    {
+      "name": "Joe Burrow",
+      "pos": "QB",
+      "team": "CIN",
+      "adp": 68.1,
+      "adp_prior": 67.4,
+      "adp_move": -0.7,
+      "proj": 255.34397888183594,
+      "sleeper_weight": 0.8,
+      "score": 4.902,
+      "unpriced": true,
+      "signals": [
+        "camp report",
+        "carries",
+        "training camp"
+      ],
+      "items": [
+        {
+          "text": "Bengals News (8/2): Maxx Crosby Worth 2 First-Round Picks for Cincinnati?. Bengals News Bengals get another Maxx Crosby trade suggestion The Cincinnati Bengals trading for Dexter Lawrence sort of kept the floodgates open for suggestions that the team should make other big splash moves around Joe Bur",
+          "url": "https://www.cincyjungle.com/cincinnati-bengals-news/195277/bengals-news-8-2-maxx-crosby-worth-2-first-round-picks-for-cincinnati",
+          "source": "SBN CIN"
+        },
+        {
+          "text": "Bengals News: Ravens player sees Tom Brady in Joe Burrow. Quarterback Joe Burrow has always had that one thing you need from a quarterback that can never quite be defined with a number you\u2019ll find in the box score. The way he carries himself is just on the next level. The last player we saw similar ",
+          "url": "https://www.cincyjungle.com/cincinnati-bengals-news/195142/bengals-news-ravens-player-sees-tom-brady-in-joe-burrow",
+          "source": "SBN CIN"
+        }
+      ]
+    },
+    {
+      "name": "Kenny McIntosh",
+      "pos": "RB",
+      "team": "SEA",
+      "adp": 216.0,
+      "adp_prior": null,
+      "adp_move": null,
+      "proj": 9.627220153808594,
+      "sleeper_weight": 1.0,
+      "score": 4.6,
+      "unpriced": true,
+      "signals": [
+        "out for",
+        "waived"
+      ],
+      "items": [
+        {
+          "text": "Former Seahawks running back Kenny McIntosh tries out for Klint Kubiak\u2019s Raiders. While Kenny McIntosh\u2019s Seattle Seahawks tenure did not go as hoped, the fourth-year running back may not be without a team for much longer. On Friday, the NFL transaction wire revealed that McIntosh, who was waived at ",
+          "url": "https://www.fieldgulls.com/seattle-seahawks-news/171434/ex-seahawks-kenny-mcintosh-tryout-las-vegas-raiders-klint-kubiak-nfl-news",
+          "source": "SBN SEA"
+        }
+      ]
+    },
+    {
+      "name": "Taysom Hill",
+      "pos": "TE",
+      "team": "FA",
+      "adp": 216.0,
+      "adp_prior": null,
+      "adp_move": null,
+      "proj": null,
+      "sleeper_weight": 1.0,
+      "score": 4.576,
+      "unpriced": true,
+      "signals": [
+        "released"
+      ],
+      "items": [
+        {
+          "text": "Sean Payton explores a reunion with Taysom Hill in Denver. When Taysom Hill was released from the Green Bay Packers as final roster cuts were made in 2017, then New Orleans Saints head coach Sean Payton pounced on the opportunity to grab the undrafted college quarterback out of BYU. So it shouldn&#8",
+          "url": "https://www.canalstreetchronicles.com/new-orleans-saints-news/112383/sean-payton-explores-a-reunion-with-taysom-hill-in-denver",
+          "source": "SBN NO"
+        }
+      ]
+    },
+    {
+      "name": "Jalen Hurts",
+      "pos": "QB",
+      "team": "PHI",
+      "adp": 71.1,
+      "adp_prior": 71.7,
+      "adp_move": 0.6,
+      "proj": 264.92047119140625,
+      "sleeper_weight": 0.8,
+      "score": 4.425,
+      "unpriced": true,
+      "signals": [
+        "training camp"
+      ],
+      "items": [
+        {
+          "text": "Sean Mannion sets Eagles training camp expectations, talks Jalen Hurts, and more. The Eagles were back on the practice field on Saturday, but before taking the field, new offensive coordinator Sean Mannion spoke to reporters \u2014 in just his second time speaking to Philly media since being hired. He ex",
+          "url": "https://www.bleedinggreennation.com/news/178367/sean-mannion-sets-eagles-training-camp-expectations-talks-jalen-hurts-and-more",
+          "source": "SBN PHI"
+        },
+        {
+          "text": "Eagles\u2019 reborn running game can take pressure off Jalen Hurts. As training camp opens this week, there is no player on the Eagles under the microscope more than Jalen Hurts. The entire fanbase is intently studying Sean Mannion\u2019s new offense and how their Super Bowl winning quarterback will evolve in",
+          "url": "https://www.bleedinggreennation.com/philadelphia-eagles-analysis/178297/eagles-reborn-running-game-can-take-pressure-off-jalen-hurts",
+          "source": "SBN PHI"
+        },
+        {
+          "text": "Eagles News: Hoping to see more from Philadelphia\u2019s top two draft picks. Let\u2019s get to the Philadelphia Eagles news and links \u2026 Eagles 2026 training camp practice notes, Day 3: The D-line is dominant &#8211; PhillyVoiceIt&#8217;s very early in camp, but I haven&#8217;t seen Eli Stowers or Makai Lemon",
+          "url": "https://www.bleedinggreennation.com/news/178438/eagles-news-hoping-to-see-more-from-philadelphias-top-two-draft-picks",
+          "source": "SBN PHI"
+        }
+      ]
+    },
+    {
+      "name": "Elijah Arroyo",
+      "pos": "TE",
+      "team": "SEA",
+      "adp": 215.9,
+      "adp_prior": 215.9,
+      "adp_move": 0.0,
+      "proj": 51.34939956665039,
+      "sleeper_weight": 1.0,
+      "score": 4.382,
+      "unpriced": true,
+      "signals": [
+        "training camp"
+      ],
+      "items": [
+        {
+          "text": "Seahawks 2026 training camp, Day 7 recap: Big days for Elijah Arroyo, Tory Horton. The Seattle Seahawks continued their 2026 training camp with a lighter practice in front of fans on Saturday afternoon. After doing padded practices on Thursday and Friday, Seattle opted to go pad-less for Saturday. W",
+          "url": "https://www.fieldgulls.com/seattle-seahawks-training-camp/171438/seahawks-2026-training-camp-day-7-recap-news-highlights-elijah-arroyo-tory-horton",
+          "source": "SBN SEA"
+        },
+        {
+          "text": "Seahawks News: Elijah Arroyo making himself known at Seahawks camp. New Seattle Seahawks OC Brian Fleury promised more TE usage in the new offense, and it seems as if he is going to follow through. The tight ends have featured prominently and often at training camp, and Elijah Arroyo has been impres",
+          "url": "https://www.fieldgulls.com/seattle-seahawks-news/171488/seahawks-news-elijah-arroyo-making-himself-known-at-seahawks-camp",
+          "source": "SBN SEA"
+        }
+      ]
+    },
+    {
+      "name": "Eli Raridon",
+      "pos": "TE",
+      "team": "NE",
+      "adp": 215.7,
+      "adp_prior": 215.9,
+      "adp_move": 0.2,
+      "proj": 6.880542278289795,
+      "sleeper_weight": 1.0,
+      "score": 4.16,
+      "unpriced": true,
+      "signals": [
+        "training camp"
+      ],
+      "items": [
+        {
+          "text": "Sunday Patriots Notes: Eli Raridon impressing early in training camp. The New England Patriots\u2019 training camp is fully underway. Following three straight padded practices to conclude the first week, the team is off on Sunday before getting back to work. Before we focus on what lies ahead, however, l",
+          "url": "https://www.patspulpit.com/new-england-patriots-opinion/132243/sunday-patriots-notes-eli-raridon-impressing-early-in-training-camp",
+          "source": "SBN NE"
+        }
+      ]
+    },
+    {
+      "name": "Eli Stowers",
+      "pos": "TE",
+      "team": "PHI",
+      "adp": 209.8,
+      "adp_prior": 209.3,
+      "adp_move": -0.5,
+      "proj": 20.370872497558594,
+      "sleeper_weight": 1.0,
+      "score": 4.16,
+      "unpriced": true,
+      "signals": [
+        "training camp"
+      ],
+      "items": [
+        {
+          "text": "Eagles News: Hoping to see more from Philadelphia\u2019s top two draft picks. Let\u2019s get to the Philadelphia Eagles news and links \u2026 Eagles 2026 training camp practice notes, Day 3: The D-line is dominant &#8211; PhillyVoiceIt&#8217;s very early in camp, but I haven&#8217;t seen Eli Stowers or Makai Lemon",
+          "url": "https://www.bleedinggreennation.com/news/178438/eagles-news-hoping-to-see-more-from-philadelphias-top-two-draft-picks",
+          "source": "SBN PHI"
+        }
+      ]
+    },
+    {
+      "name": "Drew Allar",
+      "pos": "QB",
+      "team": "PIT",
+      "adp": 216.0,
+      "adp_prior": null,
+      "adp_move": null,
+      "proj": null,
+      "sleeper_weight": 1.0,
+      "score": 4.16,
+      "unpriced": true,
+      "signals": [
+        "snap",
+        "training camp"
+      ],
+      "items": [
+        {
+          "text": "The Steelers couldn\u2019t have asked for a better start to training camp. The Pittsburgh Steelers\u2019 offense faced fourth down in the two-minute drill as rookie quarterback Drew Allar came to the line. After taking the snap, Allar saw he had a one-on-one matchup downfield, launching a pass to A.T. Perry. ",
+          "url": "https://www.behindthesteelcurtain.com/pittsburgh-steelers-training-camp/172902/the-steelers-couldnt-have-asked-for-a-better-start-to-training-camp-drew-allar-will-howard-aaron-rodgers",
+          "source": "SBN PIT"
+        }
+      ]
+    },
+    {
+      "name": "Ben Sinnott",
+      "pos": "TE",
+      "team": "WAS",
+      "adp": 216.0,
+      "adp_prior": null,
+      "adp_move": null,
+      "proj": 26.68146514892578,
+      "sleeper_weight": 1.0,
+      "score": 4.16,
+      "unpriced": true,
+      "signals": [
+        "training camp"
+      ],
+      "items": [
+        {
+          "text": "How the Washington Commanders might utilize 12 and 13 personnel this season. During the early days of training camp, ESPN reporter John Keim caught up with Ben Sinnott to discuss how offensive coordinator David Blough plans to utilize the Commanders tight ends this season. Clearly, Sinnott was excit",
+          "url": "https://www.hogshaven.com/washington-commanders-analysis/427724/washington-commanders-david-blough-tight-endsmight-utilize-12-13-personnel-ben-sinnott-john-bates-chig-okonkwo",
+          "source": "SBN WAS"
+        }
+      ]
+    },
+    {
+      "name": "Raheim Sanders",
+      "pos": "RB",
+      "team": "CLE",
+      "adp": 216.0,
+      "adp_prior": null,
+      "adp_move": null,
+      "proj": 13.390216827392578,
+      "sleeper_weight": 1.0,
+      "score": 4.048,
+      "unpriced": true,
+      "signals": [
+        "camp report",
+        "competing for",
+        "red zone",
+        "starting job",
+        "training camp"
+      ],
+      "items": [
+        {
+          "text": "Cleveland Browns Training Camp Recap: Day 4 &#8211; Red zone drills, TDs, and INTs. Day 4 of Cleveland Browns training camp took place on Saturday, August 1. Both quarterbacks competing to start spoke to the media before practice. Cleveland Browns Training Camp Report &#8211; Day 4 (8/1/26) 1. Watso",
+          "url": "https://www.dawgsbynature.com/cleveland-browns-news/129341/cleveland-browns-training-camp-recap-day-4-red-zone-drills-tds-and-ints",
+          "source": "SBN CLE"
+        },
+        {
+          "text": "Browns QB battle: What if Watson or Sanders are not the best options?. The Cleveland Browns are just four days into their latest, but far from greatest, quarterback training camp battle with no clear winner at the moment. That is not completely unsurprising for those who have been following along as",
+          "url": "https://www.dawgsbynature.com/cleveland-browns-news/129398/browns-qb-battle-deshaun-watson-shedeur-sanders-not-best-options",
+          "source": "SBN CLE"
+        },
+        {
+          "text": "Browns QB competition: Watson came in with \u2018leg up,\u2019 Shedeur has \u2018upward trajectory\u2019. The Cleveland Browns QB competition is the story of the team\u2019s training camp, even if it might be overblown by many fans and media. GM Andrew Berry and HC Todd Monken have made it clear that the only thing that mat",
+          "url": "https://www.dawgsbynature.com/cleveland-browns-news/129289/browns-qb-competition-deshaun-watson-lead-shedeur-sanders-gaining",
+          "source": "SBN CLE"
+        }
+      ]
+    },
+    {
+      "name": "Kaden Prather",
+      "pos": "WR",
+      "team": "GB",
+      "adp": 216.0,
+      "adp_prior": null,
+      "adp_move": null,
+      "proj": null,
+      "sleeper_weight": 1.0,
+      "score": 3.952,
+      "unpriced": true,
+      "signals": [
+        "hamstring",
+        "injury",
+        "released",
+        "training camp"
+      ],
+      "items": [
+        {
+          "text": "Packers Training Camp Recap: Dani Dennis-Sutton starting to find a role. Training camp can be fickle. Earlier this week, the Green Bay Packers signed kicker Lenny Krieg. Just yesterday, receiver Brendan Rice missed his first practice with a hamstring injury. On Friday, both of those players were rel",
+          "url": "https://www.acmepackingcompany.com/green-bay-packers-preseason/84249/packers-training-camp-recap-dani-dennis-sutton-starting-to-find-a-role",
+          "source": "SBN GB"
+        },
+        {
+          "text": "Packers sign UFL champion receiver Kaden Prather. The Green Bay Packers worked out 10 players on Thursday, including four wide receivers. Apparently, one of them took, as the Packers signed Kaden Prather, formerly of the Louisville Kings, to a contract, per NFL Network\u2019s Ian Rapoport. Prather was a ",
+          "url": "https://www.acmepackingcompany.com/green-bay-packers-news/84225/packers-sign-ufl-champion-receiver-kaden-prather",
+          "source": "SBN GB"
+        }
+      ]
+    },
+    {
+      "name": "Baker Mayfield",
+      "pos": "QB",
+      "team": "TB",
+      "adp": 118.4,
+      "adp_prior": 118.3,
+      "adp_move": -0.1,
+      "proj": 227.67916870117188,
+      "sleeper_weight": 1.0,
+      "score": 3.84,
+      "unpriced": true,
+      "signals": [
+        "training camp"
+      ],
+      "items": [
+        {
+          "text": "Pros and Cons of a Baker Mayfield Extension. Training camp for the 2026 season is officially underway but for the Buccaneers, a lot of the focus is unfortunately off the field right now and the attention has turned to the contracts of quarterback Baker Mayfield as well as defensive tackle Vita Vea. ",
+          "url": "https://www.bucsnation.com/tampa-bay-buccaneers-discussion/68043/pros-and-cons-of-a-baker-mayfield-extension",
+          "source": "SBN TB"
+        },
+        {
+          "text": "Baker Mayfield feels \u2018disrespected\u2019 by the Bucs. Baker Mayfield didn\u2019t hold back when discussing the failed contract negotiations with the Buccaneers following Thursday\u2019s training camp practice. In fact, his frustration was evident on the topic. The veteran quarterback stated he felt \u201cdisrespected\u201d ",
+          "url": "https://www.bucsnation.com/tampa-bay-buccaneers-news/68038/baker-mayfield-feels-disrespected-by-the-buccaneers-nfl-contract-training-camp",
+          "source": "SBN TB"
+        }
+      ]
+    },
+    {
+      "name": "A.T. Perry",
+      "pos": "WR",
+      "team": "PIT",
+      "adp": 216.0,
+      "adp_prior": null,
+      "adp_move": null,
+      "proj": 7.114714622497559,
+      "sleeper_weight": 1.0,
+      "score": 3.744,
+      "unpriced": true,
+      "signals": [
+        "snap",
+        "training camp"
+      ],
+      "items": [
+        {
+          "text": "The Steelers couldn\u2019t have asked for a better start to training camp. The Pittsburgh Steelers\u2019 offense faced fourth down in the two-minute drill as rookie quarterback Drew Allar came to the line. After taking the snap, Allar saw he had a one-on-one matchup downfield, launching a pass to A.T. Perry. ",
+          "url": "https://www.behindthesteelcurtain.com/pittsburgh-steelers-training-camp/172902/the-steelers-couldnt-have-asked-for-a-better-start-to-training-camp-drew-allar-will-howard-aaron-rodgers",
+          "source": "SBN PIT"
+        }
+      ]
+    },
+    {
+      "name": "Drake Maye",
+      "pos": "QB",
+      "team": "NE",
+      "adp": 66.3,
+      "adp_prior": 66.3,
+      "adp_move": 0.0,
+      "proj": 270.54827880859375,
+      "sleeper_weight": 0.8,
+      "score": 3.735,
+      "unpriced": true,
+      "signals": [
+        "breakout",
+        "training camp"
+      ],
+      "items": [
+        {
+          "text": "New England Patriots 2026 preview: Drake Maye, Mike Vrabel eye Super Bowl return. The New England Patriots enter the 2026 NFL season as Super Bowl contenders after a breakout 2025 campaign. PFF breaks down Drake Maye's development, A.J. Brown's arrival, key offseason additions and the roster strengt",
+          "url": "https://www.pff.com/news/nfl-new-england-patriots-2026-season-preview/",
+          "source": "PFF"
+        },
+        {
+          "text": "3-Point Stance: Patriots\u2019 training camp expectations have changed. The 2024 season left the New England Patriots in a bleak spot. New England finished the season with a 4-13 record and moved on from Jerod Mayo as head coach after just one season. The only factors offering the fan base hope were 2024",
+          "url": "https://www.patspulpit.com/new-england-patriots-analysis/131749/patriots-training-camp-expectations-have-changed",
+          "source": "SBN NE"
+        }
+      ]
+    },
+    {
+      "name": "Julian Hill",
+      "pos": "TE",
+      "team": "NE",
+      "adp": 216.0,
+      "adp_prior": null,
+      "adp_move": null,
+      "proj": 12.034456253051758,
+      "sleeper_weight": 1.0,
+      "score": 3.68,
+      "unpriced": true,
+      "signals": [
+        "injured",
+        "placed on"
+      ],
+      "items": [
+        {
+          "text": "Tanner Arkin \u2018learning quickly\u2019 amid first-team reps, says Mike Vrabel. After the New England Patriots secured a Super Bowl appearance just six months ago and put together an offseason highlighted by key additions, it\u2019s difficult to find vulnerabilities on a roster poised for improvement in 2026. Ho",
+          "url": "https://www.patspulpit.com/new-england-patriots-news/132339/tanner-arkin-learning-quickly-amid-first-team-reps-says-mike-vrabel",
+          "source": "SBN NE"
+        }
+      ]
+    },
+    {
+      "name": "Aaron Rodgers",
+      "pos": "QB",
+      "team": "PIT",
+      "adp": 176.6,
+      "adp_prior": 176.4,
+      "adp_move": -0.2,
+      "proj": 157.2316436767578,
+      "sleeper_weight": 1.0,
+      "score": 3.68,
+      "unpriced": true,
+      "signals": [
+        "training camp"
+      ],
+      "items": [
+        {
+          "text": "Steelers training camp: Aaron Rodgers lights up fourth practice. LATROBE &#8211; After what was a very lax practiced on Friday, he Pittsburgh Steelers wrapped up their first week of training camp with the helmets back for a team-drill-heavy Saturday morning. Today marked the final practice before th",
+          "url": "https://www.behindthesteelcurtain.com/pittsburgh-steelers-training-camp/172868/steelers-training-camp-aaron-rodgers-lights-up-fourth-practice-drew-allar-asante-samuel",
+          "source": "SBN PIT"
+        }
+      ]
+    },
+    {
+      "name": "Tory Horton",
+      "pos": "WR",
+      "team": "SEA",
+      "adp": 214.1,
+      "adp_prior": 214.8,
+      "adp_move": 0.7,
+      "proj": 43.60877990722656,
+      "sleeper_weight": 1.0,
+      "score": 3.68,
+      "unpriced": true,
+      "signals": [
+        "training camp"
+      ],
+      "items": [
+        {
+          "text": "Seahawks 2026 training camp, Day 7 recap: Big days for Elijah Arroyo, Tory Horton. The Seattle Seahawks continued their 2026 training camp with a lighter practice in front of fans on Saturday afternoon. After doing padded practices on Thursday and Friday, Seattle opted to go pad-less for Saturday. W",
+          "url": "https://www.fieldgulls.com/seattle-seahawks-training-camp/171438/seahawks-2026-training-camp-day-7-recap-news-highlights-elijah-arroyo-tory-horton",
+          "source": "SBN SEA"
+        }
+      ]
+    },
+    {
+      "name": "Christian Kirk",
+      "pos": "WR",
+      "team": "SF",
+      "adp": 215.0,
+      "adp_prior": 213.8,
+      "adp_move": -1.2,
+      "proj": 28.362781524658203,
+      "sleeper_weight": 1.0,
+      "score": 3.68,
+      "unpriced": true,
+      "signals": [
+        "hamstring",
+        "injury"
+      ],
+      "items": [
+        {
+          "text": "49ers injuries: De&#8217;Zhaun Stribling has hamstring tightness; Keion White has an adductor issue. The San Francisco 49ers headed into Saturday\u2019s practice thin at wide receiver. Ricky Pearsall\u2019s season is over with a lingering PCL injury. Christian Kirk has a calf strain. According to the media on",
+          "url": "https://www.ninersnation.com/san-francisco-49ers-injuries/160887/49ers-wr-dezhaun-stribling-sits-out-saturdays-practice-with-hamstring-tightness",
+          "source": "SBN SF"
+        }
+      ]
+    },
+    {
+      "name": "Bo Nix",
+      "pos": "QB",
+      "team": "DEN",
+      "adp": 106.8,
+      "adp_prior": 107.0,
+      "adp_move": 0.2,
+      "proj": 272.41717529296875,
+      "sleeper_weight": 0.8,
+      "score": 3.584,
+      "unpriced": true,
+      "signals": [
+        "ahead of",
+        "injury",
+        "red zone",
+        "training camp"
+      ],
+      "items": [
+        {
+          "text": "Bo Nix says he\u2019s ahead of where he was last year. The injury to Bo Nix will always trigger some sort of PTSD. The highest of highs, followed by the lowest of lows. What could have been? Until he plays a regular-season game, all eyes will be on Nix. It\u2019ll also lead to questions about how it\u2019ll impact",
+          "url": "https://www.milehighreport.com/denver-broncos-training-camp/180108/bo-nix-says-hes-ahead-of-where-he-was-last-year",
+          "source": "SBN DEN"
+        },
+        {
+          "text": "2026 Broncos training camp: Day 2 live updates. Welcome to Day 2 of Denver Broncos training camp. After an exciting first day of camp where we saw some big plays from the offense and red zone dominance by the defense, both sides of the ball had their successes and setbacks on Friday. Bo Nix is looki",
+          "url": "https://www.milehighreport.com/denver-broncos-training-camp/179999/2026-broncos-training-camp-day-2-live-updates",
+          "source": "SBN DEN"
+        }
+      ]
+    },
+    {
+      "name": "Jaxson Dart",
+      "pos": "QB",
+      "team": "NYG",
+      "adp": 100.6,
+      "adp_prior": 101.3,
+      "adp_move": 0.7,
+      "proj": 279.55731201171875,
+      "sleeper_weight": 0.8,
+      "score": 3.328,
+      "unpriced": true,
+      "signals": [
+        "training camp"
+      ],
+      "items": [
+        {
+          "text": "Giants Training Camp Notes: Observations on Malik Nabers, Jaxson Dart, and plenty more. After four Giants training camp workouts, here are notes and observations on the wide receivers, Jaxson Dart and more.",
+          "url": "https://sports.yahoo.com/articles/giants-training-camp-notes-observations-140812194.html",
+          "source": "Yahoo NFL"
+        }
+      ]
+    },
+    {
+      "name": "Makai Lemon",
+      "pos": "WR",
+      "team": "PHI",
+      "adp": 73.3,
+      "adp_prior": 73.1,
+      "adp_move": -0.2,
+      "proj": 29.62406349182129,
+      "sleeper_weight": 0.8,
+      "score": 3.328,
+      "unpriced": true,
+      "signals": [
+        "training camp"
+      ],
+      "items": [
+        {
+          "text": "Eagles News: Hoping to see more from Philadelphia\u2019s top two draft picks. Let\u2019s get to the Philadelphia Eagles news and links \u2026 Eagles 2026 training camp practice notes, Day 3: The D-line is dominant &#8211; PhillyVoiceIt&#8217;s very early in camp, but I haven&#8217;t seen Eli Stowers or Makai Lemon",
+          "url": "https://www.bleedinggreennation.com/news/178438/eagles-news-hoping-to-see-more-from-philadelphias-top-two-draft-picks",
+          "source": "SBN PHI"
         }
       ]
     },
@@ -201,333 +1002,112 @@
       ]
     },
     {
-      "name": "Treylon Burks",
-      "pos": "WR",
-      "team": "WAS",
-      "adp": 215.9,
+      "name": "Michael Penix Jr.",
+      "pos": "QB",
+      "team": "ATL",
+      "adp": 215.3,
+      "adp_prior": 214.8,
+      "adp_move": -0.5,
+      "proj": 77.1502685546875,
+      "sleeper_weight": 1.0,
+      "score": 3.2,
+      "unpriced": true,
+      "signals": [
+        "training camp"
+      ],
+      "items": [
+        {
+          "text": "Falcons training camp 2026: Roster battles to watch. Training camp is in full swing, and the battles have begun. While some have been derailed already\u2014Jawaan Taylor can\u2019t compete for right tackle right now because he\u2019s out, and Michael Penix Jr. may not be fully cleared for a month\u2014others are just g",
+          "url": "https://www.thefalcoholic.com/atlanta-falcons-training-camp/94702/what-is-the-most-compelling-battle-of-falcons-training-camp-charlie-woerner-maason-smith",
+          "source": "SBN ATL"
+        }
+      ]
+    },
+    {
+      "name": "Kyler Murray",
+      "pos": "QB",
+      "team": "MIN",
+      "adp": 111.7,
+      "adp_prior": 110.8,
+      "adp_move": -0.9,
+      "proj": 34.48193359375,
+      "sleeper_weight": 1.0,
+      "score": 3.2,
+      "unpriced": true,
+      "signals": [
+        "training camp"
+      ],
+      "items": [
+        {
+          "text": "Vikings Training Camp 2026: McCarthy vs. Murray QB Battle, Jamal Adams &#038; What We\u2019ve Learned So Far. Minnesota Vikings training camp is two days in, and the J.J. McCarthy vs. Kyler Murray quarterback competition is already generating must-watch storylines. Tyler Forness and Dave Stefano of The R",
+          "url": "https://www.dailynorseman.com/minnesota-vikings-podcasts/97841/vikings-training-camp-2026-mccarthy-vs-murray-qb-battle-jamal-adams-what-weve-learned-so-far",
+          "source": "SBN MIN"
+        }
+      ]
+    },
+    {
+      "name": "J.J. McCarthy",
+      "pos": "QB",
+      "team": "MIN",
+      "adp": 215.8,
       "adp_prior": 215.9,
-      "adp_move": 0.0,
-      "proj": 19.20545768737793,
+      "adp_move": 0.1,
+      "proj": 38.23515701293945,
       "sleeper_weight": 1.0,
-      "score": 3.12,
+      "score": 3.2,
       "unpriced": true,
       "signals": [
-        "slot"
+        "training camp"
       ],
       "items": [
         {
-          "text": "Healthy Terry McLaurin ranked #13 among WRs for 2026 - Daily Slop. Jayden Daniels goes 1-on-1; Sainristil works at slot; Rasul Douglas gets an INT; Treylon Burks builds his case for #2 WR",
-          "url": "https://sports.yahoo.com/articles/healthy-terry-mclaurin-ranked-13-143000051.html",
-          "source": "Yahoo NFL"
+          "text": "Vikings Training Camp 2026: McCarthy vs. Murray QB Battle, Jamal Adams &#038; What We\u2019ve Learned So Far. Minnesota Vikings training camp is two days in, and the J.J. McCarthy vs. Kyler Murray quarterback competition is already generating must-watch storylines. Tyler Forness and Dave Stefano of The R",
+          "url": "https://www.dailynorseman.com/minnesota-vikings-podcasts/97841/vikings-training-camp-2026-mccarthy-vs-murray-qb-battle-jamal-adams-what-weve-learned-so-far",
+          "source": "SBN MIN"
         }
       ]
     },
     {
-      "name": "Matthew Stafford",
-      "pos": "QB",
-      "team": "LAR",
-      "adp": 105.7,
-      "adp_prior": 105.4,
-      "adp_move": -0.3,
-      "proj": 240.47679138183594,
-      "sleeper_weight": 0.8,
-      "score": 2.944,
-      "unpriced": true,
-      "signals": [
-        "red zone"
-      ],
-      "items": [
-        {
-          "text": "Davante Adams caught a nifty back-shoulder touchdown right over Trent McDuffie from Matthew Stafford in the red zone to get the crowd roaring.\n\nThe most fun part of camp so far has been these WR-CB battles. So much talent on both sides.",
-          "url": "https://bsky.app/profile/nateatkins.bsky.social/post/3ms2shfucvs2c",
-          "source": "Bluesky @nateatkins.bsky.social"
-        }
-      ]
-    },
-    {
-      "name": "Drake Maye",
-      "pos": "QB",
-      "team": "NE",
-      "adp": 66.3,
-      "adp_prior": 66.3,
-      "adp_move": 0.0,
-      "proj": 270.54827880859375,
-      "sleeper_weight": 0.8,
-      "score": 2.816,
-      "unpriced": true,
-      "signals": [
-        "breakout"
-      ],
-      "items": [
-        {
-          "text": "New England Patriots 2026 preview: Drake Maye, Mike Vrabel eye Super Bowl return. The New England Patriots enter the 2026 NFL season as Super Bowl contenders after a breakout 2025 campaign. PFF breaks down Drake Maye's development, A.J. Brown's arrival, key offseason additions and the roster strengt",
-          "url": "https://www.pff.com/news/nfl-new-england-patriots-2026-season-preview/",
-          "source": "PFF"
-        }
-      ]
-    },
-    {
-      "name": "Jayden Daniels",
-      "pos": "QB",
-      "team": "WAS",
-      "adp": 67.1,
-      "adp_prior": 66.8,
-      "adp_move": -0.3,
-      "proj": 99.91302490234375,
-      "sleeper_weight": 0.8,
-      "score": 2.496,
-      "unpriced": true,
-      "signals": [
-        "slot"
-      ],
-      "items": [
-        {
-          "text": "Healthy Terry McLaurin ranked #13 among WRs for 2026 - Daily Slop. Jayden Daniels goes 1-on-1; Sainristil works at slot; Rasul Douglas gets an INT; Treylon Burks builds his case for #2 WR",
-          "url": "https://sports.yahoo.com/articles/healthy-terry-mclaurin-ranked-13-143000051.html",
-          "source": "Yahoo NFL"
-        }
-      ]
-    },
-    {
-      "name": "Geno Smith",
-      "pos": "QB",
-      "team": "NYJ",
-      "adp": 186.5,
-      "adp_prior": 185.3,
-      "adp_move": -1.2,
-      "proj": 68.50546264648438,
-      "sleeper_weight": 1.0,
-      "score": 2.272,
-      "unpriced": true,
-      "signals": [
-        "breakout"
-      ],
-      "items": [
-        {
-          "text": "New York Jets 2026 preview: Geno Smith returns, David Bailey offers plenty of promise. The New York Jets enter the 2026 NFL season with a new-look roster led by Geno Smith and one of the NFL's most promising rookie classes. PFF breaks down the Jets' key additions, breakout candidates, roster strengt",
-          "url": "https://www.pff.com/news/nfl-new-york-jets-2026-preview/",
-          "source": "PFF"
-        }
-      ]
-    },
-    {
-      "name": "Malik Willis",
-      "pos": "QB",
-      "team": "MIA",
-      "adp": 134.6,
-      "adp_prior": 133.2,
-      "adp_move": -1.4,
-      "proj": 35.59716033935547,
-      "sleeper_weight": 1.0,
-      "score": 2.272,
-      "unpriced": true,
-      "signals": [
-        "breakout"
-      ],
-      "items": [
-        {
-          "text": "Miami Dolphins 2026 preview: Malik Willis headlines the Dolphins\u2019 reset after major offensive changes. The Miami Dolphins enter the 2026 NFL season with a new head coach, a new starting quarterback and one of the league's youngest rosters. PFF breaks down Miami's offseason additions, rookie class, b",
-          "url": "https://www.pff.com/news/nfl-miami-dolphins-2026-preview/",
-          "source": "PFF"
-        }
-      ]
-    },
-    {
-      "name": "Davante Adams",
-      "pos": "WR",
-      "team": "LAR",
-      "adp": 49.9,
-      "adp_prior": 49.7,
-      "adp_move": -0.2,
-      "proj": 102.0123519897461,
-      "sleeper_weight": 0.55,
-      "score": 2.024,
-      "unpriced": true,
-      "signals": [
-        "red zone"
-      ],
-      "items": [
-        {
-          "text": "Davante Adams caught a nifty back-shoulder touchdown right over Trent McDuffie from Matthew Stafford in the red zone to get the crowd roaring.\n\nThe most fun part of camp so far has been these WR-CB battles. So much talent on both sides.",
-          "url": "https://bsky.app/profile/nateatkins.bsky.social/post/3ms2shfucvs2c",
-          "source": "Bluesky @nateatkins.bsky.social"
-        }
-      ]
-    },
-    {
-      "name": "Josh Allen",
-      "pos": "QB",
-      "team": "BUF",
-      "adp": 35.7,
-      "adp_prior": 35.3,
-      "adp_move": -0.4,
-      "proj": 293.1794128417969,
-      "sleeper_weight": 0.55,
-      "score": 1.936,
-      "unpriced": true,
-      "signals": [
-        "breakout"
-      ],
-      "items": [
-        {
-          "text": "Buffalo Bills 2026 preview: Joe Brady begins new era with the league\u2019s best quarterback. The Buffalo Bills enter the 2026 NFL season with a new head coach, an upgraded roster and Josh Allen leading the way. PFF breaks down Buffalo's key additions, rookie class, breakout candidates and biggest streng",
-          "url": "https://www.pff.com/news/nfl-buffalo-bills-2026-preview/",
-          "source": "PFF"
-        }
-      ]
-    },
-    {
-      "name": "Terry McLaurin",
-      "pos": "WR",
-      "team": "WAS",
-      "adp": 43.5,
-      "adp_prior": 44.4,
+      "name": "Isaiah Likely",
+      "pos": "TE",
+      "team": "NYG",
+      "adp": 129.1,
+      "adp_prior": 130.0,
       "adp_move": 0.9,
-      "proj": 106.60311126708984,
-      "sleeper_weight": 0.55,
-      "score": 1.716,
-      "unpriced": true,
-      "signals": [
-        "slot"
-      ],
-      "items": [
-        {
-          "text": "Healthy Terry McLaurin ranked #13 among WRs for 2026 - Daily Slop. Jayden Daniels goes 1-on-1; Sainristil works at slot; Rasul Douglas gets an INT; Treylon Burks builds his case for #2 WR",
-          "url": "https://sports.yahoo.com/articles/healthy-terry-mclaurin-ranked-13-143000051.html",
-          "source": "Yahoo NFL"
-        }
-      ]
-    },
-    {
-      "name": "Chris Brazzell II",
-      "pos": "WR",
-      "team": "CAR",
-      "adp": 215.7,
-      "adp_prior": 213.6,
-      "adp_move": -2.1,
-      "proj": 14.246782302856445,
+      "proj": 49.11007308959961,
       "sleeper_weight": 1.0,
-      "score": 1.6,
-      "unpriced": false,
+      "score": 3.2,
+      "unpriced": true,
       "signals": [
-        "injury"
+        "training camp"
       ],
       "items": [
         {
-          "text": "The Chris Brazzell and Ricky Pearsall situations are a good reminder that we can talk about someone having tough competition for playing time at wide receiver, but chances are most teams will deal with an injury to a top-4 WR at some point this season.",
-          "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3mrvckf2u6s2w",
-          "source": "Bluesky @ffnatejahnke.bsky.social"
+          "text": "Survey results: The defense and Dart have the fans\u2019 attention. The New York Giants 2026 training camp is under way, and it\u2019s already been a lively one. We expected a \u201cHarbaugh\u201d camp to be different from what we\u2019ve seen from the Giants in recent years, with free agent tight end Isaiah Likely warning ",
+          "url": "https://www.bigblueview.com/nfl-reacts-survey/166509/survey-results-the-defense-and-dart-have-the-fans-attention",
+          "source": "SBN NYG"
         }
       ]
     },
     {
-      "name": "Deebo Samuel",
+      "name": "Omar Cooper Jr.",
       "pos": "WR",
-      "team": "SF",
-      "adp": 152.9,
-      "adp_prior": 164.7,
-      "adp_move": 11.8,
-      "proj": null,
+      "team": "NYJ",
+      "adp": 144.6,
+      "adp_prior": 143.6,
+      "adp_move": -1.0,
+      "proj": 29.180692672729492,
       "sleeper_weight": 1.0,
-      "score": 1.25,
-      "unpriced": false,
-      "signals": [
-        "injury",
-        "surgery"
-      ],
-      "items": [
-        {
-          "text": "49ers WR Ricky Pearsall, who has been bothered by a PCL injury, is having surgery to repair the ligament, a procedure that ends his season, GM John Lynch announced. A frustrating outcome for SF. \n\nThe 49ers signed WR Deebo Samuel with the thought that this could be the outcome. Now, reality.",
-          "url": "https://bsky.app/profile/rapsheet.bsky.social/post/3mrzwuuozrs2p",
-          "source": "Bluesky @rapsheet.bsky.social"
-        }
-      ]
-    },
-    {
-      "name": "Ashton Jeanty",
-      "pos": "RB",
-      "team": "LV",
-      "adp": 11.3,
-      "adp_prior": 11.0,
-      "adp_move": -0.3,
-      "proj": 168.31373596191406,
-      "sleeper_weight": 0.35,
-      "score": 1.232,
+      "score": 3.2,
       "unpriced": true,
       "signals": [
-        "rb1"
+        "training camp"
       ],
       "items": [
         {
-          "text": "Fantasy Football: Running backs who could finish No. 1 overall in 2026. Which running backs have the best chance to finish as fantasy football's overall RB1 in 2026? PFF highlights Ashton Jeanty, Kenneth Walker III and Omarion Hampton as high-upside candidates based on PFF grades, offensive environm",
-          "url": "https://www.pff.com/news/fantasy-football-running-backs-who-could-finish-no-1-overall-2026/",
-          "source": "PFF"
-        }
-      ]
-    },
-    {
-      "name": "Omarion Hampton",
-      "pos": "RB",
-      "team": "LAC",
-      "adp": 14.6,
-      "adp_prior": 14.5,
-      "adp_move": -0.1,
-      "proj": 179.29347229003906,
-      "sleeper_weight": 0.35,
-      "score": 1.232,
-      "unpriced": true,
-      "signals": [
-        "rb1"
-      ],
-      "items": [
-        {
-          "text": "Fantasy Football: Running backs who could finish No. 1 overall in 2026. Which running backs have the best chance to finish as fantasy football's overall RB1 in 2026? PFF highlights Ashton Jeanty, Kenneth Walker III and Omarion Hampton as high-upside candidates based on PFF grades, offensive environm",
-          "url": "https://www.pff.com/news/fantasy-football-running-backs-who-could-finish-no-1-overall-2026/",
-          "source": "PFF"
-        }
-      ]
-    },
-    {
-      "name": "Kenneth Walker III",
-      "pos": "RB",
-      "team": "KC",
-      "adp": 15.2,
-      "adp_prior": 15.8,
-      "adp_move": 0.6,
-      "proj": 85.26243591308594,
-      "sleeper_weight": 0.35,
-      "score": 1.232,
-      "unpriced": true,
-      "signals": [
-        "rb1"
-      ],
-      "items": [
-        {
-          "text": "Fantasy Football: Running backs who could finish No. 1 overall in 2026. Which running backs have the best chance to finish as fantasy football's overall RB1 in 2026? PFF highlights Ashton Jeanty, Kenneth Walker III and Omarion Hampton as high-upside candidates based on PFF grades, offensive environm",
-          "url": "https://www.pff.com/news/fantasy-football-running-backs-who-could-finish-no-1-overall-2026/",
-          "source": "PFF"
-        }
-      ]
-    },
-    {
-      "name": "Puka Nacua",
-      "pos": "WR",
-      "team": "LAR",
-      "adp": 4.0,
-      "adp_prior": 4.0,
-      "adp_move": 0.0,
-      "proj": 181.9927978515625,
-      "sleeper_weight": 0.35,
-      "score": 1.12,
-      "unpriced": true,
-      "signals": [
-        "buzz"
-      ],
-      "items": [
-        {
-          "text": "Some observations from the Rams\u2019 first practice in pads:\n\n\ud83c\udfc8 Ty Simpson cuts it loose: What the highs and lows hint at\n\ud83c\udfc8 Aaron Donald buzz \ud83d\udcc8\n\ud83c\udfc8 A more versatile Puka Nacua?\n\ud83c\udfc8 How CJ Daniels can fit in\n\nwww.nytimes.com/athletic/748...",
-          "url": "https://bsky.app/profile/nateatkins.bsky.social/post/3mrzu7ehv7c2x",
-          "source": "Bluesky @nateatkins.bsky.social"
+          "text": "New York Jets Flight Connections 07/31/26. Good morning Gang Green Nation! Here are your links to your New York Jets this glorious Friday in July. Jack Bell &#8211; Jets Rookie WR Omar Cooper Jr. on Stepping Up to the NFL: &#8216;Everybody Is Smarter&#8217; Amanda Vogt &#8211; Jets Notice HC Aaron G",
+          "url": "https://www.ganggreennation.com/new-york-jets-news/95244/new-york-jets-flight-connections-07-31-26",
+          "source": "SBN NYJ"
         }
       ]
     }

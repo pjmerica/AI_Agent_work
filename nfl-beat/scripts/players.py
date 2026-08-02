@@ -263,8 +263,13 @@ def _attach_projections(players: dict[str, Player]) -> None:
             p.proj = _num(r.get("pred_fpts", ""))
             if not p.pos:
                 p.pos = r.get("position", "")
-            if not p.team:
-                p.team = r.get("team", "")
+            # The ADP board carries stale 'FA' for players who have since signed
+            # (observed on Tyreek Hill, Najee Harris, Taysom Hill and ~640 more).
+            # Projections track current rosters, so let them fill in a real team --
+            # without one, team-blog disambiguation cannot fire for these players.
+            pred_team = (r.get("team") or "").strip()
+            if pred_team and p.team in ("", "FA"):
+                p.team = pred_team
 
 
 def adp_context(players: dict[str, Player]) -> dict:
