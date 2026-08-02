@@ -161,6 +161,15 @@ def _score(m: Match, blob: str, name_conf: float) -> None:
     elif move > 3:
         base *= 0.8
 
+    # A club beat reporter watching practice is the primary source; a national
+    # outlet is usually repeating them a day later. Team blogs get the same
+    # treatment for the same reason.
+    src = getattr(m.item, "source", "")
+    if src.startswith("X @") and "(via @" in src:
+        base *= 1.35            # retweeted beat reporter, credited to them
+    elif src.startswith("X @") or src.startswith("SBN "):
+        base *= 1.25
+
     # Freshness: today's practice report beats one from two days ago.
     age = getattr(m.item, "age_hours", 999)
     if age < 12:
@@ -183,11 +192,17 @@ def group_by_player(matches: list[Match]) -> list[dict]:
     for key, ms in by.items():
         ms.sort(key=lambda x: -x.score)
         best = ms[0]
-        # Total score rewards corroboration across independent outlets.
         distinct_sources = {getattr(m.item, "source", "") for m in ms}
-        total = best.score + 0.25 * sum(m.score for m in ms[1:])
+
+        # Corroboration is worth something, but it must not become a popularity
+        # contest: an unbounded sum let a star in fifteen injury roundups score
+        # 34.9 while a beat writer's note on a camp body scored 3. Volume tracks
+        # fame, which is precisely what this digest is trying not to rank on.
+        # Cap the corroboration contribution and use diminishing returns.
+        extra = sum(m.score for m in ms[1:3])          # at most two more items
+        total = best.score + 0.18 * min(extra, best.score)
         if len(distinct_sources) > 1:
-            total *= 1.0 + 0.15 * (len(distinct_sources) - 1)
+            total *= 1.0 + 0.08 * min(len(distinct_sources) - 1, 3)
         out.append({
             "player": best.player,
             "score": round(total, 3),

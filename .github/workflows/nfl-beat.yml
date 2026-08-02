@@ -36,6 +36,15 @@ jobs:
           echo "rows: $(wc -l < external/ud_adp_history.csv)"
           echo "newest ADP snapshot: $(cut -d, -f1 external/ud_adp_history.csv | tail -n +2 | sort -u | tail -1)"
 
+      # The @32BeatWriters RSS window only exposes ~12 authors at a time, so the
+      # roster in data/writers.json accumulates across runs rather than arriving
+      # complete. Merges by default; never drops a reporter who was just quiet.
+      - name: Discover beat writers
+        continue-on-error: true
+        env:
+          PYTHONIOENCODING: utf-8
+        run: python nfl-beat/scripts/discover_writers.py --polls 3 --delay 30
+
       - name: Build digest
         env:
           # players.py checks this before falling back to the local Documents path.
@@ -47,7 +56,7 @@ jobs:
         run: |
           git config user.name  "nfl-beat-bot"
           git config user.email "nfl-beat-bot@users.noreply.github.com"
-          git add nfl-beat/digests nfl-beat/index.html
+          git add nfl-beat/digests nfl-beat/index.html nfl-beat/data/writers.json
           if git diff --cached --quiet; then
             echo "No digest changes to commit."
             exit 0

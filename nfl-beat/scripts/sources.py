@@ -245,7 +245,7 @@ def nitter_status() -> str:
 
 def collect(handles: list[str], feeds: list[tuple[str, str]],
             max_age_hours: int = 36, pause: float = 0.3,
-            workers: int = 8) -> list[Item]:
+            workers: int = 8, x_handles: list[str] | None = None) -> list[Item]:
     """Gather everything, drop stale items, de-duplicate by URL.
 
     RSS feeds are fetched in parallel -- with 32 team blogs plus the national
@@ -262,10 +262,12 @@ def collect(handles: list[str], feeds: list[tuple[str, str]],
             for items in ex.map(lambda f: rss_feed(f[0], f[1]), feeds):
                 out.extend(items)
 
-    if NITTER_INSTANCE and NITTER_HANDLES:
+    # Configured national accounts plus any discovered club beat reporters.
+    x_accounts = list(dict.fromkeys(NITTER_HANDLES + list(x_handles or [])))
+    if NITTER_INSTANCE and x_accounts:
         # Modest concurrency: it is one shared public instance, not 32 hosts.
         with concurrent.futures.ThreadPoolExecutor(max_workers=4) as ex:
-            for items in ex.map(nitter_feed, NITTER_HANDLES):
+            for items in ex.map(nitter_feed, x_accounts):
                 out.extend(items)
 
     seen: set[str] = set()

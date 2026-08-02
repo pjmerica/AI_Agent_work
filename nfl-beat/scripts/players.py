@@ -162,19 +162,27 @@ class Player:
     def sleeper_weight(self) -> float:
         """How much a mention of this player matters. Higher = more interesting.
 
-        Stars saturate near 0.35; undrafted/deep players approach 1.0. A player
-        with no ADP at all (off the board entirely) is maximally interesting,
-        since that is where unpriced news lives.
+        The curve keeps climbing past ADP 108 rather than flattening at 1.0.
+        It used to saturate there, which meant it stopped discriminating exactly
+        where the interesting players are -- measured across a real run, the
+        61-150 bucket outscored the 151+ and undrafted buckets, the opposite of
+        what this digest is for.
         """
         if self.adp is None:
-            return 1.0
+            # Off the board entirely but a beat writer is talking about them:
+            # the purest form of unpriced news.
+            return 1.9
         if self.adp <= 24:      # rounds 1-2: news is already priced in
-            return 0.35
+            return 0.3
         if self.adp <= 60:
-            return 0.55
+            return 0.5
         if self.adp <= 108:
-            return 0.8
-        return 1.0
+            return 0.75
+        if self.adp <= 150:
+            return 1.1
+        if self.adp <= 190:
+            return 1.5
+        return 1.8              # ADP 190+: last-round fliers and camp bodies
 
     def to_dict(self) -> dict:
         return {

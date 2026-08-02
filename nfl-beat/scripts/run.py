@@ -24,6 +24,7 @@ from report import write_all                                 # noqa: E402
 from sources import collect, nitter_status                   # noqa: E402
 
 HANDLES_JSON = Path(__file__).parent.parent / "data" / "handles.json"
+WRITERS_JSON = Path(__file__).parent.parent / "data" / "writers.json"
 
 
 def load_handles() -> list[str]:
@@ -34,15 +35,32 @@ def load_handles() -> list[str]:
     return [h["handle"] for h in data.get("verified", [])]
 
 
+def load_writers() -> list[str]:
+    """Club beat reporters discovered from @32BeatWriters retweets.
+
+    Reading them directly beats reading them through the aggregator: you get
+    each reporter's full timeline instead of only the posts it chose to boost.
+    The roster grows as discover_writers.py runs -- the aggregator's RSS window
+    only ever exposes ~12 authors at a time.
+    """
+    if not WRITERS_JSON.exists():
+        print("! data/writers.json missing -- run: py scripts/discover_writers.py")
+        return []
+    data = json.loads(WRITERS_JSON.read_text(encoding="utf-8"))
+    return [w["handle"] for w in data.get("writers", [])]
+
+
 def main() -> int:
     dry = "--dry" in sys.argv
 
     handles = load_handles()
+    writers = load_writers()
     feeds = RSS_FEEDS + TEAM_FEEDS
     print(f"→ {len(handles)} Bluesky handles, {len(RSS_FEEDS)} national feeds, "
-          f"{len(TEAM_FEEDS)} team blogs")
+          f"{len(TEAM_FEEDS)} team blogs, {len(writers)} beat writers on X")
 
-    items = collect(handles, feeds, max_age_hours=MAX_AGE_HOURS_RSS)
+    items = collect(handles, feeds, max_age_hours=MAX_AGE_HOURS_RSS,
+                    x_handles=writers)
     if not items:
         print("! no items collected -- every source failed. Aborting without writing.")
         return 1

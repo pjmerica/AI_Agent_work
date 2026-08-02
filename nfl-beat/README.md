@@ -20,7 +20,21 @@ finding an edge:
 
 1. **Deep players outrank stars.** News about Josh Allen is already in his ADP.
    News about a WR4 taking first-team reps is not. `sleeper_weight` runs from
-   0.35 for round-1/2 picks up to 1.0 for undrafted players.
+   0.3 for round-1/2 picks up to 1.8 for ADP 190+ and 1.9 for undrafted players.
+
+   The curve deliberately keeps climbing past ADP 108 instead of flattening.
+   When it saturated at 1.0 there, measurement showed the 61-150 bucket
+   outscoring both the 151+ and undrafted buckets — the opposite of the intent.
+   Corroboration across outlets is also capped now: an unbounded bonus turned
+   into a popularity contest, since appearing in fifteen injury roundups tracks
+   fame rather than interest.
+
+   | ADP bucket | mean score before | after |
+   |---|---|---|
+   | 1-60 | 1.90 | 1.86 |
+   | 61-150 | 5.46 | 4.24 |
+   | 151+ | 3.66 | **7.50** |
+   | undrafted | 3.37 | **7.25** |
 2. **Unpriced beats confirmed.** A player whose ADP has *already* jumped 15 picks
    is a story you missed. A player with camp buzz and a flat ADP is one you
    haven't. News on flat-ADP players is boosted 1.6×; news on players already up
@@ -78,6 +92,27 @@ has **no Bluesky account** — impostors squat on the name there.
 X contributes ~12 players per run that appear in no other source, typically
 mid-round names (Chris Rodriguez ADP 129, Kyle Monangai ADP 95) where news
 actually moves a draft decision.
+
+### Individual beat reporters
+
+Rather than reading club reporters only through the aggregator, the digest
+follows them **directly** — you get each reporter's full timeline instead of
+just the posts someone chose to retweet.
+
+```bash
+py scripts/discover_writers.py              # merge newly seen reporters
+py scripts/discover_writers.py --polls 20   # dig harder
+```
+
+This mines @32BeatWriters retweets for author handles, verifies each has a live
+feed, and writes `data/writers.json`. The aggregator's RSS window only ever
+exposes ~12 authors at a time, so **the roster accumulates over days** — CI runs
+discovery on every scheduled build and merges. A reporter who was simply quiet
+is never dropped.
+
+Current roster: @OmarKelly, @mattbarrows, @ryanmcfadden_, @Tdrake4sports,
+@AndyHermanNFL, @theleviedwards, @WesHod, @samwarren83, @JCaporoso,
+@mattblively, @ESPNdirocco.
 
 Override the instance with the `NITTER_INSTANCE` env var; set it empty to
 disable. Instances do go down, so `nitter_status()` reports the live state and
