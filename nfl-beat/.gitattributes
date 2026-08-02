@@ -1,0 +1,3 @@
+# The archive is append-only: two runs racing must keep BOTH sets of appended
+# lines, not have one clobber the other. `union` merges hunks from both sides.
+archive/*.ndjson merge=union

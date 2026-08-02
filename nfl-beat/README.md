@@ -79,10 +79,56 @@ so it gets the room. Early picks are listed for completeness, not because their
 news is actionable. Each heading shows the full count, so "showing 22 of 54"
 makes clear what is being truncated.
 
+A **filter bar** at the top of the section flips between All / Deep / Mid-round /
+Early picks. It is plain inline JS with no dependencies — the published page has
+a strict CSP, so nothing external is loaded.
+
 3. **A story that repeats beats a story that breaks.** One beat-writer mention
    is noise. The same reporter — or three different ones — putting a player with
    the first team on Monday, Wednesday and Friday is a depth-chart change
    happening in slow motion.
+
+## Archive — tying news to ADP moves
+
+`digests/*.json` is overwritten by each of the three daily runs, which is fine
+for "what does today look like" but destroys the record needed to answer *"what
+news preceded this player's ADP dropping 22 picks?"* — the morning report that
+caused an afternoon move is gone by evening.
+
+`archive.py` therefore appends **one immutable line per player per run** to
+`archive/YYYY-MM.ndjson`. Every line is self-contained: player, ADP at that
+moment, the signals that fired, and the sourced items.
+
+```bash
+py scripts/archive.py                    # what is stored
+py scripts/archive.py "Khalil Herbert"   # one player's timeline + move causes
+```
+
+`explain_move()` walks a player's ADP path and, for each change of 1.0+, lists
+the news already recorded when the move appeared:
+
+```
+Khalil Herbert — 2 observations
+
+ADP path:
+  2026-08-02T23:18  ADP 216.0
+  2026-08-03T13:00  ADP 206.6
+
+moves and the news that preceded them:
+  2026-08-03T13:00: 216.0 → 206.6 (+9.4)
+  signals: injured, injury, out for, waived
+    - [Yahoo NFL] 49ers sign RB Khalil Herbert...
+    - [X @mattbarrows] The 49ers signed former Bears RB Khalil Herbert...
+```
+
+This is correlation, not proof of causation — it shows what was on the record
+before the move, which is what you need to judge whether a signal type actually
+predicts anything.
+
+Concurrency: three daily runs append to one file, so `.gitattributes` sets
+`merge=union` on `archive/*.ndjson` to keep both sides of a race. That can
+duplicate a line when a run is retried, so the reader treats `(run, name)` as
+the unique key.
 
 ## Recurring stories
 

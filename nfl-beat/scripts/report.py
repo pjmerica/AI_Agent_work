@@ -34,6 +34,15 @@ margin:34px 0 12px;padding-bottom:7px;border-bottom:1px solid var(--line)}
 h3.bucket{font-size:13px;font-weight:650;color:var(--fg);margin:22px 0 9px;
 letter-spacing:-.01em}
 h3.bucket .meta{font-weight:400}
+.toggle{display:flex;flex-wrap:wrap;gap:6px;margin:4px 0 6px}
+.bkt{font:inherit;font-size:12.5px;font-weight:600;color:var(--muted);
+background:var(--card);border:1px solid var(--line);border-radius:20px;
+padding:5px 12px;cursor:pointer;transition:all .12s}
+.bkt:hover{color:var(--fg);border-color:var(--muted)}
+.bkt.active{background:var(--accent);border-color:var(--accent);color:#fff}
+.bkt .n{opacity:.65;font-weight:400;margin-left:3px}
+.bkt.active .n{opacity:.85}
+.bucket-group[hidden]{display:none}
 .card{background:var(--card);border:1px solid var(--line);border-radius:9px;
 padding:13px 15px;margin-bottom:9px}
 .top{display:flex;flex-wrap:wrap;align-items:baseline;gap:9px;margin-bottom:5px}
@@ -151,13 +160,28 @@ def _bucket_of(adp) -> str:
     return "deep"
 
 
+def _bucket_toggle(counts: dict[str, int]) -> str:
+    """Filter bar: All plus one button per non-empty bucket."""
+    total = sum(counts.values())
+    btns = [f'<button class="bkt active" data-bucket="all">All '
+            f'<span class="n">{total}</span></button>']
+    for key, label, _test, _cap in ADP_BUCKETS:
+        n = counts.get(key, 0)
+        if not n:
+            continue
+        short = label.split("—")[0].strip()
+        btns.append(f'<button class="bkt" data-bucket="{key}">{_esc(short)} '
+                    f'<span class="n">{n}</span></button>')
+    return f'<div class="toggle" role="group" aria-label="Filter by ADP bucket">{"".join(btns)}</div>'
+
+
 def _bucketed_sections(groups: list) -> str:
     """Render flat-ADP players grouped by ADP bucket, deepest bucket first."""
     by: dict[str, list] = {k: [] for k, _l, _t, _n in ADP_BUCKETS}
     for g in groups:
         by[_bucket_of(g["player"].adp)].append(g)
 
-    out = []
+    out = [_bucket_toggle({k: len(v) for k, v in by.items()})]
     for key, label, _test, cap in ADP_BUCKETS:
         rows = by[key][:cap]
         if not rows:
@@ -165,9 +189,11 @@ def _bucketed_sections(groups: list) -> str:
         total = len(by[key])
         more = (f' <span class="meta">showing {len(rows)} of {total}</span>'
                 if total > len(rows) else "")
+        out.append(f'<div class="bucket-group" data-bucket="{key}">')
         out.append(f'<h3 class="bucket">{_esc(label)}'
                    f' <span class="meta">({total})</span>{more}</h3>')
         out.append("".join(_player_card(d) for d in rows))
+        out.append("</div>")
     return "".join(out)
 
 
@@ -282,7 +308,25 @@ its source.</p>
 and its articles are paywalled; nothing behind that paywall is fetched.
 X/Twitter via nitter is {_esc(stats['nitter'])}.</p>
 </footer>
-</div>"""
+</div>
+<script>
+(function () {{
+  var bar = document.querySelector('.toggle');
+  if (!bar) return;
+  var groups = document.querySelectorAll('.bucket-group');
+  bar.addEventListener('click', function (e) {{
+    var btn = e.target.closest('.bkt');
+    if (!btn) return;
+    var want = btn.dataset.bucket;
+    bar.querySelectorAll('.bkt').forEach(function (b) {{
+      b.classList.toggle('active', b === btn);
+    }});
+    groups.forEach(function (g) {{
+      g.hidden = (want !== 'all' && g.dataset.bucket !== want);
+    }});
+  }});
+}})();
+</script>"""
 
 
 def build_markdown(groups, adp_ctx, stats, threads=None) -> str:
