@@ -105,6 +105,16 @@ usually move `ADP_BASELINE` forward by the same amount. If a pinned date isn't
 present in the data, the code falls back to newest-minus-14-days and prints a
 warning rather than failing or drifting quietly.
 
+Locally the CSV is read from `Documents/EZ Dubs Website/`. In CI it is curled
+from the public repo — no token or checkout needed:
+
+```
+https://raw.githubusercontent.com/pjmerica/ez-dubs-website/main/dashboards/best-ball-prices/ud_adp_history.csv
+```
+
+Because the board is pinned, both paths produce identical output even when the
+remote CSV is fresher than the local copy. Override the path with `UD_ADP_PATH`.
+
 Name matching is intentionally loose (accent/punctuation/suffix stripped, plus
 `F. Last` initials). Bare surnames only match when the player's team also appears
 in the text, so "Wilson" doesn't hit half the league.
