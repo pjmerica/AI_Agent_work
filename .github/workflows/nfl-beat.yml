@@ -1,11 +1,17 @@
 name: NFL Beat Digest
 
 on:
+  # Times chosen from measured publication volume across all 123 sources
+  # (items/hour ET, sampled 2026-08-02): the day is quiet until ~09:00, peaks
+  # hard at 12:00-13:00 (102 and 90 items), stays high through 16:00, and falls
+  # off after 18:00.
   schedule:
-    # 12:00 UTC = 08:00 EDT. After the EZ Dubs 13:30 ADP pull would be stale,
-    # but early enough to read before the day's practice reports land.
+    # 12:00 UTC = 08:00 EDT. Morning read of everything filed overnight.
     - cron: '0 12 * * *'
-    # Second pass late afternoon, once camp reports are in.
+    # 17:00 UTC = 13:00 EDT. Catches the noon-1pm peak, when morning practice
+    # has wrapped and beat writers file their reports. Biggest window of the day.
+    - cron: '0 17 * * *'
+    # 21:00 UTC = 17:00 EDT. Late pass for afternoon sessions and roster moves.
     - cron: '0 21 * * *'
   workflow_dispatch:
 

@@ -13,6 +13,29 @@ py scripts/run.py --dry     # print to console, write nothing
 Output lands in `digests/YYYY-MM-DD.{html,md,json}` and `index.html`
 (the GitHub Pages entry point).
 
+## Schedule
+
+CI runs three times daily, at times picked from measured publication volume
+across all 123 sources rather than guessed:
+
+| Cron (UTC) | ET | Why |
+|---|---|---|
+| `0 12 * * *` | 08:00 | Morning read of everything filed overnight |
+| `0 17 * * *` | 13:00 | **Peak.** Noon-1pm is the biggest window of the day — morning practice has wrapped and beat writers file |
+| `0 21 * * *` | 17:00 | Afternoon sessions and roster moves |
+
+Measured items/hour ET: quiet until 09:00, peaks at 12:00 (102) and 13:00 (90),
+stays high to 16:00, falls off after 18:00. The 08:00 slot is the day's quietest
+hour by design — it is a catch-up read, not a collection window.
+
+Runs on the same day overwrite one dated file, so a day counts once regardless
+of how often it runs; extra runs make that day's snapshot more complete, never
+double-counted. The 72-hour item window means the last run of a day is a superset
+of the earlier ones. `workflow_dispatch` allows manual triggering.
+
+GitHub's scheduled runs can drift or skip under load — normal for free-tier
+Actions. Three slots make a missed one much less costly.
+
 ## The idea
 
 Conventional fantasy tools rank news by player prominence, which is backwards for
