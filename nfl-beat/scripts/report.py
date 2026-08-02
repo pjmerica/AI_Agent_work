@@ -38,7 +38,7 @@ padding:13px 15px;margin-bottom:9px}
 .meta{color:var(--muted);font-size:12.5px}
 .tag{font-size:11px;font-weight:650;padding:2px 7px;border-radius:20px;
 border:1px solid currentColor;white-space:nowrap}
-.t-unpriced{color:var(--good)}.t-moved{color:var(--muted)}
+.t-flat{color:var(--good)}.t-moved{color:var(--muted)}
 .t-hot{color:var(--hot)}.t-rise{color:var(--good)}.t-fall{color:var(--hot)}
 .sig{color:var(--muted);font-size:12px;margin:5px 0 7px}
 .sig code{background:rgba(125,125,125,.14);padding:1px 5px;border-radius:4px;font-size:11.5px}
@@ -110,8 +110,8 @@ def _item_html(m) -> str:
 
 def _player_card(d) -> str:
     p = d["player"]
-    tag = ('<span class="tag t-unpriced">UNPRICED</span>' if d["unpriced"]
-           else '<span class="tag t-moved">already moving</span>')
+    tag = ('<span class="tag t-flat">FLAT ADP</span>' if d["unpriced"]
+           else '<span class="tag t-moved">MOVED</span>')
     pos_team = " ".join(x for x in (p.pos, p.team) if x)
     sigs = " ".join(f"<code>{_esc(s)}</code>" for s in d["signals"][:7])
     items = "".join(_item_html(m) for m in d["matches"])
@@ -140,13 +140,13 @@ def _movers_table(rows, label) -> str:
 
 def build_html(groups, adp_ctx, stats) -> str:
     now = datetime.now(timezone.utc).astimezone()
-    unpriced = [g for g in groups if g["unpriced"]][:18]
-    priced = [g for g in groups if not g["unpriced"]][:10]
+    flat = [g for g in groups if g["unpriced"]][:18]
+    moved = [g for g in groups if not g["unpriced"]][:10]
 
-    unpriced_html = ("".join(_player_card(d) for d in unpriced) if unpriced
-                     else '<div class="empty">Nothing unpriced today.</div>')
-    priced_html = ("".join(_player_card(d) for d in priced) if priced
-                   else '<div class="empty">No already-moving players with news.</div>')
+    flat_html = ("".join(_player_card(d) for d in flat) if flat
+                 else '<div class="empty">No flat-ADP players with news today.</div>')
+    moved_html = ("".join(_player_card(d) for d in moved) if moved
+                  else '<div class="empty">No ADP movers with news.</div>')
 
     srcs = ", ".join(f"{k} ({v})" for k, v in sorted(stats["by_source"].items(),
                                                      key=lambda kv: -kv[1])[:10])
@@ -159,11 +159,11 @@ def build_html(groups, adp_ctx, stats) -> str:
  · ADP board {_esc(stats['adp_latest'])} vs {_esc(stats['adp_prior'])}
 {_stale_warning(stats)}</div>
 
-<h2>Unpriced — news the market hasn't reacted to</h2>
-{unpriced_html}
+<h2>News before the market moves</h2>
+{flat_html}
 
-<h2>Already moving — you may be late</h2>
-{priced_html}
+<h2>News with ADP movers</h2>
+{moved_html}
 
 <h2>ADP risers (last 14 days)</h2>
 {_movers_table(adp_ctx['risers'], 'Riser')}
@@ -173,10 +173,11 @@ def build_html(groups, adp_ctx, stats) -> str:
 
 <footer>
 <p><strong>Sources scanned:</strong> {_esc(srcs)}</p>
-<p><strong>Method:</strong> deep/late-ADP players are weighted <em>above</em> stars,
-since news on high-ADP players is already priced in. Items are scored on fantasy
-signal vocabulary near the player's name, then boosted when ADP has <em>not</em>
-yet moved. Every line links to its source.</p>
+<p><strong>Method:</strong> deep and late-ADP players are weighted <em>above</em>
+stars, since news on early picks is already reflected in their draft cost. Items
+are scored on fantasy signal vocabulary near the player's name, then boosted when
+ADP has <em>not</em> yet moved — that is where the edge is. Every line links to
+its source.</p>
 <p><strong>Not included:</strong> The Athletic. Its public RSS feed returns nothing
 and its articles are paywalled; nothing behind that paywall is fetched.
 X/Twitter via nitter is {_esc(stats['nitter'])}.</p>
@@ -193,12 +194,12 @@ def build_markdown(groups, adp_ctx, stats) -> str:
     if lag is not None and lag > 2:
         L += [f"> ⚠ ADP board is {lag} days old — upstream pull may have stalled.", ""]
     L += [
-         "## Unpriced — news the market hasn't reacted to", ""]
+         "## News before the market moves", ""]
 
-    unpriced = [g for g in groups if g["unpriced"]][:18]
-    if not unpriced:
-        L.append("_Nothing unpriced today._")
-    for d in unpriced:
+    flat = [g for g in groups if g["unpriced"]][:18]
+    if not flat:
+        L.append("_No flat-ADP players with news today._")
+    for d in flat:
         p = d["player"]
         mv = "flat" if (p.adp_move is None or abs(p.adp_move) < 2) else f"{p.adp_move:+.1f}"
         L.append(f"### {p.name} — {p.pos} {p.team} · {_fmt_adp(p)} · {mv}")
@@ -208,7 +209,7 @@ def build_markdown(groups, adp_ctx, stats) -> str:
             L.append(f"- [{t}]({m.item.url}) — {m.item.source}")
         L.append("")
 
-    L += ["## Already moving", ""]
+    L += ["## News with ADP movers", ""]
     for d in [g for g in groups if not g["unpriced"]][:10]:
         p = d["player"]
         L.append(f"- **{p.name}** ({p.pos} {p.team}, {_fmt_adp(p)}, {p.adp_move:+.1f}) "

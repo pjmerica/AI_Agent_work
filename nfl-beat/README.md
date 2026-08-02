@@ -1,7 +1,7 @@
 # NFL Beat Digest
 
 Daily fantasy-relevant NFL news, weighted toward **deep and late-ADP players** and
-toward news the draft market **has not priced in yet**.
+toward news that **has not moved ADP yet**.
 
 ## Run it
 
@@ -35,13 +35,13 @@ finding an edge:
    | 61-150 | 5.46 | 4.24 |
    | 151+ | 3.66 | **7.50** |
    | undrafted | 3.37 | **7.25** |
-2. **Unpriced beats confirmed.** A player whose ADP has *already* jumped 15 picks
+2. **Flat ADP beats confirmed.** A player whose ADP has *already* jumped 15 picks
    is a story you missed. A player with camp buzz and a flat ADP is one you
    haven't. News on flat-ADP players is boosted 1.6×; news on players already up
    8+ picks is cut to 0.5×.
 
-The digest leads with the **Unpriced** section for this reason. ADP movement
-appears lower down as confirmation, not as the headline.
+The digest leads with **News before the market moves** for this reason.
+**News with ADP movers** follows it, as confirmation rather than the headline.
 
 ## Sources
 
@@ -141,14 +141,14 @@ Use `search` rather than guessing: handles are frequently non-obvious
 | Season projections | `FF Starters/season proj/outputs/ud/predictions_2026_{qb,rb,wrte}.csv` |
 
 1,563 players — 292 with a current ADP, the rest projected but undrafted. That
-deep tail is deliberately included; it's where unpriced news lives.
+deep tail is deliberately included; it is where news that has not moved ADP lives.
 
 ### The ADP board rolls forward daily
 
 The board defaults to the **newest snapshot in the CSV**, so each daily run picks
 up fresh ADP with no manual step. Movement is measured against the closest
-snapshot at least 14 days older — that comparison is what makes UNPRICED mean
-anything, so it is kept rather than dropped.
+snapshot at least 14 days older — that comparison is what makes the flat-ADP
+distinction meaningful, so it is kept rather than dropped.
 
 CI re-fetches the CSV on every run from the public EZ Dubs repo (no token, no
 checkout):

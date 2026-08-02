@@ -73,7 +73,7 @@ def main() -> int:
 
     groups = group_by_player(find_matches(items, players))
     unpriced = sum(1 for g in groups if g["unpriced"])
-    print(f"→ {len(groups)} players with fantasy-relevant news ({unpriced} unpriced)")
+    print(f"→ {len(groups)} players with fantasy-relevant news ({unpriced} flat ADP)")
 
     # Report the same frozen snapshot pair load_players() used, so the digest
     # header always matches the board the scores were computed against.
@@ -98,7 +98,7 @@ def main() -> int:
         print("\n--- DRY RUN ---")
         for g in groups[:15]:
             p = g["player"]
-            flag = "UNPRICED" if g["unpriced"] else "moving"
+            flag = "FLAT ADP" if g["unpriced"] else "moved"
             adp = "undrafted" if p.adp is None else f"{p.adp:.1f}"
             print(f"{g['score']:6.2f} {p.name:24s} {p.pos:3s} adp={adp:>9s} {flag}")
             print(f"       {', '.join(g['signals'][:5])}")
