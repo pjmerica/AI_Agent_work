@@ -14,6 +14,7 @@ from __future__ import annotations
 
 import concurrent.futures
 import json
+import os
 import re
 import time
 import urllib.error
@@ -27,11 +28,19 @@ UA = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) nfl-beat-digest/1.0"
 BSKY = "https://public.api.bsky.app/xrpc"
 TIMEOUT = 15
 
-# Set to a working instance (e.g. "https://nitter.example.net") to enable X mirroring.
-NITTER_INSTANCE: str | None = None
+# X mirror. nitter.net serves RSS fine -- an earlier probe here concluded it was
+# dead because it requested the URL without following redirects, which returns
+# HTTP 200 with an empty body. With redirects followed it returns real content.
+NITTER_INSTANCE: str | None = os.environ.get("NITTER_INSTANCE", "https://nitter.net")
 
+# Verified returning fresh items on 2026-08-02. @32BeatWriters is the highest
+# value of these: it aggregates and retweets club beat reporters league-wide,
+# which is precisely the practice-report layer Bluesky lacks. Schefter is here
+# because he has no Bluesky account at all.
 NITTER_HANDLES = [
-    "AdamSchefter", "RapSheet", "FieldYates", "MikeGarafolo", "TomPelissero",
+    "32BeatWriters", "AdamSchefter", "RapSheet", "MikeGarafolo", "FieldYates",
+    "JFowlerESPN", "CameronWolfe", "NFL_DovKleiman", "JamesPalmerTV",
+    "Rotoworld_FB", "FantasyPros", "ESPNNFL",
 ]
 
 
@@ -199,18 +208,36 @@ def rss_feed(url: str, label: str) -> list[Item]:
 # Nitter (disabled unless NITTER_INSTANCE is set)
 # --------------------------------------------------------------------------
 
+_RT_RE = re.compile(r"^RT by @[\w]+:\s*", re.I)
+
+
 def nitter_feed(handle: str) -> list[Item]:
     """X mirror via nitter. No-op unless NITTER_INSTANCE points at a live host."""
     if not NITTER_INSTANCE:
         return []
     items = rss_feed(f"{NITTER_INSTANCE.rstrip('/')}/{handle}/rss", f"X @{handle}")
-    # A dead instance commonly returns 200 with an empty document; treat as failure.
+
+    for it in items:
+        # Aggregators like @32BeatWriters mostly retweet club beat reporters, and
+        # nitter prefixes those with "RT by @aggregator:". Strip the prefix so the
+        # scorer sees the reporter's actual words, and credit the original author
+        # from the tweet URL rather than the account that boosted it.
+        if _RT_RE.match(it.text):
+            it.text = _RT_RE.sub("", it.text, count=1)
+            author = _author_from_url(it.url)
+            it.source = f"X @{author} (via @{handle})" if author else f"X @{handle}"
     return items
+
+
+def _author_from_url(url: str) -> str:
+    """Pull the tweet author out of a nitter permalink (…/AUTHOR/status/ID…)."""
+    m = re.search(r"nitter\.[^/]+/([^/]+)/status/", url or "")
+    return m.group(1) if m else ""
 
 
 def nitter_status() -> str:
     if not NITTER_INSTANCE:
-        return "disabled (no working public instance as of 2026-08-02)"
+        return "disabled"
     probe = nitter_feed(NITTER_HANDLES[0])
     return f"active: {NITTER_INSTANCE} ({len(probe)} items)" if probe else \
            f"configured but returning nothing: {NITTER_INSTANCE}"
@@ -235,10 +262,11 @@ def collect(handles: list[str], feeds: list[tuple[str, str]],
             for items in ex.map(lambda f: rss_feed(f[0], f[1]), feeds):
                 out.extend(items)
 
-    if NITTER_INSTANCE:
-        for h in NITTER_HANDLES:
-            out.extend(nitter_feed(h))
-            time.sleep(pause)
+    if NITTER_INSTANCE and NITTER_HANDLES:
+        # Modest concurrency: it is one shared public instance, not 32 hosts.
+        with concurrent.futures.ThreadPoolExecutor(max_workers=4) as ex:
+            for items in ex.map(nitter_feed, NITTER_HANDLES):
+                out.extend(items)
 
     seen: set[str] = set()
     fresh: list[Item] = []

@@ -56,31 +56,32 @@ access; its public RSS feed (`theathletic.com/nfl/rss/`) returns zero items as o
 2026-08-02. Nothing behind that paywall is fetched. If you want Athletic content
 in the digest, read it in the browser and paste the relevant bit in yourself.
 
-### X / Twitter — not available
+### X / Twitter via nitter — enabled
 
-Probed 2026-08-02, all nitter instances non-functional:
+`nitter.net` serves RSS fine and is the source of ~200 items per run.
 
-| Instance | Result |
-|---|---|
-| `nitter.net` | HTTP 200, empty body |
-| `nitter.poast.org` | 403 |
-| `nitter.privacydev.net` | does not resolve |
-| `xcancel.com` | 403 |
+**Note on an earlier wrong call in this repo's history:** nitter was initially
+recorded as dead. That probe requested the URL *without following redirects*,
+which returns `HTTP 200` with `Content-Length: 0` and looks exactly like a dead
+host. Following redirects returns real content. If you ever re-probe an
+instance, use `curl -L`.
 
-This is structural, not bad luck. X removed guest API access in 2023, which is
-what every nitter instance depended on — that is why they all died, and why new
-ones tend to last weeks. There is no logged-out way to read tweets.
+Highest-value account by a distance is **@32BeatWriters**, which retweets club
+beat reporters league-wide — the practice-report layer that is thin on Bluesky.
+Retweets are un-prefixed and re-attributed to the original reporter, so the
+digest credits *@OmarKelly* or *@ryanmcfadden_* rather than the aggregator.
 
-The remaining options are all bad: scraping with a logged-in session risks a
-ban on whatever account it uses, and the official API is $200/month for a Basic
-tier whose search would likely underperform the free feeds already wired up.
+Also included: Schefter, Rapoport, Garafolo, Yates, Fowler, Wolfe, Dov Kleiman,
+James Palmer, Rotoworld, FantasyPros, ESPN NFL. Schefter matters here because he
+has **no Bluesky account** — impostors squat on the name there.
 
-**The team blogs cover this gap.** SB Nation beat writers post the same camp
-observations, often the same people, in a format that is stable and free. That
-is where the camp-report content comes from instead.
+X contributes ~12 players per run that appear in no other source, typically
+mid-round names (Chris Rodriguez ADP 129, Kyle Monangai ADP 95) where news
+actually moves a draft decision.
 
-The nitter adapter remains in `scripts/sources.py`, disabled. If a working
-public instance ever appears, set `NITTER_INSTANCE` and it activates.
+Override the instance with the `NITTER_INSTANCE` env var; set it empty to
+disable. Instances do go down, so `nitter_status()` reports the live state and
+every collector fails soft — a dead instance costs items, never the run.
 
 ## Handles
 
