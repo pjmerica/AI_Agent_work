@@ -1,9 +1,9 @@
 {
-  "generated": "2026-08-02T23:18:19.888536+00:00",
+  "generated": "2026-08-02T23:29:16.509276+00:00",
   "stats": {
-    "n_items": 860,
-    "n_players": 116,
-    "n_unpriced": 99,
+    "n_items": 865,
+    "n_players": 117,
+    "n_unpriced": 100,
     "by_source": {
       "Bluesky @minakimes.bsky.social": 35,
       "Bluesky @rapsheet.bsky.social": 14,
@@ -27,7 +27,7 @@
       "SBN DAL": 10,
       "SBN DEN": 10,
       "SBN DET": 10,
-      "SBN GB": 7,
+      "SBN GB": 8,
       "SBN HOU": 2,
       "SBN IND": 10,
       "SBN JAX": 4,
@@ -117,6 +117,7 @@
       "X @jimohms (via @Tdrake4sports)": 1,
       "X @AZSports (via @Tdrake4sports)": 2,
       "X @mzenitz (via @Tdrake4sports)": 1,
+      "X @ESPNdirocco": 4,
       "X @JCaporoso": 4,
       "X @njrealtornic (via @JCaporoso)": 1,
       "X @JCaporoso (via @JCaporoso)": 4,
@@ -153,12 +154,13 @@
       "adp_move": null,
       "proj": null,
       "sleeper_weight": 1.8,
-      "score": 16.015,
+      "score": 17.119,
       "unpriced": true,
       "signals": [
         "injured",
         "injury",
         "out for",
+        "practice squad",
         "waived"
       ],
       "items": [
@@ -176,6 +178,11 @@
           "text": "49ers sign RB Khalil Herbert and former Colts 6th-round edge rusher; waive Eli Apple. The 49ers also waived/injuried Mikail Kamara",
           "url": "https://sports.yahoo.com/articles/49ers-sign-rb-khalil-herbert-204929488.html",
           "source": "Yahoo NFL"
+        },
+        {
+          "text": "49ers sign RB Khalil Herbert and former Colts 6th-round edge rusher; waive Eli Apple. The San Francisco 49ers have signed running back Khalil Herbert to a one-year deal. They&#8217;ve also added Titus Leo, a 6&#8217;3&#8243;, 245-pounder who was drafted in the sixth round by the Colts in the 2023 NF",
+          "url": "https://www.ninersnation.com/san-francisco-free-agency/160910/49ers-sign-rb-khalil-herbert-and-former-colts-6th-round-edge-rusher-waive-eli-apple",
+          "source": "SBN SF"
         }
       ]
     },
@@ -541,6 +548,28 @@
       ]
     },
     {
+      "name": "Ben Patterson",
+      "pos": "WR",
+      "team": "JAX",
+      "adp": null,
+      "adp_prior": null,
+      "adp_move": null,
+      "proj": 0.019586998969316483,
+      "sleeper_weight": 1.9,
+      "score": 9.88,
+      "unpriced": true,
+      "signals": [
+        "waived"
+      ],
+      "items": [
+        {
+          "text": "Jaguars signed LB Jared Bartlett and waived WR Ben Patterson. Bartlett played two games with Arizona last season.",
+          "url": "https://nitter.net/ESPNdirocco/status/2083887812055618000#m",
+          "source": "X @ESPNdirocco"
+        }
+      ]
+    },
+    {
       "name": "Drake Dabney",
       "pos": "TE",
       "team": "GB",
@@ -888,6 +917,7 @@
         "snap",
         "snaps",
         "standout",
+        "targets",
         "training camp"
       ],
       "items": [

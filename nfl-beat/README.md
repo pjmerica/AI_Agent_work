@@ -88,6 +88,33 @@ a strict CSP, so nothing external is loaded.
    the first team on Monday, Wednesday and Friday is a depth-chart change
    happening in slow motion.
 
+## Player lookup
+
+**On the page** — a search box above the digest covers **all 1,563 players**,
+not just the ones with news today. Typing a name shows position, team, ADP,
+projection, and any recorded news. Players with news sort first, then by ADP.
+Matching ignores accents, punctuation and suffixes, so `amon ra`, `st brown`
+and `Amon-Ra St. Brown` all resolve.
+
+Players with no news say so explicitly — a useful answer in itself.
+
+**From the CLI** — deeper, and reads the *entire* archive rather than the
+capped window the page embeds:
+
+```bash
+py scripts/lookup.py "Eli Stowers"    # full history + ADP move attribution
+py scripts/lookup.py stowers          # partial names work
+py scripts/lookup.py --news "ACL"     # every archived item matching a phrase
+```
+
+### Payload note
+
+The page embeds two structures: every player (~58 KB) and a **capped** news
+window — last 6 observations per player, 2 items each (~38 KB, flat). The cap
+exists because the uncapped history would reach ~4.7 MB after a month of runs,
+which is too much to ship on every page load. Nothing is lost: the full history
+stays in `archive/*.ndjson` and `lookup.py` reads all of it.
+
 ## Archive — tying news to ADP moves
 
 `digests/*.json` is overwritten by each of the three daily runs, which is fine

@@ -43,6 +43,20 @@ padding:5px 12px;cursor:pointer;transition:all .12s}
 .bkt .n{opacity:.65;font-weight:400;margin-left:3px}
 .bkt.active .n{opacity:.85}
 .bucket-group[hidden]{display:none}
+.search{margin:18px 0 6px}
+#q{width:100%;font:inherit;font-size:14px;color:var(--fg);background:var(--card);
+border:1px solid var(--line);border-radius:9px;padding:10px 13px;outline:none}
+#q:focus{border-color:var(--accent)}
+#qres{margin-top:9px}
+.hit{background:var(--card);border:1px solid var(--line);border-radius:9px;
+padding:11px 13px;margin-bottom:7px}
+.hit .top{margin-bottom:3px}
+.hit .none{color:var(--muted);font-size:13px;font-style:italic}
+.qnews{border-left:2px solid var(--line);padding:4px 0 4px 10px;margin-top:6px;
+font-size:13px}
+.qnews a{color:var(--accent);text-decoration:none}
+.qnews a:hover{text-decoration:underline}
+.qnews .src{color:var(--muted);font-size:11.5px}
 .card{background:var(--card);border:1px solid var(--line);border-radius:9px;
 padding:13px 15px;margin-bottom:9px}
 .top{display:flex;flex-wrap:wrap;align-items:baseline;gap:9px;margin-bottom:5px}
@@ -160,6 +174,48 @@ def _bucket_of(adp) -> str:
     return "deep"
 
 
+def _search_index(all_players: dict, archive_rows: list, cap_obs: int = 6) -> str:
+    """Embed a searchable index of the whole player universe.
+
+    Two parts, kept small on purpose:
+      P: [name, pos, team, adp, proj] for every player -- ~58 KB for 1,563.
+      H: recent archived news per player, capped at `cap_obs` observations and
+         2 items each, so the payload stays flat (~38 KB) instead of growing
+         with the archive. The full history lives in archive/*.ndjson and is
+         reachable via scripts/lookup.py -- this is a display window only.
+    """
+    P = [[p.name, p.pos, p.team,
+          p.adp, round(p.proj) if p.proj else None]
+         for p in all_players.values()]
+
+    H: dict[str, list] = {}
+    for r in sorted(archive_rows, key=lambda x: x.get("run", "")):
+        H.setdefault(r.get("name", ""), []).append([
+            r.get("run", "")[:10],
+            r.get("adp"),
+            [[it.get("text", "")[:110], it.get("url", ""), it.get("source", "")]
+             for it in r.get("items", [])[:2]],
+        ])
+    for k in H:
+        H[k] = H[k][-cap_obs:]
+
+    payload = json.dumps({"P": P, "H": H}, separators=(",", ":"),
+                         ensure_ascii=False)
+    # </script> inside data would close the block early.
+    payload = payload.replace("</", "<\\/")
+    return f'<script id="idx" type="application/json">{payload}</script>'
+
+
+def _search_box() -> str:
+    return (
+        '<div class="search">'
+        '<input id="q" type="search" placeholder="Search any player — '
+        'all 1,563, news or not…" autocomplete="off" spellcheck="false">'
+        '<div id="qres"></div>'
+        "</div>"
+    )
+
+
 def _bucket_toggle(counts: dict[str, int]) -> str:
     """Filter bar: All plus one button per non-empty bucket."""
     total = sum(counts.values())
@@ -248,7 +304,8 @@ def _movers_table(rows, label) -> str:
             f"<th>Was</th><th>Now</th><th>Δ</th></tr></thead><tbody>{body}</tbody></table></div>")
 
 
-def build_html(groups, adp_ctx, stats, threads=None) -> str:
+def build_html(groups, adp_ctx, stats, threads=None,
+               all_players=None, archive_rows=None) -> str:
     now = datetime.now(timezone.utc).astimezone()
     flat = [g for g in groups if g["unpriced"]]
     moved = [g for g in groups if not g["unpriced"]][:10]
@@ -274,6 +331,10 @@ def build_html(groups, adp_ctx, stats, threads=None) -> str:
             "<h2>Developing — same story, multiple days</h2>"
             '<div class="empty">Needs 2+ days of digests before recurring '
             "stories can be identified. This fills in automatically.</div>")
+    search_html = ""
+    if all_players:
+        search_html = _search_box()
+
     return f"""<title>NFL Beat Digest — {now:%b %d, %Y}</title>
 <style>{CSS}</style>
 <div class="wrap">
@@ -282,6 +343,8 @@ def build_html(groups, adp_ctx, stats, threads=None) -> str:
  · {stats['n_items']} items scanned · {stats['n_players']} players matched
  · ADP board {_esc(stats['adp_latest'])} vs {_esc(stats['adp_prior'])}
 {_stale_warning(stats)}</div>
+
+{search_html}
 
 {threads_html}
 
@@ -309,21 +372,108 @@ and its articles are paywalled; nothing behind that paywall is fetched.
 X/Twitter via nitter is {_esc(stats['nitter'])}.</p>
 </footer>
 </div>
+{_search_index(all_players, archive_rows or []) if all_players else ""}
 <script>
 (function () {{
   var bar = document.querySelector('.toggle');
-  if (!bar) return;
-  var groups = document.querySelectorAll('.bucket-group');
-  bar.addEventListener('click', function (e) {{
-    var btn = e.target.closest('.bkt');
-    if (!btn) return;
-    var want = btn.dataset.bucket;
-    bar.querySelectorAll('.bkt').forEach(function (b) {{
-      b.classList.toggle('active', b === btn);
+  if (bar) {{
+    var groups = document.querySelectorAll('.bucket-group');
+    bar.addEventListener('click', function (e) {{
+      var btn = e.target.closest('.bkt');
+      if (!btn) return;
+      var want = btn.dataset.bucket;
+      bar.querySelectorAll('.bkt').forEach(function (b) {{
+        b.classList.toggle('active', b === btn);
+      }});
+      groups.forEach(function (g) {{
+        g.hidden = (want !== 'all' && g.dataset.bucket !== want);
+      }});
     }});
-    groups.forEach(function (g) {{
-      g.hidden = (want !== 'all' && g.dataset.bucket !== want);
+  }}
+
+  var raw = document.getElementById('idx');
+  var box = document.getElementById('q');
+  var out = document.getElementById('qres');
+  if (!raw || !box || !out) return;
+
+  var data;
+  try {{ data = JSON.parse(raw.textContent); }} catch (e) {{ return; }}
+  var P = data.P || [], H = data.H || {{}};
+
+  // Match how the Python side normalises names, so searching "amon ra" or
+  // "St. Brown" both work.
+  function norm(s) {{
+    return (s || '').toLowerCase()
+      .normalize('NFD').replace(/[\\u0300-\\u036f]/g, '')
+      .replace(/['".]/g, '').replace(/-/g, '')
+      .replace(/[^a-z0-9 ]/g, ' ').replace(/\\s+/g, ' ').trim();
+  }}
+  var keys = P.map(function (p) {{ return norm(p[0]); }});
+
+  function esc(s) {{
+    return (s || '').replace(/[&<>"]/g, function (c) {{
+      return {{'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;'}}[c];
     }});
+  }}
+
+  function render(list) {{
+    if (!list.length) {{ out.innerHTML = ''; return; }}
+    out.innerHTML = list.map(function (i) {{
+      var p = P[i];
+      var adp = (p[3] === null || p[3] === undefined) ? 'undrafted' : 'ADP ' + p[3];
+      var proj = p[4] ? ' \\u00b7 proj ' + p[4] : '';
+      var hist = H[p[0]];
+      var news = '';
+      if (hist && hist.length) {{
+        var seen = {{}}, lines = [];
+        for (var h = hist.length - 1; h >= 0; h--) {{
+          var obs = hist[h];
+          for (var k = 0; k < obs[2].length; k++) {{
+            var it = obs[2][k];
+            if (!it[1] || seen[it[1]]) continue;
+            seen[it[1]] = 1;
+            lines.push('<div class="qnews"><a href="' + esc(it[1]) +
+              '" target="_blank" rel="noopener">' + esc(it[0]) +
+              '</a><div class="src">' + esc(it[2]) + ' \\u00b7 ' + esc(obs[0]) +
+              '</div></div>');
+          }}
+        }}
+        news = lines.slice(0, 4).join('');
+      }} else {{
+        news = '<div class="none">no news recorded yet</div>';
+      }}
+      return '<div class="hit"><div class="top"><span class="nm">' +
+        esc(p[0]) + '</span> <span class="meta">' +
+        esc([p[1], p[2]].filter(Boolean).join(' ')) + ' \\u00b7 ' + adp + proj +
+        '</span></div>' + news + '</div>';
+    }}).join('');
+  }}
+
+  var t;
+  box.addEventListener('input', function () {{
+    clearTimeout(t);
+    t = setTimeout(function () {{
+      var q = norm(box.value);
+      if (q.length < 2) {{ out.innerHTML = ''; return; }}
+      var toks = q.split(' ');
+      var exact = [], partial = [];
+      for (var i = 0; i < keys.length; i++) {{
+        var k = keys[i];
+        if (k === q) {{ exact.push(i); continue; }}
+        var ok = true;
+        for (var j = 0; j < toks.length; j++) {{
+          if (k.indexOf(toks[j]) === -1) {{ ok = false; break; }}
+        }}
+        if (ok) partial.push(i);
+      }}
+      // Players with recorded news first, then by ADP.
+      partial.sort(function (a, b) {{
+        var ha = H[P[a][0]] ? 0 : 1, hb = H[P[b][0]] ? 0 : 1;
+        if (ha !== hb) return ha - hb;
+        return (P[a][3] === null ? 999 : P[a][3]) - (P[b][3] === null ? 999 : P[b][3]);
+      }});
+      render(exact.concat(partial).slice(0, 10));
+    }}, 90);
   }});
 }})();
 </script>"""
@@ -393,11 +543,13 @@ def build_markdown(groups, adp_ctx, stats, threads=None) -> str:
     return "\n".join(L)
 
 
-def write_all(groups, adp_ctx, stats, threads=None) -> dict[str, Path]:
+def write_all(groups, adp_ctx, stats, threads=None,
+              all_players=None, archive_rows=None) -> dict[str, Path]:
     DIGESTS.mkdir(parents=True, exist_ok=True)
     stamp = datetime.now().strftime("%Y-%m-%d")
 
-    html_doc = build_html(groups, adp_ctx, stats, threads)
+    html_doc = build_html(groups, adp_ctx, stats, threads,
+                          all_players, archive_rows)
     md_doc = build_markdown(groups, adp_ctx, stats, threads)
 
     paths = {

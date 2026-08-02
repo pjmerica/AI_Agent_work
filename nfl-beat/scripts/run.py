@@ -21,6 +21,7 @@ from config import MAX_AGE_HOURS_RSS, RSS_FEEDS, TEAM_FEEDS  # noqa: E402
 from players import (UD_ADP, adp_context, load_players,      # noqa: E402
                      resolve_dates)
 from report import write_all                                 # noqa: E402
+from archive import load_all as load_archive                 # noqa: E402
 from archive import record_run                               # noqa: E402
 from threads import build_threads, load_history, summarize   # noqa: E402
 from sources import collect, nitter_status                   # noqa: E402
@@ -126,7 +127,11 @@ def main() -> int:
     arch_path, arch_n = record_run(groups, stats)
     print(f"→ archived {arch_n} rows to {arch_path.name}")
 
-    paths = write_all(groups, adp_context(players), stats, threads)
+    # Read back after appending so the embedded search index includes this run.
+    archive_rows = load_archive()
+
+    paths = write_all(groups, adp_context(players), stats, threads,
+                      all_players=players, archive_rows=archive_rows)
     print(f"\n✓ {paths['html']}")
     print(f"✓ {paths['md']}")
     print(f"✓ {paths['latest']}  (GitHub Pages entry point)")
