@@ -87,6 +87,24 @@ Use `search` rather than guessing: handles are frequently non-obvious
 1,563 players — 292 with a current ADP, the rest projected but undrafted. That
 deep tail is deliberately included; it's where unpriced news lives.
 
+### The ADP board is frozen
+
+`scripts/players.py` pins two snapshot dates and treats them as current truth:
+
+```python
+ADP_AS_OF    = "2026-08-01"   # the board treated as "today"
+ADP_BASELINE = "2026-07-18"   # compared against, to get movement
+```
+
+Without pinning, the digest re-derived "newest date minus 14 days" on every run,
+so the reference board drifted silently whenever EZ Dubs pulled new rows. Pinned,
+results are reproducible until you bump the dates by hand.
+
+**To refresh:** update the UD ADP CSV, then set `ADP_AS_OF` to the new date and
+usually move `ADP_BASELINE` forward by the same amount. If a pinned date isn't
+present in the data, the code falls back to newest-minus-14-days and prints a
+warning rather than failing or drifting quietly.
+
 Name matching is intentionally loose (accent/punctuation/suffix stripped, plus
 `F. Last` initials). Bare surnames only match when the player's team also appears
 in the text, so "Wilson" doesn't hit half the league.

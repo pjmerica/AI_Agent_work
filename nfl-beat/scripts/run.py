@@ -18,7 +18,8 @@ sys.path.insert(0, str(Path(__file__).parent))
 
 from analyze import find_matches, group_by_player            # noqa: E402
 from config import MAX_AGE_HOURS_RSS, RSS_FEEDS              # noqa: E402
-from players import UD_ADP, adp_context, load_players        # noqa: E402
+from players import (UD_ADP, adp_context, load_players,      # noqa: E402
+                     resolve_dates)
 from report import write_all                                 # noqa: E402
 from sources import collect, nitter_status                   # noqa: E402
 
@@ -54,17 +55,14 @@ def main() -> int:
     unpriced = sum(1 for g in groups if g["unpriced"])
     print(f"→ {len(groups)} players with fantasy-relevant news ({unpriced} unpriced)")
 
-    # Re-derive the ADP snapshot dates so the digest can state its own baseline.
-    # Mirrors the degraded path in load_players(): no ADP file, no baseline.
+    # Report the same frozen snapshot pair load_players() used, so the digest
+    # header always matches the board the scores were computed against.
     latest = prior = "unavailable"
     if UD_ADP.exists():
         import csv
-        from datetime import date, timedelta
         dates = sorted({r["date"] for r in csv.DictReader(UD_ADP.open(encoding="utf-8"))})
         if dates:
-            latest = dates[-1]
-            target = (date.fromisoformat(latest) - timedelta(days=14)).isoformat()
-            prior = ([d for d in dates if d <= target] or [dates[0]])[-1]
+            latest, prior = resolve_dates(dates)
 
     stats = {
         "n_items": len(items),
