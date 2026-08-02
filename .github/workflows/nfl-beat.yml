@@ -1,0 +1,71 @@
+name: NFL Beat Digest
+
+on:
+  schedule:
+    # 12:00 UTC = 08:00 EDT. After the EZ Dubs 13:30 ADP pull would be stale,
+    # but early enough to read before the day's practice reports land.
+    - cron: '0 12 * * *'
+    # Second pass late afternoon, once camp reports are in.
+    - cron: '0 21 * * *'
+  workflow_dispatch:
+
+jobs:
+  digest:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      # The UD ADP history lives in the EZ Dubs repo, not this one. Pull just
+      # that file so the digest can compute ADP movement. If the checkout fails
+      # (private repo, no token), run.py still works -- it degrades to
+      # projections-only and every player is treated as unpriced.
+      - name: Fetch UD ADP history
+        continue-on-error: true
+        env:
+          EZDUBS_TOKEN: ${{ secrets.EZDUBS_TOKEN }}
+        run: |
+          mkdir -p external
+          if [ -n "$EZDUBS_TOKEN" ]; then
+            git clone --depth 1 --filter=blob:none --sparse \
+              "https://x-access-token:${EZDUBS_TOKEN}@github.com/${{ github.repository_owner }}/ez-dubs-website.git" \
+              external/ezdubs || echo "EZ Dubs checkout failed; continuing without ADP."
+            if [ -d external/ezdubs ]; then
+              git -C external/ezdubs sparse-checkout set dashboards/best-ball-prices
+            fi
+          else
+            echo "EZDUBS_TOKEN not set; digest will run without ADP movement."
+          fi
+
+      - name: Build digest
+        env:
+          # players.py checks this before falling back to the local Documents path.
+          UD_ADP_PATH: external/ezdubs/dashboards/best-ball-prices/ud_adp_history.csv
+          PYTHONIOENCODING: utf-8
+        run: python nfl-beat/scripts/run.py
+
+      - name: Commit digest
+        run: |
+          git config user.name  "nfl-beat-bot"
+          git config user.email "nfl-beat-bot@users.noreply.github.com"
+          git add nfl-beat/digests nfl-beat/index.html
+          if git diff --cached --quiet; then
+            echo "No digest changes to commit."
+            exit 0
+          fi
+          git commit -m "Auto: NFL beat digest $(date -u +%Y-%m-%d)"
+          for i in 1 2 3 4 5; do
+            if git push; then
+              echo "Pushed on attempt $i."
+              exit 0
+            fi
+            echo "Push attempt $i failed; rebasing on remote."
+            git pull --rebase --autostash origin master
+          done
+          echo "Push failed after 5 attempts." >&2
+          exit 1
