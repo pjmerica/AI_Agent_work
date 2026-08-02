@@ -79,6 +79,29 @@ def _num(v: str) -> float | None:
         return None  # UD writes '-' for undrafted
 
 
+# Some dates carry BOTH a 'manual' and an 'auto' pull (observed on 2026-07-06,
+# 07-16 and 07-27). 'auto' is the full board (~1372 rows) vs 'manual' (~295), and
+# the two disagree by up to 12 ADP points, so picking the wrong one can invent
+# movement that never happened. Prefer the more complete source.
+SOURCE_PRIORITY = {"auto": 2, "manual": 1}
+
+
+def _dedupe(rows: list[dict]) -> list[dict]:
+    """Collapse duplicate (date, player) rows, keeping the best-sourced one."""
+    best: dict[tuple[str, str], dict] = {}
+    for r in rows:
+        key = (r["date"], r["name"])
+        cur = best.get(key)
+        if cur is None or SOURCE_PRIORITY.get(r.get("source", ""), 0) > \
+                SOURCE_PRIORITY.get(cur.get("source", ""), 0):
+            best[key] = r
+    dropped = len(rows) - len(best)
+    if dropped:
+        print(f"  deduped {dropped} duplicate (date, player) rows "
+              "-- kept 'auto' over 'manual' where both existed")
+    return list(best.values())
+
+
 def resolve_dates(dates: list[str], lookback_days: int = ADP_LOOKBACK_DAYS) -> tuple[str, str]:
     """Pick the (as_of, baseline) snapshot pair.
 
@@ -185,6 +208,7 @@ def load_players(lookback_days: int = 14) -> dict[str, Player]:
     if not rows:
         raise ValueError(f"UD ADP history is empty: {UD_ADP}")
 
+    rows = _dedupe(rows)
     latest, prior = resolve_dates(sorted({r["date"] for r in rows}), lookback_days)
 
     snapshots: dict[str, dict[str, float]] = defaultdict(dict)
