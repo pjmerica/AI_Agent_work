@@ -66,6 +66,19 @@ finding an edge:
 The digest leads with **News before the market moves** for this reason.
 **News with ADP movers** follows it, as confirmation rather than the headline.
 
+Within the lead section, players are grouped into **ADP buckets**, deepest first:
+
+| Bucket | Range | Shown |
+|---|---|---|
+| Deep | ADP 160+ and undrafted | 22 |
+| Mid-round | ADP 61-159 | 12 |
+| Early picks | ADP 1-60 | 6 |
+
+The caps are deliberately lopsided — the deep tail is what this tool exists for,
+so it gets the room. Early picks are listed for completeness, not because their
+news is actionable. Each heading shows the full count, so "showing 22 of 54"
+makes clear what is being truncated.
+
 3. **A story that repeats beats a story that breaks.** One beat-writer mention
    is noise. The same reporter — or three different ones — putting a player with
    the first team on Monday, Wednesday and Friday is a depth-chart change

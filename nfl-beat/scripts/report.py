@@ -31,6 +31,9 @@ h1{font-size:23px;margin:0 0 4px;letter-spacing:-.02em}
 .sub{color:var(--muted);font-size:13px;margin-bottom:22px}
 h2{font-size:15px;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);
 margin:34px 0 12px;padding-bottom:7px;border-bottom:1px solid var(--line)}
+h3.bucket{font-size:13px;font-weight:650;color:var(--fg);margin:22px 0 9px;
+letter-spacing:-.01em}
+h3.bucket .meta{font-weight:400}
 .card{background:var(--card);border:1px solid var(--line);border-radius:9px;
 padding:13px 15px;margin-bottom:9px}
 .top{display:flex;flex-wrap:wrap;align-items:baseline;gap:9px;margin-bottom:5px}
@@ -124,6 +127,50 @@ def _player_card(d) -> str:
 {items}</div>"""
 
 
+# Ordered deepest-first: the deep tail is the point of this digest, so it leads.
+# The 160 boundary is deliberate -- past roughly ADP 160 a player is a last-rounds
+# flier whose camp news is genuinely unpriced, where 61-159 is contested middle
+# ground the market watches more closely.
+# (key, label, test, how_many_to_show). Caps are deliberately lopsided: the deep
+# tail is what this digest exists for, so it gets the room. Early picks are
+# included for completeness, not because their news is actionable.
+ADP_BUCKETS = [
+    ("deep", "Deep — ADP 160+ and undrafted",
+     lambda a: a is None or a >= 160, 22),
+    ("mid", "Mid-round — ADP 61-159",
+     lambda a: a is not None and 61 <= a < 160, 12),
+    ("early", "Early picks — ADP 1-60",
+     lambda a: a is not None and a < 61, 6),
+]
+
+
+def _bucket_of(adp) -> str:
+    for key, _label, test, _n in ADP_BUCKETS:
+        if test(adp):
+            return key
+    return "deep"
+
+
+def _bucketed_sections(groups: list) -> str:
+    """Render flat-ADP players grouped by ADP bucket, deepest bucket first."""
+    by: dict[str, list] = {k: [] for k, _l, _t, _n in ADP_BUCKETS}
+    for g in groups:
+        by[_bucket_of(g["player"].adp)].append(g)
+
+    out = []
+    for key, label, _test, cap in ADP_BUCKETS:
+        rows = by[key][:cap]
+        if not rows:
+            continue
+        total = len(by[key])
+        more = (f' <span class="meta">showing {len(rows)} of {total}</span>'
+                if total > len(rows) else "")
+        out.append(f'<h3 class="bucket">{_esc(label)}'
+                   f' <span class="meta">({total})</span>{more}</h3>')
+        out.append("".join(_player_card(d) for d in rows))
+    return "".join(out)
+
+
 def _thread_card(t: dict) -> str:
     """One recurring story: who, what theme, how long, and whether ADP reacted."""
     days = f"{t['n_days']} day{'s' if t['n_days'] != 1 else ''}"
@@ -177,10 +224,10 @@ def _movers_table(rows, label) -> str:
 
 def build_html(groups, adp_ctx, stats, threads=None) -> str:
     now = datetime.now(timezone.utc).astimezone()
-    flat = [g for g in groups if g["unpriced"]][:18]
+    flat = [g for g in groups if g["unpriced"]]
     moved = [g for g in groups if not g["unpriced"]][:10]
 
-    flat_html = ("".join(_player_card(d) for d in flat) if flat
+    flat_html = (_bucketed_sections(flat) if flat
                  else '<div class="empty">No flat-ADP players with news today.</div>')
     moved_html = ("".join(_player_card(d) for d in moved) if moved
                   else '<div class="empty">No ADP movers with news.</div>')
@@ -261,18 +308,29 @@ def build_markdown(groups, adp_ctx, stats, threads=None) -> str:
     L += [
          "## News before the market moves", ""]
 
-    flat = [g for g in groups if g["unpriced"]][:18]
+    flat = [g for g in groups if g["unpriced"]]
     if not flat:
         L.append("_No flat-ADP players with news today._")
-    for d in flat:
-        p = d["player"]
-        mv = "flat" if (p.adp_move is None or abs(p.adp_move) < 2) else f"{p.adp_move:+.1f}"
-        L.append(f"### {p.name} — {p.pos} {p.team} · {_fmt_adp(p)} · {mv}")
-        L.append(f"*signals: {', '.join(d['signals'][:6])}*")
-        for m in d["matches"]:
-            t = m.item.text[:200].replace("\n", " ")
-            L.append(f"- [{t}]({m.item.url}) — {m.item.source}")
-        L.append("")
+
+    by: dict[str, list] = {k: [] for k, _l, _t, _n in ADP_BUCKETS}
+    for g in flat:
+        by[_bucket_of(g["player"].adp)].append(g)
+
+    for key, label, _test, cap in ADP_BUCKETS:
+        rows = by[key][:cap]
+        if not rows:
+            continue
+        L += [f"### {label} ({len(by[key])})", ""]
+        for d in rows:
+            p = d["player"]
+            mv = ("flat" if (p.adp_move is None or abs(p.adp_move) < 2)
+                  else f"{p.adp_move:+.1f}")
+            L.append(f"**{p.name}** — {p.pos} {p.team} · {_fmt_adp(p)} · {mv}  ")
+            L.append(f"*signals: {', '.join(d['signals'][:6])}*")
+            for m in d["matches"]:
+                t = m.item.text[:200].replace("\n", " ")
+                L.append(f"- [{t}]({m.item.url}) — {m.item.source}")
+            L.append("")
 
     L += ["## News with ADP movers", ""]
     for d in [g for g in groups if not g["unpriced"]][:10]:
