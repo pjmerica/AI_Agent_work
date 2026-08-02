@@ -62,6 +62,28 @@ def _esc(s: str) -> str:
     return html.escape(str(s), quote=True)
 
 
+def _adp_lag_days(stats) -> int | None:
+    """How far behind today the ADP board is, or None if it can't be determined."""
+    from datetime import date as _date
+    try:
+        return (_date.today() - _date.fromisoformat(stats["adp_latest"])).days
+    except (ValueError, KeyError, TypeError):
+        return None
+
+
+def _stale_warning(stats) -> str:
+    """Flag an ADP board that has stopped advancing.
+
+    The digest rolls forward to the newest snapshot automatically, so a lag here
+    means the upstream EZ Dubs pull has stalled -- not that this script is wrong.
+    """
+    lag = _adp_lag_days(stats)
+    if lag is None or lag <= 2:
+        return ""
+    return (f'<br><span style="color:var(--hot);font-weight:600">'
+            f"⚠ ADP board is {lag} days old — upstream pull may have stalled.</span>")
+
+
 def _fmt_adp(p) -> str:
     return "undrafted" if p.adp is None else f"ADP {p.adp:.1f}"
 
@@ -134,7 +156,8 @@ def build_html(groups, adp_ctx, stats) -> str:
 <h1>NFL Beat Digest</h1>
 <div class="sub">{now:%A, %B %d %Y · %I:%M %p}
  · {stats['n_items']} items scanned · {stats['n_players']} players matched
- · ADP baseline {_esc(stats['adp_latest'])} vs {_esc(stats['adp_prior'])}</div>
+ · ADP board {_esc(stats['adp_latest'])} vs {_esc(stats['adp_prior'])}
+{_stale_warning(stats)}</div>
 
 <h2>Unpriced — news the market hasn't reacted to</h2>
 {unpriced_html}
@@ -165,7 +188,11 @@ def build_markdown(groups, adp_ctx, stats) -> str:
     now = datetime.now(timezone.utc).astimezone()
     L = [f"# NFL Beat Digest — {now:%b %d, %Y}", "",
          f"{stats['n_items']} items scanned · {stats['n_players']} players matched  ",
-         f"ADP baseline {stats['adp_latest']} vs {stats['adp_prior']}", "",
+         f"ADP board {stats['adp_latest']} vs {stats['adp_prior']}", ""]
+    lag = _adp_lag_days(stats)
+    if lag is not None and lag > 2:
+        L += [f"> ⚠ ADP board is {lag} days old — upstream pull may have stalled.", ""]
+    L += [
          "## Unpriced — news the market hasn't reacted to", ""]
 
     unpriced = [g for g in groups if g["unpriced"]][:18]

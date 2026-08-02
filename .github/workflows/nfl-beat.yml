@@ -31,7 +31,10 @@ jobs:
           curl -sSfL --retry 3 --retry-delay 5 \
             https://raw.githubusercontent.com/pjmerica/ez-dubs-website/main/dashboards/best-ball-prices/ud_adp_history.csv \
             -o external/ud_adp_history.csv
-          wc -l < external/ud_adp_history.csv
+          # Surface the newest snapshot date: the digest rolls forward to it, so
+          # if this stops advancing the upstream EZ Dubs pull has stalled.
+          echo "rows: $(wc -l < external/ud_adp_history.csv)"
+          echo "newest ADP snapshot: $(cut -d, -f1 external/ud_adp_history.csv | tail -n +2 | sort -u | tail -1)"
 
       - name: Build digest
         env:

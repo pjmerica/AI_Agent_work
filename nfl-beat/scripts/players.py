@@ -28,15 +28,16 @@ PRED_DIR = Path(os.environ.get("PRED_DIR") or
                 DOCS / "FF Starters/season proj/outputs/ud")
 PRED_FILES = ["predictions_2026_qb.csv", "predictions_2026_rb.csv", "predictions_2026_wrte.csv"]
 
-# The ADP board is FROZEN to these two snapshots and treated as current truth.
-# Rationale: the digest previously re-derived "newest date minus 14 days" on every
-# run, so the reference board drifted silently as EZ Dubs pulled new rows. Pinning
-# means results stay reproducible until these dates are bumped by hand.
+# The ADP board rolls forward to the newest snapshot in the CSV by default, so a
+# daily run picks up fresh ADP automatically. Movement is measured against
+# whatever snapshot is ~ADP_LOOKBACK_DAYS older, keeping the UNPRICED signal alive.
 #
-# To refresh: pull new ADP into the EZ Dubs CSV, then set ADP_AS_OF to the new
-# date (and usually move ADP_BASELINE forward by the same amount).
-ADP_AS_OF = "2026-08-01"     # the board treated as "today"
-ADP_BASELINE = "2026-07-18"  # what AS_OF is compared against, for movement
+# Set ADP_AS_OF (or the ADP_AS_OF env var) to a date string to freeze the board
+# instead -- useful for reproducing a specific day's digest. ADP_BASELINE
+# likewise overrides the comparison snapshot.
+ADP_AS_OF = os.environ.get("ADP_AS_OF") or None        # None = use newest in file
+ADP_BASELINE = os.environ.get("ADP_BASELINE") or None  # None = derive from lookback
+ADP_LOOKBACK_DAYS = 14
 
 # UD stores full club names; the rest of the world uses abbreviations.
 TEAM_ABBR = {
@@ -78,28 +79,41 @@ def _num(v: str) -> float | None:
         return None  # UD writes '-' for undrafted
 
 
-def resolve_dates(dates: list[str], lookback_days: int = 14) -> tuple[str, str]:
-    """Pick the (as_of, baseline) snapshot pair, honouring the frozen pins.
+def resolve_dates(dates: list[str], lookback_days: int = ADP_LOOKBACK_DAYS) -> tuple[str, str]:
+    """Pick the (as_of, baseline) snapshot pair.
 
-    Falls back to newest-minus-lookback only if a pinned date is absent from the
-    data -- that happens when the CSV is refreshed but the pins above are not,
-    and it warns rather than silently drifting.
+    Default: as_of is the newest snapshot in the file, so a daily run tracks
+    fresh ADP automatically. baseline is the closest snapshot at least
+    `lookback_days` older, which is what makes the UNPRICED signal meaningful.
+
+    Explicit ADP_AS_OF / ADP_BASELINE pins override this, for reproducing a
+    given day. A pin that is not present in the data warns and falls back rather
+    than failing or silently using the wrong board.
     """
     if not dates:
         raise ValueError("no dated rows in the ADP history")
 
-    as_of = ADP_AS_OF
-    if as_of not in dates:
+    if ADP_AS_OF:
+        as_of = ADP_AS_OF
+        if as_of not in dates:
+            as_of = dates[-1]
+            print(f"! pinned ADP_AS_OF={ADP_AS_OF} not in data; using newest {as_of}.")
+    else:
         as_of = dates[-1]
-        print(f"! pinned ADP_AS_OF={ADP_AS_OF} not in data; using latest {as_of}. "
-              "Update ADP_AS_OF in players.py.")
 
-    baseline = ADP_BASELINE
-    if baseline not in dates or baseline > as_of:
+    if ADP_BASELINE:
+        baseline = ADP_BASELINE
+        if baseline not in dates or baseline > as_of:
+            print(f"! pinned ADP_BASELINE={ADP_BASELINE} unusable; deriving from lookback.")
+            baseline = None
+    else:
+        baseline = None
+
+    if baseline is None:
         target = (date.fromisoformat(as_of) - timedelta(days=lookback_days)).isoformat()
-        earlier = [d for d in dates if d <= target] or [dates[0]]
+        # Snapshots are not daily, so take the newest one at or before the target.
+        earlier = [d for d in dates if d <= target] or [d for d in dates if d < as_of] or [dates[0]]
         baseline = earlier[-1]
-        print(f"! pinned ADP_BASELINE={ADP_BASELINE} unusable; using {baseline}.")
 
     return as_of, baseline
 

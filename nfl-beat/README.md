@@ -87,33 +87,36 @@ Use `search` rather than guessing: handles are frequently non-obvious
 1,563 players — 292 with a current ADP, the rest projected but undrafted. That
 deep tail is deliberately included; it's where unpriced news lives.
 
-### The ADP board is frozen
+### The ADP board rolls forward daily
 
-`scripts/players.py` pins two snapshot dates and treats them as current truth:
+The board defaults to the **newest snapshot in the CSV**, so each daily run picks
+up fresh ADP with no manual step. Movement is measured against the closest
+snapshot at least 14 days older — that comparison is what makes UNPRICED mean
+anything, so it is kept rather than dropped.
 
-```python
-ADP_AS_OF    = "2026-08-01"   # the board treated as "today"
-ADP_BASELINE = "2026-07-18"   # compared against, to get movement
-```
-
-Without pinning, the digest re-derived "newest date minus 14 days" on every run,
-so the reference board drifted silently whenever EZ Dubs pulled new rows. Pinned,
-results are reproducible until you bump the dates by hand.
-
-**To refresh:** update the UD ADP CSV, then set `ADP_AS_OF` to the new date and
-usually move `ADP_BASELINE` forward by the same amount. If a pinned date isn't
-present in the data, the code falls back to newest-minus-14-days and prints a
-warning rather than failing or drifting quietly.
-
-Locally the CSV is read from `Documents/EZ Dubs Website/`. In CI it is curled
-from the public repo — no token or checkout needed:
+CI re-fetches the CSV on every run from the public EZ Dubs repo (no token, no
+checkout):
 
 ```
 https://raw.githubusercontent.com/pjmerica/ez-dubs-website/main/dashboards/best-ball-prices/ud_adp_history.csv
 ```
 
-Because the board is pinned, both paths produce identical output even when the
-remote CSV is fresher than the local copy. Override the path with `UD_ADP_PATH`.
+Locally it reads `Documents/EZ Dubs Website/`. Override with `UD_ADP_PATH`.
+
+**To freeze a specific day** (reproducing an old digest), pin either date:
+
+```bash
+ADP_AS_OF=2026-07-25 py scripts/run.py       # board frozen to that snapshot
+ADP_BASELINE=2026-07-11 py scripts/run.py    # override the comparison point
+```
+
+A pinned date absent from the data warns and falls back to the newest snapshot
+rather than failing or silently using the wrong board.
+
+**Staleness is surfaced, not hidden.** If the newest snapshot is more than 2 days
+old, the digest header shows a warning — that means the upstream EZ Dubs pull has
+stalled, not that this script broke. The workflow log also prints the newest
+snapshot date on every run.
 
 Name matching is intentionally loose (accent/punctuation/suffix stripped, plus
 `F. Last` initials). Bare surnames only match when the player's team also appears
