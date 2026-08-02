@@ -43,6 +43,44 @@ finding an edge:
 The digest leads with **News before the market moves** for this reason.
 **News with ADP movers** follows it, as confirmation rather than the headline.
 
+3. **A story that repeats beats a story that breaks.** One beat-writer mention
+   is noise. The same reporter — or three different ones — putting a player with
+   the first team on Monday, Wednesday and Friday is a depth-chart change
+   happening in slow motion.
+
+## Recurring stories
+
+`threads.py` diffs the dated JSON payloads in `digests/` to find **(player,
+theme)** pairs seen across 2+ days, and renders them in a **Developing** section
+at the top of the page — above the day's news, because persistence outranks
+recency here.
+
+```bash
+py scripts/threads.py    # inspect current threads from the console
+```
+
+Signal terms collapse into five themes (injury, role/depth chart, camp buzz,
+usage, roster status) so that "acl", "surgery" and "sidelined" count as one
+continuing story rather than three. Only a player's **strongest** theme is
+listed; secondary ones appear as `+ camp buzz` so a single story that trips
+several themes ("placed on IR" is both injury and roster) is not counted twice.
+
+Each thread shows how many days it has run, over what span, how many distinct
+sources carried it, and — most usefully — **whether ADP has reacted yet**:
+
+```
+Eli Stowers (TE PHI) — role / depth chart, 4d across 6d, 2 sources, ADP -2.8
+Kaden Prather (WR GB) — camp buzz, 5d across 6d, 1 source, ADP still flat
+```
+
+A thread running four days with **ADP still flat** is the strongest signal this
+tool produces: sustained beat attention that the draft market has not priced.
+
+Threads need 2+ days of digests to exist and get meaningfully better after a
+week. The section states this plainly rather than rendering empty. Note that
+`digests/*.json` now stores **every** matched player, not just the rendered top
+40, so a player ranked 60th today can still be detected as the start of a run.
+
 ## Sources
 
 Every line in the digest links to its origin. Nothing is asserted unsourced.

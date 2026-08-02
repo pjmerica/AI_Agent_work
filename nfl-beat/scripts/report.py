@@ -38,7 +38,7 @@ padding:13px 15px;margin-bottom:9px}
 .meta{color:var(--muted);font-size:12.5px}
 .tag{font-size:11px;font-weight:650;padding:2px 7px;border-radius:20px;
 border:1px solid currentColor;white-space:nowrap}
-.t-flat{color:var(--good)}.t-moved{color:var(--muted)}
+.t-flat{color:var(--good)}.t-moved{color:var(--muted)}.t-thread{color:var(--cool)}
 .t-hot{color:var(--hot)}.t-rise{color:var(--good)}.t-fall{color:var(--hot)}
 .sig{color:var(--muted);font-size:12px;margin:5px 0 7px}
 .sig code{background:rgba(125,125,125,.14);padding:1px 5px;border-radius:4px;font-size:11.5px}
@@ -124,6 +124,43 @@ def _player_card(d) -> str:
 {items}</div>"""
 
 
+def _thread_card(t: dict) -> str:
+    """One recurring story: who, what theme, how long, and whether ADP reacted."""
+    days = f"{t['n_days']} day{'s' if t['n_days'] != 1 else ''}"
+    span = f" over {t['span_days']}d" if t["span_days"] > t["n_days"] else ""
+    pos_team = " ".join(x for x in (t["pos"], t["team"]) if x)
+
+    drift = t.get("adp_drift")
+    if drift is None:
+        adp_note = '<span class="meta">no ADP</span>'
+    elif abs(drift) < 2:
+        adp_note = '<span class="tag t-flat">ADP STILL FLAT</span>'
+    else:
+        cls = "up" if drift > 0 else "dn"
+        adp_note = f'<span class="{cls}">ADP {drift:+.1f}</span>'
+
+    also = ""
+    if t.get("also_themes"):
+        also = f' <span class="meta">+ {_esc(", ".join(t["also_themes"]))}</span>'
+
+    item = ""
+    if t.get("best_item"):
+        bi = t["best_item"]
+        txt = _esc(bi.get("text", "")[:200])
+        url = _esc(bi.get("url", ""))
+        src = _esc(bi.get("source", ""))
+        link = f'<a href="{url}" target="_blank" rel="noopener">{txt}</a>' if url else txt
+        item = f'<div class="itm">{link}<div class="src">{src}</div></div>'
+
+    return f"""<div class="card">
+<div class="top"><span class="nm">{_esc(t['player'])}</span>
+<span class="meta">{_esc(pos_team)}</span>
+<span class="tag t-thread">{_esc(t['theme_label'])}</span>
+<span class="meta">{days}{span} · {t['n_sources']} source{'s' if t['n_sources'] != 1 else ''}</span>
+{adp_note}{also}</div>
+{item}</div>"""
+
+
 def _movers_table(rows, label) -> str:
     if not rows:
         return '<div class="empty">No qualifying moves.</div>'
@@ -138,7 +175,7 @@ def _movers_table(rows, label) -> str:
             f"<th>Was</th><th>Now</th><th>Δ</th></tr></thead><tbody>{body}</tbody></table></div>")
 
 
-def build_html(groups, adp_ctx, stats) -> str:
+def build_html(groups, adp_ctx, stats, threads=None) -> str:
     now = datetime.now(timezone.utc).astimezone()
     flat = [g for g in groups if g["unpriced"]][:18]
     moved = [g for g in groups if not g["unpriced"]][:10]
@@ -150,6 +187,20 @@ def build_html(groups, adp_ctx, stats) -> str:
 
     srcs = ", ".join(f"{k} ({v})" for k, v in sorted(stats["by_source"].items(),
                                                      key=lambda kv: -kv[1])[:10])
+
+    # Recurring stories lead when they exist: something a beat writer has raised
+    # on four separate days outranks anything that broke once this morning.
+    threads_html = ""
+    if threads:
+        cards = "".join(_thread_card(t) for t in threads)
+        threads_html = (
+            "<h2>Developing — same story, multiple days</h2>"
+            f"{cards}")
+    elif stats.get("history_days", 0) < 2:
+        threads_html = (
+            "<h2>Developing — same story, multiple days</h2>"
+            '<div class="empty">Needs 2+ days of digests before recurring '
+            "stories can be identified. This fills in automatically.</div>")
     return f"""<title>NFL Beat Digest — {now:%b %d, %Y}</title>
 <style>{CSS}</style>
 <div class="wrap">
@@ -158,6 +209,8 @@ def build_html(groups, adp_ctx, stats) -> str:
  · {stats['n_items']} items scanned · {stats['n_players']} players matched
  · ADP board {_esc(stats['adp_latest'])} vs {_esc(stats['adp_prior'])}
 {_stale_warning(stats)}</div>
+
+{threads_html}
 
 <h2>News before the market moves</h2>
 {flat_html}
@@ -185,7 +238,7 @@ X/Twitter via nitter is {_esc(stats['nitter'])}.</p>
 </div>"""
 
 
-def build_markdown(groups, adp_ctx, stats) -> str:
+def build_markdown(groups, adp_ctx, stats, threads=None) -> str:
     now = datetime.now(timezone.utc).astimezone()
     L = [f"# NFL Beat Digest — {now:%b %d, %Y}", "",
          f"{stats['n_items']} items scanned · {stats['n_players']} players matched  ",
@@ -193,6 +246,18 @@ def build_markdown(groups, adp_ctx, stats) -> str:
     lag = _adp_lag_days(stats)
     if lag is not None and lag > 2:
         L += [f"> ⚠ ADP board is {lag} days old — upstream pull may have stalled.", ""]
+    if threads:
+        L += ["## Developing — same story, multiple days", ""]
+        for t in threads:
+            drift = t.get("adp_drift")
+            adp = ("ADP still flat" if drift is not None and abs(drift) < 2
+                   else f"ADP {drift:+.1f}" if drift is not None else "no ADP")
+            srcs = f"{t['n_sources']} source{'s' if t['n_sources'] != 1 else ''}"
+            L.append(f"- **{t['player']}** ({t['pos']} {t['team']}) — "
+                     f"{t['theme_label']}, {t['n_days']}d across {t['span_days']}d, "
+                     f"{srcs}, {adp}")
+        L.append("")
+
     L += [
          "## News before the market moves", ""]
 
@@ -226,12 +291,12 @@ def build_markdown(groups, adp_ctx, stats) -> str:
     return "\n".join(L)
 
 
-def write_all(groups, adp_ctx, stats) -> dict[str, Path]:
+def write_all(groups, adp_ctx, stats, threads=None) -> dict[str, Path]:
     DIGESTS.mkdir(parents=True, exist_ok=True)
     stamp = datetime.now().strftime("%Y-%m-%d")
 
-    html_doc = build_html(groups, adp_ctx, stats)
-    md_doc = build_markdown(groups, adp_ctx, stats)
+    html_doc = build_html(groups, adp_ctx, stats, threads)
+    md_doc = build_markdown(groups, adp_ctx, stats, threads)
 
     paths = {
         "html": DIGESTS / f"{stamp}.html",
@@ -242,7 +307,10 @@ def write_all(groups, adp_ctx, stats) -> dict[str, Path]:
     paths["md"].write_text(md_doc, encoding="utf-8")
     paths["latest"].write_text(html_doc, encoding="utf-8")
 
-    # Machine-readable copy for downstream tooling.
+    # Machine-readable copy for downstream tooling. Stores EVERY matched player,
+    # not just the ones rendered: threads.py diffs these files across days to
+    # find stories that recur, and a player who ranks 60th today may be the
+    # early edge of a run that matters next week.
     payload = {
         "generated": datetime.now(timezone.utc).isoformat(),
         "stats": stats,
@@ -251,7 +319,7 @@ def write_all(groups, adp_ctx, stats) -> dict[str, Path]:
             "score": g["score"], "unpriced": g["unpriced"], "signals": g["signals"],
             "items": [{"text": m.item.text[:300], "url": m.item.url,
                        "source": m.item.source} for m in g["matches"]],
-        } for g in groups[:40]],
+        } for g in groups],
     }
     (DIGESTS / f"{stamp}.json").write_text(json.dumps(payload, indent=2), encoding="utf-8")
     paths["json"] = DIGESTS / f"{stamp}.json"

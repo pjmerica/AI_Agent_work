@@ -21,6 +21,7 @@ from config import MAX_AGE_HOURS_RSS, RSS_FEEDS, TEAM_FEEDS  # noqa: E402
 from players import (UD_ADP, adp_context, load_players,      # noqa: E402
                      resolve_dates)
 from report import write_all                                 # noqa: E402
+from threads import build_threads, load_history, summarize   # noqa: E402
 from sources import collect, nitter_status                   # noqa: E402
 
 HANDLES_JSON = Path(__file__).parent.parent / "data" / "handles.json"
@@ -84,6 +85,19 @@ def main() -> int:
         if dates:
             latest, prior = resolve_dates(dates)
 
+    # Recurring stories, computed from the digests already on disk. Today's
+    # payload is written afterwards by write_all(), so this reads prior days
+    # plus whatever earlier run happened today -- never a half-written file.
+    history = load_history()
+    thread_objs = build_threads(history) if len(history) >= 2 else []
+    threads = summarize(thread_objs, limit=12)
+    if threads:
+        print(f"→ {len(thread_objs)} recurring stories across {len(history)} days "
+              f"(showing {len(threads)})")
+    else:
+        print(f"→ no recurring stories yet ({len(history)} day(s) of history; "
+              "needs 2+)")
+
     stats = {
         "n_items": len(items),
         "n_players": len(groups),
@@ -92,6 +106,7 @@ def main() -> int:
         "adp_latest": latest,
         "adp_prior": prior,
         "nitter": nitter_status(),
+        "history_days": len(history),
     }
 
     if dry:
@@ -105,7 +120,7 @@ def main() -> int:
             print(f"       {g['matches'][0].item.url}")
         return 0
 
-    paths = write_all(groups, adp_context(players), stats)
+    paths = write_all(groups, adp_context(players), stats, threads)
     print(f"\n✓ {paths['html']}")
     print(f"✓ {paths['md']}")
     print(f"✓ {paths['latest']}  (GitHub Pages entry point)")
