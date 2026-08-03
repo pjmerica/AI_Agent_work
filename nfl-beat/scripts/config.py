@@ -102,6 +102,8 @@ WATCHLIST = [
     "KC Concepcion",
     "Charlie Kolar",
     "Calvin Ridley",
+    "Elijah Sarratt",
+    "Ja'Kobi Lane",
 ]
 
 # Extra names a watchlist player is written under. Beat writers are inconsistent
@@ -116,6 +118,11 @@ WATCHLIST_ALIASES = {
     # carries no collision risk -- the team guard still applies.
     "Charlie Kolar": ["Kolar"],
     "Calvin Ridley": ["Ridley"],
+    # "Sarrat" covers the common one-t misspelling.
+    "Elijah Sarratt": ["Sarratt", "Sarrat"],
+    # No bare "Lane" alias: it collides with Jaylin Lane (WAS), and both are
+    # WRs, so a surname-only hit could not be attributed reliably.
+    "Ja'Kobi Lane": ["Jakobi Lane", "JaKobi Lane"],
 }
 
 # Chatter that mentions a player without saying anything actionable.

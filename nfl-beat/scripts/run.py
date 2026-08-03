@@ -26,7 +26,8 @@ from report import write_all                                 # noqa: E402
 from archive import load_all as load_archive                 # noqa: E402
 from archive import record_run                               # noqa: E402
 from threads import build_threads, load_history, summarize   # noqa: E402
-from sources import collect, collect_highlights, nitter_status  # noqa: E402
+from sources import (collect, collect_all_video,             # noqa: E402
+                     collect_highlights, nitter_status)
 
 HANDLES_JSON = Path(__file__).parent.parent / "data" / "handles.json"
 WRITERS_JSON = Path(__file__).parent.parent / "data" / "writers.json"
@@ -139,9 +140,12 @@ def main() -> int:
     archive_rows = load_archive()
 
     # Attach clips to players by name so the highlights section can label them.
-    # Watchlist gets everything -- news items and clips together, ungated.
-    watch = watchlist_hits(items + highlights, players, WATCHLIST,
-                           WATCHLIST_ALIASES)
+    # Watchlist gets everything -- news, plus ALL video rather than only clips
+    # that clear the play gate. watchlist_hits() dedupes by URL, so the overlap
+    # with `highlights` costs nothing.
+    all_video = collect_all_video()
+    watch = watchlist_hits(items + highlights + all_video, players,
+                           WATCHLIST, WATCHLIST_ALIASES)
     if watch:
         tot = sum(w["n"] for w in watch)
         print(f"→ watchlist: {tot} mentions across {len(watch)} players")

@@ -322,10 +322,17 @@ def watchlist_hits(items: list, players: dict[str, Player],
             # must be corroborated by the player's team appearing in the text,
             # since "Hunter" and "Lemon" are ordinary words.
             if not hit:
+                first = norm(p.name).split()[0] if norm(p.name) else ""
                 for alias in entry["aliases"]:
                     if f" {alias} " not in padded:
                         continue
                     if " " in alias:
+                        hit = True
+                        break
+                    # A single-word alias directly after the player's first name
+                    # is effectively a full name ("Elijah Sarrat"), so it needs
+                    # no team corroboration.
+                    if first and f" {first} {alias} " in padded:
                         hit = True
                         break
                     team = (p.team or "").lower()

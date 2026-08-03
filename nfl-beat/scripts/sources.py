@@ -356,6 +356,41 @@ def collect_highlights(bsky_handles: list[str] | None = None,
     return clips
 
 
+def collect_all_video(max_age_hours: int = 48) -> list[Item]:
+    """Every video item from the highlight accounts, unfiltered.
+
+    Companion to collect_highlights(): that one enforces a strict "is this an
+    actual football play?" gate so the main Highlights section stays clean.
+    This one returns anything with a clip attached -- interviews, celebrations,
+    sideline footage -- because the watchlist section wants all video of the
+    handful of players it tracks, not just plays.
+
+    The play gate would drop both of today's watchlist clips: a Ridley
+    interview and a Travis Hunter highlight whose caption ("What can't Travis
+    Hunter do on the field??") contains no play vocabulary.
+    """
+    out: list[Item] = []
+    if not (NITTER_INSTANCE and HIGHLIGHT_HANDLES):
+        return out
+
+    with concurrent.futures.ThreadPoolExecutor(max_workers=4) as ex:
+        for items in ex.map(lambda e: nitter_feed(e[0]), HIGHLIGHT_HANDLES):
+            out.extend(items)
+
+    clips: list[Item] = []
+    seen: set[str] = set()
+    for it in out:
+        if it.age_hours > max_age_hours or not it.has_video:
+            continue
+        key = it.url or it.text[:120]
+        if key in seen:
+            continue
+        seen.add(key)
+        it.is_camp = bool(_CAMP_WORDS.search(it.text))
+        clips.append(it)
+    return clips
+
+
 def nitter_status() -> str:
     if not NITTER_INSTANCE:
         return "disabled"
