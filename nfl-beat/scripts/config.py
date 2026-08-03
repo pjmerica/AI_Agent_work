@@ -104,6 +104,7 @@ WATCHLIST = [
     "Calvin Ridley",
     "Elijah Sarratt",
     "Ja'Kobi Lane",
+    "Keenan Allen",
 ]
 
 # Extra names a watchlist player is written under. Beat writers are inconsistent
@@ -123,6 +124,9 @@ WATCHLIST_ALIASES = {
     # No bare "Lane" alias: it collides with Jaylin Lane (WAS), and both are
     # WRs, so a surname-only hit could not be attributed reliably.
     "Ja'Kobi Lane": ["Jakobi Lane", "JaKobi Lane"],
+    # No bare "Allen" alias -- 15 players share it, including Josh Allen, and
+    # the ADP board still lists Keenan as FA so team context cannot disambiguate.
+    "Keenan Allen": [],
 }
 
 # Chatter that mentions a player without saying anything actionable.
