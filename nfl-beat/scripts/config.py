@@ -100,6 +100,8 @@ WATCHLIST = [
     "Makai Lemon",
     "Omar Cooper Jr.",
     "KC Concepcion",
+    "Charlie Kolar",
+    "Calvin Ridley",
 ]
 
 # Extra names a watchlist player is written under. Beat writers are inconsistent
@@ -110,6 +112,10 @@ WATCHLIST_ALIASES = {
     "Omar Cooper Jr.": ["Omar Cooper"],
     "Travis Hunter": ["Hunter"],          # guarded by team context below
     "Makai Lemon": ["Lemon"],
+    # Both surnames are unique across the 1,551-player pool, so the bare form
+    # carries no collision risk -- the team guard still applies.
+    "Charlie Kolar": ["Kolar"],
+    "Calvin Ridley": ["Ridley"],
 }
 
 # Chatter that mentions a player without saying anything actionable.
