@@ -52,6 +52,7 @@ class Item:
     author: str = ""
     published: datetime | None = None
     has_video: bool = False
+    is_camp: bool = False
 
     @property
     def age_hours(self) -> float:
@@ -215,19 +216,64 @@ def rss_feed(url: str, label: str) -> list[Item]:
 _RT_RE = re.compile(r"^RT by @[\w]+:\s*", re.I)
 
 # Accounts that post player video. Verified carrying video enclosures 2026-08-02.
+# `plays_only` marks feeds that are overwhelmingly on-field footage -- their
+# captions ("Ja'Marr Chase makes it look easy 🔥") describe the moment, not the
+# mechanics, so requiring play vocabulary in the text would reject real clips.
+# For those accounts the reject list does the filtering. Mixed feeds like @NFL
+# and @BleacherReport carry plenty of non-football content, so there a clip must
+# also name a play or a camp context.
 HIGHLIGHT_HANDLES = [
-    "NFLRT", "TheCheckdown", "NFL", "BleacherReport", "NFLFilms",
-    "MoveTheSticks", "NFLBrasil",
+    ("NFLRT", True), ("TheCheckdown", True), ("NFLFilms", True),
+    ("NFLBrasil", True),
+    # Mixed feeds. @MoveTheSticks is mostly analyst talking-head video, so it
+    # must clear the play/camp gate like the other mixed accounts.
+    ("NFL", False), ("BleacherReport", False), ("MoveTheSticks", False),
+    ("NFLNetwork", False), ("NFL_DovKleiman", False), ("gmfb", False),
+    ("NFLonCBS", False), ("ESPNNFL", False),
 ]
 
 # Bluesky equivalents, resolved at runtime from data/handles.json where present.
 HIGHLIGHT_BSKY = ["nfl.com", "bleacherreport.bsky.social"]
 
 _VIDEO_RE = re.compile(r"\.mp4|video/mp4|/pic/[^\"' ]*video", re.I)
-_CLIP_WORDS = re.compile(
-    r"\b(highlight|highlights|watch|clip|film|footage|angle|replay|"
-    r"catch|touchdown|td|juke|stiff arm|hurdle|one-handed|route|"
-    r"rep[s]? from|this throw|this catch|this run|dime|deep ball)\b", re.I)
+
+# A highlight is a football PLAY -- a catch, a run, a throw, a rep. Requiring
+# video alone is far too loose: it admitted countdown posts ("39 more days until
+# kickoff"), a boxing result, coach interviews, and a player's kid at practice.
+_PLAY_WORDS = re.compile(
+    r"\b(catch(?:es)?|caught|grab|snag|reception|touchdown|td|score[sd]?|"
+    r"run|runs|rushed|carry|carries|juke[sd]?|stiff[- ]arm|hurdle[sd]?|"
+    r"truck(?:ed|s)?|spin move|broke (?:a )?tackle|yards? after|yac|"
+    r"throw[sn]?|threw|pass|completion|dime|deep ball|bomb|dart|"
+    r"one[- ]handed|contested|toe[- ]tap|sideline grab|route|release|"
+    r"beat(?:s)? (?:his|the) (?:man|defender|coverage)|"
+    r"interception|pick|int|sack|forced fumble|"
+    r"rep[s]? (?:with|from|against)|1[- ]on[- ]1|7[- ]on[- ]7|11[- ]on[- ]11)\b",
+    re.I)
+
+# Camp context -- a play at practice is what we want, not a game replay from
+# last season or a highlight package.
+_CAMP_WORDS = re.compile(
+    r"\b(training camp|camp|practice|padded|joint practice|1[- ]on[- ]1|"
+    r"7[- ]on[- ]7|11[- ]on[- ]11|team drills|walkthrough|OTA|minicamp|"
+    r"day \d+|installs?)\b", re.I)
+
+# Explicit rejects: these ride along on the same accounts and are never plays.
+_NOT_A_PLAY = re.compile(
+    r"\b(sundays? away|days? until|days? to go|countdown|kickoff|"
+    r"schedule release|tickets|jersey|merch|podcast|"
+    r"birthday|anniversary|daughter|son|child|kids|family|"
+    r"boxing|wbc|ufc|nba|mlb|title fight|"
+    r"press conference|presser|spoke with|interview|sat down|"
+    r"welcome to|signed with|contract|extension|"
+    r"congratulations|rest in peace|announcement|"
+    # Analyst commentary rides the same feeds and is never on-field footage.
+    r"great visit|positive energy|excited for|nice to be back|"
+    r"talks? about|breaks? down|reacts? to|responds? to|"
+    r"weighs? in|explains?|on why|previews?|predictions?|"
+    # Joined-me / coverage-notes posts are segments, not footage of a play.
+    r"joined (?:me|us|@)|coverage with|news and notes|"
+    r"substation|stadium|facility|field turf|scenery)\b", re.I)
 
 
 def _has_video(raw_xml: str, link: str) -> bool:
@@ -267,30 +313,46 @@ def collect_highlights(bsky_handles: list[str] | None = None,
     entry references video, or the text uses clip language. Without that gate
     these accounts flood the digest with ordinary news posts.
     """
-    out: list[Item] = []
+    out: list[tuple[Item, bool]] = []
 
     if NITTER_INSTANCE and HIGHLIGHT_HANDLES:
+        def fetch(entry):
+            handle, plays_only = entry
+            return [(it, plays_only) for it in nitter_feed(handle)]
         with concurrent.futures.ThreadPoolExecutor(max_workers=4) as ex:
-            for items in ex.map(nitter_feed, HIGHLIGHT_HANDLES):
-                out.extend(items)
+            for pairs in ex.map(fetch, HIGHLIGHT_HANDLES):
+                out.extend(pairs)
 
     for h in (bsky_handles or []):
-        out.extend(bsky_feed(h))
+        out.extend((it, False) for it in bsky_feed(h))
         time.sleep(0.3)
 
     clips: list[Item] = []
     seen: set[str] = set()
-    for it in out:
+    for it, plays_only in out:
         if it.age_hours > max_age_hours:
             continue
-        if not (it.has_video or _CLIP_WORDS.search(it.text)):
+        if not it.has_video:
+            continue                       # no clip, not a highlight
+        text = it.text
+        if _NOT_A_PLAY.search(text):
+            continue                       # countdowns, pressers, other sports
+        # Play-feed captions describe the moment, not the mechanics, so the
+        # reject list above is the whole filter there. Mixed feeds must earn it.
+        if not plays_only and not (_PLAY_WORDS.search(text)
+                                   or _CAMP_WORDS.search(text)):
             continue
         key = it.url or it.text[:120]
         if key in seen:
             continue
         seen.add(key)
-        it.source = f"HL {it.source}"     # tag so the digest can group them
+        it.is_camp = bool(_CAMP_WORDS.search(text))
+        it.source = f"HL {it.source}"      # tag so the digest can group them
         clips.append(it)
+
+    # Camp footage first -- a practice rep is current and unpriced in a way a
+    # replay from last season is not.
+    clips.sort(key=lambda i: (not i.is_camp, i.age_hours))
     return clips
 
 

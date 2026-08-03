@@ -65,7 +65,7 @@ padding:13px 15px;margin-bottom:9px}
 .tag{font-size:11px;font-weight:650;padding:2px 7px;border-radius:20px;
 border:1px solid currentColor;white-space:nowrap}
 .t-flat{color:var(--good)}.t-moved{color:var(--muted)}.t-thread{color:var(--cool)}
-.t-vid{color:var(--warm)}
+.t-vid{color:var(--warm)}.t-camp{color:var(--good)}
 .t-hot{color:var(--hot)}.t-rise{color:var(--good)}.t-fall{color:var(--hot)}
 .sig{color:var(--muted);font-size:12px;margin:5px 0 7px}
 .sig code{background:rgba(125,125,125,.14);padding:1px 5px;border-radius:4px;font-size:11.5px}
@@ -343,7 +343,9 @@ def _highlights_html(highlights, hl_by_player, limit: int = 14) -> str:
                    f'<span class="meta">{_esc(p.pos)} {_esc(p.team)} · {adp}</span>')
         else:
             who = '<span class="meta">no player matched</span>'
-        vid = '<span class="tag t-vid">CLIP</span>' if it.has_video else ""
+        vid = ('<span class="tag t-camp">CAMP</span>'
+               if getattr(it, "is_camp", False)
+               else '<span class="tag t-vid">CLIP</span>' if it.has_video else "")
         txt = _esc(it.text[:170])
         url = _esc(it.url)
         link = (f'<a href="{url}" target="_blank" rel="noopener">{txt}</a>'

@@ -110,10 +110,27 @@ count, which is what it always meant to measure.
 A separate collector pulls **video clips** of players from X and Bluesky
 (@NFLRT, @TheCheckdown, @NFL, @BleacherReport, @NFLFilms, @MoveTheSticks).
 
-An item only qualifies as a highlight if the feed entry actually references
-video, or the text uses clip language — without that gate these accounts flood
-the digest with ordinary news posts. Every clip in a recent run had detected
-video.
+A highlight must be **an actual football play** — a catch, a run, a throw, a
+rep — not merely a post containing video. Three filters, in order:
+
+1. **Video required.** The feed entry must reference a clip.
+2. **Reject list.** Countdown posts ("39 more days until kickoff"), other
+   sports (a WBC boxing result), press conferences, analyst talking-head
+   segments, and family content (a player's kid at practice) are all dropped.
+   Every one of those was passing before this gate existed.
+3. **Per-account strictness.** Feeds that are overwhelmingly on-field footage
+   (@NFLRT, @TheCheckdown, @NFLFilms, @NFLBrasil) skip the play-vocabulary
+   check; mixed feeds (@NFL, @NFLNetwork, @BleacherReport, @MoveTheSticks,
+   @NFL_DovKleiman, @gmfb, @NFLonCBS, @ESPNNFL) must also name a play or a
+   camp context.
+
+Step 3 exists because **highlight captions rarely describe the play**. "Ja'Marr
+Chase makes it look easy 🔥" is a genuine clip whose text contains no play
+vocabulary at all — requiring keywords everywhere cut a real run from 23 clips
+to 1. The account's editorial purpose is the better signal.
+
+Clips mentioning training camp, practice or 1-on-1s are tagged **CAMP** and
+sort first: a practice rep is current and unpriced in a way a replay is not.
 
 Clips are **deliberately excluded from news scoring**. A viral catch is not a
 depth-chart signal, and letting clip volume feed a player's score would reward
