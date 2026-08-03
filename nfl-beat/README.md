@@ -88,6 +88,44 @@ a strict CSP, so nothing external is loaded.
    the first team on Monday, Wednesday and Friday is a depth-chart change
    happening in slow motion.
 
+## Watchlist tab
+
+A **Watchlist** tab beside the main Digest tracks a handful of specific players
+and collects *everything* about them — news, tweets, articles, clips.
+
+Configured in `config.py`:
+
+```python
+WATCHLIST = ["Travis Hunter", "Makai Lemon", "Omar Cooper Jr.", "KC Concepcion"]
+```
+
+This section is **deliberately ungated**: no signal vocabulary required, no
+sleeper weighting, no noise penalty. The rest of the digest exists to be
+sceptical about what deserves attention; this one exists to collect every
+mention of players you have already decided you care about. Players with no
+coverage still get a row reading "nothing today" — an absence is informative
+when you are tracking someone closely.
+
+### Name aliases
+
+`WATCHLIST_ALIASES` maps extra forms a player gets written under, because
+missing a mention defeats the purpose here. Beat writers are inconsistent:
+
+```python
+"KC Concepcion": ["Kevin Concepcion", "K.C. Concepcion", "Concepcion"]
+```
+
+Two matching bugs surfaced while testing this and are now fixed:
+
+- **Initials were being split.** `norm()` turned `.` into a space, so
+  "K.C. Concepcion" became `k c concepcion` and never matched a stored
+  "KC Concepcion". Initials now collapse (`kc`, `aj`, `jk`), which also merged
+  ~12 duplicate player entries where sources disagreed on "A.J." vs "AJ".
+- **Bare surnames were rejected outright.** Now allowed as aliases, but only
+  with team corroboration — the player's team abbreviation, city or nickname in
+  the text, or the item coming from that team's blog. So "Hunter made a nice
+  play" misses, while the same sentence on SBN JAX hits.
+
 ## Duplicate collapsing
 
 Four reports of one signing is one story, not four. Items about the same player

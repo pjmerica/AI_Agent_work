@@ -88,6 +88,30 @@ SIGNAL_TERMS = {
     "wr1": 2.0, "wr2": 1.8, "wr3": 1.8, "te1": 2.0,
 }
 
+# Personal watchlist. These players get their own section with EVERYTHING found
+# -- news, tweets, articles, highlights -- with no signal-vocabulary gate and no
+# sleeper weighting applied. The rest of the digest is built to be sceptical;
+# this section is deliberately not.
+#
+# Names are matched with the same fuzzy normaliser as everywhere else, so
+# suffixes and punctuation are handled ("Omar Cooper" matches "Omar Cooper Jr.").
+WATCHLIST = [
+    "Travis Hunter",
+    "Makai Lemon",
+    "Omar Cooper Jr.",
+    "KC Concepcion",
+]
+
+# Extra names a watchlist player is written under. Beat writers are inconsistent
+# about given names and initials, and missing a mention here defeats the point
+# of a watchlist -- so these are matched in addition to the roster name.
+WATCHLIST_ALIASES = {
+    "KC Concepcion": ["Kevin Concepcion", "K.C. Concepcion", "Concepcion"],
+    "Omar Cooper Jr.": ["Omar Cooper"],
+    "Travis Hunter": ["Hunter"],          # guarded by team context below
+    "Makai Lemon": ["Lemon"],
+}
+
 # Chatter that mentions a player without saying anything actionable.
 NOISE_TERMS = [
     "jersey", "merch", "podcast", "tickets", "madden", "power rankings",

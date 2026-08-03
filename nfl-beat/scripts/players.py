@@ -66,7 +66,12 @@ def norm(name: str) -> str:
     """
     s = unicodedata.normalize("NFKD", name)
     s = "".join(c for c in s if not unicodedata.combining(c))
-    s = s.lower().replace("'", "").replace(".", " ").replace("-", "")
+    s = s.lower().replace("'", "").replace("-", "")
+    # Initials must collapse, not split: "K.C." -> "kc" so it matches a stored
+    # "KC Concepcion". Replacing '.' with a space instead produced "k c", which
+    # never matched. Handles J.K., A.J., T.J. the same way.
+    s = re.sub(r"\b([a-z])\.\s*(?=[a-z]\.)", r"\1", s)
+    s = s.replace(".", " ")
     s = re.sub(r"[^a-z0-9 ]", " ", s)
     parts = [p for p in s.split() if p and p not in SUFFIXES]
     return " ".join(parts)

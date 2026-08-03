@@ -17,8 +17,9 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent))
 
 from analyze import (find_matches, find_players_only,        # noqa: E402
-                     group_by_player)
-from config import MAX_AGE_HOURS_RSS, RSS_FEEDS, TEAM_FEEDS  # noqa: E402
+                     group_by_player, watchlist_hits)
+from config import (MAX_AGE_HOURS_RSS, RSS_FEEDS,            # noqa: E402
+                    TEAM_FEEDS, WATCHLIST, WATCHLIST_ALIASES)
 from players import (UD_ADP, adp_context, load_players,      # noqa: E402
                      resolve_dates)
 from report import write_all                                 # noqa: E402
@@ -138,6 +139,13 @@ def main() -> int:
     archive_rows = load_archive()
 
     # Attach clips to players by name so the highlights section can label them.
+    # Watchlist gets everything -- news items and clips together, ungated.
+    watch = watchlist_hits(items + highlights, players, WATCHLIST,
+                           WATCHLIST_ALIASES)
+    if watch:
+        tot = sum(w["n"] for w in watch)
+        print(f"→ watchlist: {tot} mentions across {len(watch)} players")
+
     hl_matches = find_players_only(highlights, players) if highlights else []
     hl_by_player: dict[str, list] = {}
     for m in hl_matches:
@@ -145,7 +153,8 @@ def main() -> int:
 
     paths = write_all(groups, adp_context(players), stats, threads,
                       all_players=players, archive_rows=archive_rows,
-                      highlights=highlights, hl_by_player=hl_by_player)
+                      highlights=highlights, hl_by_player=hl_by_player,
+                      watch=watch)
     print(f"\n✓ {paths['html']}")
     print(f"✓ {paths['md']}")
     print(f"✓ {paths['latest']}  (GitHub Pages entry point)")

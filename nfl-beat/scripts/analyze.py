@@ -15,6 +15,27 @@ from config import NOISE_TERMS, SIGNAL_TERMS
 from players import Player, norm
 
 # Common words that appear as surnames and would fire constantly on their own.
+# City / nickname forms that corroborate a bare-surname match. Beat writers
+# write "in Cleveland" or "the Browns", not "CLE".
+TEAM_WORDS = {
+    "ARI": ("arizona", "cardinals"), "ATL": ("atlanta", "falcons"),
+    "BAL": ("baltimore", "ravens"), "BUF": ("buffalo", "bills"),
+    "CAR": ("carolina", "panthers"), "CHI": ("chicago", "bears"),
+    "CIN": ("cincinnati", "bengals"), "CLE": ("cleveland", "browns"),
+    "DAL": ("dallas", "cowboys"), "DEN": ("denver", "broncos"),
+    "DET": ("detroit", "lions"), "GB": ("green bay", "packers"),
+    "HOU": ("houston", "texans"), "IND": ("indianapolis", "colts"),
+    "JAX": ("jacksonville", "jaguars", "jags"), "KC": ("kansas city", "chiefs"),
+    "LV": ("las vegas", "raiders"), "LAC": ("chargers",),
+    "LAR": ("rams",), "MIA": ("miami", "dolphins"),
+    "MIN": ("minnesota", "vikings"), "NE": ("new england", "patriots"),
+    "NO": ("new orleans", "saints"), "NYG": ("giants",),
+    "NYJ": ("jets",), "PHI": ("philadelphia", "eagles"),
+    "PIT": ("pittsburgh", "steelers"), "SF": ("san francisco", "49ers", "niners"),
+    "SEA": ("seattle", "seahawks"), "TB": ("tampa", "buccaneers", "bucs"),
+    "TEN": ("tennessee", "titans"), "WAS": ("washington", "commanders"),
+}
+
 AMBIGUOUS_LAST = {
     "smith", "brown", "johnson", "williams", "jones", "davis", "moore", "white",
     "allen", "young", "walker", "wright", "hill", "green", "adams", "baker",
@@ -54,8 +75,11 @@ def _name_variants(p: Player) -> list[tuple[str, float]]:
 
 
 def _norm_text(text: str) -> str:
-    t = text.lower()
-    t = t.replace("'", "").replace(".", " ").replace("-", "")
+    t = text.lower().replace("'", "").replace("-", "")
+    # Collapse initials before stripping periods, mirroring players.norm(), so
+    # "K.C. Concepcion" in an article matches a stored "KC Concepcion".
+    t = re.sub(r"\b([a-z])\.\s*(?=[a-z]\.)", r"\1", t)
+    t = t.replace(".", " ")
     t = re.sub(r"[^a-z0-9 ]", " ", t)
     return re.sub(r"\s+", " ", t)
 
@@ -249,6 +273,96 @@ def collapse_duplicates(ms: list[Match]) -> tuple[list[Match], list[list[Match]]
         else:
             clusters.append([m])
     return [cl[0] for cl in clusters], clusters
+
+
+def watchlist_hits(items: list, players: dict[str, Player],
+                   names: list[str], aliases: dict | None = None) -> list[dict]:
+    """Everything mentioning a watchlist player -- news, tweets, clips alike.
+
+    Deliberately ungated: no signal vocabulary required, no sleeper weighting,
+    no noise penalty. The rest of the digest exists to be sceptical about what
+    deserves attention; this section exists to collect every mention of players
+    the user has already decided they care about.
+    """
+    aliases = aliases or {}
+    wanted: dict[str, tuple[Player, list[str]]] = {}
+    for want in names:
+        key = norm(want)
+        for p in players.values():
+            pk = norm(p.name)
+            if pk == key or key in pk or pk in key:
+                extra = [norm(a) for a in aliases.get(want, [])]
+                wanted[pk] = (p, [a for a in extra if a])
+                break
+
+    if not wanted:
+        return []
+
+    out: dict[str, dict] = {
+        k: {"player": p, "aliases": al, "items": [], "seen": set()}
+        for k, (p, al) in wanted.items()
+    }
+
+    for item in items:
+        blob = _norm_text(item.text)
+        padded = f" {blob} "
+        for key, entry in out.items():
+            p = entry["player"]
+            hit = False
+
+            # Full name and 'F Last' initial forms.
+            for needle, _conf in _name_variants(p):
+                if len(needle) < 4 or " " not in needle:
+                    continue
+                if f" {needle} " in padded:
+                    hit = True
+                    break
+
+            # Configured aliases, including bare surnames. A single-word alias
+            # must be corroborated by the player's team appearing in the text,
+            # since "Hunter" and "Lemon" are ordinary words.
+            if not hit:
+                for alias in entry["aliases"]:
+                    if f" {alias} " not in padded:
+                        continue
+                    if " " in alias:
+                        hit = True
+                        break
+                    team = (p.team or "").lower()
+                    src = getattr(item, "source", "")
+                    on_team_blog = bool(team) and src.endswith(team.upper())
+                    # City and nickname count as team context too: a beat writer
+                    # writes "in Cleveland", not "in CLE".
+                    words = TEAM_WORDS.get(p.team, ())
+                    in_text = bool(team) and (
+                        f" {team} " in padded
+                        or any(f" {w} " in padded for w in words))
+                    if in_text or on_team_blog:
+                        hit = True
+                        break
+
+            if not hit:
+                continue
+            dedupe_key = item.url or item.text[:120]
+            if dedupe_key in entry["seen"]:
+                continue
+            entry["seen"].add(dedupe_key)
+            entry["items"].append(item)
+
+    results = []
+    for entry in out.values():
+        items_sorted = sorted(entry["items"],
+                              key=lambda i: getattr(i, "age_hours", 999))
+        results.append({
+            "player": entry["player"],
+            "items": items_sorted,
+            "n": len(items_sorted),
+            "n_clips": sum(1 for i in items_sorted
+                           if getattr(i, "has_video", False)),
+        })
+    # Most-covered first; a quiet player still gets a row so the absence shows.
+    results.sort(key=lambda d: -d["n"])
+    return results
 
 
 def group_by_player(matches: list[Match]) -> list[dict]:

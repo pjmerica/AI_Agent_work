@@ -34,6 +34,15 @@ margin:34px 0 12px;padding-bottom:7px;border-bottom:1px solid var(--line)}
 h3.bucket{font-size:13px;font-weight:650;color:var(--fg);margin:22px 0 9px;
 letter-spacing:-.01em}
 h3.bucket .meta{font-weight:400}
+.tabs{display:flex;gap:4px;margin:18px 0 4px;border-bottom:1px solid var(--line)}
+.tab{font:inherit;font-size:13.5px;font-weight:600;color:var(--muted);
+background:none;border:none;border-bottom:2px solid transparent;
+padding:8px 14px;cursor:pointer;margin-bottom:-1px}
+.tab:hover{color:var(--fg)}
+.tab.active{color:var(--accent);border-bottom-color:var(--accent)}
+.tab .n{opacity:.6;font-weight:400;margin-left:3px}
+.view[hidden]{display:none}
+.none{color:var(--muted);font-size:13px;font-style:italic;padding:3px 0}
 .toggle{display:flex;flex-wrap:wrap;gap:6px;margin:4px 0 6px}
 .bkt{font:inherit;font-size:12.5px;font-weight:600;color:var(--muted);
 background:var(--card);border:1px solid var(--line);border-radius:20px;
@@ -304,6 +313,53 @@ def _thread_card(t: dict) -> str:
 {item}</div>"""
 
 
+def _watch_html(watch, limit_each: int = 8) -> str:
+    """Watchlist section: every mention of a handful of specific players.
+
+    Ungated on purpose -- this is the one part of the digest that is not trying
+    to be sceptical. Players with nothing today still get a row, because "no
+    coverage" is information when you are tracking someone closely.
+    """
+    if not watch:
+        return ""
+
+    cards = []
+    for w in watch:
+        p = w["player"]
+        adp = "undrafted" if p.adp is None else f"ADP {p.adp:.1f}"
+        proj = f" · proj {p.proj:.0f}" if p.proj else ""
+        clips = (f'<span class="tag t-camp">{w["n_clips"]} clip'
+                 f'{"s" if w["n_clips"] != 1 else ""}</span>'
+                 if w["n_clips"] else "")
+        count = (f'<span class="meta">{w["n"]} mention'
+                 f'{"s" if w["n"] != 1 else ""}</span>')
+
+        if w["items"]:
+            body = "".join(
+                f'<div class="itm">'
+                f'<a href="{_esc(i.url)}" target="_blank" rel="noopener">'
+                f'{_esc(i.text[:200])}</a>'
+                f'<div class="src">{_esc(i.source)} · '
+                f'{i.age_hours:.0f}h ago'
+                f'{" · CLIP" if getattr(i, "has_video", False) else ""}</div>'
+                f"</div>"
+                for i in w["items"][:limit_each]
+            )
+            if w["n"] > limit_each:
+                body += (f'<div class="src" style="margin-top:6px">'
+                         f'+{w["n"] - limit_each} more today</div>')
+        else:
+            body = '<div class="none">nothing today</div>'
+
+        cards.append(
+            f'<div class="card"><div class="top">'
+            f'<span class="nm">{_esc(p.name)}</span>'
+            f'<span class="meta">{_esc(p.pos)} {_esc(p.team)} · {adp}{proj}</span>'
+            f"{clips}{count}</div>{body}</div>"
+        )
+    return "".join(cards)
+
+
 def _highlights_html(highlights, hl_by_player, limit: int = 14) -> str:
     """Video clips, deepest-ADP players first.
 
@@ -377,7 +433,7 @@ def _movers_table(rows, label) -> str:
 
 def build_html(groups, adp_ctx, stats, threads=None,
                all_players=None, archive_rows=None,
-               highlights=None, hl_by_player=None) -> str:
+               highlights=None, hl_by_player=None, watch=None) -> str:
     now = datetime.now(timezone.utc).astimezone()
     flat = [g for g in groups if g["unpriced"]]
     moved = [g for g in groups if not g["unpriced"]][:10]
@@ -407,6 +463,18 @@ def build_html(groups, adp_ctx, stats, threads=None,
     if all_players:
         search_html = _search_box()
 
+    watch_body = _watch_html(watch or [])
+    tabs_html = ""
+    if watch_body:
+        n = sum(w["n"] for w in (watch or []))
+        tabs_html = (
+            '<div class="tabs" role="tablist">'
+            '<button class="tab active" data-view="digest">Digest</button>'
+            f'<button class="tab" data-view="watch">Watchlist '
+            f'<span class="n">{n}</span></button>'
+            "</div>"
+        )
+
     return f"""<title>NFL Beat Digest — {now:%b %d, %Y}</title>
 <style>{CSS}</style>
 <div class="wrap">
@@ -415,6 +483,15 @@ def build_html(groups, adp_ctx, stats, threads=None,
  · {stats['n_items']} items scanned · {stats['n_players']} players matched
  · ADP board {_esc(stats['adp_latest'])} vs {_esc(stats['adp_prior'])}
 {_stale_warning(stats)}</div>
+
+{tabs_html}
+
+<div class="view" data-view="watch" hidden>
+<h2>Watchlist — everything on these players</h2>
+{watch_body}
+</div>
+
+<div class="view" data-view="digest">
 
 {search_html}
 
@@ -434,6 +511,8 @@ def build_html(groups, adp_ctx, stats, threads=None,
 <h2>ADP fallers</h2>
 {_movers_table(adp_ctx['fallers'], 'Faller')}
 
+</div>
+
 <footer>
 <p><strong>Sources scanned:</strong> {_esc(srcs)}</p>
 <p><strong>Method:</strong> deep and late-ADP players are weighted <em>above</em>
@@ -449,6 +528,20 @@ X/Twitter via nitter is {_esc(stats['nitter'])}.</p>
 {_search_index(all_players, archive_rows or []) if all_players else ""}
 <script>
 (function () {{
+  var tabs = document.querySelector('.tabs');
+  if (tabs) {{
+    var views = document.querySelectorAll('.view');
+    tabs.addEventListener('click', function (e) {{
+      var t = e.target.closest('.tab');
+      if (!t) return;
+      var want = t.dataset.view;
+      tabs.querySelectorAll('.tab').forEach(function (b) {{
+        b.classList.toggle('active', b === t);
+      }});
+      views.forEach(function (v) {{ v.hidden = v.dataset.view !== want; }});
+    }});
+  }}
+
   var bar = document.querySelector('.toggle');
   if (bar) {{
     var groups = document.querySelectorAll('.bucket-group');
@@ -553,7 +646,7 @@ X/Twitter via nitter is {_esc(stats['nitter'])}.</p>
 </script>"""
 
 
-def build_markdown(groups, adp_ctx, stats, threads=None) -> str:
+def build_markdown(groups, adp_ctx, stats, threads=None, watch=None) -> str:
     now = datetime.now(timezone.utc).astimezone()
     L = [f"# NFL Beat Digest — {now:%b %d, %Y}", "",
          f"{stats['n_items']} items scanned · {stats['n_players']} players matched  ",
@@ -561,6 +654,21 @@ def build_markdown(groups, adp_ctx, stats, threads=None) -> str:
     lag = _adp_lag_days(stats)
     if lag is not None and lag > 2:
         L += [f"> ⚠ ADP board is {lag} days old — upstream pull may have stalled.", ""]
+    if watch:
+        L += ["## Watchlist", ""]
+        for w in watch:
+            p = w["player"]
+            adp = "undrafted" if p.adp is None else f"ADP {p.adp:.1f}"
+            clips = f", {w['n_clips']} clip(s)" if w["n_clips"] else ""
+            L.append(f"### {p.name} — {p.pos} {p.team} · {adp} "
+                     f"({w['n']} mention{'s' if w['n'] != 1 else ''}{clips})")
+            if not w["items"]:
+                L.append("_nothing today_")
+            for i in w["items"][:8]:
+                t = i.text[:170].replace("\n", " ")
+                L.append(f"- [{t}]({i.url}) — {i.source}")
+            L.append("")
+
     if threads:
         L += ["## Developing — same story, multiple days", ""]
         for t in threads:
@@ -619,14 +727,14 @@ def build_markdown(groups, adp_ctx, stats, threads=None) -> str:
 
 def write_all(groups, adp_ctx, stats, threads=None,
               all_players=None, archive_rows=None,
-              highlights=None, hl_by_player=None) -> dict[str, Path]:
+              highlights=None, hl_by_player=None, watch=None) -> dict[str, Path]:
     DIGESTS.mkdir(parents=True, exist_ok=True)
     stamp = datetime.now().strftime("%Y-%m-%d")
 
     html_doc = build_html(groups, adp_ctx, stats, threads,
                           all_players, archive_rows,
-                          highlights, hl_by_player)
-    md_doc = build_markdown(groups, adp_ctx, stats, threads)
+                          highlights, hl_by_player, watch)
+    md_doc = build_markdown(groups, adp_ctx, stats, threads, watch)
 
     paths = {
         "html": DIGESTS / f"{stamp}.html",
