@@ -16,7 +16,8 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent))
 
-from analyze import find_matches, group_by_player            # noqa: E402
+from analyze import (find_matches, find_players_only,        # noqa: E402
+                     group_by_player)
 from config import MAX_AGE_HOURS_RSS, RSS_FEEDS, TEAM_FEEDS  # noqa: E402
 from players import (UD_ADP, adp_context, load_players,      # noqa: E402
                      resolve_dates)
@@ -24,7 +25,7 @@ from report import write_all                                 # noqa: E402
 from archive import load_all as load_archive                 # noqa: E402
 from archive import record_run                               # noqa: E402
 from threads import build_threads, load_history, summarize   # noqa: E402
-from sources import collect, nitter_status                   # noqa: E402
+from sources import collect, collect_highlights, nitter_status  # noqa: E402
 
 HANDLES_JSON = Path(__file__).parent.parent / "data" / "handles.json"
 WRITERS_JSON = Path(__file__).parent.parent / "data" / "writers.json"
@@ -64,6 +65,12 @@ def main() -> int:
 
     items = collect(handles, feeds, max_age_hours=MAX_AGE_HOURS_RSS,
                     x_handles=writers)
+
+    # Highlight clips are collected separately and kept out of the news scoring:
+    # a viral catch is not a depth-chart signal, and mixing them would let clip
+    # volume inflate a player's score.
+    highlights = collect_highlights()
+    print(f"→ {len(highlights)} highlight clips")
     if not items:
         print("! no items collected -- every source failed. Aborting without writing.")
         return 1
@@ -130,8 +137,15 @@ def main() -> int:
     # Read back after appending so the embedded search index includes this run.
     archive_rows = load_archive()
 
+    # Attach clips to players by name so the highlights section can label them.
+    hl_matches = find_players_only(highlights, players) if highlights else []
+    hl_by_player: dict[str, list] = {}
+    for m in hl_matches:
+        hl_by_player.setdefault(m.player.name, []).append(m)
+
     paths = write_all(groups, adp_context(players), stats, threads,
-                      all_players=players, archive_rows=archive_rows)
+                      all_players=players, archive_rows=archive_rows,
+                      highlights=highlights, hl_by_player=hl_by_player)
     print(f"\n✓ {paths['html']}")
     print(f"✓ {paths['md']}")
     print(f"✓ {paths['latest']}  (GitHub Pages entry point)")

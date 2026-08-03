@@ -65,6 +65,7 @@ padding:13px 15px;margin-bottom:9px}
 .tag{font-size:11px;font-weight:650;padding:2px 7px;border-radius:20px;
 border:1px solid currentColor;white-space:nowrap}
 .t-flat{color:var(--good)}.t-moved{color:var(--muted)}.t-thread{color:var(--cool)}
+.t-vid{color:var(--warm)}
 .t-hot{color:var(--hot)}.t-rise{color:var(--good)}.t-fall{color:var(--hot)}
 .sig{color:var(--muted);font-size:12px;margin:5px 0 7px}
 .sig code{background:rgba(125,125,125,.14);padding:1px 5px;border-radius:4px;font-size:11.5px}
@@ -72,6 +73,7 @@ border:1px solid currentColor;white-space:nowrap}
 .itm a{color:var(--accent);text-decoration:none}
 .itm a:hover{text-decoration:underline}
 .src{color:var(--muted);font-size:11.5px;margin-top:2px}
+.dup{color:var(--cool);cursor:help}
 table{width:100%;border-collapse:collapse;font-size:13.5px}
 .scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
 th,td{text-align:left;padding:7px 9px;border-bottom:1px solid var(--line);white-space:nowrap}
@@ -124,14 +126,23 @@ def _move_html(p) -> str:
     return f'<span class="{cls}">{mv:+.1f}</span>'
 
 
-def _item_html(m) -> str:
+def _item_html(m, dup: int = 1, dup_srcs: list | None = None) -> str:
     it = m.item
     text = _esc(it.text[:260] + ("…" if len(it.text) > 260 else ""))
     url = _esc(it.url)
     src = _esc(it.source)
     age = f"{it.age_hours:.0f}h ago" if it.age_hours < 900 else "undated"
     link = f'<a href="{url}" target="_blank" rel="noopener">{text}</a>' if url else text
-    return f'<div class="itm">{link}<div class="src">{src} · {age}</div></div>'
+
+    # Corroboration is shown, not hidden: collapsing four reports of one signing
+    # should still tell you four outlets carried it.
+    also = ""
+    if dup > 1:
+        others = [s for s in (dup_srcs or []) if s != it.source][:3]
+        tip = f' title="{_esc(", ".join(others))}"' if others else ""
+        also = (f'<span class="dup"{tip}> · also in {dup - 1} '
+                f'other outlet{"s" if dup > 2 else ""}</span>')
+    return f'<div class="itm">{link}<div class="src">{src} · {age}{also}</div></div>'
 
 
 def _player_card(d) -> str:
@@ -140,7 +151,10 @@ def _player_card(d) -> str:
            else '<span class="tag t-moved">MOVED</span>')
     pos_team = " ".join(x for x in (p.pos, p.team) if x)
     sigs = " ".join(f"<code>{_esc(s)}</code>" for s in d["signals"][:7])
-    items = "".join(_item_html(m) for m in d["matches"])
+    dupc = d.get("dup_counts", {})
+    dups = d.get("dup_sources", {})
+    items = "".join(_item_html(m, dupc.get(id(m), 1), dups.get(id(m)))
+                    for m in d["matches"])
     proj = f" · proj {p.proj:.0f}" if p.proj else ""
     return f"""<div class="card">
 <div class="top"><span class="nm">{_esc(p.name)}</span>
@@ -290,6 +304,61 @@ def _thread_card(t: dict) -> str:
 {item}</div>"""
 
 
+def _highlights_html(highlights, hl_by_player, limit: int = 14) -> str:
+    """Video clips, deepest-ADP players first.
+
+    Kept separate from the news scoring on purpose: a viral catch is not a
+    depth-chart signal, and letting clip volume feed a player's score would
+    reward the players who are already famous.
+    """
+    if not highlights:
+        return ""
+
+    # One row per clip, labelled with whichever matched player is deepest.
+    rows = []
+    claimed: dict[str, list] = {}
+    for name, ms in hl_by_player.items():
+        for m in ms:
+            claimed.setdefault(m.item.url or m.item.text[:80], []).append(m)
+
+    for it in highlights:
+        key = it.url or it.text[:80]
+        ms = claimed.get(key, [])
+        best = None
+        if ms:
+            best = max(ms, key=lambda m: m.player.sleeper_weight)
+        rows.append((best, it))
+
+    # Clips naming a player first, deepest player first within that.
+    rows.sort(key=lambda r: (0 if r[0] else 1,
+                             -(r[0].player.sleeper_weight if r[0] else 0)))
+
+    cards = []
+    for best, it in rows[:limit]:
+        who = ""
+        if best:
+            p = best.player
+            adp = "undrafted" if p.adp is None else f"ADP {p.adp:.0f}"
+            who = (f'<span class="nm">{_esc(p.name)}</span> '
+                   f'<span class="meta">{_esc(p.pos)} {_esc(p.team)} · {adp}</span>')
+        else:
+            who = '<span class="meta">no player matched</span>'
+        vid = '<span class="tag t-vid">CLIP</span>' if it.has_video else ""
+        txt = _esc(it.text[:170])
+        url = _esc(it.url)
+        link = (f'<a href="{url}" target="_blank" rel="noopener">{txt}</a>'
+                if url else txt)
+        src = _esc(it.source.replace("HL ", ""))
+        age = f"{it.age_hours:.0f}h ago" if it.age_hours < 900 else ""
+        cards.append(f'<div class="card"><div class="top">{who}{vid}</div>'
+                     f'<div class="itm">{link}'
+                     f'<div class="src">{src} · {age}</div></div></div>')
+
+    more = (f'<span class="meta">showing {limit} of {len(rows)}</span>'
+            if len(rows) > limit else "")
+    return (f"<h2>Highlights — video clips {more}</h2>" + "".join(cards))
+
+
 def _movers_table(rows, label) -> str:
     if not rows:
         return '<div class="empty">No qualifying moves.</div>'
@@ -305,7 +374,8 @@ def _movers_table(rows, label) -> str:
 
 
 def build_html(groups, adp_ctx, stats, threads=None,
-               all_players=None, archive_rows=None) -> str:
+               all_players=None, archive_rows=None,
+               highlights=None, hl_by_player=None) -> str:
     now = datetime.now(timezone.utc).astimezone()
     flat = [g for g in groups if g["unpriced"]]
     moved = [g for g in groups if not g["unpriced"]][:10]
@@ -353,6 +423,8 @@ def build_html(groups, adp_ctx, stats, threads=None,
 
 <h2>News with ADP movers</h2>
 {moved_html}
+
+{_highlights_html(highlights, hl_by_player or {})}
 
 <h2>ADP risers (last 14 days)</h2>
 {_movers_table(adp_ctx['risers'], 'Riser')}
@@ -544,12 +616,14 @@ def build_markdown(groups, adp_ctx, stats, threads=None) -> str:
 
 
 def write_all(groups, adp_ctx, stats, threads=None,
-              all_players=None, archive_rows=None) -> dict[str, Path]:
+              all_players=None, archive_rows=None,
+              highlights=None, hl_by_player=None) -> dict[str, Path]:
     DIGESTS.mkdir(parents=True, exist_ok=True)
     stamp = datetime.now().strftime("%Y-%m-%d")
 
     html_doc = build_html(groups, adp_ctx, stats, threads,
-                          all_players, archive_rows)
+                          all_players, archive_rows,
+                          highlights, hl_by_player)
     md_doc = build_markdown(groups, adp_ctx, stats, threads)
 
     paths = {

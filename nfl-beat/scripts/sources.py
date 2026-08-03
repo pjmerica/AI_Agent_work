@@ -51,6 +51,7 @@ class Item:
     source: str          # human-readable origin, shown in the digest
     author: str = ""
     published: datetime | None = None
+    has_video: bool = False
 
     @property
     def age_hours(self) -> float:
@@ -184,7 +185,8 @@ def rss_feed(url: str, label: str) -> list[Item]:
         title_el = find("title", "atom:title")
         title = _clean(title_el.text if title_el is not None else "")
         desc_el = find("description", "summary", "atom:summary", "content")
-        desc = _clean(desc_el.text if desc_el is not None else "")
+        raw_desc = desc_el.text if desc_el is not None else ""
+        desc = _clean(raw_desc)
 
         link = ""
         link_el = find("link", "atom:link")
@@ -200,7 +202,9 @@ def rss_feed(url: str, label: str) -> list[Item]:
 
         text = f"{title}. {desc}" if desc and desc != title else title
         if text:
-            items.append(Item(text=text, url=link, source=label, published=published))
+            it = Item(text=text, url=link, source=label, published=published)
+            it.has_video = _has_video(raw_desc, link)
+            items.append(it)
     return items
 
 
@@ -209,6 +213,26 @@ def rss_feed(url: str, label: str) -> list[Item]:
 # --------------------------------------------------------------------------
 
 _RT_RE = re.compile(r"^RT by @[\w]+:\s*", re.I)
+
+# Accounts that post player video. Verified carrying video enclosures 2026-08-02.
+HIGHLIGHT_HANDLES = [
+    "NFLRT", "TheCheckdown", "NFL", "BleacherReport", "NFLFilms",
+    "MoveTheSticks", "NFLBrasil",
+]
+
+# Bluesky equivalents, resolved at runtime from data/handles.json where present.
+HIGHLIGHT_BSKY = ["nfl.com", "bleacherreport.bsky.social"]
+
+_VIDEO_RE = re.compile(r"\.mp4|video/mp4|/pic/[^\"' ]*video", re.I)
+_CLIP_WORDS = re.compile(
+    r"\b(highlight|highlights|watch|clip|film|footage|angle|replay|"
+    r"catch|touchdown|td|juke|stiff arm|hurdle|one-handed|route|"
+    r"rep[s]? from|this throw|this catch|this run|dime|deep ball)\b", re.I)
+
+
+def _has_video(raw_xml: str, link: str) -> bool:
+    """Whether a feed entry references a video."""
+    return bool(_VIDEO_RE.search(raw_xml or "")) or bool(_VIDEO_RE.search(link or ""))
 
 
 def nitter_feed(handle: str) -> list[Item]:
@@ -233,6 +257,41 @@ def _author_from_url(url: str) -> str:
     """Pull the tweet author out of a nitter permalink (…/AUTHOR/status/ID…)."""
     m = re.search(r"nitter\.[^/]+/([^/]+)/status/", url or "")
     return m.group(1) if m else ""
+
+
+def collect_highlights(bsky_handles: list[str] | None = None,
+                       max_age_hours: int = 48) -> list[Item]:
+    """Video clips of players, from X and Bluesky.
+
+    A highlight must actually be a clip: an item qualifies only if the feed
+    entry references video, or the text uses clip language. Without that gate
+    these accounts flood the digest with ordinary news posts.
+    """
+    out: list[Item] = []
+
+    if NITTER_INSTANCE and HIGHLIGHT_HANDLES:
+        with concurrent.futures.ThreadPoolExecutor(max_workers=4) as ex:
+            for items in ex.map(nitter_feed, HIGHLIGHT_HANDLES):
+                out.extend(items)
+
+    for h in (bsky_handles or []):
+        out.extend(bsky_feed(h))
+        time.sleep(0.3)
+
+    clips: list[Item] = []
+    seen: set[str] = set()
+    for it in out:
+        if it.age_hours > max_age_hours:
+            continue
+        if not (it.has_video or _CLIP_WORDS.search(it.text)):
+            continue
+        key = it.url or it.text[:120]
+        if key in seen:
+            continue
+        seen.add(key)
+        it.source = f"HL {it.source}"     # tag so the digest can group them
+        clips.append(it)
+    return clips
 
 
 def nitter_status() -> str:

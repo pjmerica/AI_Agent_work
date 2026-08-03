@@ -88,6 +88,40 @@ a strict CSP, so nothing external is loaded.
    the first team on Monday, Wednesday and Friday is a depth-chart change
    happening in slow motion.
 
+## Duplicate collapsing
+
+Four reports of one signing is one story, not four. Items about the same player
+are clustered by **content**, not source — the duplicates that matter come from
+*different* outlets (Yahoo, SBN and two beat writers all covering one 49ers
+signing).
+
+Two items are the same story if their headlines match, or if their keyword sets
+overlap ≥45%. Measured on real output, restatements of one event score 0.40–0.78
+while genuinely distinct stories about the same player score 0.15–0.24 — a wide
+enough gap that the threshold is not delicate.
+
+Corroboration is shown, never hidden: a collapsed cluster renders as
+*"also in 2 other outlets"* with the outlet names on hover. Cross-source
+corroboration in scoring now counts distinct **stories** rather than raw item
+count, which is what it always meant to measure.
+
+## Highlights
+
+A separate collector pulls **video clips** of players from X and Bluesky
+(@NFLRT, @TheCheckdown, @NFL, @BleacherReport, @NFLFilms, @MoveTheSticks).
+
+An item only qualifies as a highlight if the feed entry actually references
+video, or the text uses clip language — without that gate these accounts flood
+the digest with ordinary news posts. Every clip in a recent run had detected
+video.
+
+Clips are **deliberately excluded from news scoring**. A viral catch is not a
+depth-chart signal, and letting clip volume feed a player's score would reward
+exactly the famous players this digest tries to rank down. They get their own
+section, ordered deepest-ADP first, and named players are matched without the
+signal-vocabulary gate (a clip captioned "Ja'Marr Chase makes it look easy"
+contains no fantasy keywords, but the clip *is* the payload).
+
 ## Player lookup
 
 **On the page** — a search box above the digest covers **all 1,563 players**,
