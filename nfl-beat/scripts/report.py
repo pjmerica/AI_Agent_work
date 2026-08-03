@@ -75,6 +75,7 @@ padding:13px 15px;margin-bottom:9px}
 border:1px solid currentColor;white-space:nowrap}
 .t-flat{color:var(--good)}.t-moved{color:var(--muted)}.t-thread{color:var(--cool)}
 .t-vid{color:var(--warm)}.t-camp{color:var(--good)}
+.t-hot{color:var(--hot)}.t-warm{color:var(--warm)}.t-muted{color:var(--muted)}
 .t-hot{color:var(--hot)}.t-rise{color:var(--good)}.t-fall{color:var(--hot)}
 .sig{color:var(--muted);font-size:12px;margin:5px 0 7px}
 .sig code{background:rgba(125,125,125,.14);padding:1px 5px;border-radius:4px;font-size:11.5px}
@@ -313,6 +314,68 @@ def _thread_card(t: dict) -> str:
 {item}</div>"""
 
 
+TIER_CLASS = {
+    "out_long": "t-hot", "out": "t-hot", "dnp": "t-warm",
+    "limited": "t-warm", "minor": "t-muted",
+}
+TREND_MARK = {
+    "worsening": ('<span class="tag t-hot">WORSENING</span>', 0),
+    "improving": ('<span class="tag t-flat">IMPROVING</span>', 2),
+    "ongoing": ('<span class="tag t-thread">ONGOING</span>', 1),
+    "new": ("", 3),
+}
+
+
+def _injury_html(cases, limit: int = 30) -> str:
+    """Injury tab: severity first, with recurrence and trajectory surfaced.
+
+    Ordered by urgency rather than recency -- a player limited Monday and DNP
+    since is a more actionable read than the loudest single report today.
+    """
+    if not cases:
+        return ""
+
+    cards = []
+    for c in cases[:limit]:
+        adp = "undrafted" if c["adp"] is None else f"ADP {c['adp']:.1f}"
+        tier_cls = TIER_CLASS.get(c["tier"], "t-muted")
+        trend_tag = TREND_MARK.get(c["trend"], ("", 3))[0]
+
+        recur = ""
+        if c["n_days"] > 1:
+            span = (f" over {c['span_days']}d"
+                    if c["span_days"] > c["n_days"] else "")
+            recur = (f'<span class="meta">{c["n_days"]} days{span}</span>')
+
+        mv = c.get("adp_move")
+        adp_note = ""
+        if mv is not None and abs(mv) >= 2:
+            cls = "up" if mv > 0 else "dn"
+            adp_note = f'<span class="{cls}">ADP {mv:+.1f}</span>'
+        elif c["n_days"] > 1:
+            adp_note = '<span class="tag t-flat">ADP STILL FLAT</span>'
+
+        items = "".join(
+            f'<div class="itm">'
+            f'<a href="{_esc(i["url"])}" target="_blank" rel="noopener">'
+            f'{_esc(i["text"][:200])}</a>'
+            f'<div class="src">{_esc(i["source"])}</div></div>'
+            for i in c["items"]
+        )
+
+        cards.append(
+            f'<div class="card"><div class="top">'
+            f'<span class="nm">{_esc(c["name"])}</span>'
+            f'<span class="meta">{_esc(c["pos"])} {_esc(c["team"])} · {adp}</span>'
+            f'<span class="tag {tier_cls}">{_esc(c["tier_label"])}</span>'
+            f"{trend_tag}{recur}{adp_note}</div>{items}</div>"
+        )
+
+    more = (f'<span class="meta">showing {limit} of {len(cases)}</span>'
+            if len(cases) > limit else "")
+    return (f"<h2>Injuries & missed time {more}</h2>" + "".join(cards))
+
+
 def _watch_html(watch, limit_each: int = 8) -> str:
     """Watchlist section: every mention of a handful of specific players.
 
@@ -433,7 +496,8 @@ def _movers_table(rows, label) -> str:
 
 def build_html(groups, adp_ctx, stats, threads=None,
                all_players=None, archive_rows=None,
-               highlights=None, hl_by_player=None, watch=None) -> str:
+               highlights=None, hl_by_player=None, watch=None,
+               injuries=None) -> str:
     now = datetime.now(timezone.utc).astimezone()
     flat = [g for g in groups if g["unpriced"]]
     moved = [g for g in groups if not g["unpriced"]][:10]
@@ -466,7 +530,15 @@ def build_html(groups, adp_ctx, stats, threads=None,
     watch_body = _watch_html(watch or [])
     hl_body = _highlights_html(highlights, hl_by_player or {}, limit=40)
 
+    inj_body = _injury_html(injuries or [])
+
     tabs = ['<button class="tab active" data-view="digest">Digest</button>']
+    if inj_body:
+        worse = sum(1 for c in (injuries or []) if c["trend"] == "worsening")
+        badge = f' <span class="n">{len(injuries or [])}</span>'
+        if worse:
+            badge += f' <span class="n" style="color:var(--hot)">▲{worse}</span>'
+        tabs.append(f'<button class="tab" data-view="inj">Injuries{badge}</button>')
     if hl_body:
         tabs.append(f'<button class="tab" data-view="clips">Highlights '
                     f'<span class="n">{len(highlights or [])}</span></button>')
@@ -490,6 +562,10 @@ def build_html(groups, adp_ctx, stats, threads=None,
 {_stale_warning(stats)}</div>
 
 {tabs_html}
+
+<div class="view" data-view="inj" hidden>
+{inj_body}
+</div>
 
 <div class="view" data-view="clips" hidden>
 {hl_body}
@@ -734,13 +810,14 @@ def build_markdown(groups, adp_ctx, stats, threads=None, watch=None) -> str:
 
 def write_all(groups, adp_ctx, stats, threads=None,
               all_players=None, archive_rows=None,
-              highlights=None, hl_by_player=None, watch=None) -> dict[str, Path]:
+              highlights=None, hl_by_player=None, watch=None,
+              injuries=None) -> dict[str, Path]:
     DIGESTS.mkdir(parents=True, exist_ok=True)
     stamp = datetime.now().strftime("%Y-%m-%d")
 
     html_doc = build_html(groups, adp_ctx, stats, threads,
                           all_players, archive_rows,
-                          highlights, hl_by_player, watch)
+                          highlights, hl_by_player, watch, injuries)
     md_doc = build_markdown(groups, adp_ctx, stats, threads, watch)
 
     paths = {

@@ -24,6 +24,7 @@ from players import (UD_ADP, adp_context, load_players,      # noqa: E402
                      resolve_dates)
 from report import write_all                                 # noqa: E402
 from archive import load_all as load_archive                 # noqa: E402
+from injuries import build_cases as build_injury_cases       # noqa: E402
 from archive import record_run                               # noqa: E402
 from threads import build_threads, load_history, summarize   # noqa: E402
 from sources import (collect, collect_all_video,             # noqa: E402
@@ -139,6 +140,13 @@ def main() -> int:
     # Read back after appending so the embedded search index includes this run.
     archive_rows = load_archive()
 
+    # Injury cases, enriched with archive history so recurrence and trend
+    # (limited -> DNP -> DNP) can be read off directly.
+    injuries = build_injury_cases(groups, archive_rows)
+    if injuries:
+        worse = sum(1 for c in injuries if c["trend"] == "worsening")
+        print(f"→ {len(injuries)} injury situations ({worse} worsening)")
+
     # Attach clips to players by name so the highlights section can label them.
     # Watchlist gets everything -- news, plus ALL video rather than only clips
     # that clear the play gate. watchlist_hits() dedupes by URL, so the overlap
@@ -158,7 +166,7 @@ def main() -> int:
     paths = write_all(groups, adp_context(players), stats, threads,
                       all_players=players, archive_rows=archive_rows,
                       highlights=highlights, hl_by_player=hl_by_player,
-                      watch=watch)
+                      watch=watch, injuries=injuries)
     print(f"\n✓ {paths['html']}")
     print(f"✓ {paths['md']}")
     print(f"✓ {paths['latest']}  (GitHub Pages entry point)")

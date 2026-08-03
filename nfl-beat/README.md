@@ -90,9 +90,43 @@ a strict CSP, so nothing external is loaded.
 
 ## Tabs
 
-The page has three views: **Digest** (default), **Highlights**, and
-**Watchlist**. Tabs only render when they have content, so a run with no clips
-shows two tabs rather than an empty one.
+Four views: **Digest** (default), **Injuries**, **Highlights**, **Watchlist**.
+Tabs only render when they have content, so a run with no clips shows three
+tabs rather than an empty one.
+
+## Injuries tab
+
+Injuries and missed practice time, ranked by **urgency** rather than recency.
+The tab badge shows the case count plus a red ▲N for how many are worsening.
+
+Five severity tiers, worst first:
+
+| Tier | Matches |
+|---|---|
+| season-threatening | torn/ACL/Achilles, injured reserve, PUP/NFI, out for the season |
+| expected to miss time | surgery, fracture, carted off, "will miss" |
+| missed practice | DNP, held out, left practice, non-participant |
+| limited / questionable | limited participant, pitch count, day-to-day |
+| minor or precautionary | soreness, body part + injury context |
+
+`urgency` = severity, plus 0.6 per extra day observed, +1.5 if worsening,
+−0.8 if improving, scaled by the player's sleeper weight. So a **recurring DNP
+on a deep player outranks a one-off "sore" on a starter** — which is the whole
+point of separating this from the news feed.
+
+Recurrence comes from the archive: each case carries how many days it has been
+seen, over what span, and a trend (`new` / `ongoing` / `worsening` /
+`improving`) derived from whether the severity tier is climbing. A multi-day
+case with flat ADP gets the same **ADP STILL FLAT** tag used elsewhere.
+
+### Proximity gating
+
+Severity is matched **near the player's name** (160-char window). Camp roundups
+list a dozen players and their separate ailments in one article —
+*"Musgrave (knee), Brooks (hamstring), Reilly (Achilles)"* — and without the
+window a single "Achilles" anywhere in the text was marking every player named
+in it as season-threatening. That inflated one Packers camp recap into ten
+false season-enders; the gate cut 44 cases to 25 with a believable tier spread.
 
 ## Watchlist tab
 
