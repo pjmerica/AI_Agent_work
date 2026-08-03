@@ -464,16 +464,21 @@ def build_html(groups, adp_ctx, stats, threads=None,
         search_html = _search_box()
 
     watch_body = _watch_html(watch or [])
-    tabs_html = ""
+    hl_body = _highlights_html(highlights, hl_by_player or {}, limit=40)
+
+    tabs = ['<button class="tab active" data-view="digest">Digest</button>']
+    if hl_body:
+        tabs.append(f'<button class="tab" data-view="clips">Highlights '
+                    f'<span class="n">{len(highlights or [])}</span></button>')
     if watch_body:
         n = sum(w["n"] for w in (watch or []))
-        tabs_html = (
-            '<div class="tabs" role="tablist">'
-            '<button class="tab active" data-view="digest">Digest</button>'
-            f'<button class="tab" data-view="watch">Watchlist '
-            f'<span class="n">{n}</span></button>'
-            "</div>"
-        )
+        tabs.append(f'<button class="tab" data-view="watch">Watchlist '
+                    f'<span class="n">{n}</span></button>')
+
+    tabs_html = ""
+    if len(tabs) > 1:
+        tabs_html = ('<div class="tabs" role="tablist">' + "".join(tabs)
+                     + "</div>")
 
     return f"""<title>NFL Beat Digest — {now:%b %d, %Y}</title>
 <style>{CSS}</style>
@@ -485,6 +490,10 @@ def build_html(groups, adp_ctx, stats, threads=None,
 {_stale_warning(stats)}</div>
 
 {tabs_html}
+
+<div class="view" data-view="clips" hidden>
+{hl_body}
+</div>
 
 <div class="view" data-view="watch" hidden>
 <h2>Watchlist — everything on these players</h2>
@@ -502,8 +511,6 @@ def build_html(groups, adp_ctx, stats, threads=None,
 
 <h2>News with ADP movers</h2>
 {moved_html}
-
-{_highlights_html(highlights, hl_by_player or {})}
 
 <h2>ADP risers (last 14 days)</h2>
 {_movers_table(adp_ctx['risers'], 'Riser')}

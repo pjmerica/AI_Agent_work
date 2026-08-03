@@ -88,6 +88,12 @@ a strict CSP, so nothing external is loaded.
    the first team on Monday, Wednesday and Friday is a depth-chart change
    happening in slow motion.
 
+## Tabs
+
+The page has three views: **Digest** (default), **Highlights**, and
+**Watchlist**. Tabs only render when they have content, so a run with no clips
+shows two tabs rather than an empty one.
+
 ## Watchlist tab
 
 A **Watchlist** tab beside the main Digest tracks a handful of specific players
@@ -144,6 +150,9 @@ corroboration in scoring now counts distinct **stories** rather than raw item
 count, which is what it always meant to measure.
 
 ## Highlights
+
+Its own **Highlights** tab (beside Digest and Watchlist), showing up to 40 clips
+ordered deepest-ADP first.
 
 A separate collector pulls **video clips** of players from X and Bluesky
 (@NFLRT, @TheCheckdown, @NFL, @BleacherReport, @NFLFilms, @MoveTheSticks).
