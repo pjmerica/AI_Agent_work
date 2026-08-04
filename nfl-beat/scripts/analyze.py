@@ -9,6 +9,7 @@ Scoring philosophy, per the brief:
 from __future__ import annotations
 
 import re
+from collections import defaultdict
 from dataclasses import dataclass, field
 
 from config import NOISE_TERMS, SIGNAL_TERMS
@@ -34,6 +35,22 @@ TEAM_WORDS = {
     "PIT": ("pittsburgh", "steelers"), "SF": ("san francisco", "49ers", "niners"),
     "SEA": ("seattle", "seahawks"), "TB": ("tampa", "buccaneers", "bucs"),
     "TEN": ("tennessee", "titans"), "WAS": ("washington", "commanders"),
+}
+
+# Three-letter strings that are ordinary words rather than player initialisms,
+# so they never bypass the team guard.
+_COMMON_TRIGRAMS = {
+    "the", "and", "for", "was", "his", "her", "him", "out", "not", "but",
+    "all", "one", "two", "new", "day", "big", "run", "top", "win", "got",
+    "has", "had", "who", "way", "now", "off", "own", "put", "say", "see",
+    "ran", "hit", "get", "let", "set", "old", "man", "end", "yet", "far",
+}
+
+# Nicknames that are ordinary English words. They never stand alone, even when
+# no roster player carries them as a name token.
+AMBIGUOUS_ALIAS = {
+    "bill", "will", "chase", "hunter", "lane", "moss", "rice", "young",
+    "gus", "buck", "ace", "red", "champ", "duke", "king", "boo",
 }
 
 AMBIGUOUS_LAST = {
@@ -298,10 +315,31 @@ def watchlist_hits(items: list, players: dict[str, Player],
     if not wanted:
         return []
 
-    out: dict[str, dict] = {
-        k: {"player": p, "aliases": al, "items": [], "seen": set()}
-        for k, (p, al) in wanted.items()
-    }
+    # Which single-word aliases belong to exactly one player league-wide. Those
+    # need no team corroboration; anything shared does.
+    token_owners: dict[str, set[str]] = defaultdict(set)
+    for p in players.values():
+        for tok in set(norm(p.name).split()):
+            token_owners[tok].add(norm(p.name))
+
+    out: dict[str, dict] = {}
+    for k, (p, al) in wanted.items():
+        # Stand-alone only if the token belongs to this player and nobody else.
+        # A token absent from every roster (an initialism like "jcm", or a
+        # nickname like "bill") is only safe when it is not an English word --
+        # AMBIGUOUS_ALIAS lists the ones that are.
+        unique = set()
+        for a in al:
+            if " " in a or len(a) < 3 or a in _COMMON_TRIGRAMS:
+                continue
+            owners = token_owners.get(a)
+            if owners is None:
+                if a not in AMBIGUOUS_ALIAS:
+                    unique.add(a)
+            elif owners <= {k}:
+                unique.add(a)
+        out[k] = {"player": p, "aliases": al, "unique_aliases": unique,
+                  "items": [], "seen": set()}
 
     for item in items:
         blob = _norm_text(item.text)
@@ -333,6 +371,13 @@ def watchlist_hits(items: list, players: dict[str, Player],
                     # is effectively a full name ("Elijah Sarrat"), so it needs
                     # no team corroboration.
                     if first and f" {first} {alias} " in padded:
+                        hit = True
+                        break
+                    # A one-word alias can stand alone only if it is unique in
+                    # the league. Length is the wrong test: "croskey" (7, one
+                    # player) is safe while "merritt" (7, two players) is not,
+                    # and using length let "Kirk Merritt" match Croskey-Merritt.
+                    if alias in entry["unique_aliases"]:
                         hit = True
                         break
                     team = (p.team or "").lower()

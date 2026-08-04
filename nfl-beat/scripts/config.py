@@ -105,6 +105,8 @@ WATCHLIST = [
     "Elijah Sarratt",
     "Ja'Kobi Lane",
     "Keenan Allen",
+    "Jacory Croskey-Merritt",
+    "Ted Hurst",
 ]
 
 # Extra names a watchlist player is written under. Beat writers are inconsistent
@@ -127,6 +129,23 @@ WATCHLIST_ALIASES = {
     # No bare "Allen" alias -- 15 players share it, including Josh Allen, and
     # the ADP board still lists Keenan as FA so team context cannot disambiguate.
     "Keenan Allen": [],
+    # Goes by "Bill" and "JCM". "Croskey" is unique in the pool so it stands
+    # alone; "Merritt" collides with Kirk Merritt and "Bill" is an ordinary
+    # English word, so both rely on the team-context guard. "JCM" is distinctive
+    # enough that the guard rarely blocks a genuine hit.
+    # norm() strips hyphens, so "Croskey-Merritt" collapses to one token --
+    # "croskeymerritt" must be listed explicitly or the most common written
+    # form of his name never matches.
+    "Jacory Croskey-Merritt": [
+        "CroskeyMerritt", "Croskey", "JCM", "Jacory",
+        "Bill Croskey-Merritt", "Bill Merritt",
+        # Kept, but they only fire with team context: "Bill" is an English word
+        # and "Merritt" is shared with Kirk Merritt.
+        "Bill", "Merritt",
+    ],
+    # No bare "Hurst": it collides with Hayden Hurst (TE). Team context still
+    # lets a surname-only mention through when the Bucs are named.
+    "Ted Hurst": ["Hurst"],
 }
 
 # Chatter that mentions a player without saying anything actionable.
