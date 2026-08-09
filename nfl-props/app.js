@@ -396,22 +396,37 @@
 
   $search.addEventListener("input", (e) => {
     search = e.target.value.trim();
-    render();
+    if (currentView === "vegas") renderVegas();
+    else render();
   });
 
   // ── View switcher (table view vs viz view) ─────────────────────────────────
   const $tableView = document.getElementById("table-view");
   const $vizView = document.getElementById("viz-view");
 
-  function showTableView() {
-    if ($tableView) $tableView.classList.remove("hidden");
+  const $vegasView = document.getElementById("vegas-view");
+
+  function hideAllViews() {
+    if ($tableView) $tableView.classList.add("hidden");
     if ($vizView) $vizView.classList.add("hidden");
+    if ($vegasView) $vegasView.classList.add("hidden");
+  }
+
+  function showTableView() {
+    hideAllViews();
+    if ($tableView) $tableView.classList.remove("hidden");
   }
 
   function showVizView() {
-    if ($tableView) $tableView.classList.add("hidden");
+    hideAllViews();
     if ($vizView) $vizView.classList.remove("hidden");
     renderViz();
+  }
+
+  function showVegasView() {
+    hideAllViews();
+    if ($vegasView) $vegasView.classList.remove("hidden");
+    renderVegas();
   }
 
   // ── Top-level view tabs (Rankings / Visualizations) ───────────────────────
@@ -427,15 +442,16 @@
       tab.classList.add("active");
       currentView = tab.dataset.view;
 
-      if (currentView === "rankings") {
-        // Show source tabs (they only matter for the table view)
-        if ($sourceTabsContainer) $sourceTabsContainer.classList.remove("hidden");
-        showTableView();
-      } else {
-        // Hide source tabs while in viz view
-        if ($sourceTabsContainer) $sourceTabsContainer.classList.add("hidden");
-        showVizView();
+      // Source tabs only apply to the rankings table; the viz and Vegas views
+      // draw from their own fixed sources.
+      const showSources = currentView === "rankings";
+      if ($sourceTabsContainer) {
+        $sourceTabsContainer.classList.toggle("hidden", !showSources);
       }
+
+      if (currentView === "rankings") showTableView();
+      else if (currentView === "vegas") showVegasView();
+      else showVizView();
     });
   }
 
@@ -1132,6 +1148,261 @@
     renderDistributionChart();
     renderTierMapChart();
   }
+
+  // ── Vegas Lines view ───────────────────────────────────────────────────────
+  // Raw season-long sportsbook lines compared per-stat against the projection
+  // sources. Deliberately NOT converted to fantasy points: books post no
+  // season-long receptions or receiving-TD markets, so a PPR total built from
+  // these would understate every pass-catcher. See scripts/fetch_vegas_season_props.py.
+
+  let vegasPos = "ALL";
+  let vegasOnlyDelta = false;
+  let vegasSortDesc = true;
+
+  const STAT_LABELS = {
+    pass_yds: "Pass Yds",
+    pass_tds: "Pass TDs",
+    rush_yds: "Rush Yds",
+    rush_tds: "Rush TDs",
+    rec_yds:  "Rec Yds",
+  };
+
+  // Build lookup of projection stats by normalized name, with altKey fallback —
+  // same two-stage strategy buildAggregated() uses.
+  function buildProjLookup(data) {
+    const byKey = new Map();
+    const byAlt = new Map();
+    if (!data || !Array.isArray(data.players)) return { byKey, byAlt };
+    for (const p of data.players) {
+      const k = normPlayerName(p.name);
+      const a = altPlayerKey(p.name);
+      if (k && !byKey.has(k)) byKey.set(k, p);
+      if (a && !byAlt.has(a)) byAlt.set(a, p);
+    }
+    return { byKey, byAlt };
+  }
+
+  function lookupProj(lut, name) {
+    return lut.byKey.get(normPlayerName(name)) || lut.byAlt.get(altPlayerKey(name)) || null;
+  }
+
+  function fmtNum(v, dec) {
+    if (v == null || !isFinite(v)) return "—";
+    return v.toFixed(dec == null ? 1 : dec);
+  }
+
+  function fmtOdds(o) {
+    if (o == null) return "—";
+    return o > 0 ? "+" + o : String(o);
+  }
+
+  async function renderVegas() {
+    const $vrows = document.getElementById("vegas-rows");
+    const $vempty = document.getElementById("vegas-empty");
+    if (!$vrows) return;
+
+    // Load both market sources + both projection sources (shared cache).
+    if (!cache["vegas"]) {
+      try { cache["vegas"] = await fetchJson("vegas.json"); }
+      catch (e) { cache["vegas"] = null; }
+    }
+    if (!cache["kalshi"]) {
+      try { cache["kalshi"] = await fetchJson("kalshi.json"); }
+      catch (e) { cache["kalshi"] = null; }
+    }
+    for (const k of ["data", "clay"]) {
+      if (!cache[k]) {
+        try { cache[k] = await fetchJson(k === "data" ? "data.json" : "clay.json"); }
+        catch (e) { cache[k] = null; }
+      }
+    }
+
+    const vegas = cache["vegas"];
+    if (!vegas || !Array.isArray(vegas.players) || !vegas.players.length) {
+      $vrows.innerHTML = "";
+      if ($vempty) {
+        $vempty.textContent =
+          "No Vegas data. Run scripts/fetch_vegas_season_props.py to generate vegas.json.";
+        $vempty.classList.remove("hidden");
+      }
+      return;
+    }
+
+    const fpLut   = buildProjLookup(cache["data"]);
+    const clayLut = buildProjLookup(cache["clay"]);
+    const kalshiLut = buildProjLookup(cache["kalshi"]);
+
+    // A player-stat can exist on one market but not the other (Kalshi has
+    // receptions and rec TDs; FanDuel has neither), so union both sources
+    // rather than iterating FanDuel alone.
+    const combined = new Map(); // "normName|statKey" -> row
+    const rowFor = (name, position, statKey) => {
+      const id = normPlayerName(name) + "|" + statKey;
+      let r = combined.get(id);
+      if (!r) {
+        r = {
+          name, position, statKey,
+          line: null, over: null, under: null,
+          kalshi: null, kalshiConfident: false,
+          fpVal: null, clayVal: null, delta: null,
+        };
+        combined.set(id, r);
+      }
+      return r;
+    };
+
+    for (const p of vegas.players) {
+      for (const [statKey, m] of Object.entries(p.markets || {})) {
+        const r = rowFor(p.name, p.position, statKey);
+        r.line = m.line; r.over = m.over; r.under = m.under;
+      }
+    }
+
+    const kalshi = cache["kalshi"];
+    if (kalshi && Array.isArray(kalshi.players)) {
+      for (const p of kalshi.players) {
+        for (const [statKey, s] of Object.entries(p.stats || {})) {
+          if (s.median == null) continue;   // no usable P=0.50 crossing
+          const r = rowFor(p.name, p.position || null, statKey);
+          r.kalshi = s.median;
+          r.kalshiConfident = (s.confidentRungs || 0) >= 2;
+        }
+      }
+    }
+
+    let rows = [];
+    for (const r of combined.values()) {
+      // Kalshi carries no position; backfill from the projection sources.
+      const fp   = lookupProj(fpLut, r.name);
+      const clay = lookupProj(clayLut, r.name);
+      if (!r.position) r.position = (fp && fp.position) || (clay && clay.position) || null;
+
+      if (vegasPos !== "ALL" && r.position !== vegasPos) continue;
+      if (search && !r.name.toLowerCase().includes(search.toLowerCase())) continue;
+
+      r.fpVal   = fp   && fp.stats   ? fp.stats[r.statKey]   : null;
+      r.clayVal = clay && clay.stats ? clay.stats[r.statKey] : null;
+
+      // Delta vs the market line, preferring FanDuel; positive = projection higher.
+      const mktRef = r.line != null ? r.line : r.kalshi;
+      if (r.fpVal != null && isFinite(r.fpVal) && mktRef) {
+        r.delta = ((r.fpVal - mktRef) / mktRef) * 100;
+      }
+      rows.push(r);
+    }
+
+    // Projections nearly always sit above the Vegas line (136 of 139 rows at time
+    // of writing): FantasyPros/Clay project a healthy 17-game season, while books
+    // price in injury and missed-game risk. A raw delta would therefore read
+    // "green everywhere" and hide the real outliers. So we subtract the per-stat
+    // median delta and surface how far each row deviates from that baseline —
+    // that residual is the actual signal.
+    const byStat = {};
+    for (const r of rows) {
+      if (r.delta == null) continue;
+      (byStat[r.statKey] = byStat[r.statKey] || []).push(r.delta);
+    }
+    const medians = {};
+    for (const [k, arr] of Object.entries(byStat)) {
+      const s = arr.slice().sort((a, b) => a - b);
+      const n = s.length;
+      medians[k] = n % 2 ? s[(n - 1) / 2] : (s[n / 2 - 1] + s[n / 2]) / 2;
+    }
+    for (const r of rows) {
+      r.baseline = medians[r.statKey] ?? null;
+      r.resid = r.delta == null || r.baseline == null ? null : r.delta - r.baseline;
+    }
+
+    // Filter AFTER residuals are computed, so medians reflect the full population
+    // and the toggle filters on the meaningful (baseline-adjusted) number.
+    if (vegasOnlyDelta) {
+      rows = rows.filter((r) => r.resid != null && Math.abs(r.resid) > 10);
+    }
+
+    // Sort by |residual|, nulls last.
+    rows.sort((a, b) => {
+      const av = a.resid == null ? -Infinity : Math.abs(a.resid);
+      const bv = b.resid == null ? -Infinity : Math.abs(b.resid);
+      return vegasSortDesc ? bv - av : av - bv;
+    });
+
+    if (!rows.length) {
+      $vrows.innerHTML = "";
+      if ($vempty) {
+        $vempty.textContent = "No players match.";
+        $vempty.classList.remove("hidden");
+      }
+      return;
+    }
+    if ($vempty) $vempty.classList.add("hidden");
+
+    const isTd = (k) => k.endsWith("_tds");
+    $vrows.innerHTML = rows.map((r) => {
+      const dec = isTd(r.statKey) ? 1 : 0;
+      // Show the raw delta, but colour by the residual vs the per-stat baseline.
+      let dCls = "delta-flat", dTxt = "—", dTitle = "";
+      if (r.delta != null) {
+        dTxt = (r.delta > 0 ? "+" : "") + r.delta.toFixed(1) + "%";
+        if (r.resid != null) {
+          dCls = r.resid > 10 ? "delta-up" : r.resid < -10 ? "delta-down" : "delta-flat";
+          dTitle = `${(r.resid > 0 ? "+" : "") + r.resid.toFixed(1)}% vs the ` +
+                   `${(r.baseline > 0 ? "+" : "") + r.baseline.toFixed(1)}% typical ` +
+                   `gap for this stat`;
+        }
+      }
+      const posClass = "pos-" + (r.position || "?");
+      return `<tr>
+        <td class="player-name">${escapeHtml(r.name)}</td>
+        <td><span class="pos-badge ${posClass}">${escapeHtml(r.position || "?")}</span></td>
+        <td class="stat-label">${escapeHtml(STAT_LABELS[r.statKey] || r.statKey)}</td>
+        <td class="num vegas-line">${fmtNum(r.line, dec)}</td>
+        <td class="num odds">${r.line == null ? "—" : escapeHtml(fmtOdds(r.over)) + " / " + escapeHtml(fmtOdds(r.under))}</td>
+        <td class="num kalshi-line${r.kalshi != null && !r.kalshiConfident ? " thin" : ""}"
+            ${r.kalshi != null && !r.kalshiConfident ? 'title="Thin market — fewer than 2 tight-spread strikes"' : ""}
+        >${fmtNum(r.kalshi, dec)}${r.kalshi != null && !r.kalshiConfident ? "*" : ""}</td>
+        <td class="num">${fmtNum(r.fpVal, dec)}</td>
+        <td class="num">${fmtNum(r.clayVal, dec)}</td>
+        <td class="num ${dCls}" title="${escapeHtml(dTitle)}">${dTxt}</td>
+      </tr>`;
+    }).join("");
+
+    const $ec = document.getElementById("event-count");
+    const $lu = document.getElementById("last-updated");
+    const $pc = document.getElementById("player-count");
+    if ($pc) $pc.textContent = String(new Set(rows.map((r) => r.name)).size);
+    if ($ec) $ec.textContent = cache["kalshi"] ? "FanDuel + Kalshi" : "FanDuel";
+    // Show the staler of the two so it's obvious when one source lags.
+    const stamps = [vegas.lastUpdated, cache["kalshi"] && cache["kalshi"].lastUpdated]
+      .filter(Boolean).map((s) => new Date(s));
+    if ($lu && stamps.length) {
+      $lu.textContent = new Date(Math.min(...stamps)).toLocaleString();
+    }
+  }
+
+  const $vegasPosChips = document.getElementById("vegas-pos-chips");
+  if ($vegasPosChips) {
+    $vegasPosChips.addEventListener("click", (e) => {
+      const chip = e.target.closest(".chip");
+      if (!chip) return;
+      document.querySelectorAll("#vegas-pos-chips .chip").forEach((c) => c.classList.remove("active"));
+      chip.classList.add("active");
+      vegasPos = chip.dataset.pos;
+      renderVegas();
+    });
+  }
+
+  const $vegasOnlyDelta = document.getElementById("vegas-only-delta");
+  if ($vegasOnlyDelta) {
+    $vegasOnlyDelta.addEventListener("change", (e) => {
+      vegasOnlyDelta = e.target.checked;
+      renderVegas();
+    });
+  }
+
+  document.querySelector('[data-vsort="delta"]')?.addEventListener("click", () => {
+    vegasSortDesc = !vegasSortDesc;
+    renderVegas();
+  });
 
   // Position filter inside the viz tab
   const $vizPosChips = document.getElementById("viz-pos-chips");

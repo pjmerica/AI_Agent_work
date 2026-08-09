@@ -316,3 +316,76 @@ footer {
   .rankings td { padding: 8px; font-size: 13px; }
   .matchup { font-size: 11px; }
 }
+
+/* ── Vegas Lines view ─────────────────────────────────────────────────────── */
+
+.callout {
+  background: rgba(91, 76, 245, 0.08);
+  border: 1px solid rgba(91, 76, 245, 0.35);
+  border-left: 3px solid #5b4cf5;
+  border-radius: 6px;
+  padding: 12px 16px;
+  margin-bottom: 18px;
+  font-size: 13px;
+  line-height: 1.6;
+  color: #b8b8cc;
+}
+.callout strong { color: #f0f0f8; }
+.callout em { color: #d8d8e8; font-style: normal; text-decoration: underline dotted; }
+
+.vegas-controls {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  flex-wrap: wrap;
+  margin-bottom: 14px;
+}
+
+.delta-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 13px;
+  color: #9a9ab0;
+  cursor: pointer;
+  user-select: none;
+}
+.delta-toggle:hover { color: #e2e2f0; }
+.delta-toggle input { accent-color: #5b4cf5; cursor: pointer; }
+
+.vegas-table th.sortable { cursor: pointer; user-select: none; }
+.vegas-table th.sortable:hover { color: #e2e2f0; }
+
+.stat-label {
+  font-size: 12px;
+  color: #9a9ab0;
+  white-space: nowrap;
+}
+
+.vegas-line {
+  font-weight: 700;
+  color: #f0f0f8;
+  font-variant-numeric: tabular-nums;
+}
+
+.odds {
+  font-size: 12px;
+  color: #6a6a8a;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.vegas-table td.num { font-variant-numeric: tabular-nums; }
+
+/* Delta vs FantasyPros: green = projections higher than Vegas, red = lower */
+.delta-up   { color: #58d68d; font-weight: 600; }
+.delta-down { color: #ff6b6b; font-weight: 600; }
+.delta-flat { color: #6a6a8a; }
+
+.kalshi-line {
+  font-weight: 600;
+  color: #c9c4ff;
+  font-variant-numeric: tabular-nums;
+}
+.kalshi-line.thin { color: #7a7595; font-weight: 500; }
+.thin-key { color: #7a7595; font-weight: 700; }
