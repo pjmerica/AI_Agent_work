@@ -269,7 +269,8 @@ header h1 { font-size: 28px; font-weight: 700; color: #fff; }
 .hidden,
 #table-view.hidden,
 #viz-view.hidden,
-#vegas-view.hidden { display: none !important; }
+#vegas-view.hidden,
+#market-view.hidden { display: none !important; }
 
 /* ── Visualizations tab ──────────────────────────────────────────────────── */
 #viz-view {
@@ -394,3 +395,50 @@ footer {
 }
 .kalshi-line.thin { color: #7a7595; font-weight: 500; }
 .thin-key { color: #7a7595; font-weight: 700; }
+
+/* ── Market Points view ───────────────────────────────────────────────────── */
+
+.market-pts {
+  font-weight: 700;
+  color: #f0f0f8;
+  font-variant-numeric: tabular-nums;
+  font-size: 15px;
+}
+.fit-mark { color: #f5b041; margin-left: 1px; font-weight: 700; }
+
+.market-nan {
+  color: #6a6a8a;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  cursor: help;
+}
+tr.row-nan { opacity: 0.55; }
+tr.row-nan:hover { opacity: 0.85; }
+
+.market-chip {
+  display: inline-block;
+  font-size: 11px;
+  padding: 3px 7px;
+  margin: 2px 4px 2px 0;
+  border-radius: 4px;
+  background: #21212e;
+  border: 1px solid #2e2e42;
+  color: #c8c8dc;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.market-chip .mk-label { color: #7a7a95; margin-right: 2px; }
+.market-chip.src-fanduel { border-color: rgba(91, 76, 245, 0.4); }
+.market-chip.src-kalshi  { border-color: rgba(88, 214, 141, 0.35); }
+.market-chip.src-fit     { border-color: rgba(245, 176, 65, 0.4); color: #e8d5b0; }
+.market-chip.missing {
+  background: rgba(255, 107, 107, 0.08);
+  border-color: rgba(255, 107, 107, 0.3);
+  color: #ff9b9b;
+}
+
+.nan-key { color: #6a6a8a; font-weight: 700; }
+.fit-key { color: #f5b041; font-weight: 700; }
+
+.market-table th.sortable { cursor: pointer; user-select: none; }
+.market-table th.sortable:hover { color: #e2e2f0; }

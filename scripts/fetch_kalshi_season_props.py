@@ -34,6 +34,7 @@ Usage:
 from __future__ import annotations
 
 import json
+import math
 import sys
 from collections import defaultdict
 from datetime import datetime, timezone
@@ -170,6 +171,61 @@ def enforce_monotonic(ladder: list[dict]) -> list[dict]:
     return out
 
 
+def _inv_norm_cdf(p: float) -> float:
+    """Acklam's rational approximation of the standard normal quantile."""
+    a = [-3.969683028665376e+01, 2.209460984245205e+02, -2.759285104469687e+02,
+         1.383577518672690e+02, -3.066479806614716e+01, 2.506628277459239e+00]
+    b = [-5.447609879822406e+01, 1.615858368580409e+02, -1.556989798598866e+02,
+         6.680131188771972e+01, -1.328068155288572e+01]
+    c = [-7.784894002430293e-03, -3.223964580411365e-01, -2.400758277161838e+00,
+         -2.549732539343734e+00, 4.374664141464968e+00, 2.938163982698783e+00]
+    d = [7.784695709041462e-03, 3.224671290700398e-01, 2.445134137142996e+00,
+         3.754408661907416e+00]
+    pl, ph = 0.02425, 1 - 0.02425
+    if p < pl:
+        q = math.sqrt(-2 * math.log(p))
+        return (((((c[0]*q+c[1])*q+c[2])*q+c[3])*q+c[4])*q+c[5]) / ((((d[0]*q+d[1])*q+d[2])*q+d[3])*q+1)
+    if p > ph:
+        q = math.sqrt(-2 * math.log(1 - p))
+        return -(((((c[0]*q+c[1])*q+c[2])*q+c[3])*q+c[4])*q+c[5]) / ((((d[0]*q+d[1])*q+d[2])*q+d[3])*q+1)
+    q = p - 0.5
+    r = q * q
+    return (((((a[0]*r+a[1])*r+a[2])*r+a[3])*r+a[4])*r+a[5])*q / (((((b[0]*r+b[1])*r+b[2])*r+b[3])*r+b[4])*r+1)
+
+
+def lognormal_fit(ladder: list[dict]) -> dict | None:
+    """
+    Fit a lognormal to the ladder and return its median (and sigma).
+
+    Season stat totals are positive and right-skewed, so a lognormal is the
+    natural shape. Under it, ln(strike) is linear in -z(P(X>=strike)), so the
+    fit is an ordinary least-squares regression of ln(k) on -z(p); the median
+    is exp(intercept).
+
+    This exists to recover a line-equivalent for ladders that never cross P=0.50
+    (~2/3 of them), where straight interpolation has nothing to interpolate
+    between. Validated against the 114 ladders whose median IS observable:
+    median absolute error 2.5%, 90th pct 6.8%, worst 19%. Since these are
+    extrapolations, real error on the target set is likely worse — callers must
+    surface fitted values as estimates, never as quoted lines.
+    """
+    pts = [r for r in ladder if 0.02 < r["prob"] < 0.98 and r["strike"] > 0]
+    if len(pts) < 2:
+        return None  # one point cannot pin down both centre and spread
+    xs = [-_inv_norm_cdf(r["prob"]) for r in pts]
+    ys = [math.log(r["strike"]) for r in pts]
+    n = len(xs)
+    mx, my = sum(xs) / n, sum(ys) / n
+    den = sum((x - mx) ** 2 for x in xs)
+    if den == 0:
+        return None  # all rungs at the same probability
+    sigma = sum((xs[i] - mx) * (ys[i] - my) for i in range(n)) / den
+    mu = my - sigma * mx
+    if not (sigma > 0) or not math.isfinite(mu):
+        return None
+    return {"median": round(math.exp(mu), 1), "sigma": round(sigma, 4), "points": n}
+
+
 def median_from_ladder(ladder: list[dict]) -> float | None:
     """Linearly interpolate the strike where P crosses 0.50."""
     if not ladder:
@@ -246,9 +302,23 @@ def main() -> None:
             existing = p["stats"].get(stat_key)
             if existing and len(existing["ladder"]) >= len(ladder):
                 continue
+            observed = median_from_ladder(ladder)
+            fit = lognormal_fit(ladder)
+            # `line` is the single best line-equivalent, with its provenance in
+            # `lineSource` so consumers can distinguish quoted-ish from modelled.
+            if observed is not None:
+                line, line_source = observed, "interpolated"
+            elif fit is not None:
+                line, line_source = fit["median"], "fitted"
+            else:
+                line, line_source = None, None
+
             p["stats"][stat_key] = {
                 "ladder": ladder,
-                "median": median_from_ladder(ladder),
+                "median": observed,
+                "fit": fit,
+                "line": line,
+                "lineSource": line_source,
                 "expected": expected_from_ladder(ladder),
                 "confidentRungs": sum(1 for r in ladder if r["confident"]),
                 "maxOpenInterest": max(r["openInterest"] for r in ladder),

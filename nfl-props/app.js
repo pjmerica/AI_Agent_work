@@ -358,6 +358,7 @@
     btn.classList.add("active");
     fmt = btn.dataset.fmt;
     render();
+    if (currentView === "market") renderMarket();   // points are format-dependent
     if (currentView === "viz" && typeof Chart !== "undefined") {
       cache["aggregated"] = null;
       renderViz();
@@ -397,6 +398,7 @@
   $search.addEventListener("input", (e) => {
     search = e.target.value.trim();
     if (currentView === "vegas") renderVegas();
+    else if (currentView === "market") renderMarket();
     else render();
   });
 
@@ -405,11 +407,13 @@
   const $vizView = document.getElementById("viz-view");
 
   const $vegasView = document.getElementById("vegas-view");
+  const $marketView = document.getElementById("market-view");
 
   function hideAllViews() {
     if ($tableView) $tableView.classList.add("hidden");
     if ($vizView) $vizView.classList.add("hidden");
     if ($vegasView) $vegasView.classList.add("hidden");
+    if ($marketView) $marketView.classList.add("hidden");
   }
 
   function showTableView() {
@@ -427,6 +431,24 @@
     hideAllViews();
     if ($vegasView) $vegasView.classList.remove("hidden");
     renderVegas();
+  }
+
+  async function showMarketView() {
+    hideAllViews();
+    if ($marketView) $marketView.classList.remove("hidden");
+    // Reuses the same four files the Vegas view loads.
+    await ensureMarketData();
+    renderMarket();
+  }
+
+  async function ensureMarketData() {
+    const files = { vegas: "vegas.json", kalshi: "kalshi.json", data: "data.json", clay: "clay.json" };
+    for (const [key, file] of Object.entries(files)) {
+      if (!cache[key]) {
+        try { cache[key] = await fetchJson(file); }
+        catch (e) { cache[key] = null; }
+      }
+    }
   }
 
   // ── Top-level view tabs (Rankings / Visualizations) ───────────────────────
@@ -451,6 +473,7 @@
 
       if (currentView === "rankings") showTableView();
       else if (currentView === "vegas") showVegasView();
+      else if (currentView === "market") showMarketView();
       else showVizView();
     });
   }
@@ -1165,6 +1188,8 @@
     rush_yds: "Rush Yds",
     rush_tds: "Rush TDs",
     rec_yds:  "Rec Yds",
+    receptions: "Rec",
+    rec_tds:  "Rec TDs",
   };
 
   // Build lookup of projection stats by normalized name, with altKey fallback —
@@ -1355,6 +1380,198 @@
       $lu.textContent = new Date(Math.min(...stamps)).toLocaleString();
     }
   }
+
+  // ── Market Points view ─────────────────────────────────────────────────────
+  // Market lines converted to fantasy points, laid out like the Rankings tab.
+  // Scored only when every stat the position needs is priced; otherwise NaN,
+  // because summing a partial stat set understates a player badly rather than
+  // slightly (a WR with no receptions loses ~40% of their PPR total).
+
+  let marketPos = "ALL";
+  let marketHideNaN = false;
+  let marketSortDesc = true;
+
+  // Stats a position must have before we'll produce a number.
+  // QBs: passing volume + both rushing components (mobile QBs live there).
+  // RB/WR/TE: their yardage, TDs, and receptions — receptions matter in PPR
+  // and are the most commonly missing market, which is exactly why we gate.
+  const REQUIRED_STATS = {
+    QB: ["pass_yds", "pass_tds", "rush_yds", "rush_tds"],
+    RB: ["rush_yds", "rush_tds", "receptions", "rec_yds", "rec_tds"],
+    WR: ["rec_yds", "rec_tds", "receptions"],
+    TE: ["rec_yds", "rec_tds", "receptions"],
+  };
+
+  function buildMarketPlayers() {
+    const vegas  = cache["vegas"];
+    const kalshi = cache["kalshi"];
+    const fpLut   = buildProjLookup(cache["data"]);
+    const clayLut = buildProjLookup(cache["clay"]);
+
+    const players = new Map(); // normName -> { name, position, stats:{k:{value,source}} }
+    const ensure = (name) => {
+      const k = normPlayerName(name);
+      let p = players.get(k);
+      if (!p) { p = { name, position: null, stats: {} }; players.set(k, p); }
+      return p;
+    };
+
+    // Kalshi first, so a FanDuel line overwrites it below (a posted book line
+    // beats both an interpolated ladder and a fitted one).
+    if (kalshi && Array.isArray(kalshi.players)) {
+      for (const p of kalshi.players) {
+        for (const [statKey, s] of Object.entries(p.stats || {})) {
+          if (s.line == null) continue;
+          ensure(p.name).stats[statKey] = {
+            value: s.line,
+            source: s.lineSource === "fitted" ? "fit" : "kalshi",
+          };
+        }
+      }
+    }
+    if (vegas && Array.isArray(vegas.players)) {
+      for (const p of vegas.players) {
+        const rec = ensure(p.name);
+        if (p.position) rec.position = p.position;
+        for (const [statKey, m] of Object.entries(p.markets || {})) {
+          if (m.line == null) continue;
+          rec.stats[statKey] = { value: m.line, source: "fanduel" };
+        }
+      }
+    }
+
+    const out = [];
+    for (const [key, p] of players) {
+      if (!p.position) {
+        const fp = lookupProj(fpLut, p.name), clay = lookupProj(clayLut, p.name);
+        p.position = (fp && fp.position) || (clay && clay.position) || null;
+      }
+      const req = REQUIRED_STATS[p.position];
+      const missing = req ? req.filter((s) => !(s in p.stats)) : null;
+      p.missing = missing;
+      p.complete = !!req && missing.length === 0;
+
+      if (p.complete) {
+        const stats = {};
+        for (const [k, v] of Object.entries(p.stats)) stats[k] = v.value;
+        p.points = {
+          ppr:      fantasyPoints(stats, "ppr"),
+          half:     fantasyPoints(stats, "half"),
+          standard: fantasyPoints(stats, "standard"),
+        };
+        p.fitted = Object.values(p.stats).some((s) => s.source === "fit");
+      } else {
+        p.points = null;
+      }
+      out.push(p);
+    }
+    return out;
+  }
+
+  const SOURCE_LABEL = {
+    fanduel: "FanDuel posted line",
+    kalshi: "Kalshi ladder (interpolated 50% strike)",
+    fit: "Fitted estimate — Kalshi ladder never crosses 50%",
+  };
+
+  function marketStatChips(p) {
+    const order = ["pass_yds", "pass_tds", "rush_yds", "rush_tds",
+                   "receptions", "rec_yds", "rec_tds"];
+    const parts = [];
+    for (const k of order) {
+      const s = p.stats[k];
+      if (!s) continue;
+      const dec = k.endsWith("_tds") || k === "receptions" ? 1 : 0;
+      const mark = s.source === "fit" ? "~" : "";
+      parts.push(
+        `<span class="market-chip src-${s.source}" title="${escapeHtml(SOURCE_LABEL[s.source] || "")}">` +
+        `<span class="mk-label">${escapeHtml(STAT_LABELS[k] || k)}</span> ` +
+        `${mark}${s.value.toFixed(dec)}</span>`
+      );
+    }
+    if (p.missing && p.missing.length) {
+      const names = p.missing.map((m) => STAT_LABELS[m] || m).join(", ");
+      parts.push(`<span class="market-chip missing" title="Not priced by any market">missing: ${escapeHtml(names)}</span>`);
+    }
+    return `<div class="markets">${parts.join("")}</div>`;
+  }
+
+  function renderMarket() {
+    const $mrows = document.getElementById("market-rows");
+    const $mempty = document.getElementById("market-empty");
+    if (!$mrows) return;
+
+    let players = buildMarketPlayers();
+
+    players = players.filter((p) => {
+      if (marketPos !== "ALL" && p.position !== marketPos) return false;
+      if (search && !p.name.toLowerCase().includes(search.toLowerCase())) return false;
+      if (marketHideNaN && !p.complete) return false;
+      return true;
+    });
+
+    // Scored players first (by points), then the NaN rows alphabetically.
+    players.sort((a, b) => {
+      if (a.complete !== b.complete) return a.complete ? -1 : 1;
+      if (!a.complete) return a.name.localeCompare(b.name);
+      const av = a.points[fmt], bv = b.points[fmt];
+      return marketSortDesc ? bv - av : av - bv;
+    });
+
+    if (!players.length) {
+      $mrows.innerHTML = "";
+      if ($mempty) { $mempty.textContent = "No players match."; $mempty.classList.remove("hidden"); }
+      return;
+    }
+    if ($mempty) $mempty.classList.add("hidden");
+
+    let rank = 0;
+    $mrows.innerHTML = players.map((p) => {
+      const posClass = "pos-" + (p.position || "?");
+      const scored = p.complete;
+      if (scored) rank++;
+      const pts = scored
+        ? `<span class="market-pts">${p.points[fmt].toFixed(1)}${p.fitted ? '<span class="fit-mark" title="Includes at least one fitted estimate">~</span>' : ""}</span>`
+        : `<span class="market-nan" title="Missing: ${escapeHtml((p.missing || []).map((m) => STAT_LABELS[m] || m).join(", "))}">NaN</span>`;
+      return `<tr class="${scored ? "" : "row-nan"}">
+        <td class="rank-num">${scored ? rank : "—"}</td>
+        <td class="player-name">${escapeHtml(p.name)}</td>
+        <td><span class="pos-badge ${posClass}">${escapeHtml(p.position || "?")}</span></td>
+        <td class="num">${pts}</td>
+        <td>${marketStatChips(p)}</td>
+      </tr>`;
+    }).join("");
+
+    const $pc = document.getElementById("player-count");
+    const $ec = document.getElementById("event-count");
+    if ($pc) $pc.textContent = `${players.filter((p) => p.complete).length} scored / ${players.length}`;
+    if ($ec) $ec.textContent = "FanDuel + Kalshi";
+  }
+
+  const $marketPosChips = document.getElementById("market-pos-chips");
+  if ($marketPosChips) {
+    $marketPosChips.addEventListener("click", (e) => {
+      const chip = e.target.closest(".chip");
+      if (!chip) return;
+      document.querySelectorAll("#market-pos-chips .chip").forEach((c) => c.classList.remove("active"));
+      chip.classList.add("active");
+      marketPos = chip.dataset.pos;
+      renderMarket();
+    });
+  }
+
+  const $marketHideNaN = document.getElementById("market-hide-nan");
+  if ($marketHideNaN) {
+    $marketHideNaN.addEventListener("change", (e) => {
+      marketHideNaN = e.target.checked;
+      renderMarket();
+    });
+  }
+
+  document.querySelector('[data-msort="pts"]')?.addEventListener("click", () => {
+    marketSortDesc = !marketSortDesc;
+    renderMarket();
+  });
 
   const $vegasPosChips = document.getElementById("vegas-pos-chips");
   if ($vegasPosChips) {

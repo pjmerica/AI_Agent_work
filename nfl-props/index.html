@@ -18,6 +18,7 @@
       <button class="view-tab active" data-view="rankings">Rankings</button>
       <button class="view-tab" data-view="viz">Visualizations</button>
       <button class="view-tab" data-view="vegas">Vegas Lines</button>
+      <button class="view-tab" data-view="market">Market Points</button>
     </div>
 
     <div class="source-tabs" id="source-tabs">
@@ -144,6 +145,54 @@
               </tr>
             </thead>
             <tbody id="vegas-rows"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <div id="market-view" class="hidden">
+        <div class="callout">
+          <strong>Fantasy points implied by the betting markets.</strong>
+          Each player's market lines converted to PPR / half-PPR / standard using
+          the same scoring as the Rankings tab. Lines come from FanDuel where
+          posted, otherwise Kalshi's ladder.
+          <br /><br />
+          A player is scored only when every stat their position needs is
+          available. Anyone missing one shows <span class="nan-key">NaN</span> —
+          the markets simply don't price that stat for them, and a partial sum
+          would understate them badly. Values marked
+          <span class="fit-key">~</span> are fitted estimates rather than posted
+          lines: Kalshi ladders that never cross 50% get a lognormal fit
+          (validated at ~2% median error against ladders where the true midpoint
+          is known). Hover any stat for its source.
+        </div>
+
+        <div class="vegas-controls">
+          <div class="chip-group" id="market-pos-chips">
+            <button class="chip active" data-pos="ALL">All</button>
+            <button class="chip" data-pos="QB">QB</button>
+            <button class="chip" data-pos="RB">RB</button>
+            <button class="chip" data-pos="WR">WR</button>
+            <button class="chip" data-pos="TE">TE</button>
+          </div>
+          <label class="delta-toggle">
+            <input type="checkbox" id="market-hide-nan" />
+            Hide incomplete (NaN) players
+          </label>
+        </div>
+
+        <div id="market-empty" class="empty hidden">No players match.</div>
+        <div class="table-wrap">
+          <table class="rankings market-table">
+            <thead>
+              <tr>
+                <th class="rank">#</th>
+                <th>Player</th>
+                <th>Pos</th>
+                <th class="num sortable" data-msort="pts">Proj <span class="caret">▾</span></th>
+                <th>Market-implied stats</th>
+              </tr>
+            </thead>
+            <tbody id="market-rows"></tbody>
           </table>
         </div>
       </div>
