@@ -103,21 +103,17 @@
 
       <div id="vegas-view" class="hidden">
         <div class="callout">
-          <strong>These are raw market lines, not fantasy projections.</strong>
-          Two independent sources: <strong>FanDuel</strong> posts a single
-          over/under line, and <strong>Kalshi</strong> posts probability ladders
-          from which we interpolate the 50% strike — the closest equivalent to a
-          book's line. A <span class="thin-key">*</span> marks a thin Kalshi
-          market (fewer than two tight-spread strikes); treat those loosely.
-          FanDuel offers no <em>receptions</em> or <em>receiving TD</em> markets,
-          so those rows are Kalshi-only.
+          <strong>Season-long market lines, FanDuel vs Kalshi.</strong>
+          FanDuel posts a single over/under line; Kalshi posts a probability
+          ladder, from which we interpolate the 50% strike — the closest
+          equivalent to a book's line. The last column is how far Kalshi sits
+          from FanDuel: green means Kalshi is higher, red means lower. Both price
+          the same events, so a large gap means they genuinely disagree.
           <br /><br />
-          Projections sit above the Vegas line almost every time — they assume a
-          healthy 17-game season while books price in injury risk. So the
-          <strong>Δ column is coloured by how far each row sits from the typical
-          gap for that stat</strong>, not by the raw percentage. Green means the
-          projections are unusually bullish versus Vegas even after accounting for
-          that; grey means it's behaving normally. Hover any Δ for the detail.
+          A <span class="thin-key">*</span> marks a thin Kalshi market (fewer
+          than two tight-spread strikes) — treat those loosely. FanDuel posts no
+          <em>receptions</em> or <em>receiving TD</em> markets, so those rows are
+          Kalshi-only and have no comparison.
         </div>
 
         <div class="vegas-controls">
@@ -127,9 +123,9 @@
             <button class="chip" data-pos="RB">RB</button>
             <button class="chip" data-pos="WR">WR</button>
           </div>
-          <label class="delta-toggle" title="Filters on the gap relative to the typical projection-vs-Vegas gap for that stat, not the raw percentage.">
+          <label class="delta-toggle" title="Only rows quoted by both FanDuel and Kalshi where the two disagree by more than 10%.">
             <input type="checkbox" id="vegas-only-delta" />
-            Only show real outliers (&gt;10% off baseline)
+            Only show disagreements &gt;10%
           </label>
         </div>
 
@@ -144,9 +140,7 @@
                 <th class="num">FanDuel</th>
                 <th class="num">Odds</th>
                 <th class="num">Kalshi</th>
-                <th class="num">FantasyPros</th>
-                <th class="num">Clay</th>
-                <th class="num sortable" data-vsort="delta">Δ vs FP <span class="caret">▾</span></th>
+                <th class="num sortable" data-vsort="delta">Kalshi vs FD <span class="caret">▾</span></th>
               </tr>
             </thead>
             <tbody id="vegas-rows"></tbody>

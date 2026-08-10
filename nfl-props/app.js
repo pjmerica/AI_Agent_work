@@ -1272,57 +1272,36 @@
 
     let rows = [];
     for (const r of combined.values()) {
-      // Kalshi carries no position; backfill from the projection sources.
-      const fp   = lookupProj(fpLut, r.name);
-      const clay = lookupProj(clayLut, r.name);
-      if (!r.position) r.position = (fp && fp.position) || (clay && clay.position) || null;
+      // Kalshi carries no position; backfill it from the projection files, which
+      // are loaded for that purpose only — they are not shown as columns.
+      if (!r.position) {
+        const fp   = lookupProj(fpLut, r.name);
+        const clay = lookupProj(clayLut, r.name);
+        r.position = (fp && fp.position) || (clay && clay.position) || null;
+      }
 
       if (vegasPos !== "ALL" && r.position !== vegasPos) continue;
       if (search && !r.name.toLowerCase().includes(search.toLowerCase())) continue;
 
-      r.fpVal   = fp   && fp.stats   ? fp.stats[r.statKey]   : null;
-      r.clayVal = clay && clay.stats ? clay.stats[r.statKey] : null;
-
-      // Delta vs the market line, preferring FanDuel; positive = projection higher.
-      const mktRef = r.line != null ? r.line : r.kalshi;
-      if (r.fpVal != null && isFinite(r.fpVal) && mktRef) {
-        r.delta = ((r.fpVal - mktRef) / mktRef) * 100;
+      // Delta is market-vs-market: how far Kalshi sits from the FanDuel line.
+      // Positive = Kalshi is higher. Only meaningful when both books quote it.
+      if (r.kalshi != null && r.line) {
+        r.delta = ((r.kalshi - r.line) / r.line) * 100;
       }
       rows.push(r);
     }
 
-    // Projections nearly always sit above the Vegas line (136 of 139 rows at time
-    // of writing): FantasyPros/Clay project a healthy 17-game season, while books
-    // price in injury and missed-game risk. A raw delta would therefore read
-    // "green everywhere" and hide the real outliers. So we subtract the per-stat
-    // median delta and surface how far each row deviates from that baseline —
-    // that residual is the actual signal.
-    const byStat = {};
-    for (const r of rows) {
-      if (r.delta == null) continue;
-      (byStat[r.statKey] = byStat[r.statKey] || []).push(r.delta);
-    }
-    const medians = {};
-    for (const [k, arr] of Object.entries(byStat)) {
-      const s = arr.slice().sort((a, b) => a - b);
-      const n = s.length;
-      medians[k] = n % 2 ? s[(n - 1) / 2] : (s[n / 2 - 1] + s[n / 2]) / 2;
-    }
-    for (const r of rows) {
-      r.baseline = medians[r.statKey] ?? null;
-      r.resid = r.delta == null || r.baseline == null ? null : r.delta - r.baseline;
-    }
-
-    // Filter AFTER residuals are computed, so medians reflect the full population
-    // and the toggle filters on the meaningful (baseline-adjusted) number.
+    // Both sources price the same event, so unlike a projection-vs-market
+    // comparison there is no systematic bias to correct for — a raw delta is
+    // already the signal. Big gaps mean the two markets genuinely disagree.
     if (vegasOnlyDelta) {
-      rows = rows.filter((r) => r.resid != null && Math.abs(r.resid) > 10);
+      rows = rows.filter((r) => r.delta != null && Math.abs(r.delta) > 10);
     }
 
-    // Sort by |residual|, nulls last.
+    // Sort by |delta|, rows missing one source last.
     rows.sort((a, b) => {
-      const av = a.resid == null ? -Infinity : Math.abs(a.resid);
-      const bv = b.resid == null ? -Infinity : Math.abs(b.resid);
+      const av = a.delta == null ? -Infinity : Math.abs(a.delta);
+      const bv = b.delta == null ? -Infinity : Math.abs(b.delta);
       return vegasSortDesc ? bv - av : av - bv;
     });
 
@@ -1339,16 +1318,16 @@
     const isTd = (k) => k.endsWith("_tds");
     $vrows.innerHTML = rows.map((r) => {
       const dec = isTd(r.statKey) ? 1 : 0;
-      // Show the raw delta, but colour by the residual vs the per-stat baseline.
       let dCls = "delta-flat", dTxt = "—", dTitle = "";
       if (r.delta != null) {
         dTxt = (r.delta > 0 ? "+" : "") + r.delta.toFixed(1) + "%";
-        if (r.resid != null) {
-          dCls = r.resid > 10 ? "delta-up" : r.resid < -10 ? "delta-down" : "delta-flat";
-          dTitle = `${(r.resid > 0 ? "+" : "") + r.resid.toFixed(1)}% vs the ` +
-                   `${(r.baseline > 0 ? "+" : "") + r.baseline.toFixed(1)}% typical ` +
-                   `gap for this stat`;
-        }
+        dCls = r.delta > 5 ? "delta-up" : r.delta < -5 ? "delta-down" : "delta-flat";
+        dTitle = r.delta > 0
+          ? `Kalshi prices this ${Math.abs(r.delta).toFixed(1)}% above FanDuel's line`
+          : `Kalshi prices this ${Math.abs(r.delta).toFixed(1)}% below FanDuel's line`;
+      } else {
+        dTitle = r.line == null ? "FanDuel does not post this market"
+                                : "No usable Kalshi ladder for this stat";
       }
       const posClass = "pos-" + (r.position || "?");
       return `<tr>
@@ -1360,8 +1339,6 @@
         <td class="num kalshi-line${r.kalshi != null && !r.kalshiConfident ? " thin" : ""}"
             ${r.kalshi != null && !r.kalshiConfident ? 'title="Thin market — fewer than 2 tight-spread strikes"' : ""}
         >${fmtNum(r.kalshi, dec)}${r.kalshi != null && !r.kalshiConfident ? "*" : ""}</td>
-        <td class="num">${fmtNum(r.fpVal, dec)}</td>
-        <td class="num">${fmtNum(r.clayVal, dec)}</td>
         <td class="num ${dCls}" title="${escapeHtml(dTitle)}">${dTxt}</td>
       </tr>`;
     }).join("");

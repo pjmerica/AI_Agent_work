@@ -264,7 +264,12 @@ header h1 { font-size: 28px; font-weight: 700; color: #fff; }
   font-size: 14px;
 }
 
-.hidden { display: none; }
+/* Must out-specify ID selectors like `#viz-view { display: flex }`, otherwise a
+   .hidden view still lays out (its empty chart boxes bled into other tabs). */
+.hidden,
+#table-view.hidden,
+#viz-view.hidden,
+#vegas-view.hidden { display: none !important; }
 
 /* ── Visualizations tab ──────────────────────────────────────────────────── */
 #viz-view {
