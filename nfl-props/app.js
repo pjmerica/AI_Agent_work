@@ -443,7 +443,7 @@
 
   async function ensureMarketData() {
     const files = { vegas: "vegas.json", kalshi: "kalshi.json", data: "data.json",
-                    clay: "clay.json", adp: "adp.json" };
+                    clay: "clay.json", adp: "adp.json", bovada: "bovada.json" };
     for (const [key, file] of Object.entries(files)) {
       if (!cache[key]) {
         try { cache[key] = await fetchJson(file); }
@@ -1425,6 +1425,7 @@
   function buildMarketPlayers() {
     const vegas  = cache["vegas"];
     const kalshi = cache["kalshi"];
+    const bovada = cache["bovada"];
     const fpLut   = buildProjLookup(cache["data"]);
     const clayLut = buildProjLookup(cache["clay"]);
     const adpLut  = buildAdpLookup(cache["adp"]);
@@ -1451,6 +1452,18 @@
             source: (s.lineSource === "fitted" || s.lineSource === "assumed-sigma")
               ? "fit" : "kalshi",
           };
+        }
+      }
+    }
+    // Bovada next: a posted book line beats a modelled Kalshi ladder, but
+    // FanDuel stays the primary book and overwrites below. Bovada's value here
+    // is receiving TDs, which FanDuel does not offer at all.
+    if (bovada && Array.isArray(bovada.players)) {
+      for (const p of bovada.players) {
+        const rec = ensure(p.name);
+        for (const [statKey, m] of Object.entries(p.markets || {})) {
+          if (m.line == null) continue;
+          rec.stats[statKey] = { value: m.line, source: "bovada" };
         }
       }
     }
@@ -1501,6 +1514,7 @@
 
   const SOURCE_LABEL = {
     fanduel: "FanDuel posted line",
+    bovada: "Bovada posted line",
     kalshi: "Kalshi ladder (interpolated 50% strike)",
     fit: "Fitted estimate — Kalshi ladder never crosses 50%",
   };

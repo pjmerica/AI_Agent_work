@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>NFL Season Projections</title>
-  <link rel="stylesheet" href="style.css?v=2026-08-16-kalshi" />
+  <link rel="stylesheet" href="style.css?v=2026-08-16-bovada" />
 </head>
 <body>
   <div class="container">
@@ -154,7 +154,9 @@
           <strong>Fantasy points implied by the betting markets.</strong>
           Each player's market lines converted to PPR / half-PPR / standard using
           the same scoring as the Rankings tab. Lines come from FanDuel where
-          posted, otherwise Kalshi's ladder.
+          posted, then Bovada, otherwise Kalshi's ladder. Bovada is the only
+          book here quoting <em>receiving TDs</em>; Kalshi is the only source
+          for <em>receptions</em>.
           <br /><br />
           A player is scored only when every stat their position needs is
           available. Anyone missing one shows <span class="nan-key">NaN</span> —
@@ -214,6 +216,6 @@
   <!-- Version query busts the 10-minute GitHub Pages cache on app.js. Without
        it a stale script can pair with fresh markup and shift every column.
        Bump on any app.js change. -->
-  <script src="app.js?v=2026-08-16-kalshi"></script>
+  <script src="app.js?v=2026-08-16-bovada"></script>
 </body>
 </html>

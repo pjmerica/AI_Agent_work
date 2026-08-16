@@ -36,11 +36,24 @@ jobs:
         run: python scripts/fetch_kalshi_season_props.py
         continue-on-error: true
 
+      # Bovada is the only book here quoting season receiving TDs, which is what
+      # lets most first-round RBs score on the Market Points tab.
+      - name: Scrape Bovada season-long props
+        run: python scripts/fetch_bovada_season_props.py
+        continue-on-error: true
+
+      # Underdog ADP. Reads a CSV from the EZ Dubs repo, so it only runs when
+      # that checkout is available; the committed adp.json stands in otherwise.
+      - name: Build Underdog ADP board
+        run: python scripts/build_ud_adp.py
+        continue-on-error: true
+
       - name: Commit updated data
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add nfl-props/data.json nfl-props/clay.json \
-                  nfl-props/vegas.json nfl-props/kalshi.json
+                  nfl-props/vegas.json nfl-props/kalshi.json \
+                  nfl-props/bovada.json nfl-props/adp.json
           git diff --staged --quiet || git commit -m "chore: refresh NFL projections [skip ci]"
           git push
