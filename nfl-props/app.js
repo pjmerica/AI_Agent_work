@@ -442,7 +442,8 @@
   }
 
   async function ensureMarketData() {
-    const files = { vegas: "vegas.json", kalshi: "kalshi.json", data: "data.json", clay: "clay.json" };
+    const files = { vegas: "vegas.json", kalshi: "kalshi.json", data: "data.json",
+                    clay: "clay.json", adp: "adp.json" };
     for (const [key, file] of Object.entries(files)) {
       if (!cache[key]) {
         try { cache[key] = await fetchJson(file); }
@@ -1390,6 +1391,25 @@
   let marketPos = "ALL";
   let marketHideNaN = false;
   let marketSortDesc = true;
+  // Which column drives the sort: "pts" or "adp". ADP sorts ascending by
+  // default (pick 1.1 is the top of the board), points descending.
+  let marketSortKey = "pts";
+  let marketAdpAsc = true;
+
+  // Underdog ADP, keyed the same two-stage way as the projection lookups so
+  // "Ken Walker" / "Kenneth Walker III" style mismatches still join.
+  function buildAdpLookup(data) {
+    const byKey = new Map();
+    const byAlt = new Map();
+    if (!data || !Array.isArray(data.players)) return { byKey, byAlt };
+    for (const p of data.players) {
+      const k = normPlayerName(p.name);
+      const a = altPlayerKey(p.name);
+      if (k && !byKey.has(k)) byKey.set(k, p);
+      if (a && !byAlt.has(a)) byAlt.set(a, p);
+    }
+    return { byKey, byAlt };
+  }
 
   // Stats a position must have before we'll produce a number.
   // QBs: passing volume + both rushing components (mobile QBs live there).
@@ -1407,6 +1427,7 @@
     const kalshi = cache["kalshi"];
     const fpLut   = buildProjLookup(cache["data"]);
     const clayLut = buildProjLookup(cache["clay"]);
+    const adpLut  = buildAdpLookup(cache["adp"]);
 
     const players = new Map(); // normName -> { name, position, stats:{k:{value,source}} }
     const ensure = (name) => {
@@ -1442,9 +1463,15 @@
 
     const out = [];
     for (const [key, p] of players) {
+      const adpRec = lookupProj(adpLut, p.name);
+      // Undrafted players have no ADP; null sorts to the bottom rather than
+      // pretending they're the first pick.
+      p.adp = adpRec && isFinite(adpRec.adp) ? adpRec.adp : null;
+
       if (!p.position) {
         const fp = lookupProj(fpLut, p.name), clay = lookupProj(clayLut, p.name);
-        p.position = (fp && fp.position) || (clay && clay.position) || null;
+        p.position = (fp && fp.position) || (clay && clay.position) ||
+                     (adpRec && adpRec.pos) || null;
       }
       const req = REQUIRED_STATS[p.position];
       const missing = req ? req.filter((s) => !(s in p.stats)) : null;
@@ -1510,13 +1537,24 @@
       return true;
     });
 
-    // Scored players first (by points), then the NaN rows alphabetically.
-    players.sort((a, b) => {
-      if (a.complete !== b.complete) return a.complete ? -1 : 1;
-      if (!a.complete) return a.name.localeCompare(b.name);
-      const av = a.points[fmt], bv = b.points[fmt];
-      return marketSortDesc ? bv - av : av - bv;
-    });
+    if (marketSortKey === "adp") {
+      // Sorting by ADP ignores the scored/unscored split -- the whole point is
+      // to walk the draft board in order, and an unpriced player at pick 40
+      // still belongs between picks 39 and 41. Players with no ADP sink last.
+      players.sort((a, b) => {
+        if ((a.adp == null) !== (b.adp == null)) return a.adp == null ? 1 : -1;
+        if (a.adp == null) return a.name.localeCompare(b.name);
+        return marketAdpAsc ? a.adp - b.adp : b.adp - a.adp;
+      });
+    } else {
+      // Scored players first (by points), then the NaN rows alphabetically.
+      players.sort((a, b) => {
+        if (a.complete !== b.complete) return a.complete ? -1 : 1;
+        if (!a.complete) return a.name.localeCompare(b.name);
+        const av = a.points[fmt], bv = b.points[fmt];
+        return marketSortDesc ? bv - av : av - bv;
+      });
+    }
 
     if (!players.length) {
       $mrows.innerHTML = "";
@@ -1533,10 +1571,14 @@
       const pts = scored
         ? `<span class="market-pts">${p.points[fmt].toFixed(1)}${p.fitted ? '<span class="fit-mark" title="Includes at least one fitted estimate">~</span>' : ""}</span>`
         : `<span class="market-nan" title="Missing: ${escapeHtml((p.missing || []).map((m) => STAT_LABELS[m] || m).join(", "))}">NaN</span>`;
+      const adpCell = p.adp == null
+        ? `<span class="market-nan" title="No Underdog ADP — undrafted">—</span>`
+        : p.adp.toFixed(1);
       return `<tr class="${scored ? "" : "row-nan"}">
         <td class="rank-num">${scored ? rank : "—"}</td>
         <td class="player-name">${escapeHtml(p.name)}</td>
         <td><span class="pos-badge ${posClass}">${escapeHtml(p.position || "?")}</span></td>
+        <td class="num">${adpCell}</td>
         <td class="num">${pts}</td>
         <td>${marketStatChips(p)}</td>
       </tr>`;
@@ -1568,10 +1610,34 @@
     });
   }
 
+  // Clicking the active column flips its direction; clicking the other column
+  // switches to it, keeping whatever direction that column was last using.
   document.querySelector('[data-msort="pts"]')?.addEventListener("click", () => {
-    marketSortDesc = !marketSortDesc;
+    if (marketSortKey === "pts") marketSortDesc = !marketSortDesc;
+    else marketSortKey = "pts";
+    updateMarketCarets();
     renderMarket();
   });
+
+  document.querySelector('[data-msort="adp"]')?.addEventListener("click", () => {
+    if (marketSortKey === "adp") marketAdpAsc = !marketAdpAsc;
+    else marketSortKey = "adp";
+    updateMarketCarets();
+    renderMarket();
+  });
+
+  // Only the active column shows a caret, so the header says which sort is live.
+  function updateMarketCarets() {
+    const set = (key, active, asc) => {
+      const th = document.querySelector(`[data-msort="${key}"]`);
+      if (!th) return;
+      th.classList.toggle("sort-active", active);
+      const caret = th.querySelector(".caret");
+      if (caret) caret.textContent = active ? (asc ? "▴" : "▾") : "";
+    };
+    set("adp", marketSortKey === "adp", marketAdpAsc);
+    set("pts", marketSortKey === "pts", !marketSortDesc);
+  }
 
   const $vegasPosChips = document.getElementById("vegas-pos-chips");
   if ($vegasPosChips) {

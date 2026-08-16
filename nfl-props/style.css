@@ -442,3 +442,5 @@ tr.row-nan:hover { opacity: 0.85; }
 
 .market-table th.sortable { cursor: pointer; user-select: none; }
 .market-table th.sortable:hover { color: #e2e2f0; }
+/* Only the column actually driving the sort is highlighted. */
+.market-table th.sort-active { color: #e2e2f0; }

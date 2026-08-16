@@ -164,6 +164,10 @@
           lines: Kalshi ladders that never cross 50% get a lognormal fit
           (validated at ~2% median error against ladders where the true midpoint
           is known). Hover any stat for its source.
+          <br /><br />
+          <strong>UD ADP</strong> is the current Underdog board — click the
+          column to sort by draft position and read the market's points against
+          where a player is actually going. Undrafted players show —.
         </div>
 
         <div class="vegas-controls">
@@ -188,7 +192,8 @@
                 <th class="rank">#</th>
                 <th>Player</th>
                 <th>Pos</th>
-                <th class="num sortable" data-msort="pts">Proj <span class="caret">▾</span></th>
+                <th class="num sortable" data-msort="adp" title="Underdog ADP">UD ADP <span class="caret"></span></th>
+                <th class="num sortable sort-active" data-msort="pts">Proj <span class="caret">▾</span></th>
                 <th>Market-implied stats</th>
               </tr>
             </thead>
