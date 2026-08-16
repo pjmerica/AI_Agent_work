@@ -226,6 +226,59 @@ def lognormal_fit(ladder: list[dict]) -> dict | None:
     return {"median": round(math.exp(mu), 1), "sigma": round(sigma, 4), "points": n}
 
 
+# Typical lognormal sigma per stat: the median sigma the two-parameter OLS fit
+# produces on ladders that DO have usable slope, measured over the 2026-08-10
+# snapshot (n=24..43 per stat). Used only to rescue tied-probability ladders,
+# where the slope is undefined but the level still carries information.
+#
+# Back-tested by re-deriving the median for the 113 ladders whose median is
+# directly observable: 4.5% median absolute error, 9.4% at p90, 24% worst.
+# pass_tds has no calibration sample here, so it borrows pass_yds' shape.
+TYPICAL_SIGMA = {
+    "pass_yds":   0.23,
+    "pass_tds":   0.23,
+    "rush_yds":   0.38,
+    "rush_tds":   0.53,
+    "rec_yds":    0.37,
+    "rec_tds":    0.52,
+    "receptions": 0.47,
+}
+
+
+def fit_with_assumed_sigma(ladder: list[dict], stat_key: str) -> dict | None:
+    """
+    Recover a median from a ladder whose rungs share one probability.
+
+    When every usable rung sits at the same P, the OLS regression of ln(k) on
+    -z(p) has zero variance in x and cannot solve for sigma -- that is the
+    `den == 0` bail in lognormal_fit(). But the rungs still say something: each
+    one asserts P(X >= k) = p. Holding sigma at a position-typical value, every
+    rung implies its own median via ln(median) = ln(k) + sigma*z(p), and we take
+    the geometric mean across rungs.
+
+    This is strictly weaker than a real two-parameter fit -- it imports sigma
+    rather than measuring it -- so results are tagged "assumed-sigma" and must
+    surface as estimates, never as quoted lines.
+    """
+    sigma = TYPICAL_SIGMA.get(stat_key)
+    if sigma is None:
+        return None
+    pts = [r for r in ladder if 0.02 < r["prob"] < 0.98 and r["strike"] > 0]
+    if not pts:
+        return None
+    logs = []
+    for r in pts:
+        # P(X >= k) = p  =>  ln(k) = mu - sigma*z(p) with z the standard normal
+        # quantile of the *upper* tail, so mu = ln(k) + sigma*z(p).
+        z = _inv_norm_cdf(r["prob"])
+        logs.append(math.log(r["strike"]) + sigma * z)
+    mu = sum(logs) / len(logs)
+    if not math.isfinite(mu):
+        return None
+    return {"median": round(math.exp(mu), 1), "sigma": sigma,
+            "points": len(pts), "assumedSigma": True}
+
+
 def median_from_ladder(ladder: list[dict]) -> float | None:
     """Linearly interpolate the strike where P crosses 0.50."""
     if not ladder:
@@ -304,12 +357,17 @@ def main() -> None:
                 continue
             observed = median_from_ladder(ladder)
             fit = lognormal_fit(ladder)
+            if fit is None:
+                # Slope undefined (every usable rung at one probability). Import
+                # a position-typical sigma rather than giving up the ladder.
+                fit = fit_with_assumed_sigma(ladder, stat_key)
             # `line` is the single best line-equivalent, with its provenance in
             # `lineSource` so consumers can distinguish quoted-ish from modelled.
             if observed is not None:
                 line, line_source = observed, "interpolated"
             elif fit is not None:
-                line, line_source = fit["median"], "fitted"
+                line = fit["median"]
+                line_source = "assumed-sigma" if fit.get("assumedSigma") else "fitted"
             else:
                 line, line_source = None, None
 

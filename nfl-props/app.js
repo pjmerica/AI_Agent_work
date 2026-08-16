@@ -1445,7 +1445,11 @@
           if (s.line == null) continue;
           ensure(p.name).stats[statKey] = {
             value: s.line,
-            source: s.lineSource === "fitted" ? "fit" : "kalshi",
+            // Both modelled sources ("fitted" and the weaker "assumed-sigma")
+            // must render as estimates — only an interpolated ladder is a
+            // real observed crossing.
+            source: (s.lineSource === "fitted" || s.lineSource === "assumed-sigma")
+              ? "fit" : "kalshi",
           };
         }
       }
