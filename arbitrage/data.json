@@ -1,17 +1,42 @@
 {
-  "lastUpdated": "2026-08-17T01:12:34.907Z",
+  "lastUpdated": "2026-08-17T06:53:40.687Z",
   "polymarketCount": 100,
-  "predictitCount": 505,
-  "matchCount": 1,
+  "predictitCount": 504,
+  "matchCount": 2,
   "matches": [
     {
       "polymarket": {
         "platform": "Polymarket",
+        "title": "Will Mary Peltola win the Alaska Senate primary by less than 3%?",
+        "yesPrice": 0.195,
+        "noPrice": 0.805,
+        "url": "https://polymarket.com/event/will-mary-peltola-win-the-alaska-senate-primary-by-less-than-3-20260811144528179",
+        "volume": 999.353931
+      },
+      "predictit": {
+        "platform": "PredictIt",
+        "title": "Will Mary Peltola win the most votes in the Alaska Senate primary?",
+        "yesPrice": 0.9,
+        "noPrice": 0.13,
+        "url": "https://www.predictit.org/markets/detail/8933/Who-will-win-the-most-votes-in-the-Alaska-Senate-primary",
+        "volume": null
+      },
+      "score": 86,
+      "entities": 1,
+      "diff": 70.5,
+      "arb": true,
+      "arbProfit": 70.5,
+      "buyYesOn": "Polymarket",
+      "buyNoOn": "PredictIt"
+    },
+    {
+      "polymarket": {
+        "platform": "Polymarket",
         "title": "Will Gabriel Attal be on the ballot for the 2027 French presidential election?",
-        "yesPrice": 0.31,
-        "noPrice": 0.69,
+        "yesPrice": 0.3,
+        "noPrice": 0.7,
         "url": "https://polymarket.com/event/will-gabriel-attal-be-on-the-ballot-for-the-2027-french-presidential-election",
-        "volume": 9905.248179999999
+        "volume": 9905.24818
       },
       "predictit": {
         "platform": "PredictIt",
@@ -23,9 +48,9 @@
       },
       "score": 71,
       "entities": 1,
-      "diff": 38,
+      "diff": 39,
       "arb": true,
-      "arbProfit": 38,
+      "arbProfit": 39,
       "buyYesOn": "Polymarket",
       "buyNoOn": "PredictIt"
     }
