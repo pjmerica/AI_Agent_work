@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>NFL Season Projections</title>
-  <link rel="stylesheet" href="style.css?v=2026-08-16-proj" />
+  <link rel="stylesheet" href="style.css?v=2026-08-17-fitfix" />
 </head>
 <body>
   <div class="container">
@@ -162,10 +162,18 @@
           available. Anyone missing one shows <span class="nan-key">NaN</span> —
           the markets simply don't price that stat for them, and a partial sum
           would understate them badly. Values marked
-          <span class="fit-key">~</span> are fitted estimates rather than posted
-          lines: Kalshi ladders that never cross 50% get a lognormal fit
-          (validated at ~2% median error against ladders where the true midpoint
-          is known). Hover any stat for its source.
+          <span class="fit-key">~</span> are modelled from a Kalshi ladder
+          rather than posted: either a lognormal fit (ladders that never cross
+          50%) or an assumed-sigma fit (rungs tied at one probability). Hover
+          any stat for its source.
+          <br /><br />
+          Measured against the projection consensus, the plain <em>fitted</em>
+          values miss by ~34% at the median and collapse toward zero on thin
+          books — Puka Nacua priced at 1.8 receiving TDs, Michael Penix at 3.8
+          passing yards. They are replaced with projections by default;
+          untick to see the raw fits. Assumed-sigma is far better (~15%) and is
+          the only thing giving most receivers a receptions line, so it is kept
+          unless you ask otherwise.
           <br /><br />
           <strong>UD ADP</strong> is the current Underdog board — click the
           column to sort by draft position and read the market's points against
@@ -196,6 +204,14 @@
           <label class="delta-toggle" title="Books post no season receptions market at all, and skip receiving props for most committee RBs. This fills only those gaps with the FantasyPros/Clay consensus, marked P.">
             <input type="checkbox" id="market-use-proj" />
             Fill unpriced stats with projections <span class="proj-key">P</span>
+          </label>
+          <label class="delta-toggle" title="Fitted values are modelled from Kalshi ladders that never cross 50%, and they miss badly — 34% median error, collapsing toward zero on thin books. Replacing them with the projection consensus is strictly more accurate.">
+            <input type="checkbox" id="market-replace-fitted" checked />
+            Replace unreliable fitted values
+          </label>
+          <label class="delta-toggle" title="Assumed-sigma values come from ladders whose rungs share one probability. At ~15% median error they are much better than fitted, and they are the only source of a receptions line for most receivers — so this is off by default.">
+            <input type="checkbox" id="market-replace-sigma" />
+            …also replace assumed-sigma
           </label>
         </div>
 
@@ -229,6 +245,6 @@
   <!-- Version query busts the 10-minute GitHub Pages cache on app.js. Without
        it a stale script can pair with fresh markup and shift every column.
        Bump on any app.js change. -->
-  <script src="app.js?v=2026-08-16-proj"></script>
+  <script src="app.js?v=2026-08-17-fitfix"></script>
 </body>
 </html>

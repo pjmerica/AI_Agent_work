@@ -1406,6 +1406,12 @@
   // Off by default: the tab's premise is market-implied points, so projections
   // are opt-in rather than silently blended into a "market" number.
   let marketUseProj = false;
+  // ON by default: fitted values are wrong often enough (34% median error) that
+  // showing them is worse than showing a projection.
+  let marketReplaceFitted = true;
+  // Off by default: assumed-sigma is materially better than fitted, and it is
+  // the only thing giving most receivers a receptions line.
+  let marketReplaceSigma = false;
 
   // Underdog ADP, keyed the same two-stage way as the projection lookups so
   // "Ken Walker" / "Kenneth Walker III" style mismatches still join.
@@ -1455,14 +1461,16 @@
       for (const p of kalshi.players) {
         for (const [statKey, s] of Object.entries(p.stats || {})) {
           if (s.line == null) continue;
-          ensure(p.name).stats[statKey] = {
-            value: s.line,
-            // Both modelled sources ("fitted" and the weaker "assumed-sigma")
-            // must render as estimates — only an interpolated ladder is a
-            // real observed crossing.
-            source: (s.lineSource === "fitted" || s.lineSource === "assumed-sigma")
-              ? "fit" : "kalshi",
-          };
+          // Keep the two modelled kinds distinct: "fitted" (lognormal OLS on a
+          // ladder that never crosses 50%) is measurably unreliable — 34%
+          // median error against the projection consensus, and it collapses
+          // toward zero on thin ladders. "assumed-sigma" is far better at
+          // 14.9%. Both still render as estimates, but only the former is
+          // replaced by default.
+          const src = s.lineSource === "fitted" ? "fit"
+                    : s.lineSource === "assumed-sigma" ? "sigma"
+                    : "kalshi";
+          ensure(p.name).stats[statKey] = { value: s.line, source: src };
         }
       }
     }
@@ -1509,6 +1517,37 @@
       // those players. These cells are NOT market-derived and are tracked
       // separately so the UI can mark them and the points as projection-backed.
       p.projFilled = [];
+
+      // Replace unreliable fitted ladders with the projection consensus. A
+      // fitted value is a modelled guess at a line the market never actually
+      // crossed, and it fails badly (Penix at 3.8 passing yards, Puka at 1.8
+      // receiving TDs) — a projection is simply better information there.
+      // This runs regardless of the fill-gaps toggle, since it repairs a value
+      // that is already wrong rather than inventing a missing one.
+      if (req && marketReplaceFitted) {
+        for (const statKey of Object.keys(p.stats)) {
+          const cur = p.stats[statKey];
+          if (!cur || cur.source !== "fit") continue;
+          const v = projStat(fp, clay, statKey);
+          if (v == null) continue;
+          p.stats[statKey] = { value: v, source: "proj" };
+          p.projFilled.push(statKey);
+        }
+      }
+      // The weaker assumed-sigma values too, when asked. Off by default: at
+      // 14.9% median they beat fitted by a wide margin and they are what give
+      // most WRs a receptions line at all.
+      if (req && marketReplaceSigma) {
+        for (const statKey of Object.keys(p.stats)) {
+          const cur = p.stats[statKey];
+          if (!cur || cur.source !== "sigma") continue;
+          const v = projStat(fp, clay, statKey);
+          if (v == null) continue;
+          p.stats[statKey] = { value: v, source: "proj" };
+          p.projFilled.push(statKey);
+        }
+      }
+
       if (req && marketUseProj) {
         for (const statKey of req) {
           if (statKey in p.stats) continue;
@@ -1531,7 +1570,8 @@
           half:     fantasyPoints(stats, "half"),
           standard: fantasyPoints(stats, "standard"),
         };
-        p.fitted = Object.values(p.stats).some((s) => s.source === "fit");
+        p.fitted = Object.values(p.stats).some(
+          (s) => s.source === "fit" || s.source === "sigma");
         p.hasProj = p.projFilled.length > 0;
       } else {
         p.points = null;
@@ -1557,8 +1597,9 @@
     fanduel: "FanDuel posted line",
     bovada: "Bovada posted line",
     kalshi: "Kalshi ladder (interpolated 50% strike)",
-    fit: "Fitted estimate — Kalshi ladder never crosses 50%",
-    proj: "Projection consensus — no book prices this stat",
+    fit: "Fitted estimate — Kalshi ladder never crosses 50% (unreliable: ~34% median error)",
+    sigma: "Kalshi ladder, assumed-sigma fit — rungs tied at one probability",
+    proj: "Projection consensus — no market value, or the market value was an unreliable fit",
   };
 
   function marketStatChips(p) {
@@ -1570,7 +1611,8 @@
       if (!s) continue;
       const dec = k.endsWith("_tds") || k === "receptions" ? 1 : 0;
       // "~" = modelled from a ladder; "P" = projection, not a market number.
-      const mark = s.source === "fit" ? "~" : s.source === "proj" ? "P " : "";
+      const mark = (s.source === "fit" || s.source === "sigma") ? "~"
+                 : s.source === "proj" ? "P " : "";
       parts.push(
         `<span class="market-chip src-${s.source}" title="${escapeHtml(SOURCE_LABEL[s.source] || "")}">` +
         `<span class="mk-label">${escapeHtml(STAT_LABELS[k] || k)}</span> ` +
@@ -1678,6 +1720,24 @@
   if ($marketUseProj) {
     $marketUseProj.addEventListener("change", (e) => {
       marketUseProj = e.target.checked;
+      renderMarket();
+    });
+  }
+
+  const $marketReplaceFitted = document.getElementById("market-replace-fitted");
+  if ($marketReplaceFitted) {
+    marketReplaceFitted = $marketReplaceFitted.checked;
+    $marketReplaceFitted.addEventListener("change", (e) => {
+      marketReplaceFitted = e.target.checked;
+      renderMarket();
+    });
+  }
+
+  const $marketReplaceSigma = document.getElementById("market-replace-sigma");
+  if ($marketReplaceSigma) {
+    marketReplaceSigma = $marketReplaceSigma.checked;
+    $marketReplaceSigma.addEventListener("change", (e) => {
+      marketReplaceSigma = e.target.checked;
       renderMarket();
     });
   }
