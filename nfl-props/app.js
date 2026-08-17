@@ -56,6 +56,14 @@
     "dk": "d k",
   };
 
+  // Whole-name fixes for cases the first-name alias map cannot reach: a
+  // nickname that is not a standard shortening, and a misspelling one source
+  // ships. Keyed on the already-normalized name.
+  const FULL_NAME_ALIASES = {
+    "cam skattebo": "cameron skattebo",
+    "quishon judkins": "quinshon judkins",
+  };
+
   function normPlayerName(s) {
     if (!s) return "";
     let out = s.toLowerCase();
@@ -68,7 +76,7 @@
       parts[0] = FIRST_NAME_ALIASES[parts[0]];
       out = parts.join(" ");
     }
-    return out;
+    return FULL_NAME_ALIASES[out] || out;
   }
 
   // Secondary key: first letter of first name + last token.
@@ -1395,6 +1403,9 @@
   // default (pick 1.1 is the top of the board), points descending.
   let marketSortKey = "pts";
   let marketAdpAsc = true;
+  // Off by default: the tab's premise is market-implied points, so projections
+  // are opt-in rather than silently blended into a "market" number.
+  let marketUseProj = false;
 
   // Underdog ADP, keyed the same two-stage way as the projection lookups so
   // "Ken Walker" / "Kenneth Walker III" style mismatches still join.
@@ -1485,12 +1496,29 @@
       // pretending they're the first pick.
       p.adp = adpRec && isFinite(adpRec.adp) ? adpRec.adp : null;
 
+      const fp = lookupProj(fpLut, p.name), clay = lookupProj(clayLut, p.name);
       if (!p.position) {
-        const fp = lookupProj(fpLut, p.name), clay = lookupProj(clayLut, p.name);
         p.position = (fp && fp.position) || (clay && clay.position) ||
                      (adpRec && adpRec.pos) || null;
       }
       const req = REQUIRED_STATS[p.position];
+
+      // Optional fallback: fill stats no book prices with the projection
+      // consensus. Books deliberately skip receiving props for committee RBs
+      // and season receptions entirely, so market data alone can never score
+      // those players. These cells are NOT market-derived and are tracked
+      // separately so the UI can mark them and the points as projection-backed.
+      p.projFilled = [];
+      if (req && marketUseProj) {
+        for (const statKey of req) {
+          if (statKey in p.stats) continue;
+          const v = projStat(fp, clay, statKey);
+          if (v == null) continue;
+          p.stats[statKey] = { value: v, source: "proj" };
+          p.projFilled.push(statKey);
+        }
+      }
+
       const missing = req ? req.filter((s) => !(s in p.stats)) : null;
       p.missing = missing;
       p.complete = !!req && missing.length === 0;
@@ -1504,6 +1532,7 @@
           standard: fantasyPoints(stats, "standard"),
         };
         p.fitted = Object.values(p.stats).some((s) => s.source === "fit");
+        p.hasProj = p.projFilled.length > 0;
       } else {
         p.points = null;
       }
@@ -1512,11 +1541,24 @@
     return out;
   }
 
+  // Consensus value for one stat from the projection sources. Averages the two
+  // when both have the player, so a single outlier source carries less weight.
+  function projStat(fp, clay, statKey) {
+    const vals = [];
+    for (const rec of [fp, clay]) {
+      const v = rec && rec.stats ? rec.stats[statKey] : null;
+      if (typeof v === "number" && isFinite(v)) vals.push(v);
+    }
+    if (!vals.length) return null;
+    return Math.round((vals.reduce((a, b) => a + b, 0) / vals.length) * 10) / 10;
+  }
+
   const SOURCE_LABEL = {
     fanduel: "FanDuel posted line",
     bovada: "Bovada posted line",
     kalshi: "Kalshi ladder (interpolated 50% strike)",
     fit: "Fitted estimate — Kalshi ladder never crosses 50%",
+    proj: "Projection consensus — no book prices this stat",
   };
 
   function marketStatChips(p) {
@@ -1527,7 +1569,8 @@
       const s = p.stats[k];
       if (!s) continue;
       const dec = k.endsWith("_tds") || k === "receptions" ? 1 : 0;
-      const mark = s.source === "fit" ? "~" : "";
+      // "~" = modelled from a ladder; "P" = projection, not a market number.
+      const mark = s.source === "fit" ? "~" : s.source === "proj" ? "P " : "";
       parts.push(
         `<span class="market-chip src-${s.source}" title="${escapeHtml(SOURCE_LABEL[s.source] || "")}">` +
         `<span class="mk-label">${escapeHtml(STAT_LABELS[k] || k)}</span> ` +
@@ -1586,8 +1629,11 @@
       const posClass = "pos-" + (p.position || "?");
       const scored = p.complete;
       if (scored) rank++;
+      const projMark = p.hasProj
+        ? `<span class="proj-mark" title="Includes ${p.projFilled.length} projection-filled stat(s) — no book prices ${p.projFilled.length > 1 ? "them" : "it"}: ${escapeHtml(p.projFilled.map((m) => STAT_LABELS[m] || m).join(", "))}">P</span>`
+        : "";
       const pts = scored
-        ? `<span class="market-pts">${p.points[fmt].toFixed(1)}${p.fitted ? '<span class="fit-mark" title="Includes at least one fitted estimate">~</span>' : ""}</span>`
+        ? `<span class="market-pts">${p.points[fmt].toFixed(1)}${p.fitted ? '<span class="fit-mark" title="Includes at least one fitted estimate">~</span>' : ""}${projMark}</span>`
         : `<span class="market-nan" title="Missing: ${escapeHtml((p.missing || []).map((m) => STAT_LABELS[m] || m).join(", "))}">NaN</span>`;
       const adpCell = p.adp == null
         ? `<span class="market-nan" title="No Underdog ADP — undrafted">—</span>`
@@ -1624,6 +1670,14 @@
   if ($marketHideNaN) {
     $marketHideNaN.addEventListener("change", (e) => {
       marketHideNaN = e.target.checked;
+      renderMarket();
+    });
+  }
+
+  const $marketUseProj = document.getElementById("market-use-proj");
+  if ($marketUseProj) {
+    $marketUseProj.addEventListener("change", (e) => {
+      marketUseProj = e.target.checked;
       renderMarket();
     });
   }

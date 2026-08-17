@@ -405,6 +405,7 @@ footer {
   font-size: 15px;
 }
 .fit-mark { color: #f5b041; margin-left: 1px; font-weight: 700; }
+.proj-mark { color: #78aaff; margin-left: 2px; font-weight: 700; font-size: 11px; }
 
 .market-nan {
   color: #6a6a8a;
@@ -430,6 +431,12 @@ tr.row-nan:hover { opacity: 0.85; }
 .market-chip .mk-label { color: #7a7a95; margin-right: 2px; }
 .market-chip.src-fanduel { border-color: rgba(91, 76, 245, 0.4); }
 .market-chip.src-bovada  { border-color: rgba(232, 106, 92, 0.4); }
+/* Projection-filled: dashed, because it is not a market number at all. */
+.market-chip.src-proj {
+  border-style: dashed;
+  border-color: rgba(120, 170, 255, 0.45);
+  color: #bcd3f5;
+}
 .market-chip.src-kalshi  { border-color: rgba(88, 214, 141, 0.35); }
 .market-chip.src-fit     { border-color: rgba(245, 176, 65, 0.4); color: #e8d5b0; }
 .market-chip.missing {
@@ -440,6 +447,7 @@ tr.row-nan:hover { opacity: 0.85; }
 
 .nan-key { color: #6a6a8a; font-weight: 700; }
 .fit-key { color: #f5b041; font-weight: 700; }
+.proj-key { color: #78aaff; font-weight: 700; }
 
 .market-table th.sortable { cursor: pointer; user-select: none; }
 .market-table th.sortable:hover { color: #e2e2f0; }

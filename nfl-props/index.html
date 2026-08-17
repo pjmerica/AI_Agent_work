@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>NFL Season Projections</title>
-  <link rel="stylesheet" href="style.css?v=2026-08-16-bovada" />
+  <link rel="stylesheet" href="style.css?v=2026-08-16-proj" />
 </head>
 <body>
   <div class="container">
@@ -170,6 +170,15 @@
           <strong>UD ADP</strong> is the current Underdog board — click the
           column to sort by draft position and read the market's points against
           where a player is actually going. Undrafted players show —.
+          <br /><br />
+          No book anywhere posts a season <em>receptions</em> market, and books
+          skip receiving props entirely for most committee RBs — so those
+          players can never score on market data alone. Tick
+          <em>Fill unpriced stats with projections</em> to substitute the
+          FantasyPros/Clay consensus for just those gaps. Filled cells are
+          dashed and the total is flagged
+          <span class="proj-key">P</span>; hover either to see which stats came
+          from projections rather than a market.
         </div>
 
         <div class="vegas-controls">
@@ -183,6 +192,10 @@
           <label class="delta-toggle">
             <input type="checkbox" id="market-hide-nan" />
             Hide incomplete (NaN) players
+          </label>
+          <label class="delta-toggle" title="Books post no season receptions market at all, and skip receiving props for most committee RBs. This fills only those gaps with the FantasyPros/Clay consensus, marked P.">
+            <input type="checkbox" id="market-use-proj" />
+            Fill unpriced stats with projections <span class="proj-key">P</span>
           </label>
         </div>
 
@@ -216,6 +229,6 @@
   <!-- Version query busts the 10-minute GitHub Pages cache on app.js. Without
        it a stale script can pair with fresh markup and shift every column.
        Bump on any app.js change. -->
-  <script src="app.js?v=2026-08-16-bovada"></script>
+  <script src="app.js?v=2026-08-16-proj"></script>
 </body>
 </html>
