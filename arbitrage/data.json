@@ -1,7 +1,33 @@
 {
-  "lastUpdated": "2026-08-16T18:27:40.762Z",
+  "lastUpdated": "2026-08-17T01:12:34.907Z",
   "polymarketCount": 100,
-  "predictitCount": 506,
-  "matchCount": 0,
-  "matches": []
+  "predictitCount": 505,
+  "matchCount": 1,
+  "matches": [
+    {
+      "polymarket": {
+        "platform": "Polymarket",
+        "title": "Will Gabriel Attal be on the ballot for the 2027 French presidential election?",
+        "yesPrice": 0.31,
+        "noPrice": 0.69,
+        "url": "https://polymarket.com/event/will-gabriel-attal-be-on-the-ballot-for-the-2027-french-presidential-election",
+        "volume": 9905.248179999999
+      },
+      "predictit": {
+        "platform": "PredictIt",
+        "title": "Will Gabriel Attal win the next French presidential election?",
+        "yesPrice": 0.69,
+        "noPrice": 0.98,
+        "url": "https://www.predictit.org/markets/detail/8766/Who-will-win-the-next-French-presidential-election",
+        "volume": null
+      },
+      "score": 71,
+      "entities": 1,
+      "diff": 38,
+      "arb": true,
+      "arbProfit": 38,
+      "buyYesOn": "Polymarket",
+      "buyNoOn": "PredictIt"
+    }
+  ]
 }
