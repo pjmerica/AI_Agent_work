@@ -1,17 +1,17 @@
 {
-  "lastUpdated": "2026-08-19T01:11:57.111Z",
+  "lastUpdated": "2026-08-19T06:41:14.144Z",
   "polymarketCount": 100,
-  "predictitCount": 501,
-  "matchCount": 1,
+  "predictitCount": 499,
+  "matchCount": 2,
   "matches": [
     {
       "polymarket": {
         "platform": "Polymarket",
         "title": "Will Gabriel Attal be on the ballot for the 2027 French presidential election?",
-        "yesPrice": 0.28,
-        "noPrice": 0.72,
+        "yesPrice": 0.32,
+        "noPrice": 0.68,
         "url": "https://polymarket.com/event/will-gabriel-attal-be-on-the-ballot-for-the-2027-french-presidential-election",
-        "volume": 9941.89818
+        "volume": 9956.09818
       },
       "predictit": {
         "platform": "PredictIt",
@@ -23,11 +23,36 @@
       },
       "score": 71,
       "entities": 1,
-      "diff": 41,
+      "diff": 37,
       "arb": true,
-      "arbProfit": 41,
+      "arbProfit": 37,
       "buyYesOn": "Polymarket",
       "buyNoOn": "PredictIt"
+    },
+    {
+      "polymarket": {
+        "platform": "Polymarket",
+        "title": "Will J.B. Pritzker be the 2028 Democratic Vice-Presidential nominee?",
+        "yesPrice": 0.0565,
+        "noPrice": 0.9435,
+        "url": "https://polymarket.com/event/will-jb-pritzker-be-the-2028-democratic-vice-presidential-nominee",
+        "volume": 993.5722020000001
+      },
+      "predictit": {
+        "platform": "PredictIt",
+        "title": "Will JB Pritzker win the 2028 Democratic presidential nomination?",
+        "yesPrice": 0.04,
+        "noPrice": 0.97,
+        "url": "https://www.predictit.org/markets/detail/8153/Who-will-win-the-2028-Democratic-presidential-nomination",
+        "volume": null
+      },
+      "score": 38,
+      "entities": 1,
+      "diff": 1.7,
+      "arb": true,
+      "arbProfit": 1.6,
+      "buyYesOn": "PredictIt",
+      "buyNoOn": "Polymarket"
     }
   ]
 }
