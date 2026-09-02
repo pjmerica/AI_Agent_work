@@ -1,15 +1,15 @@
 {
-  "generated": "2026-09-02T19:37:36.378351+00:00",
+  "generated": "2026-09-02T22:57:25.943086+00:00",
   "stats": {
-    "n_items": 538,
-    "n_players": 63,
-    "n_unpriced": 51,
+    "n_items": 521,
+    "n_players": 68,
+    "n_unpriced": 52,
     "by_source": {
-      "Bluesky @minakimes.bsky.social": 21,
-      "Bluesky @rapsheet.bsky.social": 16,
-      "Bluesky @jourdanrodrigue.bsky.social": 2,
+      "Bluesky @minakimes.bsky.social": 17,
+      "Bluesky @rapsheet.bsky.social": 10,
+      "Bluesky @jourdanrodrigue.bsky.social": 1,
       "Bluesky @lateroundqb.bsky.social": 3,
-      "Bluesky @nateatkins.bsky.social": 21,
+      "Bluesky @nateatkins.bsky.social": 16,
       "Bluesky @ffnatejahnke.bsky.social": 15,
       "ProFootballTalk": 30,
       "Yahoo NFL": 47,
@@ -30,7 +30,7 @@
       "SBN GB": 10,
       "SBN HOU": 5,
       "SBN IND": 10,
-      "SBN JAX": 6,
+      "SBN JAX": 5,
       "SBN KC": 10,
       "SBN LAC": 10,
       "SBN LAR": 10,
@@ -68,8 +68,7 @@
       "unpriced": true,
       "signals": [
         "injury",
-        "starter",
-        "training camp"
+        "starter"
       ],
       "items": [
         {
@@ -86,11 +85,29 @@
           "text": "Kirk Cousins, Ashton Jeanty not participating in Wednesday's practice. Jeanty is still recovering from an ankle injury, while the reason for Cousins' absence is currently unknown.",
           "url": "https://www.nbcsports.com/nfl/profootballtalk/rumor-mill/news/kirk-cousins-ashton-jeanty-not-participating-in-wednesdays-practice",
           "source": "ProFootballTalk"
-        },
+        }
+      ]
+    },
+    {
+      "name": "Kyle Juszczyk",
+      "pos": "RB",
+      "team": "SF",
+      "adp": 216.0,
+      "adp_prior": 216.0,
+      "adp_move": 0.0,
+      "proj": null,
+      "sleeper_weight": 1.8,
+      "score": 13.104,
+      "unpriced": true,
+      "signals": [
+        "acl",
+        "injury"
+      ],
+      "items": [
         {
-          "text": "John Spytek on Fernando Mendoza: His time is coming, but he's got to earn it. Raiders head coach Klint Kubiak hasn't made it official, but all indications have been throughout the offseason and training camp that Kirk Cousins will open the season as starting quarterback \u2014 despite the club drafting F",
-          "url": "https://www.nbcsports.com/nfl/profootballtalk/rumor-mill/news/john-spytek-on-fernando-mendoza-his-time-is-coming-but-hes-got-to-earn-it",
-          "source": "ProFootballTalk"
+          "text": "49ers injury updates: Nick Bosa opens up about his recovery; 2 rookies still out. The San Francisco 49ers had one final practice before they head to Australia. Several starters returning from injury took part in Wednesday&#8217;s session: Nick Bosa (ACL)George Kittle (Achilles)Kyle Juszczyk (broken ",
+          "url": "https://www.ninersnation.com/san-francisco-49ers-injuries/162116/49ers-injury-updates-nick-bosa-opens-up-about-his-recovery-2-rookies-still-out",
+          "source": "SBN SF"
         }
       ]
     },
@@ -114,6 +131,11 @@
       ],
       "items": [
         {
+          "text": "Cowboys to re-sign QB Joe Milton to their practice squad. Joe Milton is back with the Dallas Cowboys. Per ESPN&#8217;s Adam Schefter, they&#8217;re bringing him back to their practice squad. Milton was waived during roster cuts early this week when Dallas claimed Emari Demercado. It came as a bit of",
+          "url": "https://www.bloggingtheboys.com/dallas-cowboys-roster/216536/joe-milton-back-practice-squad",
+          "source": "SBN DAL"
+        },
+        {
           "text": "The reasons these 3 Cowboys players were released. The preseason and training camp are over for the Dallas Cowboys, and with that, the team had to make decisions on their roster. Today we\u2019ll go over some of the more intriguing bubble players that were let go by the Cowboys. QB Joe Milton There may n",
           "url": "https://www.bloggingtheboys.com/dallas-cowboys-analysis/216443/reason-players-released-jpe-milton-jaydon-blue-phil-mafah",
           "source": "SBN DAL"
@@ -127,11 +149,6 @@
           "text": "Making sense of Cowboys' surprising roster cuts ahead of 2026 season: Joe Milton, Jaydon Blue and more. Dallas let go of a few notable players on roster cutdown day in 2026. Here are the reasons why",
           "url": "https://www.cbssports.com/nfl/news/making-sense-of-cowboys-surprising-roster-cuts/",
           "source": "CBS Sports NFL"
-        },
-        {
-          "text": "Cowboys practice squad analysis for all signed players. The majority of the Dallas Cowboys practice squad for 2026 is set for the moment, with the big name to watch as a potential returnee being backup QB Joe Milton. If the team is able to get Milton onto the practice squad, it would bring their tot",
-          "url": "https://www.bloggingtheboys.com/dallas-cowboys-depth-chart/216332/2026-practice-squad-players-scouting-report-breakdown",
-          "source": "SBN DAL"
         }
       ]
     },
@@ -174,7 +191,7 @@
       "adp_move": 0.0,
       "proj": null,
       "sleeper_weight": 1.8,
-      "score": 11.7,
+      "score": 10.35,
       "unpriced": true,
       "signals": [
         "depth chart"
@@ -196,7 +213,7 @@
       "adp_move": 0.0,
       "proj": null,
       "sleeper_weight": 1.8,
-      "score": 11.7,
+      "score": 10.35,
       "unpriced": true,
       "signals": [
         "depth chart"
@@ -210,88 +227,46 @@
       ]
     },
     {
-      "name": "Charlie Jones",
-      "pos": "WR",
+      "name": "Emari Demercado",
+      "pos": "RB",
       "team": "FA",
+      "adp": 215.9,
+      "adp_prior": 215.7,
+      "adp_move": -0.2,
+      "proj": null,
+      "sleeper_weight": 1.8,
+      "score": 9.36,
+      "unpriced": true,
+      "signals": [
+        "practice squad",
+        "waived"
+      ],
+      "items": [
+        {
+          "text": "Cowboys to re-sign QB Joe Milton to their practice squad. Joe Milton is back with the Dallas Cowboys. Per ESPN&#8217;s Adam Schefter, they&#8217;re bringing him back to their practice squad. Milton was waived during roster cuts early this week when Dallas claimed Emari Demercado. It came as a bit of",
+          "url": "https://www.bloggingtheboys.com/dallas-cowboys-roster/216536/joe-milton-back-practice-squad",
+          "source": "SBN DAL"
+        }
+      ]
+    },
+    {
+      "name": "Jabari Small",
+      "pos": "RB",
+      "team": "DET",
       "adp": 216.0,
       "adp_prior": 216.0,
       "adp_move": 0.0,
       "proj": null,
       "sleeper_weight": 1.8,
-      "score": 10.25,
+      "score": 9.36,
       "unpriced": true,
       "signals": [
-        "practice squad",
-        "training camp"
+        "waived"
       ],
       "items": [
         {
-          "text": "Who was the hardest cut for the Bengals?. Mitchell Tinsley and Charlie Jones were widely expected to make the roster coming into training camp.",
-          "url": "https://sports.yahoo.com/articles/hardest-cut-bengals-164726427.html",
-          "source": "Yahoo NFL"
-        },
-        {
-          "text": "Giants sign Charlie Jones to practice squad. Since being drafted in the fourth round of the 2023 Draft, Charlie Jones has been the Cincinnati Bengals\u2019 primary punt returner. And he was, no doubt, good at that job. He\u2019s returned 50 career punts for 452 yards and a touchdown. He also has 47 kickoff re",
-          "url": "https://www.cincyjungle.com/cincinnati-bengals-news/197944/giants-sign-charlie-jones-to-practice-squad",
-          "source": "SBN CIN"
-        },
-        {
-          "text": "NY Giants add 4 more players to complete their practice squad. EAST RUTHERFORD, N.J. \u2014 The New York Giants filled out their practice squad on Tuesday by signing four players. The Giants added wide receiver/kick returner Charlie Jones , cornerback Elijah Jones, and offensive linemen Kingsley Eguakun ",
-          "url": "https://www.bigblueview.com/new-york-giants-roster/169838/charlie-jones-elijah-jones-darian-kinnard-kingsley-eguakun-signed-practice-squad",
-          "source": "SBN NYG"
-        }
-      ]
-    },
-    {
-      "name": "Hayden Large",
-      "pos": "",
-      "team": "",
-      "adp": null,
-      "adp_prior": null,
-      "adp_move": null,
-      "proj": null,
-      "sleeper_weight": 1.9,
-      "score": 9.88,
-      "unpriced": true,
-      "signals": [
-        "injured"
-      ],
-      "items": [
-        {
-          "text": "Chicago Bears News: James Lynch &#038; Jack Sanborn added to 53-man roster. Two Chicago Bears fan favorites, an old one in Jack Sanborn and a new one in James Lynch, have returned to the roster after the team cleared room by placing Coby Bryant and Hayden Large were moved to in-season injured reserv",
-          "url": "https://www.windycitygridiron.com/chicago-bears-news/121800/chicago-bears-news-james-lynch-jack-sanborn-added-to-53-man-roster",
-          "source": "SBN CHI"
-        }
-      ]
-    },
-    {
-      "name": "Tyler Conklin",
-      "pos": "TE",
-      "team": "FA",
-      "adp": 216.0,
-      "adp_prior": 216.0,
-      "adp_move": 0.0,
-      "proj": null,
-      "sleeper_weight": 1.8,
-      "score": 9.706,
-      "unpriced": true,
-      "signals": [
-        "ahead of",
-        "injured",
-        "ir",
-        "practice squad",
-        "released",
-        "training camp"
-      ],
-      "items": [
-        {
-          "text": "Detroit Lions place RB Isiah Pacheco on IR, add WR to practice squad. The Detroit Lions announced another wave of moves as they attempt to finalize their roster ahead of their Week 1 game against the New Orleans Saints. Most notably, the Lions placed running back Isiah Pacheco on injured reserve. To",
-          "url": "https://www.prideofdetroit.com/detroit-lions-news/171632/detroit-lions-place-rb-isiah-pacheco-on-ir-add-wr-to-practice-squad",
-          "source": "SBN DET"
-        },
-        {
-          "text": "Report: Detroit Lions to re-sign TE Tyler Conklin. The Detroit Lions are bringing back tight end Tyler Conklin, according to a report from CBS Sports\u2019 Matt Zenitz. Conklin had been repping as TE3 throughout training camp, and it was a surprise to see him released last Sunday. However, with him retur",
-          "url": "https://www.prideofdetroit.com/detroit-lions-news/171604/detroit-lions-re-signing-te-tyler-conklin",
+          "text": "Detroit Lions open 2 roster spots by waiving pair of offensive players. The Detroit Lions waived two players on Wednesday, creating two empty roster spots on their 53-man roster. The players they waived were running back Jabari Small and backup center Seth McLaughlin. Why did the Lions waive these t",
+          "url": "https://www.prideofdetroit.com/detroit-lions-news/171711/detroit-lions-open-2-roster-spots-by-waiving-pair-of-offensive-players",
           "source": "SBN DET"
         }
       ]
@@ -354,6 +329,50 @@
       ]
     },
     {
+      "name": "Hayden Large",
+      "pos": "",
+      "team": "",
+      "adp": null,
+      "adp_prior": null,
+      "adp_move": null,
+      "proj": null,
+      "sleeper_weight": 1.9,
+      "score": 8.74,
+      "unpriced": true,
+      "signals": [
+        "injured"
+      ],
+      "items": [
+        {
+          "text": "Chicago Bears News: James Lynch &#038; Jack Sanborn added to 53-man roster. Two Chicago Bears fan favorites, an old one in Jack Sanborn and a new one in James Lynch, have returned to the roster after the team cleared room by placing Coby Bryant and Hayden Large were moved to in-season injured reserv",
+          "url": "https://www.windycitygridiron.com/chicago-bears-news/121800/chicago-bears-news-james-lynch-jack-sanborn-added-to-53-man-roster",
+          "source": "SBN CHI"
+        }
+      ]
+    },
+    {
+      "name": "Shane Zylstra",
+      "pos": "TE",
+      "team": "FA",
+      "adp": 216.0,
+      "adp_prior": 216.0,
+      "adp_move": 0.0,
+      "proj": null,
+      "sleeper_weight": 1.8,
+      "score": 8.424,
+      "unpriced": true,
+      "signals": [
+        "practice squad"
+      ],
+      "items": [
+        {
+          "text": "Patriots sign tight end Shane Zylstra to practice squad, reach settlements with two rookies. The practice squad has reached capacity in Foxborough. The New England Patriots announced the signing of tight end Shane Zylstra amid a series of moves on Wednesday, bringing the group to its 17-man limit en",
+          "url": "https://www.patspulpit.com/new-england-patriots-news/136060/patriots-sign-shane-zylstra-practice-squad-reach-injury-settlements",
+          "source": "SBN NE"
+        }
+      ]
+    },
+    {
       "name": "Jaleel McLaughlin",
       "pos": "RB",
       "team": "FA",
@@ -378,6 +397,33 @@
           "text": "Former Broncos RB Jaleel McLaughlin has signed to the Cleveland Browns&#8217; practice squad. According to 850 ESPN Cleveland\u2019s Tony Grossi, who covers the Cleveland Browns, former Denver Broncos running back Jaleel McLaughlin has signed to the Cleveland Browns&#8217; practice squad. McLaughlin was ",
           "url": "https://www.milehighreport.com/denver-broncos-news/184207/mclaughlin-browns-broncos-practice-squad",
           "source": "SBN DEN"
+        }
+      ]
+    },
+    {
+      "name": "Charlie Jones",
+      "pos": "WR",
+      "team": "FA",
+      "adp": 216.0,
+      "adp_prior": 216.0,
+      "adp_move": 0.0,
+      "proj": null,
+      "sleeper_weight": 1.8,
+      "score": 8.258,
+      "unpriced": true,
+      "signals": [
+        "practice squad"
+      ],
+      "items": [
+        {
+          "text": "Giants sign Charlie Jones to practice squad. Since being drafted in the fourth round of the 2023 Draft, Charlie Jones has been the Cincinnati Bengals\u2019 primary punt returner. And he was, no doubt, good at that job. He\u2019s returned 50 career punts for 452 yards and a touchdown. He also has 47 kickoff re",
+          "url": "https://www.cincyjungle.com/cincinnati-bengals-news/197944/giants-sign-charlie-jones-to-practice-squad",
+          "source": "SBN CIN"
+        },
+        {
+          "text": "NY Giants add 4 more players to complete their practice squad. EAST RUTHERFORD, N.J. \u2014 The New York Giants filled out their practice squad on Tuesday by signing four players. The Giants added wide receiver/kick returner Charlie Jones , cornerback Elijah Jones, and offensive linemen Kingsley Eguakun ",
+          "url": "https://www.bigblueview.com/new-york-giants-roster/169838/charlie-jones-elijah-jones-darian-kinnard-kingsley-eguakun-signed-practice-squad",
+          "source": "SBN NYG"
         }
       ]
     },
@@ -472,50 +518,6 @@
       ]
     },
     {
-      "name": "Darius Slayton",
-      "pos": "WR",
-      "team": "NYG",
-      "adp": 215.8,
-      "adp_prior": 215.7,
-      "adp_move": -0.1,
-      "proj": null,
-      "sleeper_weight": 1.8,
-      "score": 7.488,
-      "unpriced": true,
-      "signals": [
-        "roster bubble"
-      ],
-      "items": [
-        {
-          "text": "Darius Slayton: I didn't pay much attention to rumors I was on roster bubble. Prior to last Sunday's cutdown day, there were rumors about the roster security of a number of players around the league and Giants wide receiver Darius Slayton was on that list.",
-          "url": "https://www.nbcsports.com/nfl/profootballtalk/rumor-mill/news/darius-slayton-i-didnt-pay-much-attention-to-rumors-i-was-on-roster-bubble",
-          "source": "ProFootballTalk"
-        }
-      ]
-    },
-    {
-      "name": "Mitchell Tinsley",
-      "pos": "WR",
-      "team": "FA",
-      "adp": 216.0,
-      "adp_prior": 216.0,
-      "adp_move": 0.0,
-      "proj": null,
-      "sleeper_weight": 1.8,
-      "score": 7.488,
-      "unpriced": true,
-      "signals": [
-        "training camp"
-      ],
-      "items": [
-        {
-          "text": "Who was the hardest cut for the Bengals?. Mitchell Tinsley and Charlie Jones were widely expected to make the roster coming into training camp.",
-          "url": "https://sports.yahoo.com/articles/hardest-cut-bengals-164726427.html",
-          "source": "Yahoo NFL"
-        }
-      ]
-    },
-    {
       "name": "Cedric Tillman",
       "pos": "WR",
       "team": "FA",
@@ -605,6 +607,31 @@
       ]
     },
     {
+      "name": "Tyler Conklin",
+      "pos": "TE",
+      "team": "FA",
+      "adp": 216.0,
+      "adp_prior": 216.0,
+      "adp_move": 0.0,
+      "proj": null,
+      "sleeper_weight": 1.8,
+      "score": 7.2,
+      "unpriced": true,
+      "signals": [
+        "ahead of",
+        "injured",
+        "ir",
+        "practice squad"
+      ],
+      "items": [
+        {
+          "text": "Detroit Lions place RB Isiah Pacheco on IR, add WR to practice squad. The Detroit Lions announced another wave of moves as they attempt to finalize their roster ahead of their Week 1 game against the New Orleans Saints. Most notably, the Lions placed running back Isiah Pacheco on injured reserve. To",
+          "url": "https://www.prideofdetroit.com/detroit-lions-news/171632/detroit-lions-place-rb-isiah-pacheco-on-ir-add-wr-to-practice-squad",
+          "source": "SBN DET"
+        }
+      ]
+    },
+    {
       "name": "Savion Williams",
       "pos": "WR",
       "team": "GB",
@@ -676,40 +703,6 @@
       ]
     },
     {
-      "name": "Fernando Mendoza",
-      "pos": "QB",
-      "team": "LV",
-      "adp": 191.7,
-      "adp_prior": 187.2,
-      "adp_move": -4.5,
-      "proj": null,
-      "sleeper_weight": 1.8,
-      "score": 7.047,
-      "unpriced": false,
-      "signals": [
-        "snaps",
-        "starter",
-        "training camp"
-      ],
-      "items": [
-        {
-          "text": "Dolphins vs. Raiders: Kirk Cousins named starter for Las Vegas in Week 1. The Dolphins will face veteran quarterback Kirk Cousins in Week 1. First overall pick Fernando Mendoza will be on the bench.",
-          "url": "https://sports.yahoo.com/articles/dolphins-vs-raiders-kirk-cousins-170839733.html",
-          "source": "Yahoo NFL"
-        },
-        {
-          "text": "John Spytek on Fernando Mendoza: His time is coming, but he's got to earn it. Raiders head coach Klint Kubiak hasn't made it official, but all indications have been throughout the offseason and training camp that Kirk Cousins will open the season as starting quarterback \u2014 despite the club drafting F",
-          "url": "https://www.nbcsports.com/nfl/profootballtalk/rumor-mill/news/john-spytek-on-fernando-mendoza-his-time-is-coming-but-hes-got-to-earn-it",
-          "source": "ProFootballTalk"
-        },
-        {
-          "text": "2026 NFL rookie grades: How Fernando Mendoza, Ty Simpson and every first-round pick performed in preseason. Which first-round picks look ready for Week 1? We break down the preseason snaps and performance of all 32 rookies",
-          "url": "https://www.cbssports.com/nfl/news/2026-nfl-rookie-grades-first-round-picks-preseason/",
-          "source": "CBS Sports NFL"
-        }
-      ]
-    },
-    {
       "name": "Joe Fagnano",
       "pos": "",
       "team": "",
@@ -768,7 +761,7 @@
       "adp_move": -35.8,
       "proj": null,
       "sleeper_weight": 1.8,
-      "score": 6.781,
+      "score": 6.66,
       "unpriced": false,
       "signals": [
         "ahead of",
@@ -904,50 +897,6 @@
       ]
     },
     {
-      "name": "Max Brosmer",
-      "pos": "QB",
-      "team": "MIN",
-      "adp": 216.0,
-      "adp_prior": 216.0,
-      "adp_move": 0.0,
-      "proj": null,
-      "sleeper_weight": 1.8,
-      "score": 5.962,
-      "unpriced": true,
-      "signals": [
-        "practice squad"
-      ],
-      "items": [
-        {
-          "text": "Max Brosmer will stick with Vikings on practice squad. As it turns out, Max Brosmer won't be departing the Vikings.",
-          "url": "https://www.nbcsports.com/nfl/profootballtalk/rumor-mill/news/max-brosmer-will-stick-with-vikings-on-practice-squad",
-          "source": "ProFootballTalk"
-        }
-      ]
-    },
-    {
-      "name": "Ty Simpson",
-      "pos": "QB",
-      "team": "LAR",
-      "adp": 216.0,
-      "adp_prior": 216.0,
-      "adp_move": 0.0,
-      "proj": null,
-      "sleeper_weight": 1.8,
-      "score": 5.962,
-      "unpriced": true,
-      "signals": [
-        "snaps"
-      ],
-      "items": [
-        {
-          "text": "2026 NFL rookie grades: How Fernando Mendoza, Ty Simpson and every first-round pick performed in preseason. Which first-round picks look ready for Week 1? We break down the preseason snaps and performance of all 32 rookies",
-          "url": "https://www.cbssports.com/nfl/news/2026-nfl-rookie-grades-first-round-picks-preseason/",
-          "source": "CBS Sports NFL"
-        }
-      ]
-    },
-    {
       "name": "Antonio Williams",
       "pos": "WR",
       "team": "WAS",
@@ -1014,6 +963,63 @@
       ]
     },
     {
+      "name": "Fernando Mendoza",
+      "pos": "QB",
+      "team": "LV",
+      "adp": 191.7,
+      "adp_prior": 187.2,
+      "adp_move": -4.5,
+      "proj": null,
+      "sleeper_weight": 1.8,
+      "score": 5.731,
+      "unpriced": false,
+      "signals": [
+        "snaps",
+        "starter"
+      ],
+      "items": [
+        {
+          "text": "Klint Kubiak names Kirk Cousins starter over No. 1 pick Fernando Mendoza. The Raiders break a six-year streak of past QBs drafted No. 1 overall starting in Week 1",
+          "url": "https://www.cbssports.com/nfl/news/klint-kubiak-names-kirk-cousins-starter-over-no-1-pick-fernando-mendoza/",
+          "source": "CBS Sports NFL"
+        },
+        {
+          "text": "2026 NFL rookie grades: How Fernando Mendoza, Ty Simpson and every first-round pick performed in preseason. Which first-round picks look ready for Week 1? We break down the preseason snaps and performance of all 32 rookies",
+          "url": "https://www.cbssports.com/nfl/news/2026-nfl-rookie-grades-first-round-picks-preseason/",
+          "source": "CBS Sports NFL"
+        }
+      ]
+    },
+    {
+      "name": "George Kittle",
+      "pos": "TE",
+      "team": "SF",
+      "adp": 112.1,
+      "adp_prior": 114.1,
+      "adp_move": 2.0,
+      "proj": null,
+      "sleeper_weight": 1.1,
+      "score": 5.439,
+      "unpriced": false,
+      "signals": [
+        "acl",
+        "ahead of",
+        "injury"
+      ],
+      "items": [
+        {
+          "text": "49ers injury updates: Nick Bosa opens up about his recovery; 2 rookies still out. The San Francisco 49ers had one final practice before they head to Australia. Several starters returning from injury took part in Wednesday&#8217;s session: Nick Bosa (ACL)George Kittle (Achilles)Kyle Juszczyk (broken ",
+          "url": "https://www.ninersnation.com/san-francisco-49ers-injuries/162116/49ers-injury-updates-nick-bosa-opens-up-about-his-recovery-2-rookies-still-out",
+          "source": "SBN SF"
+        },
+        {
+          "text": "George Kittle \u2018trending in the right direction\u2019 for Week 1. The 49ers\u2019 season opener will be nearly exactly months on from George Kittle tearing his Achilles in their wild-card round win over the Philadelphia Eagles. It appears he will mark the occasion by making his return to the field. Kittle\u2019s st",
+          "url": "https://www.ninersnation.com/san-francisco-49ers-news/162104/49ers-george-kittle-trending-right-direction-week-1",
+          "source": "SBN SF"
+        }
+      ]
+    },
+    {
       "name": "Dean Connors",
       "pos": "RB",
       "team": "FA",
@@ -1032,6 +1038,28 @@
           "text": "The Rams announced their practice squad. \n\nAll familiar faces from this summer, including RB Dean Connors, CB Cam Lampkin, S Nick Andersen, OT Blake Hance and 7th-round DT Tim Keenan III.",
           "url": "https://bsky.app/profile/nateatkins.bsky.social/post/3mufqy7cze22n",
           "source": "Bluesky @nateatkins.bsky.social"
+        }
+      ]
+    },
+    {
+      "name": "Ty Simpson",
+      "pos": "QB",
+      "team": "LAR",
+      "adp": 216.0,
+      "adp_prior": 216.0,
+      "adp_move": 0.0,
+      "proj": null,
+      "sleeper_weight": 1.8,
+      "score": 5.184,
+      "unpriced": true,
+      "signals": [
+        "snaps"
+      ],
+      "items": [
+        {
+          "text": "2026 NFL rookie grades: How Fernando Mendoza, Ty Simpson and every first-round pick performed in preseason. Which first-round picks look ready for Week 1? We break down the preseason snaps and performance of all 32 rookies",
+          "url": "https://www.cbssports.com/nfl/news/2026-nfl-rookie-grades-first-round-picks-preseason/",
+          "source": "CBS Sports NFL"
         }
       ]
     },
@@ -1146,6 +1174,28 @@
       ]
     },
     {
+      "name": "Tua Tagovailoa",
+      "pos": "QB",
+      "team": "ATL",
+      "adp": 215.4,
+      "adp_prior": 207.4,
+      "adp_move": -8.0,
+      "proj": null,
+      "sleeper_weight": 1.8,
+      "score": 3.744,
+      "unpriced": false,
+      "signals": [
+        "practice squad"
+      ],
+      "items": [
+        {
+          "text": "Deciphering the Falcons 2026 roster and QB battle with Aaron Freeman. The Falcons finalized their 2026 roster and practice squad after a flurry of moves early in the week, but we&#8217;ve still gotten little clarity on the starting QB heading into Week 1. Kevin Knight is joined by Aaron Freeman (Loc",
+          "url": "https://www.thefalcoholic.com/atlanta-falcons-roster/95731/falcons-roster-qb-battle-nfl-2026-tua-tagovailoa-michael-penix",
+          "source": "SBN ATL"
+        }
+      ]
+    },
+    {
       "name": "Joe Burrow",
       "pos": "QB",
       "team": "CIN",
@@ -1187,6 +1237,28 @@
           "text": "Revoking access is a poor way for teams to handle disagreements with independent media members. As far as tense athlete-vs.-media interactions go, we\u2019ve seen far more incendiary ones than Cam Ward vs. Jared Stillman. Stillman, a radio host and podcaster, asked a question about Ward\u2019s preseason perfo",
           "url": "https://awfulannouncing.com/opinion/titans-revoke-stillman-access-poor-media-precedent.html",
           "source": "Awful Announcing"
+        }
+      ]
+    },
+    {
+      "name": "Michael Penix Jr.",
+      "pos": "QB",
+      "team": "ATL",
+      "adp": 210.1,
+      "adp_prior": 215.5,
+      "adp_move": 5.4,
+      "proj": null,
+      "sleeper_weight": 1.8,
+      "score": 2.995,
+      "unpriced": false,
+      "signals": [
+        "practice squad"
+      ],
+      "items": [
+        {
+          "text": "Deciphering the Falcons 2026 roster and QB battle with Aaron Freeman. The Falcons finalized their 2026 roster and practice squad after a flurry of moves early in the week, but we&#8217;ve still gotten little clarity on the starting QB heading into Week 1. Kevin Knight is joined by Aaron Freeman (Loc",
+          "url": "https://www.thefalcoholic.com/atlanta-falcons-roster/95731/falcons-roster-qb-battle-nfl-2026-tua-tagovailoa-michael-penix",
+          "source": "SBN ATL"
         }
       ]
     },
@@ -1262,46 +1334,25 @@
       ]
     },
     {
-      "name": "George Kittle",
-      "pos": "TE",
+      "name": "Mike Evans",
+      "pos": "WR",
       "team": "SF",
-      "adp": 112.1,
-      "adp_prior": 114.1,
-      "adp_move": 2.0,
+      "adp": 53.1,
+      "adp_prior": 49.2,
+      "adp_move": -3.9,
       "proj": null,
-      "sleeper_weight": 1.1,
-      "score": 2.413,
+      "sleeper_weight": 0.5,
+      "score": 2.275,
       "unpriced": false,
       "signals": [
-        "ahead of"
+        "acl",
+        "injury"
       ],
       "items": [
         {
-          "text": "George Kittle \u2018trending in the right direction\u2019 for Week 1. The 49ers\u2019 season opener will be nearly exactly months on from George Kittle tearing his Achilles in their wild-card round win over the Philadelphia Eagles. It appears he will mark the occasion by making his return to the field. Kittle\u2019s st",
-          "url": "https://www.ninersnation.com/san-francisco-49ers-news/162104/49ers-george-kittle-trending-right-direction-week-1",
+          "text": "49ers injury updates: Nick Bosa opens up about his recovery; 2 rookies still out. The San Francisco 49ers had one final practice before they head to Australia. Several starters returning from injury took part in Wednesday&#8217;s session: Nick Bosa (ACL)George Kittle (Achilles)Kyle Juszczyk (broken ",
+          "url": "https://www.ninersnation.com/san-francisco-49ers-injuries/162116/49ers-injury-updates-nick-bosa-opens-up-about-his-recovery-2-rookies-still-out",
           "source": "SBN SF"
-        }
-      ]
-    },
-    {
-      "name": "Makai Lemon",
-      "pos": "WR",
-      "team": "PHI",
-      "adp": 82.0,
-      "adp_prior": 80.3,
-      "adp_move": -1.7,
-      "proj": null,
-      "sleeper_weight": 0.75,
-      "score": 2.208,
-      "unpriced": true,
-      "signals": [
-        "practice squad"
-      ],
-      "items": [
-        {
-          "text": "Eagles Film Review: Analyzing Makai Lemon\u2019s debut and other 53-man roster inclusions. Thank goodness that is over. The next time I write one of these reviews, we will be discussing a real football game! This review will be shorter than usual and focuses on the players who survived cutdown day, eithe",
-          "url": "https://www.bleedinggreennation.com/philadelphia-eagles-analysis/181706/eagles-film-review-analyzing-makai-lemons-debut-and-other-53-man-roster-inclusions",
-          "source": "SBN PHI"
         }
       ]
     },
@@ -1328,6 +1379,28 @@
       ]
     },
     {
+      "name": "Makai Lemon",
+      "pos": "WR",
+      "team": "PHI",
+      "adp": 82.0,
+      "adp_prior": 80.3,
+      "adp_move": -1.7,
+      "proj": null,
+      "sleeper_weight": 0.75,
+      "score": 1.92,
+      "unpriced": true,
+      "signals": [
+        "practice squad"
+      ],
+      "items": [
+        {
+          "text": "Eagles Film Review: Analyzing Makai Lemon\u2019s debut and other 53-man roster inclusions. Thank goodness that is over. The next time I write one of these reviews, we will be discussing a real football game! This review will be shorter than usual and focuses on the players who survived cutdown day, eithe",
+          "url": "https://www.bleedinggreennation.com/philadelphia-eagles-analysis/181706/eagles-film-review-analyzing-makai-lemons-debut-and-other-53-man-roster-inclusions",
+          "source": "SBN PHI"
+        }
+      ]
+    },
+    {
       "name": "Terry McLaurin",
       "pos": "WR",
       "team": "WAS",
@@ -1346,6 +1419,28 @@
           "text": "How Stefon Diggs \u2018fire\u2019 has helped improve Washington Commanders. The Commanders needed a solid No. 2 receiver entering training camp to fortify the position group and make it complete. That was clear and evident early on, with an experienced veteran opposite Terry McLaurin who could allow rookie An",
           "url": "https://www.hogshaven.com/washington-commanders-news/437113/stefon-diggs-dan-quinn-jaylin-lane",
           "source": "SBN WAS"
+        }
+      ]
+    },
+    {
+      "name": "Jonathon Brooks",
+      "pos": "RB",
+      "team": "CAR",
+      "adp": 75.7,
+      "adp_prior": 82.7,
+      "adp_move": 7.0,
+      "proj": null,
+      "sleeper_weight": 0.75,
+      "score": 1.56,
+      "unpriced": false,
+      "signals": [
+        "injury"
+      ],
+      "items": [
+        {
+          "text": "RB Jonathon Brooks out of practice with soreness, but Panthers unconcerned. Panthers running back Jonathon Brooks remained out of practice on Wednesday, but head coach Dave Canales is unconcerned that Brooks' injury will keep him out of the season opener.",
+          "url": "https://www.nbcsports.com/nfl/profootballtalk/rumor-mill/news/rb-jonathon-brooks-out-of-practice-with-soreness-but-panthers-unconcerned",
+          "source": "ProFootballTalk"
         }
       ]
     },
@@ -1568,7 +1663,7 @@
       "adp_move": 2.2,
       "proj": null,
       "sleeper_weight": 0.3,
-      "score": 0.69,
+      "score": 0.6,
       "unpriced": false,
       "signals": [
         "injury"
