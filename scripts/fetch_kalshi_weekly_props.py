@@ -11,9 +11,12 @@ The ladder math (probability, monotonic enforcement, interpolation, lognormal
 fit) is imported from the season scraper rather than duplicated -- there is one
 definition of "what is this ladder's implied line".
 
-Week is inferred from the markets themselves: Kalshi purges settled markets, so
-whatever is open IS the upcoming slate. Event tickers look like
-KXNFLREC-26SEP13GBMIN, which also gives us the matchup for free.
+The week number is resolved from ESPN's public scoreboard API rather than
+guessed from the calendar -- the 2026 season opens Wednesday 2026-09-09, so a
+date-based guess misreads the opening slate as a later week. Kalshi purges
+settled markets, so whatever is open is the next slate; ESPN says which week
+that actually is. Event tickers look like KXNFLREC-26SEP13GBMIN, which also
+gives us the matchup for free.
 """
 from __future__ import annotations
 
@@ -24,6 +27,7 @@ from collections import defaultdict
 from datetime import datetime, timezone
 from pathlib import Path
 from urllib.parse import urlencode
+from urllib.request import Request, urlopen
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
@@ -46,6 +50,51 @@ SERIES = {
 
 # "KXNFLREC-26SEP13GBMIN" -> ("26SEP13", "GBMIN")
 EVENT_RE = re.compile(r"^KXNFL[A-Z]+-(?P<date>\d{2}[A-Z]{3}\d{2})(?P<teams>[A-Z]{4,8})$")
+
+MONTHS = {"JAN": 1, "FEB": 2, "MAR": 3, "APR": 4, "MAY": 5, "JUN": 6,
+          "JUL": 7, "AUG": 8, "SEP": 9, "OCT": 10, "NOV": 11, "DEC": 12}
+
+
+def ticker_date(code: str) -> str | None:
+    """'26SEP13' -> '20260913'."""
+    m = re.match(r"^(\d{2})([A-Z]{3})(\d{2})$", code or "")
+    if not m:
+        return None
+    yy, mon, dd = m.groups()
+    if mon not in MONTHS:
+        return None
+    return f"20{yy}{MONTHS[mon]:02d}{dd}"
+
+
+def resolve_week(kickoffs: list[str]) -> int | None:
+    """Ask ESPN which NFL week these dates belong to.
+
+    Guessing from the calendar is unreliable: the season opens midweek, so the
+    days before it still belong to week 1's slate, not to a prior week.
+    """
+    dates = sorted(d for d in (ticker_date(k) for k in kickoffs) if d)
+    if not dates:
+        return None
+    try:
+        # Plain request: the Kalshi helper sends headers ESPN 403s on.
+        url = ("https://site.api.espn.com/apis/site/v2/sports/football/nfl/"
+               f"scoreboard?dates={dates[0]}-{dates[-1]}")
+        # ESPN 403s a bare UA on this endpoint; a browser-shaped header set
+        # with a site Referer is accepted.
+        req = Request(url, headers={
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+                          "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0 Safari/537.36",
+            "Accept": "application/json, text/plain, */*",
+            "Accept-Language": "en-US,en;q=0.9",
+            "Referer": "https://www.espn.com/nfl/scoreboard",
+            "Origin": "https://www.espn.com",
+        })
+        with urlopen(req, timeout=25) as r:
+            data = json.loads(r.read().decode("utf-8", "replace"))
+        return (data.get("week") or {}).get("number")
+    except Exception as e:
+        print(f"  ! could not resolve week from ESPN ({e}); leaving unlabelled")
+        return None
 
 
 def fetch_series(ticker: str) -> list[dict]:
@@ -156,6 +205,7 @@ def main() -> None:
               f"(Kalshi ticker error): {', '.join(conflicts[:5])}")
 
     kickoffs = sorted({r["kickoff"] for r in out if r["kickoff"]})
+    week = resolve_week(list(kickoffs))
     OUT_FILE.write_text(json.dumps({
         "lastUpdated": datetime.now(timezone.utc).isoformat(timespec="seconds"),
         "season": "2026",
@@ -165,6 +215,7 @@ def main() -> None:
             "markets, so whatever is open is the next set of games -- there is no "
             "way to fetch a week that has already been played."
         ),
+        "week": week,
         "kickoffs": kickoffs,
         "gameCount": len({r["game"] for r in out}),
         "playerGameCount": len(out),
@@ -176,7 +227,7 @@ def main() -> None:
 
     print(f"\nWrote {OUT_FILE}")
     print(f"  {len(out)} player-games across {len({r['game'] for r in out})} games")
-    print(f"  kickoffs: {kickoffs}")
+    print(f"  week: {week}   kickoffs: {kickoffs}")
     print("  stat coverage - " + ", ".join(f"{k}:{v}" for k, v in sorted(stat_counts.items())))
 
 

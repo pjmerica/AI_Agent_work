@@ -1494,8 +1494,10 @@
 
     if ($meta) {
       const games = wk.gameCount || 0;
-      const when = (wk.kickoffs || []).join(", ");
-      $meta.textContent = `${games} games · ${when}`;
+      // Week comes from ESPN, not a calendar guess: the season opens midweek,
+      // so the days before kickoff still belong to week 1's slate.
+      const wkNum = wk.week != null ? `Week ${wk.week} · ` : "";
+      $meta.textContent = `${wkNum}${games} games`;
     }
 
     if (!players.length) {
