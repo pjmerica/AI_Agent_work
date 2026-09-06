@@ -460,6 +460,10 @@
       try { cache["weekly"] = await fetchJson("weekly.json"); }
       catch (e) { cache["weekly"] = null; }
     }
+    if (!cache["oddsapi"]) {
+      try { cache["oddsapi"] = await fetchJson("oddsapi.json"); }
+      catch (e) { cache["oddsapi"] = null; }
+    }
     // Positions come from the projection sources; the weekly feed has none.
     await ensureMarketData();
     renderWeekly();
@@ -1426,6 +1430,7 @@
     interpolated: "Kalshi ladder — interpolated 50% strike",
     fitted: "Fitted estimate — ladder never crosses 50%",
     expected: "Expected count — sum of P(X ≥ k) across the ladder",
+    books: "Sportsbook consensus — median across books",
   };
 
   function weeklyChips(p) {
@@ -1436,10 +1441,14 @@
       if (!s || s.line == null) continue;
       const dec = k === "any_tds" ? 2
                 : (k.endsWith("_tds") || k === "receptions") ? 1 : 0;
-      const cls = s.lineSource === "fitted" ? "src-fit" : "src-kalshi";
+      const cls = s.lineSource === "fitted" ? "src-fit"
+                : s.lineSource === "books" ? "src-fanduel" : "src-kalshi";
       const mark = s.lineSource === "fitted" ? "~" : "";
+      const detail = s.lineSource === "books"
+        ? `${s.books} book${s.books === 1 ? "" : "s"}, ${s.min}–${s.max}`
+        : `${s.rungs} strikes`;
       parts.push(
-        `<span class="market-chip ${cls}" title="${escapeHtml(WEEKLY_SOURCE_LABEL[s.lineSource] || "")} (${s.rungs} strikes)">` +
+        `<span class="market-chip ${cls}" title="${escapeHtml(WEEKLY_SOURCE_LABEL[s.lineSource] || "")} (${detail})">` +
         `<span class="mk-label">${escapeHtml(STAT_LABELS[k] || k)}</span> ` +
         `${mark}${s.line.toFixed(dec)}</span>`
       );
@@ -1486,7 +1495,40 @@
     const fpLut = buildProjLookup(cache["data"]);
     const clayLut = buildProjLookup(cache["clay"]);
 
-    let players = wk.players.map((p) => {
+    // Merge the multi-book feed into the Kalshi board. A sportsbook consensus
+    // across five books beats a single venue's ladder, so books win on any stat
+    // they both price; Kalshi keeps any_tds, which no book here quotes.
+    // Books also cover far more players — Kalshi prices only 11-20 per game,
+    // omitting names as prominent as Ja'Marr Chase.
+    const merged = new Map();
+    for (const p of wk.players) {
+      merged.set(normPlayerName(p.name), {
+        ...p, stats: { ...p.stats },
+      });
+    }
+    const oa = cache["oddsapi"];
+    if (oa && Array.isArray(oa.players)) {
+      for (const p of oa.players) {
+        const k = normPlayerName(p.name);
+        let rec = merged.get(k);
+        if (!rec) {
+          rec = { name: p.name, matchup: p.matchup, kickoff: p.kickoff, stats: {} };
+          merged.set(k, rec);
+        }
+        for (const [statKey, v] of Object.entries(p.stats || {})) {
+          if (v.line == null) continue;
+          rec.stats[statKey] = {
+            line: v.line,
+            lineSource: "books",
+            books: v.books,
+            min: v.min,
+            max: v.max,
+          };
+        }
+      }
+    }
+
+    let players = [...merged.values()].map((p) => {
       const fp = lookupProj(fpLut, p.name), clay = lookupProj(clayLut, p.name);
       const priced = Object.values(p.stats).filter((s) => s.line != null);
       const tdOnly = priced.length === 1 &&

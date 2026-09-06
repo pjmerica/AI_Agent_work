@@ -31,6 +31,26 @@ from urllib.request import Request, urlopen
 
 OUT_FILE = Path(__file__).resolve().parent.parent / "nfl-props" / "oddsapi.json"
 
+# Kalshi labels a game "TBCIN"; the API gives full club names. Normalising here
+# means merged rows share one matchup format instead of mixing the two styles.
+TEAM_ABBR = {
+    "Arizona Cardinals": "ARI", "Atlanta Falcons": "ATL", "Baltimore Ravens": "BAL",
+    "Buffalo Bills": "BUF", "Carolina Panthers": "CAR", "Chicago Bears": "CHI",
+    "Cincinnati Bengals": "CIN", "Cleveland Browns": "CLE", "Dallas Cowboys": "DAL",
+    "Denver Broncos": "DEN", "Detroit Lions": "DET", "Green Bay Packers": "GB",
+    "Houston Texans": "HOU", "Indianapolis Colts": "IND", "Jacksonville Jaguars": "JAC",
+    "Kansas City Chiefs": "KC", "Las Vegas Raiders": "LV", "Los Angeles Chargers": "LAC",
+    "Los Angeles Rams": "LAR", "Miami Dolphins": "MIA", "Minnesota Vikings": "MIN",
+    "New England Patriots": "NE", "New Orleans Saints": "NO", "New York Giants": "NYG",
+    "New York Jets": "NYJ", "Philadelphia Eagles": "PHI", "Pittsburgh Steelers": "PIT",
+    "San Francisco 49ers": "SF", "Seattle Seahawks": "SEA", "Tampa Bay Buccaneers": "TB",
+    "Tennessee Titans": "TEN", "Washington Commanders": "WAS",
+}
+
+
+def abbr(team: str) -> str:
+    return TEAM_ABBR.get(team, (team or "")[:3].upper())
+
 API = "https://api.the-odds-api.com/v4"
 SPORT = "americanfootball_nfl"
 REGION = "us"
@@ -113,7 +133,8 @@ def main() -> None:
                     rec = rows.setdefault((player, eid), {
                         "name": player,
                         "kickoff": kickoff,
-                        "matchup": f"{away} @ {home}",
+                        "matchup": f"{abbr(away)}{abbr(home)}",
+                        "matchupLong": f"{away} @ {home}",
                         "stats": {},
                     })
                     # Several books quote the same stat. Keep every line so the
