@@ -1408,7 +1408,7 @@
   }
 
 
-  // ── This Week view ─────────────────────────────────────────────────────────
+  // ── Week N view ────────────────────────────────────────────────────────────
   // Per-game Kalshi markets. Deliberately NOT gated on stat completeness the
   // way Market Points is: a per-game line set is inherently partial (nobody
   // prices rushing TDs for a slot receiver), so gating would empty the table.
@@ -1484,13 +1484,27 @@
       };
     });
 
+    // FLEX = every skill position that shares a flex slot. Excluding QB also
+    // makes the ranking honest: QB totals are inflated because passing yards
+    // are always priced, while a receiver's rushing line usually is not.
+    const FLEX_POS = new Set(["RB", "WR", "TE"]);
     players = players.filter((p) => {
-      if (weeklyPos !== "ALL" && p.position !== weeklyPos) return false;
+      if (weeklyPos === "FLEX") {
+        if (!FLEX_POS.has(p.position)) return false;
+      } else if (weeklyPos !== "ALL" && p.position !== weeklyPos) {
+        return false;
+      }
       if (search && !p.name.toLowerCase().includes(search.toLowerCase())) return false;
       return p.points > 0;
     });
 
     players.sort((a, b) => (weeklySortDesc ? b.points - a.points : a.points - b.points));
+
+    // Keep the tab label honest as the season rolls: the markup ships "Week 1"
+    // so the tab reads correctly before any fetch, but the data knows its own
+    // week and wins once loaded.
+    const $tab = document.querySelector('.view-tab[data-view="weekly"]');
+    if ($tab && wk.week != null) $tab.textContent = `Week ${wk.week}`;
 
     if ($meta) {
       const games = wk.gameCount || 0;

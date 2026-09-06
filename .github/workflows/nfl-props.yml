@@ -42,6 +42,21 @@ jobs:
         run: python scripts/fetch_bovada_season_props.py
         continue-on-error: true
 
+      # Per-game markets for the upcoming slate. Kalshi purges settled markets,
+      # so this always fetches the next week's games.
+      - name: Scrape Kalshi per-game (weekly) props
+        run: python scripts/fetch_kalshi_weekly_props.py
+        continue-on-error: true
+
+      # Multi-book per-game props. Needs ODDS_API_KEY (repo secret); the script
+      # exits cleanly when it is absent. Player props bill one credit per event
+      # per market, so this is the expensive step on a 500/month free tier.
+      - name: Scrape The Odds API per-game props
+        run: python scripts/fetch_oddsapi_weekly_props.py
+        env:
+          ODDS_API_KEY: ${{ secrets.ODDS_API_KEY }}
+        continue-on-error: true
+
       # Underdog ADP. Reads a CSV from the EZ Dubs repo, so it only runs when
       # that checkout is available; the committed adp.json stands in otherwise.
       - name: Build Underdog ADP board
@@ -54,6 +69,7 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add nfl-props/data.json nfl-props/clay.json \
                   nfl-props/vegas.json nfl-props/kalshi.json \
-                  nfl-props/bovada.json nfl-props/adp.json
+                  nfl-props/bovada.json nfl-props/adp.json \
+                  nfl-props/weekly.json nfl-props/oddsapi.json
           git diff --staged --quiet || git commit -m "chore: refresh NFL projections [skip ci]"
           git push

@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>NFL Season Projections</title>
-  <link rel="stylesheet" href="style.css?v=2026-09-06-week1" />
+  <link rel="stylesheet" href="style.css?v=2026-09-06-flex" />
 </head>
 <body>
   <div class="container">
@@ -19,7 +19,7 @@
       <button class="view-tab" data-view="viz">Visualizations</button>
       <button class="view-tab" data-view="vegas">Vegas Lines</button>
       <button class="view-tab" data-view="market">Market Points</button>
-      <button class="view-tab" data-view="weekly">This Week</button>
+      <button class="view-tab" data-view="weekly">Week 1</button>
     </div>
 
     <div class="source-tabs" id="source-tabs">
@@ -236,7 +236,7 @@
 
       <div id="weekly-view" class="hidden">
         <div class="callout">
-          <strong>Fantasy points implied by this week's game lines.</strong>
+          <strong>Fantasy points implied by Week 1's game lines.</strong>
           Kalshi's per-game player markets, converted with the same scoring as
           the other tabs. Unlike the season-long board, these ladders are deep
           (9&ndash;10 strikes is typical, versus 1&ndash;4 for season markets),
@@ -259,6 +259,7 @@
           <div class="chip-group" id="weekly-pos-chips">
             <button class="chip active" data-pos="ALL">All</button>
             <button class="chip" data-pos="QB">QB</button>
+            <button class="chip" data-pos="FLEX" title="RB, WR and TE — every skill position that shares a flex slot. Excludes QB, whose totals are inflated by always-priced passing yards.">FLEX</button>
             <button class="chip" data-pos="RB">RB</button>
             <button class="chip" data-pos="WR">WR</button>
             <button class="chip" data-pos="TE">TE</button>
@@ -296,6 +297,6 @@
   <!-- Version query busts the 10-minute GitHub Pages cache on app.js. Without
        it a stale script can pair with fresh markup and shift every column.
        Bump on any app.js change. -->
-  <script src="app.js?v=2026-09-06-week1"></script>
+  <script src="app.js?v=2026-09-06-flex"></script>
 </body>
 </html>
