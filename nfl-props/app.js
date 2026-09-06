@@ -1426,6 +1426,17 @@
   // those partial totals into the ranking buries fully-priced players.
   let weeklyHideTdOnly = true;
 
+  const BOOK_LABEL = {
+    draftkings: "DraftKings",
+    fanduel: "FanDuel",
+    bovada: "Bovada",
+    betrivers: "BetRivers",
+    betonlineag: "BetOnline",
+    betmgm: "BetMGM",
+    williamhill_us: "Caesars",
+    pointsbetus: "PointsBet",
+  };
+
   const WEEKLY_SOURCE_LABEL = {
     interpolated: "Kalshi ladder — interpolated 50% strike",
     fitted: "Fitted estimate — ladder never crosses 50%",
@@ -1444,11 +1455,25 @@
       const cls = s.lineSource === "fitted" ? "src-fit"
                 : s.lineSource === "books" ? "src-fanduel" : "src-kalshi";
       const mark = s.lineSource === "fitted" ? "~" : "";
-      const detail = s.lineSource === "books"
-        ? `${s.books} book${s.books === 1 ? "" : "s"}, ${s.min}–${s.max}`
-        : `${s.rungs} strikes`;
+      // Name each book and the number it posted, so a consensus is auditable
+      // rather than a black box. Books that agree collapse to one line; the
+      // interesting case is the one that disagrees.
+      let detail;
+      if (s.lineSource === "books") {
+        const q = (s.quotes || []).slice()
+          .sort((x, y) => x.line - y.line || x.book.localeCompare(y.book));
+        detail = q.length
+          ? q.map((x) => `${BOOK_LABEL[x.book] || x.book} ${x.line}` +
+                         (x.odds != null ? ` (${x.odds > 0 ? "+" : ""}${x.odds})` : ""))
+             .join("\n")
+          : `${s.books} book${s.books === 1 ? "" : "s"}`;
+        if (s.min !== s.max) detail += `\nspread ${s.min}–${s.max}`;
+      } else {
+        detail = `${s.rungs} strikes`;
+      }
       parts.push(
-        `<span class="market-chip ${cls}" title="${escapeHtml(WEEKLY_SOURCE_LABEL[s.lineSource] || "")} (${detail})">` +
+        `<span class="market-chip ${cls}${s.lineSource === "books" && s.min !== s.max ? " book-split" : ""}" ` +
+        `title="${escapeHtml(WEEKLY_SOURCE_LABEL[s.lineSource] || "")}\n${escapeHtml(detail)}">` +
         `<span class="mk-label">${escapeHtml(STAT_LABELS[k] || k)}</span> ` +
         `${mark}${s.line.toFixed(dec)}</span>`
       );
@@ -1523,6 +1548,7 @@
             books: v.books,
             min: v.min,
             max: v.max,
+            quotes: v.quotes || [],
           };
         }
       }

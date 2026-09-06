@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>NFL Season Projections</title>
-  <link rel="stylesheet" href="style.css?v=2026-09-06-books" />
+  <link rel="stylesheet" href="style.css?v=2026-09-06-perbook" />
 </head>
 <body>
   <div class="container">
@@ -241,7 +241,8 @@
           BetOnline via The Odds API) merged with Kalshi's per-game ladders,
           converted with the same scoring as the other tabs. Where both price a
           stat the book consensus wins &mdash; five books beat one venue &mdash;
-          and hovering a chip shows how many books quoted it and their spread.
+          and hovering a chip lists every book by name with its own number and
+          price. A chip with a dotted underline is one the books disagree on.
           Kalshi still supplies touchdowns, which none of those books post as a
           per-game count. Unlike the season-long board, these ladders are deep
           (9&ndash;10 strikes is typical, versus 1&ndash;4 for season markets),
@@ -312,6 +313,6 @@
   <!-- Version query busts the 10-minute GitHub Pages cache on app.js. Without
        it a stale script can pair with fresh markup and shift every column.
        Bump on any app.js change. -->
-  <script src="app.js?v=2026-09-06-books"></script>
+  <script src="app.js?v=2026-09-06-perbook"></script>
 </body>
 </html>

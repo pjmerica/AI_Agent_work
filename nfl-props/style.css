@@ -476,3 +476,10 @@ tr.row-nan:hover { opacity: 0.85; }
   font-weight: 700;
   vertical-align: super;
 }
+
+/* A book-sourced chip where the books do NOT all agree on the number. The
+   dotted underline is the cue to hover and read the per-book breakdown. */
+.market-chip.book-split {
+  border-bottom-style: dotted;
+  border-bottom-width: 2px;
+}
