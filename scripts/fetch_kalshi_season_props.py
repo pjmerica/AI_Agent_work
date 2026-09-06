@@ -80,14 +80,33 @@ def http_get_json(url: str) -> dict:
 
 
 def money(v) -> float | None:
-    """Kalshi returns prices as decimal strings like '0.6900'."""
+    """Kalshi returns prices as decimal strings like '0.6900'.
+
+    A bid of exactly 0.0000 is a REAL quote -- it means nobody is bidding, which
+    is ordinary for a deep out-of-the-money strike and pairs with a live ask to
+    give a usable midpoint. Treating it as missing silently deleted whole
+    ladders: CeeDee Lamb's 10-rung weekly receptions ladder collapsed to 1 rung
+    because its first three strikes were bid 0.00 / ask 0.89. Only a negative or
+    unparseable price is genuinely absent.
+    """
     if v is None:
         return None
     try:
         f = float(v)
     except (TypeError, ValueError):
         return None
-    return f if f > 0 else None
+    return f if f >= 0 else None
+
+
+def traded_price(v) -> float | None:
+    """Last-trade price, where 0.0000 means 'never traded', not 'worth zero'.
+
+    Distinct from money(): a zero BID is a real quote, but a zero LAST is the
+    absence of a trade. Conflating them let a wide-spread rung report prob 0.0,
+    and enforce_monotonic then clamped every rung below it to zero as well --
+    destroying the whole ladder."""
+    f = money(v)
+    return f if f is not None and f > 0 else None
 
 
 def fetch_series_markets(ticker: str) -> list[dict]:
@@ -115,7 +134,7 @@ def implied_prob(m: dict) -> tuple[float | None, float | None, bool]:
     so flag it rather than silently trusting it.
     """
     bid, ask = money(m.get("yes_bid_dollars")), money(m.get("yes_ask_dollars"))
-    last = money(m.get("last_price_dollars"))
+    last = traded_price(m.get("last_price_dollars"))
 
     if bid is not None and ask is not None:
         spread = ask - bid
