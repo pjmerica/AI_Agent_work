@@ -270,7 +270,8 @@ header h1 { font-size: 28px; font-weight: 700; color: #fff; }
 #table-view.hidden,
 #viz-view.hidden,
 #vegas-view.hidden,
-#market-view.hidden { display: none !important; }
+#market-view.hidden,
+#weekly-view.hidden { display: none !important; }
 
 /* ── Visualizations tab ──────────────────────────────────────────────────── */
 #viz-view {
@@ -454,3 +455,17 @@ tr.row-nan:hover { opacity: 0.85; }
 .market-table th.sortable:hover { color: #e2e2f0; }
 /* Only the column actually driving the sort is highlighted. */
 .market-table th.sort-active { color: #e2e2f0; }
+
+/* This Week view */
+.weekly-game {
+  font-size: 12px;
+  color: #9a9ab0;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.weekly-meta {
+  font-size: 12px;
+  color: #9a9ab0;
+  margin-left: auto;
+  align-self: center;
+}

@@ -367,6 +367,7 @@
     fmt = btn.dataset.fmt;
     render();
     if (currentView === "market") renderMarket();   // points are format-dependent
+    if (currentView === "weekly") renderWeekly();
     if (currentView === "viz" && typeof Chart !== "undefined") {
       cache["aggregated"] = null;
       renderViz();
@@ -407,6 +408,7 @@
     search = e.target.value.trim();
     if (currentView === "vegas") renderVegas();
     else if (currentView === "market") renderMarket();
+    else if (currentView === "weekly") renderWeekly();
     else render();
   });
 
@@ -416,12 +418,14 @@
 
   const $vegasView = document.getElementById("vegas-view");
   const $marketView = document.getElementById("market-view");
+  const $weeklyView = document.getElementById("weekly-view");
 
   function hideAllViews() {
     if ($tableView) $tableView.classList.add("hidden");
     if ($vizView) $vizView.classList.add("hidden");
     if ($vegasView) $vegasView.classList.add("hidden");
     if ($marketView) $marketView.classList.add("hidden");
+    if ($weeklyView) $weeklyView.classList.add("hidden");
   }
 
   function showTableView() {
@@ -447,6 +451,18 @@
     // Reuses the same four files the Vegas view loads.
     await ensureMarketData();
     renderMarket();
+  }
+
+  async function showWeeklyView() {
+    hideAllViews();
+    if ($weeklyView) $weeklyView.classList.remove("hidden");
+    if (!cache["weekly"]) {
+      try { cache["weekly"] = await fetchJson("weekly.json"); }
+      catch (e) { cache["weekly"] = null; }
+    }
+    // Positions come from the projection sources; the weekly feed has none.
+    await ensureMarketData();
+    renderWeekly();
   }
 
   async function ensureMarketData() {
@@ -483,6 +499,7 @@
       if (currentView === "rankings") showTableView();
       else if (currentView === "vegas") showVegasView();
       else if (currentView === "market") showMarketView();
+      else if (currentView === "weekly") showWeeklyView();
       else showVizView();
     });
   }
@@ -1389,6 +1406,139 @@
       $lu.textContent = new Date(Math.min(...stamps)).toLocaleString();
     }
   }
+
+
+  // ── This Week view ─────────────────────────────────────────────────────────
+  // Per-game Kalshi markets. Deliberately NOT gated on stat completeness the
+  // way Market Points is: a per-game line set is inherently partial (nobody
+  // prices rushing TDs for a slot receiver), so gating would empty the table.
+  // The tradeoff is that cross-position totals are not strictly comparable —
+  // QBs rank high partly because passing yards are always priced.
+
+  let weeklyPos = "ALL";
+  let weeklySortDesc = true;
+
+  const WEEKLY_SOURCE_LABEL = {
+    interpolated: "Kalshi ladder — interpolated 50% strike",
+    fitted: "Fitted estimate — ladder never crosses 50%",
+  };
+
+  function weeklyChips(p) {
+    const order = ["pass_yds", "pass_tds", "rush_yds", "receptions", "rec_yds"];
+    const parts = [];
+    for (const k of order) {
+      const s = p.stats[k];
+      if (!s || s.line == null) continue;
+      const dec = k.endsWith("_tds") || k === "receptions" ? 1 : 0;
+      const cls = s.lineSource === "fitted" ? "src-fit" : "src-kalshi";
+      const mark = s.lineSource === "fitted" ? "~" : "";
+      parts.push(
+        `<span class="market-chip ${cls}" title="${escapeHtml(WEEKLY_SOURCE_LABEL[s.lineSource] || "")} (${s.rungs} strikes)">` +
+        `<span class="mk-label">${escapeHtml(STAT_LABELS[k] || k)}</span> ` +
+        `${mark}${s.line.toFixed(dec)}</span>`
+      );
+    }
+    return `<div class="markets">${parts.join("")}</div>`;
+  }
+
+  function weeklyPoints(stats, format) {
+    const g = (k) => {
+      const s = stats[k];
+      return s && s.line != null ? s.line : 0;
+    };
+    let pts = 0;
+    pts += g("pass_yds") * 0.04;
+    pts += g("pass_tds") * 4;
+    pts += g("rush_yds") * 0.1;
+    pts += g("rec_yds") * 0.1;
+    if (format === "ppr") pts += g("receptions") * 1.0;
+    else if (format === "half") pts += g("receptions") * 0.5;
+    return Math.round(pts * 100) / 100;
+  }
+
+  function renderWeekly() {
+    const $rows = document.getElementById("weekly-rows");
+    const $empty = document.getElementById("weekly-empty");
+    const $meta = document.getElementById("weekly-meta");
+    if (!$rows) return;
+
+    const wk = cache["weekly"];
+    if (!wk || !Array.isArray(wk.players)) {
+      $rows.innerHTML = "";
+      if ($empty) {
+        $empty.textContent = "No weekly market data loaded.";
+        $empty.classList.remove("hidden");
+      }
+      return;
+    }
+
+    const fpLut = buildProjLookup(cache["data"]);
+    const clayLut = buildProjLookup(cache["clay"]);
+
+    let players = wk.players.map((p) => {
+      const fp = lookupProj(fpLut, p.name), clay = lookupProj(clayLut, p.name);
+      return {
+        ...p,
+        position: (fp && fp.position) || (clay && clay.position) || null,
+        points: weeklyPoints(p.stats, fmt),
+      };
+    });
+
+    players = players.filter((p) => {
+      if (weeklyPos !== "ALL" && p.position !== weeklyPos) return false;
+      if (search && !p.name.toLowerCase().includes(search.toLowerCase())) return false;
+      return p.points > 0;
+    });
+
+    players.sort((a, b) => (weeklySortDesc ? b.points - a.points : a.points - b.points));
+
+    if ($meta) {
+      const games = wk.gameCount || 0;
+      const when = (wk.kickoffs || []).join(", ");
+      $meta.textContent = `${games} games · ${when}`;
+    }
+
+    if (!players.length) {
+      $rows.innerHTML = "";
+      if ($empty) { $empty.textContent = "No players match."; $empty.classList.remove("hidden"); }
+      return;
+    }
+    if ($empty) $empty.classList.add("hidden");
+
+    $rows.innerHTML = players.map((p, i) => {
+      const posClass = "pos-" + (p.position || "?");
+      return `<tr>
+        <td class="rank-num">${i + 1}</td>
+        <td class="player-name">${escapeHtml(p.name)}</td>
+        <td><span class="pos-badge ${posClass}">${escapeHtml(p.position || "?")}</span></td>
+        <td class="weekly-game">${escapeHtml(p.matchup || "—")}</td>
+        <td class="num"><span class="market-pts">${p.points.toFixed(1)}</span></td>
+        <td>${weeklyChips(p)}</td>
+      </tr>`;
+    }).join("");
+
+    const $pc = document.getElementById("player-count");
+    const $ec = document.getElementById("event-count");
+    if ($pc) $pc.textContent = `${players.length} players`;
+    if ($ec) $ec.textContent = "Kalshi per-game";
+  }
+
+  const $weeklyPosChips = document.getElementById("weekly-pos-chips");
+  if ($weeklyPosChips) {
+    $weeklyPosChips.addEventListener("click", (e) => {
+      const chip = e.target.closest(".chip");
+      if (!chip) return;
+      document.querySelectorAll("#weekly-pos-chips .chip").forEach((c) => c.classList.remove("active"));
+      chip.classList.add("active");
+      weeklyPos = chip.dataset.pos;
+      renderWeekly();
+    });
+  }
+
+  document.querySelector('[data-wsort="pts"]')?.addEventListener("click", () => {
+    weeklySortDesc = !weeklySortDesc;
+    renderWeekly();
+  });
 
   // ── Market Points view ─────────────────────────────────────────────────────
   // Market lines converted to fantasy points, laid out like the Rankings tab.

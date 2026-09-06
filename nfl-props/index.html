@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>NFL Season Projections</title>
-  <link rel="stylesheet" href="style.css?v=2026-08-17-fitfix" />
+  <link rel="stylesheet" href="style.css?v=2026-09-06-weekly" />
 </head>
 <body>
   <div class="container">
@@ -19,6 +19,7 @@
       <button class="view-tab" data-view="viz">Visualizations</button>
       <button class="view-tab" data-view="vegas">Vegas Lines</button>
       <button class="view-tab" data-view="market">Market Points</button>
+      <button class="view-tab" data-view="weekly">This Week</button>
     </div>
 
     <div class="source-tabs" id="source-tabs">
@@ -232,6 +233,54 @@
           </table>
         </div>
       </div>
+
+      <div id="weekly-view" class="hidden">
+        <div class="callout">
+          <strong>Fantasy points implied by this week's game lines.</strong>
+          Kalshi's per-game player markets, converted with the same scoring as
+          the other tabs. Unlike the season-long board, these ladders are deep
+          (9&ndash;10 strikes is typical, versus 1&ndash;4 for season markets),
+          so nearly every line is a real interpolated 50% crossing rather than a
+          model.
+          <br /><br />
+          Kalshi deletes settled markets, so this is always the <em>upcoming</em>
+          slate &mdash; a week already played cannot be fetched back.
+          A player is ranked on whatever stats are priced for them; unlike
+          Market Points there is no completeness gate, because a per-game line
+          set is inherently partial (nobody posts rushing TDs for a WR).
+          <span class="nan-key">Treat cross-position totals loosely for that
+          reason</span> &mdash; QBs rank high partly because passing yards are
+          always priced.
+        </div>
+
+        <div class="vegas-controls">
+          <div class="chip-group" id="weekly-pos-chips">
+            <button class="chip active" data-pos="ALL">All</button>
+            <button class="chip" data-pos="QB">QB</button>
+            <button class="chip" data-pos="RB">RB</button>
+            <button class="chip" data-pos="WR">WR</button>
+            <button class="chip" data-pos="TE">TE</button>
+          </div>
+          <span class="weekly-meta" id="weekly-meta"></span>
+        </div>
+
+        <div id="weekly-empty" class="empty hidden">No players match.</div>
+        <div class="table-wrap">
+          <table class="rankings market-table">
+            <thead>
+              <tr>
+                <th class="rank">#</th>
+                <th>Player</th>
+                <th>Pos</th>
+                <th>Game</th>
+                <th class="num sortable sort-active" data-wsort="pts">Proj <span class="caret">&#9662;</span></th>
+                <th>Market-implied stats</th>
+              </tr>
+            </thead>
+            <tbody id="weekly-rows"></tbody>
+          </table>
+        </div>
+      </div>
     </main>
 
     <footer>
@@ -245,6 +294,6 @@
   <!-- Version query busts the 10-minute GitHub Pages cache on app.js. Without
        it a stale script can pair with fresh markup and shift every column.
        Bump on any app.js change. -->
-  <script src="app.js?v=2026-08-17-fitfix"></script>
+  <script src="app.js?v=2026-09-06-weekly"></script>
 </body>
 </html>
