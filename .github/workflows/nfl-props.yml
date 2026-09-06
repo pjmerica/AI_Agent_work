@@ -57,6 +57,16 @@ jobs:
           ODDS_API_KEY: ${{ secrets.ODDS_API_KEY }}
         continue-on-error: true
 
+      # Weeks 1-4 averaged. Costs one credit per event (~64 for four weeks),
+      # so it is deliberately separate from the single-week pull and skipped
+      # when the remaining quota cannot cover it.
+      - name: Scrape multi-week averaged props
+        run: python scripts/fetch_oddsapi_multiweek.py
+        env:
+          ODDS_API_KEY: ${{ secrets.ODDS_API_KEY }}
+          MULTIWEEK_WEEKS: "4"
+        continue-on-error: true
+
       # Underdog ADP. Reads a CSV from the EZ Dubs repo, so it only runs when
       # that checkout is available; the committed adp.json stands in otherwise.
       - name: Build Underdog ADP board
@@ -70,6 +80,7 @@ jobs:
           git add nfl-props/data.json nfl-props/clay.json \
                   nfl-props/vegas.json nfl-props/kalshi.json \
                   nfl-props/bovada.json nfl-props/adp.json \
-                  nfl-props/weekly.json nfl-props/oddsapi.json
+                  nfl-props/weekly.json nfl-props/oddsapi.json \
+                  nfl-props/multiweek.json
           git diff --staged --quiet || git commit -m "chore: refresh NFL projections [skip ci]"
           git push

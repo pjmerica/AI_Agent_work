@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>NFL Season Projections</title>
-  <link rel="stylesheet" href="style.css?v=2026-09-06-perbook" />
+  <link rel="stylesheet" href="style.css?v=2026-09-06-multi" />
 </head>
 <body>
   <div class="container">
@@ -20,6 +20,7 @@
       <button class="view-tab" data-view="vegas">Vegas Lines</button>
       <button class="view-tab" data-view="market">Market Points</button>
       <button class="view-tab" data-view="weekly">Week 1</button>
+      <button class="view-tab" data-view="multi">Weeks 1-4 Avg</button>
     </div>
 
     <div class="source-tabs" id="source-tabs">
@@ -300,6 +301,56 @@
           </table>
         </div>
       </div>
+
+      <div id="multi-view" class="hidden">
+        <div class="callout">
+          <strong>Market lines averaged across the first four weeks.</strong>
+          One week of props says as much about the opponent as about the player
+          &mdash; a soft matchup in week 1 and a shutdown corner in week 2 pull
+          the same player in opposite directions. Averaging four weeks gives a
+          market-implied <em>baseline</em>: what the books expect in a typical
+          game.
+          <br /><br />
+          Each week is first collapsed to a consensus across the books quoting
+          it, then the weeks are averaged equally &mdash; so a week priced by
+          five books does not outweigh one priced by two. Hover any stat to see
+          the week-by-week lines behind the average.
+          <br /><br />
+          <span class="nan-key">Only The Odds API publishes future weeks</span>
+          &mdash; Kalshi lists the upcoming slate only, so touchdowns (which no
+          book posts as a per-game count) are absent here and these totals are
+          therefore lower than the Week 1 tab&rsquo;s.
+        </div>
+
+        <div class="vegas-controls">
+          <div class="chip-group" id="multi-pos-chips">
+            <button class="chip active" data-pos="ALL">All</button>
+            <button class="chip" data-pos="QB">QB</button>
+            <button class="chip" data-pos="FLEX" title="RB, WR and TE — every skill position that shares a flex slot.">FLEX</button>
+            <button class="chip" data-pos="RB">RB</button>
+            <button class="chip" data-pos="WR">WR</button>
+            <button class="chip" data-pos="TE">TE</button>
+          </div>
+          <span class="weekly-meta" id="multi-meta"></span>
+        </div>
+
+        <div id="multi-empty" class="empty hidden">No players match.</div>
+        <div class="table-wrap">
+          <table class="rankings market-table">
+            <thead>
+              <tr>
+                <th class="rank">#</th>
+                <th>Player</th>
+                <th>Pos</th>
+                <th class="num">Wks</th>
+                <th class="num sortable sort-active" data-xsort="pts">Avg Proj <span class="caret">&#9662;</span></th>
+                <th>Averaged market lines</th>
+              </tr>
+            </thead>
+            <tbody id="multi-rows"></tbody>
+          </table>
+        </div>
+      </div>
     </main>
 
     <footer>
@@ -313,6 +364,6 @@
   <!-- Version query busts the 10-minute GitHub Pages cache on app.js. Without
        it a stale script can pair with fresh markup and shift every column.
        Bump on any app.js change. -->
-  <script src="app.js?v=2026-09-06-perbook"></script>
+  <script src="app.js?v=2026-09-06-multi"></script>
 </body>
 </html>

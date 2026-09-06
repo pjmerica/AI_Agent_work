@@ -368,6 +368,7 @@
     render();
     if (currentView === "market") renderMarket();   // points are format-dependent
     if (currentView === "weekly") renderWeekly();
+    if (currentView === "multi") renderMulti();
     if (currentView === "viz" && typeof Chart !== "undefined") {
       cache["aggregated"] = null;
       renderViz();
@@ -409,6 +410,7 @@
     if (currentView === "vegas") renderVegas();
     else if (currentView === "market") renderMarket();
     else if (currentView === "weekly") renderWeekly();
+    else if (currentView === "multi") renderMulti();
     else render();
   });
 
@@ -419,6 +421,7 @@
   const $vegasView = document.getElementById("vegas-view");
   const $marketView = document.getElementById("market-view");
   const $weeklyView = document.getElementById("weekly-view");
+  const $multiView = document.getElementById("multi-view");
 
   function hideAllViews() {
     if ($tableView) $tableView.classList.add("hidden");
@@ -426,6 +429,7 @@
     if ($vegasView) $vegasView.classList.add("hidden");
     if ($marketView) $marketView.classList.add("hidden");
     if ($weeklyView) $weeklyView.classList.add("hidden");
+    if ($multiView) $multiView.classList.add("hidden");
   }
 
   function showTableView() {
@@ -469,6 +473,17 @@
     renderWeekly();
   }
 
+  async function showMultiView() {
+    hideAllViews();
+    if ($multiView) $multiView.classList.remove("hidden");
+    if (!cache["multiweek"]) {
+      try { cache["multiweek"] = await fetchJson("multiweek.json"); }
+      catch (e) { cache["multiweek"] = null; }
+    }
+    await ensureMarketData();   // positions come from the projection sources
+    renderMulti();
+  }
+
   async function ensureMarketData() {
     const files = { vegas: "vegas.json", kalshi: "kalshi.json", data: "data.json",
                     clay: "clay.json", adp: "adp.json", bovada: "bovada.json" };
@@ -504,6 +519,7 @@
       else if (currentView === "vegas") showVegasView();
       else if (currentView === "market") showMarketView();
       else if (currentView === "weekly") showWeeklyView();
+      else if (currentView === "multi") showMultiView();
       else showVizView();
     });
   }
@@ -1412,6 +1428,144 @@
     }
   }
 
+
+
+  // -- Multi-week average view ------------------------------------------------
+  // Averaged market lines across the first N weeks. No touchdowns: only The
+  // Odds API publishes future weeks and no book there posts a per-game TD
+  // count, so totals here sit below the Week 1 tab by roughly 6 * xTD. That is
+  // a source limitation, stated in the UI, not a scoring difference.
+
+  let multiPos = "ALL";
+  let multiSortDesc = true;
+
+  function multiPoints(stats, format) {
+    const g = (k) => {
+      const s = stats[k];
+      return s && s.avg != null ? s.avg : 0;
+    };
+    let pts = 0;
+    pts += g("pass_yds") * 0.04;
+    pts += g("pass_tds") * 4;
+    pts += g("rush_yds") * 0.1;
+    pts += g("rec_yds") * 0.1;
+    if (format === "ppr") pts += g("receptions") * 1.0;
+    else if (format === "half") pts += g("receptions") * 0.5;
+    return Math.round(pts * 100) / 100;
+  }
+
+  function multiChips(p) {
+    const order = ["pass_yds", "pass_tds", "rush_yds", "receptions", "rec_yds"];
+    const parts = [];
+    for (const k of order) {
+      const s = p.stats[k];
+      if (!s || s.avg == null) continue;
+      const dec = (k.endsWith("_tds") || k === "receptions") ? 1 : 0;
+      // Show the weeks behind the average so a single hot matchup is visible
+      // rather than hidden inside one number.
+      const wk = (s.byWeek || [])
+        .map((w) => `wk${w.week} ${w.line}`)
+        .join("\n");
+      const spread = s.min !== s.max ? `\nrange ${s.min}-${s.max}` : "";
+      parts.push(
+        `<span class="market-chip src-fanduel" title="Average of ${s.weeks} week(s)\n${escapeHtml(wk)}${escapeHtml(spread)}">` +
+        `<span class="mk-label">${escapeHtml(STAT_LABELS[k] || k)}</span> ` +
+        `${s.avg.toFixed(dec)}</span>`
+      );
+    }
+    return `<div class="markets">${parts.join("")}</div>`;
+  }
+
+  function renderMulti() {
+    const $rows = document.getElementById("multi-rows");
+    const $empty = document.getElementById("multi-empty");
+    const $meta = document.getElementById("multi-meta");
+    if (!$rows) return;
+
+    const mw = cache["multiweek"];
+    if (!mw || !Array.isArray(mw.players)) {
+      $rows.innerHTML = "";
+      if ($empty) {
+        $empty.textContent = "No multi-week data yet — run the scraper workflow to build it.";
+        $empty.classList.remove("hidden");
+      }
+      if ($meta) $meta.textContent = "";
+      return;
+    }
+
+    const fpLut = buildProjLookup(cache["data"]);
+    const clayLut = buildProjLookup(cache["clay"]);
+
+    let players = mw.players.map((p) => {
+      const fp = lookupProj(fpLut, p.name), clay = lookupProj(clayLut, p.name);
+      // Weeks covered varies per player: a bye or an unpriced game means fewer.
+      const weeks = Math.max(...Object.values(p.stats).map((s) => s.weeks || 0), 0);
+      return {
+        ...p,
+        position: (fp && fp.position) || (clay && clay.position) || null,
+        weeks,
+        points: multiPoints(p.stats, fmt),
+      };
+    });
+
+    const FLEX_POS = new Set(["RB", "WR", "TE"]);
+    players = players.filter((p) => {
+      if (multiPos === "FLEX") {
+        if (!FLEX_POS.has(p.position)) return false;
+      } else if (multiPos !== "ALL" && p.position !== multiPos) {
+        return false;
+      }
+      if (search && !p.name.toLowerCase().includes(search.toLowerCase())) return false;
+      return p.points > 0;
+    });
+
+    players.sort((a, b) => (multiSortDesc ? b.points - a.points : a.points - b.points));
+
+    if ($meta) {
+      $meta.textContent = `weeks 1-${mw.weeksCovered} · ${mw.eventCount} games · ${mw.playerCount} players`;
+    }
+
+    if (!players.length) {
+      $rows.innerHTML = "";
+      if ($empty) { $empty.textContent = "No players match."; $empty.classList.remove("hidden"); }
+      return;
+    }
+    if ($empty) $empty.classList.add("hidden");
+
+    $rows.innerHTML = players.map((p, i) => {
+      const posClass = "pos-" + (p.position || "?");
+      return `<tr>
+        <td class="rank-num">${i + 1}</td>
+        <td class="player-name">${escapeHtml(p.name)}</td>
+        <td><span class="pos-badge ${posClass}">${escapeHtml(p.position || "?")}</span></td>
+        <td class="num weekly-game">${p.weeks}</td>
+        <td class="num"><span class="market-pts">${p.points.toFixed(1)}</span></td>
+        <td>${multiChips(p)}</td>
+      </tr>`;
+    }).join("");
+
+    const $pc = document.getElementById("player-count");
+    const $ec = document.getElementById("event-count");
+    if ($pc) $pc.textContent = `${players.length} players`;
+    if ($ec) $ec.textContent = `weeks 1-${mw.weeksCovered}`;
+  }
+
+  const $multiPosChips = document.getElementById("multi-pos-chips");
+  if ($multiPosChips) {
+    $multiPosChips.addEventListener("click", (e) => {
+      const chip = e.target.closest(".chip");
+      if (!chip) return;
+      document.querySelectorAll("#multi-pos-chips .chip").forEach((c) => c.classList.remove("active"));
+      chip.classList.add("active");
+      multiPos = chip.dataset.pos;
+      renderMulti();
+    });
+  }
+
+  document.querySelector('[data-xsort="pts"]')?.addEventListener("click", () => {
+    multiSortDesc = !multiSortDesc;
+    renderMulti();
+  });
 
   // ── Week N view ────────────────────────────────────────────────────────────
   // Per-game Kalshi markets. Deliberately NOT gated on stat completeness the
