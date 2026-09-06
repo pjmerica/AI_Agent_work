@@ -92,8 +92,14 @@ def main() -> None:
         print("No upcoming NFL events returned.", file=sys.stderr)
         sys.exit(1)
 
+    by_date: dict[str, int] = {}
+    for e in events:
+        by_date[(e.get("commence_time") or "")[:10]] =             by_date.get((e.get("commence_time") or "")[:10], 0) + 1
+    print(f"{len(events)} upcoming events offered by the API; "
+          f"dates: {dict(sorted(by_date.items()))}")
+
     events = events[:MAX_EVENTS]
-    print(f"{len(events)} upcoming events; fetching player props per event…")
+    print(f"fetching player props for {len(events)} event(s)…")
 
     rows: dict[tuple[str, str], dict] = {}
     books: dict[str, int] = {}
