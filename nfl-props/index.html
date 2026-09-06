@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>NFL Season Projections</title>
-  <link rel="stylesheet" href="style.css?v=2026-09-06-flex" />
+  <link rel="stylesheet" href="style.css?v=2026-09-06-td" />
 </head>
 <body>
   <div class="container">
@@ -247,6 +247,12 @@
           slate &mdash; a week already played cannot be fetched back. The week
           number is resolved from ESPN's schedule rather than guessed from the
           date, since the season opens midweek.
+          Touchdowns come from Kalshi's anytime-TD ladder as an <em>expected</em>
+          count (the sum of P(X&nbsp;&ge;&nbsp;k)), covering 236 players &mdash;
+          far more than any yardage market. Kalshi posts no split rushing- vs
+          receiving-TD game market, so that one number carries all non-passing
+          scoring.
+          <br /><br />
           A player is ranked on whatever stats are priced for them; unlike
           Market Points there is no completeness gate, because a per-game line
           set is inherently partial (nobody posts rushing TDs for a WR).
@@ -264,6 +270,10 @@
             <button class="chip" data-pos="WR">WR</button>
             <button class="chip" data-pos="TE">TE</button>
           </div>
+          <label class="delta-toggle" title="Most players have only an anytime-touchdown market priced — no yardage or receptions. Their totals are floors, not projections, so they are hidden by default.">
+            <input type="checkbox" id="weekly-hide-tdonly" checked />
+            Hide TD-only players
+          </label>
           <span class="weekly-meta" id="weekly-meta"></span>
         </div>
 
@@ -297,6 +307,6 @@
   <!-- Version query busts the 10-minute GitHub Pages cache on app.js. Without
        it a stale script can pair with fresh markup and shift every column.
        Bump on any app.js change. -->
-  <script src="app.js?v=2026-09-06-flex"></script>
+  <script src="app.js?v=2026-09-06-td"></script>
 </body>
 </html>

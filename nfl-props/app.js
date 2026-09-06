@@ -1216,6 +1216,7 @@
     rec_yds:  "Rec Yds",
     receptions: "Rec",
     rec_tds:  "Rec TDs",
+    any_tds:  "xTD",
   };
 
   // Build lookup of projection stats by normalized name, with altKey fallback —
@@ -1417,19 +1418,24 @@
 
   let weeklyPos = "ALL";
   let weeklySortDesc = true;
+  // On by default: 126 of 240 rows have only a TD market priced, and mixing
+  // those partial totals into the ranking buries fully-priced players.
+  let weeklyHideTdOnly = true;
 
   const WEEKLY_SOURCE_LABEL = {
     interpolated: "Kalshi ladder — interpolated 50% strike",
     fitted: "Fitted estimate — ladder never crosses 50%",
+    expected: "Expected count — sum of P(X ≥ k) across the ladder",
   };
 
   function weeklyChips(p) {
-    const order = ["pass_yds", "pass_tds", "rush_yds", "receptions", "rec_yds"];
+    const order = ["pass_yds", "pass_tds", "rush_yds", "receptions", "rec_yds", "any_tds"];
     const parts = [];
     for (const k of order) {
       const s = p.stats[k];
       if (!s || s.line == null) continue;
-      const dec = k.endsWith("_tds") || k === "receptions" ? 1 : 0;
+      const dec = k === "any_tds" ? 2
+                : (k.endsWith("_tds") || k === "receptions") ? 1 : 0;
       const cls = s.lineSource === "fitted" ? "src-fit" : "src-kalshi";
       const mark = s.lineSource === "fitted" ? "~" : "";
       parts.push(
@@ -1451,6 +1457,11 @@
     pts += g("pass_tds") * 4;
     pts += g("rush_yds") * 0.1;
     pts += g("rec_yds") * 0.1;
+    // any_tds is an EXPECTED count of rushing+receiving TDs, both worth 6.
+    // Kalshi posts no split per-game rush/rec TD market, so this single number
+    // carries all non-passing scoring. Passing TDs are separate and already
+    // counted above, so there is no double count for a QB.
+    pts += g("any_tds") * 6;
     if (format === "ppr") pts += g("receptions") * 1.0;
     else if (format === "half") pts += g("receptions") * 0.5;
     return Math.round(pts * 100) / 100;
@@ -1477,10 +1488,18 @@
 
     let players = wk.players.map((p) => {
       const fp = lookupProj(fpLut, p.name), clay = lookupProj(clayLut, p.name);
+      const priced = Object.values(p.stats).filter((s) => s.line != null);
+      const tdOnly = priced.length === 1 &&
+                     p.stats.any_tds && p.stats.any_tds.line != null;
       return {
         ...p,
         position: (fp && fp.position) || (clay && clay.position) || null,
         points: weeklyPoints(p.stats, fmt),
+        // A player with ONLY a touchdown market priced has no yardage or
+        // reception credit at all, so their total is a floor, not a projection.
+        // Ranking them against fully-priced players would read as a real gap
+        // when it is just missing data.
+        tdOnly,
       };
     });
 
@@ -1489,6 +1508,7 @@
     // are always priced, while a receiver's rushing line usually is not.
     const FLEX_POS = new Set(["RB", "WR", "TE"]);
     players = players.filter((p) => {
+      if (weeklyHideTdOnly && p.tdOnly) return false;
       if (weeklyPos === "FLEX") {
         if (!FLEX_POS.has(p.position)) return false;
       } else if (weeklyPos !== "ALL" && p.position !== weeklyPos) {
@@ -1528,7 +1548,9 @@
         <td class="player-name">${escapeHtml(p.name)}</td>
         <td><span class="pos-badge ${posClass}">${escapeHtml(p.position || "?")}</span></td>
         <td class="weekly-game">${escapeHtml(p.matchup || "—")}</td>
-        <td class="num"><span class="market-pts">${p.points.toFixed(1)}</span></td>
+        <td class="num"><span class="market-pts">${p.points.toFixed(1)}${
+          p.tdOnly ? '<span class="td-only-mark" title="Only a touchdown market is priced for this player — no yardage or receptions. This total is a floor, not a full projection.">TD</span>' : ""
+        }</span></td>
         <td>${weeklyChips(p)}</td>
       </tr>`;
     }).join("");
@@ -1537,6 +1559,15 @@
     const $ec = document.getElementById("event-count");
     if ($pc) $pc.textContent = `${players.length} players`;
     if ($ec) $ec.textContent = "Kalshi per-game";
+  }
+
+  const $weeklyHideTdOnly = document.getElementById("weekly-hide-tdonly");
+  if ($weeklyHideTdOnly) {
+    weeklyHideTdOnly = $weeklyHideTdOnly.checked;
+    $weeklyHideTdOnly.addEventListener("change", (e) => {
+      weeklyHideTdOnly = e.target.checked;
+      renderWeekly();
+    });
   }
 
   const $weeklyPosChips = document.getElementById("weekly-pos-chips");

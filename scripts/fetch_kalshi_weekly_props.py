@@ -46,7 +46,38 @@ SERIES = {
     "KXNFLRSHYDS":   "rush_yds",
     "KXNFLPASSYDS":  "pass_yds",
     "KXNFLPASSTDS":  "pass_tds",
+    # Anytime touchdowns: a 1+/2+/3+ ladder covering 236 players, far wider
+    # than any yardage series. Kalshi posts no separate rushing-TD or
+    # receiving-TD per-game market, so this is the only TD source and it is
+    # position-agnostic (a rushing and a receiving TD score the same 6).
+    "KXNFLTD":       "any_tds",
 }
+
+# Stats whose ladder is a COUNT starting at 0.5, where the expectation is the
+# meaningful number rather than a median. A 2-rung TD ladder has no median to
+# interpolate (P never reaches 0.50 for most players) but its expectation is
+# exact: E[X] = sum of P(X >= k) over the integer thresholds.
+COUNT_STATS = {"any_tds"}
+
+
+def expected_count(ladder: list[dict]) -> float | None:
+    """E[X] for a non-negative integer count from a 0.5/1.5/2.5-style ladder.
+
+    For integer X, E[X] = SUM_{k>=1} P(X >= k), and each rung at strike k-0.5 is
+    exactly P(X >= k). Unlike expected_from_ladder there is no unobserved head to
+    worry about -- the first strike IS the first integer -- so this is valid even
+    on a two-rung ladder. Rungs beyond the last observed one are dropped, which
+    understates by well under 0.05 TD at these probabilities.
+    """
+    if not ladder:
+        return None
+    total = 0.0
+    for r in ladder:
+        # 0.5 -> P(X>=1), 1.5 -> P(X>=2), ...
+        if r["strike"] <= 0 or abs(r["strike"] % 1 - 0.5) > 1e-6:
+            continue
+        total += r["prob"]
+    return round(total, 3) if total > 0 else None
 
 # "KXNFLREC-26SEP13GBMIN" -> ("26SEP13", "GBMIN")
 EVENT_RE = re.compile(r"^KXNFL[A-Z]+-(?P<date>\d{2}[A-Z]{3}\d{2})(?P<teams>[A-Z]{4,8})$")
@@ -150,14 +181,19 @@ def main() -> None:
             ladder = enforce_monotonic(build_ladder(ms))
             if not ladder:
                 continue
-            observed = median_from_ladder(ladder)
-            fit = lognormal_fit(ladder)
-            if observed is not None:
-                line, source = observed, "interpolated"
-            elif fit is not None:
-                line, source = fit["median"], "fitted"
+            if stat_key in COUNT_STATS:
+                # A count ladder's expectation is the fantasy-relevant number;
+                # its median is usually 0 and tells you nothing.
+                line, source = expected_count(ladder), "expected"
             else:
-                line, source = None, None
+                observed = median_from_ladder(ladder)
+                fit = lognormal_fit(ladder)
+                if observed is not None:
+                    line, source = observed, "interpolated"
+                elif fit is not None:
+                    line, source = fit["median"], "fitted"
+                else:
+                    line, source = None, None
 
             date, teams = parse_event(event)
             # Each series carries its own ticker prefix for the SAME game
