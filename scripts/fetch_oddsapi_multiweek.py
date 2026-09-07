@@ -137,6 +137,10 @@ def main() -> None:
                         continue
                     per_event[(player, stat)].append(float(point))
 
+        if not per_event:
+            # Not an error: books post player props only a few days out, so a
+            # future week returns an event with markets but no player outcomes.
+            print(f"  wk{wk} {abbr(away)}{abbr(home)}: no player props posted yet")
         for (player, stat), lines in per_event.items():
             rec = acc.setdefault(player, {"name": player, "weeks": {}, "stats": {}})
             rec["stats"].setdefault(stat, []).append({
