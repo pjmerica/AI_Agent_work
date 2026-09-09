@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>NFL Season Projections</title>
-  <link rel="stylesheet" href="style.css?v=2026-09-09-picker" />
+  <link rel="stylesheet" href="style.css?v=2026-09-09-sleeper" />
 </head>
 <body>
   <div class="container">
@@ -23,6 +23,7 @@
       <button class="view-tab" data-view="multi">Weeks 1-4 Avg</button>
       <button class="view-tab" data-view="sitstart">Start/Sit</button>
       <button class="view-tab" data-view="h2h">H2H</button>
+      <button class="view-tab" data-view="sleeper">My Leagues</button>
     </div>
 
     <div class="source-tabs" id="source-tabs">
@@ -437,6 +438,29 @@
           <div class="empty">Pick two players to compare.</div>
         </div>
       </div>
+
+      <div id="sleeper-view" class="hidden">
+        <div class="callout">
+          <strong>Your Sleeper rosters, scored on this week&rsquo;s market lines.</strong>
+          Pick a league and the optimal lineup is built for
+          <em>that league&rsquo;s</em> actual slots and scoring &mdash; these
+          four are not the same game, so a single hardcoded format would be
+          wrong for most of them.
+          <br /><br />
+          Kickers and defenses are shown but never projected: no book prices
+          them. Players the market has not priced are listed separately rather
+          than scored as zero.
+        </div>
+
+        <div class="sitstart-actions" style="margin-bottom:14px">
+          <div class="chip-group" id="sleeper-league-chips"></div>
+          <span class="weekly-meta" id="sleeper-meta"></span>
+        </div>
+
+        <div id="sleeper-output">
+          <div class="empty">Loading your leagues&hellip;</div>
+        </div>
+      </div>
     </main>
 
     <footer>
@@ -450,6 +474,6 @@
   <!-- Version query busts the 10-minute GitHub Pages cache on app.js. Without
        it a stale script can pair with fresh markup and shift every column.
        Bump on any app.js change. -->
-  <script src="app.js?v=2026-09-09-picker"></script>
+  <script src="app.js?v=2026-09-09-sleeper"></script>
 </body>
 </html>

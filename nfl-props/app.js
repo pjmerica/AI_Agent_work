@@ -424,6 +424,7 @@
   const $multiView = document.getElementById("multi-view");
   const $sitstartView = document.getElementById("sitstart-view");
   const $h2hView = document.getElementById("h2h-view");
+  const $sleeperView = document.getElementById("sleeper-view");
 
   function hideAllViews() {
     if ($tableView) $tableView.classList.add("hidden");
@@ -434,6 +435,7 @@
     if ($multiView) $multiView.classList.add("hidden");
     if ($sitstartView) $sitstartView.classList.add("hidden");
     if ($h2hView) $h2hView.classList.add("hidden");
+    if ($sleeperView) $sleeperView.classList.add("hidden");
   }
 
   function showTableView() {
@@ -490,6 +492,23 @@
     }
     await ensureMarketData();   // positions come from the projection sources
     renderMulti();
+  }
+
+  async function showSleeperView() {
+    hideAllViews();
+    if ($sleeperView) $sleeperView.classList.remove("hidden");
+    for (const [key, file] of [["weekly", "weekly.json"],
+                               ["oddsapi", "oddsapi.json"],
+                               ["dktd", "dk_td.json"],
+                               ["sleeper", "sleeper.json"]]) {
+      if (!cache[key]) {
+        try { cache[key] = await fetchJson(file); }
+        catch (e) { cache[key] = null; }
+      }
+    }
+    await ensureMarketData();
+    renderSleeperChips();
+    renderSleeper();
   }
 
   async function showH2HView() {
@@ -572,6 +591,7 @@
       else if (currentView === "multi") showMultiView();
       else if (currentView === "sitstart") showSitStartView();
       else if (currentView === "h2h") showH2HView();
+      else if (currentView === "sleeper") showSleeperView();
       else showVizView();
     });
   }
@@ -1483,6 +1503,223 @@
 
 
 
+
+
+  // -- Sleeper leagues ---------------------------------------------------------
+  // Scores the owner's real rosters against this week's market board. Slot
+  // shape and scoring come from each league rather than being assumed: of the
+  // four leagues here one is 0.5 PPR, two are full PPR, and one is a superflex
+  // best-ball with a TE premium and four flex slots. A hardcoded
+  // QB/RB/RB/WR/WR/TE/FLEX/FLEX would be wrong for most of them.
+
+  let sleeperLeagueIdx = 0;
+
+  // Sleeper slot name -> positions that may fill it.
+  const SLOT_ACCEPTS = {
+    QB: ["QB"], RB: ["RB"], WR: ["WR"], TE: ["TE"],
+    FLEX: ["RB", "WR", "TE"],
+    WRRB_FLEX: ["RB", "WR"],
+    REC_FLEX: ["WR", "TE"],
+    SUPER_FLEX: ["QB", "RB", "WR", "TE"],
+    K: ["K"], DEF: ["DEF"], DST: ["DEF"],
+  };
+
+  // League scoring differs from the fixed half-PPR the other tabs use, so
+  // points are recomputed per league rather than reused.
+  function leaguePoints(stats, scoring, position) {
+    const g = (k) => {
+      const s = stats[k];
+      return s && s.line != null ? s.line : 0;
+    };
+    let pts = 0;
+    pts += g("pass_yds") * 0.04;
+    pts += g("pass_tds") * (scoring.passTd != null ? scoring.passTd : 4);
+    pts += g("rush_yds") * 0.1;
+    pts += g("rec_yds") * 0.1;
+    pts += g("any_tds") * 6;
+    const rec = g("receptions");
+    pts += rec * (scoring.rec || 0);
+    // A TE premium is per reception on top of the base rate.
+    if (position === "TE" && scoring.bonusRecTe) pts += rec * scoring.bonusRecTe;
+    return Math.round(pts * 100) / 100;
+  }
+
+  // Same exhaustive assignment used by Start/Sit, generalised to a slot list.
+  // Rosters here reach 36 players, so the search is capped: for each slot only
+  // the top few eligible players can ever matter, which keeps it instant
+  // without changing the answer.
+  function bestLineupForSlots(players, slots) {
+    const eligible = slots.map((slot) => {
+      const accepts = SLOT_ACCEPTS[slot] || [];
+      return players
+        .map((p, i) => ({ p, i }))
+        .filter((x) => x.p.position && accepts.includes(x.p.position))
+        .sort((a, b) => b.p.points - a.p.points)
+        .slice(0, slots.length + 2)
+        .map((x) => x.i);
+    });
+
+    let best = null;
+    const used = new Array(players.length).fill(false);
+    const current = new Array(slots.length).fill(null);
+
+    function recurse(si, total) {
+      if (si === slots.length) {
+        if (!best || total > best.total) best = { total, picks: current.slice() };
+        return;
+      }
+      let filled = false;
+      for (const idx of eligible[si]) {
+        if (used[idx]) continue;
+        used[idx] = true;
+        current[si] = players[idx];
+        filled = true;
+        recurse(si + 1, total + players[idx].points);
+        used[idx] = false;
+        current[si] = null;
+      }
+      // An empty slot is legitimate: a roster with no kicker should still get
+      // the rest of its lineup rather than failing outright.
+      if (!filled) {
+        current[si] = null;
+        recurse(si + 1, total);
+      }
+    }
+    recurse(0, 0);
+    return best || { total: 0, picks: current.slice() };
+  }
+
+  function renderSleeperChips() {
+    const $chips = document.getElementById("sleeper-league-chips");
+    const sl = cache["sleeper"];
+    if (!$chips || !sl || !Array.isArray(sl.leagues)) return;
+    $chips.innerHTML = sl.leagues.map((lg, i) =>
+      '<button class="chip' + (i === sleeperLeagueIdx ? " active" : "") +
+      '" data-idx="' + i + '" title="' + escapeHtml(lg.name || "") + '">' +
+      escapeHtml(lg.name || "League " + (i + 1)) + "</button>"
+    ).join("");
+    $chips.querySelectorAll(".chip").forEach((c) => {
+      c.addEventListener("click", () => {
+        sleeperLeagueIdx = Number(c.dataset.idx) || 0;
+        renderSleeperChips();
+        renderSleeper();
+      });
+    });
+  }
+
+  function renderSleeper() {
+    const $out = document.getElementById("sleeper-output");
+    const $meta = document.getElementById("sleeper-meta");
+    if (!$out) return;
+
+    const sl = cache["sleeper"];
+    if (!sl || !Array.isArray(sl.leagues) || !sl.leagues.length) {
+      $out.innerHTML = '<div class="empty">No Sleeper leagues loaded. ' +
+        "Run scripts/fetch_sleeper_rosters.py to build sleeper.json.</div>";
+      return;
+    }
+    const lg = sl.leagues[Math.min(sleeperLeagueIdx, sl.leagues.length - 1)];
+    const pool = buildSitStartPoolFull();
+    const wkd = cache["weekly"];
+    if ($meta) {
+      $meta.textContent = (wkd ? "Week " + wkd.week + " · " : "") +
+        lg.teams + " teams · " +
+        (lg.scoring.rec === 1 ? "full PPR" : lg.scoring.rec === 0.5 ? "half PPR"
+          : lg.scoring.rec ? lg.scoring.rec + " PPR" : "standard") +
+        (lg.scoring.bonusRecTe ? " · +" + lg.scoring.bonusRecTe + " TE" : "");
+    }
+
+    const scored = [], unpriced = [], noMarket = [];
+    for (const r of lg.roster) {
+      if (r.unpriced) { noMarket.push(r); continue; }
+      const p = pool.get(normPlayerName(r.name));
+      if (!p || p.tdOnly || p.points <= 0 || !p.position) {
+        unpriced.push(r);
+        continue;
+      }
+      scored.push({
+        name: r.name,
+        position: r.position || p.position,
+        matchup: p.matchup,
+        points: leaguePoints(p.stats, lg.scoring, r.position || p.position),
+        injury: r.injury,
+        wasStarter: r.starter,
+      });
+    }
+
+    const slots = lg.slots || [];
+    const best = bestLineupForSlots(scored, slots);
+    const startingNames = new Set(best.picks.filter(Boolean).map((p) => p.name));
+    const bench = scored.filter((p) => !startingNames.has(p.name))
+      .sort((a, b) => b.points - a.points);
+
+    let html = '<div class="league-scoring">' +
+      escapeHtml(slots.join(" / ")) + "</div>";
+
+    html += '<div class="table-wrap"><table class="slot-table"><thead><tr>' +
+      "<th>Slot</th><th>Player</th><th>Pos</th><th>Game</th>" +
+      '<th style="text-align:right">Proj</th></tr></thead><tbody>';
+    best.picks.forEach((p, i) => {
+      const slot = slots[i];
+      const isFlex = (SLOT_ACCEPTS[slot] || []).length > 1;
+      const badge = '<span class="slot-badge' + (isFlex ? " flex" : "") + '">' +
+                    escapeHtml(slot) + "</span>";
+      if (!p) {
+        html += '<tr class="bench-row"><td>' + badge +
+                '</td><td colspan="4">nobody eligible</td></tr>';
+        return;
+      }
+      // Flag a change from what is currently set in Sleeper — that is the
+      // actionable part, not the lineup itself.
+      const swap = p.wasStarter ? "" :
+        ' <span class="injury-tag" style="color:#58d68d">SWAP IN</span>';
+      html += "<tr><td>" + badge + "</td>" +
+        '<td class="player-name">' + escapeHtml(p.name) +
+        (p.injury ? ' <span class="injury-tag">' + escapeHtml(p.injury) + "</span>" : "") +
+        swap + "</td>" +
+        '<td><span class="pos-badge pos-' + escapeHtml(p.position || "?") + '">' +
+        escapeHtml(p.position || "?") + "</span></td>" +
+        '<td class="weekly-game">' + escapeHtml(p.matchup || "-") + "</td>" +
+        '<td style="text-align:right"><span class="market-pts">' +
+        p.points.toFixed(1) + "</span></td></tr>";
+    });
+    html += "</tbody></table></div>";
+    html += '<div class="sitstart-total">Projected starters: ' +
+            best.total.toFixed(1) + " pts (K/DEF not projected)</div>";
+
+    if (bench.length) {
+      html += '<div class="sitstart-section">Bench</div>' +
+        '<div class="table-wrap"><table class="slot-table"><tbody>';
+      for (const p of bench) {
+        const swap = p.wasStarter
+          ? ' <span class="injury-tag">SITTING</span>' : "";
+        html += '<tr class="bench-row"><td class="player-name">' +
+          escapeHtml(p.name) +
+          (p.injury ? ' <span class="injury-tag">' + escapeHtml(p.injury) + "</span>" : "") +
+          swap + "</td>" +
+          '<td><span class="pos-badge pos-' + escapeHtml(p.position || "?") + '">' +
+          escapeHtml(p.position || "?") + "</span></td>" +
+          '<td class="weekly-game">' + escapeHtml(p.matchup || "-") + "</td>" +
+          '<td style="text-align:right">' + p.points.toFixed(1) + "</td></tr>";
+      }
+      html += "</tbody></table></div>";
+    }
+
+    if (unpriced.length) {
+      html += '<div class="sitstart-section">No market projection</div>' +
+        '<div class="verdict" style="font-size:13px">' +
+        escapeHtml(unpriced.map((r) => r.name).join(", ")) +
+        '<br /><span style="color:#6a6a8a">No book has priced their usage this ' +
+        "week. That usually means an unsettled role, not a projection of zero.</span></div>";
+    }
+    if (noMarket.length) {
+      html += '<div class="sitstart-section">Not covered by props</div>' +
+        '<div class="verdict" style="font-size:13px;color:#6a6a8a">' +
+        escapeHtml(noMarket.map((r) => r.name + " (" + (r.position || "?") + ")").join(", ")) +
+        "</div>";
+    }
+    $out.innerHTML = html;
+  }
 
   // -- Head-to-head ------------------------------------------------------------
   // A dedicated two-player call. The projected total answers "who", but the

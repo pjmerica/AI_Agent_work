@@ -73,6 +73,12 @@ jobs:
           MULTIWEEK_WEEKS: "4"
         continue-on-error: true
 
+      # Sleeper rosters. Public read-only API, no auth. Resolves player IDs
+      # server-side because Sleeper's player dictionary is a 14.6 MB download.
+      - name: Fetch Sleeper rosters
+        run: python scripts/fetch_sleeper_rosters.py
+        continue-on-error: true
+
       # Underdog ADP. Reads a CSV from the EZ Dubs repo, so it only runs when
       # that checkout is available; the committed adp.json stands in otherwise.
       - name: Build Underdog ADP board
@@ -88,6 +94,7 @@ jobs:
                   nfl-props/bovada.json nfl-props/adp.json \
                   nfl-props/weekly.json nfl-props/oddsapi.json \
                   nfl-props/multiweek.json \
-                  nfl-props/dk_td.json
+                  nfl-props/dk_td.json \
+                  nfl-props/sleeper.json
           git diff --staged --quiet || git commit -m "chore: refresh NFL projections [skip ci]"
           git push

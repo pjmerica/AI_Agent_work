@@ -274,7 +274,8 @@ header h1 { font-size: 28px; font-weight: 700; color: #fff; }
 #weekly-view.hidden,
 #multi-view.hidden,
 #sitstart-view.hidden,
-#h2h-view.hidden { display: none !important; }
+#h2h-view.hidden,
+#sleeper-view.hidden { display: none !important; }
 
 /* ── Visualizations tab ──────────────────────────────────────────────────── */
 #viz-view {
@@ -773,3 +774,21 @@ tr.row-nan:hover { opacity: 0.85; }
 }
 .roster-paste textarea:focus { border-color: #5b4cf5; }
 .roster-paste .fmt-btn { margin-top: 8px; border: 1px solid #2e2e42; }
+
+
+/* ── Sleeper leagues view ─────────────────────────────────────────────────── */
+#sleeper-league-chips { flex-wrap: wrap; }
+#sleeper-league-chips .chip { max-width: 260px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.league-scoring {
+  font-size: 12px;
+  color: #6a6a8a;
+  margin-bottom: 10px;
+}
+.slot-badge.k-def { background: rgba(108, 122, 137, 0.2); color: #95a5a6; }
+.injury-tag {
+  font-size: 10px;
+  font-weight: 700;
+  color: #ff6b6b;
+  margin-left: 6px;
+  letter-spacing: 0.5px;
+}
