@@ -48,6 +48,12 @@ jobs:
         run: python scripts/fetch_kalshi_weekly_props.py
         continue-on-error: true
 
+      # DraftKings anytime-TD. Free, no key, but needs Origin+Referer headers
+      # or every request 403s. Covers 429 players to Kalshi's 236.
+      - name: Scrape DraftKings TD scorers
+        run: python scripts/fetch_dk_td_scorers.py
+        continue-on-error: true
+
       # Multi-book per-game props. Needs ODDS_API_KEY (repo secret); the script
       # exits cleanly when it is absent. Player props bill one credit per event
       # per market, so this is the expensive step on a 500/month free tier.
@@ -81,6 +87,7 @@ jobs:
                   nfl-props/vegas.json nfl-props/kalshi.json \
                   nfl-props/bovada.json nfl-props/adp.json \
                   nfl-props/weekly.json nfl-props/oddsapi.json \
-                  nfl-props/multiweek.json
+                  nfl-props/multiweek.json \
+                  nfl-props/dk_td.json
           git diff --staged --quiet || git commit -m "chore: refresh NFL projections [skip ci]"
           git push

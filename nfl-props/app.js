@@ -468,6 +468,10 @@
       try { cache["oddsapi"] = await fetchJson("oddsapi.json"); }
       catch (e) { cache["oddsapi"] = null; }
     }
+    if (!cache["dktd"]) {
+      try { cache["dktd"] = await fetchJson("dk_td.json"); }
+      catch (e) { cache["dktd"] = null; }
+    }
     // Positions come from the projection sources; the weekly feed has none.
     await ensureMarketData();
     renderWeekly();
@@ -1596,6 +1600,7 @@
     fitted: "Fitted estimate — ladder never crosses 50%",
     expected: "Expected count — sum of P(X ≥ k) across the ladder",
     books: "Sportsbook consensus — median across books",
+    "dk-td": "DraftKings anytime-TD price, de-vigged (P of 1+, so slightly low)",
   };
 
   function weeklyChips(p) {
@@ -1607,7 +1612,8 @@
       const dec = k === "any_tds" ? 2
                 : (k.endsWith("_tds") || k === "receptions") ? 1 : 0;
       const cls = s.lineSource === "fitted" ? "src-fit"
-                : s.lineSource === "books" ? "src-fanduel" : "src-kalshi";
+                : s.lineSource === "books" ? "src-fanduel"
+                : s.lineSource === "dk-td" ? "src-bovada" : "src-kalshi";
       const mark = s.lineSource === "fitted" ? "~" : "";
       // Name each book and the number it posted, so a consensus is auditable
       // rather than a black box. Books that agree collapse to one line; the
@@ -1622,6 +1628,8 @@
              .join("\n")
           : `${s.books} book${s.books === 1 ? "" : "s"}`;
         if (s.min !== s.max) detail += `\nspread ${s.min}–${s.max}`;
+      } else if (s.lineSource === "dk-td") {
+        detail = `DraftKings ${s.odds}`;
       } else {
         detail = `${s.rungs} strikes`;
       }
@@ -1703,6 +1711,30 @@
             min: v.min,
             max: v.max,
             quotes: v.quotes || [],
+          };
+        }
+      }
+    }
+
+    // DraftKings anytime-TD fills the touchdown gap. It prices 429 players to
+    // Kalshi's 236, but as P(scores 1+) rather than a full count, so it reads
+    // ~0.3 low for goal-line backs who can score twice. Kalshi's ladder is the
+    // better model where it exists — so this only fills, never overwrites.
+    const dk = cache["dktd"];
+    if (dk && Array.isArray(dk.players)) {
+      for (const p of dk.players) {
+        const k = normPlayerName(p.name);
+        let rec = merged.get(k);
+        if (!rec) {
+          rec = { name: p.name, matchup: p.matchup, kickoff: p.kickoff, stats: {} };
+          merged.set(k, rec);
+        }
+        const cur = rec.stats.any_tds;
+        if (!cur || cur.line == null) {
+          rec.stats.any_tds = {
+            line: p.xTD,
+            lineSource: "dk-td",
+            odds: p.americanOdds,
           };
         }
       }

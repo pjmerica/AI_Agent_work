@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>NFL Season Projections</title>
-  <link rel="stylesheet" href="style.css?v=2026-09-06-multi" />
+  <link rel="stylesheet" href="style.css?v=2026-09-09-dktd" />
 </head>
 <body>
   <div class="container">
@@ -255,8 +255,11 @@
           number is resolved from ESPN's schedule rather than guessed from the
           date, since the season opens midweek.
           Touchdowns come from Kalshi's anytime-TD ladder as an <em>expected</em>
-          count (the sum of P(X&nbsp;&ge;&nbsp;k)), covering 236 players &mdash;
-          far more than any yardage market. Kalshi posts no split rushing- vs
+          count (the sum of P(X&nbsp;&ge;&nbsp;k)), with DraftKings' anytime-TD
+          price filling the 198 players Kalshi does not cover &mdash; 429 priced
+          against Kalshi's 236. Kalshi's ladder is preferred where it exists
+          because DK quotes P(scores 1+), which reads ~0.3 low for goal-line
+          backs who can score twice. Neither book posts a split rushing- vs
           receiving-TD game market, so that one number carries all non-passing
           scoring.
           <br /><br />
@@ -364,6 +367,6 @@
   <!-- Version query busts the 10-minute GitHub Pages cache on app.js. Without
        it a stale script can pair with fresh markup and shift every column.
        Bump on any app.js change. -->
-  <script src="app.js?v=2026-09-06-multi"></script>
+  <script src="app.js?v=2026-09-09-dktd"></script>
 </body>
 </html>
