@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>NFL Season Projections</title>
-  <link rel="stylesheet" href="style.css?v=2026-09-09-sitstart" />
+  <link rel="stylesheet" href="style.css?v=2026-09-09-h2h" />
 </head>
 <body>
   <div class="container">
@@ -22,6 +22,7 @@
       <button class="view-tab" data-view="weekly">Week 1</button>
       <button class="view-tab" data-view="multi">Weeks 1-4 Avg</button>
       <button class="view-tab" data-view="sitstart">Start/Sit</button>
+      <button class="view-tab" data-view="h2h">H2H</button>
     </div>
 
     <div class="source-tabs" id="source-tabs">
@@ -388,6 +389,43 @@
           </div>
         </div>
       </div>
+
+      <div id="h2h-view" class="hidden">
+        <div class="callout">
+          <strong>Two players, one call.</strong>
+          Pick any two and see the market&rsquo;s case for each &mdash; not just
+          the projected total, but which stat the edge actually comes from.
+          Half-PPR, this week&rsquo;s lines. Start typing to search.
+          <br /><br />
+          A gap under half a point is inside the noise and the tab says so
+          rather than manufacturing confidence. Where the two sources disagree
+          about the same stat, that is shown too.
+        </div>
+
+        <div class="h2h-pickers">
+          <div class="h2h-picker">
+            <label class="sitstart-label" for="h2h-a">Player A</label>
+            <input type="text" id="h2h-a" autocomplete="off" spellcheck="false"
+                   placeholder="e.g. Brock Bowers" list="h2h-names" />
+          </div>
+          <div class="h2h-vs">vs</div>
+          <div class="h2h-picker">
+            <label class="sitstart-label" for="h2h-b">Player B</label>
+            <input type="text" id="h2h-b" autocomplete="off" spellcheck="false"
+                   placeholder="e.g. Trey McBride" list="h2h-names" />
+          </div>
+        </div>
+        <datalist id="h2h-names"></datalist>
+        <div class="sitstart-actions" style="margin-bottom:16px">
+          <button id="h2h-go" class="fmt-btn active">Compare</button>
+          <button id="h2h-swap" class="fmt-btn">Swap</button>
+          <span class="weekly-meta" id="h2h-meta"></span>
+        </div>
+
+        <div id="h2h-output">
+          <div class="empty">Pick two players to compare.</div>
+        </div>
+      </div>
     </main>
 
     <footer>
@@ -401,6 +439,6 @@
   <!-- Version query busts the 10-minute GitHub Pages cache on app.js. Without
        it a stale script can pair with fresh markup and shift every column.
        Bump on any app.js change. -->
-  <script src="app.js?v=2026-09-09-sitstart"></script>
+  <script src="app.js?v=2026-09-09-h2h"></script>
 </body>
 </html>

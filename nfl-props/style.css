@@ -273,7 +273,8 @@ header h1 { font-size: 28px; font-weight: 700; color: #fff; }
 #market-view.hidden,
 #weekly-view.hidden,
 #multi-view.hidden,
-#sitstart-view.hidden { display: none !important; }
+#sitstart-view.hidden,
+#h2h-view.hidden { display: none !important; }
 
 /* ── Visualizations tab ──────────────────────────────────────────────────── */
 #viz-view {
@@ -592,3 +593,83 @@ tr.row-nan:hover { opacity: 0.85; }
 }
 .verdict strong { color: #58d68d; }
 .unmatched { color: #f5b041; }
+
+
+/* ── Head-to-head view ────────────────────────────────────────────────────── */
+.h2h-pickers {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 14px;
+  align-items: end;
+  margin-bottom: 12px;
+}
+@media (max-width: 620px) {
+  .h2h-pickers { grid-template-columns: 1fr; }
+  .h2h-vs { text-align: left; }
+}
+.h2h-picker input {
+  width: 100%;
+  padding: 10px 12px;
+  font-size: 14px;
+  font-family: inherit;
+  background: #0f0f13;
+  border: 1px solid #2e2e42;
+  border-radius: 8px;
+  color: #e2e2f0;
+  outline: none;
+}
+.h2h-picker input:focus { border-color: #5b4cf5; }
+.h2h-vs {
+  font-size: 12px;
+  font-weight: 700;
+  color: #6a6a8a;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding-bottom: 11px;
+}
+
+.h2h-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-bottom: 14px;
+}
+@media (max-width: 620px) { .h2h-cards { grid-template-columns: 1fr; } }
+.h2h-card {
+  background: #1a1a24;
+  border: 1px solid #2e2e42;
+  border-radius: 12px;
+  padding: 16px;
+}
+.h2h-card.winner { border-color: rgba(88, 214, 141, 0.55); }
+.h2h-card-name { font-size: 16px; font-weight: 700; color: #f0f0f8; }
+.h2h-card-meta { font-size: 12px; color: #6a6a8a; margin-top: 4px; }
+.h2h-card-pts {
+  font-size: 30px;
+  font-weight: 700;
+  color: #5b4cf5;
+  font-variant-numeric: tabular-nums;
+  margin-top: 10px;
+}
+.h2h-card.winner .h2h-card-pts { color: #58d68d; }
+.h2h-card-sub { font-size: 11px; color: #6a6a8a; text-transform: uppercase; letter-spacing: 1px; }
+
+.h2h-bar-row { margin-top: 10px; }
+.h2h-bar-label {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  color: #a0a0c0;
+  margin-bottom: 4px;
+  font-variant-numeric: tabular-nums;
+}
+.h2h-bar {
+  display: flex;
+  height: 8px;
+  border-radius: 4px;
+  overflow: hidden;
+  background: #0f0f13;
+}
+.h2h-bar-a { background: #5b4cf5; }
+.h2h-bar-b { background: #58d68d; }
+.h2h-stat-name { color: #6a6a8a; }

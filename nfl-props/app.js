@@ -423,6 +423,7 @@
   const $weeklyView = document.getElementById("weekly-view");
   const $multiView = document.getElementById("multi-view");
   const $sitstartView = document.getElementById("sitstart-view");
+  const $h2hView = document.getElementById("h2h-view");
 
   function hideAllViews() {
     if ($tableView) $tableView.classList.add("hidden");
@@ -432,6 +433,7 @@
     if ($weeklyView) $weeklyView.classList.add("hidden");
     if ($multiView) $multiView.classList.add("hidden");
     if ($sitstartView) $sitstartView.classList.add("hidden");
+    if ($h2hView) $h2hView.classList.add("hidden");
   }
 
   function showTableView() {
@@ -488,6 +490,25 @@
     }
     await ensureMarketData();   // positions come from the projection sources
     renderMulti();
+  }
+
+  async function showH2HView() {
+    hideAllViews();
+    if ($h2hView) $h2hView.classList.remove("hidden");
+    for (const [key, file] of [["weekly", "weekly.json"],
+                               ["oddsapi", "oddsapi.json"],
+                               ["dktd", "dk_td.json"]]) {
+      if (!cache[key]) {
+        try { cache[key] = await fetchJson(file); }
+        catch (e) { cache[key] = null; }
+      }
+    }
+    await ensureMarketData();
+    const $meta = document.getElementById("h2h-meta");
+    const wkd = cache["weekly"];
+    if ($meta && wkd) $meta.textContent = `Week ${wkd.week} · half-PPR`;
+    fillH2HNames();
+    renderH2H();
   }
 
   async function showSitStartView() {
@@ -548,6 +569,7 @@
       else if (currentView === "weekly") showWeeklyView();
       else if (currentView === "multi") showMultiView();
       else if (currentView === "sitstart") showSitStartView();
+      else if (currentView === "h2h") showH2HView();
       else showVizView();
     });
   }
@@ -1458,6 +1480,264 @@
 
 
 
+
+
+  // -- Head-to-head ------------------------------------------------------------
+  // A dedicated two-player call. The projected total answers "who", but the
+  // per-stat split answers "why", which is what makes the call trustworthy:
+  // a 2-point edge built entirely on touchdown equity is a different bet from
+  // the same edge built on receptions.
+
+  // Half-PPR point value of one unit of each stat, so a stat-level edge can be
+  // expressed in the same currency as the total.
+  const H2H_WEIGHTS = {
+    pass_yds: 0.04, pass_tds: 4, rush_yds: 0.1,
+    rec_yds: 0.1, receptions: 0.5, any_tds: 6,
+  };
+  const H2H_ORDER = ["pass_yds", "pass_tds", "rush_yds", "receptions",
+                     "rec_yds", "any_tds"];
+
+  function h2hPool() {
+    return buildSitStartPoolFull();
+  }
+
+  // Same merge as Start/Sit but keeping the raw stats, which H2H needs for the
+  // breakdown. Start/Sit only needs the total, so it discards them.
+  function buildSitStartPoolFull() {
+    const wk = cache["weekly"], oa = cache["oddsapi"], dk = cache["dktd"];
+    const merged = new Map();
+    if (wk && Array.isArray(wk.players)) {
+      for (const p of wk.players) {
+        merged.set(normPlayerName(p.name), { ...p, stats: { ...p.stats } });
+      }
+    }
+    if (oa && Array.isArray(oa.players)) {
+      for (const p of oa.players) {
+        const k = normPlayerName(p.name);
+        let rec = merged.get(k);
+        if (!rec) { rec = { name: p.name, matchup: p.matchup, stats: {} }; merged.set(k, rec); }
+        for (const [statKey, v] of Object.entries(p.stats || {})) {
+          if (v.line != null) {
+            rec.stats[statKey] = { line: v.line, lineSource: "books", books: v.books };
+          }
+        }
+      }
+    }
+    if (dk && Array.isArray(dk.players)) {
+      for (const p of dk.players) {
+        const k = normPlayerName(p.name);
+        let rec = merged.get(k);
+        if (!rec) { rec = { name: p.name, matchup: p.matchup, stats: {} }; merged.set(k, rec); }
+        const cur = rec.stats.any_tds;
+        if (!cur || cur.line == null) {
+          rec.stats.any_tds = { line: p.xTD, lineSource: "dk-td", odds: p.americanOdds };
+        }
+      }
+    }
+
+    const fpLut = buildProjLookup(cache["data"]);
+    const clayLut = buildProjLookup(cache["clay"]);
+    const pool = new Map();
+    for (const [key, p] of merged) {
+      const fp = lookupProj(fpLut, p.name), clay = lookupProj(clayLut, p.name);
+      const priced = Object.values(p.stats).filter((s) => s.line != null);
+      pool.set(key, {
+        name: p.name,
+        matchup: p.matchup || "",
+        position: (fp && fp.position) || (clay && clay.position) || null,
+        points: weeklyPoints(p.stats, "half"),
+        stats: p.stats,
+        tdOnly: priced.length === 1 && p.stats.any_tds && p.stats.any_tds.line != null,
+        statCount: priced.length,
+      });
+    }
+    return pool;
+  }
+
+  function h2hFind(raw, pool) {
+    const cleaned = (raw || "").replace(/\s*[-–—(].*$/, "").trim();
+    if (!cleaned) return null;
+    const k = normPlayerName(cleaned);
+    if (pool.has(k)) return pool.get(k);
+    const a = altPlayerKey(cleaned);
+    const hits = [];
+    for (const p of pool.values()) if (altPlayerKey(p.name) === a) hits.push(p);
+    if (hits.length === 1) return hits[0];
+    // Last resort: a unique substring match, so a surname alone can work.
+    const low = cleaned.toLowerCase();
+    const subs = [];
+    for (const p of pool.values()) {
+      if (p.name.toLowerCase().includes(low)) subs.push(p);
+    }
+    return subs.length === 1 ? subs[0] : null;
+  }
+
+  function renderH2H() {
+    const $out = document.getElementById("h2h-output");
+    if (!$out) return;
+    const rawA = (document.getElementById("h2h-a") || {}).value || "";
+    const rawB = (document.getElementById("h2h-b") || {}).value || "";
+    if (!rawA.trim() || !rawB.trim()) {
+      $out.innerHTML = '<div class="empty">Pick two players to compare.</div>';
+      return;
+    }
+
+    const pool = h2hPool();
+    if (!pool.size) {
+      $out.innerHTML = '<div class="empty">Week 1 market data has not loaded.</div>';
+      return;
+    }
+    const a = h2hFind(rawA, pool), b = h2hFind(rawB, pool);
+    const missing = [];
+    if (!a) missing.push(rawA.trim());
+    if (!b) missing.push(rawB.trim());
+    if (missing.length) {
+      $out.innerHTML = '<div class="verdict">Could not find <span class="unmatched">' +
+        escapeHtml(missing.join(", ")) + "</span> in this week's market board. " +
+        "Either the name is off, or no book has priced them.</div>";
+      return;
+    }
+    if (a.name === b.name) {
+      $out.innerHTML = '<div class="verdict">Those are the same player.</div>';
+      return;
+    }
+
+    const hi = a.points >= b.points ? a : b;
+    const lo = hi === a ? b : a;
+    const gap = hi.points - lo.points;
+
+    let verdict;
+    if (hi.tdOnly || lo.tdOnly) {
+      const who = hi.tdOnly ? hi : lo;
+      verdict = "No usage priced for <strong>" + escapeHtml(who.name) +
+        "</strong> &mdash; the books posted a touchdown price but no receptions " +
+        "or yardage, so his number is a floor rather than a projection. " +
+        "That is a signal about an unsettled role, not a reason to trust the gap.";
+    } else if (gap < 0.5) {
+      verdict = "Too close to call. <strong>" + escapeHtml(hi.name) + "</strong> " +
+        "projects " + hi.points.toFixed(1) + " to " + escapeHtml(lo.name) + "'s " +
+        lo.points.toFixed(1) + " &mdash; a " + gap.toFixed(1) +
+        "-point gap is inside the noise in these markets. Play the matchup you believe in.";
+    } else {
+      verdict = "Start <strong>" + escapeHtml(hi.name) + "</strong>, by " +
+        gap.toFixed(1) + " points. " + escapeHtml(hi.name) + " projects " +
+        hi.points.toFixed(1) + " half-PPR against " + escapeHtml(lo.name) + " at " +
+        lo.points.toFixed(1) + ".";
+    }
+
+    let html = '<div class="verdict">' + verdict + "</div>";
+
+    html += '<div class="h2h-cards">';
+    for (const p of [a, b]) {
+      const win = p.name === hi.name && gap >= 0.5;
+      html += '<div class="h2h-card' + (win ? " winner" : "") + '">' +
+        '<div class="h2h-card-name">' + escapeHtml(p.name) + "</div>" +
+        '<div class="h2h-card-meta">' +
+        '<span class="pos-badge pos-' + escapeHtml(p.position || "?") + '">' +
+        escapeHtml(p.position || "?") + "</span> &middot; " +
+        escapeHtml(p.matchup || "no game") + "</div>" +
+        '<div class="h2h-card-pts">' + p.points.toFixed(1) + "</div>" +
+        '<div class="h2h-card-sub">projected half-PPR</div>' +
+        "</div>";
+    }
+    html += "</div>";
+
+    // Per-stat contribution: where the edge is actually coming from.
+    const rows = [];
+    for (const k of H2H_ORDER) {
+      const sa = a.stats[k], sb = b.stats[k];
+      const va = sa && sa.line != null ? sa.line : null;
+      const vb = sb && sb.line != null ? sb.line : null;
+      if (va == null && vb == null) continue;
+      const w = H2H_WEIGHTS[k] || 0;
+      rows.push({
+        key: k,
+        label: STAT_LABELS[k] || k,
+        va, vb,
+        pa: (va || 0) * w,
+        pb: (vb || 0) * w,
+      });
+    }
+
+    if (rows.length) {
+      html += '<div class="table-wrap"><table class="slot-table"><thead><tr>' +
+        "<th>Stat</th><th style=\"text-align:right\">" + escapeHtml(a.name) + "</th>" +
+        "<th style=\"text-align:right\">" + escapeHtml(b.name) + "</th>" +
+        "<th>Where the points come from</th></tr></thead><tbody>";
+      for (const r of rows) {
+        const tot = r.pa + r.pb;
+        const wa = tot > 0 ? (r.pa / tot) * 100 : 50;
+        const dec = r.key === "any_tds" ? 2
+                  : (r.key.endsWith("_tds") || r.key === "receptions") ? 1 : 0;
+        html += "<tr><td class=\"h2h-stat-name\">" + escapeHtml(r.label) + "</td>" +
+          '<td style="text-align:right">' +
+          (r.va == null ? "&mdash;" : r.va.toFixed(dec) +
+            ' <span style="color:#6a6a8a">(' + r.pa.toFixed(1) + ")</span>") + "</td>" +
+          '<td style="text-align:right">' +
+          (r.vb == null ? "&mdash;" : r.vb.toFixed(dec) +
+            ' <span style="color:#6a6a8a">(' + r.pb.toFixed(1) + ")</span>") + "</td>" +
+          '<td><div class="h2h-bar">' +
+          '<div class="h2h-bar-a" style="width:' + wa.toFixed(1) + '%"></div>' +
+          '<div class="h2h-bar-b" style="width:' + (100 - wa).toFixed(1) + '%"></div>' +
+          "</div></td></tr>";
+      }
+      html += "</tbody></table></div>";
+
+      // Name the stat driving the gap, and say when the edge is contested.
+      // A single "biggest gain" line is misleading when the loser wins other
+      // categories: Derrick Henry can lead rushing by 2.1 while trailing on
+      // receiving, netting out to a 0.6 edge. Reporting "2.1 of 0.6" reads as
+      // a bug, so name what the other player wins back too.
+      if (gap >= 0.5) {
+        const signed = rows.map((r) => ({
+          label: r.label,
+          d: (hi.name === a.name ? r.pa - r.pb : r.pb - r.pa),
+        }));
+        const gains = signed.filter((x) => x.d > 0).sort((x, y) => y.d - x.d);
+        const losses = signed.filter((x) => x.d < 0).sort((x, y) => x.d - y.d);
+        if (gains.length) {
+          let txt = "The edge is mostly <strong style=\"color:#e2e2f0\">" +
+            escapeHtml(gains[0].label) + "</strong> (+" + gains[0].d.toFixed(1) +
+            " for " + escapeHtml(hi.name) + ")";
+          if (losses.length && Math.abs(losses[0].d) >= 0.5) {
+            txt += ", partly given back on <strong style=\"color:#e2e2f0\">" +
+              escapeHtml(losses[0].label) + "</strong> (" + losses[0].d.toFixed(1) +
+              "), netting to " + gap.toFixed(1) + ".";
+          } else {
+            txt += " of a " + gap.toFixed(1) + "-point difference.";
+          }
+          html += '<div class="verdict" style="font-size:13px;color:#a0a0c0">' +
+                  txt + "</div>";
+        }
+      }
+    }
+    $out.innerHTML = html;
+  }
+
+  function fillH2HNames() {
+    const dl = document.getElementById("h2h-names");
+    if (!dl) return;
+    const pool = h2hPool();
+    const names = [...pool.values()]
+      .filter((p) => p.points > 0 && p.position)
+      .sort((x, y) => y.points - x.points)
+      .map((p) => p.name);
+    dl.innerHTML = names.map((n) => "<option value=\"" + escapeHtml(n) + "\"></option>").join("");
+  }
+
+  document.getElementById("h2h-go")?.addEventListener("click", renderH2H);
+  document.getElementById("h2h-swap")?.addEventListener("click", () => {
+    const $a = document.getElementById("h2h-a"), $b = document.getElementById("h2h-b");
+    if (!$a || !$b) return;
+    const t = $a.value; $a.value = $b.value; $b.value = t;
+    renderH2H();
+  });
+  for (const id of ["h2h-a", "h2h-b"]) {
+    document.getElementById(id)?.addEventListener("change", renderH2H);
+    document.getElementById(id)?.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") renderH2H();
+    });
+  }
 
   // -- Start/Sit optimizer ----------------------------------------------------
   // Builds the best legal lineup from a pasted roster. FLEX makes greedy
