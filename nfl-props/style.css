@@ -673,3 +673,103 @@ tr.row-nan:hover { opacity: 0.85; }
 .h2h-bar-a { background: #5b4cf5; }
 .h2h-bar-b { background: #58d68d; }
 .h2h-stat-name { color: #6a6a8a; }
+
+
+/* ── Roster picker (type-to-add chips) ────────────────────────────────────── */
+.roster-search-wrap { position: relative; }
+#roster-search {
+  width: 100%;
+  padding: 10px 12px;
+  font-size: 14px;
+  font-family: inherit;
+  background: #0f0f13;
+  border: 1px solid #2e2e42;
+  border-radius: 8px;
+  color: #e2e2f0;
+  outline: none;
+}
+#roster-search:focus { border-color: #5b4cf5; }
+.suggestions-list {
+  position: absolute;
+  top: 100%; left: 0; right: 0;
+  background: #14141c;
+  border: 1px solid #2e2e42;
+  border-radius: 8px;
+  z-index: 100;
+  max-height: 260px;
+  overflow-y: auto;
+  margin-top: 4px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+}
+.suggestions-list div {
+  padding: 8px 12px;
+  cursor: pointer;
+  font-size: 13px;
+  color: #c8c8dc;
+  border-bottom: 1px solid #1f1f2c;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.suggestions-list div:last-child { border-bottom: none; }
+.suggestions-list div:hover,
+.suggestions-list div.active { background: #1e1e2e; color: #fff; }
+.suggestions-list .sugg-pts {
+  margin-left: auto;
+  color: #6a6a8a;
+  font-variant-numeric: tabular-nums;
+}
+
+.selected-players {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 10px;
+  min-height: 20px;
+}
+.player-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  border: 1px solid rgba(91, 76, 245, 0.5);
+  background: rgba(91, 76, 245, 0.14);
+  color: #b9aeff;
+}
+.player-tag:hover { border-color: #5b4cf5; color: #fff; }
+.player-tag .remove { opacity: 0.65; font-size: 13px; }
+.player-tag:hover .remove { opacity: 1; }
+.player-tag.unpriced {
+  border-color: rgba(245, 176, 65, 0.5);
+  background: rgba(245, 176, 65, 0.12);
+  color: #e8d5b0;
+}
+
+.roster-paste { margin-top: 12px; }
+.roster-paste summary {
+  font-size: 12px;
+  color: #6a6a8a;
+  cursor: pointer;
+  user-select: none;
+}
+.roster-paste summary:hover { color: #a0a0c0; }
+.roster-paste textarea {
+  width: 100%;
+  margin-top: 8px;
+  padding: 10px 12px;
+  font-size: 13px;
+  font-family: inherit;
+  line-height: 1.6;
+  background: #0f0f13;
+  border: 1px solid #2e2e42;
+  border-radius: 8px;
+  color: #e2e2f0;
+  outline: none;
+  resize: vertical;
+}
+.roster-paste textarea:focus { border-color: #5b4cf5; }
+.roster-paste .fmt-btn { margin-top: 8px; border: 1px solid #2e2e42; }

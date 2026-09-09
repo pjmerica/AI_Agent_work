@@ -530,6 +530,8 @@
     const $meta = document.getElementById("sitstart-meta");
     const wkd = cache["weekly"];
     if ($meta && wkd) $meta.textContent = `Week ${wkd.week} · half-PPR`;
+    renderRosterTags();
+    renderSitStart();
   }
 
   async function ensureMarketData() {
@@ -1759,72 +1761,6 @@
   // The merged Week-1 board, keyed for name lookup. Same merge the Week 1 tab
   // uses: books beat Kalshi on shared stats, Kalshi keeps its TD ladder, and
   // DraftKings fills touchdowns Kalshi never priced.
-  function buildSitStartPool() {
-    const wk = cache["weekly"], oa = cache["oddsapi"], dk = cache["dktd"];
-    const merged = new Map();
-    if (wk && Array.isArray(wk.players)) {
-      for (const p of wk.players) {
-        merged.set(normPlayerName(p.name), { ...p, stats: { ...p.stats } });
-      }
-    }
-    if (oa && Array.isArray(oa.players)) {
-      for (const p of oa.players) {
-        const k = normPlayerName(p.name);
-        let rec = merged.get(k);
-        if (!rec) { rec = { name: p.name, matchup: p.matchup, stats: {} }; merged.set(k, rec); }
-        for (const [statKey, v] of Object.entries(p.stats || {})) {
-          if (v.line != null) rec.stats[statKey] = { line: v.line, lineSource: "books" };
-        }
-      }
-    }
-    if (dk && Array.isArray(dk.players)) {
-      for (const p of dk.players) {
-        const k = normPlayerName(p.name);
-        let rec = merged.get(k);
-        if (!rec) { rec = { name: p.name, matchup: p.matchup, stats: {} }; merged.set(k, rec); }
-        const cur = rec.stats.any_tds;
-        if (!cur || cur.line == null) {
-          rec.stats.any_tds = { line: p.xTD, lineSource: "dk-td" };
-        }
-      }
-    }
-
-    const fpLut = buildProjLookup(cache["data"]);
-    const clayLut = buildProjLookup(cache["clay"]);
-    const pool = new Map();
-    for (const [key, p] of merged) {
-      const fp = lookupProj(fpLut, p.name), clay = lookupProj(clayLut, p.name);
-      const position = (fp && fp.position) || (clay && clay.position) || null;
-      const priced = Object.values(p.stats).filter((s) => s.line != null);
-      const tdOnly = priced.length === 1 && p.stats.any_tds && p.stats.any_tds.line != null;
-      pool.set(key, {
-        name: p.name,
-        matchup: p.matchup || "",
-        position,
-        // Half-PPR is fixed here: it is the league being planned for, so this
-        // tab deliberately ignores the global PPR/Standard toggle.
-        points: weeklyPoints(p.stats, "half"),
-        tdOnly,
-        statCount: priced.length,
-      });
-    }
-    return pool;
-  }
-
-  // Loose matching: strip punctuation and suffixes, then fall back to the
-  // initial+surname key so "D. Lamb" or "ceedee lamb" both resolve.
-  function resolveRosterName(raw, pool, altIndex) {
-    const cleaned = raw.replace(/\s*[-–—(].*$/, "").trim();
-    if (!cleaned) return null;
-    const k = normPlayerName(cleaned);
-    if (pool.has(k)) return pool.get(k);
-    const a = altPlayerKey(cleaned);
-    const hits = altIndex.get(a);
-    // Only accept an initial+surname match when it is unambiguous -- that key
-    // collides A.J. Brown with Amon-Ra St. Brown.
-    if (hits && hits.length === 1) return hits[0];
-    return null;
-  }
 
   function bestLineup(players) {
     let best = null;
@@ -1863,34 +1799,22 @@
 
   function renderSitStart() {
     const $out = document.getElementById("sitstart-output");
-    const $in = document.getElementById("roster-input");
-    if (!$out || !$in) return;
+    if (!$out) return;
 
-    const lines = $in.value.split("\n").map((l) => l.trim()).filter(Boolean);
-    if (!lines.length) {
-      $out.innerHTML = '<div class="empty">Paste a roster and hit Optimize.</div>';
-      return;
-    }
-
-    const pool = buildSitStartPool();
+    const pool = buildSitStartPoolFull();
     if (!pool.size) {
       $out.innerHTML = '<div class="empty">Week 1 market data has not loaded.</div>';
       return;
     }
-    const altIndex = new Map();
-    for (const p of pool.values()) {
-      const a = altPlayerKey(p.name);
-      if (!altIndex.has(a)) altIndex.set(a, []);
-      altIndex.get(a).push(p);
+    if (!rosterSelected.size) {
+      $out.innerHTML = '<div class="empty">Add players to build a lineup.</div>';
+      return;
     }
 
     const matched = [], unmatched = [], unpriced = [];
-    const seen = new Set();
-    for (const line of lines) {
-      const p = resolveRosterName(line, pool, altIndex);
-      if (!p) { unmatched.push(line); continue; }
-      if (seen.has(p.name)) continue;
-      seen.add(p.name);
+    for (const key of rosterSelected) {
+      const p = pool.get(key);
+      if (!p) { unmatched.push(key); continue; }
       // A player whose only market is a touchdown price has no usage priced,
       // so ranking him against a fully-priced player would mislead.
       if (p.tdOnly || p.points <= 0 || !p.position) unpriced.push(p);
@@ -1985,18 +1909,52 @@
     return html;
   }
 
-  document.getElementById("roster-go")?.addEventListener("click", renderSitStart);
-  document.getElementById("roster-input")?.addEventListener("keydown", (e) => {
-    if ((e.metaKey || e.ctrlKey) && e.key === "Enter") renderSitStart();
-  });
-  document.getElementById("roster-demo")?.addEventListener("click", () => {
-    const $in = document.getElementById("roster-input");
-    if (!$in) return;
-    $in.value = ["Josh Allen", "Jahmyr Gibbs", "Bijan Robinson", "Puka Nacua",
-                 "CeeDee Lamb", "Brock Bowers", "Chase Brown",
-                 "Jaxon Smith-Njigba", "Trey McBride", "Derrick Henry"].join("\n");
+  // The paste path stays available for a whole roster at once; each line goes
+  // through the same loose matcher and becomes a chip. Lines that do not
+  // resolve are left in the box so it is obvious which ones failed.
+  document.getElementById("roster-go")?.addEventListener("click", () => {
+    const $ta = document.getElementById("roster-input");
+    if (!$ta) return;
+    const pool = buildSitStartPoolFull();
+    const altIndex = new Map();
+    for (const [k, p] of pool) {
+      const alt = altPlayerKey(p.name);
+      if (!altIndex.has(alt)) altIndex.set(alt, []);
+      altIndex.get(alt).push(k);
+    }
+    const misses = [];
+    for (const line of $ta.value.split("\n").map((l) => l.trim()).filter(Boolean)) {
+      const cleaned = line.replace(/\s*[-–—(].*$/, "").trim();
+      const k = normPlayerName(cleaned);
+      if (pool.has(k)) { rosterSelected.add(k); continue; }
+      const hits = altIndex.get(altPlayerKey(cleaned));
+      if (hits && hits.length === 1) { rosterSelected.add(hits[0]); continue; }
+      misses.push(line);
+    }
+    $ta.value = misses.join("\n");
+    renderRosterTags();
     renderSitStart();
   });
+
+  document.getElementById("roster-clear")?.addEventListener("click", () => {
+    rosterSelected.clear();
+    renderRosterTags();
+    renderSitStart();
+  });
+
+  document.getElementById("roster-demo")?.addEventListener("click", () => {
+    const pool = buildSitStartPoolFull();
+    rosterSelected.clear();
+    for (const n of ["Josh Allen", "Jahmyr Gibbs", "Bijan Robinson", "Puka Nacua",
+                     "CeeDee Lamb", "Brock Bowers", "Chase Brown",
+                     "Jaxon Smith-Njigba", "Trey McBride", "Derrick Henry"]) {
+      const k = normPlayerName(n);
+      if (pool.has(k)) rosterSelected.add(k);
+    }
+    renderRosterTags();
+    renderSitStart();
+  });
+
 
   // -- Multi-week average view ------------------------------------------------
   // Averaged market lines across the first N weeks. No touchdowns: only The

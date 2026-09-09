@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>NFL Season Projections</title>
-  <link rel="stylesheet" href="style.css?v=2026-09-09-h2h" />
+  <link rel="stylesheet" href="style.css?v=2026-09-09-picker" />
 </head>
 <body>
   <div class="container">
@@ -367,22 +367,33 @@
           <strong>QB / RB / RB / WR / WR / TE / FLEX / FLEX</strong> in
           half-PPR. FLEX takes RB, WR or TE.
           <br /><br />
-          Two players alone works too: enter both and the tab tells you which to
-          start and by how much. Anything the market hasn&rsquo;t priced is
+          Two players alone works too: add both and the tab tells you which to
+          start and by how much &mdash; or use the H2H tab for a stat-by-stat
+          breakdown. Anything the market hasn&rsquo;t priced is
           listed separately rather than silently scored as zero &mdash; an
           unpriced player is a market signal, not a projection of nothing.
         </div>
 
         <div class="sitstart-grid">
           <div class="sitstart-input">
-            <label for="roster-input" class="sitstart-label">Your players (one per line)</label>
-            <textarea id="roster-input" rows="14" spellcheck="false"
-              placeholder="Josh Allen&#10;Jahmyr Gibbs&#10;Bijan Robinson&#10;Puka Nacua&#10;CeeDee Lamb&#10;Brock Bowers&#10;Chase Brown&#10;Jaxon Smith-Njigba"></textarea>
+            <label for="roster-search" class="sitstart-label">Add players</label>
+            <div class="roster-search-wrap">
+              <input type="text" id="roster-search" autocomplete="off" spellcheck="false"
+                     placeholder="Type a name, click to add…" />
+              <div class="suggestions-list" id="roster-suggestions" style="display:none"></div>
+            </div>
+            <div class="selected-players" id="roster-tags"></div>
             <div class="sitstart-actions">
-              <button id="roster-go" class="fmt-btn active">Optimize lineup</button>
               <button id="roster-demo" class="fmt-btn">Load example</button>
+              <button id="roster-clear" class="fmt-btn">Clear</button>
               <span class="weekly-meta" id="sitstart-meta"></span>
             </div>
+            <details class="roster-paste">
+              <summary>or paste a list</summary>
+              <textarea id="roster-input" rows="8" spellcheck="false"
+                placeholder="One player per line"></textarea>
+              <button id="roster-go" class="fmt-btn">Add pasted names</button>
+            </details>
           </div>
           <div class="sitstart-output" id="sitstart-output">
             <div class="empty">Paste a roster and hit Optimize.</div>
@@ -439,6 +450,6 @@
   <!-- Version query busts the 10-minute GitHub Pages cache on app.js. Without
        it a stale script can pair with fresh markup and shift every column.
        Bump on any app.js change. -->
-  <script src="app.js?v=2026-09-09-h2h"></script>
+  <script src="app.js?v=2026-09-09-picker"></script>
 </body>
 </html>
