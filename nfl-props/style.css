@@ -272,7 +272,8 @@ header h1 { font-size: 28px; font-weight: 700; color: #fff; }
 #vegas-view.hidden,
 #market-view.hidden,
 #weekly-view.hidden,
-#multi-view.hidden { display: none !important; }
+#multi-view.hidden,
+#sitstart-view.hidden { display: none !important; }
 
 /* ── Visualizations tab ──────────────────────────────────────────────────── */
 #viz-view {
@@ -484,3 +485,110 @@ tr.row-nan:hover { opacity: 0.85; }
   border-bottom-style: dotted;
   border-bottom-width: 2px;
 }
+
+
+/* ── Start/Sit view ───────────────────────────────────────────────────────── */
+.sitstart-grid {
+  display: grid;
+  grid-template-columns: minmax(240px, 320px) 1fr;
+  gap: 18px;
+  align-items: start;
+}
+@media (max-width: 780px) { .sitstart-grid { grid-template-columns: 1fr; } }
+
+.sitstart-label {
+  display: block;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #6a6a8a;
+  margin-bottom: 6px;
+  font-weight: 600;
+}
+#roster-input {
+  width: 100%;
+  padding: 10px 12px;
+  font-size: 13px;
+  font-family: inherit;
+  line-height: 1.6;
+  background: #0f0f13;
+  border: 1px solid #2e2e42;
+  border-radius: 8px;
+  color: #e2e2f0;
+  outline: none;
+  resize: vertical;
+}
+#roster-input:focus { border-color: #5b4cf5; }
+.sitstart-actions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin-top: 10px;
+  flex-wrap: wrap;
+}
+.sitstart-actions .fmt-btn {
+  border: 1px solid #2e2e42;
+  padding: 8px 14px;
+}
+.sitstart-output {
+  background: #1a1a24;
+  border: 1px solid #2e2e42;
+  border-radius: 12px;
+  overflow: hidden;
+  min-height: 120px;
+}
+.slot-table { width: 100%; border-collapse: collapse; }
+.slot-table th {
+  text-align: left;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #6a6a8a;
+  background: #14141c;
+  padding: 10px 12px;
+  border-bottom: 1px solid #2e2e42;
+  font-weight: 600;
+}
+.slot-table td {
+  padding: 10px 12px;
+  font-size: 14px;
+  border-bottom: 1px solid #1f1f2c;
+}
+.slot-table tr:last-child td { border-bottom: none; }
+.slot-badge {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 4px;
+  letter-spacing: 0.5px;
+  background: rgba(91, 76, 245, 0.18);
+  color: #9b8cff;
+}
+.slot-badge.flex { background: rgba(46, 204, 113, 0.16); color: #58d68d; }
+.bench-row td { color: #6a6a8a; }
+.sitstart-total {
+  padding: 12px;
+  font-size: 14px;
+  font-weight: 700;
+  color: #f0f0f8;
+  background: #14141c;
+  border-top: 1px solid #2e2e42;
+}
+.sitstart-section {
+  padding: 10px 12px;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #6a6a8a;
+  background: #14141c;
+  font-weight: 600;
+}
+.verdict {
+  padding: 16px;
+  font-size: 15px;
+  line-height: 1.6;
+  color: #e2e2f0;
+}
+.verdict strong { color: #58d68d; }
+.unmatched { color: #f5b041; }

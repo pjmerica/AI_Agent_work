@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>NFL Season Projections</title>
-  <link rel="stylesheet" href="style.css?v=2026-09-09-dktd" />
+  <link rel="stylesheet" href="style.css?v=2026-09-09-sitstart" />
 </head>
 <body>
   <div class="container">
@@ -21,6 +21,7 @@
       <button class="view-tab" data-view="market">Market Points</button>
       <button class="view-tab" data-view="weekly">Week 1</button>
       <button class="view-tab" data-view="multi">Weeks 1-4 Avg</button>
+      <button class="view-tab" data-view="sitstart">Start/Sit</button>
     </div>
 
     <div class="source-tabs" id="source-tabs">
@@ -354,6 +355,39 @@
           </table>
         </div>
       </div>
+
+      <div id="sitstart-view" class="hidden">
+        <div class="callout">
+          <strong>Paste your roster, get the optimal lineup.</strong>
+          One player per line &mdash; names are matched loosely, so
+          &ldquo;ceedee lamb&rdquo; or &ldquo;D. Lamb&rdquo; both work. Every
+          player is scored on this week&rsquo;s market lines, then the best
+          legal lineup is chosen for
+          <strong>QB / RB / RB / WR / WR / TE / FLEX / FLEX</strong> in
+          half-PPR. FLEX takes RB, WR or TE.
+          <br /><br />
+          Two players alone works too: enter both and the tab tells you which to
+          start and by how much. Anything the market hasn&rsquo;t priced is
+          listed separately rather than silently scored as zero &mdash; an
+          unpriced player is a market signal, not a projection of nothing.
+        </div>
+
+        <div class="sitstart-grid">
+          <div class="sitstart-input">
+            <label for="roster-input" class="sitstart-label">Your players (one per line)</label>
+            <textarea id="roster-input" rows="14" spellcheck="false"
+              placeholder="Josh Allen&#10;Jahmyr Gibbs&#10;Bijan Robinson&#10;Puka Nacua&#10;CeeDee Lamb&#10;Brock Bowers&#10;Chase Brown&#10;Jaxon Smith-Njigba"></textarea>
+            <div class="sitstart-actions">
+              <button id="roster-go" class="fmt-btn active">Optimize lineup</button>
+              <button id="roster-demo" class="fmt-btn">Load example</button>
+              <span class="weekly-meta" id="sitstart-meta"></span>
+            </div>
+          </div>
+          <div class="sitstart-output" id="sitstart-output">
+            <div class="empty">Paste a roster and hit Optimize.</div>
+          </div>
+        </div>
+      </div>
     </main>
 
     <footer>
@@ -367,6 +401,6 @@
   <!-- Version query busts the 10-minute GitHub Pages cache on app.js. Without
        it a stale script can pair with fresh markup and shift every column.
        Bump on any app.js change. -->
-  <script src="app.js?v=2026-09-09-dktd"></script>
+  <script src="app.js?v=2026-09-09-sitstart"></script>
 </body>
 </html>

@@ -422,6 +422,7 @@
   const $marketView = document.getElementById("market-view");
   const $weeklyView = document.getElementById("weekly-view");
   const $multiView = document.getElementById("multi-view");
+  const $sitstartView = document.getElementById("sitstart-view");
 
   function hideAllViews() {
     if ($tableView) $tableView.classList.add("hidden");
@@ -430,6 +431,7 @@
     if ($marketView) $marketView.classList.add("hidden");
     if ($weeklyView) $weeklyView.classList.add("hidden");
     if ($multiView) $multiView.classList.add("hidden");
+    if ($sitstartView) $sitstartView.classList.add("hidden");
   }
 
   function showTableView() {
@@ -488,6 +490,27 @@
     renderMulti();
   }
 
+  async function showSitStartView() {
+    hideAllViews();
+    if ($sitstartView) $sitstartView.classList.remove("hidden");
+    if (!cache["weekly"]) {
+      try { cache["weekly"] = await fetchJson("weekly.json"); }
+      catch (e) { cache["weekly"] = null; }
+    }
+    if (!cache["oddsapi"]) {
+      try { cache["oddsapi"] = await fetchJson("oddsapi.json"); }
+      catch (e) { cache["oddsapi"] = null; }
+    }
+    if (!cache["dktd"]) {
+      try { cache["dktd"] = await fetchJson("dk_td.json"); }
+      catch (e) { cache["dktd"] = null; }
+    }
+    await ensureMarketData();
+    const $meta = document.getElementById("sitstart-meta");
+    const wkd = cache["weekly"];
+    if ($meta && wkd) $meta.textContent = `Week ${wkd.week} · half-PPR`;
+  }
+
   async function ensureMarketData() {
     const files = { vegas: "vegas.json", kalshi: "kalshi.json", data: "data.json",
                     clay: "clay.json", adp: "adp.json", bovada: "bovada.json" };
@@ -524,6 +547,7 @@
       else if (currentView === "market") showMarketView();
       else if (currentView === "weekly") showWeeklyView();
       else if (currentView === "multi") showMultiView();
+      else if (currentView === "sitstart") showSitStartView();
       else showVizView();
     });
   }
@@ -1433,6 +1457,266 @@
   }
 
 
+
+
+  // -- Start/Sit optimizer ----------------------------------------------------
+  // Builds the best legal lineup from a pasted roster. FLEX makes greedy
+  // filling wrong -- taking the best RB for a base slot can strand a better
+  // FLEX combination -- so this enumerates every legal assignment. With 8 slots
+  // over a normal roster that search is trivially small.
+
+  const LINEUP_SLOTS = [
+    { key: "QB", label: "QB", accepts: ["QB"] },
+    { key: "RB1", label: "RB", accepts: ["RB"] },
+    { key: "RB2", label: "RB", accepts: ["RB"] },
+    { key: "WR1", label: "WR", accepts: ["WR"] },
+    { key: "WR2", label: "WR", accepts: ["WR"] },
+    { key: "TE", label: "TE", accepts: ["TE"] },
+    { key: "FLEX1", label: "FLEX", accepts: ["RB", "WR", "TE"] },
+    { key: "FLEX2", label: "FLEX", accepts: ["RB", "WR", "TE"] },
+  ];
+
+  // The merged Week-1 board, keyed for name lookup. Same merge the Week 1 tab
+  // uses: books beat Kalshi on shared stats, Kalshi keeps its TD ladder, and
+  // DraftKings fills touchdowns Kalshi never priced.
+  function buildSitStartPool() {
+    const wk = cache["weekly"], oa = cache["oddsapi"], dk = cache["dktd"];
+    const merged = new Map();
+    if (wk && Array.isArray(wk.players)) {
+      for (const p of wk.players) {
+        merged.set(normPlayerName(p.name), { ...p, stats: { ...p.stats } });
+      }
+    }
+    if (oa && Array.isArray(oa.players)) {
+      for (const p of oa.players) {
+        const k = normPlayerName(p.name);
+        let rec = merged.get(k);
+        if (!rec) { rec = { name: p.name, matchup: p.matchup, stats: {} }; merged.set(k, rec); }
+        for (const [statKey, v] of Object.entries(p.stats || {})) {
+          if (v.line != null) rec.stats[statKey] = { line: v.line, lineSource: "books" };
+        }
+      }
+    }
+    if (dk && Array.isArray(dk.players)) {
+      for (const p of dk.players) {
+        const k = normPlayerName(p.name);
+        let rec = merged.get(k);
+        if (!rec) { rec = { name: p.name, matchup: p.matchup, stats: {} }; merged.set(k, rec); }
+        const cur = rec.stats.any_tds;
+        if (!cur || cur.line == null) {
+          rec.stats.any_tds = { line: p.xTD, lineSource: "dk-td" };
+        }
+      }
+    }
+
+    const fpLut = buildProjLookup(cache["data"]);
+    const clayLut = buildProjLookup(cache["clay"]);
+    const pool = new Map();
+    for (const [key, p] of merged) {
+      const fp = lookupProj(fpLut, p.name), clay = lookupProj(clayLut, p.name);
+      const position = (fp && fp.position) || (clay && clay.position) || null;
+      const priced = Object.values(p.stats).filter((s) => s.line != null);
+      const tdOnly = priced.length === 1 && p.stats.any_tds && p.stats.any_tds.line != null;
+      pool.set(key, {
+        name: p.name,
+        matchup: p.matchup || "",
+        position,
+        // Half-PPR is fixed here: it is the league being planned for, so this
+        // tab deliberately ignores the global PPR/Standard toggle.
+        points: weeklyPoints(p.stats, "half"),
+        tdOnly,
+        statCount: priced.length,
+      });
+    }
+    return pool;
+  }
+
+  // Loose matching: strip punctuation and suffixes, then fall back to the
+  // initial+surname key so "D. Lamb" or "ceedee lamb" both resolve.
+  function resolveRosterName(raw, pool, altIndex) {
+    const cleaned = raw.replace(/\s*[-–—(].*$/, "").trim();
+    if (!cleaned) return null;
+    const k = normPlayerName(cleaned);
+    if (pool.has(k)) return pool.get(k);
+    const a = altPlayerKey(cleaned);
+    const hits = altIndex.get(a);
+    // Only accept an initial+surname match when it is unambiguous -- that key
+    // collides A.J. Brown with Amon-Ra St. Brown.
+    if (hits && hits.length === 1) return hits[0];
+    return null;
+  }
+
+  function bestLineup(players) {
+    let best = null;
+    const n = players.length;
+    const used = new Array(n).fill(false);
+    const current = new Array(LINEUP_SLOTS.length).fill(null);
+
+    function recurse(slotIdx, total) {
+      if (slotIdx === LINEUP_SLOTS.length) {
+        if (!best || total > best.total) best = { total, picks: current.slice() };
+        return;
+      }
+      const slot = LINEUP_SLOTS[slotIdx];
+      let filled = false;
+      for (let i = 0; i < n; i++) {
+        if (used[i]) continue;
+        const p = players[i];
+        if (!p.position || !slot.accepts.includes(p.position)) continue;
+        used[i] = true;
+        current[slotIdx] = p;
+        filled = true;
+        recurse(slotIdx + 1, total + p.points);
+        used[i] = false;
+        current[slotIdx] = null;
+      }
+      // A slot with nobody eligible stays empty rather than aborting the search
+      // -- a roster with no TE should still get its other seven slots filled.
+      if (!filled) {
+        current[slotIdx] = null;
+        recurse(slotIdx + 1, total);
+      }
+    }
+    recurse(0, 0);
+    return best;
+  }
+
+  function renderSitStart() {
+    const $out = document.getElementById("sitstart-output");
+    const $in = document.getElementById("roster-input");
+    if (!$out || !$in) return;
+
+    const lines = $in.value.split("\n").map((l) => l.trim()).filter(Boolean);
+    if (!lines.length) {
+      $out.innerHTML = '<div class="empty">Paste a roster and hit Optimize.</div>';
+      return;
+    }
+
+    const pool = buildSitStartPool();
+    if (!pool.size) {
+      $out.innerHTML = '<div class="empty">Week 1 market data has not loaded.</div>';
+      return;
+    }
+    const altIndex = new Map();
+    for (const p of pool.values()) {
+      const a = altPlayerKey(p.name);
+      if (!altIndex.has(a)) altIndex.set(a, []);
+      altIndex.get(a).push(p);
+    }
+
+    const matched = [], unmatched = [], unpriced = [];
+    const seen = new Set();
+    for (const line of lines) {
+      const p = resolveRosterName(line, pool, altIndex);
+      if (!p) { unmatched.push(line); continue; }
+      if (seen.has(p.name)) continue;
+      seen.add(p.name);
+      // A player whose only market is a touchdown price has no usage priced,
+      // so ranking him against a fully-priced player would mislead.
+      if (p.tdOnly || p.points <= 0 || !p.position) unpriced.push(p);
+      else matched.push(p);
+    }
+
+    if (!matched.length) {
+      $out.innerHTML = '<div class="verdict">No pasted player has a priced Week 1 projection.' +
+        (unmatched.length ? " Unrecognised: " + escapeHtml(unmatched.join(", ")) + "." : "") +
+        "</div>" + slotTable([], null, unpriced, unmatched);
+      return;
+    }
+
+    // A two-player question reads better as a verdict than as a lineup table.
+    if (matched.length === 2 && !unpriced.length) {
+      const pair = matched.slice().sort((x, y) => y.points - x.points);
+      const a = pair[0], b = pair[1];
+      const gap = a.points - b.points;
+      const verdict = gap < 0.5
+        ? "<strong>" + escapeHtml(a.name) + "</strong> by a hair &mdash; " +
+          a.points.toFixed(1) + " to " + b.points.toFixed(1) +
+          " in half-PPR. That gap is inside the noise; play the matchup you believe in."
+        : "Start <strong>" + escapeHtml(a.name) + "</strong>. The market has him at " +
+          a.points.toFixed(1) + " half-PPR against " + escapeHtml(b.name) + " at " +
+          b.points.toFixed(1) + " &mdash; a " + gap.toFixed(1) + "-point edge.";
+      $out.innerHTML = '<div class="verdict">' + verdict + "</div>" +
+        slotTable([{ slot: "START", p: a }, { slot: "SIT", p: b }], null, unpriced, unmatched);
+      return;
+    }
+
+    const best = bestLineup(matched);
+    const startingNames = new Set(best.picks.filter(Boolean).map((p) => p.name));
+    const bench = matched.filter((p) => !startingNames.has(p.name))
+      .sort((a, b) => b.points - a.points);
+    const rows = best.picks.map((p, i) => ({ slot: LINEUP_SLOTS[i].label, p }));
+    $out.innerHTML = slotTable(rows, best.total, unpriced, unmatched, bench);
+  }
+
+  function slotTable(rows, total, unpriced, unmatched, bench) {
+    let html = "";
+    if (rows.length) {
+      html += '<table class="slot-table"><thead><tr>' +
+        '<th>Slot</th><th>Player</th><th>Pos</th><th>Game</th>' +
+        '<th style="text-align:right">Proj</th></tr></thead><tbody>';
+      for (const r of rows) {
+        const isFlex = r.slot === "FLEX";
+        const badge = '<span class="slot-badge' + (isFlex ? " flex" : "") + '">' +
+                      escapeHtml(r.slot) + "</span>";
+        if (!r.p) {
+          html += '<tr class="bench-row"><td>' + badge +
+                  '</td><td colspan="4">nobody eligible</td></tr>';
+          continue;
+        }
+        html += "<tr><td>" + badge + "</td>" +
+          '<td class="player-name">' + escapeHtml(r.p.name) + "</td>" +
+          '<td><span class="pos-badge pos-' + escapeHtml(r.p.position || "?") + '">' +
+          escapeHtml(r.p.position || "?") + "</span></td>" +
+          '<td class="weekly-game">' + escapeHtml(r.p.matchup || "-") + "</td>" +
+          '<td style="text-align:right"><span class="market-pts">' +
+          r.p.points.toFixed(1) + "</span></td></tr>";
+      }
+      html += "</tbody></table>";
+    }
+    if (total != null) {
+      html += '<div class="sitstart-total">Projected lineup total: ' +
+              total.toFixed(1) + " half-PPR</div>";
+    }
+    if (bench && bench.length) {
+      html += '<div class="sitstart-section">Bench</div><table class="slot-table"><tbody>';
+      for (const p of bench) {
+        html += '<tr class="bench-row"><td class="player-name">' + escapeHtml(p.name) + "</td>" +
+          '<td><span class="pos-badge pos-' + escapeHtml(p.position || "?") + '">' +
+          escapeHtml(p.position || "?") + "</span></td>" +
+          '<td class="weekly-game">' + escapeHtml(p.matchup || "-") + "</td>" +
+          '<td style="text-align:right">' + p.points.toFixed(1) + "</td></tr>";
+      }
+      html += "</tbody></table>";
+    }
+    if (unpriced && unpriced.length) {
+      html += '<div class="sitstart-section">No usage priced</div>' +
+        '<div class="verdict" style="font-size:13px">' +
+        escapeHtml(unpriced.map((p) => p.name).join(", ")) +
+        '<br /><span style="color:#6a6a8a">A book pricing a touchdown but no ' +
+        "yardage usually means an unsettled role. Treat as start-at-your-own-risk, " +
+        "not as a zero.</span></div>";
+    }
+    if (unmatched && unmatched.length) {
+      html += '<div class="sitstart-section">Not recognised</div>' +
+        '<div class="verdict" style="font-size:13px"><span class="unmatched">' +
+        escapeHtml(unmatched.join(", ")) + "</span></div>";
+    }
+    return html;
+  }
+
+  document.getElementById("roster-go")?.addEventListener("click", renderSitStart);
+  document.getElementById("roster-input")?.addEventListener("keydown", (e) => {
+    if ((e.metaKey || e.ctrlKey) && e.key === "Enter") renderSitStart();
+  });
+  document.getElementById("roster-demo")?.addEventListener("click", () => {
+    const $in = document.getElementById("roster-input");
+    if (!$in) return;
+    $in.value = ["Josh Allen", "Jahmyr Gibbs", "Bijan Robinson", "Puka Nacua",
+                 "CeeDee Lamb", "Brock Bowers", "Chase Brown",
+                 "Jaxon Smith-Njigba", "Trey McBride", "Derrick Henry"].join("\n");
+    renderSitStart();
+  });
 
   // -- Multi-week average view ------------------------------------------------
   // Averaged market lines across the first N weeks. No touchdowns: only The
