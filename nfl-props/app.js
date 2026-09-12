@@ -1559,6 +1559,8 @@
       const pts = leaguePoints(p.stats, lg.scoring, p.position);
       if (pts <= 0) continue;
       // An unfilled slot means anyone eligible is a gain, so skip the prune.
+      // Note this is why already-played players must NOT be dropped silently:
+      // their absence would open a slot and make every pickup look free.
       if (!emptySlot && pts <= weakestStarter) continue;
       candidates.push({ p, pts });
     }
@@ -1616,7 +1618,9 @@
         f.upgrade.toFixed(1) + "</span></td>" +
         '<td class="weekly-game">' +
         (f.replaces ? escapeHtml(f.replaces.name) + " (" +
-          f.replaces.points.toFixed(1) + ")" : "&mdash;") + "</td></tr>";
+          f.replaces.points.toFixed(1) + ")"
+          : '<span style="color:#6a6a8a">fills an open slot</span>') +
+        "</td></tr>";
     }
     html += "</tbody></table></div>";
     return html;
@@ -1935,12 +1939,29 @@
         (lg.scoring.bonusRecTe ? " · +" + lg.scoring.bonusRecTe + " TE" : "");
     }
 
-    const scored = [], unpriced = [], noMarket = [];
+    // Teams still on this week's board. Kalshi purges a game once it kicks off,
+    // so a rostered player whose team is absent has ALREADY PLAYED -- his points
+    // are banked, not zero. Treating that as an empty slot made every free agent
+    // look like a full-value pickup instead of a marginal one.
+    const liveTeams = new Set();
+    for (const p of pool.values()) {
+      const mu = (p.matchup || "").trim();
+      if (mu.length >= 4) liveTeams.add(mu);
+    }
+    const teamIsLive = (team) => {
+      if (!team) return false;
+      for (const mu of liveTeams) if (mu.includes(team)) return true;
+      return false;
+    };
+
+    const scored = [], unpriced = [], noMarket = [], played = [];
     for (const r of lg.roster) {
       if (r.unpriced) { noMarket.push(r); continue; }
       const p = pool.get(normPlayerName(r.name));
       if (!p || p.tdOnly || p.points <= 0 || !p.position) {
-        unpriced.push(r);
+        // No line AND his team has no remaining game = his week is over.
+        if (!teamIsLive(r.team)) played.push(r);
+        else unpriced.push(r);
         continue;
       }
       scored.push({
@@ -2011,6 +2032,14 @@
       html += "</tbody></table></div>";
     }
 
+    if (played.length) {
+      html += '<div class="sitstart-section">Already played this week</div>' +
+        '<div class="verdict" style="font-size:13px">' +
+        escapeHtml(played.map((r) => r.name + " (" + (r.position || "?") + ")").join(", ")) +
+        '<br /><span style="color:#6a6a8a">Their games have kicked off, so the ' +
+        "books no longer quote them. Points already banked &mdash; the lineup " +
+        "above only covers who is left to play.</span></div>";
+    }
     if (unpriced.length) {
       html += '<div class="sitstart-section">No market projection</div>' +
         '<div class="verdict" style="font-size:13px">' +
