@@ -792,3 +792,16 @@ tr.row-nan:hover { opacity: 0.85; }
   margin-left: 6px;
   letter-spacing: 0.5px;
 }
+
+
+/* ── Sleeper login row ────────────────────────────────────────────────────── */
+.sleeper-login {
+  display: flex;
+  gap: 10px;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  margin-bottom: 14px;
+}
+.sleeper-login .fmt-btn { border: 1px solid #2e2e42; padding: 9px 16px; }
+.sleeper-login .weekly-meta { align-self: center; }
+.sleeper-error { color: #ff6b6b; }

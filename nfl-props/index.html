@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>NFL Season Projections</title>
-  <link rel="stylesheet" href="style.css?v=2026-09-09-sleeper" />
+  <link rel="stylesheet" href="style.css?v=2026-09-12-login" />
 </head>
 <body>
   <div class="container">
@@ -441,15 +441,31 @@
 
       <div id="sleeper-view" class="hidden">
         <div class="callout">
-          <strong>Your Sleeper rosters, scored on this week&rsquo;s market lines.</strong>
-          Pick a league and the optimal lineup is built for
-          <em>that league&rsquo;s</em> actual slots and scoring &mdash; these
-          four are not the same game, so a single hardcoded format would be
-          wrong for most of them.
+          <strong>Enter your Sleeper username and get this week&rsquo;s
+          start/sit calls.</strong>
+          Your leagues, rosters and scoring are read live from Sleeper &mdash;
+          no password, nothing stored on a server. Every rostered player is
+          scored on this week&rsquo;s betting lines, then the best legal lineup
+          is built for <em>each league&rsquo;s own</em> slots and scoring.
           <br /><br />
-          Kickers and defenses are shown but never projected: no book prices
-          them. Players the market has not priced are listed separately rather
-          than scored as zero.
+          The useful part is the difference from what you already have set:
+          players the optimizer would start who are currently benched are marked
+          <span style="color:#58d68d;font-weight:700">SWAP IN</span>, and
+          starters it would bench are marked
+          <span class="unmatched" style="font-weight:700">SITTING</span>.
+          Kickers and defenses are listed but never projected &mdash; no book
+          prices them.
+        </div>
+
+        <div class="sleeper-login">
+          <div class="h2h-picker" style="max-width:320px">
+            <label class="sitstart-label" for="sleeper-user">Sleeper username</label>
+            <input type="text" id="sleeper-user" autocomplete="username"
+                   spellcheck="false" placeholder="e.g. pjmerica" />
+          </div>
+          <button id="sleeper-go" class="fmt-btn active">Load my leagues</button>
+          <button id="sleeper-forget" class="fmt-btn" hidden>Sign out</button>
+          <span class="weekly-meta" id="sleeper-status"></span>
         </div>
 
         <div class="sitstart-actions" style="margin-bottom:14px">
@@ -458,7 +474,7 @@
         </div>
 
         <div id="sleeper-output">
-          <div class="empty">Loading your leagues&hellip;</div>
+          <div class="empty">Enter a Sleeper username to load your leagues.</div>
         </div>
       </div>
     </main>
@@ -474,6 +490,6 @@
   <!-- Version query busts the 10-minute GitHub Pages cache on app.js. Without
        it a stale script can pair with fresh markup and shift every column.
        Bump on any app.js change. -->
-  <script src="app.js?v=2026-09-09-sleeper"></script>
+  <script src="app.js?v=2026-09-12-login"></script>
 </body>
 </html>

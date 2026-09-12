@@ -499,14 +499,25 @@
     if ($sleeperView) $sleeperView.classList.remove("hidden");
     for (const [key, file] of [["weekly", "weekly.json"],
                                ["oddsapi", "oddsapi.json"],
-                               ["dktd", "dk_td.json"],
-                               ["sleeper", "sleeper.json"]]) {
+                               ["dktd", "dk_td.json"]]) {
       if (!cache[key]) {
         try { cache[key] = await fetchJson(file); }
         catch (e) { cache[key] = null; }
       }
     }
     await ensureMarketData();
+
+    // Reload whoever was signed in last, so the tab opens where it was left.
+    if (!sleeperLive) {
+      let saved = null;
+      try { saved = localStorage.getItem(SLEEPER_LS_KEY); } catch (e) { saved = null; }
+      const $u = document.getElementById("sleeper-user");
+      if (saved && $u) {
+        $u.value = saved;
+        await loadSleeperUser(saved);
+        return;
+      }
+    }
     renderSleeperChips();
     renderSleeper();
   }
@@ -1505,6 +1516,184 @@
 
 
 
+
+  // -- Sleeper live login ------------------------------------------------------
+  // Reads a user's leagues and rosters straight from Sleeper in the browser.
+  // Sleeper's read API is public, CORS-open and needs no password, so there is
+  // no credential to handle and nothing to store server-side. The username is
+  // kept in localStorage purely so the tab reloads to the same place.
+  //
+  // Roster IDs are resolved through nfl-props/sleeper_players.json, a ~31 KB
+  // trimmed map. Sleeper's own dictionary is 14.6 MB, which would dominate page
+  // load just to turn 30 ids into names.
+
+  const SLEEPER_API = "https://api.sleeper.app/v1";
+  const SLEEPER_LS_KEY = "nflprops.sleeperUser";
+
+  let sleeperLive = null;     // { username, userId, leagues: [...] }
+  let sleeperBusy = false;
+
+  async function sleeperJson(path) {
+    const res = await fetch(SLEEPER_API + path);
+    if (!res.ok) throw new Error("HTTP " + res.status);
+    return res.json();
+  }
+
+  function sleeperStatus(msg, isError) {
+    const $s = document.getElementById("sleeper-status");
+    if (!$s) return;
+    $s.textContent = msg || "";
+    $s.classList.toggle("sleeper-error", !!isError);
+  }
+
+  // Which NFL season to ask Sleeper for. The weekly board knows the season it
+  // was built from, so use that rather than the calendar — in January the two
+  // disagree and the calendar is the wrong answer.
+  function sleeperSeason() {
+    const wk = cache["weekly"];
+    return (wk && wk.season) || String(new Date().getFullYear());
+  }
+
+  async function loadSleeperUser(username) {
+    const name = (username || "").trim().replace(/^@/, "");
+    if (!name) { sleeperStatus("Enter a username first.", true); return; }
+    if (sleeperBusy) return;
+    sleeperBusy = true;
+    sleeperStatus("Looking up " + name + "…");
+
+    const $out = document.getElementById("sleeper-output");
+    try {
+      if (!cache["sleeperPlayers"]) {
+        cache["sleeperPlayers"] = await fetchJson("sleeper_players.json");
+      }
+      // Sleeper returns 404 for an unknown username and, unhelpfully, 200 with
+      // a null body in some cases — both mean "no such user".
+      let user;
+      try {
+        user = await sleeperJson("/user/" + encodeURIComponent(name));
+      } catch (e) {
+        user = null;
+      }
+      if (!user || !user.user_id) {
+        sleeperStatus("No Sleeper user named " + name + ".", true);
+        if ($out) {
+          $out.innerHTML = '<div class="verdict">No Sleeper account found for ' +
+            '<span class="unmatched">' + escapeHtml(name) + "</span>. " +
+            "Usernames are case-insensitive but must match exactly otherwise — " +
+            "check it on your Sleeper profile.</div>";
+        }
+        sleeperBusy = false;
+        return;
+      }
+
+      const season = sleeperSeason();
+      const leagues = await sleeperJson(
+        "/user/" + user.user_id + "/leagues/nfl/" + season) || [];
+      if (!leagues.length) {
+        sleeperStatus("No " + season + " NFL leagues for this user.", true);
+        if ($out) {
+          $out.innerHTML = '<div class="verdict">' + escapeHtml(user.display_name || name) +
+            " has no " + escapeHtml(season) + " NFL leagues on Sleeper.</div>";
+        }
+        sleeperBusy = false;
+        return;
+      }
+
+      sleeperStatus("Reading " + leagues.length + " league" +
+                    (leagues.length === 1 ? "" : "s") + "…");
+
+      const pmap = (cache["sleeperPlayers"] || {}).players || {};
+      const built = [];
+      // Rosters are one request per league; a dozen leagues is still fast, and
+      // a single league failing should not lose the others.
+      const rosterSets = await Promise.all(leagues.map((lg) =>
+        sleeperJson("/league/" + lg.league_id + "/rosters").catch(() => null)));
+
+      leagues.forEach((lg, i) => {
+        const rosters = rosterSets[i];
+        if (!Array.isArray(rosters)) return;
+        const mine = rosters.find((r) => r.owner_id === user.user_id);
+        if (!mine) return;
+        const starters = new Set(mine.starters || []);
+        const roster = (mine.players || []).map((pid) => {
+          const e = pmap[String(pid)];
+          const pos = e ? e[1] : null;
+          return {
+            name: e ? e[0] : "Unknown (" + pid + ")",
+            position: pos,
+            team: e ? e[2] : null,
+            starter: starters.has(pid),
+            // No book prices kickers or defenses; they are part of the lineup
+            // but outside what this tool can evaluate.
+            unpriced: pos === "K" || pos === "DEF" || pos === "DST",
+            injury: null,
+          };
+        });
+        roster.sort((a, b) => (a.starter === b.starter ? 0 : a.starter ? -1 : 1) ||
+                              String(a.position).localeCompare(String(b.position)) ||
+                              a.name.localeCompare(b.name));
+        const sc = lg.scoring_settings || {};
+        built.push({
+          leagueId: lg.league_id,
+          name: lg.name,
+          teams: lg.total_rosters,
+          status: lg.status,
+          slots: (lg.roster_positions || []).filter((s) => s !== "BN"),
+          scoring: {
+            rec: sc.rec || 0,
+            passTd: sc.pass_td != null ? sc.pass_td : 4,
+            bonusRecTe: sc.bonus_rec_te || 0,
+          },
+          roster,
+        });
+      });
+
+      if (!built.length) {
+        sleeperStatus("Found leagues but no roster owned by this user.", true);
+        sleeperBusy = false;
+        return;
+      }
+
+      sleeperLive = { username: user.display_name || name,
+                      userId: user.user_id, leagues: built };
+      sleeperLeagueIdx = 0;
+      try { localStorage.setItem(SLEEPER_LS_KEY, name); } catch (e) { /* private mode */ }
+      const $forget = document.getElementById("sleeper-forget");
+      if ($forget) $forget.hidden = false;
+      sleeperStatus("Signed in as " + (user.display_name || name) +
+                    " · " + built.length + " league" + (built.length === 1 ? "" : "s"));
+      renderSleeperChips();
+      renderSleeper();
+    } catch (e) {
+      sleeperStatus("Sleeper request failed: " + (e && e.message ? e.message : e), true);
+    } finally {
+      sleeperBusy = false;
+    }
+  }
+
+  document.getElementById("sleeper-go")?.addEventListener("click", () => {
+    const $u = document.getElementById("sleeper-user");
+    loadSleeperUser($u ? $u.value : "");
+  });
+  document.getElementById("sleeper-user")?.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") loadSleeperUser(e.target.value);
+  });
+  document.getElementById("sleeper-forget")?.addEventListener("click", () => {
+    sleeperLive = null;
+    try { localStorage.removeItem(SLEEPER_LS_KEY); } catch (e) { /* ignore */ }
+    const $u = document.getElementById("sleeper-user");
+    if ($u) $u.value = "";
+    const $forget = document.getElementById("sleeper-forget");
+    if ($forget) $forget.hidden = true;
+    const $chips = document.getElementById("sleeper-league-chips");
+    if ($chips) $chips.innerHTML = "";
+    const $meta = document.getElementById("sleeper-meta");
+    if ($meta) $meta.textContent = "";
+    sleeperStatus("");
+    const $out = document.getElementById("sleeper-output");
+    if ($out) $out.innerHTML = '<div class="empty">Enter a Sleeper username to load your leagues.</div>';
+  });
+
   // -- Sleeper leagues ---------------------------------------------------------
   // Scores the owner's real rosters against this week's market board. Slot
   // shape and scoring come from each league rather than being assumed: of the
@@ -1591,8 +1780,11 @@
 
   function renderSleeperChips() {
     const $chips = document.getElementById("sleeper-league-chips");
-    const sl = cache["sleeper"];
-    if (!$chips || !sl || !Array.isArray(sl.leagues)) return;
+    const sl = sleeperLive;
+    if (!$chips || !sl || !Array.isArray(sl.leagues)) {
+      if ($chips) $chips.innerHTML = "";
+      return;
+    }
     $chips.innerHTML = sl.leagues.map((lg, i) =>
       '<button class="chip' + (i === sleeperLeagueIdx ? " active" : "") +
       '" data-idx="' + i + '" title="' + escapeHtml(lg.name || "") + '">' +
@@ -1612,10 +1804,9 @@
     const $meta = document.getElementById("sleeper-meta");
     if (!$out) return;
 
-    const sl = cache["sleeper"];
+    const sl = sleeperLive;
     if (!sl || !Array.isArray(sl.leagues) || !sl.leagues.length) {
-      $out.innerHTML = '<div class="empty">No Sleeper leagues loaded. ' +
-        "Run scripts/fetch_sleeper_rosters.py to build sleeper.json.</div>";
+      $out.innerHTML = '<div class="empty">Enter a Sleeper username to load your leagues.</div>';
       return;
     }
     const lg = sl.leagues[Math.min(sleeperLeagueIdx, sl.leagues.length - 1)];
