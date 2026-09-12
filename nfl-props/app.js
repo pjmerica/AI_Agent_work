@@ -1528,51 +1528,70 @@
   // optimal lineup — so each candidate is measured against the weakest player
   // the optimizer currently starts at a slot he could fill.
 
-  function freeAgentsFor(lg, rosteredKeys, startersByName) {
+  function freeAgentsFor(lg, rosteredKeys, currentStarters) {
     const pool = buildSitStartPoolFull();
+    const slots = lg.slots || [];
 
-    // The weakest current starter each position could displace. A WR competes
-    // with the weakest of (WR slots + FLEX slots), not with the whole lineup.
-    const slotFloor = {};
-    for (const pos of ["QB", "RB", "WR", "TE"]) {
-      let worst = null;
-      for (const [slot, p] of startersByName) {
-        if (!p) continue;
-        const accepts = SLOT_ACCEPTS[slot] || [];
-        if (!accepts.includes(pos)) continue;
-        if (worst === null || p.points < worst) worst = p.points;
-      }
-      slotFloor[pos] = worst;
+    // The honest question for a pickup is not "does he beat my worst flex
+    // player" -- that compares a tight end against a running back and reads as
+    // nonsense. It is "would adding him raise my optimal lineup total", so each
+    // candidate is re-optimized into the actual roster and the gain measured.
+    // This needs no per-position special cases and handles superflex, extra
+    // flex slots and TE premiums for free.
+    const baseLineup = bestLineupForSlots(currentStarters, slots);
+    const base = baseLineup.total;
+
+    // Re-optimizing for every unrostered player is wasteful: most of a 200-name
+    // wire cannot possibly crack the lineup. A candidate can only help if he
+    // beats the weakest starter in SOME slot he is eligible for, so that cheap
+    // test prunes the list first -- it is a necessary condition for any gain,
+    // so nothing that could help is discarded.
+    let weakestStarter = Infinity;
+    for (const p of baseLineup.picks) {
+      if (p && p.points < weakestStarter) weakestStarter = p.points;
     }
+    const emptySlot = baseLineup.picks.some((p) => !p);
 
-    const out = [];
+    const candidates = [];
     for (const [key, p] of pool) {
       if (rosteredKeys.has(key)) continue;
       if (!p.position || p.tdOnly) continue;
       const pts = leaguePoints(p.stats, lg.scoring, p.position);
       if (pts <= 0) continue;
-      const floor = slotFloor[p.position];
+      // An unfilled slot means anyone eligible is a gain, so skip the prune.
+      if (!emptySlot && pts <= weakestStarter) continue;
+      candidates.push({ p, pts });
+    }
+
+    const out = [];
+    for (const { p, pts } of candidates) {
+      const withHim = bestLineupForSlots(
+        currentStarters.concat([{
+          name: p.name, position: p.position,
+          matchup: p.matchup, points: pts, wasStarter: false,
+        }]), slots);
+      const gain = Math.round((withHim.total - base) * 10) / 10;
+      if (gain <= 0) continue;
+
+      // Name who he displaces, which is the part that makes the gain legible.
+      const nowStarting = new Set(withHim.picks.filter(Boolean).map((x) => x.name));
+      const dropped = baseLineup.picks.filter(
+        (x) => x && !nowStarting.has(x.name));
       out.push({
         name: p.name,
         position: p.position,
         matchup: p.matchup,
         points: pts,
-        // null floor = no slot on this roster accepts the position, so there is
-        // nothing to upgrade; those sort last rather than claiming a huge gain.
-        upgrade: floor == null ? null : Math.round((pts - floor) * 10) / 10,
-        replaces: floor,
+        upgrade: gain,
+        replaces: dropped.length ? dropped[0] : null,
       });
     }
-    out.sort((a, b) => {
-      const ua = a.upgrade == null ? -Infinity : a.upgrade;
-      const ub = b.upgrade == null ? -Infinity : b.upgrade;
-      return ub - ua || b.points - a.points;
-    });
+    out.sort((a, b) => b.upgrade - a.upgrade || b.points - a.points);
     return out;
   }
 
   function freeAgentTable(fas, lg) {
-    const gains = fas.filter((f) => f.upgrade != null && f.upgrade > 0).slice(0, 12);
+    const gains = fas.slice(0, 12);
     if (!gains.length) {
       return '<div class="sitstart-section">Free agents</div>' +
         '<div class="verdict" style="font-size:13px;color:#6a6a8a">' +
@@ -1581,11 +1600,12 @@
         "</div>";
     }
     let html = '<div class="sitstart-section">Best available &mdash; ranked by ' +
-      "upgrade over your weakest starter at the position</div>" +
+      "how much they would add to your optimal lineup</div>" +
       '<div class="table-wrap"><table class="slot-table"><thead><tr>' +
       "<th>Player</th><th>Pos</th><th>Game</th>" +
       '<th style="text-align:right">Proj</th>' +
-      '<th style="text-align:right">Upgrade</th></tr></thead><tbody>';
+      '<th style="text-align:right">Lineup gain</th>' +
+      "<th>Would bench</th></tr></thead><tbody>";
     for (const f of gains) {
       html += '<tr><td class="player-name">' + escapeHtml(f.name) + "</td>" +
         '<td><span class="pos-badge pos-' + escapeHtml(f.position) + '">' +
@@ -1593,7 +1613,10 @@
         '<td class="weekly-game">' + escapeHtml(f.matchup || "-") + "</td>" +
         '<td style="text-align:right">' + f.points.toFixed(1) + "</td>" +
         '<td style="text-align:right"><span style="color:#58d68d;font-weight:700">+' +
-        f.upgrade.toFixed(1) + "</span></td></tr>";
+        f.upgrade.toFixed(1) + "</span></td>" +
+        '<td class="weekly-game">' +
+        (f.replaces ? escapeHtml(f.replaces.name) + " (" +
+          f.replaces.points.toFixed(1) + ")" : "&mdash;") + "</td></tr>";
     }
     html += "</tbody></table></div>";
     return html;
@@ -1933,9 +1956,6 @@
     const slots = lg.slots || [];
     const best = bestLineupForSlots(scored, slots);
     const startingNames = new Set(best.picks.filter(Boolean).map((p) => p.name));
-    // Slot-to-starter pairs let the free-agent ranking know which slots a
-    // position could actually displace.
-    const startersBySlot = best.picks.map((p, i) => [slots[i], p]);
     const bench = scored.filter((p) => !startingNames.has(p.name))
       .sort((a, b) => b.points - a.points);
 
@@ -2007,7 +2027,7 @@
 
     if (lg.rosteredKeys) {
       html += freeAgentTable(
-        freeAgentsFor(lg, lg.rosteredKeys, startersBySlot), lg);
+        freeAgentsFor(lg, lg.rosteredKeys, scored), lg);
     }
     $out.innerHTML = html;
   }
