@@ -1,70 +1,36 @@
 {
-  "lastUpdated": "2026-09-06T21:47:49+00:00",
+  "lastUpdated": "2026-09-12T17:10:35+00:00",
   "season": "2026",
   "source": "The Odds API (per-game, multi-week average)",
   "note": "Per-game player props averaged across weeks. Each week is first collapsed to a book consensus, then weeks are averaged equally, so a week quoted by five books does not outweigh one quoted by two. byWeek keeps every individual week's line.",
   "weeksCovered": 4,
-  "eventCount": 64,
-  "playerCount": 171,
+  "eventCount": 51,
+  "playerCount": 192,
   "statCounts": {
-    "rec_yds": 127,
-    "receptions": 126,
-    "rush_yds": 66,
-    "pass_tds": 32,
-    "pass_yds": 32
+    "rec_yds": 158,
+    "receptions": 156,
+    "rush_yds": 73,
+    "pass_tds": 27,
+    "pass_yds": 27
   },
-  "quotaRemaining": "180",
+  "quotaRemaining": "40",
   "players": [
     {
-      "name": "A.J. Brown",
+      "name": "Aaron Jones",
       "games": {
-        "1": "NESEA"
+        "1": "GBMIN"
       },
       "stats": {
         "rec_yds": {
-          "avg": 60.5,
+          "avg": 14.5,
           "weeks": 1,
-          "min": 60.5,
-          "max": 60.5,
+          "min": 14.5,
+          "max": 14.5,
           "byWeek": [
             {
               "week": 1,
-              "line": 60.5,
-              "books": 5
-            }
-          ]
-        },
-        "receptions": {
-          "avg": 4.5,
-          "weeks": 1,
-          "min": 4.5,
-          "max": 4.5,
-          "byWeek": [
-            {
-              "week": 1,
-              "line": 4.5,
-              "books": 5
-            }
-          ]
-        }
-      }
-    },
-    {
-      "name": "AJ Barner",
-      "games": {
-        "1": "NESEA"
-      },
-      "stats": {
-        "rec_yds": {
-          "avg": 25.5,
-          "weeks": 1,
-          "min": 25.5,
-          "max": 25.5,
-          "byWeek": [
-            {
-              "week": 1,
-              "line": 25.5,
-              "books": 5
+              "line": 14.5,
+              "books": 6
             }
           ]
         },
@@ -77,28 +43,20 @@
             {
               "week": 1,
               "line": 2.5,
-              "books": 5
+              "books": 6
             }
           ]
-        }
-      }
-    },
-    {
-      "name": "Aaron Jones",
-      "games": {
-        "1": "GBMIN"
-      },
-      "stats": {
+        },
         "rush_yds": {
-          "avg": 30.5,
+          "avg": 29.5,
           "weeks": 1,
-          "min": 30.5,
-          "max": 30.5,
+          "min": 29.5,
+          "max": 29.5,
           "byWeek": [
             {
               "week": 1,
-              "line": 30.5,
-              "books": 5
+              "line": 29.5,
+              "books": 6
             }
           ]
         }
@@ -124,15 +82,62 @@
           ]
         },
         "pass_yds": {
-          "avg": 215.5,
+          "avg": 214.0,
           "weeks": 1,
-          "min": 215.5,
-          "max": 215.5,
+          "min": 214.0,
+          "max": 214.0,
           "byWeek": [
             {
               "week": 1,
-              "line": 215.5,
-              "books": 5
+              "line": 214.0,
+              "books": 6
+            }
+          ]
+        },
+        "rush_yds": {
+          "avg": 0.5,
+          "weeks": 1,
+          "min": 0.5,
+          "max": 0.5,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 0.5,
+              "books": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Adam Trautman",
+      "games": {
+        "1": "DENKC"
+      },
+      "stats": {
+        "rec_yds": {
+          "avg": 7.5,
+          "weeks": 1,
+          "min": 7.5,
+          "max": 7.5,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 7.5,
+              "books": 6
+            }
+          ]
+        },
+        "receptions": {
+          "avg": 1.5,
+          "weeks": 1,
+          "min": 1.5,
+          "max": 1.5,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 1.5,
+              "books": 6
             }
           ]
         }
@@ -145,15 +150,15 @@
       },
       "stats": {
         "rec_yds": {
-          "avg": 32.5,
+          "avg": 31.0,
           "weeks": 1,
-          "min": 32.5,
-          "max": 32.5,
+          "min": 31.0,
+          "max": 31.0,
           "byWeek": [
             {
               "week": 1,
-              "line": 32.5,
-              "books": 3
+              "line": 31.0,
+              "books": 6
             }
           ]
         },
@@ -166,7 +171,7 @@
             {
               "week": 1,
               "line": 2.5,
-              "books": 3
+              "books": 6
             }
           ]
         }
@@ -179,15 +184,15 @@
       },
       "stats": {
         "rec_yds": {
-          "avg": 46.0,
+          "avg": 43.5,
           "weeks": 1,
-          "min": 46.0,
-          "max": 46.0,
+          "min": 43.5,
+          "max": 43.5,
           "byWeek": [
             {
               "week": 1,
-              "line": 46.0,
-              "books": 2
+              "line": 43.5,
+              "books": 5
             }
           ]
         },
@@ -200,7 +205,7 @@
             {
               "week": 1,
               "line": 3.5,
-              "books": 2
+              "books": 5
             }
           ]
         }
@@ -213,15 +218,15 @@
       },
       "stats": {
         "rec_yds": {
-          "avg": 77.5,
+          "avg": 76.5,
           "weeks": 1,
-          "min": 77.5,
-          "max": 77.5,
+          "min": 76.5,
+          "max": 76.5,
           "byWeek": [
             {
               "week": 1,
-              "line": 77.5,
-              "books": 5
+              "line": 76.5,
+              "books": 6
             }
           ]
         },
@@ -234,7 +239,88 @@
             {
               "week": 1,
               "line": 6.5,
+              "books": 6
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Andrei Iosivas",
+      "games": {
+        "1": "TBCIN"
+      },
+      "stats": {
+        "rec_yds": {
+          "avg": 14.5,
+          "weeks": 1,
+          "min": 14.5,
+          "max": 14.5,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 14.5,
               "books": 5
+            }
+          ]
+        },
+        "receptions": {
+          "avg": 1.5,
+          "weeks": 1,
+          "min": 1.5,
+          "max": 1.5,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 1.5,
+              "books": 6
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Ashton Jeanty",
+      "games": {
+        "1": "MIALV"
+      },
+      "stats": {
+        "rec_yds": {
+          "avg": 17.5,
+          "weeks": 1,
+          "min": 17.5,
+          "max": 17.5,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 17.5,
+              "books": 6
+            }
+          ]
+        },
+        "receptions": {
+          "avg": 3.5,
+          "weeks": 1,
+          "min": 3.5,
+          "max": 3.5,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 3.5,
+              "books": 6
+            }
+          ]
+        },
+        "rush_yds": {
+          "avg": 59.5,
+          "weeks": 1,
+          "min": 59.5,
+          "max": 59.5,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 59.5,
+              "books": 6
             }
           ]
         }
@@ -255,33 +341,33 @@
             {
               "week": 1,
               "line": 1.5,
-              "books": 5
+              "books": 6
             }
           ]
         },
         "pass_yds": {
-          "avg": 231.5,
+          "avg": 232.0,
           "weeks": 1,
-          "min": 231.5,
-          "max": 231.5,
+          "min": 232.0,
+          "max": 232.0,
           "byWeek": [
             {
               "week": 1,
-              "line": 231.5,
-              "books": 5
+              "line": 232.0,
+              "books": 6
             }
           ]
         },
         "rush_yds": {
-          "avg": 15.5,
+          "avg": 17.0,
           "weeks": 1,
-          "min": 15.5,
-          "max": 15.5,
+          "min": 17.0,
+          "max": 17.0,
           "byWeek": [
             {
               "week": 1,
-              "line": 15.5,
-              "books": 5
+              "line": 17.0,
+              "books": 6
             }
           ]
         }
@@ -302,7 +388,7 @@
             {
               "week": 1,
               "line": 11.5,
-              "books": 2
+              "books": 6
             }
           ]
         },
@@ -315,19 +401,19 @@
             {
               "week": 1,
               "line": 1.5,
-              "books": 2
+              "books": 6
             }
           ]
         },
         "rush_yds": {
-          "avg": 50.5,
+          "avg": 46.5,
           "weeks": 1,
-          "min": 50.5,
-          "max": 50.5,
+          "min": 46.5,
+          "max": 46.5,
           "byWeek": [
             {
               "week": 1,
-              "line": 50.5,
+              "line": 46.5,
               "books": 5
             }
           ]
@@ -341,15 +427,15 @@
       },
       "stats": {
         "rec_yds": {
-          "avg": 36.5,
+          "avg": 33.5,
           "weeks": 1,
-          "min": 36.5,
-          "max": 36.5,
+          "min": 33.5,
+          "max": 33.5,
           "byWeek": [
             {
               "week": 1,
-              "line": 36.5,
-              "books": 5
+              "line": 33.5,
+              "books": 6
             }
           ]
         },
@@ -362,41 +448,20 @@
             {
               "week": 1,
               "line": 4.5,
-              "books": 5
+              "books": 6
             }
           ]
         },
         "rush_yds": {
-          "avg": 74.5,
+          "avg": 78.5,
           "weeks": 1,
-          "min": 74.5,
-          "max": 74.5,
+          "min": 78.5,
+          "max": 78.5,
           "byWeek": [
             {
               "week": 1,
-              "line": 74.5,
-              "books": 5
-            }
-          ]
-        }
-      }
-    },
-    {
-      "name": "Blake Corum",
-      "games": {
-        "1": "SFLAR"
-      },
-      "stats": {
-        "rush_yds": {
-          "avg": 37.5,
-          "weeks": 1,
-          "min": 37.5,
-          "max": 37.5,
-          "byWeek": [
-            {
-              "week": 1,
-              "line": 37.5,
-              "books": 5
+              "line": 78.5,
+              "books": 6
             }
           ]
         }
@@ -417,33 +482,33 @@
             {
               "week": 1,
               "line": 1.5,
-              "books": 4
+              "books": 6
             }
           ]
         },
         "pass_yds": {
-          "avg": 224.5,
+          "avg": 228.0,
           "weeks": 1,
-          "min": 224.5,
-          "max": 224.5,
+          "min": 228.0,
+          "max": 228.0,
           "byWeek": [
             {
               "week": 1,
-              "line": 224.5,
-              "books": 4
+              "line": 228.0,
+              "books": 6
             }
           ]
         },
         "rush_yds": {
-          "avg": 16.0,
+          "avg": 15.5,
           "weeks": 1,
-          "min": 16.0,
-          "max": 16.0,
+          "min": 15.5,
+          "max": 15.5,
           "byWeek": [
             {
               "week": 1,
-              "line": 16.0,
-              "books": 4
+              "line": 15.5,
+              "books": 6
             }
           ]
         }
@@ -456,15 +521,15 @@
       },
       "stats": {
         "rush_yds": {
-          "avg": 18.0,
+          "avg": 17.5,
           "weeks": 1,
-          "min": 18.0,
-          "max": 18.0,
+          "min": 17.5,
+          "max": 17.5,
           "byWeek": [
             {
               "week": 1,
-              "line": 18.0,
-              "books": 2
+              "line": 17.5,
+              "books": 6
             }
           ]
         }
@@ -477,15 +542,15 @@
       },
       "stats": {
         "rec_yds": {
-          "avg": 18.5,
+          "avg": 20.5,
           "weeks": 1,
-          "min": 18.5,
-          "max": 18.5,
+          "min": 20.5,
+          "max": 20.5,
           "byWeek": [
             {
               "week": 1,
-              "line": 18.5,
-              "books": 5
+              "line": 20.5,
+              "books": 6
             }
           ]
         },
@@ -498,20 +563,20 @@
             {
               "week": 1,
               "line": 2.5,
-              "books": 5
+              "books": 6
             }
           ]
         },
         "rush_yds": {
-          "avg": 65.5,
+          "avg": 64.5,
           "weeks": 1,
-          "min": 65.5,
-          "max": 65.5,
+          "min": 64.5,
+          "max": 64.5,
           "byWeek": [
             {
               "week": 1,
-              "line": 65.5,
-              "books": 5
+              "line": 64.5,
+              "books": 6
             }
           ]
         }
@@ -524,15 +589,15 @@
       },
       "stats": {
         "rec_yds": {
-          "avg": 36.5,
+          "avg": 36.0,
           "weeks": 1,
-          "min": 36.5,
-          "max": 36.5,
+          "min": 36.0,
+          "max": 36.0,
           "byWeek": [
             {
               "week": 1,
-              "line": 36.5,
-              "books": 5
+              "line": 36.0,
+              "books": 6
             }
           ]
         },
@@ -545,7 +610,28 @@
             {
               "week": 1,
               "line": 3.5,
-              "books": 5
+              "books": 6
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Brian Robinson Jr.",
+      "games": {
+        "1": "ATLPIT"
+      },
+      "stats": {
+        "rush_yds": {
+          "avg": 19.5,
+          "weeks": 1,
+          "min": 19.5,
+          "max": 19.5,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 19.5,
+              "books": 4
             }
           ]
         }
@@ -558,15 +644,15 @@
       },
       "stats": {
         "rec_yds": {
-          "avg": 36.5,
+          "avg": 38.5,
           "weeks": 1,
-          "min": 36.5,
-          "max": 36.5,
+          "min": 38.5,
+          "max": 38.5,
           "byWeek": [
             {
               "week": 1,
-              "line": 36.5,
-              "books": 5
+              "line": 38.5,
+              "books": 6
             }
           ]
         },
@@ -579,88 +665,7 @@
             {
               "week": 1,
               "line": 2.5,
-              "books": 5
-            }
-          ]
-        }
-      }
-    },
-    {
-      "name": "Brock Bowers",
-      "games": {
-        "1": "MIALV"
-      },
-      "stats": {
-        "rec_yds": {
-          "avg": 62.5,
-          "weeks": 1,
-          "min": 62.5,
-          "max": 62.5,
-          "byWeek": [
-            {
-              "week": 1,
-              "line": 62.5,
-              "books": 5
-            }
-          ]
-        },
-        "receptions": {
-          "avg": 5.5,
-          "weeks": 1,
-          "min": 5.5,
-          "max": 5.5,
-          "byWeek": [
-            {
-              "week": 1,
-              "line": 5.5,
-              "books": 5
-            }
-          ]
-        }
-      }
-    },
-    {
-      "name": "Brock Purdy",
-      "games": {
-        "1": "SFLAR"
-      },
-      "stats": {
-        "pass_tds": {
-          "avg": 1.5,
-          "weeks": 1,
-          "min": 1.5,
-          "max": 1.5,
-          "byWeek": [
-            {
-              "week": 1,
-              "line": 1.5,
-              "books": 5
-            }
-          ]
-        },
-        "pass_yds": {
-          "avg": 243.5,
-          "weeks": 1,
-          "min": 243.5,
-          "max": 243.5,
-          "byWeek": [
-            {
-              "week": 1,
-              "line": 243.5,
-              "books": 5
-            }
-          ]
-        },
-        "rush_yds": {
-          "avg": 17.5,
-          "weeks": 1,
-          "min": 17.5,
-          "max": 17.5,
-          "byWeek": [
-            {
-              "week": 1,
-              "line": 17.5,
-              "books": 5
+              "books": 6
             }
           ]
         }
@@ -681,20 +686,20 @@
             {
               "week": 1,
               "line": 1.5,
-              "books": 4
+              "books": 6
             }
           ]
         },
         "pass_yds": {
-          "avg": 208.5,
+          "avg": 209.0,
           "weeks": 1,
-          "min": 208.5,
-          "max": 208.5,
+          "min": 209.0,
+          "max": 209.0,
           "byWeek": [
             {
               "week": 1,
-              "line": 208.5,
-              "books": 5
+              "line": 209.0,
+              "books": 6
             }
           ]
         },
@@ -707,7 +712,7 @@
             {
               "week": 1,
               "line": 14.5,
-              "books": 5
+              "books": 6
             }
           ]
         }
@@ -728,7 +733,7 @@
             {
               "week": 1,
               "line": 13.5,
-              "books": 5
+              "books": 6
             }
           ]
         },
@@ -746,15 +751,15 @@
           ]
         },
         "rush_yds": {
-          "avg": 57.5,
+          "avg": 58.5,
           "weeks": 1,
-          "min": 57.5,
-          "max": 57.5,
+          "min": 58.5,
+          "max": 58.5,
           "byWeek": [
             {
               "week": 1,
-              "line": 57.5,
-              "books": 5
+              "line": 58.5,
+              "books": 6
             }
           ]
         }
@@ -775,33 +780,33 @@
             {
               "week": 1,
               "line": 1.5,
-              "books": 5
+              "books": 6
             }
           ]
         },
         "pass_yds": {
-          "avg": 218.5,
+          "avg": 220.0,
           "weeks": 1,
-          "min": 218.5,
-          "max": 218.5,
+          "min": 220.0,
+          "max": 220.0,
           "byWeek": [
             {
               "week": 1,
-              "line": 218.5,
-              "books": 5
+              "line": 220.0,
+              "books": 6
             }
           ]
         },
         "rush_yds": {
-          "avg": 10.5,
+          "avg": 10.0,
           "weeks": 1,
-          "min": 10.5,
-          "max": 10.5,
+          "min": 10.0,
+          "max": 10.0,
           "byWeek": [
             {
               "week": 1,
-              "line": 10.5,
-              "books": 5
+              "line": 10.0,
+              "books": 6
             }
           ]
         }
@@ -814,15 +819,15 @@
       },
       "stats": {
         "rec_yds": {
-          "avg": 29.0,
+          "avg": 31.5,
           "weeks": 1,
-          "min": 29.0,
-          "max": 29.0,
+          "min": 31.5,
+          "max": 31.5,
           "byWeek": [
             {
               "week": 1,
-              "line": 29.0,
-              "books": 2
+              "line": 31.5,
+              "books": 6
             }
           ]
         },
@@ -835,7 +840,7 @@
             {
               "week": 1,
               "line": 3.5,
-              "books": 2
+              "books": 6
             }
           ]
         }
@@ -848,15 +853,15 @@
       },
       "stats": {
         "rec_yds": {
-          "avg": 26.0,
+          "avg": 26.5,
           "weeks": 1,
-          "min": 26.0,
-          "max": 26.0,
+          "min": 26.5,
+          "max": 26.5,
           "byWeek": [
             {
               "week": 1,
-              "line": 26.0,
-              "books": 2
+              "line": 26.5,
+              "books": 6
             }
           ]
         },
@@ -869,7 +874,7 @@
             {
               "week": 1,
               "line": 2.5,
-              "books": 2
+              "books": 6
             }
           ]
         }
@@ -890,20 +895,20 @@
             {
               "week": 1,
               "line": 1.5,
-              "books": 5
+              "books": 6
             }
           ]
         },
         "pass_yds": {
-          "avg": 226.5,
+          "avg": 229.0,
           "weeks": 1,
-          "min": 226.5,
-          "max": 226.5,
+          "min": 229.0,
+          "max": 229.0,
           "byWeek": [
             {
               "week": 1,
-              "line": 226.5,
-              "books": 5
+              "line": 229.0,
+              "books": 6
             }
           ]
         },
@@ -916,7 +921,7 @@
             {
               "week": 1,
               "line": 19.5,
-              "books": 5
+              "books": 6
             }
           ]
         }
@@ -929,15 +934,15 @@
       },
       "stats": {
         "rec_yds": {
-          "avg": 27.0,
+          "avg": 27.5,
           "weeks": 1,
-          "min": 27.0,
-          "max": 27.0,
+          "min": 27.5,
+          "max": 27.5,
           "byWeek": [
             {
               "week": 1,
-              "line": 27.0,
-              "books": 2
+              "line": 27.5,
+              "books": 6
             }
           ]
         },
@@ -950,7 +955,7 @@
             {
               "week": 1,
               "line": 2.5,
-              "books": 2
+              "books": 6
             }
           ]
         }
@@ -971,7 +976,7 @@
             {
               "week": 1,
               "line": 15.5,
-              "books": 2
+              "books": 6
             }
           ]
         },
@@ -984,7 +989,7 @@
             {
               "week": 1,
               "line": 2.5,
-              "books": 2
+              "books": 6
             }
           ]
         },
@@ -997,7 +1002,7 @@
             {
               "week": 1,
               "line": 49.5,
-              "books": 5
+              "books": 6
             }
           ]
         }
@@ -1018,33 +1023,33 @@
             {
               "week": 1,
               "line": 1.5,
-              "books": 5
+              "books": 6
             }
           ]
         },
         "pass_yds": {
-          "avg": 208.5,
+          "avg": 202.0,
           "weeks": 1,
-          "min": 208.5,
-          "max": 208.5,
+          "min": 202.0,
+          "max": 202.0,
           "byWeek": [
             {
               "week": 1,
-              "line": 208.5,
-              "books": 5
+              "line": 202.0,
+              "books": 6
             }
           ]
         },
         "rush_yds": {
-          "avg": 8.5,
+          "avg": 9.5,
           "weeks": 1,
-          "min": 8.5,
-          "max": 8.5,
+          "min": 9.5,
+          "max": 9.5,
           "byWeek": [
             {
               "week": 1,
-              "line": 8.5,
-              "books": 5
+              "line": 9.5,
+              "books": 6
             }
           ]
         }
@@ -1057,15 +1062,15 @@
       },
       "stats": {
         "rec_yds": {
-          "avg": 40.5,
+          "avg": 38.5,
           "weeks": 1,
-          "min": 40.5,
-          "max": 40.5,
+          "min": 38.5,
+          "max": 38.5,
           "byWeek": [
             {
               "week": 1,
-              "line": 40.5,
-              "books": 5
+              "line": 38.5,
+              "books": 6
             }
           ]
         },
@@ -1078,7 +1083,7 @@
             {
               "week": 1,
               "line": 3.5,
-              "books": 5
+              "books": 6
             }
           ]
         }
@@ -1091,15 +1096,15 @@
       },
       "stats": {
         "rec_yds": {
-          "avg": 76.5,
+          "avg": 75.5,
           "weeks": 1,
-          "min": 76.5,
-          "max": 76.5,
+          "min": 75.5,
+          "max": 75.5,
           "byWeek": [
             {
               "week": 1,
-              "line": 76.5,
-              "books": 5
+              "line": 75.5,
+              "books": 6
             }
           ]
         },
@@ -1112,7 +1117,41 @@
             {
               "week": 1,
               "line": 6.5,
-              "books": 5
+              "books": 6
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Charlie Kolar",
+      "games": {
+        "1": "ARILAC"
+      },
+      "stats": {
+        "rec_yds": {
+          "avg": 17.5,
+          "weeks": 1,
+          "min": 17.5,
+          "max": 17.5,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 17.5,
+              "books": 6
+            }
+          ]
+        },
+        "receptions": {
+          "avg": 1.5,
+          "weeks": 1,
+          "min": 1.5,
+          "max": 1.5,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 1.5,
+              "books": 6
             }
           ]
         }
@@ -1125,15 +1164,15 @@
       },
       "stats": {
         "rec_yds": {
-          "avg": 22.5,
+          "avg": 24.0,
           "weeks": 1,
-          "min": 22.5,
-          "max": 22.5,
+          "min": 24.0,
+          "max": 24.0,
           "byWeek": [
             {
               "week": 1,
-              "line": 22.5,
-              "books": 5
+              "line": 24.0,
+              "books": 6
             }
           ]
         },
@@ -1146,7 +1185,7 @@
             {
               "week": 1,
               "line": 3.5,
-              "books": 5
+              "books": 6
             }
           ]
         },
@@ -1159,164 +1198,28 @@
             {
               "week": 1,
               "line": 58.5,
-              "books": 5
+              "books": 6
             }
           ]
         }
       }
     },
     {
-      "name": "Chris Olave",
+      "name": "Chig Okonkwo",
       "games": {
-        "1": "NODET"
+        "1": "WASPHI"
       },
       "stats": {
         "rec_yds": {
-          "avg": 75.5,
+          "avg": 25.5,
           "weeks": 1,
-          "min": 75.5,
-          "max": 75.5,
+          "min": 25.5,
+          "max": 25.5,
           "byWeek": [
             {
               "week": 1,
-              "line": 75.5,
-              "books": 5
-            }
-          ]
-        },
-        "receptions": {
-          "avg": 6.5,
-          "weeks": 1,
-          "min": 6.5,
-          "max": 6.5,
-          "byWeek": [
-            {
-              "week": 1,
-              "line": 6.5,
-              "books": 5
-            }
-          ]
-        }
-      }
-    },
-    {
-      "name": "Chris Rodriguez Jr.",
-      "games": {
-        "1": "CLEJAC"
-      },
-      "stats": {
-        "rush_yds": {
-          "avg": 33.5,
-          "weeks": 1,
-          "min": 33.5,
-          "max": 33.5,
-          "byWeek": [
-            {
-              "week": 1,
-              "line": 33.5,
-              "books": 5
-            }
-          ]
-        }
-      }
-    },
-    {
-      "name": "Christian McCaffrey",
-      "games": {
-        "1": "SFLAR"
-      },
-      "stats": {
-        "rec_yds": {
-          "avg": 38.5,
-          "weeks": 1,
-          "min": 38.5,
-          "max": 38.5,
-          "byWeek": [
-            {
-              "week": 1,
-              "line": 38.5,
-              "books": 5
-            }
-          ]
-        },
-        "receptions": {
-          "avg": 4.5,
-          "weeks": 1,
-          "min": 4.5,
-          "max": 4.5,
-          "byWeek": [
-            {
-              "week": 1,
-              "line": 4.5,
-              "books": 5
-            }
-          ]
-        },
-        "rush_yds": {
-          "avg": 59.5,
-          "weeks": 1,
-          "min": 59.5,
-          "max": 59.5,
-          "byWeek": [
-            {
-              "week": 1,
-              "line": 59.5,
-              "books": 5
-            }
-          ]
-        }
-      }
-    },
-    {
-      "name": "Christian Watson",
-      "games": {
-        "1": "GBMIN"
-      },
-      "stats": {
-        "rec_yds": {
-          "avg": 54.5,
-          "weeks": 1,
-          "min": 54.5,
-          "max": 54.5,
-          "byWeek": [
-            {
-              "week": 1,
-              "line": 54.5,
-              "books": 5
-            }
-          ]
-        },
-        "receptions": {
-          "avg": 3.5,
-          "weeks": 1,
-          "min": 3.5,
-          "max": 3.5,
-          "byWeek": [
-            {
-              "week": 1,
-              "line": 3.5,
-              "books": 5
-            }
-          ]
-        }
-      }
-    },
-    {
-      "name": "Colby Parkinson",
-      "games": {
-        "1": "SFLAR"
-      },
-      "stats": {
-        "rec_yds": {
-          "avg": 20.5,
-          "weeks": 1,
-          "min": 20.5,
-          "max": 20.5,
-          "byWeek": [
-            {
-              "week": 1,
-              "line": 20.5,
-              "books": 5
+              "line": 25.5,
+              "books": 6
             }
           ]
         },
@@ -1329,27 +1232,27 @@
             {
               "week": 1,
               "line": 2.5,
-              "books": 5
+              "books": 6
             }
           ]
         }
       }
     },
     {
-      "name": "Cole Kmet",
+      "name": "Chris Bell",
       "games": {
-        "1": "CHICAR"
+        "1": "MIALV"
       },
       "stats": {
         "rec_yds": {
-          "avg": 14.5,
+          "avg": 17.5,
           "weeks": 1,
-          "min": 14.5,
-          "max": 14.5,
+          "min": 17.5,
+          "max": 17.5,
           "byWeek": [
             {
               "week": 1,
-              "line": 14.5,
+              "line": 17.5,
               "books": 4
             }
           ]
@@ -1370,21 +1273,21 @@
       }
     },
     {
-      "name": "Colston Loveland",
+      "name": "Chris Godwin",
       "games": {
-        "1": "CHICAR"
+        "1": "TBCIN"
       },
       "stats": {
         "rec_yds": {
-          "avg": 51.0,
+          "avg": 47.0,
           "weeks": 1,
-          "min": 51.0,
-          "max": 51.0,
+          "min": 47.0,
+          "max": 47.0,
           "byWeek": [
             {
               "week": 1,
-              "line": 51.0,
-              "books": 4
+              "line": 47.0,
+              "books": 6
             }
           ]
         },
@@ -1397,41 +1300,211 @@
             {
               "week": 1,
               "line": 4.5,
-              "books": 4
+              "books": 5
             }
           ]
         }
       }
     },
     {
-      "name": "Cooper Kupp",
+      "name": "Chris Olave",
       "games": {
-        "1": "NESEA"
+        "1": "NODET"
       },
       "stats": {
         "rec_yds": {
-          "avg": 30.5,
+          "avg": 76.0,
           "weeks": 1,
-          "min": 30.5,
-          "max": 30.5,
+          "min": 76.0,
+          "max": 76.0,
           "byWeek": [
             {
               "week": 1,
-              "line": 30.5,
+              "line": 76.0,
+              "books": 6
+            }
+          ]
+        },
+        "receptions": {
+          "avg": 6.5,
+          "weeks": 1,
+          "min": 6.5,
+          "max": 6.5,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 6.5,
+              "books": 6
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Chris Rodriguez Jr.",
+      "games": {
+        "1": "CLEJAC"
+      },
+      "stats": {
+        "rush_yds": {
+          "avg": 36.5,
+          "weeks": 1,
+          "min": 36.5,
+          "max": 36.5,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 36.5,
+              "books": 6
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Christian Watson",
+      "games": {
+        "1": "GBMIN"
+      },
+      "stats": {
+        "rec_yds": {
+          "avg": 56.5,
+          "weeks": 1,
+          "min": 56.5,
+          "max": 56.5,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 56.5,
+              "books": 6
+            }
+          ]
+        },
+        "receptions": {
+          "avg": 3.5,
+          "weeks": 1,
+          "min": 3.5,
+          "max": 3.5,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 3.5,
+              "books": 6
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Chuba Hubbard",
+      "games": {
+        "1": "CHICAR"
+      },
+      "stats": {
+        "rec_yds": {
+          "avg": 10.5,
+          "weeks": 1,
+          "min": 10.5,
+          "max": 10.5,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 10.5,
               "books": 5
             }
           ]
         },
         "receptions": {
-          "avg": 2.5,
+          "avg": 1.5,
           "weeks": 1,
-          "min": 2.5,
-          "max": 2.5,
+          "min": 1.5,
+          "max": 1.5,
           "byWeek": [
             {
               "week": 1,
-              "line": 2.5,
+              "line": 1.5,
               "books": 5
+            }
+          ]
+        },
+        "rush_yds": {
+          "avg": 51.5,
+          "weeks": 1,
+          "min": 51.5,
+          "max": 51.5,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 51.5,
+              "books": 5
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Cole Kmet",
+      "games": {
+        "1": "CHICAR"
+      },
+      "stats": {
+        "rec_yds": {
+          "avg": 14.0,
+          "weeks": 1,
+          "min": 14.0,
+          "max": 14.0,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 14.0,
+              "books": 6
+            }
+          ]
+        },
+        "receptions": {
+          "avg": 1.5,
+          "weeks": 1,
+          "min": 1.5,
+          "max": 1.5,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 1.5,
+              "books": 6
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Colston Loveland",
+      "games": {
+        "1": "CHICAR"
+      },
+      "stats": {
+        "rec_yds": {
+          "avg": 54.5,
+          "weeks": 1,
+          "min": 54.5,
+          "max": 54.5,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 54.5,
+              "books": 6
+            }
+          ]
+        },
+        "receptions": {
+          "avg": 4.5,
+          "weeks": 1,
+          "min": 4.5,
+          "max": 4.5,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 4.5,
+              "books": 6
             }
           ]
         }
@@ -1444,28 +1517,75 @@
       },
       "stats": {
         "rec_yds": {
-          "avg": 43.0,
+          "avg": 42.5,
           "weeks": 1,
-          "min": 43.0,
-          "max": 43.0,
+          "min": 42.5,
+          "max": 42.5,
           "byWeek": [
             {
               "week": 1,
-              "line": 43.0,
-              "books": 4
+              "line": 42.5,
+              "books": 6
             }
           ]
         },
         "receptions": {
-          "avg": 4.5,
+          "avg": 3.5,
           "weeks": 1,
-          "min": 4.5,
-          "max": 4.5,
+          "min": 3.5,
+          "max": 3.5,
           "byWeek": [
             {
               "week": 1,
-              "line": 4.5,
-              "books": 4
+              "line": 3.5,
+              "books": 6
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "D'Andre Swift",
+      "games": {
+        "1": "CHICAR"
+      },
+      "stats": {
+        "rec_yds": {
+          "avg": 14.0,
+          "weeks": 1,
+          "min": 14.0,
+          "max": 14.0,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 14.0,
+              "books": 6
+            }
+          ]
+        },
+        "receptions": {
+          "avg": 2.5,
+          "weeks": 1,
+          "min": 2.5,
+          "max": 2.5,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 2.5,
+              "books": 6
+            }
+          ]
+        },
+        "rush_yds": {
+          "avg": 62.0,
+          "weeks": 1,
+          "min": 62.0,
+          "max": 62.0,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 62.0,
+              "books": 6
             }
           ]
         }
@@ -1478,15 +1598,15 @@
       },
       "stats": {
         "rec_yds": {
-          "avg": 45.5,
+          "avg": 47.5,
           "weeks": 1,
-          "min": 45.5,
-          "max": 45.5,
+          "min": 47.5,
+          "max": 47.5,
           "byWeek": [
             {
               "week": 1,
-              "line": 45.5,
-              "books": 5
+              "line": 47.5,
+              "books": 6
             }
           ]
         },
@@ -1499,7 +1619,7 @@
             {
               "week": 1,
               "line": 3.5,
-              "books": 5
+              "books": 6
             }
           ]
         }
@@ -1512,15 +1632,15 @@
       },
       "stats": {
         "rec_yds": {
-          "avg": 47.5,
+          "avg": 49.0,
           "weeks": 1,
-          "min": 47.5,
-          "max": 47.5,
+          "min": 49.0,
+          "max": 49.0,
           "byWeek": [
             {
               "week": 1,
-              "line": 47.5,
-              "books": 5
+              "line": 49.0,
+              "books": 6
             }
           ]
         },
@@ -1533,7 +1653,7 @@
             {
               "week": 1,
               "line": 3.5,
-              "books": 5
+              "books": 6
             }
           ]
         }
@@ -1554,7 +1674,7 @@
             {
               "week": 1,
               "line": 1.5,
-              "books": 5
+              "books": 6
             }
           ]
         },
@@ -1567,7 +1687,7 @@
             {
               "week": 1,
               "line": 260.5,
-              "books": 5
+              "books": 6
             }
           ]
         },
@@ -1580,7 +1700,7 @@
             {
               "week": 1,
               "line": 7.5,
-              "books": 2
+              "books": 6
             }
           ]
         }
@@ -1593,15 +1713,15 @@
       },
       "stats": {
         "rec_yds": {
-          "avg": 34.5,
+          "avg": 36.5,
           "weeks": 1,
-          "min": 34.5,
-          "max": 34.5,
+          "min": 36.5,
+          "max": 36.5,
           "byWeek": [
             {
               "week": 1,
-              "line": 34.5,
-              "books": 5
+              "line": 36.5,
+              "books": 6
             }
           ]
         },
@@ -1635,7 +1755,7 @@
             {
               "week": 1,
               "line": 37.5,
-              "books": 5
+              "books": 6
             }
           ]
         },
@@ -1648,7 +1768,7 @@
             {
               "week": 1,
               "line": 3.5,
-              "books": 5
+              "books": 6
             }
           ]
         }
@@ -1661,15 +1781,15 @@
       },
       "stats": {
         "rec_yds": {
-          "avg": 33.5,
+          "avg": 34.5,
           "weeks": 1,
-          "min": 33.5,
-          "max": 33.5,
+          "min": 34.5,
+          "max": 34.5,
           "byWeek": [
             {
               "week": 1,
-              "line": 33.5,
-              "books": 5
+              "line": 34.5,
+              "books": 6
             }
           ]
         },
@@ -1682,7 +1802,7 @@
             {
               "week": 1,
               "line": 3.5,
-              "books": 5
+              "books": 6
             }
           ]
         }
@@ -1703,19 +1823,32 @@
             {
               "week": 1,
               "line": 1.5,
-              "books": 5
+              "books": 6
             }
           ]
         },
         "pass_yds": {
-          "avg": 232.5,
+          "avg": 233.5,
           "weeks": 1,
-          "min": 232.5,
-          "max": 232.5,
+          "min": 233.5,
+          "max": 233.5,
           "byWeek": [
             {
               "week": 1,
-              "line": 232.5,
+              "line": 233.5,
+              "books": 6
+            }
+          ]
+        },
+        "rush_yds": {
+          "avg": 12.5,
+          "weeks": 1,
+          "min": 12.5,
+          "max": 12.5,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 12.5,
               "books": 5
             }
           ]
@@ -1723,34 +1856,102 @@
       }
     },
     {
-      "name": "Davante Adams",
+      "name": "Darnell Mooney",
       "games": {
-        "1": "SFLAR"
+        "1": "DALNYG"
       },
       "stats": {
         "rec_yds": {
-          "avg": 51.5,
+          "avg": 19.5,
           "weeks": 1,
-          "min": 51.5,
-          "max": 51.5,
+          "min": 19.5,
+          "max": 19.5,
           "byWeek": [
             {
               "week": 1,
-              "line": 51.5,
+              "line": 19.5,
+              "books": 4
+            }
+          ]
+        },
+        "receptions": {
+          "avg": 1.5,
+          "weeks": 1,
+          "min": 1.5,
+          "max": 1.5,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 1.5,
+              "books": 4
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Darnell Washington",
+      "games": {
+        "1": "ATLPIT"
+      },
+      "stats": {
+        "rec_yds": {
+          "avg": 16.0,
+          "weeks": 1,
+          "min": 16.0,
+          "max": 16.0,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 16.0,
+              "books": 6
+            }
+          ]
+        },
+        "receptions": {
+          "avg": 1.5,
+          "weeks": 1,
+          "min": 1.5,
+          "max": 1.5,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 1.5,
+              "books": 6
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Darren Waller",
+      "games": {
+        "1": "CHICAR"
+      },
+      "stats": {
+        "rec_yds": {
+          "avg": 16.5,
+          "weeks": 1,
+          "min": 16.5,
+          "max": 16.5,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 16.5,
               "books": 5
             }
           ]
         },
         "receptions": {
-          "avg": 4.5,
+          "avg": 1.5,
           "weeks": 1,
-          "min": 4.5,
-          "max": 4.5,
+          "min": 1.5,
+          "max": 1.5,
           "byWeek": [
             {
               "week": 1,
-              "line": 4.5,
-              "books": 5
+              "line": 1.5,
+              "books": 4
             }
           ]
         }
@@ -1763,15 +1964,15 @@
       },
       "stats": {
         "rec_yds": {
-          "avg": 8.5,
+          "avg": 11.0,
           "weeks": 1,
-          "min": 8.5,
-          "max": 8.5,
+          "min": 11.0,
+          "max": 11.0,
           "byWeek": [
             {
               "week": 1,
-              "line": 8.5,
-              "books": 5
+              "line": 11.0,
+              "books": 6
             }
           ]
         },
@@ -1784,20 +1985,20 @@
             {
               "week": 1,
               "line": 1.5,
-              "books": 5
+              "books": 6
             }
           ]
         },
         "rush_yds": {
-          "avg": 54.5,
+          "avg": 55.5,
           "weeks": 1,
-          "min": 54.5,
-          "max": 54.5,
+          "min": 55.5,
+          "max": 55.5,
           "byWeek": [
             {
               "week": 1,
-              "line": 54.5,
-              "books": 5
+              "line": 55.5,
+              "books": 6
             }
           ]
         }
@@ -1810,15 +2011,15 @@
       },
       "stats": {
         "rec_yds": {
-          "avg": 14.5,
+          "avg": 13.5,
           "weeks": 1,
-          "min": 14.5,
-          "max": 14.5,
+          "min": 13.5,
+          "max": 13.5,
           "byWeek": [
             {
               "week": 1,
-              "line": 14.5,
-              "books": 2
+              "line": 13.5,
+              "books": 6
             }
           ]
         },
@@ -1831,7 +2032,7 @@
             {
               "week": 1,
               "line": 1.5,
-              "books": 2
+              "books": 6
             }
           ]
         }
@@ -1844,15 +2045,15 @@
       },
       "stats": {
         "rec_yds": {
-          "avg": 31.5,
+          "avg": 28.0,
           "weeks": 1,
-          "min": 31.5,
-          "max": 31.5,
+          "min": 28.0,
+          "max": 28.0,
           "byWeek": [
             {
               "week": 1,
-              "line": 31.5,
-              "books": 5
+              "line": 28.0,
+              "books": 6
             }
           ]
         },
@@ -1865,54 +2066,20 @@
             {
               "week": 1,
               "line": 4.5,
-              "books": 5
+              "books": 6
             }
           ]
         },
         "rush_yds": {
-          "avg": 68.5,
+          "avg": 69.0,
           "weeks": 1,
-          "min": 68.5,
-          "max": 68.5,
+          "min": 69.0,
+          "max": 69.0,
           "byWeek": [
             {
               "week": 1,
-              "line": 68.5,
-              "books": 5
-            }
-          ]
-        }
-      }
-    },
-    {
-      "name": "DeMario Douglas",
-      "games": {
-        "1": "NESEA"
-      },
-      "stats": {
-        "rec_yds": {
-          "avg": 18.5,
-          "weeks": 1,
-          "min": 18.5,
-          "max": 18.5,
-          "byWeek": [
-            {
-              "week": 1,
-              "line": 18.5,
-              "books": 5
-            }
-          ]
-        },
-        "receptions": {
-          "avg": 1.5,
-          "weeks": 1,
-          "min": 1.5,
-          "max": 1.5,
-          "byWeek": [
-            {
-              "week": 1,
-              "line": 1.5,
-              "books": 5
+              "line": 69.0,
+              "books": 6
             }
           ]
         }
@@ -1925,15 +2092,15 @@
       },
       "stats": {
         "rec_yds": {
-          "avg": 64.5,
+          "avg": 66.5,
           "weeks": 1,
-          "min": 64.5,
-          "max": 64.5,
+          "min": 66.5,
+          "max": 66.5,
           "byWeek": [
             {
               "week": 1,
-              "line": 64.5,
-              "books": 5
+              "line": 66.5,
+              "books": 6
             }
           ]
         },
@@ -1946,41 +2113,7 @@
             {
               "week": 1,
               "line": 5.5,
-              "books": 5
-            }
-          ]
-        }
-      }
-    },
-    {
-      "name": "Deebo Samuel",
-      "games": {
-        "1": "SFLAR"
-      },
-      "stats": {
-        "rec_yds": {
-          "avg": 29.5,
-          "weeks": 1,
-          "min": 29.5,
-          "max": 29.5,
-          "byWeek": [
-            {
-              "week": 1,
-              "line": 29.5,
-              "books": 5
-            }
-          ]
-        },
-        "receptions": {
-          "avg": 2.5,
-          "weeks": 1,
-          "min": 2.5,
-          "max": 2.5,
-          "byWeek": [
-            {
-              "week": 1,
-              "line": 2.5,
-              "books": 5
+              "books": 6
             }
           ]
         }
@@ -1993,15 +2126,15 @@
       },
       "stats": {
         "rec_yds": {
-          "avg": 24.5,
+          "avg": 25.0,
           "weeks": 1,
-          "min": 24.5,
-          "max": 24.5,
+          "min": 25.0,
+          "max": 25.0,
           "byWeek": [
             {
               "week": 1,
-              "line": 24.5,
-              "books": 5
+              "line": 25.0,
+              "books": 6
             }
           ]
         },
@@ -2014,7 +2147,7 @@
             {
               "week": 1,
               "line": 2.5,
-              "books": 5
+              "books": 6
             }
           ]
         }
@@ -2027,28 +2160,15 @@
       },
       "stats": {
         "rec_yds": {
-          "avg": 6.0,
+          "avg": 6.5,
           "weeks": 1,
-          "min": 6.0,
-          "max": 6.0,
+          "min": 6.5,
+          "max": 6.5,
           "byWeek": [
             {
               "week": 1,
-              "line": 6.0,
-              "books": 2
-            }
-          ]
-        },
-        "rush_yds": {
-          "avg": 79.5,
-          "weeks": 1,
-          "min": 79.5,
-          "max": 79.5,
-          "byWeek": [
-            {
-              "week": 1,
-              "line": 79.5,
-              "books": 5
+              "line": 6.5,
+              "books": 6
             }
           ]
         },
@@ -2061,7 +2181,20 @@
             {
               "week": 1,
               "line": 1.5,
-              "books": 1
+              "books": 6
+            }
+          ]
+        },
+        "rush_yds": {
+          "avg": 79.0,
+          "weeks": 1,
+          "min": 79.0,
+          "max": 79.0,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 79.0,
+              "books": 6
             }
           ]
         }
@@ -2082,33 +2215,33 @@
             {
               "week": 1,
               "line": 0.5,
-              "books": 4
+              "books": 5
             }
           ]
         },
         "pass_yds": {
-          "avg": 175.5,
+          "avg": 177.5,
           "weeks": 1,
-          "min": 175.5,
-          "max": 175.5,
+          "min": 177.5,
+          "max": 177.5,
           "byWeek": [
             {
               "week": 1,
-              "line": 175.5,
+              "line": 177.5,
               "books": 5
             }
           ]
         },
         "rush_yds": {
-          "avg": 20.5,
+          "avg": 18.5,
           "weeks": 1,
-          "min": 20.5,
-          "max": 20.5,
+          "min": 18.5,
+          "max": 18.5,
           "byWeek": [
             {
               "week": 1,
-              "line": 20.5,
-              "books": 3
+              "line": 18.5,
+              "books": 5
             }
           ]
         }
@@ -2121,15 +2254,15 @@
       },
       "stats": {
         "rec_yds": {
-          "avg": 39.5,
+          "avg": 40.0,
           "weeks": 1,
-          "min": 39.5,
-          "max": 39.5,
+          "min": 40.0,
+          "max": 40.0,
           "byWeek": [
             {
               "week": 1,
-              "line": 39.5,
-              "books": 3
+              "line": 40.0,
+              "books": 6
             }
           ]
         },
@@ -2142,7 +2275,41 @@
             {
               "week": 1,
               "line": 3.5,
-              "books": 3
+              "books": 6
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Dontayvion Wicks",
+      "games": {
+        "1": "WASPHI"
+      },
+      "stats": {
+        "rec_yds": {
+          "avg": 29.0,
+          "weeks": 1,
+          "min": 29.0,
+          "max": 29.0,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 29.0,
+              "books": 6
+            }
+          ]
+        },
+        "receptions": {
+          "avg": 2.5,
+          "weeks": 1,
+          "min": 2.5,
+          "max": 2.5,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 2.5,
+              "books": 6
             }
           ]
         }
@@ -2155,96 +2322,15 @@
       },
       "stats": {
         "rec_yds": {
-          "avg": 64.5,
+          "avg": 55.5,
           "weeks": 1,
-          "min": 64.5,
-          "max": 64.5,
+          "min": 55.5,
+          "max": 55.5,
           "byWeek": [
             {
               "week": 1,
-              "line": 64.5,
-              "books": 5
-            }
-          ]
-        },
-        "receptions": {
-          "avg": 5.5,
-          "weeks": 1,
-          "min": 5.5,
-          "max": 5.5,
-          "byWeek": [
-            {
-              "week": 1,
-              "line": 5.5,
-              "books": 5
-            }
-          ]
-        }
-      }
-    },
-    {
-      "name": "Drake Maye",
-      "games": {
-        "1": "NESEA"
-      },
-      "stats": {
-        "pass_tds": {
-          "avg": 1.5,
-          "weeks": 1,
-          "min": 1.5,
-          "max": 1.5,
-          "byWeek": [
-            {
-              "week": 1,
-              "line": 1.5,
-              "books": 5
-            }
-          ]
-        },
-        "pass_yds": {
-          "avg": 228.5,
-          "weeks": 1,
-          "min": 228.5,
-          "max": 228.5,
-          "byWeek": [
-            {
-              "week": 1,
-              "line": 228.5,
-              "books": 5
-            }
-          ]
-        },
-        "rush_yds": {
-          "avg": 24.5,
-          "weeks": 1,
-          "min": 24.5,
-          "max": 24.5,
-          "byWeek": [
-            {
-              "week": 1,
-              "line": 24.5,
-              "books": 5
-            }
-          ]
-        }
-      }
-    },
-    {
-      "name": "Emeka Egbuka",
-      "games": {
-        "1": "TBCIN"
-      },
-      "stats": {
-        "rec_yds": {
-          "avg": 54.5,
-          "weeks": 1,
-          "min": 54.5,
-          "max": 54.5,
-          "byWeek": [
-            {
-              "week": 1,
-              "line": 54.5,
-              "books": 5
+              "line": 55.5,
+              "books": 6
             }
           ]
         },
@@ -2257,7 +2343,75 @@
             {
               "week": 1,
               "line": 4.5,
-              "books": 5
+              "books": 6
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Emeka Egbuka",
+      "games": {
+        "1": "TBCIN"
+      },
+      "stats": {
+        "rec_yds": {
+          "avg": 57.5,
+          "weeks": 1,
+          "min": 57.5,
+          "max": 57.5,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 57.5,
+              "books": 6
+            }
+          ]
+        },
+        "receptions": {
+          "avg": 4.5,
+          "weeks": 1,
+          "min": 4.5,
+          "max": 4.5,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 4.5,
+              "books": 6
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Evan Engram",
+      "games": {
+        "1": "DENKC"
+      },
+      "stats": {
+        "rec_yds": {
+          "avg": 22.5,
+          "weeks": 1,
+          "min": 22.5,
+          "max": 22.5,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 22.5,
+              "books": 6
+            }
+          ]
+        },
+        "receptions": {
+          "avg": 2.5,
+          "weeks": 1,
+          "min": 2.5,
+          "max": 2.5,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 2.5,
+              "books": 6
             }
           ]
         }
@@ -2270,15 +2424,15 @@
       },
       "stats": {
         "rec_yds": {
-          "avg": 60.5,
+          "avg": 62.5,
           "weeks": 1,
-          "min": 60.5,
-          "max": 60.5,
+          "min": 62.5,
+          "max": 62.5,
           "byWeek": [
             {
               "week": 1,
-              "line": 60.5,
-              "books": 5
+              "line": 62.5,
+              "books": 6
             }
           ]
         },
@@ -2291,7 +2445,7 @@
             {
               "week": 1,
               "line": 5.5,
-              "books": 5
+              "books": 6
             }
           ]
         }
@@ -2312,53 +2466,189 @@
             {
               "week": 1,
               "line": 0.5,
-              "books": 5
+              "books": 6
             }
           ]
         },
         "pass_yds": {
-          "avg": 207.5,
+          "avg": 209.5,
           "weeks": 1,
-          "min": 207.5,
-          "max": 207.5,
+          "min": 209.5,
+          "max": 209.5,
           "byWeek": [
             {
               "week": 1,
-              "line": 207.5,
-              "books": 5
+              "line": 209.5,
+              "books": 6
             }
           ]
         },
         "rush_yds": {
-          "avg": 5.5,
+          "avg": 6.5,
           "weeks": 1,
-          "min": 5.5,
-          "max": 5.5,
+          "min": 6.5,
+          "max": 6.5,
           "byWeek": [
             {
               "week": 1,
-              "line": 5.5,
-              "books": 5
+              "line": 6.5,
+              "books": 6
             }
           ]
         }
       }
     },
     {
-      "name": "George Holani",
+      "name": "George Pickens",
       "games": {
-        "1": "NESEA"
+        "1": "DALNYG"
       },
       "stats": {
         "rec_yds": {
-          "avg": 12.5,
+          "avg": 67.5,
           "weeks": 1,
-          "min": 12.5,
-          "max": 12.5,
+          "min": 67.5,
+          "max": 67.5,
           "byWeek": [
             {
               "week": 1,
-              "line": 12.5,
+              "line": 67.5,
+              "books": 6
+            }
+          ]
+        },
+        "receptions": {
+          "avg": 4.5,
+          "weeks": 1,
+          "min": 4.5,
+          "max": 4.5,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 4.5,
+              "books": 6
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Greg Dulcich",
+      "games": {
+        "1": "MIALV"
+      },
+      "stats": {
+        "rec_yds": {
+          "avg": 26.0,
+          "weeks": 1,
+          "min": 26.0,
+          "max": 26.0,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 26.0,
+              "books": 6
+            }
+          ]
+        },
+        "receptions": {
+          "avg": 2.5,
+          "weeks": 1,
+          "min": 2.5,
+          "max": 2.5,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 2.5,
+              "books": 6
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Gunnar Helm",
+      "games": {
+        "1": "NYJTEN"
+      },
+      "stats": {
+        "rec_yds": {
+          "avg": 21.5,
+          "weeks": 1,
+          "min": 21.5,
+          "max": 21.5,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 21.5,
+              "books": 6
+            }
+          ]
+        },
+        "receptions": {
+          "avg": 2.5,
+          "weeks": 1,
+          "min": 2.5,
+          "max": 2.5,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 2.5,
+              "books": 6
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Harold Fannin Jr.",
+      "games": {
+        "1": "CLEJAC"
+      },
+      "stats": {
+        "rec_yds": {
+          "avg": 36.5,
+          "weeks": 1,
+          "min": 36.5,
+          "max": 36.5,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 36.5,
+              "books": 6
+            }
+          ]
+        },
+        "receptions": {
+          "avg": 4.5,
+          "weeks": 1,
+          "min": 4.5,
+          "max": 4.5,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 4.5,
+              "books": 6
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Hollywood Brown",
+      "games": {
+        "1": "WASPHI"
+      },
+      "stats": {
+        "rec_yds": {
+          "avg": 11.5,
+          "weeks": 1,
+          "min": 11.5,
+          "max": 11.5,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 11.5,
               "books": 1
             }
           ]
@@ -2373,189 +2663,6 @@
               "week": 1,
               "line": 1.5,
               "books": 1
-            }
-          ]
-        },
-        "rush_yds": {
-          "avg": 20.5,
-          "weeks": 1,
-          "min": 20.5,
-          "max": 20.5,
-          "byWeek": [
-            {
-              "week": 1,
-              "line": 20.5,
-              "books": 5
-            }
-          ]
-        }
-      }
-    },
-    {
-      "name": "George Kittle",
-      "games": {
-        "1": "SFLAR"
-      },
-      "stats": {
-        "rec_yds": {
-          "avg": 39.5,
-          "weeks": 1,
-          "min": 39.5,
-          "max": 39.5,
-          "byWeek": [
-            {
-              "week": 1,
-              "line": 39.5,
-              "books": 3
-            }
-          ]
-        },
-        "receptions": {
-          "avg": 3.5,
-          "weeks": 1,
-          "min": 3.5,
-          "max": 3.5,
-          "byWeek": [
-            {
-              "week": 1,
-              "line": 3.5,
-              "books": 2
-            }
-          ]
-        }
-      }
-    },
-    {
-      "name": "George Pickens",
-      "games": {
-        "1": "DALNYG"
-      },
-      "stats": {
-        "rec_yds": {
-          "avg": 69.5,
-          "weeks": 1,
-          "min": 69.5,
-          "max": 69.5,
-          "byWeek": [
-            {
-              "week": 1,
-              "line": 69.5,
-              "books": 5
-            }
-          ]
-        },
-        "receptions": {
-          "avg": 4.5,
-          "weeks": 1,
-          "min": 4.5,
-          "max": 4.5,
-          "byWeek": [
-            {
-              "week": 1,
-              "line": 4.5,
-              "books": 5
-            }
-          ]
-        }
-      }
-    },
-    {
-      "name": "Gunnar Helm",
-      "games": {
-        "1": "NYJTEN"
-      },
-      "stats": {
-        "rec_yds": {
-          "avg": 24.0,
-          "weeks": 1,
-          "min": 24.0,
-          "max": 24.0,
-          "byWeek": [
-            {
-              "week": 1,
-              "line": 24.0,
-              "books": 2
-            }
-          ]
-        },
-        "receptions": {
-          "avg": 2.5,
-          "weeks": 1,
-          "min": 2.5,
-          "max": 2.5,
-          "byWeek": [
-            {
-              "week": 1,
-              "line": 2.5,
-              "books": 2
-            }
-          ]
-        }
-      }
-    },
-    {
-      "name": "Harold Fannin Jr.",
-      "games": {
-        "1": "CLEJAC"
-      },
-      "stats": {
-        "rec_yds": {
-          "avg": 35.5,
-          "weeks": 1,
-          "min": 35.5,
-          "max": 35.5,
-          "byWeek": [
-            {
-              "week": 1,
-              "line": 35.5,
-              "books": 5
-            }
-          ]
-        },
-        "receptions": {
-          "avg": 4.5,
-          "weeks": 1,
-          "min": 4.5,
-          "max": 4.5,
-          "byWeek": [
-            {
-              "week": 1,
-              "line": 4.5,
-              "books": 5
-            }
-          ]
-        }
-      }
-    },
-    {
-      "name": "Hunter Henry",
-      "games": {
-        "1": "NESEA"
-      },
-      "stats": {
-        "rec_yds": {
-          "avg": 33.5,
-          "weeks": 1,
-          "min": 33.5,
-          "max": 33.5,
-          "byWeek": [
-            {
-              "week": 1,
-              "line": 33.5,
-              "books": 5
-            }
-          ]
-        },
-        "receptions": {
-          "avg": 3.5,
-          "weeks": 1,
-          "min": 3.5,
-          "max": 3.5,
-          "byWeek": [
-            {
-              "week": 1,
-              "line": 3.5,
-              "books": 5
             }
           ]
         }
@@ -2576,7 +2683,7 @@
             {
               "week": 1,
               "line": 16.5,
-              "books": 3
+              "books": 6
             }
           ]
         },
@@ -2589,7 +2696,7 @@
             {
               "week": 1,
               "line": 1.5,
-              "books": 1
+              "books": 6
             }
           ]
         }
@@ -2610,7 +2717,7 @@
             {
               "week": 1,
               "line": 35.5,
-              "books": 2
+              "books": 5
             }
           ]
         },
@@ -2623,7 +2730,7 @@
             {
               "week": 1,
               "line": 3.5,
-              "books": 2
+              "books": 5
             }
           ]
         }
@@ -2635,6 +2742,19 @@
         "1": "DENKC"
       },
       "stats": {
+        "rec_yds": {
+          "avg": 4.5,
+          "weeks": 1,
+          "min": 4.5,
+          "max": 4.5,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 4.5,
+              "books": 5
+            }
+          ]
+        },
         "rush_yds": {
           "avg": 49.5,
           "weeks": 1,
@@ -2644,7 +2764,41 @@
             {
               "week": 1,
               "line": 49.5,
-              "books": 4
+              "books": 6
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Ja'Kobi Lane",
+      "games": {
+        "1": "BALIND"
+      },
+      "stats": {
+        "rec_yds": {
+          "avg": 20.0,
+          "weeks": 1,
+          "min": 20.0,
+          "max": 20.0,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 20.0,
+              "books": 6
+            }
+          ]
+        },
+        "receptions": {
+          "avg": 1.5,
+          "weeks": 1,
+          "min": 1.5,
+          "max": 1.5,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 1.5,
+              "books": 6
             }
           ]
         }
@@ -2657,15 +2811,15 @@
       },
       "stats": {
         "rec_yds": {
-          "avg": 87.5,
+          "avg": 85.0,
           "weeks": 1,
-          "min": 87.5,
-          "max": 87.5,
+          "min": 85.0,
+          "max": 85.0,
           "byWeek": [
             {
               "week": 1,
-              "line": 87.5,
-              "books": 5
+              "line": 85.0,
+              "books": 6
             }
           ]
         },
@@ -2678,7 +2832,41 @@
             {
               "week": 1,
               "line": 7.5,
-              "books": 5
+              "books": 6
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Jack Bech",
+      "games": {
+        "1": "MIALV"
+      },
+      "stats": {
+        "rec_yds": {
+          "avg": 18.5,
+          "weeks": 1,
+          "min": 18.5,
+          "max": 18.5,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 18.5,
+              "books": 6
+            }
+          ]
+        },
+        "receptions": {
+          "avg": 1.5,
+          "weeks": 1,
+          "min": 1.5,
+          "max": 1.5,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 1.5,
+              "books": 6
             }
           ]
         }
@@ -2699,7 +2887,7 @@
             {
               "week": 1,
               "line": 1.5,
-              "books": 5
+              "books": 6
             }
           ]
         },
@@ -2712,7 +2900,20 @@
             {
               "week": 1,
               "line": 223.5,
-              "books": 5
+              "books": 6
+            }
+          ]
+        },
+        "rush_yds": {
+          "avg": 10.5,
+          "weeks": 1,
+          "min": 10.5,
+          "max": 10.5,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 10.5,
+              "books": 6
             }
           ]
         }
@@ -2724,63 +2925,29 @@
         "1": "WASPHI"
       },
       "stats": {
-        "rush_yds": {
-          "avg": 41.5,
-          "weeks": 1,
-          "min": 41.5,
-          "max": 41.5,
-          "byWeek": [
-            {
-              "week": 1,
-              "line": 41.5,
-              "books": 5
-            }
-          ]
-        }
-      }
-    },
-    {
-      "name": "Jadarian Price",
-      "games": {
-        "1": "NESEA"
-      },
-      "stats": {
         "rec_yds": {
-          "avg": 8.0,
+          "avg": 6.0,
           "weeks": 1,
-          "min": 8.0,
-          "max": 8.0,
+          "min": 6.0,
+          "max": 6.0,
           "byWeek": [
             {
               "week": 1,
-              "line": 8.0,
-              "books": 4
-            }
-          ]
-        },
-        "receptions": {
-          "avg": 1.5,
-          "weeks": 1,
-          "min": 1.5,
-          "max": 1.5,
-          "byWeek": [
-            {
-              "week": 1,
-              "line": 1.5,
-              "books": 4
+              "line": 6.0,
+              "books": 2
             }
           ]
         },
         "rush_yds": {
-          "avg": 51.5,
+          "avg": 40.5,
           "weeks": 1,
-          "min": 51.5,
-          "max": 51.5,
+          "min": 40.5,
+          "max": 40.5,
           "byWeek": [
             {
               "week": 1,
-              "line": 51.5,
-              "books": 5
+              "line": 40.5,
+              "books": 6
             }
           ]
         }
@@ -2793,15 +2960,15 @@
       },
       "stats": {
         "rec_yds": {
-          "avg": 19.0,
+          "avg": 14.5,
           "weeks": 1,
-          "min": 19.0,
-          "max": 19.0,
+          "min": 14.5,
+          "max": 14.5,
           "byWeek": [
             {
               "week": 1,
-              "line": 19.0,
-              "books": 2
+              "line": 14.5,
+              "books": 5
             }
           ]
         },
@@ -2814,7 +2981,7 @@
             {
               "week": 1,
               "line": 1.5,
-              "books": 2
+              "books": 5
             }
           ]
         }
@@ -2835,7 +3002,7 @@
             {
               "week": 1,
               "line": 30.5,
-              "books": 5
+              "books": 6
             }
           ]
         },
@@ -2848,20 +3015,20 @@
             {
               "week": 1,
               "line": 4.5,
-              "books": 5
+              "books": 6
             }
           ]
         },
         "rush_yds": {
-          "avg": 83.5,
+          "avg": 84.5,
           "weeks": 1,
-          "min": 83.5,
-          "max": 83.5,
+          "min": 84.5,
+          "max": 84.5,
           "byWeek": [
             {
               "week": 1,
-              "line": 83.5,
-              "books": 5
+              "line": 84.5,
+              "books": 6
             }
           ]
         }
@@ -2882,7 +3049,7 @@
             {
               "week": 1,
               "line": 30.5,
-              "books": 2
+              "books": 6
             }
           ]
         },
@@ -2895,7 +3062,7 @@
             {
               "week": 1,
               "line": 3.5,
-              "books": 2
+              "books": 6
             }
           ]
         }
@@ -2916,7 +3083,7 @@
             {
               "week": 1,
               "line": 37.5,
-              "books": 5
+              "books": 7
             }
           ]
         },
@@ -2929,7 +3096,7 @@
             {
               "week": 1,
               "line": 3.5,
-              "books": 5
+              "books": 6
             }
           ]
         }
@@ -2942,15 +3109,15 @@
       },
       "stats": {
         "rec_yds": {
-          "avg": 39.0,
+          "avg": 40.0,
           "weeks": 1,
-          "min": 39.0,
-          "max": 39.0,
+          "min": 40.0,
+          "max": 40.0,
           "byWeek": [
             {
               "week": 1,
-              "line": 39.0,
-              "books": 4
+              "line": 40.0,
+              "books": 6
             }
           ]
         },
@@ -2963,7 +3130,7 @@
             {
               "week": 1,
               "line": 3.5,
-              "books": 4
+              "books": 6
             }
           ]
         }
@@ -2984,101 +3151,54 @@
             {
               "week": 1,
               "line": 1.5,
-              "books": 4
+              "books": 6
             }
           ]
         },
         "pass_yds": {
-          "avg": 212.5,
+          "avg": 211.5,
           "weeks": 1,
-          "min": 212.5,
-          "max": 212.5,
+          "min": 211.5,
+          "max": 211.5,
           "byWeek": [
             {
               "week": 1,
-              "line": 212.5,
-              "books": 5
+              "line": 211.5,
+              "books": 6
             }
           ]
         },
         "rush_yds": {
-          "avg": 27.5,
+          "avg": 29.0,
           "weeks": 1,
-          "min": 27.5,
-          "max": 27.5,
+          "min": 29.0,
+          "max": 29.0,
           "byWeek": [
             {
               "week": 1,
-              "line": 27.5,
-              "books": 5
+              "line": 29.0,
+              "books": 6
             }
           ]
         }
       }
     },
     {
-      "name": "James Cook",
+      "name": "Jalen Nailor",
       "games": {
-        "1": "BUFHOU"
+        "1": "MIALV"
       },
       "stats": {
         "rec_yds": {
-          "avg": 13.5,
+          "avg": 37.5,
           "weeks": 1,
-          "min": 13.5,
-          "max": 13.5,
+          "min": 37.5,
+          "max": 37.5,
           "byWeek": [
             {
               "week": 1,
-              "line": 13.5,
-              "books": 2
-            }
-          ]
-        },
-        "receptions": {
-          "avg": 2.5,
-          "weeks": 1,
-          "min": 2.5,
-          "max": 2.5,
-          "byWeek": [
-            {
-              "week": 1,
-              "line": 2.5,
-              "books": 2
-            }
-          ]
-        },
-        "rush_yds": {
-          "avg": 74.5,
-          "weeks": 1,
-          "min": 74.5,
-          "max": 74.5,
-          "byWeek": [
-            {
-              "week": 1,
-              "line": 74.5,
-              "books": 5
-            }
-          ]
-        }
-      }
-    },
-    {
-      "name": "Jameson Williams",
-      "games": {
-        "1": "NODET"
-      },
-      "stats": {
-        "rec_yds": {
-          "avg": 58.5,
-          "weeks": 1,
-          "min": 58.5,
-          "max": 58.5,
-          "byWeek": [
-            {
-              "week": 1,
-              "line": 58.5,
-              "books": 5
+              "line": 37.5,
+              "books": 6
             }
           ]
         },
@@ -3091,7 +3211,122 @@
             {
               "week": 1,
               "line": 3.5,
-              "books": 5
+              "books": 6
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Jalen Tolbert",
+      "games": {
+        "1": "MIALV"
+      },
+      "stats": {
+        "rec_yds": {
+          "avg": 12.0,
+          "weeks": 1,
+          "min": 12.0,
+          "max": 12.0,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 12.0,
+              "books": 4
+            }
+          ]
+        },
+        "receptions": {
+          "avg": 1.5,
+          "weeks": 1,
+          "min": 1.5,
+          "max": 1.5,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 1.5,
+              "books": 4
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "James Cook",
+      "games": {
+        "1": "BUFHOU"
+      },
+      "stats": {
+        "rec_yds": {
+          "avg": 19.5,
+          "weeks": 1,
+          "min": 19.5,
+          "max": 19.5,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 19.5,
+              "books": 6
+            }
+          ]
+        },
+        "receptions": {
+          "avg": 2.5,
+          "weeks": 1,
+          "min": 2.5,
+          "max": 2.5,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 2.5,
+              "books": 6
+            }
+          ]
+        },
+        "rush_yds": {
+          "avg": 74.5,
+          "weeks": 1,
+          "min": 74.5,
+          "max": 74.5,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 74.5,
+              "books": 6
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Jameson Williams",
+      "games": {
+        "1": "NODET"
+      },
+      "stats": {
+        "rec_yds": {
+          "avg": 57.5,
+          "weeks": 1,
+          "min": 57.5,
+          "max": 57.5,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 57.5,
+              "books": 6
+            }
+          ]
+        },
+        "receptions": {
+          "avg": 3.5,
+          "weeks": 1,
+          "min": 3.5,
+          "max": 3.5,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 3.5,
+              "books": 6
             }
           ]
         }
@@ -3112,20 +3347,33 @@
             {
               "week": 1,
               "line": 1.5,
-              "books": 5
+              "books": 6
             }
           ]
         },
         "pass_yds": {
-          "avg": 261.5,
+          "avg": 261.0,
           "weeks": 1,
-          "min": 261.5,
-          "max": 261.5,
+          "min": 261.0,
+          "max": 261.0,
           "byWeek": [
             {
               "week": 1,
-              "line": 261.5,
-              "books": 5
+              "line": 261.0,
+              "books": 6
+            }
+          ]
+        },
+        "rush_yds": {
+          "avg": 0.5,
+          "weeks": 1,
+          "min": 0.5,
+          "max": 0.5,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 0.5,
+              "books": 2
             }
           ]
         }
@@ -3138,14 +3386,48 @@
       },
       "stats": {
         "rec_yds": {
-          "avg": 23.5,
+          "avg": 22.0,
           "weeks": 1,
-          "min": 23.5,
-          "max": 23.5,
+          "min": 22.0,
+          "max": 22.0,
           "byWeek": [
             {
               "week": 1,
-              "line": 23.5,
+              "line": 22.0,
+              "books": 6
+            }
+          ]
+        },
+        "receptions": {
+          "avg": 2.5,
+          "weeks": 1,
+          "min": 2.5,
+          "max": 2.5,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 2.5,
+              "books": 6
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Javonte Williams",
+      "games": {
+        "1": "DALNYG"
+      },
+      "stats": {
+        "rec_yds": {
+          "avg": 10.5,
+          "weeks": 1,
+          "min": 10.5,
+          "max": 10.5,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 10.5,
               "books": 5
             }
           ]
@@ -3162,84 +3444,16 @@
               "books": 5
             }
           ]
-        }
-      }
-    },
-    {
-      "name": "Javonte Williams",
-      "games": {
-        "1": "DALNYG"
-      },
-      "stats": {
-        "rec_yds": {
-          "avg": 9.5,
-          "weeks": 1,
-          "min": 9.5,
-          "max": 9.5,
-          "byWeek": [
-            {
-              "week": 1,
-              "line": 9.5,
-              "books": 2
-            }
-          ]
-        },
-        "receptions": {
-          "avg": 2.0,
-          "weeks": 1,
-          "min": 2.0,
-          "max": 2.0,
-          "byWeek": [
-            {
-              "week": 1,
-              "line": 2.0,
-              "books": 2
-            }
-          ]
         },
         "rush_yds": {
-          "avg": 73.5,
+          "avg": 74.5,
           "weeks": 1,
-          "min": 73.5,
-          "max": 73.5,
+          "min": 74.5,
+          "max": 74.5,
           "byWeek": [
             {
               "week": 1,
-              "line": 73.5,
-              "books": 5
-            }
-          ]
-        }
-      }
-    },
-    {
-      "name": "Jaxon Smith-Njigba",
-      "games": {
-        "1": "NESEA"
-      },
-      "stats": {
-        "rec_yds": {
-          "avg": 81.5,
-          "weeks": 1,
-          "min": 81.5,
-          "max": 81.5,
-          "byWeek": [
-            {
-              "week": 1,
-              "line": 81.5,
-              "books": 5
-            }
-          ]
-        },
-        "receptions": {
-          "avg": 6.5,
-          "weeks": 1,
-          "min": 6.5,
-          "max": 6.5,
-          "byWeek": [
-            {
-              "week": 1,
-              "line": 6.5,
+              "line": 74.5,
               "books": 5
             }
           ]
@@ -3261,33 +3475,33 @@
             {
               "week": 1,
               "line": 1.5,
-              "books": 5
+              "books": 6
             }
           ]
         },
         "pass_yds": {
-          "avg": 214.5,
+          "avg": 212.5,
           "weeks": 1,
-          "min": 214.5,
-          "max": 214.5,
+          "min": 212.5,
+          "max": 212.5,
           "byWeek": [
             {
               "week": 1,
-              "line": 214.5,
-              "books": 5
+              "line": 212.5,
+              "books": 6
             }
           ]
         },
         "rush_yds": {
-          "avg": 29.5,
+          "avg": 31.5,
           "weeks": 1,
-          "min": 29.5,
-          "max": 29.5,
+          "min": 31.5,
+          "max": 31.5,
           "byWeek": [
             {
               "week": 1,
-              "line": 29.5,
-              "books": 5
+              "line": 31.5,
+              "books": 6
             }
           ]
         }
@@ -3308,33 +3522,33 @@
             {
               "week": 1,
               "line": 0.5,
-              "books": 4
+              "books": 6
             }
           ]
         },
         "pass_yds": {
-          "avg": 202.5,
+          "avg": 200.0,
           "weeks": 1,
-          "min": 202.5,
-          "max": 202.5,
+          "min": 200.0,
+          "max": 200.0,
           "byWeek": [
             {
               "week": 1,
-              "line": 202.5,
-              "books": 5
+              "line": 200.0,
+              "books": 6
             }
           ]
         },
         "rush_yds": {
-          "avg": 37.5,
+          "avg": 36.5,
           "weeks": 1,
-          "min": 37.5,
-          "max": 37.5,
+          "min": 36.5,
+          "max": 36.5,
           "byWeek": [
             {
               "week": 1,
-              "line": 37.5,
-              "books": 5
+              "line": 36.5,
+              "books": 6
             }
           ]
         }
@@ -3347,15 +3561,15 @@
       },
       "stats": {
         "rec_yds": {
-          "avg": 39.5,
+          "avg": 44.0,
           "weeks": 1,
-          "min": 39.5,
-          "max": 39.5,
+          "min": 44.0,
+          "max": 44.0,
           "byWeek": [
             {
               "week": 1,
-              "line": 39.5,
-              "books": 5
+              "line": 44.0,
+              "books": 6
             }
           ]
         },
@@ -3368,7 +3582,7 @@
             {
               "week": 1,
               "line": 3.5,
-              "books": 5
+              "books": 6
             }
           ]
         }
@@ -3381,15 +3595,15 @@
       },
       "stats": {
         "rec_yds": {
-          "avg": 53.5,
+          "avg": 54.5,
           "weeks": 1,
-          "min": 53.5,
-          "max": 53.5,
+          "min": 54.5,
+          "max": 54.5,
           "byWeek": [
             {
               "week": 1,
-              "line": 53.5,
-              "books": 4
+              "line": 54.5,
+              "books": 6
             }
           ]
         },
@@ -3402,7 +3616,7 @@
             {
               "week": 1,
               "line": 4.5,
-              "books": 4
+              "books": 6
             }
           ]
         }
@@ -3415,15 +3629,15 @@
       },
       "stats": {
         "rec_yds": {
-          "avg": 16.5,
+          "avg": 19.5,
           "weeks": 1,
-          "min": 16.5,
-          "max": 16.5,
+          "min": 19.5,
+          "max": 19.5,
           "byWeek": [
             {
               "week": 1,
-              "line": 16.5,
-              "books": 3
+              "line": 19.5,
+              "books": 6
             }
           ]
         },
@@ -3436,7 +3650,88 @@
             {
               "week": 1,
               "line": 2.5,
-              "books": 3
+              "books": 6
+            }
+          ]
+        },
+        "rush_yds": {
+          "avg": 42.5,
+          "weeks": 1,
+          "min": 42.5,
+          "max": 42.5,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 42.5,
+              "books": 6
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Jaylin Noel",
+      "games": {
+        "1": "BUFHOU"
+      },
+      "stats": {
+        "rec_yds": {
+          "avg": 14.5,
+          "weeks": 1,
+          "min": 14.5,
+          "max": 14.5,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 14.5,
+              "books": 5
+            }
+          ]
+        },
+        "receptions": {
+          "avg": 1.5,
+          "weeks": 1,
+          "min": 1.5,
+          "max": 1.5,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 1.5,
+              "books": 6
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Jeremiyah Love",
+      "games": {
+        "1": "ARILAC"
+      },
+      "stats": {
+        "rec_yds": {
+          "avg": 15.5,
+          "weeks": 1,
+          "min": 15.5,
+          "max": 15.5,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 15.5,
+              "books": 6
+            }
+          ]
+        },
+        "receptions": {
+          "avg": 2.5,
+          "weeks": 1,
+          "min": 2.5,
+          "max": 2.5,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 2.5,
+              "books": 6
             }
           ]
         },
@@ -3449,7 +3744,7 @@
             {
               "week": 1,
               "line": 39.5,
-              "books": 4
+              "books": 6
             }
           ]
         }
@@ -3462,15 +3757,15 @@
       },
       "stats": {
         "rec_yds": {
-          "avg": 30.5,
+          "avg": 31.5,
           "weeks": 1,
-          "min": 30.5,
-          "max": 30.5,
+          "min": 31.5,
+          "max": 31.5,
           "byWeek": [
             {
               "week": 1,
-              "line": 30.5,
-              "books": 5
+              "line": 31.5,
+              "books": 6
             }
           ]
         },
@@ -3483,7 +3778,7 @@
             {
               "week": 1,
               "line": 2.5,
-              "books": 5
+              "books": 6
             }
           ]
         }
@@ -3504,33 +3799,33 @@
             {
               "week": 1,
               "line": 2.5,
-              "books": 5
+              "books": 6
             }
           ]
         },
         "pass_yds": {
-          "avg": 268.5,
+          "avg": 270.0,
           "weeks": 1,
-          "min": 268.5,
-          "max": 268.5,
+          "min": 270.0,
+          "max": 270.0,
           "byWeek": [
             {
               "week": 1,
-              "line": 268.5,
-              "books": 5
+              "line": 270.0,
+              "books": 6
             }
           ]
         },
         "rush_yds": {
-          "avg": 6.5,
+          "avg": 8.5,
           "weeks": 1,
-          "min": 6.5,
-          "max": 6.5,
+          "min": 8.5,
+          "max": 8.5,
           "byWeek": [
             {
               "week": 1,
-              "line": 6.5,
-              "books": 5
+              "line": 8.5,
+              "books": 6
             }
           ]
         }
@@ -3542,16 +3837,89 @@
         "1": "BALIND"
       },
       "stats": {
-        "rush_yds": {
-          "avg": 77.5,
+        "rec_yds": {
+          "avg": 17.5,
           "weeks": 1,
-          "min": 77.5,
-          "max": 77.5,
+          "min": 17.5,
+          "max": 17.5,
           "byWeek": [
             {
               "week": 1,
-              "line": 77.5,
-              "books": 5
+              "line": 17.5,
+              "books": 6
+            }
+          ]
+        },
+        "receptions": {
+          "avg": 2.5,
+          "weeks": 1,
+          "min": 2.5,
+          "max": 2.5,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 2.5,
+              "books": 6
+            }
+          ]
+        },
+        "rush_yds": {
+          "avg": 76.5,
+          "weeks": 1,
+          "min": 76.5,
+          "max": 76.5,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 76.5,
+              "books": 6
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Jonathon Brooks",
+      "games": {
+        "1": "CHICAR"
+      },
+      "stats": {
+        "rec_yds": {
+          "avg": 9.5,
+          "weeks": 1,
+          "min": 9.5,
+          "max": 9.5,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 9.5,
+              "books": 1
+            }
+          ]
+        },
+        "receptions": {
+          "avg": 1.5,
+          "weeks": 1,
+          "min": 1.5,
+          "max": 1.5,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 1.5,
+              "books": 2
+            }
+          ]
+        },
+        "rush_yds": {
+          "avg": 32.5,
+          "weeks": 1,
+          "min": 32.5,
+          "max": 32.5,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 32.5,
+              "books": 4
             }
           ]
         }
@@ -3564,15 +3932,15 @@
       },
       "stats": {
         "rec_yds": {
-          "avg": 43.5,
+          "avg": 42.5,
           "weeks": 1,
-          "min": 43.5,
-          "max": 43.5,
+          "min": 42.5,
+          "max": 42.5,
           "byWeek": [
             {
               "week": 1,
-              "line": 43.5,
-              "books": 5
+              "line": 42.5,
+              "books": 6
             }
           ]
         },
@@ -3585,7 +3953,7 @@
             {
               "week": 1,
               "line": 3.5,
-              "books": 5
+              "books": 6
             }
           ]
         }
@@ -3606,33 +3974,33 @@
             {
               "week": 1,
               "line": 1.5,
-              "books": 5
+              "books": 6
             }
           ]
         },
         "pass_yds": {
-          "avg": 238.5,
+          "avg": 239.5,
           "weeks": 1,
-          "min": 238.5,
-          "max": 238.5,
+          "min": 239.5,
+          "max": 239.5,
           "byWeek": [
             {
               "week": 1,
-              "line": 238.5,
-              "books": 5
+              "line": 239.5,
+              "books": 6
             }
           ]
         },
         "rush_yds": {
-          "avg": 10.5,
+          "avg": 9.5,
           "weeks": 1,
-          "min": 10.5,
-          "max": 10.5,
+          "min": 9.5,
+          "max": 9.5,
           "byWeek": [
             {
               "week": 1,
-              "line": 10.5,
-              "books": 5
+              "line": 9.5,
+              "books": 6
             }
           ]
         }
@@ -3645,15 +4013,15 @@
       },
       "stats": {
         "rush_yds": {
-          "avg": 43.5,
+          "avg": 44.5,
           "weeks": 1,
-          "min": 43.5,
-          "max": 43.5,
+          "min": 44.5,
+          "max": 44.5,
           "byWeek": [
             {
               "week": 1,
-              "line": 43.5,
-              "books": 5
+              "line": 44.5,
+              "books": 6
             }
           ]
         }
@@ -3674,33 +4042,33 @@
             {
               "week": 1,
               "line": 1.5,
-              "books": 5
+              "books": 6
             }
           ]
         },
         "pass_yds": {
-          "avg": 222.5,
+          "avg": 223.5,
           "weeks": 1,
-          "min": 222.5,
-          "max": 222.5,
+          "min": 223.5,
+          "max": 223.5,
           "byWeek": [
             {
               "week": 1,
-              "line": 222.5,
-              "books": 5
+              "line": 223.5,
+              "books": 6
             }
           ]
         },
         "rush_yds": {
-          "avg": 29.5,
+          "avg": 31.0,
           "weeks": 1,
-          "min": 29.5,
-          "max": 29.5,
+          "min": 31.0,
+          "max": 31.0,
           "byWeek": [
             {
               "week": 1,
-              "line": 29.5,
-              "books": 5
+              "line": 31.0,
+              "books": 6
             }
           ]
         }
@@ -3713,28 +4081,109 @@
       },
       "stats": {
         "rec_yds": {
-          "avg": 44.0,
+          "avg": 46.5,
           "weeks": 1,
-          "min": 44.0,
-          "max": 44.0,
+          "min": 46.5,
+          "max": 46.5,
           "byWeek": [
             {
               "week": 1,
-              "line": 44.0,
-              "books": 2
+              "line": 46.5,
+              "books": 6
             }
           ]
         },
         "receptions": {
-          "avg": 4.0,
+          "avg": 4.5,
           "weeks": 1,
-          "min": 4.0,
-          "max": 4.0,
+          "min": 4.5,
+          "max": 4.5,
           "byWeek": [
             {
               "week": 1,
-              "line": 4.0,
-              "books": 2
+              "line": 4.5,
+              "books": 6
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Joshua Palmer",
+      "games": {
+        "1": "BUFHOU"
+      },
+      "stats": {
+        "rec_yds": {
+          "avg": 12.0,
+          "weeks": 1,
+          "min": 12.0,
+          "max": 12.0,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 12.0,
+              "books": 4
+            }
+          ]
+        },
+        "receptions": {
+          "avg": 1.5,
+          "weeks": 1,
+          "min": 1.5,
+          "max": 1.5,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 1.5,
+              "books": 4
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Justice Hill",
+      "games": {
+        "1": "BALIND"
+      },
+      "stats": {
+        "rec_yds": {
+          "avg": 11.5,
+          "weeks": 1,
+          "min": 11.5,
+          "max": 11.5,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 11.5,
+              "books": 6
+            }
+          ]
+        },
+        "receptions": {
+          "avg": 2.0,
+          "weeks": 1,
+          "min": 2.0,
+          "max": 2.0,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 2.0,
+              "books": 6
+            }
+          ]
+        },
+        "rush_yds": {
+          "avg": 8.5,
+          "weeks": 1,
+          "min": 8.5,
+          "max": 8.5,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 8.5,
+              "books": 6
             }
           ]
         }
@@ -3755,33 +4204,33 @@
             {
               "week": 1,
               "line": 1.5,
-              "books": 5
+              "books": 6
             }
           ]
         },
         "pass_yds": {
-          "avg": 237.5,
+          "avg": 234.5,
           "weeks": 1,
-          "min": 237.5,
-          "max": 237.5,
+          "min": 234.5,
+          "max": 234.5,
           "byWeek": [
             {
               "week": 1,
-              "line": 237.5,
-              "books": 5
+              "line": 234.5,
+              "books": 6
             }
           ]
         },
         "rush_yds": {
-          "avg": 21.5,
+          "avg": 20.5,
           "weeks": 1,
-          "min": 21.5,
-          "max": 21.5,
+          "min": 20.5,
+          "max": 20.5,
           "byWeek": [
             {
               "week": 1,
-              "line": 21.5,
-              "books": 1
+              "line": 20.5,
+              "books": 6
             }
           ]
         }
@@ -3794,15 +4243,15 @@
       },
       "stats": {
         "rec_yds": {
-          "avg": 73.5,
+          "avg": 73.0,
           "weeks": 1,
-          "min": 73.5,
-          "max": 73.5,
+          "min": 73.0,
+          "max": 73.0,
           "byWeek": [
             {
               "week": 1,
-              "line": 73.5,
-              "books": 5
+              "line": 73.0,
+              "books": 6
             }
           ]
         },
@@ -3815,7 +4264,7 @@
             {
               "week": 1,
               "line": 5.5,
-              "books": 5
+              "books": 6
             }
           ]
         }
@@ -3828,15 +4277,15 @@
       },
       "stats": {
         "rec_yds": {
-          "avg": 42.5,
+          "avg": 41.5,
           "weeks": 1,
-          "min": 42.5,
-          "max": 42.5,
+          "min": 41.5,
+          "max": 41.5,
           "byWeek": [
             {
               "week": 1,
-              "line": 42.5,
-              "books": 5
+              "line": 41.5,
+              "books": 6
             }
           ]
         },
@@ -3849,7 +4298,7 @@
             {
               "week": 1,
               "line": 4.5,
-              "books": 5
+              "books": 6
             }
           ]
         }
@@ -3862,14 +4311,163 @@
       },
       "stats": {
         "rec_yds": {
-          "avg": 35.5,
+          "avg": 33.5,
           "weeks": 1,
-          "min": 35.5,
-          "max": 35.5,
+          "min": 33.5,
+          "max": 33.5,
           "byWeek": [
             {
               "week": 1,
-              "line": 35.5,
+              "line": 33.5,
+              "books": 6
+            }
+          ]
+        },
+        "receptions": {
+          "avg": 3.5,
+          "weeks": 1,
+          "min": 3.5,
+          "max": 3.5,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 3.5,
+              "books": 6
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "KaVontae Turpin",
+      "games": {
+        "1": "DALNYG"
+      },
+      "stats": {
+        "rec_yds": {
+          "avg": 8.5,
+          "weeks": 1,
+          "min": 8.5,
+          "max": 8.5,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 8.5,
+              "books": 3
+            }
+          ]
+        },
+        "receptions": {
+          "avg": 1.5,
+          "weeks": 1,
+          "min": 1.5,
+          "max": 1.5,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 1.5,
+              "books": 3
+            }
+          ]
+        },
+        "rush_yds": {
+          "avg": 5.5,
+          "weeks": 1,
+          "min": 5.5,
+          "max": 5.5,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 5.5,
+              "books": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Kalif Raymond",
+      "games": {
+        "1": "CHICAR"
+      },
+      "stats": {
+        "rec_yds": {
+          "avg": 14.5,
+          "weeks": 1,
+          "min": 14.5,
+          "max": 14.5,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 14.5,
+              "books": 3
+            }
+          ]
+        },
+        "receptions": {
+          "avg": 1.5,
+          "weeks": 1,
+          "min": 1.5,
+          "max": 1.5,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 1.5,
+              "books": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Kayshon Boutte",
+      "games": {
+        "1": "BUFHOU"
+      },
+      "stats": {
+        "rec_yds": {
+          "avg": 27.0,
+          "weeks": 1,
+          "min": 27.0,
+          "max": 27.0,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 27.0,
+              "books": 6
+            }
+          ]
+        },
+        "receptions": {
+          "avg": 2.5,
+          "weeks": 1,
+          "min": 2.5,
+          "max": 2.5,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 2.5,
+              "books": 6
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Keenan Allen",
+      "games": {
+        "1": "BALIND"
+      },
+      "stats": {
+        "rec_yds": {
+          "avg": 27.5,
+          "weeks": 1,
+          "min": 27.5,
+          "max": 27.5,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 27.5,
               "books": 5
             }
           ]
@@ -3883,40 +4481,40 @@
             {
               "week": 1,
               "line": 3.5,
-              "books": 5
+              "books": 6
             }
           ]
         }
       }
     },
     {
-      "name": "Kayshon Boutte",
+      "name": "Kendrick Bourne",
       "games": {
-        "1": "BUFHOU"
+        "1": "ARILAC"
       },
       "stats": {
         "rec_yds": {
-          "avg": 22.5,
+          "avg": 18.5,
           "weeks": 1,
-          "min": 22.5,
-          "max": 22.5,
+          "min": 18.5,
+          "max": 18.5,
           "byWeek": [
             {
               "week": 1,
-              "line": 22.5,
-              "books": 5
+              "line": 18.5,
+              "books": 6
             }
           ]
         },
         "receptions": {
-          "avg": 1.5,
+          "avg": 2.5,
           "weeks": 1,
-          "min": 1.5,
-          "max": 1.5,
+          "min": 2.5,
+          "max": 2.5,
           "byWeek": [
             {
               "week": 1,
-              "line": 1.5,
+              "line": 2.5,
               "books": 5
             }
           ]
@@ -3930,62 +4528,15 @@
       },
       "stats": {
         "rec_yds": {
-          "avg": 15.5,
+          "avg": 18.0,
           "weeks": 1,
-          "min": 15.5,
-          "max": 15.5,
+          "min": 18.0,
+          "max": 18.0,
           "byWeek": [
             {
               "week": 1,
-              "line": 15.5,
-              "books": 3
-            }
-          ]
-        },
-        "receptions": {
-          "avg": 2.5,
-          "weeks": 1,
-          "min": 2.5,
-          "max": 2.5,
-          "byWeek": [
-            {
-              "week": 1,
-              "line": 2.5,
-              "books": 3
-            }
-          ]
-        },
-        "rush_yds": {
-          "avg": 61.5,
-          "weeks": 1,
-          "min": 61.5,
-          "max": 61.5,
-          "byWeek": [
-            {
-              "week": 1,
-              "line": 61.5,
-              "books": 4
-            }
-          ]
-        }
-      }
-    },
-    {
-      "name": "Kenny Gainwell",
-      "games": {
-        "1": "TBCIN"
-      },
-      "stats": {
-        "rec_yds": {
-          "avg": 21.0,
-          "weeks": 1,
-          "min": 21.0,
-          "max": 21.0,
-          "byWeek": [
-            {
-              "week": 1,
-              "line": 21.0,
-              "books": 2
+              "line": 18.0,
+              "books": 6
             }
           ]
         },
@@ -3998,7 +4549,54 @@
             {
               "week": 1,
               "line": 3.5,
-              "books": 2
+              "books": 6
+            }
+          ]
+        },
+        "rush_yds": {
+          "avg": 61.5,
+          "weeks": 1,
+          "min": 61.5,
+          "max": 61.5,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 61.5,
+              "books": 6
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Kenny Gainwell",
+      "games": {
+        "1": "TBCIN"
+      },
+      "stats": {
+        "rec_yds": {
+          "avg": 23.5,
+          "weeks": 1,
+          "min": 23.5,
+          "max": 23.5,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 23.5,
+              "books": 6
+            }
+          ]
+        },
+        "receptions": {
+          "avg": 3.5,
+          "weeks": 1,
+          "min": 3.5,
+          "max": 3.5,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 3.5,
+              "books": 6
             }
           ]
         },
@@ -4011,7 +4609,41 @@
             {
               "week": 1,
               "line": 21.5,
-              "books": 2
+              "books": 6
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Kenyon Sadiq",
+      "games": {
+        "1": "NYJTEN"
+      },
+      "stats": {
+        "rec_yds": {
+          "avg": 14.5,
+          "weeks": 1,
+          "min": 14.5,
+          "max": 14.5,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 14.5,
+              "books": 4
+            }
+          ]
+        },
+        "receptions": {
+          "avg": 1.5,
+          "weeks": 1,
+          "min": 1.5,
+          "max": 1.5,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 1.5,
+              "books": 4
             }
           ]
         }
@@ -4024,15 +4656,15 @@
       },
       "stats": {
         "rec_yds": {
-          "avg": 37.5,
+          "avg": 35.5,
           "weeks": 1,
-          "min": 37.5,
-          "max": 37.5,
+          "min": 35.5,
+          "max": 35.5,
           "byWeek": [
             {
               "week": 1,
-              "line": 37.5,
-              "books": 5
+              "line": 35.5,
+              "books": 6
             }
           ]
         },
@@ -4066,20 +4698,80 @@
             {
               "week": 1,
               "line": 1.5,
-              "books": 4
+              "books": 6
             }
           ]
         },
         "pass_yds": {
-          "avg": 212.5,
+          "avg": 206.5,
           "weeks": 1,
-          "min": 212.5,
-          "max": 212.5,
+          "min": 206.5,
+          "max": 206.5,
           "byWeek": [
             {
               "week": 1,
-              "line": 212.5,
+              "line": 206.5,
+              "books": 6
+            }
+          ]
+        },
+        "rush_yds": {
+          "avg": 0.5,
+          "weeks": 1,
+          "min": 0.5,
+          "max": 0.5,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 0.5,
+              "books": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Kyle Monangai",
+      "games": {
+        "1": "CHICAR"
+      },
+      "stats": {
+        "rec_yds": {
+          "avg": 5.5,
+          "weeks": 1,
+          "min": 5.5,
+          "max": 5.5,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 5.5,
               "books": 5
+            }
+          ]
+        },
+        "receptions": {
+          "avg": 1.5,
+          "weeks": 1,
+          "min": 1.5,
+          "max": 1.5,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 1.5,
+              "books": 5
+            }
+          ]
+        },
+        "rush_yds": {
+          "avg": 31.5,
+          "weeks": 1,
+          "min": 31.5,
+          "max": 31.5,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 31.5,
+              "books": 6
             }
           ]
         }
@@ -4092,28 +4784,28 @@
       },
       "stats": {
         "rec_yds": {
-          "avg": 42.5,
+          "avg": 38.0,
           "weeks": 1,
-          "min": 42.5,
-          "max": 42.5,
+          "min": 38.0,
+          "max": 38.0,
           "byWeek": [
             {
               "week": 1,
-              "line": 42.5,
-              "books": 5
+              "line": 38.0,
+              "books": 6
             }
           ]
         },
         "receptions": {
-          "avg": 4.5,
+          "avg": 4.0,
           "weeks": 1,
-          "min": 4.5,
-          "max": 4.5,
+          "min": 4.0,
+          "max": 4.0,
           "byWeek": [
             {
               "week": 1,
-              "line": 4.5,
-              "books": 5
+              "line": 4.0,
+              "books": 6
             }
           ]
         }
@@ -4134,80 +4826,33 @@
             {
               "week": 1,
               "line": 1.5,
-              "books": 4
+              "books": 6
             }
           ]
         },
         "pass_yds": {
-          "avg": 222.5,
+          "avg": 220.5,
           "weeks": 1,
-          "min": 222.5,
-          "max": 222.5,
+          "min": 220.5,
+          "max": 220.5,
           "byWeek": [
             {
               "week": 1,
-              "line": 222.5,
-              "books": 5
+              "line": 220.5,
+              "books": 6
             }
           ]
         },
         "rush_yds": {
-          "avg": 22.5,
+          "avg": 23.0,
           "weeks": 1,
-          "min": 22.5,
-          "max": 22.5,
+          "min": 23.0,
+          "max": 23.0,
           "byWeek": [
             {
               "week": 1,
-              "line": 22.5,
-              "books": 5
-            }
-          ]
-        }
-      }
-    },
-    {
-      "name": "Kyren Williams",
-      "games": {
-        "1": "SFLAR"
-      },
-      "stats": {
-        "rec_yds": {
-          "avg": 10.5,
-          "weeks": 1,
-          "min": 10.5,
-          "max": 10.5,
-          "byWeek": [
-            {
-              "week": 1,
-              "line": 10.5,
-              "books": 5
-            }
-          ]
-        },
-        "receptions": {
-          "avg": 1.5,
-          "weeks": 1,
-          "min": 1.5,
-          "max": 1.5,
-          "byWeek": [
-            {
-              "week": 1,
-              "line": 1.5,
-              "books": 5
-            }
-          ]
-        },
-        "rush_yds": {
-          "avg": 56.5,
-          "weeks": 1,
-          "min": 56.5,
-          "max": 56.5,
-          "byWeek": [
-            {
-              "week": 1,
-              "line": 56.5,
-              "books": 5
+              "line": 23.0,
+              "books": 6
             }
           ]
         }
@@ -4220,15 +4865,15 @@
       },
       "stats": {
         "rec_yds": {
-          "avg": 52.5,
+          "avg": 56.5,
           "weeks": 1,
-          "min": 52.5,
-          "max": 52.5,
+          "min": 56.5,
+          "max": 56.5,
           "byWeek": [
             {
               "week": 1,
-              "line": 52.5,
-              "books": 5
+              "line": 56.5,
+              "books": 6
             }
           ]
         },
@@ -4241,7 +4886,7 @@
             {
               "week": 1,
               "line": 4.5,
-              "books": 5
+              "books": 6
             }
           ]
         }
@@ -4262,7 +4907,7 @@
             {
               "week": 1,
               "line": 1.5,
-              "books": 5
+              "books": 6
             }
           ]
         },
@@ -4275,296 +4920,11 @@
             {
               "week": 1,
               "line": 219.5,
-              "books": 5
+              "books": 6
             }
           ]
         },
         "rush_yds": {
-          "avg": 36.5,
-          "weeks": 1,
-          "min": 36.5,
-          "max": 36.5,
-          "byWeek": [
-            {
-              "week": 1,
-              "line": 36.5,
-              "books": 5
-            }
-          ]
-        }
-      }
-    },
-    {
-      "name": "Luther Burden III",
-      "games": {
-        "1": "CHICAR"
-      },
-      "stats": {
-        "rec_yds": {
-          "avg": 55.0,
-          "weeks": 1,
-          "min": 55.0,
-          "max": 55.0,
-          "byWeek": [
-            {
-              "week": 1,
-              "line": 55.0,
-              "books": 4
-            }
-          ]
-        },
-        "receptions": {
-          "avg": 4.5,
-          "weeks": 1,
-          "min": 4.5,
-          "max": 4.5,
-          "byWeek": [
-            {
-              "week": 1,
-              "line": 4.5,
-              "books": 4
-            }
-          ]
-        }
-      }
-    },
-    {
-      "name": "Malik Nabers",
-      "games": {
-        "1": "DALNYG"
-      },
-      "stats": {
-        "rec_yds": {
-          "avg": 59.5,
-          "weeks": 1,
-          "min": 59.5,
-          "max": 59.5,
-          "byWeek": [
-            {
-              "week": 1,
-              "line": 59.5,
-              "books": 5
-            }
-          ]
-        },
-        "receptions": {
-          "avg": 5.5,
-          "weeks": 1,
-          "min": 5.5,
-          "max": 5.5,
-          "byWeek": [
-            {
-              "week": 1,
-              "line": 5.5,
-              "books": 5
-            }
-          ]
-        }
-      }
-    },
-    {
-      "name": "Malik Washington",
-      "games": {
-        "1": "MIALV"
-      },
-      "stats": {
-        "rec_yds": {
-          "avg": 27.5,
-          "weeks": 1,
-          "min": 27.5,
-          "max": 27.5,
-          "byWeek": [
-            {
-              "week": 1,
-              "line": 27.5,
-              "books": 2
-            }
-          ]
-        },
-        "receptions": {
-          "avg": 2.5,
-          "weeks": 1,
-          "min": 2.5,
-          "max": 2.5,
-          "byWeek": [
-            {
-              "week": 1,
-              "line": 2.5,
-              "books": 2
-            }
-          ]
-        }
-      }
-    },
-    {
-      "name": "Malik Willis",
-      "games": {
-        "1": "MIALV"
-      },
-      "stats": {
-        "pass_tds": {
-          "avg": 0.5,
-          "weeks": 1,
-          "min": 0.5,
-          "max": 0.5,
-          "byWeek": [
-            {
-              "week": 1,
-              "line": 0.5,
-              "books": 4
-            }
-          ]
-        },
-        "pass_yds": {
-          "avg": 180.5,
-          "weeks": 1,
-          "min": 180.5,
-          "max": 180.5,
-          "byWeek": [
-            {
-              "week": 1,
-              "line": 180.5,
-              "books": 5
-            }
-          ]
-        },
-        "rush_yds": {
-          "avg": 37.5,
-          "weeks": 1,
-          "min": 37.5,
-          "max": 37.5,
-          "byWeek": [
-            {
-              "week": 1,
-              "line": 37.5,
-              "books": 1
-            }
-          ]
-        }
-      }
-    },
-    {
-      "name": "MarShawn Lloyd",
-      "games": {
-        "1": "GBMIN"
-      },
-      "stats": {
-        "receptions": {
-          "avg": 1.5,
-          "weeks": 1,
-          "min": 1.5,
-          "max": 1.5,
-          "byWeek": [
-            {
-              "week": 1,
-              "line": 1.5,
-              "books": 2
-            }
-          ]
-        },
-        "rush_yds": {
-          "avg": 52.0,
-          "weeks": 1,
-          "min": 52.0,
-          "max": 52.0,
-          "byWeek": [
-            {
-              "week": 1,
-              "line": 52.0,
-              "books": 4
-            }
-          ]
-        },
-        "rec_yds": {
-          "avg": 11.5,
-          "weeks": 1,
-          "min": 11.5,
-          "max": 11.5,
-          "byWeek": [
-            {
-              "week": 1,
-              "line": 11.5,
-              "books": 1
-            }
-          ]
-        }
-      }
-    },
-    {
-      "name": "Mark Andrews",
-      "games": {
-        "1": "BALIND"
-      },
-      "stats": {
-        "rec_yds": {
-          "avg": 34.5,
-          "weeks": 1,
-          "min": 34.5,
-          "max": 34.5,
-          "byWeek": [
-            {
-              "week": 1,
-              "line": 34.5,
-              "books": 5
-            }
-          ]
-        },
-        "receptions": {
-          "avg": 3.5,
-          "weeks": 1,
-          "min": 3.5,
-          "max": 3.5,
-          "byWeek": [
-            {
-              "week": 1,
-              "line": 3.5,
-              "books": 5
-            }
-          ]
-        }
-      }
-    },
-    {
-      "name": "Marvin Harrison Jr.",
-      "games": {
-        "1": "ARILAC"
-      },
-      "stats": {
-        "rec_yds": {
-          "avg": 48.5,
-          "weeks": 1,
-          "min": 48.5,
-          "max": 48.5,
-          "byWeek": [
-            {
-              "week": 1,
-              "line": 48.5,
-              "books": 5
-            }
-          ]
-        },
-        "receptions": {
-          "avg": 4.5,
-          "weeks": 1,
-          "min": 4.5,
-          "max": 4.5,
-          "byWeek": [
-            {
-              "week": 1,
-              "line": 4.5,
-              "books": 5
-            }
-          ]
-        }
-      }
-    },
-    {
-      "name": "Matthew Golden",
-      "games": {
-        "1": "GBMIN"
-      },
-      "stats": {
-        "rec_yds": {
           "avg": 40.5,
           "weeks": 1,
           "min": 40.5,
@@ -4573,1091 +4933,14 @@
             {
               "week": 1,
               "line": 40.5,
-              "books": 5
-            }
-          ]
-        },
-        "receptions": {
-          "avg": 3.5,
-          "weeks": 1,
-          "min": 3.5,
-          "max": 3.5,
-          "byWeek": [
-            {
-              "week": 1,
-              "line": 3.5,
-              "books": 5
+              "books": 6
             }
           ]
         }
       }
     },
     {
-      "name": "Matthew Stafford",
-      "games": {
-        "1": "SFLAR"
-      },
-      "stats": {
-        "pass_tds": {
-          "avg": 1.5,
-          "weeks": 1,
-          "min": 1.5,
-          "max": 1.5,
-          "byWeek": [
-            {
-              "week": 1,
-              "line": 1.5,
-              "books": 5
-            }
-          ]
-        },
-        "pass_yds": {
-          "avg": 265.5,
-          "weeks": 1,
-          "min": 265.5,
-          "max": 265.5,
-          "byWeek": [
-            {
-              "week": 1,
-              "line": 265.5,
-              "books": 5
-            }
-          ]
-        },
-        "rush_yds": {
-          "avg": 0.5,
-          "weeks": 1,
-          "min": 0.5,
-          "max": 0.5,
-          "byWeek": [
-            {
-              "week": 1,
-              "line": 0.5,
-              "books": 1
-            }
-          ]
-        }
-      }
-    },
-    {
-      "name": "Michael Pittman Jr.",
-      "games": {
-        "1": "ATLPIT"
-      },
-      "stats": {
-        "rec_yds": {
-          "avg": 41.5,
-          "weeks": 1,
-          "min": 41.5,
-          "max": 41.5,
-          "byWeek": [
-            {
-              "week": 1,
-              "line": 41.5,
-              "books": 5
-            }
-          ]
-        },
-        "receptions": {
-          "avg": 4.5,
-          "weeks": 1,
-          "min": 4.5,
-          "max": 4.5,
-          "byWeek": [
-            {
-              "week": 1,
-              "line": 4.5,
-              "books": 5
-            }
-          ]
-        }
-      }
-    },
-    {
-      "name": "Michael Wilson",
-      "games": {
-        "1": "ARILAC"
-      },
-      "stats": {
-        "rec_yds": {
-          "avg": 42.5,
-          "weeks": 1,
-          "min": 42.5,
-          "max": 42.5,
-          "byWeek": [
-            {
-              "week": 1,
-              "line": 42.5,
-              "books": 5
-            }
-          ]
-        },
-        "receptions": {
-          "avg": 3.5,
-          "weeks": 1,
-          "min": 3.5,
-          "max": 3.5,
-          "byWeek": [
-            {
-              "week": 1,
-              "line": 3.5,
-              "books": 5
-            }
-          ]
-        }
-      }
-    },
-    {
-      "name": "Mike Evans",
-      "games": {
-        "1": "SFLAR"
-      },
-      "stats": {
-        "rec_yds": {
-          "avg": 48.5,
-          "weeks": 1,
-          "min": 48.5,
-          "max": 48.5,
-          "byWeek": [
-            {
-              "week": 1,
-              "line": 48.5,
-              "books": 5
-            }
-          ]
-        },
-        "receptions": {
-          "avg": 3.5,
-          "weeks": 1,
-          "min": 3.5,
-          "max": 3.5,
-          "byWeek": [
-            {
-              "week": 1,
-              "line": 3.5,
-              "books": 5
-            }
-          ]
-        }
-      }
-    },
-    {
-      "name": "Nico Collins",
-      "games": {
-        "1": "BUFHOU"
-      },
-      "stats": {
-        "rec_yds": {
-          "avg": 69.5,
-          "weeks": 1,
-          "min": 69.5,
-          "max": 69.5,
-          "byWeek": [
-            {
-              "week": 1,
-              "line": 69.5,
-              "books": 5
-            }
-          ]
-        },
-        "receptions": {
-          "avg": 5.5,
-          "weeks": 1,
-          "min": 5.5,
-          "max": 5.5,
-          "byWeek": [
-            {
-              "week": 1,
-              "line": 5.5,
-              "books": 5
-            }
-          ]
-        }
-      }
-    },
-    {
-      "name": "Odell Beckham Jr.",
-      "games": {
-        "1": "DALNYG"
-      },
-      "stats": {
-        "rec_yds": {
-          "avg": 7.5,
-          "weeks": 1,
-          "min": 7.5,
-          "max": 7.5,
-          "byWeek": [
-            {
-              "week": 1,
-              "line": 7.5,
-              "books": 3
-            }
-          ]
-        },
-        "receptions": {
-          "avg": 1.5,
-          "weeks": 1,
-          "min": 1.5,
-          "max": 1.5,
-          "byWeek": [
-            {
-              "week": 1,
-              "line": 1.5,
-              "books": 1
-            }
-          ]
-        }
-      }
-    },
-    {
-      "name": "Omarion Hampton",
-      "games": {
-        "1": "ARILAC"
-      },
-      "stats": {
-        "rush_yds": {
-          "avg": 66.5,
-          "weeks": 1,
-          "min": 66.5,
-          "max": 66.5,
-          "byWeek": [
-            {
-              "week": 1,
-              "line": 66.5,
-              "books": 5
-            }
-          ]
-        }
-      }
-    },
-    {
-      "name": "Parker Washington",
-      "games": {
-        "1": "CLEJAC"
-      },
-      "stats": {
-        "rec_yds": {
-          "avg": 52.5,
-          "weeks": 1,
-          "min": 52.5,
-          "max": 52.5,
-          "byWeek": [
-            {
-              "week": 1,
-              "line": 52.5,
-              "books": 5
-            }
-          ]
-        },
-        "receptions": {
-          "avg": 4.5,
-          "weeks": 1,
-          "min": 4.5,
-          "max": 4.5,
-          "byWeek": [
-            {
-              "week": 1,
-              "line": 4.5,
-              "books": 5
-            }
-          ]
-        }
-      }
-    },
-    {
-      "name": "Pat Freiermuth",
-      "games": {
-        "1": "ATLPIT"
-      },
-      "stats": {
-        "rec_yds": {
-          "avg": 25.5,
-          "weeks": 1,
-          "min": 25.5,
-          "max": 25.5,
-          "byWeek": [
-            {
-              "week": 1,
-              "line": 25.5,
-              "books": 3
-            }
-          ]
-        },
-        "receptions": {
-          "avg": 2.5,
-          "weeks": 1,
-          "min": 2.5,
-          "max": 2.5,
-          "byWeek": [
-            {
-              "week": 1,
-              "line": 2.5,
-              "books": 3
-            }
-          ]
-        }
-      }
-    },
-    {
-      "name": "Patrick Mahomes",
-      "games": {
-        "1": "DENKC"
-      },
-      "stats": {
-        "pass_tds": {
-          "avg": 1.5,
-          "weeks": 1,
-          "min": 1.5,
-          "max": 1.5,
-          "byWeek": [
-            {
-              "week": 1,
-              "line": 1.5,
-              "books": 4
-            }
-          ]
-        },
-        "pass_yds": {
-          "avg": 225.5,
-          "weeks": 1,
-          "min": 225.5,
-          "max": 225.5,
-          "byWeek": [
-            {
-              "week": 1,
-              "line": 225.5,
-              "books": 4
-            }
-          ]
-        },
-        "rush_yds": {
-          "avg": 15.0,
-          "weeks": 1,
-          "min": 15.0,
-          "max": 15.0,
-          "byWeek": [
-            {
-              "week": 1,
-              "line": 15.0,
-              "books": 4
-            }
-          ]
-        }
-      }
-    },
-    {
-      "name": "Puka Nacua",
-      "games": {
-        "1": "SFLAR"
-      },
-      "stats": {
-        "rec_yds": {
-          "avg": 91.5,
-          "weeks": 1,
-          "min": 91.5,
-          "max": 91.5,
-          "byWeek": [
-            {
-              "week": 1,
-              "line": 91.5,
-              "books": 5
-            }
-          ]
-        },
-        "receptions": {
-          "avg": 7.5,
-          "weeks": 1,
-          "min": 7.5,
-          "max": 7.5,
-          "byWeek": [
-            {
-              "week": 1,
-              "line": 7.5,
-              "books": 5
-            }
-          ]
-        }
-      }
-    },
-    {
-      "name": "Quentin Johnston",
-      "games": {
-        "1": "ARILAC"
-      },
-      "stats": {
-        "rec_yds": {
-          "avg": 42.5,
-          "weeks": 1,
-          "min": 42.5,
-          "max": 42.5,
-          "byWeek": [
-            {
-              "week": 1,
-              "line": 42.5,
-              "books": 5
-            }
-          ]
-        },
-        "receptions": {
-          "avg": 3.5,
-          "weeks": 1,
-          "min": 3.5,
-          "max": 3.5,
-          "byWeek": [
-            {
-              "week": 1,
-              "line": 3.5,
-              "books": 5
-            }
-          ]
-        }
-      }
-    },
-    {
-      "name": "Quinshon Judkins",
-      "games": {
-        "1": "CLEJAC"
-      },
-      "stats": {
-        "rec_yds": {
-          "avg": 10.0,
-          "weeks": 1,
-          "min": 10.0,
-          "max": 10.0,
-          "byWeek": [
-            {
-              "week": 1,
-              "line": 10.0,
-              "books": 2
-            }
-          ]
-        },
-        "receptions": {
-          "avg": 1.5,
-          "weeks": 1,
-          "min": 1.5,
-          "max": 1.5,
-          "byWeek": [
-            {
-              "week": 1,
-              "line": 1.5,
-              "books": 2
-            }
-          ]
-        },
-        "rush_yds": {
-          "avg": 59.5,
-          "weeks": 1,
-          "min": 59.5,
-          "max": 59.5,
-          "byWeek": [
-            {
-              "week": 1,
-              "line": 59.5,
-              "books": 5
-            }
-          ]
-        }
-      }
-    },
-    {
-      "name": "Rashee Rice",
-      "games": {
-        "1": "DENKC"
-      },
-      "stats": {
-        "rec_yds": {
-          "avg": 60.0,
-          "weeks": 1,
-          "min": 60.0,
-          "max": 60.0,
-          "byWeek": [
-            {
-              "week": 1,
-              "line": 60.0,
-              "books": 4
-            }
-          ]
-        },
-        "receptions": {
-          "avg": 5.5,
-          "weeks": 1,
-          "min": 5.5,
-          "max": 5.5,
-          "byWeek": [
-            {
-              "week": 1,
-              "line": 5.5,
-              "books": 4
-            }
-          ]
-        }
-      }
-    },
-    {
-      "name": "Rashid Shaheed",
-      "games": {
-        "1": "NESEA"
-      },
-      "stats": {
-        "rec_yds": {
-          "avg": 30.5,
-          "weeks": 1,
-          "min": 30.5,
-          "max": 30.5,
-          "byWeek": [
-            {
-              "week": 1,
-              "line": 30.5,
-              "books": 5
-            }
-          ]
-        },
-        "receptions": {
-          "avg": 2.5,
-          "weeks": 1,
-          "min": 2.5,
-          "max": 2.5,
-          "byWeek": [
-            {
-              "week": 1,
-              "line": 2.5,
-              "books": 5
-            }
-          ]
-        },
-        "rush_yds": {
-          "avg": 2.5,
-          "weeks": 1,
-          "min": 2.5,
-          "max": 2.5,
-          "byWeek": [
-            {
-              "week": 1,
-              "line": 2.5,
-              "books": 3
-            }
-          ]
-        }
-      }
-    },
-    {
-      "name": "Rashod Bateman",
-      "games": {
-        "1": "BALIND"
-      },
-      "stats": {
-        "rec_yds": {
-          "avg": 25.5,
-          "weeks": 1,
-          "min": 25.5,
-          "max": 25.5,
-          "byWeek": [
-            {
-              "week": 1,
-              "line": 25.5,
-              "books": 2
-            }
-          ]
-        },
-        "receptions": {
-          "avg": 1.5,
-          "weeks": 1,
-          "min": 1.5,
-          "max": 1.5,
-          "byWeek": [
-            {
-              "week": 1,
-              "line": 1.5,
-              "books": 2
-            }
-          ]
-        }
-      }
-    },
-    {
-      "name": "Rhamondre Stevenson",
-      "games": {
-        "1": "NESEA"
-      },
-      "stats": {
-        "rec_yds": {
-          "avg": 23.5,
-          "weeks": 1,
-          "min": 23.5,
-          "max": 23.5,
-          "byWeek": [
-            {
-              "week": 1,
-              "line": 23.5,
-              "books": 4
-            }
-          ]
-        },
-        "receptions": {
-          "avg": 3.0,
-          "weeks": 1,
-          "min": 3.0,
-          "max": 3.0,
-          "byWeek": [
-            {
-              "week": 1,
-              "line": 3.0,
-              "books": 4
-            }
-          ]
-        },
-        "rush_yds": {
-          "avg": 54.5,
-          "weeks": 1,
-          "min": 54.5,
-          "max": 54.5,
-          "byWeek": [
-            {
-              "week": 1,
-              "line": 54.5,
-              "books": 4
-            }
-          ]
-        }
-      }
-    },
-    {
-      "name": "Rico Dowdle",
-      "games": {
-        "1": "ATLPIT"
-      },
-      "stats": {
-        "rec_yds": {
-          "avg": 10.5,
-          "weeks": 1,
-          "min": 10.5,
-          "max": 10.5,
-          "byWeek": [
-            {
-              "week": 1,
-              "line": 10.5,
-              "books": 3
-            }
-          ]
-        },
-        "receptions": {
-          "avg": 1.5,
-          "weeks": 1,
-          "min": 1.5,
-          "max": 1.5,
-          "byWeek": [
-            {
-              "week": 1,
-              "line": 1.5,
-              "books": 3
-            }
-          ]
-        },
-        "rush_yds": {
-          "avg": 50.5,
-          "weeks": 1,
-          "min": 50.5,
-          "max": 50.5,
-          "byWeek": [
-            {
-              "week": 1,
-              "line": 50.5,
-              "books": 4
-            }
-          ]
-        }
-      }
-    },
-    {
-      "name": "Rome Odunze",
-      "games": {
-        "1": "CHICAR"
-      },
-      "stats": {
-        "rec_yds": {
-          "avg": 46.5,
-          "weeks": 1,
-          "min": 46.5,
-          "max": 46.5,
-          "byWeek": [
-            {
-              "week": 1,
-              "line": 46.5,
-              "books": 4
-            }
-          ]
-        },
-        "receptions": {
-          "avg": 3.5,
-          "weeks": 1,
-          "min": 3.5,
-          "max": 3.5,
-          "byWeek": [
-            {
-              "week": 1,
-              "line": 3.5,
-              "books": 4
-            }
-          ]
-        }
-      }
-    },
-    {
-      "name": "Romeo Doubs",
-      "games": {
-        "1": "NESEA"
-      },
-      "stats": {
-        "rec_yds": {
-          "avg": 36.5,
-          "weeks": 1,
-          "min": 36.5,
-          "max": 36.5,
-          "byWeek": [
-            {
-              "week": 1,
-              "line": 36.5,
-              "books": 5
-            }
-          ]
-        },
-        "receptions": {
-          "avg": 3.5,
-          "weeks": 1,
-          "min": 3.5,
-          "max": 3.5,
-          "byWeek": [
-            {
-              "week": 1,
-              "line": 3.5,
-              "books": 5
-            }
-          ]
-        }
-      }
-    },
-    {
-      "name": "Sam Darnold",
-      "games": {
-        "1": "NESEA"
-      },
-      "stats": {
-        "pass_tds": {
-          "avg": 1.5,
-          "weeks": 1,
-          "min": 1.5,
-          "max": 1.5,
-          "byWeek": [
-            {
-              "week": 1,
-              "line": 1.5,
-              "books": 5
-            }
-          ]
-        },
-        "pass_yds": {
-          "avg": 228.5,
-          "weeks": 1,
-          "min": 228.5,
-          "max": 228.5,
-          "byWeek": [
-            {
-              "week": 1,
-              "line": 228.5,
-              "books": 5
-            }
-          ]
-        },
-        "rush_yds": {
-          "avg": 5.5,
-          "weeks": 1,
-          "min": 5.5,
-          "max": 5.5,
-          "byWeek": [
-            {
-              "week": 1,
-              "line": 5.5,
-              "books": 5
-            }
-          ]
-        }
-      }
-    },
-    {
-      "name": "Sam LaPorta",
-      "games": {
-        "1": "NODET"
-      },
-      "stats": {
-        "rec_yds": {
-          "avg": 41.5,
-          "weeks": 1,
-          "min": 41.5,
-          "max": 41.5,
-          "byWeek": [
-            {
-              "week": 1,
-              "line": 41.5,
-              "books": 5
-            }
-          ]
-        },
-        "receptions": {
-          "avg": 3.5,
-          "weeks": 1,
-          "min": 3.5,
-          "max": 3.5,
-          "byWeek": [
-            {
-              "week": 1,
-              "line": 3.5,
-              "books": 5
-            }
-          ]
-        }
-      }
-    },
-    {
-      "name": "Samaje Perine",
-      "games": {
-        "1": "TBCIN"
-      },
-      "stats": {
-        "rush_yds": {
-          "avg": 19.5,
-          "weeks": 1,
-          "min": 19.5,
-          "max": 19.5,
-          "byWeek": [
-            {
-              "week": 1,
-              "line": 19.5,
-              "books": 2
-            }
-          ]
-        }
-      }
-    },
-    {
-      "name": "Saquon Barkley",
-      "games": {
-        "1": "WASPHI"
-      },
-      "stats": {
-        "rec_yds": {
-          "avg": 17.5,
-          "weeks": 1,
-          "min": 17.5,
-          "max": 17.5,
-          "byWeek": [
-            {
-              "week": 1,
-              "line": 17.5,
-              "books": 5
-            }
-          ]
-        },
-        "receptions": {
-          "avg": 2.5,
-          "weeks": 1,
-          "min": 2.5,
-          "max": 2.5,
-          "byWeek": [
-            {
-              "week": 1,
-              "line": 2.5,
-              "books": 5
-            }
-          ]
-        },
-        "rush_yds": {
-          "avg": 77.5,
-          "weeks": 1,
-          "min": 77.5,
-          "max": 77.5,
-          "byWeek": [
-            {
-              "week": 1,
-              "line": 77.5,
-              "books": 5
-            }
-          ]
-        }
-      }
-    },
-    {
-      "name": "Stefon Diggs",
-      "games": {
-        "1": "WASPHI"
-      },
-      "stats": {
-        "rec_yds": {
-          "avg": 41.5,
-          "weeks": 1,
-          "min": 41.5,
-          "max": 41.5,
-          "byWeek": [
-            {
-              "week": 1,
-              "line": 41.5,
-              "books": 5
-            }
-          ]
-        },
-        "receptions": {
-          "avg": 3.5,
-          "weeks": 1,
-          "min": 3.5,
-          "max": 3.5,
-          "byWeek": [
-            {
-              "week": 1,
-              "line": 3.5,
-              "books": 5
-            }
-          ]
-        }
-      }
-    },
-    {
-      "name": "T.J. Hockenson",
-      "games": {
-        "1": "GBMIN"
-      },
-      "stats": {
-        "rec_yds": {
-          "avg": 27.5,
-          "weeks": 1,
-          "min": 27.5,
-          "max": 27.5,
-          "byWeek": [
-            {
-              "week": 1,
-              "line": 27.5,
-              "books": 5
-            }
-          ]
-        },
-        "receptions": {
-          "avg": 3.5,
-          "weeks": 1,
-          "min": 3.5,
-          "max": 3.5,
-          "byWeek": [
-            {
-              "week": 1,
-              "line": 3.5,
-              "books": 5
-            }
-          ]
-        }
-      }
-    },
-    {
-      "name": "Tee Higgins",
-      "games": {
-        "1": "TBCIN"
-      },
-      "stats": {
-        "rec_yds": {
-          "avg": 64.5,
-          "weeks": 1,
-          "min": 64.5,
-          "max": 64.5,
-          "byWeek": [
-            {
-              "week": 1,
-              "line": 64.5,
-              "books": 5
-            }
-          ]
-        },
-        "receptions": {
-          "avg": 4.5,
-          "weeks": 1,
-          "min": 4.5,
-          "max": 4.5,
-          "byWeek": [
-            {
-              "week": 1,
-              "line": 4.5,
-              "books": 5
-            }
-          ]
-        }
-      }
-    },
-    {
-      "name": "Terrance Ferguson",
-      "games": {
-        "1": "SFLAR"
-      },
-      "stats": {
-        "rec_yds": {
-          "avg": 24.5,
-          "weeks": 1,
-          "min": 24.5,
-          "max": 24.5,
-          "byWeek": [
-            {
-              "week": 1,
-              "line": 24.5,
-              "books": 5
-            }
-          ]
-        },
-        "receptions": {
-          "avg": 1.5,
-          "weeks": 1,
-          "min": 1.5,
-          "max": 1.5,
-          "byWeek": [
-            {
-              "week": 1,
-              "line": 1.5,
-              "books": 5
-            }
-          ]
-        }
-      }
-    },
-    {
-      "name": "Terry McLaurin",
-      "games": {
-        "1": "WASPHI"
-      },
-      "stats": {
-        "rec_yds": {
-          "avg": 51.5,
-          "weeks": 1,
-          "min": 51.5,
-          "max": 51.5,
-          "byWeek": [
-            {
-              "week": 1,
-              "line": 51.5,
-              "books": 5
-            }
-          ]
-        },
-        "receptions": {
-          "avg": 3.5,
-          "weeks": 1,
-          "min": 3.5,
-          "max": 3.5,
-          "byWeek": [
-            {
-              "week": 1,
-              "line": 3.5,
-              "books": 5
-            }
-          ]
-        }
-      }
-    },
-    {
-      "name": "Tetairoa McMillan",
+      "name": "Luther Burden III",
       "games": {
         "1": "CHICAR"
       },
@@ -5691,122 +4974,54 @@
       }
     },
     {
-      "name": "Tony Pollard",
+      "name": "Makai Lemon",
       "games": {
-        "1": "NYJTEN"
-      },
-      "stats": {
-        "rush_yds": {
-          "avg": 55.5,
-          "weeks": 1,
-          "min": 55.5,
-          "max": 55.5,
-          "byWeek": [
-            {
-              "week": 1,
-              "line": 55.5,
-              "books": 5
-            }
-          ]
-        }
-      }
-    },
-    {
-      "name": "Travis Etienne Jr.",
-      "games": {
-        "1": "NODET"
+        "1": "WASPHI"
       },
       "stats": {
         "rec_yds": {
-          "avg": 17.5,
+          "avg": 24.5,
           "weeks": 1,
-          "min": 17.5,
-          "max": 17.5,
+          "min": 24.5,
+          "max": 24.5,
           "byWeek": [
             {
               "week": 1,
-              "line": 17.5,
-              "books": 3
+              "line": 24.5,
+              "books": 6
             }
           ]
         },
         "receptions": {
-          "avg": 3.5,
+          "avg": 2.5,
           "weeks": 1,
-          "min": 3.5,
-          "max": 3.5,
+          "min": 2.5,
+          "max": 2.5,
           "byWeek": [
             {
               "week": 1,
-              "line": 3.5,
-              "books": 3
-            }
-          ]
-        },
-        "rush_yds": {
-          "avg": 55.5,
-          "weeks": 1,
-          "min": 55.5,
-          "max": 55.5,
-          "byWeek": [
-            {
-              "week": 1,
-              "line": 55.5,
-              "books": 5
+              "line": 2.5,
+              "books": 6
             }
           ]
         }
       }
     },
     {
-      "name": "Travis Kelce",
+      "name": "Malachi Fields",
       "games": {
-        "1": "DENKC"
+        "1": "DALNYG"
       },
       "stats": {
         "rec_yds": {
-          "avg": 41.5,
+          "avg": 22.5,
           "weeks": 1,
-          "min": 41.5,
-          "max": 41.5,
+          "min": 22.5,
+          "max": 22.5,
           "byWeek": [
             {
               "week": 1,
-              "line": 41.5,
-              "books": 4
-            }
-          ]
-        },
-        "receptions": {
-          "avg": 3.5,
-          "weeks": 1,
-          "min": 3.5,
-          "max": 3.5,
-          "byWeek": [
-            {
-              "week": 1,
-              "line": 3.5,
-              "books": 4
-            }
-          ]
-        }
-      }
-    },
-    {
-      "name": "Tre Harris",
-      "games": {
-        "1": "ARILAC"
-      },
-      "stats": {
-        "rec_yds": {
-          "avg": 26.5,
-          "weeks": 1,
-          "min": 26.5,
-          "max": 26.5,
-          "byWeek": [
-            {
-              "week": 1,
-              "line": 26.5,
+              "line": 22.5,
               "books": 5
             }
           ]
@@ -5827,9 +5042,1086 @@
       }
     },
     {
-      "name": "Tre Tucker",
+      "name": "Malik Nabers",
+      "games": {
+        "1": "DALNYG"
+      },
+      "stats": {
+        "rec_yds": {
+          "avg": 57.5,
+          "weeks": 1,
+          "min": 57.5,
+          "max": 57.5,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 57.5,
+              "books": 5
+            }
+          ]
+        },
+        "receptions": {
+          "avg": 5.5,
+          "weeks": 1,
+          "min": 5.5,
+          "max": 5.5,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 5.5,
+              "books": 5
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Malik Washington",
       "games": {
         "1": "MIALV"
+      },
+      "stats": {
+        "rec_yds": {
+          "avg": 26.5,
+          "weeks": 1,
+          "min": 26.5,
+          "max": 26.5,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 26.5,
+              "books": 6
+            }
+          ]
+        },
+        "receptions": {
+          "avg": 2.5,
+          "weeks": 1,
+          "min": 2.5,
+          "max": 2.5,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 2.5,
+              "books": 6
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Malik Willis",
+      "games": {
+        "1": "MIALV"
+      },
+      "stats": {
+        "pass_tds": {
+          "avg": 0.5,
+          "weeks": 1,
+          "min": 0.5,
+          "max": 0.5,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 0.5,
+              "books": 6
+            }
+          ]
+        },
+        "pass_yds": {
+          "avg": 179.5,
+          "weeks": 1,
+          "min": 179.5,
+          "max": 179.5,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 179.5,
+              "books": 6
+            }
+          ]
+        },
+        "rush_yds": {
+          "avg": 40.0,
+          "weeks": 1,
+          "min": 40.0,
+          "max": 40.0,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 40.0,
+              "books": 6
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "MarShawn Lloyd",
+      "games": {
+        "1": "GBMIN"
+      },
+      "stats": {
+        "rec_yds": {
+          "avg": 10.5,
+          "weeks": 1,
+          "min": 10.5,
+          "max": 10.5,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 10.5,
+              "books": 6
+            }
+          ]
+        },
+        "receptions": {
+          "avg": 1.5,
+          "weeks": 1,
+          "min": 1.5,
+          "max": 1.5,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 1.5,
+              "books": 6
+            }
+          ]
+        },
+        "rush_yds": {
+          "avg": 44.5,
+          "weeks": 1,
+          "min": 44.5,
+          "max": 44.5,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 44.5,
+              "books": 6
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Mark Andrews",
+      "games": {
+        "1": "BALIND"
+      },
+      "stats": {
+        "rec_yds": {
+          "avg": 35.5,
+          "weeks": 1,
+          "min": 35.5,
+          "max": 35.5,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 35.5,
+              "books": 5
+            }
+          ]
+        },
+        "receptions": {
+          "avg": 3.5,
+          "weeks": 1,
+          "min": 3.5,
+          "max": 3.5,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 3.5,
+              "books": 5
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Marvin Harrison Jr.",
+      "games": {
+        "1": "ARILAC"
+      },
+      "stats": {
+        "rec_yds": {
+          "avg": 47.0,
+          "weeks": 1,
+          "min": 47.0,
+          "max": 47.0,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 47.0,
+              "books": 6
+            }
+          ]
+        },
+        "receptions": {
+          "avg": 3.5,
+          "weeks": 1,
+          "min": 3.5,
+          "max": 3.5,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 3.5,
+              "books": 6
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Mason Taylor",
+      "games": {
+        "1": "NYJTEN"
+      },
+      "stats": {
+        "rec_yds": {
+          "avg": 20.5,
+          "weeks": 1,
+          "min": 20.5,
+          "max": 20.5,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 20.5,
+              "books": 6
+            }
+          ]
+        },
+        "receptions": {
+          "avg": 2.5,
+          "weeks": 1,
+          "min": 2.5,
+          "max": 2.5,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 2.5,
+              "books": 6
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Matthew Golden",
+      "games": {
+        "1": "GBMIN"
+      },
+      "stats": {
+        "rec_yds": {
+          "avg": 39.5,
+          "weeks": 1,
+          "min": 39.5,
+          "max": 39.5,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 39.5,
+              "books": 6
+            }
+          ]
+        },
+        "receptions": {
+          "avg": 3.5,
+          "weeks": 1,
+          "min": 3.5,
+          "max": 3.5,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 3.5,
+              "books": 6
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Michael Mayer",
+      "games": {
+        "1": "MIALV"
+      },
+      "stats": {
+        "rec_yds": {
+          "avg": 40.5,
+          "weeks": 1,
+          "min": 40.5,
+          "max": 40.5,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 40.5,
+              "books": 6
+            }
+          ]
+        },
+        "receptions": {
+          "avg": 4.5,
+          "weeks": 1,
+          "min": 4.5,
+          "max": 4.5,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 4.5,
+              "books": 6
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Michael Pittman Jr.",
+      "games": {
+        "1": "ATLPIT"
+      },
+      "stats": {
+        "rec_yds": {
+          "avg": 38.5,
+          "weeks": 1,
+          "min": 38.5,
+          "max": 38.5,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 38.5,
+              "books": 6
+            }
+          ]
+        },
+        "receptions": {
+          "avg": 4.0,
+          "weeks": 1,
+          "min": 4.0,
+          "max": 4.0,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 4.0,
+              "books": 6
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Michael Wilson",
+      "games": {
+        "1": "ARILAC"
+      },
+      "stats": {
+        "rec_yds": {
+          "avg": 42.0,
+          "weeks": 1,
+          "min": 42.0,
+          "max": 42.0,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 42.0,
+              "books": 6
+            }
+          ]
+        },
+        "receptions": {
+          "avg": 3.5,
+          "weeks": 1,
+          "min": 3.5,
+          "max": 3.5,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 3.5,
+              "books": 6
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Mike Gesicki",
+      "games": {
+        "1": "TBCIN"
+      },
+      "stats": {
+        "rec_yds": {
+          "avg": 21.0,
+          "weeks": 1,
+          "min": 21.0,
+          "max": 21.0,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 21.0,
+              "books": 6
+            }
+          ]
+        },
+        "receptions": {
+          "avg": 2.5,
+          "weeks": 1,
+          "min": 2.5,
+          "max": 2.5,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 2.5,
+              "books": 6
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Mike Washington Jr.",
+      "games": {
+        "1": "MIALV"
+      },
+      "stats": {
+        "rush_yds": {
+          "avg": 28.0,
+          "weeks": 1,
+          "min": 28.0,
+          "max": 28.0,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 28.0,
+              "books": 4
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Nico Collins",
+      "games": {
+        "1": "BUFHOU"
+      },
+      "stats": {
+        "rec_yds": {
+          "avg": 69.5,
+          "weeks": 1,
+          "min": 69.5,
+          "max": 69.5,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 69.5,
+              "books": 6
+            }
+          ]
+        },
+        "receptions": {
+          "avg": 5.5,
+          "weeks": 1,
+          "min": 5.5,
+          "max": 5.5,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 5.5,
+              "books": 6
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Noah Gray",
+      "games": {
+        "1": "DENKC"
+      },
+      "stats": {
+        "rec_yds": {
+          "avg": 10.0,
+          "weeks": 1,
+          "min": 10.0,
+          "max": 10.0,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 10.0,
+              "books": 6
+            }
+          ]
+        },
+        "receptions": {
+          "avg": 1.5,
+          "weeks": 1,
+          "min": 1.5,
+          "max": 1.5,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 1.5,
+              "books": 6
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Odell Beckham Jr.",
+      "games": {
+        "1": "DALNYG"
+      },
+      "stats": {
+        "rec_yds": {
+          "avg": 10.5,
+          "weeks": 1,
+          "min": 10.5,
+          "max": 10.5,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 10.5,
+              "books": 5
+            }
+          ]
+        },
+        "receptions": {
+          "avg": 1.5,
+          "weeks": 1,
+          "min": 1.5,
+          "max": 1.5,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 1.5,
+              "books": 4
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Omar Cooper Jr.",
+      "games": {
+        "1": "NYJTEN"
+      },
+      "stats": {
+        "rec_yds": {
+          "avg": 14.5,
+          "weeks": 1,
+          "min": 14.5,
+          "max": 14.5,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 14.5,
+              "books": 1
+            }
+          ]
+        },
+        "receptions": {
+          "avg": 1.5,
+          "weeks": 1,
+          "min": 1.5,
+          "max": 1.5,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 1.5,
+              "books": 1
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Omarion Hampton",
+      "games": {
+        "1": "ARILAC"
+      },
+      "stats": {
+        "rec_yds": {
+          "avg": 13.0,
+          "weeks": 1,
+          "min": 13.0,
+          "max": 13.0,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 13.0,
+              "books": 6
+            }
+          ]
+        },
+        "receptions": {
+          "avg": 2.5,
+          "weeks": 1,
+          "min": 2.5,
+          "max": 2.5,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 2.5,
+              "books": 6
+            }
+          ]
+        },
+        "rush_yds": {
+          "avg": 68.5,
+          "weeks": 1,
+          "min": 68.5,
+          "max": 68.5,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 68.5,
+              "books": 6
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Parker Washington",
+      "games": {
+        "1": "CLEJAC"
+      },
+      "stats": {
+        "rec_yds": {
+          "avg": 53.5,
+          "weeks": 1,
+          "min": 53.5,
+          "max": 53.5,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 53.5,
+              "books": 6
+            }
+          ]
+        },
+        "receptions": {
+          "avg": 4.5,
+          "weeks": 1,
+          "min": 4.5,
+          "max": 4.5,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 4.5,
+              "books": 6
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Pat Bryant",
+      "games": {
+        "1": "DENKC"
+      },
+      "stats": {
+        "rec_yds": {
+          "avg": 23.5,
+          "weeks": 1,
+          "min": 23.5,
+          "max": 23.5,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 23.5,
+              "books": 6
+            }
+          ]
+        },
+        "receptions": {
+          "avg": 2.5,
+          "weeks": 1,
+          "min": 2.5,
+          "max": 2.5,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 2.5,
+              "books": 6
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Pat Freiermuth",
+      "games": {
+        "1": "ATLPIT"
+      },
+      "stats": {
+        "rec_yds": {
+          "avg": 25.5,
+          "weeks": 1,
+          "min": 25.5,
+          "max": 25.5,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 25.5,
+              "books": 6
+            }
+          ]
+        },
+        "receptions": {
+          "avg": 2.5,
+          "weeks": 1,
+          "min": 2.5,
+          "max": 2.5,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 2.5,
+              "books": 6
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Patrick Mahomes",
+      "games": {
+        "1": "DENKC"
+      },
+      "stats": {
+        "pass_tds": {
+          "avg": 1.5,
+          "weeks": 1,
+          "min": 1.5,
+          "max": 1.5,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 1.5,
+              "books": 6
+            }
+          ]
+        },
+        "pass_yds": {
+          "avg": 226.5,
+          "weeks": 1,
+          "min": 226.5,
+          "max": 226.5,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 226.5,
+              "books": 6
+            }
+          ]
+        },
+        "rush_yds": {
+          "avg": 15.5,
+          "weeks": 1,
+          "min": 15.5,
+          "max": 15.5,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 15.5,
+              "books": 6
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Quentin Johnston",
+      "games": {
+        "1": "ARILAC"
+      },
+      "stats": {
+        "rec_yds": {
+          "avg": 42.5,
+          "weeks": 1,
+          "min": 42.5,
+          "max": 42.5,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 42.5,
+              "books": 6
+            }
+          ]
+        },
+        "receptions": {
+          "avg": 3.5,
+          "weeks": 1,
+          "min": 3.5,
+          "max": 3.5,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 3.5,
+              "books": 6
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Quinshon Judkins",
+      "games": {
+        "1": "CLEJAC"
+      },
+      "stats": {
+        "rec_yds": {
+          "avg": 9.5,
+          "weeks": 1,
+          "min": 9.5,
+          "max": 9.5,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 9.5,
+              "books": 6
+            }
+          ]
+        },
+        "receptions": {
+          "avg": 1.5,
+          "weeks": 1,
+          "min": 1.5,
+          "max": 1.5,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 1.5,
+              "books": 6
+            }
+          ]
+        },
+        "rush_yds": {
+          "avg": 57.5,
+          "weeks": 1,
+          "min": 57.5,
+          "max": 57.5,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 57.5,
+              "books": 6
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "RJ Harvey",
+      "games": {
+        "1": "DENKC"
+      },
+      "stats": {
+        "rec_yds": {
+          "avg": 16.5,
+          "weeks": 1,
+          "min": 16.5,
+          "max": 16.5,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 16.5,
+              "books": 6
+            }
+          ]
+        },
+        "receptions": {
+          "avg": 2.5,
+          "weeks": 1,
+          "min": 2.5,
+          "max": 2.5,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 2.5,
+              "books": 6
+            }
+          ]
+        },
+        "rush_yds": {
+          "avg": 18.5,
+          "weeks": 1,
+          "min": 18.5,
+          "max": 18.5,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 18.5,
+              "books": 5
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Rachaad White",
+      "games": {
+        "1": "WASPHI"
+      },
+      "stats": {
+        "rec_yds": {
+          "avg": 14.5,
+          "weeks": 1,
+          "min": 14.5,
+          "max": 14.5,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 14.5,
+              "books": 6
+            }
+          ]
+        },
+        "receptions": {
+          "avg": 2.5,
+          "weeks": 1,
+          "min": 2.5,
+          "max": 2.5,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 2.5,
+              "books": 6
+            }
+          ]
+        },
+        "rush_yds": {
+          "avg": 23.5,
+          "weeks": 1,
+          "min": 23.5,
+          "max": 23.5,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 23.5,
+              "books": 6
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Rashee Rice",
+      "games": {
+        "1": "DENKC"
+      },
+      "stats": {
+        "rec_yds": {
+          "avg": 57.0,
+          "weeks": 1,
+          "min": 57.0,
+          "max": 57.0,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 57.0,
+              "books": 6
+            }
+          ]
+        },
+        "receptions": {
+          "avg": 5.5,
+          "weeks": 1,
+          "min": 5.5,
+          "max": 5.5,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 5.5,
+              "books": 6
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Rashod Bateman",
+      "games": {
+        "1": "BALIND"
+      },
+      "stats": {
+        "rec_yds": {
+          "avg": 26.0,
+          "weeks": 1,
+          "min": 26.0,
+          "max": 26.0,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 26.0,
+              "books": 6
+            }
+          ]
+        },
+        "receptions": {
+          "avg": 1.5,
+          "weeks": 1,
+          "min": 1.5,
+          "max": 1.5,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 1.5,
+              "books": 6
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Rico Dowdle",
+      "games": {
+        "1": "ATLPIT"
+      },
+      "stats": {
+        "rec_yds": {
+          "avg": 10.5,
+          "weeks": 1,
+          "min": 10.5,
+          "max": 10.5,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 10.5,
+              "books": 6
+            }
+          ]
+        },
+        "receptions": {
+          "avg": 1.5,
+          "weeks": 1,
+          "min": 1.5,
+          "max": 1.5,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 1.5,
+              "books": 6
+            }
+          ]
+        },
+        "rush_yds": {
+          "avg": 46.5,
+          "weeks": 1,
+          "min": 46.5,
+          "max": 46.5,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 46.5,
+              "books": 6
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Rome Odunze",
+      "games": {
+        "1": "CHICAR"
       },
       "stats": {
         "rec_yds": {
@@ -5861,21 +6153,89 @@
       }
     },
     {
-      "name": "TreVeyon Henderson",
+      "name": "Ryan Flournoy",
       "games": {
-        "1": "NESEA"
+        "1": "DALNYG"
       },
       "stats": {
         "rec_yds": {
-          "avg": 7.5,
+          "avg": 26.5,
           "weeks": 1,
-          "min": 7.5,
-          "max": 7.5,
+          "min": 26.5,
+          "max": 26.5,
           "byWeek": [
             {
               "week": 1,
-              "line": 7.5,
-              "books": 5
+              "line": 26.5,
+              "books": 4
+            }
+          ]
+        },
+        "receptions": {
+          "avg": 2.5,
+          "weeks": 1,
+          "min": 2.5,
+          "max": 2.5,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 2.5,
+              "books": 4
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Sam LaPorta",
+      "games": {
+        "1": "NODET"
+      },
+      "stats": {
+        "rec_yds": {
+          "avg": 43.5,
+          "weeks": 1,
+          "min": 43.5,
+          "max": 43.5,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 43.5,
+              "books": 6
+            }
+          ]
+        },
+        "receptions": {
+          "avg": 4.5,
+          "weeks": 1,
+          "min": 4.5,
+          "max": 4.5,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 4.5,
+              "books": 6
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Samaje Perine",
+      "games": {
+        "1": "TBCIN"
+      },
+      "stats": {
+        "rec_yds": {
+          "avg": 6.5,
+          "weeks": 1,
+          "min": 6.5,
+          "max": 6.5,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 6.5,
+              "books": 6
             }
           ]
         },
@@ -5888,20 +6248,522 @@
             {
               "week": 1,
               "line": 1.5,
+              "books": 6
+            }
+          ]
+        },
+        "rush_yds": {
+          "avg": 18.5,
+          "weeks": 1,
+          "min": 18.5,
+          "max": 18.5,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 18.5,
+              "books": 6
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Saquon Barkley",
+      "games": {
+        "1": "WASPHI"
+      },
+      "stats": {
+        "rec_yds": {
+          "avg": 15.5,
+          "weeks": 1,
+          "min": 15.5,
+          "max": 15.5,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 15.5,
+              "books": 6
+            }
+          ]
+        },
+        "receptions": {
+          "avg": 2.5,
+          "weeks": 1,
+          "min": 2.5,
+          "max": 2.5,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 2.5,
+              "books": 6
+            }
+          ]
+        },
+        "rush_yds": {
+          "avg": 76.5,
+          "weeks": 1,
+          "min": 76.5,
+          "max": 76.5,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 76.5,
+              "books": 6
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Stefon Diggs",
+      "games": {
+        "1": "WASPHI"
+      },
+      "stats": {
+        "rec_yds": {
+          "avg": 41.5,
+          "weeks": 1,
+          "min": 41.5,
+          "max": 41.5,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 41.5,
+              "books": 6
+            }
+          ]
+        },
+        "receptions": {
+          "avg": 3.5,
+          "weeks": 1,
+          "min": 3.5,
+          "max": 3.5,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 3.5,
+              "books": 6
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "T.J. Hockenson",
+      "games": {
+        "1": "GBMIN"
+      },
+      "stats": {
+        "rec_yds": {
+          "avg": 25.5,
+          "weeks": 1,
+          "min": 25.5,
+          "max": 25.5,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 25.5,
+              "books": 6
+            }
+          ]
+        },
+        "receptions": {
+          "avg": 3.5,
+          "weeks": 1,
+          "min": 3.5,
+          "max": 3.5,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 3.5,
+              "books": 6
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Tank Bigsby",
+      "games": {
+        "1": "WASPHI"
+      },
+      "stats": {
+        "rush_yds": {
+          "avg": 17.5,
+          "weeks": 1,
+          "min": 17.5,
+          "max": 17.5,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 17.5,
+              "books": 5
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Tee Higgins",
+      "games": {
+        "1": "TBCIN"
+      },
+      "stats": {
+        "rec_yds": {
+          "avg": 63.0,
+          "weeks": 1,
+          "min": 63.0,
+          "max": 63.0,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 63.0,
+              "books": 6
+            }
+          ]
+        },
+        "receptions": {
+          "avg": 4.5,
+          "weeks": 1,
+          "min": 4.5,
+          "max": 4.5,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 4.5,
+              "books": 6
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Terry McLaurin",
+      "games": {
+        "1": "WASPHI"
+      },
+      "stats": {
+        "rec_yds": {
+          "avg": 51.0,
+          "weeks": 1,
+          "min": 51.0,
+          "max": 51.0,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 51.0,
+              "books": 6
+            }
+          ]
+        },
+        "receptions": {
+          "avg": 3.5,
+          "weeks": 1,
+          "min": 3.5,
+          "max": 3.5,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 3.5,
+              "books": 6
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Tetairoa McMillan",
+      "games": {
+        "1": "CHICAR"
+      },
+      "stats": {
+        "rec_yds": {
+          "avg": 60.5,
+          "weeks": 1,
+          "min": 60.5,
+          "max": 60.5,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 60.5,
+              "books": 6
+            }
+          ]
+        },
+        "receptions": {
+          "avg": 4.5,
+          "weeks": 1,
+          "min": 4.5,
+          "max": 4.5,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 4.5,
+              "books": 6
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Theo Johnson",
+      "games": {
+        "1": "DALNYG"
+      },
+      "stats": {
+        "rec_yds": {
+          "avg": 13.5,
+          "weeks": 1,
+          "min": 13.5,
+          "max": 13.5,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 13.5,
+              "books": 4
+            }
+          ]
+        },
+        "receptions": {
+          "avg": 1.5,
+          "weeks": 1,
+          "min": 1.5,
+          "max": 1.5,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 1.5,
+              "books": 4
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Tommy Tremble",
+      "games": {
+        "1": "CHICAR"
+      },
+      "stats": {
+        "rec_yds": {
+          "avg": 11.5,
+          "weeks": 1,
+          "min": 11.5,
+          "max": 11.5,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 11.5,
+              "books": 6
+            }
+          ]
+        },
+        "receptions": {
+          "avg": 1.5,
+          "weeks": 1,
+          "min": 1.5,
+          "max": 1.5,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 1.5,
+              "books": 6
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Tony Pollard",
+      "games": {
+        "1": "NYJTEN"
+      },
+      "stats": {
+        "rec_yds": {
+          "avg": 9.5,
+          "weeks": 1,
+          "min": 9.5,
+          "max": 9.5,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 9.5,
+              "books": 6
+            }
+          ]
+        },
+        "receptions": {
+          "avg": 1.5,
+          "weeks": 1,
+          "min": 1.5,
+          "max": 1.5,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 1.5,
+              "books": 6
+            }
+          ]
+        },
+        "rush_yds": {
+          "avg": 50.5,
+          "weeks": 1,
+          "min": 50.5,
+          "max": 50.5,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 50.5,
+              "books": 6
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Travis Etienne Jr.",
+      "games": {
+        "1": "NODET"
+      },
+      "stats": {
+        "rec_yds": {
+          "avg": 14.5,
+          "weeks": 1,
+          "min": 14.5,
+          "max": 14.5,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 14.5,
+              "books": 5
+            }
+          ]
+        },
+        "receptions": {
+          "avg": 2.5,
+          "weeks": 1,
+          "min": 2.5,
+          "max": 2.5,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 2.5,
               "books": 5
             }
           ]
         },
         "rush_yds": {
-          "avg": 20.5,
+          "avg": 56.5,
           "weeks": 1,
-          "min": 20.5,
-          "max": 20.5,
+          "min": 56.5,
+          "max": 56.5,
           "byWeek": [
             {
               "week": 1,
-              "line": 20.5,
+              "line": 56.5,
               "books": 5
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Travis Kelce",
+      "games": {
+        "1": "DENKC"
+      },
+      "stats": {
+        "rec_yds": {
+          "avg": 41.5,
+          "weeks": 1,
+          "min": 41.5,
+          "max": 41.5,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 41.5,
+              "books": 6
+            }
+          ]
+        },
+        "receptions": {
+          "avg": 3.5,
+          "weeks": 1,
+          "min": 3.5,
+          "max": 3.5,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 3.5,
+              "books": 6
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Tre Harris",
+      "games": {
+        "1": "ARILAC"
+      },
+      "stats": {
+        "rec_yds": {
+          "avg": 26.5,
+          "weeks": 1,
+          "min": 26.5,
+          "max": 26.5,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 26.5,
+              "books": 6
+            }
+          ]
+        },
+        "receptions": {
+          "avg": 2.5,
+          "weeks": 1,
+          "min": 2.5,
+          "max": 2.5,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 2.5,
+              "books": 6
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Tre Tucker",
+      "games": {
+        "1": "MIALV"
+      },
+      "stats": {
+        "rec_yds": {
+          "avg": 47.0,
+          "weeks": 1,
+          "min": 47.0,
+          "max": 47.0,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 47.0,
+              "books": 6
+            }
+          ]
+        },
+        "receptions": {
+          "avg": 4.5,
+          "weeks": 1,
+          "min": 4.5,
+          "max": 4.5,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 4.5,
+              "books": 6
             }
           ]
         }
@@ -5922,7 +6784,7 @@
             {
               "week": 1,
               "line": 1.5,
-              "books": 5
+              "books": 6
             }
           ]
         },
@@ -5935,7 +6797,7 @@
             {
               "week": 1,
               "line": 233.5,
-              "books": 5
+              "books": 12
             }
           ]
         },
@@ -5948,7 +6810,7 @@
             {
               "week": 1,
               "line": 17.5,
-              "books": 5
+              "books": 6
             }
           ]
         }
@@ -5969,7 +6831,7 @@
             {
               "week": 1,
               "line": 56.5,
-              "books": 5
+              "books": 6
             }
           ]
         },
@@ -5982,41 +6844,7 @@
             {
               "week": 1,
               "line": 6.5,
-              "books": 5
-            }
-          ]
-        }
-      }
-    },
-    {
-      "name": "Tua Tagovailoa",
-      "games": {
-        "1": "ATLPIT"
-      },
-      "stats": {
-        "pass_tds": {
-          "avg": 1.5,
-          "weeks": 1,
-          "min": 1.5,
-          "max": 1.5,
-          "byWeek": [
-            {
-              "week": 1,
-              "line": 1.5,
-              "books": 2
-            }
-          ]
-        },
-        "pass_yds": {
-          "avg": 208.5,
-          "weeks": 1,
-          "min": 208.5,
-          "max": 208.5,
-          "byWeek": [
-            {
-              "week": 1,
-              "line": 208.5,
-              "books": 3
+              "books": 6
             }
           ]
         }
@@ -6029,28 +6857,28 @@
       },
       "stats": {
         "rec_yds": {
-          "avg": 46.5,
+          "avg": 45.5,
           "weeks": 1,
-          "min": 46.5,
-          "max": 46.5,
+          "min": 45.5,
+          "max": 45.5,
           "byWeek": [
             {
               "week": 1,
-              "line": 46.5,
-              "books": 5
+              "line": 45.5,
+              "books": 6
             }
           ]
         },
         "receptions": {
-          "avg": 4.5,
+          "avg": 4.0,
           "weeks": 1,
-          "min": 4.5,
-          "max": 4.5,
+          "min": 4.0,
+          "max": 4.0,
           "byWeek": [
             {
               "week": 1,
-              "line": 4.5,
-              "books": 5
+              "line": 4.0,
+              "books": 6
             }
           ]
         }
@@ -6062,50 +6890,63 @@
         "1": "NYJTEN"
       },
       "stats": {
-        "rush_yds": {
-          "avg": 20.5,
+        "rec_yds": {
+          "avg": 16.5,
           "weeks": 1,
-          "min": 20.5,
-          "max": 20.5,
+          "min": 16.5,
+          "max": 16.5,
           "byWeek": [
             {
               "week": 1,
-              "line": 20.5,
-              "books": 2
+              "line": 16.5,
+              "books": 6
+            }
+          ]
+        },
+        "receptions": {
+          "avg": 2.5,
+          "weeks": 1,
+          "min": 2.5,
+          "max": 2.5,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 2.5,
+              "books": 6
+            }
+          ]
+        },
+        "rush_yds": {
+          "avg": 24.5,
+          "weeks": 1,
+          "min": 24.5,
+          "max": 24.5,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 24.5,
+              "books": 6
             }
           ]
         }
       }
     },
     {
-      "name": "Tyler Higbee",
+      "name": "Tyler Allgeier",
       "games": {
-        "1": "SFLAR"
+        "1": "ARILAC"
       },
       "stats": {
-        "rec_yds": {
-          "avg": 13.5,
+        "rush_yds": {
+          "avg": 30.0,
           "weeks": 1,
-          "min": 13.5,
-          "max": 13.5,
+          "min": 30.0,
+          "max": 30.0,
           "byWeek": [
             {
               "week": 1,
-              "line": 13.5,
-              "books": 3
-            }
-          ]
-        },
-        "receptions": {
-          "avg": 1.5,
-          "weeks": 1,
-          "min": 1.5,
-          "max": 1.5,
-          "byWeek": [
-            {
-              "week": 1,
-              "line": 1.5,
-              "books": 3
+              "line": 30.0,
+              "books": 4
             }
           ]
         }
@@ -6126,33 +6967,33 @@
             {
               "week": 1,
               "line": 1.5,
-              "books": 5
+              "books": 6
             }
           ]
         },
         "pass_yds": {
-          "avg": 246.5,
+          "avg": 244.5,
           "weeks": 1,
-          "min": 246.5,
-          "max": 246.5,
+          "min": 244.5,
+          "max": 244.5,
           "byWeek": [
             {
               "week": 1,
-              "line": 246.5,
-              "books": 5
+              "line": 244.5,
+              "books": 6
             }
           ]
         },
         "rush_yds": {
-          "avg": 17.5,
+          "avg": 16.5,
           "weeks": 1,
-          "min": 17.5,
-          "max": 17.5,
+          "min": 16.5,
+          "max": 16.5,
           "byWeek": [
             {
               "week": 1,
-              "line": 17.5,
-              "books": 5
+              "line": 16.5,
+              "books": 6
             }
           ]
         }
@@ -6165,15 +7006,15 @@
       },
       "stats": {
         "rec_yds": {
-          "avg": 45.0,
+          "avg": 47.5,
           "weeks": 1,
-          "min": 45.0,
-          "max": 45.0,
+          "min": 47.5,
+          "max": 47.5,
           "byWeek": [
             {
               "week": 1,
-              "line": 45.0,
-              "books": 2
+              "line": 47.5,
+              "books": 6
             }
           ]
         },
@@ -6186,7 +7027,41 @@
             {
               "week": 1,
               "line": 4.5,
-              "books": 2
+              "books": 6
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Tyquan Thornton",
+      "games": {
+        "1": "DENKC"
+      },
+      "stats": {
+        "rec_yds": {
+          "avg": 19.5,
+          "weeks": 1,
+          "min": 19.5,
+          "max": 19.5,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 19.5,
+              "books": 6
+            }
+          ]
+        },
+        "receptions": {
+          "avg": 1.5,
+          "weeks": 1,
+          "min": 1.5,
+          "max": 1.5,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 1.5,
+              "books": 5
             }
           ]
         }
@@ -6199,15 +7074,15 @@
       },
       "stats": {
         "rec_yds": {
-          "avg": 42.5,
+          "avg": 42.0,
           "weeks": 1,
-          "min": 42.5,
-          "max": 42.5,
+          "min": 42.0,
+          "max": 42.0,
           "byWeek": [
             {
               "week": 1,
-              "line": 42.5,
-              "books": 5
+              "line": 42.0,
+              "books": 6
             }
           ]
         },
@@ -6220,7 +7095,7 @@
             {
               "week": 1,
               "line": 4.5,
-              "books": 5
+              "books": 6
             }
           ]
         }
@@ -6233,27 +7108,74 @@
       },
       "stats": {
         "rec_yds": {
-          "avg": 9.5,
+          "avg": 8.5,
           "weeks": 1,
-          "min": 9.5,
-          "max": 9.5,
+          "min": 8.5,
+          "max": 8.5,
           "byWeek": [
             {
               "week": 1,
-              "line": 9.5,
+              "line": 8.5,
+              "books": 5
+            }
+          ]
+        },
+        "receptions": {
+          "avg": 1.5,
+          "weeks": 1,
+          "min": 1.5,
+          "max": 1.5,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 1.5,
               "books": 5
             }
           ]
         },
         "rush_yds": {
-          "avg": 32.5,
+          "avg": 26.5,
           "weeks": 1,
-          "min": 32.5,
-          "max": 32.5,
+          "min": 26.5,
+          "max": 26.5,
           "byWeek": [
             {
               "week": 1,
-              "line": 32.5,
+              "line": 26.5,
+              "books": 5
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Xavier Hutchinson",
+      "games": {
+        "1": "BUFHOU"
+      },
+      "stats": {
+        "rec_yds": {
+          "avg": 19.0,
+          "weeks": 1,
+          "min": 19.0,
+          "max": 19.0,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 19.0,
+              "books": 6
+            }
+          ]
+        },
+        "receptions": {
+          "avg": 2.5,
+          "weeks": 1,
+          "min": 2.5,
+          "max": 2.5,
+          "byWeek": [
+            {
+              "week": 1,
+              "line": 2.5,
               "books": 5
             }
           ]
@@ -6267,15 +7189,15 @@
       },
       "stats": {
         "rec_yds": {
-          "avg": 19.0,
+          "avg": 18.5,
           "weeks": 1,
-          "min": 19.0,
-          "max": 19.0,
+          "min": 18.5,
+          "max": 18.5,
           "byWeek": [
             {
               "week": 1,
-              "line": 19.0,
-              "books": 2
+              "line": 18.5,
+              "books": 6
             }
           ]
         },
@@ -6288,7 +7210,7 @@
             {
               "week": 1,
               "line": 2.0,
-              "books": 2
+              "books": 6
             }
           ]
         }
@@ -6309,7 +7231,7 @@
             {
               "week": 1,
               "line": 36.5,
-              "books": 4
+              "books": 6
             }
           ]
         },
@@ -6322,7 +7244,7 @@
             {
               "week": 1,
               "line": 3.5,
-              "books": 4
+              "books": 6
             }
           ]
         }
@@ -6335,15 +7257,15 @@
       },
       "stats": {
         "rec_yds": {
-          "avg": 64.5,
+          "avg": 65.0,
           "weeks": 1,
-          "min": 64.5,
-          "max": 64.5,
+          "min": 65.0,
+          "max": 65.0,
           "byWeek": [
             {
               "week": 1,
-              "line": 64.5,
-              "books": 5
+              "line": 65.0,
+              "books": 6
             }
           ]
         },
@@ -6356,7 +7278,7 @@
             {
               "week": 1,
               "line": 4.5,
-              "books": 5
+              "books": 6
             }
           ]
         }
