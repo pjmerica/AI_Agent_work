@@ -1,11 +1,11 @@
 {
-  "generated": "2026-09-15T15:57:28.846950+00:00",
+  "generated": "2026-09-15T19:58:14.013886+00:00",
   "stats": {
-    "n_items": 656,
+    "n_items": 662,
     "n_players": 116,
-    "n_unpriced": 72,
+    "n_unpriced": 76,
     "by_source": {
-      "Bluesky @minakimes.bsky.social": 32,
+      "Bluesky @minakimes.bsky.social": 33,
       "Bluesky @rapsheet.bsky.social": 22,
       "Bluesky @jourdanrodrigue.bsky.social": 15,
       "Bluesky @lateroundqb.bsky.social": 40,
@@ -22,7 +22,7 @@
       "SBN ATL": 10,
       "SBN BAL": 10,
       "SBN BUF": 10,
-      "SBN CAR": 9,
+      "SBN CAR": 10,
       "SBN CHI": 10,
       "SBN CIN": 10,
       "SBN CLE": 10,
@@ -30,11 +30,11 @@
       "SBN DEN": 10,
       "SBN DET": 10,
       "SBN GB": 10,
-      "SBN HOU": 8,
+      "SBN HOU": 7,
       "SBN IND": 10,
-      "SBN JAX": 9,
+      "SBN JAX": 10,
       "SBN KC": 10,
-      "SBN LAC": 3,
+      "SBN LAC": 6,
       "SBN LAR": 10,
       "SBN LV": 10,
       "SBN MIA": 10,
@@ -48,11 +48,11 @@
       "SBN SEA": 10,
       "SBN SF": 10,
       "SBN TB": 5,
-      "SBN TEN": 3,
+      "SBN TEN": 4,
       "SBN WAS": 10
     },
-    "adp_latest": "2026-09-14",
-    "adp_prior": "2026-08-31",
+    "adp_latest": "2026-09-15",
+    "adp_prior": "2026-09-01",
     "nitter": "configured but returning nothing: https://nitter.net",
     "history_days": 21
   },
@@ -110,6 +110,52 @@
       ]
     },
     {
+      "name": "Jake Tonges",
+      "pos": "TE",
+      "team": "SF",
+      "adp": 215.5,
+      "adp_prior": 215.7,
+      "adp_move": 0.2,
+      "proj": null,
+      "sleeper_weight": 1.8,
+      "score": 11.7,
+      "unpriced": true,
+      "signals": [
+        "practice squad",
+        "promoted"
+      ],
+      "items": [
+        {
+          "text": "49ers sign former Bengals 3rd-round pick to the practice squad; promote Brayden Willis. The San Francisco 49ers announced they have promoted tight end Brayden Willis to the active roster. He is expected to replace Jake Tonges. Needing an Alfred Collins replacement, the team signed defensive tackle M",
+          "url": "https://www.ninersnation.com/san-francisco-roster/162717/49ers-sign-former-bengals-3rd-round-pick-to-the-practice-squad-promote-brayden-willis",
+          "source": "SBN SF"
+        }
+      ]
+    },
+    {
+      "name": "Kyle Williams",
+      "pos": "WR",
+      "team": "NE",
+      "adp": 214.8,
+      "adp_prior": 214.0,
+      "adp_move": -0.8,
+      "proj": null,
+      "sleeper_weight": 1.8,
+      "score": 9.36,
+      "unpriced": true,
+      "signals": [
+        "injured",
+        "injury"
+      ],
+      "items": [
+        {
+          "text": "Kyle Williams among Patriots ready to step up after A.J. Brown injury. The New England Patriots are set to be without star wide receiver A.J. Brown for at least the next month after he landed on injured reserve with a high-ankle sprain. It\u2019s a significant loss for the Patriots\u2019 passing attack, but o",
+          "url": "https://www.patspulpit.com/new-england-patriots-news/137222/kyle-williams-ready-to-step-up-aj-brown-injury",
+          "source": "SBN NE"
+        }
+      ]
+    },
+    {
       "name": "Garrett Nussmeier",
       "pos": "QB",
       "team": "KC",
@@ -132,28 +178,6 @@
       ]
     },
     {
-      "name": "Drew Lock",
-      "pos": "QB",
-      "team": "SEA",
-      "adp": 216.0,
-      "adp_prior": 216.0,
-      "adp_move": 0.0,
-      "proj": null,
-      "sleeper_weight": 1.8,
-      "score": 9.0,
-      "unpriced": true,
-      "signals": [
-        "out for"
-      ],
-      "items": [
-        {
-          "text": "Seahawks News: How long will Sam Darnold be out for?. Nothing\u2019s official-official yet. But, according to one trusted reporter, our man Sam Darnold will be out for at least four weeks, maybe longer. Thus, Drew Lock will most likely be QB1 for the Seattle Seahawks for multiple weeks, until the Ginga N",
-          "url": "https://www.fieldgulls.com/seattle-seahawks-news/174696/seahawks-news-sam-darnold-likely-out-for-more-than-a-week",
-          "source": "SBN SEA"
-        }
-      ]
-    },
-    {
       "name": "Zach Charbonnet",
       "pos": "RB",
       "team": "SEA",
@@ -172,6 +196,28 @@
           "text": "Seahawks Super Bowl MVP Kenneth Walker III has career-high game in Chiefs debut. Kenneth Walker III wanted to prove he was a lead back when he left the Seattle Seahawks to sign with the Kansas City Chiefs in a huge free agent move. The Super Bowl MVP spent 2025 sharing lead back duties with Zach Cha",
           "url": "https://www.fieldgulls.com/seattle-seahawks-news/174795/seahawks-super-bowl-mvp-kenneth-walker-iii-career-high-game-chiefs-debut-mnf",
           "source": "SBN SEA"
+        }
+      ]
+    },
+    {
+      "name": "Tyler Goodson",
+      "pos": "RB",
+      "team": "ATL",
+      "adp": 216.0,
+      "adp_prior": 216.0,
+      "adp_move": 0.0,
+      "proj": null,
+      "sleeper_weight": 1.8,
+      "score": 8.424,
+      "unpriced": true,
+      "signals": [
+        "practice squad"
+      ],
+      "items": [
+        {
+          "text": "Cowboys poach RB Tyler Goodson off Falcons practice squad. Looking for some good news? Well, too bad. The Falcons lost Tyler Goodson, who was a productive runner and receiver this summer and was the team\u2019s de facto third running back, to the Dallas Cowboys. Because Goodson was on the practice squad,",
+          "url": "https://www.thefalcoholic.com/atlanta-falcons-news/96223/cowboys-poach-rb-tyler-goodson-off-falcons-practice-squad",
+          "source": "SBN ATL"
         }
       ]
     },
@@ -251,25 +297,64 @@
       ]
     },
     {
-      "name": "Hollywood Brown",
-      "pos": "",
-      "team": "",
-      "adp": null,
-      "adp_prior": null,
-      "adp_move": null,
+      "name": "Sam Darnold",
+      "pos": "QB",
+      "team": "SEA",
+      "adp": 144.5,
+      "adp_prior": 143.4,
+      "adp_move": -1.1,
       "proj": null,
-      "sleeper_weight": 1.9,
-      "score": 7.866,
+      "sleeper_weight": 1.1,
+      "score": 7.83,
       "unpriced": true,
       "signals": [
-        "snap",
-        "wr2"
+        "ahead of",
+        "injury",
+        "sidelined"
       ],
       "items": [
         {
-          "text": "Eagles-Commander snap counts: Dontayvion Wicks flashes as WR2. The official snap counts from the Philadelphia Eagles\u2019 Week 1 win over the Washington Commanders are in! Let\u2019s take a look and run through some analysis. OFFENSE DEFENSE SPECIAL TEAMS DID NOT PLAY ACTIVE: Andy Dalton, Hollywood Brown INA",
-          "url": "https://www.bleedinggreennation.com/news/182839/eagles-commander-snap-counts-dontayvion-wicks-flashes-as-wr2",
-          "source": "SBN PHI"
+          "text": "With Sam Darnold out, who could the Seahawks look to sign as a third quarterback?. With Sam Darnold dealing with a glute injury that will likely sideline him for the \u201cshort-term\u201d, the Seattle Seahawks may not need to go looking for other starting quarterback options. However, there have been reports",
+          "url": "https://www.fieldgulls.com/seattle-seahawks-injury-report/174833/sam-darnold-injury-who-could-seahawks-look-to-sign-third-quarterback-options",
+          "source": "SBN SEA"
+        },
+        {
+          "text": "Seahawks say Sam Darnold has \u2018very unique soft-tissue\u2019 but \u2018short-term\u2019 injury. After several contradicting reports on Seattle Seahawks quarterback Sam Darnold\u2019s injury, confirmation on exactly what he\u2019s dealing with has come to light. According to ESPN\u2019s Brady Henderson, a team spokesperson confirm",
+          "url": "https://www.fieldgulls.com/seattle-seahawks-news/174781/nfl-news-seahawks-sam-darnold-very-unique-soft-tissue-short-term-injury-update",
+          "source": "SBN SEA"
+        },
+        {
+          "text": "2026 NFL Week 2 injury panic meter: Myles Garrett, A.J. Brown, Sam Darnold sidelined with lower body issues. Gauging the outlook for some of the league's biggest Week 1 injuries",
+          "url": "https://www.cbssports.com/nfl/news/2026-nfl-week-2-injury-panic-meter-myles-garrett-a-j-brown-sam-darnold/",
+          "source": "CBS Sports NFL"
+        },
+        {
+          "text": "Arizona Cardinals open as underdogs ahead of matchup with Seattle Seahawks. Happy Victory Monday one and all. Despite everyone not seeing a path, the Arizona Cardinals found a way to victory over the Los Angeles Chargers. Now the question is\u2026 can they do it again? The Arizona Cardinals are 1-0, the ",
+          "url": "https://www.revengeofthebirds.com/arizona-cardinals-odds/94585/arizona-cardinals-open-as-underdogs-ahead-of-matchup-with-seattle-seahawks",
+          "source": "SBN ARI"
+        }
+      ]
+    },
+    {
+      "name": "Brayden Willis",
+      "pos": "TE",
+      "team": "SF",
+      "adp": 216.0,
+      "adp_prior": 216.0,
+      "adp_move": 0.0,
+      "proj": null,
+      "sleeper_weight": 1.8,
+      "score": 7.488,
+      "unpriced": true,
+      "signals": [
+        "ahead of",
+        "practice squad"
+      ],
+      "items": [
+        {
+          "text": "49ers sign former Bengals 3rd-round pick to the practice squad; promote Brayden Willis. The 49ers are likely to make more moves ahead of Wednesday\u2019s practice after adding McKinnley Jackson to the practice squad",
+          "url": "https://sports.yahoo.com/articles/49ers-sign-former-bengals-3rd-181920538.html",
+          "source": "Yahoo NFL"
         }
       ]
     },
@@ -296,15 +381,77 @@
       ]
     },
     {
-      "name": "Andy Dalton",
+      "name": "Cooper Rush",
       "pos": "QB",
-      "team": "PHI",
+      "team": "ATL",
       "adp": 216.0,
       "adp_prior": 216.0,
       "adp_move": 0.0,
       "proj": null,
       "sleeper_weight": 1.8,
-      "score": 7.452,
+      "score": 7.068,
+      "unpriced": true,
+      "signals": [
+        "limited",
+        "slot",
+        "snap"
+      ],
+      "items": [
+        {
+          "text": "Falcons snap counts 2026: Who played in the Week 1 loss to the Steelers?. We\u2019ve had a day to sit and ponder this Week 1 loss, and I know what you\u2019re thinking: Snap counts would help me process this. Fortunately, I have those for you to start your Tuesday morning off right. Offense QB Cooper Rush: 60",
+          "url": "https://www.thefalcoholic.com/atlanta-falcons-game-information/96192/falcons-snap-counts-2026-who-played-in-the-week-1-loss-to-the-steelers",
+          "source": "SBN ATL"
+        },
+        {
+          "text": "Cooper Rush seems likely to start at QB for Falcons vs. Panthers in Week 2. We\u2019ll know for certain on Wednesday. But there was a change to the Falcons media availability schedule for this week that hit my inbox Tuesday morning, and the \u201cstarting QB\u201d press conference scheduled for Wednesday now has C",
+          "url": "https://www.thefalcoholic.com/atlanta-falcons-depth-chart/96234/cooper-rush-starting-quarterback-week-2-carolina-panthers-tua-tagovailoa-michael-penix-jr-jack-strand",
+          "source": "SBN ATL"
+        },
+        {
+          "text": "Falcons &#8211; Steelers recap: New faces, an all-too-familiar result. Atlanta was dealt a tough hand going against the Pittsburgh Steelers on the road with a limited Cooper Rush under center. They looked at their cards, arched an eyebrow, and proceeded to play that lousy hand\u2026well, let\u2019s say not as",
+          "url": "https://www.thefalcoholic.com/atlanta-falcons-analysis/96113/falcons-steelers-recap-new-faces-an-all-too-familiar-loss-cooper-rush-bijan-robinson",
+          "source": "SBN ATL"
+        }
+      ]
+    },
+    {
+      "name": "Isaiah Likely",
+      "pos": "TE",
+      "team": "NYG",
+      "adp": 124.7,
+      "adp_prior": 126.5,
+      "adp_move": 1.8,
+      "proj": null,
+      "sleeper_weight": 1.1,
+      "score": 6.93,
+      "unpriced": true,
+      "signals": [
+        "ahead of",
+        "target share"
+      ],
+      "items": [
+        {
+          "text": "Arizona Cardinals news: Trey McBride leads NFL in receptions, 2nd in yards after Week One. So no one\u2019s surprise, star tight end Trey McBride sits at the top of the NFL in at least on category after the Cardinals\u2019 Week One win over the Chargers. With nine receptions on Sunday, he sits atop the league",
+          "url": "https://www.revengeofthebirds.com/arizona-cardinals-news/94371/arizona-cardinals-news-trey-mcbride-dalton-kincaid",
+          "source": "SBN ARI"
+        },
+        {
+          "text": "Among all tight ends this week, Isaiah Likely ranked 15th in route share, 2nd in target share, and 1st in PPR points.",
+          "url": "https://bsky.app/profile/lateroundqb.bsky.social/post/3mvi6yjimd623",
+          "source": "Bluesky @lateroundqb.bsky.social"
+        }
+      ]
+    },
+    {
+      "name": "Hollywood Brown",
+      "pos": "",
+      "team": "",
+      "adp": null,
+      "adp_prior": null,
+      "adp_move": null,
+      "proj": null,
+      "sleeper_weight": 1.9,
+      "score": 6.84,
       "unpriced": true,
       "signals": [
         "snap",
@@ -319,36 +466,69 @@
       ]
     },
     {
-      "name": "Sam Darnold",
-      "pos": "QB",
-      "team": "SEA",
-      "adp": 144.5,
-      "adp_prior": 143.4,
-      "adp_move": -1.1,
+      "name": "Jaleel McLaughlin",
+      "pos": "RB",
+      "team": "CLE",
+      "adp": 216.0,
+      "adp_prior": 216.0,
+      "adp_move": 0.0,
       "proj": null,
-      "sleeper_weight": 1.1,
-      "score": 7.009,
+      "sleeper_weight": 1.8,
+      "score": 6.739,
       "unpriced": true,
       "signals": [
-        "ahead of",
-        "injury",
-        "out for"
+        "ir"
       ],
       "items": [
         {
-          "text": "Seahawks News: How long will Sam Darnold be out for?. Nothing\u2019s official-official yet. But, according to one trusted reporter, our man Sam Darnold will be out for at least four weeks, maybe longer. Thus, Drew Lock will most likely be QB1 for the Seattle Seahawks for multiple weeks, until the Ginga N",
-          "url": "https://www.fieldgulls.com/seattle-seahawks-news/174696/seahawks-news-sam-darnold-likely-out-for-more-than-a-week",
-          "source": "SBN SEA"
-        },
+          "text": "Browns place RB Dylan Sampson on IR, sign RB Jaleel McLaughlin to 53-man roster. The Browns have made a roster move with running back/returner Dylan Sampson.",
+          "url": "https://www.nbcsports.com/nfl/profootballtalk/rumor-mill/news/browns-place-rb-dylan-sampson-on-ir-sign-rb-jaleel-mclaughlin-to-53-man-roster",
+          "source": "ProFootballTalk"
+        }
+      ]
+    },
+    {
+      "name": "Sterling Shepard",
+      "pos": "WR",
+      "team": "FA",
+      "adp": 216.0,
+      "adp_prior": 216.0,
+      "adp_move": 0.0,
+      "proj": null,
+      "sleeper_weight": 1.8,
+      "score": 6.739,
+      "unpriced": true,
+      "signals": [
+        "practice squad"
+      ],
+      "items": [
         {
-          "text": "Seahawks say Sam Darnold has \u2018very unique soft-tissue\u2019 but \u2018short-term\u2019 injury. After several contradicting reports on Seattle Seahawks quarterback Sam Darnold\u2019s injury, confirmation on exactly what he\u2019s dealing with has come to light. According to ESPN\u2019s Brady Henderson, a team spokesperson confirm",
-          "url": "https://www.fieldgulls.com/seattle-seahawks-news/174781/nfl-news-seahawks-sam-darnold-very-unique-soft-tissue-short-term-injury-update",
-          "source": "SBN SEA"
-        },
+          "text": "Jets add WR Sterling Shepard to practice squad. The Jets are adding a veteran receiver.",
+          "url": "https://www.nbcsports.com/nfl/profootballtalk/rumor-mill/news/jets-add-wr-sterling-shepard-to-practice-squad",
+          "source": "ProFootballTalk"
+        }
+      ]
+    },
+    {
+      "name": "Andy Dalton",
+      "pos": "QB",
+      "team": "PHI",
+      "adp": 216.0,
+      "adp_prior": 216.0,
+      "adp_move": 0.0,
+      "proj": null,
+      "sleeper_weight": 1.8,
+      "score": 6.48,
+      "unpriced": true,
+      "signals": [
+        "snap",
+        "wr2"
+      ],
+      "items": [
         {
-          "text": "Arizona Cardinals open as underdogs ahead of matchup with Seattle Seahawks. Happy Victory Monday one and all. Despite everyone not seeing a path, the Arizona Cardinals found a way to victory over the Los Angeles Chargers. Now the question is\u2026 can they do it again? The Arizona Cardinals are 1-0, the ",
-          "url": "https://www.revengeofthebirds.com/arizona-cardinals-odds/94585/arizona-cardinals-open-as-underdogs-ahead-of-matchup-with-seattle-seahawks",
-          "source": "SBN ARI"
+          "text": "Eagles-Commander snap counts: Dontayvion Wicks flashes as WR2. The official snap counts from the Philadelphia Eagles\u2019 Week 1 win over the Washington Commanders are in! Let\u2019s take a look and run through some analysis. OFFENSE DEFENSE SPECIAL TEAMS DID NOT PLAY ACTIVE: Andy Dalton, Hollywood Brown INA",
+          "url": "https://www.bleedinggreennation.com/news/182839/eagles-commander-snap-counts-dontayvion-wicks-flashes-as-wr2",
+          "source": "SBN PHI"
         }
       ]
     },
@@ -420,28 +600,6 @@
       ]
     },
     {
-      "name": "Michael Mayer",
-      "pos": "TE",
-      "team": "LV",
-      "adp": 214.6,
-      "adp_prior": 214.0,
-      "adp_move": -0.6,
-      "proj": null,
-      "sleeper_weight": 1.8,
-      "score": 6.336,
-      "unpriced": true,
-      "signals": [
-        "target share"
-      ],
-      "items": [
-        {
-          "text": "Michael Mayer saw a 74% route share and a 24% target share against the Dolphins. The Raiders ran over 70% of their offensive plays with 2 or fewer wide receivers on the field, second-highest on the week (San Francisco barely ahead).",
-          "url": "https://bsky.app/profile/lateroundqb.bsky.social/post/3mvi6yjikdz23",
-          "source": "Bluesky @lateroundqb.bsky.social"
-        }
-      ]
-    },
-    {
       "name": "Mike Gesicki",
       "pos": "TE",
       "team": "CIN",
@@ -460,6 +618,28 @@
           "text": "Bengals\u2019 Ted Karras recounts the time he saved Mike Gesicki\u2019s life during their time with the Dolphins. Cincinnati Bengals tight end Mike Gesicki came up big in Week 1. In a game where Ja\u2019Marr Chase was contained and Tee Higgins was limited, Gesicki became Joe Burrow\u2019s top target as the Tampa Bay Bu",
           "url": "https://www.cincyjungle.com/198908/ted-karras-saved-mike-gesicki-life-choke-bengals-dolphins",
           "source": "SBN CIN"
+        }
+      ]
+    },
+    {
+      "name": "Antonio Williams",
+      "pos": "WR",
+      "team": "WAS",
+      "adp": 214.0,
+      "adp_prior": 213.8,
+      "adp_move": -0.2,
+      "proj": null,
+      "sleeper_weight": 1.8,
+      "score": 5.99,
+      "unpriced": true,
+      "signals": [
+        "snaps"
+      ],
+      "items": [
+        {
+          "text": "Commanders WR Antonio Williams nominated for rookie award. Commanders receiver Antonio Williams didn\u2019t play much but did a ton with the time allotted. The third-round rookie had four receptions for 64 yards and a late fourth-quarter that put Washington within a (ultimately failed) 2-point conversion",
+          "url": "https://www.hogshaven.com/washington-commanders-news/440366/commanders-wr-antonio-williams-nominated-for-rookie-award",
+          "source": "SBN WAS"
         }
       ]
     },
@@ -684,25 +864,24 @@
       ]
     },
     {
-      "name": "Cole Payton",
-      "pos": "",
-      "team": "",
-      "adp": null,
-      "adp_prior": null,
-      "adp_move": null,
+      "name": "Dylan Sampson",
+      "pos": "RB",
+      "team": "CLE",
+      "adp": 167.6,
+      "adp_prior": 169.1,
+      "adp_move": 1.5,
       "proj": null,
-      "sleeper_weight": 1.9,
-      "score": 5.594,
+      "sleeper_weight": 1.5,
+      "score": 5.616,
       "unpriced": true,
       "signals": [
-        "snap",
-        "wr2"
+        "ir"
       ],
       "items": [
         {
-          "text": "Eagles-Commander snap counts: Dontayvion Wicks flashes as WR2. The official snap counts from the Philadelphia Eagles\u2019 Week 1 win over the Washington Commanders are in! Let\u2019s take a look and run through some analysis. OFFENSE DEFENSE SPECIAL TEAMS DID NOT PLAY ACTIVE: Andy Dalton, Hollywood Brown INA",
-          "url": "https://www.bleedinggreennation.com/news/182839/eagles-commander-snap-counts-dontayvion-wicks-flashes-as-wr2",
-          "source": "SBN PHI"
+          "text": "Browns place RB Dylan Sampson on IR, sign RB Jaleel McLaughlin to 53-man roster. The Browns have made a roster move with running back/returner Dylan Sampson.",
+          "url": "https://www.nbcsports.com/nfl/profootballtalk/rumor-mill/news/browns-place-rb-dylan-sampson-on-ir-sign-rb-jaleel-mclaughlin-to-53-man-roster",
+          "source": "ProFootballTalk"
         }
       ]
     },
@@ -730,70 +909,24 @@
       ]
     },
     {
-      "name": "Cooper Rush",
-      "pos": "QB",
-      "team": "ATL",
-      "adp": 216.0,
-      "adp_prior": 216.0,
-      "adp_move": 0.0,
+      "name": "Carsen Ryan",
+      "pos": "",
+      "team": "",
+      "adp": null,
+      "adp_prior": null,
+      "adp_move": null,
       "proj": null,
-      "sleeper_weight": 1.8,
-      "score": 5.4,
+      "sleeper_weight": 1.9,
+      "score": 5.375,
       "unpriced": true,
       "signals": [
-        "limited"
+        "snap"
       ],
       "items": [
         {
-          "text": "Falcons &#8211; Steelers recap: New faces, an all-too-familiar result. Atlanta was dealt a tough hand going against the Pittsburgh Steelers on the road with a limited Cooper Rush under center. They looked at their cards, arched an eyebrow, and proceeded to play that lousy hand\u2026well, let\u2019s say not as",
-          "url": "https://www.thefalcoholic.com/atlanta-falcons-analysis/96113/falcons-steelers-recap-new-faces-an-all-too-familiar-loss-cooper-rush-bijan-robinson",
+          "text": "Falcons snap counts 2026: Who played in the Week 1 loss to the Steelers?. We\u2019ve had a day to sit and ponder this Week 1 loss, and I know what you\u2019re thinking: Snap counts would help me process this. Fortunately, I have those for you to start your Tuesday morning off right. Offense QB Cooper Rush: 60",
+          "url": "https://www.thefalcoholic.com/atlanta-falcons-game-information/96192/falcons-snap-counts-2026-who-played-in-the-week-1-loss-to-the-steelers",
           "source": "SBN ATL"
-        }
-      ]
-    },
-    {
-      "name": "Tanner McKee",
-      "pos": "QB",
-      "team": "PHI",
-      "adp": 216.0,
-      "adp_prior": 216.0,
-      "adp_move": 0.0,
-      "proj": null,
-      "sleeper_weight": 1.8,
-      "score": 5.299,
-      "unpriced": true,
-      "signals": [
-        "snap",
-        "wr2"
-      ],
-      "items": [
-        {
-          "text": "Eagles-Commander snap counts: Dontayvion Wicks flashes as WR2. The official snap counts from the Philadelphia Eagles\u2019 Week 1 win over the Washington Commanders are in! Let\u2019s take a look and run through some analysis. OFFENSE DEFENSE SPECIAL TEAMS DID NOT PLAY ACTIVE: Andy Dalton, Hollywood Brown INA",
-          "url": "https://www.bleedinggreennation.com/news/182839/eagles-commander-snap-counts-dontayvion-wicks-flashes-as-wr2",
-          "source": "SBN PHI"
-        }
-      ]
-    },
-    {
-      "name": "Elijah Moore",
-      "pos": "WR",
-      "team": "PHI",
-      "adp": 216.0,
-      "adp_prior": 216.0,
-      "adp_move": 0.0,
-      "proj": null,
-      "sleeper_weight": 1.8,
-      "score": 5.299,
-      "unpriced": true,
-      "signals": [
-        "snap",
-        "wr2"
-      ],
-      "items": [
-        {
-          "text": "Eagles-Commander snap counts: Dontayvion Wicks flashes as WR2. The official snap counts from the Philadelphia Eagles\u2019 Week 1 win over the Washington Commanders are in! Let\u2019s take a look and run through some analysis. OFFENSE DEFENSE SPECIAL TEAMS DID NOT PLAY ACTIVE: Andy Dalton, Hollywood Brown INA",
-          "url": "https://www.bleedinggreennation.com/news/182839/eagles-commander-snap-counts-dontayvion-wicks-flashes-as-wr2",
-          "source": "SBN PHI"
         }
       ]
     },
@@ -820,46 +953,48 @@
       ]
     },
     {
-      "name": "Kendre Miller",
-      "pos": "RB",
-      "team": "NO",
-      "adp": 215.9,
-      "adp_prior": 215.9,
-      "adp_move": 0.0,
+      "name": "Omar Cooper Jr.",
+      "pos": "WR",
+      "team": "NYJ",
+      "adp": 180.7,
+      "adp_prior": 173.9,
+      "adp_move": -6.8,
       "proj": null,
-      "sleeper_weight": 1.8,
-      "score": 5.184,
-      "unpriced": true,
+      "sleeper_weight": 1.5,
+      "score": 4.875,
+      "unpriced": false,
       "signals": [
-        "snap"
+        "injured",
+        "injury"
       ],
       "items": [
         {
-          "text": "Saints 1st half RB snap count\n\nTravis Etienne Jr. 17\nCJ Donaldson 10\nKendre Miller 10\n\nOut of 35 plays",
-          "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3mvgbkffgcs2t",
-          "source": "Bluesky @ffnatejahnke.bsky.social"
+          "text": "We have Jets injury updates on Omar Cooper and Minkah Fitzpatrick. The Jets lost a pair of starters to injury in their Week 1 win over the Tennessee Titans. Wide receiver Omar Cooper suffered an ankle sprain and has been termed \u201cweek-to-week\u201d per Ian Rapoport. He will miss time, but at this point th",
+          "url": "https://www.ganggreennation.com/new-york-jets-injuries/96516/we-have-jets-injury-updates-on-omar-cooper-and-minkah-fitzpatrick",
+          "source": "SBN NYJ"
         }
       ]
     },
     {
-      "name": "CJ Donaldson",
-      "pos": "RB",
-      "team": "NO",
-      "adp": 216.0,
-      "adp_prior": 216.0,
-      "adp_move": 0.0,
+      "name": "Cole Payton",
+      "pos": "",
+      "team": "",
+      "adp": null,
+      "adp_prior": null,
+      "adp_move": null,
       "proj": null,
-      "sleeper_weight": 1.8,
-      "score": 5.184,
+      "sleeper_weight": 1.9,
+      "score": 4.864,
       "unpriced": true,
       "signals": [
-        "snap"
+        "snap",
+        "wr2"
       ],
       "items": [
         {
-          "text": "Saints 1st half RB snap count\n\nTravis Etienne Jr. 17\nCJ Donaldson 10\nKendre Miller 10\n\nOut of 35 plays",
-          "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3mvgbkffgcs2t",
-          "source": "Bluesky @ffnatejahnke.bsky.social"
+          "text": "Eagles-Commander snap counts: Dontayvion Wicks flashes as WR2. The official snap counts from the Philadelphia Eagles\u2019 Week 1 win over the Washington Commanders are in! Let\u2019s take a look and run through some analysis. OFFENSE DEFENSE SPECIAL TEAMS DID NOT PLAY ACTIVE: Andy Dalton, Hollywood Brown INA",
+          "url": "https://www.bleedinggreennation.com/news/182839/eagles-commander-snap-counts-dontayvion-wicks-flashes-as-wr2",
+          "source": "SBN PHI"
         }
       ]
     },
@@ -908,6 +1043,52 @@
       ]
     },
     {
+      "name": "Tanner McKee",
+      "pos": "QB",
+      "team": "PHI",
+      "adp": 216.0,
+      "adp_prior": 216.0,
+      "adp_move": 0.0,
+      "proj": null,
+      "sleeper_weight": 1.8,
+      "score": 4.608,
+      "unpriced": true,
+      "signals": [
+        "snap",
+        "wr2"
+      ],
+      "items": [
+        {
+          "text": "Eagles-Commander snap counts: Dontayvion Wicks flashes as WR2. The official snap counts from the Philadelphia Eagles\u2019 Week 1 win over the Washington Commanders are in! Let\u2019s take a look and run through some analysis. OFFENSE DEFENSE SPECIAL TEAMS DID NOT PLAY ACTIVE: Andy Dalton, Hollywood Brown INA",
+          "url": "https://www.bleedinggreennation.com/news/182839/eagles-commander-snap-counts-dontayvion-wicks-flashes-as-wr2",
+          "source": "SBN PHI"
+        }
+      ]
+    },
+    {
+      "name": "Elijah Moore",
+      "pos": "WR",
+      "team": "PHI",
+      "adp": 216.0,
+      "adp_prior": 216.0,
+      "adp_move": 0.0,
+      "proj": null,
+      "sleeper_weight": 1.8,
+      "score": 4.608,
+      "unpriced": true,
+      "signals": [
+        "snap",
+        "wr2"
+      ],
+      "items": [
+        {
+          "text": "Eagles-Commander snap counts: Dontayvion Wicks flashes as WR2. The official snap counts from the Philadelphia Eagles\u2019 Week 1 win over the Washington Commanders are in! Let\u2019s take a look and run through some analysis. OFFENSE DEFENSE SPECIAL TEAMS DID NOT PLAY ACTIVE: Andy Dalton, Hollywood Brown INA",
+          "url": "https://www.bleedinggreennation.com/news/182839/eagles-commander-snap-counts-dontayvion-wicks-flashes-as-wr2",
+          "source": "SBN PHI"
+        }
+      ]
+    },
+    {
       "name": "Patrick Mahomes",
       "pos": "QB",
       "team": "KC",
@@ -920,7 +1101,7 @@
       "unpriced": false,
       "signals": [
         "acl",
-        "injury",
+        "limited",
         "surgery"
       ],
       "items": [
@@ -928,11 +1109,6 @@
           "text": "Seahawks fan discussion: How will Kenneth Walker III do in his Chiefs debut?. The final game of Week 1 of the 2026 NFL season is an all-AFC West affair between the Kansas City Chiefs and Denver Broncos. While Patrick Mahomes\u2019 return from his ACL tear is the main story, for Seattle Seahawks fans we\u2019l",
           "url": "https://www.fieldgulls.com/seattle-seahawks-discussion/174774/seahawks-fan-discussion-how-will-kenneth-walker-iii-do-chiefs-debut-vs-broncos-mnf",
           "source": "SBN SEA"
-        },
-        {
-          "text": "Patrick Mahomes: Rushing TD gave me confidence I could be myself. Mahomes also threw two TDs in his return from a torn ACL.",
-          "url": "https://www.nbcsports.com/nfl/profootballtalk/rumor-mill/news/patrick-mahomes-rushing-td-gave-me-confidence-i-could-be-myself",
-          "source": "ProFootballTalk"
         },
         {
           "text": "Chiefs dominate Broncos in season opener. The Kansas City Chiefs opened the season with a commanding 31-10 victory over the Denver Broncos, powered by Kenneth Walker III\u2019s 173 rushing yards\u2014the most ever by a player in his Chiefs debut. Walker\u2019s night included a 60-yard touchdown on fourth-and-1, wh",
@@ -943,6 +1119,11 @@
           "text": "Chiefs QB Patrick Mahomes makes his return after ACL/LCL surgery, with equal strength on both sides. His rehab has been impressive.",
           "url": "https://bsky.app/profile/rapsheet.bsky.social/post/3mvfutk4k3c26",
           "source": "Bluesky @rapsheet.bsky.social"
+        },
+        {
+          "text": "NFL Week 1 statistical review: Kansas City Chiefs vs. Denver Broncos. The Kansas City Chiefs defeated the Denver Broncos 31-10 on Monday Night Football in Patrick Mahomes\u2019 return. Kansas City limited Denver after its opening touchdown drive while converting two crucial fourth downs into eventual tou",
+          "url": "https://www.pff.com/news/nfl-week-1-statistical-review-kansas-city-chiefs-vs-denver-broncos/",
+          "source": "PFF"
         }
       ]
     },
@@ -977,109 +1158,28 @@
       "adp_move": 0.3,
       "proj": null,
       "sleeper_weight": 0.75,
-      "score": 4.038,
+      "score": 3.778,
       "unpriced": true,
       "signals": [
-        "injured",
         "injury",
         "limited",
-        "questionable",
         "starter"
       ],
       "items": [
-        {
-          "text": "Chiefs CB Mansoor Delane questionable to return with shoulder injury. Chiefs rookie cornerback Mansoor Delane intercepted Bo Nix on his third career play.",
-          "url": "https://www.nbcsports.com/nfl/profootballtalk/rumor-mill/news/chiefs-cb-mansoor-delane-questionable-to-return-with-shoulder-injury",
-          "source": "ProFootballTalk"
-        },
         {
           "text": "Broncos tried to lure Drew Brees out of retirement for AFC Championship after Bo Nix injury, per report. Brees reportedly gave serious consideration to joining Denver for its Super Bowl bid",
           "url": "https://www.cbssports.com/nfl/news/broncos-drew-brees-comeback-bo-nix/",
           "source": "CBS Sports NFL"
         },
         {
-          "text": "Broncos reportedly called Drew Brees about 2026 AFC Championship Game return. The Denver Broncos were in a desperate situation entering the 2026 AFC Championship Game against the New England Patriots. With starting quarterback Bo Nix injured and missing the game, the team reportedly reached out to H",
-          "url": "https://awfulannouncing.com/nfl/broncos-drew-brees-2026-afc-championship-game.html",
-          "source": "Awful Announcing"
-        },
-        {
           "text": "NFL Week 1 statistical review: Kansas City Chiefs vs. Denver Broncos. The Kansas City Chiefs defeated the Denver Broncos 31-10 on Monday Night Football in Patrick Mahomes\u2019 return. Kansas City limited Denver after its opening touchdown drive while converting two crucial fourth downs into eventual tou",
           "url": "https://www.pff.com/news/nfl-week-1-statistical-review-kansas-city-chiefs-vs-denver-broncos/",
           "source": "PFF"
-        }
-      ]
-    },
-    {
-      "name": "Isaiah Likely",
-      "pos": "TE",
-      "team": "NYG",
-      "adp": 124.7,
-      "adp_prior": 126.5,
-      "adp_move": 1.8,
-      "proj": null,
-      "sleeper_weight": 1.1,
-      "score": 3.872,
-      "unpriced": true,
-      "signals": [
-        "target share"
-      ],
-      "items": [
-        {
-          "text": "Among all tight ends this week, Isaiah Likely ranked 15th in route share, 2nd in target share, and 1st in PPR points.",
-          "url": "https://bsky.app/profile/lateroundqb.bsky.social/post/3mvi6yjimd623",
-          "source": "Bluesky @lateroundqb.bsky.social"
-        }
-      ]
-    },
-    {
-      "name": "Dontayvion Wicks",
-      "pos": "WR",
-      "team": "PHI",
-      "adp": 155.7,
-      "adp_prior": 159.3,
-      "adp_move": 3.6,
-      "proj": null,
-      "sleeper_weight": 1.5,
-      "score": 3.867,
-      "unpriced": false,
-      "signals": [
-        "slot",
-        "snap",
-        "target share",
-        "wr2"
-      ],
-      "items": [
-        {
-          "text": "Eagles-Commander snap counts: Dontayvion Wicks flashes as WR2. The official snap counts from the Philadelphia Eagles\u2019 Week 1 win over the Washington Commanders are in! Let\u2019s take a look and run through some analysis. OFFENSE DEFENSE SPECIAL TEAMS DID NOT PLAY ACTIVE: Andy Dalton, Hollywood Brown INA",
-          "url": "https://www.bleedinggreennation.com/news/182839/eagles-commander-snap-counts-dontayvion-wicks-flashes-as-wr2",
-          "source": "SBN PHI"
         },
         {
-          "text": "Dontayvion Wicks ran only one more route than Makai Lemon in Week 1, and Lemon had a 68% slot rate compared to Wicks' 27%. Both had an 18% target share, but Lemon had an air yards per target rate of zero. Wicks was at nearly 20. And it resulted in 15.3 PPR points vs. 2.5.",
-          "url": "https://bsky.app/profile/lateroundqb.bsky.social/post/3mvi6yjildo23",
-          "source": "Bluesky @lateroundqb.bsky.social"
-        }
-      ]
-    },
-    {
-      "name": "Evan Hull",
-      "pos": "RB",
-      "team": "ARI",
-      "adp": 216.0,
-      "adp_prior": 216.0,
-      "adp_move": 0.0,
-      "proj": null,
-      "sleeper_weight": 1.8,
-      "score": 3.686,
-      "unpriced": true,
-      "signals": [
-        "practice squad"
-      ],
-      "items": [
-        {
-          "text": "Cardinals practice squad elevation, RB not included. What does this mean for Love?. The Arizona Cardinals submitted their list of the two practice squad guys they would bring up for the opener against the Los Angeles Chargers. It was expected that OG Matt Pryor would be one since RG Isaiah Adams is ",
-          "url": "https://www.revengeofthebirds.com/arizona-cardinals-game-information/94512/cardinals-practice-squad-elevation-rb-not-included-what-does-this-mean-for-love",
-          "source": "SBN ARI"
+          "text": "Sean Payton says he didn't know about the communication with Drew Brees. On Monday night, a report emerged that multiple Broncos coaches had reached out to retired quarterback Drew Brees about the possibility of joining the Broncos for the AFC Championship after starter Bo Nix suffered a season-endi",
+          "url": "https://www.nbcsports.com/nfl/profootballtalk/rumor-mill/news/sean-payton-says-he-didnt-know-about-the-communication-with-drew-brees",
+          "source": "ProFootballTalk"
         }
       ]
     },
@@ -1147,6 +1247,75 @@
           "text": "Saints RB Alvin Kamara, who is questionable with a knee injury because of an MCL sprain, is not expected to play today against the Lions, sources say. He was a full participant late in the week, but was not quite ready.",
           "url": "https://bsky.app/profile/rapsheet.bsky.social/post/3mvfrq5xcrk2t",
           "source": "Bluesky @rapsheet.bsky.social"
+        }
+      ]
+    },
+    {
+      "name": "Ladd McConkey",
+      "pos": "WR",
+      "team": "LAC",
+      "adp": 33.6,
+      "adp_prior": 33.6,
+      "adp_move": 0.0,
+      "proj": null,
+      "sleeper_weight": 0.5,
+      "score": 3.559,
+      "unpriced": true,
+      "signals": [
+        "injury",
+        "ir",
+        "standout"
+      ],
+      "items": [
+        {
+          "text": "Los Angeles Chargers news: Ladd McConkey day-to-day with rib injury. Good morning, Chargers fans! On Monday, Jim Harbaugh gave us an update on wide reciever Ladd McConkey who left Sunday\u2019s game after taking a big hit over the middle while leaping for a reception. Per Harbaugh, McConkey has a rib inj",
+          "url": "https://www.boltsfromtheblue.com/los-angeles-chargers-news/65328/los-angeles-chargers-news-ladd-mcconkey-rib-injury",
+          "source": "SBN LAC"
+        },
+        {
+          "text": "2026 NFL Week 2 Injury Report: A.J. Brown to IR, updates on Ladd McConkey, Zay Flowers. Track the injuries to know around the NFL, all in one place.",
+          "url": "https://sports.yahoo.com/articles/2026-nfl-week-2-injury-185938645.html",
+          "source": "Yahoo NFL"
+        },
+        {
+          "text": "Ladd McConkey had an 85% route share before his injury in Week 1. The second-highest route share came from Quentin Johnston at 60%. McConkey ran 9 of his 17 routes with two or fewer wide receivers on the field (53%). That rate was 9.6% last year and 12.6% throughout his career.",
+          "url": "https://bsky.app/profile/lateroundqb.bsky.social/post/3mvi6yjimd323",
+          "source": "Bluesky @lateroundqb.bsky.social"
+        },
+        {
+          "text": "NFL news, live updates: Rams' Myles Garrett headed to IR; Ladd McConkey day-to-day for Chargers. Follow along with the latest NFL news coming out of Week 1.",
+          "url": "https://sports.yahoo.com/nfl/live/nfl-news-injury-updates-kyler-murray-myles-garrett-more-coming-out-of-week-1-120656469.html",
+          "source": "Yahoo NFL"
+        }
+      ]
+    },
+    {
+      "name": "Dontayvion Wicks",
+      "pos": "WR",
+      "team": "PHI",
+      "adp": 155.7,
+      "adp_prior": 159.3,
+      "adp_move": 3.6,
+      "proj": null,
+      "sleeper_weight": 1.5,
+      "score": 3.429,
+      "unpriced": false,
+      "signals": [
+        "slot",
+        "snap",
+        "target share",
+        "wr2"
+      ],
+      "items": [
+        {
+          "text": "Eagles-Commander snap counts: Dontayvion Wicks flashes as WR2. The official snap counts from the Philadelphia Eagles\u2019 Week 1 win over the Washington Commanders are in! Let\u2019s take a look and run through some analysis. OFFENSE DEFENSE SPECIAL TEAMS DID NOT PLAY ACTIVE: Andy Dalton, Hollywood Brown INA",
+          "url": "https://www.bleedinggreennation.com/news/182839/eagles-commander-snap-counts-dontayvion-wicks-flashes-as-wr2",
+          "source": "SBN PHI"
+        },
+        {
+          "text": "Dontayvion Wicks ran only one more route than Makai Lemon in Week 1, and Lemon had a 68% slot rate compared to Wicks' 27%. Both had an 18% target share, but Lemon had an air yards per target rate of zero. Wicks was at nearly 20. And it resulted in 15.3 PPR points vs. 2.5.",
+          "url": "https://bsky.app/profile/lateroundqb.bsky.social/post/3mvi6yjildo23",
+          "source": "Bluesky @lateroundqb.bsky.social"
         }
       ]
     },
@@ -1261,36 +1430,6 @@
       ]
     },
     {
-      "name": "Chuba Hubbard",
-      "pos": "RB",
-      "team": "CAR",
-      "adp": 101.3,
-      "adp_prior": 99.8,
-      "adp_move": -1.5,
-      "proj": null,
-      "sleeper_weight": 0.75,
-      "score": 3.103,
-      "unpriced": true,
-      "signals": [
-        "carries",
-        "snap",
-        "snaps",
-        "targets"
-      ],
-      "items": [
-        {
-          "text": "Fantasy Football Usage & Production Report. The fantasy football Week 1 usage report breaks down the snap counts, routes, targets, carries and situational roles that matter for fantasy managers. Travis Etienne Jr., Chuba Hubbard, Dalton Kincaid and Mark Andrews are among the players with notable uti",
-          "url": "https://www.pff.com/news/fantasy-football-usage-production-report/",
-          "source": "PFF"
-        },
-        {
-          "text": "Panthers RB playing time breakdown, per Next Gen Stats: \n\nChuba Hubbard 86% of snaps\nJonathon Brooks 17% of snaps",
-          "url": "https://bsky.app/profile/sethwalder.bsky.social/post/3mvgczf7kx32p",
-          "source": "Bluesky @sethwalder.bsky.social"
-        }
-      ]
-    },
-    {
       "name": "Caleb Douglas",
       "pos": "WR",
       "team": "MIA",
@@ -1339,6 +1478,28 @@
       ]
     },
     {
+      "name": "Caleb Williams",
+      "pos": "QB",
+      "team": "CHI",
+      "adp": 74.0,
+      "adp_prior": 73.8,
+      "adp_move": -0.2,
+      "proj": null,
+      "sleeper_weight": 0.75,
+      "score": 2.925,
+      "unpriced": true,
+      "signals": [
+        "explosive"
+      ],
+      "items": [
+        {
+          "text": "10 Thoughts on the NFL: Chicago Bears put the League on notice, plus much more. 1. You know what? I\u2019m glad Pro Football Focus gave Caleb Williams a hilariously low grade for his explosive and efficient Week 1 performance against the Carolina Panthers, in which he accounted for four touchdowns. I act",
+          "url": "https://www.windycitygridiron.com/general/122757/10-thoughts-nfl-chicago-bears-nfl-cardinals-vikings-chiefs-ravens",
+          "source": "SBN CHI"
+        }
+      ]
+    },
+    {
       "name": "Zay Flowers",
       "pos": "WR",
       "team": "BAL",
@@ -1347,32 +1508,31 @@
       "adp_move": -1.1,
       "proj": null,
       "sleeper_weight": 0.5,
-      "score": 3.011,
+      "score": 2.847,
       "unpriced": true,
       "signals": [
-        "ahead of",
         "best player",
         "explosive",
-        "hamstring",
+        "injury",
+        "ir",
         "snaps",
-        "standout",
-        "target share"
+        "standout"
       ],
       "items": [
         {
-          "text": "5 Bold Predictions for Ravens at Colts Regular Season Opener. The Indianapolis Colts kick off their regular season at home against the Baltimore Ravens this afternoon, and here are five bold predictions ahead of today\u2019s matchup: 1. Sauce Gardner locks down Zay Flowers earlyFlowers is dealing with a ",
-          "url": "https://www.stampedeblue.com/indianapolis-colts-news/127287/5-bold-predictions-for-colts-ravens-season-opener",
-          "source": "SBN IND"
-        },
-        {
-          "text": "PFF grades are LIVE: NFL Week 1. NFL Week 1 featured standout performances across the league, with PFF Grades highlighting the best player from each completed game. Zay Flowers, T.J. Watt, Jaxon Smith-Njigba and Justin Jefferson are among the players who led their respective matchups. See the highes",
-          "url": "https://www.pff.com/news/nfl-pff-grades-are-live-nfl-week-1/",
-          "source": "PFF"
+          "text": "2026 NFL Week 2 Injury Report: A.J. Brown to IR, updates on Ladd McConkey, Zay Flowers. Track the injuries to know around the NFL, all in one place.",
+          "url": "https://sports.yahoo.com/articles/2026-nfl-week-2-injury-185938645.html",
+          "source": "Yahoo NFL"
         },
         {
           "text": "Instant takeaways from the Ravens\u2019 41-23 Week 1 win over the Colts. The Baltimore Ravens throttled the Indianapolis Colts by a score of 41-23 to kick off their 2026 season. Here are the instant takeaways from Baltimore Beatdown\u2019s staff! Explosives, explosives, explosives One positive takeaway from t",
           "url": "https://www.baltimorebeatdown.com/baltimore-ravens-analysis/84961/instant-takeaways-from-the-ravens-41-23-week-1-win-over-the-colts",
           "source": "SBN BAL"
+        },
+        {
+          "text": "PFF grades are LIVE: NFL Week 1. NFL Week 1 featured standout performances across the league, with PFF Grades highlighting the best player from each completed game. Zay Flowers, T.J. Watt, Jaxon Smith-Njigba and Justin Jefferson are among the players who led their respective matchups. See the highes",
+          "url": "https://www.pff.com/news/nfl-pff-grades-are-live-nfl-week-1/",
+          "source": "PFF"
         },
         {
           "text": "NFL Week 1: 10 things we learned from the early games. NFL Week 1 produced standout performances from Trevor Lawrence, Zay Flowers, Derrick Henry and several other stars in the early window. PFF\u2019s initial grades highlight Lawrence\u2019s four-touchdown performance, Flowers\u2019 explosive receiving day and T.",
@@ -1424,116 +1584,32 @@
       ]
     },
     {
-      "name": "TreVeyon Henderson",
+      "name": "Chuba Hubbard",
       "pos": "RB",
-      "team": "NE",
-      "adp": 65.3,
-      "adp_prior": 60.7,
-      "adp_move": -4.6,
+      "team": "CAR",
+      "adp": 101.3,
+      "adp_prior": 99.8,
+      "adp_move": -1.5,
       "proj": null,
       "sleeper_weight": 0.75,
-      "score": 2.803,
-      "unpriced": false,
-      "signals": [
-        "ahead of",
-        "injury",
-        "practice report"
-      ],
-      "items": [
-        {
-          "text": "Patriots practice report: TreVeyon Henderson makes return. Following a weekend off, the New England Patriots were back on the practice fields on Monday for a bonus day of work ahead of Week 2. For the first time since Aug. 24, when he suffered an ankle injury, running back TreVeyon Henderson returne",
-          "url": "https://www.patspulpit.com/new-england-patriots-injuries/137206/patriots-practice-report-treveyon-henderson-makes-returns",
-          "source": "SBN NE"
-        }
-      ]
-    },
-    {
-      "name": "Jalen Hurts",
-      "pos": "QB",
-      "team": "PHI",
-      "adp": 73.4,
-      "adp_prior": 72.7,
-      "adp_move": -0.7,
-      "proj": null,
-      "sleeper_weight": 0.75,
-      "score": 2.7,
+      "score": 2.753,
       "unpriced": true,
       "signals": [
-        "snaps"
+        "carries",
+        "snap",
+        "snaps",
+        "targets"
       ],
       "items": [
         {
-          "text": "Eagles vs. Commanders: The good, the bad, and the ugly. Let\u2019s see this through midnight green glasses: The Eagles won. Jalen Hurts took snaps under center. He threw down the middle of the field. The Eagles just happened to be playing against two new coordinators and a Washington Commanders team that",
-          "url": "https://www.bleedinggreennation.com/philadelphia-eagles-analysis/182781/eagles-vs-commanders-the-good-the-bad-and-the-ugly",
-          "source": "SBN PHI"
-        }
-      ]
-    },
-    {
-      "name": "Ladd McConkey",
-      "pos": "WR",
-      "team": "LAC",
-      "adp": 33.6,
-      "adp_prior": 33.6,
-      "adp_move": 0.0,
-      "proj": null,
-      "sleeper_weight": 0.5,
-      "score": 2.651,
-      "unpriced": true,
-      "signals": [
-        "injury",
-        "ir"
-      ],
-      "items": [
-        {
-          "text": "Los Angeles Chargers news: Ladd McConkey day-to-day with rib injury. Chargers Ladd McConkey is viewed as day-to-day following his rib injury he suffered against the Cardinals.",
-          "url": "https://sports.yahoo.com/articles/los-angeles-chargers-news-ladd-135547371.html",
-          "source": "Yahoo NFL"
+          "text": "Panthers RB playing time breakdown, per Next Gen Stats: \n\nChuba Hubbard 86% of snaps\nJonathon Brooks 17% of snaps",
+          "url": "https://bsky.app/profile/sethwalder.bsky.social/post/3mvgczf7kx32p",
+          "source": "Bluesky @sethwalder.bsky.social"
         },
         {
-          "text": "Ladd McConkey had an 85% route share before his injury in Week 1. The second-highest route share came from Quentin Johnston at 60%. McConkey ran 9 of his 17 routes with two or fewer wide receivers on the field (53%). That rate was 9.6% last year and 12.6% throughout his career.",
-          "url": "https://bsky.app/profile/lateroundqb.bsky.social/post/3mvi6yjimd323",
-          "source": "Bluesky @lateroundqb.bsky.social"
-        },
-        {
-          "text": "NFL news, live updates: Rams' Myles Garrett headed to IR; Ladd McConkey day-to-day for Chargers. Follow along with the latest NFL news coming out of Week 1.",
-          "url": "https://sports.yahoo.com/nfl/live/nfl-news-injury-updates-kyler-murray-myles-garrett-more-coming-out-of-week-1-120656469.html",
-          "source": "Yahoo NFL"
-        }
-      ]
-    },
-    {
-      "name": "Malik Nabers",
-      "pos": "WR",
-      "team": "NYG",
-      "adp": 22.8,
-      "adp_prior": 21.9,
-      "adp_move": -0.9,
-      "proj": null,
-      "sleeper_weight": 0.3,
-      "score": 2.611,
-      "unpriced": true,
-      "signals": [
-        "acl",
-        "injury",
-        "training camp",
-        "walkthrough"
-      ],
-      "items": [
-        {
-          "text": "NY Giants John Harbaugh \u2018couldn\u2019t pass up\u2019 chance to tackle Malik Nabers. During training camp, New York Giants coach John Harbaugh said he couldn\u2019t imagine Malik Nabers returning to action from his 2025 torn ACL before getting at least some physical contact during practices. After Nabers played Sun",
-          "url": "https://www.bigblueview.com/new-york-giants-news/171296/ohn-harbaugh-malik-nabers-tackle-explanation",
-          "source": "SBN NYG"
-        },
-        {
-          "text": "How John Harbaugh helped Malik Nabers get over mental hurdle in return from knee injury. The first-year Giants coach took an unorthodox approach in preparing his star receiver for Week 1",
-          "url": "https://www.cbssports.com/nfl/news/how-john-harbaugh-helped-malik-nabers-in-return/",
-          "source": "CBS Sports NFL"
-        },
-        {
-          "text": "Giants get back Malik Nabers, 1 week before Rams game. The New York Giants are set to have number one receiver Malik Nabers when they face the Los Angeles Rams in Week 2. Nabers, who was a Pro Bowl player in 2024 as a rookie, is active for the Giants on Sunday night, less than a year after a devasta",
-          "url": "https://www.turfshowtimes.com/los-angeles-rams-news/148702/giants-rams-malik-nabers-availability",
-          "source": "SBN LAR"
+          "text": "Fantasy Football Usage & Production Report. The fantasy football Week 1 usage report breaks down the snap counts, routes, targets, carries and situational roles that matter for fantasy managers. Travis Etienne Jr., Chuba Hubbard, Dalton Kincaid and Mark Andrews are among the players with notable uti",
+          "url": "https://www.pff.com/news/fantasy-football-usage-production-report/",
+          "source": "PFF"
         }
       ]
     },
@@ -1582,6 +1658,30 @@
       ]
     },
     {
+      "name": "TreVeyon Henderson",
+      "pos": "RB",
+      "team": "NE",
+      "adp": 65.3,
+      "adp_prior": 60.7,
+      "adp_move": -4.6,
+      "proj": null,
+      "sleeper_weight": 0.75,
+      "score": 2.438,
+      "unpriced": false,
+      "signals": [
+        "ahead of",
+        "injury",
+        "practice report"
+      ],
+      "items": [
+        {
+          "text": "Patriots practice report: TreVeyon Henderson makes return. Following a weekend off, the New England Patriots were back on the practice fields on Monday for a bonus day of work ahead of Week 2. For the first time since Aug. 24, when he suffered an ankle injury, running back TreVeyon Henderson returne",
+          "url": "https://www.patspulpit.com/new-england-patriots-injuries/137206/patriots-practice-report-treveyon-henderson-makes-returns",
+          "source": "SBN NE"
+        }
+      ]
+    },
+    {
       "name": "Juwan Johnson",
       "pos": "TE",
       "team": "NO",
@@ -1601,28 +1701,6 @@
           "text": "Matthew Golden led the Packers in route share (87%) and target share (30%) in Week 1. He ran 92.5% of his routes from the perimeter. He's also one of three players with multiple end-zone targets this week (Juwan Johnson, Demarcus Robinson).",
           "url": "https://bsky.app/profile/lateroundqb.bsky.social/post/3mvi6yjike423",
           "source": "Bluesky @lateroundqb.bsky.social"
-        }
-      ]
-    },
-    {
-      "name": "Brock Purdy",
-      "pos": "QB",
-      "team": "SF",
-      "adp": 105.5,
-      "adp_prior": 103.1,
-      "adp_move": -2.4,
-      "proj": null,
-      "sleeper_weight": 0.75,
-      "score": 2.372,
-      "unpriced": false,
-      "signals": [
-        "starter"
-      ],
-      "items": [
-        {
-          "text": "11 Winners from the 49ers&#8217; blowout win over the Rams. When you outclass your opponent in the way that the San Francisco 49ers did to the Los Angeles Rams, it&#8217;s difficult to come up with multiple &#8220;losers.&#8221; The Niners won by 20, but it felt like the margin was greater. Brock Pu",
-          "url": "https://www.ninersnation.com/san-francisco-49ers-scores-results/162617/11-winners-from-the-49ers-blowout-win-over-the-rams",
-          "source": "SBN SF"
         }
       ]
     },
@@ -1649,105 +1727,60 @@
       ]
     },
     {
-      "name": "Denzel Boston",
+      "name": "Malik Nabers",
       "pos": "WR",
-      "team": "CLE",
-      "adp": 148.7,
-      "adp_prior": 142.9,
-      "adp_move": -5.8,
+      "team": "NYG",
+      "adp": 22.8,
+      "adp_prior": 21.9,
+      "adp_move": -0.9,
       "proj": null,
-      "sleeper_weight": 1.1,
-      "score": 2.277,
-      "unpriced": false,
+      "sleeper_weight": 0.3,
+      "score": 2.273,
+      "unpriced": true,
       "signals": [
-        "targets"
+        "acl",
+        "injury",
+        "training camp",
+        "walkthrough"
       ],
       "items": [
         {
-          "text": "Fantasy Football Waiver Wire Pickups, Week 2: Kaelon Black, Denzel Boston among top targets to add. Justin Boone takes you through his top players to add off the waiver wire for fantasy football in Week 2.",
-          "url": "https://sports.yahoo.com/fantasy/article/fantasy-football-waiver-wire-pickups-week-2-kaelon-black-denzel-boston-among-top-targets-to-add-170648838.html",
-          "source": "Yahoo NFL"
-        }
-      ]
-    },
-    {
-      "name": "Dalton Kincaid",
-      "pos": "TE",
-      "team": "BUF",
-      "adp": 116.6,
-      "adp_prior": 119.6,
-      "adp_move": 3.0,
-      "proj": null,
-      "sleeper_weight": 1.1,
-      "score": 2.277,
-      "unpriced": false,
-      "signals": [
-        "carries",
-        "snap",
-        "targets"
-      ],
-      "items": [
-        {
-          "text": "Fantasy Football Usage & Production Report. The fantasy football Week 1 usage report breaks down the snap counts, routes, targets, carries and situational roles that matter for fantasy managers. Travis Etienne Jr., Chuba Hubbard, Dalton Kincaid and Mark Andrews are among the players with notable uti",
-          "url": "https://www.pff.com/news/fantasy-football-usage-production-report/",
-          "source": "PFF"
-        }
-      ]
-    },
-    {
-      "name": "Mark Andrews",
-      "pos": "TE",
-      "team": "BAL",
-      "adp": 137.1,
-      "adp_prior": 134.8,
-      "adp_move": -2.3,
-      "proj": null,
-      "sleeper_weight": 1.1,
-      "score": 2.277,
-      "unpriced": false,
-      "signals": [
-        "carries",
-        "snap",
-        "targets"
-      ],
-      "items": [
-        {
-          "text": "Fantasy Football Usage & Production Report. The fantasy football Week 1 usage report breaks down the snap counts, routes, targets, carries and situational roles that matter for fantasy managers. Travis Etienne Jr., Chuba Hubbard, Dalton Kincaid and Mark Andrews are among the players with notable uti",
-          "url": "https://www.pff.com/news/fantasy-football-usage-production-report/",
-          "source": "PFF"
-        }
-      ]
-    },
-    {
-      "name": "Kaelon Black",
-      "pos": "RB",
-      "team": "SF",
-      "adp": 166.8,
-      "adp_prior": 185.5,
-      "adp_move": 18.7,
-      "proj": null,
-      "sleeper_weight": 1.5,
-      "score": 2.259,
-      "unpriced": false,
-      "signals": [
-        "sleeper",
-        "targets"
-      ],
-      "items": [
-        {
-          "text": "Week 2 waiver wire targets\n\n- Kaelon Black szn\n- A rare opportunity to add a team's top wide receiver\n- Balancing the TEs who had nice stats vs. those with nice route participation rates.\n- Plenty of sleeper QBs who had great Week 1's\n\nwww.pff.com/news/fantasy...",
-          "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3mvhc2apo2c2i",
-          "source": "Bluesky @ffnatejahnke.bsky.social"
+          "text": "NY Giants John Harbaugh \u2018couldn\u2019t pass up\u2019 chance to tackle Malik Nabers. During training camp, New York Giants coach John Harbaugh said he couldn\u2019t imagine Malik Nabers returning to action from his 2025 torn ACL before getting at least some physical contact during practices. After Nabers played Sun",
+          "url": "https://www.bigblueview.com/new-york-giants-news/171296/ohn-harbaugh-malik-nabers-tackle-explanation",
+          "source": "SBN NYG"
         },
         {
-          "text": "Fantasy Football Waiver Wire Pickups, Week 2: Kaelon Black, Denzel Boston among top targets to add. Justin Boone takes you through his top players to add off the waiver wire for fantasy football in Week 2.",
-          "url": "https://sports.yahoo.com/fantasy/article/fantasy-football-waiver-wire-pickups-week-2-kaelon-black-denzel-boston-among-top-targets-to-add-170648838.html",
-          "source": "Yahoo NFL"
+          "text": "How John Harbaugh helped Malik Nabers get over mental hurdle in return from knee injury. The first-year Giants coach took an unorthodox approach in preparing his star receiver for Week 1",
+          "url": "https://www.cbssports.com/nfl/news/how-john-harbaugh-helped-malik-nabers-in-return/",
+          "source": "CBS Sports NFL"
+        }
+      ]
+    },
+    {
+      "name": "Trey McBride",
+      "pos": "TE",
+      "team": "ARI",
+      "adp": 29.8,
+      "adp_prior": 29.6,
+      "adp_move": -0.2,
+      "proj": null,
+      "sleeper_weight": 0.5,
+      "score": 2.242,
+      "unpriced": true,
+      "signals": [
+        "ahead of",
+        "target share"
+      ],
+      "items": [
+        {
+          "text": "Trey McBride averaged 0.46 PPR points per route run last year. In Week 1, he was up to 0.72. He saw a 35% target share for Arizona.",
+          "url": "https://bsky.app/profile/lateroundqb.bsky.social/post/3mvi6yjimcy23",
+          "source": "Bluesky @lateroundqb.bsky.social"
         },
         {
-          "text": "Fantasy football waiver wire targets: NFL Week 2. Fantasy football Week 2 waiver wire targets include Kaelon Black, Jordan Love, Malik Washington and several players with expanded roles after the season opener. Black emerged as San Francisco\u2019s clear No. 2 running back, while Miami\u2019s revamped receivi",
-          "url": "https://www.pff.com/news/fantasy-football-waiver-wire-targets-2026/",
-          "source": "PFF"
+          "text": "Arizona Cardinals news: Trey McBride leads NFL in receptions, 2nd in yards after Week One. So no one\u2019s surprise, star tight end Trey McBride sits at the top of the NFL in at least on category after the Cardinals\u2019 Week One win over the Chargers. With nine receptions on Sunday, he sits atop the league",
+          "url": "https://www.revengeofthebirds.com/arizona-cardinals-news/94371/arizona-cardinals-news-trey-mcbride-dalton-kincaid",
+          "source": "SBN ARI"
         }
       ]
     },
@@ -1804,6 +1837,76 @@
       ]
     },
     {
+      "name": "A.J. Brown",
+      "pos": "WR",
+      "team": "NE",
+      "adp": 18.4,
+      "adp_prior": 18.5,
+      "adp_move": 0.1,
+      "proj": null,
+      "sleeper_weight": 0.3,
+      "score": 2.135,
+      "unpriced": true,
+      "signals": [
+        "ahead of",
+        "injured",
+        "injury",
+        "ir",
+        "sidelined",
+        "snaps"
+      ],
+      "items": [
+        {
+          "text": "Kyle Williams among Patriots ready to step up after A.J. Brown injury. The New England Patriots are set to be without star wide receiver A.J. Brown for at least the next month after he landed on injured reserve with a high-ankle sprain. It\u2019s a significant loss for the Patriots\u2019 passing attack, but o",
+          "url": "https://www.patspulpit.com/new-england-patriots-news/137222/kyle-williams-ready-to-step-up-aj-brown-injury",
+          "source": "SBN NE"
+        },
+        {
+          "text": "New Patriots DT DaQuan Jones \u2018still has some good snaps ahead of him\u2019. A.J. Brown\u2019s high-ankle sprain and subsequent trip to injured reserve created an open spot on the New England Patriots\u2019 53-man roster. They could have opted for another wide receiver to fill it, but instead chose to bring in a ve",
+          "url": "https://www.patspulpit.com/new-england-patriots-news/137192/daquan-jones-signed-explained-mike-vrabel",
+          "source": "SBN NE"
+        },
+        {
+          "text": "2026 NFL Week 2 Injury Report: A.J. Brown to IR, updates on Ladd McConkey, Zay Flowers. Track the injuries to know around the NFL, all in one place.",
+          "url": "https://sports.yahoo.com/articles/2026-nfl-week-2-injury-185938645.html",
+          "source": "Yahoo NFL"
+        },
+        {
+          "text": "2026 NFL Week 2 injury panic meter: Myles Garrett, A.J. Brown, Sam Darnold sidelined with lower body issues. Gauging the outlook for some of the league's biggest Week 1 injuries",
+          "url": "https://www.cbssports.com/nfl/news/2026-nfl-week-2-injury-panic-meter-myles-garrett-a-j-brown-sam-darnold/",
+          "source": "CBS Sports NFL"
+        }
+      ]
+    },
+    {
+      "name": "Kaelon Black",
+      "pos": "RB",
+      "team": "SF",
+      "adp": 166.8,
+      "adp_prior": 185.5,
+      "adp_move": 18.7,
+      "proj": null,
+      "sleeper_weight": 1.5,
+      "score": 2.044,
+      "unpriced": false,
+      "signals": [
+        "sleeper",
+        "targets"
+      ],
+      "items": [
+        {
+          "text": "Week 2 waiver wire targets\n\n- Kaelon Black szn\n- A rare opportunity to add a team's top wide receiver\n- Balancing the TEs who had nice stats vs. those with nice route participation rates.\n- Plenty of sleeper QBs who had great Week 1's\n\nwww.pff.com/news/fantasy...",
+          "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3mvhc2apo2c2i",
+          "source": "Bluesky @ffnatejahnke.bsky.social"
+        },
+        {
+          "text": "Fantasy football waiver wire targets: NFL Week 2. Fantasy football Week 2 waiver wire targets include Kaelon Black, Jordan Love, Malik Washington and several players with expanded roles after the season opener. Black emerged as San Francisco\u2019s clear No. 2 running back, while Miami\u2019s revamped receivi",
+          "url": "https://www.pff.com/news/fantasy-football-waiver-wire-targets-2026/",
+          "source": "PFF"
+        }
+      ]
+    },
+    {
       "name": "Keaton Mitchell",
       "pos": "RB",
       "team": "LAC",
@@ -1846,6 +1949,54 @@
           "text": "Jacory Croskey-Merritt and Rachaad White were fairly even in snap rate: 49% for JCM, 40% for White. Bill played 64% of the early-down snaps, while White played 93% of the third-down ones. They each ran 14 routes.",
           "url": "https://bsky.app/profile/lateroundqb.bsky.social/post/3mvi6yjildm23",
           "source": "Bluesky @lateroundqb.bsky.social"
+        }
+      ]
+    },
+    {
+      "name": "Dalton Kincaid",
+      "pos": "TE",
+      "team": "BUF",
+      "adp": 116.6,
+      "adp_prior": 119.6,
+      "adp_move": 3.0,
+      "proj": null,
+      "sleeper_weight": 1.1,
+      "score": 1.98,
+      "unpriced": false,
+      "signals": [
+        "carries",
+        "snap",
+        "targets"
+      ],
+      "items": [
+        {
+          "text": "Fantasy Football Usage & Production Report. The fantasy football Week 1 usage report breaks down the snap counts, routes, targets, carries and situational roles that matter for fantasy managers. Travis Etienne Jr., Chuba Hubbard, Dalton Kincaid and Mark Andrews are among the players with notable uti",
+          "url": "https://www.pff.com/news/fantasy-football-usage-production-report/",
+          "source": "PFF"
+        }
+      ]
+    },
+    {
+      "name": "Mark Andrews",
+      "pos": "TE",
+      "team": "BAL",
+      "adp": 137.1,
+      "adp_prior": 134.8,
+      "adp_move": -2.3,
+      "proj": null,
+      "sleeper_weight": 1.1,
+      "score": 1.98,
+      "unpriced": false,
+      "signals": [
+        "carries",
+        "snap",
+        "targets"
+      ],
+      "items": [
+        {
+          "text": "Fantasy Football Usage & Production Report. The fantasy football Week 1 usage report breaks down the snap counts, routes, targets, carries and situational roles that matter for fantasy managers. Travis Etienne Jr., Chuba Hubbard, Dalton Kincaid and Mark Andrews are among the players with notable uti",
+          "url": "https://www.pff.com/news/fantasy-football-usage-production-report/",
+          "source": "PFF"
         }
       ]
     },
@@ -1904,30 +2055,6 @@
       ]
     },
     {
-      "name": "Mike Evans",
-      "pos": "WR",
-      "team": "SF",
-      "adp": 56.6,
-      "adp_prior": 53.1,
-      "adp_move": -3.5,
-      "proj": null,
-      "sleeper_weight": 0.5,
-      "score": 1.797,
-      "unpriced": false,
-      "signals": [
-        "carted",
-        "injury",
-        "snaps"
-      ],
-      "items": [
-        {
-          "text": "What will the 49ers do during De\u2019Zhaun Stribling\u2019s absence?. The San Francisco 49ers made it back from Australia with a big victory, but rookie wide receiver De\u2019Zhaun Stribling suffered an ankle injury and will miss some time. Stribling started the game with veteran Mike Evans, which is a sign of hi",
-          "url": "https://www.ninersnation.com/san-francisco-49ers-analysis/162649/what-will-the-49ers-do-during-dezhaun-striblings-absence",
-          "source": "SBN SF"
-        }
-      ]
-    },
-    {
       "name": "Ja'Kobi Lane",
       "pos": "WR",
       "team": "BAL",
@@ -1946,28 +2073,6 @@
           "text": "Ravens rookie WR Ja'Kobi Lane has been ruled out due to a wrist injury.",
           "url": "https://bsky.app/profile/rapsheet.bsky.social/post/3mvgcgws5nk2m",
           "source": "Bluesky @rapsheet.bsky.social"
-        }
-      ]
-    },
-    {
-      "name": "Trey McBride",
-      "pos": "TE",
-      "team": "ARI",
-      "adp": 29.8,
-      "adp_prior": 29.6,
-      "adp_move": -0.2,
-      "proj": null,
-      "sleeper_weight": 0.5,
-      "score": 1.76,
-      "unpriced": true,
-      "signals": [
-        "target share"
-      ],
-      "items": [
-        {
-          "text": "Trey McBride averaged 0.46 PPR points per route run last year. In Week 1, he was up to 0.72. He saw a 35% target share for Arizona.",
-          "url": "https://bsky.app/profile/lateroundqb.bsky.social/post/3mvi6yjimcy23",
-          "source": "Bluesky @lateroundqb.bsky.social"
         }
       ]
     },
@@ -2012,29 +2117,6 @@
           "text": "Bengals\u2019 Ted Karras recounts the time he saved Mike Gesicki\u2019s life during their time with the Dolphins. Cincinnati Bengals tight end Mike Gesicki came up big in Week 1. In a game where Ja\u2019Marr Chase was contained and Tee Higgins was limited, Gesicki became Joe Burrow\u2019s top target as the Tampa Bay Bu",
           "url": "https://www.cincyjungle.com/198908/ted-karras-saved-mike-gesicki-life-choke-bengals-dolphins",
           "source": "SBN CIN"
-        }
-      ]
-    },
-    {
-      "name": "Alec Pierce",
-      "pos": "WR",
-      "team": "IND",
-      "adp": 91.5,
-      "adp_prior": 94.4,
-      "adp_move": 2.9,
-      "proj": null,
-      "sleeper_weight": 0.75,
-      "score": 1.688,
-      "unpriced": false,
-      "signals": [
-        "snap",
-        "workload"
-      ],
-      "items": [
-        {
-          "text": "Alec Pierce expected to be on snap count vs. Ravens. Alec Pierce will play for the Colts against the Ravens, but he will not be a full-go in Week 1. NFL Network\u2019s Mike Garafolo reported Sunday morning that Pierce will be on a snap count in Indianapolis\u2019 season opener against Baltimore. Garafolo said",
-          "url": "https://www.stampedeblue.com/indianapolis-colts-news/127296/alec-pierce-expected-to-be-on-snap-count-vs-ravens",
-          "source": "SBN IND"
         }
       ]
     },
@@ -2151,6 +2233,30 @@
       ]
     },
     {
+      "name": "Mike Evans",
+      "pos": "WR",
+      "team": "SF",
+      "adp": 56.6,
+      "adp_prior": 53.1,
+      "adp_move": -3.5,
+      "proj": null,
+      "sleeper_weight": 0.5,
+      "score": 1.562,
+      "unpriced": false,
+      "signals": [
+        "carted",
+        "injury",
+        "snaps"
+      ],
+      "items": [
+        {
+          "text": "What will the 49ers do during De\u2019Zhaun Stribling\u2019s absence?. The San Francisco 49ers made it back from Australia with a big victory, but rookie wide receiver De\u2019Zhaun Stribling suffered an ankle injury and will miss some time. Stribling started the game with veteran Mike Evans, which is a sign of hi",
+          "url": "https://www.ninersnation.com/san-francisco-49ers-analysis/162649/what-will-the-49ers-do-during-dezhaun-striblings-absence",
+          "source": "SBN SF"
+        }
+      ]
+    },
+    {
       "name": "Emmett Johnson",
       "pos": "RB",
       "team": "KC",
@@ -2169,28 +2275,6 @@
           "text": "Chiefs halftime RB snap count\n\nKenneth Walker 28\nEmmett Johnson 10\n\nOut of 38 plays",
           "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3mvjix462o223",
           "source": "Bluesky @ffnatejahnke.bsky.social"
-        }
-      ]
-    },
-    {
-      "name": "D.J. Moore",
-      "pos": "WR",
-      "team": "BUF",
-      "adp": 49.8,
-      "adp_prior": 52.8,
-      "adp_move": 3.0,
-      "proj": null,
-      "sleeper_weight": 0.5,
-      "score": 1.438,
-      "unpriced": false,
-      "signals": [
-        "injury"
-      ],
-      "items": [
-        {
-          "text": "Buffalo Bills injury update: Cole Bishop, D.J. Moore &#038; more. The Buffalo Bills had a few players make us hold our collective breath during Sunday\u2019s win over the Houston Texans, but none of the bumps and bruises appear likely to keep anyone off the field when the Bills turn around and play again",
-          "url": "https://www.buffalorumblings.com/buffalo-bills-injuries/140149/buffalo-bills-injury-update-cole-bishop-d-j-moore-more",
-          "source": "SBN BUF"
         }
       ]
     },
@@ -2235,36 +2319,6 @@
           "text": "Josh Downs snap rate",
           "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3mvgjbxy2wc2g",
           "source": "Bluesky @ffnatejahnke.bsky.social"
-        }
-      ]
-    },
-    {
-      "name": "Justin Jefferson",
-      "pos": "WR",
-      "team": "MIN",
-      "adp": 11.3,
-      "adp_prior": 10.9,
-      "adp_move": -0.4,
-      "proj": null,
-      "sleeper_weight": 0.3,
-      "score": 1.334,
-      "unpriced": true,
-      "signals": [
-        "best player",
-        "snaps",
-        "standout",
-        "target share"
-      ],
-      "items": [
-        {
-          "text": "Justin Jefferson had a 39% target share this week. Dating back to last season, with Carson Wentz under center, Jefferson's averaged a 2.55 yards per route run rate and 0.50 PPR points per route run. With JJ McCarthy, those numbers are 1.73 and 0.36.",
-          "url": "https://bsky.app/profile/lateroundqb.bsky.social/post/3mvi6yjildi23",
-          "source": "Bluesky @lateroundqb.bsky.social"
-        },
-        {
-          "text": "PFF grades are LIVE: NFL Week 1. NFL Week 1 featured standout performances across the league, with PFF Grades highlighting the best player from each completed game. Zay Flowers, T.J. Watt, Jaxon Smith-Njigba and Justin Jefferson are among the players who led their respective matchups. See the highes",
-          "url": "https://www.pff.com/news/nfl-pff-grades-are-live-nfl-week-1/",
-          "source": "PFF"
         }
       ]
     },
@@ -2314,31 +2368,32 @@
       ]
     },
     {
-      "name": "Travis Etienne Jr.",
-      "pos": "RB",
-      "team": "NO",
-      "adp": 37.3,
-      "adp_prior": 40.3,
-      "adp_move": 3.0,
+      "name": "Justin Jefferson",
+      "pos": "WR",
+      "team": "MIN",
+      "adp": 11.3,
+      "adp_prior": 10.9,
+      "adp_move": -0.4,
       "proj": null,
-      "sleeper_weight": 0.5,
-      "score": 1.293,
-      "unpriced": false,
+      "sleeper_weight": 0.3,
+      "score": 1.308,
+      "unpriced": true,
       "signals": [
-        "carries",
-        "snap",
-        "targets"
+        "best player",
+        "snaps",
+        "standout",
+        "target share"
       ],
       "items": [
         {
-          "text": "Fantasy Football Usage & Production Report. The fantasy football Week 1 usage report breaks down the snap counts, routes, targets, carries and situational roles that matter for fantasy managers. Travis Etienne Jr., Chuba Hubbard, Dalton Kincaid and Mark Andrews are among the players with notable uti",
-          "url": "https://www.pff.com/news/fantasy-football-usage-production-report/",
-          "source": "PFF"
+          "text": "Justin Jefferson had a 39% target share this week. Dating back to last season, with Carson Wentz under center, Jefferson's averaged a 2.55 yards per route run rate and 0.50 PPR points per route run. With JJ McCarthy, those numbers are 1.73 and 0.36.",
+          "url": "https://bsky.app/profile/lateroundqb.bsky.social/post/3mvi6yjildi23",
+          "source": "Bluesky @lateroundqb.bsky.social"
         },
         {
-          "text": "Saints 1st half RB snap count\n\nTravis Etienne Jr. 17\nCJ Donaldson 10\nKendre Miller 10\n\nOut of 35 plays",
-          "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3mvgbkffgcs2t",
-          "source": "Bluesky @ffnatejahnke.bsky.social"
+          "text": "PFF grades are LIVE: NFL Week 1. NFL Week 1 featured standout performances across the league, with PFF Grades highlighting the best player from each completed game. Zay Flowers, T.J. Watt, Jaxon Smith-Njigba and Justin Jefferson are among the players who led their respective matchups. See the highes",
+          "url": "https://www.pff.com/news/nfl-pff-grades-are-live-nfl-week-1/",
+          "source": "PFF"
         }
       ]
     },
@@ -2365,31 +2420,6 @@
       ]
     },
     {
-      "name": "A.J. Brown",
-      "pos": "WR",
-      "team": "NE",
-      "adp": 18.4,
-      "adp_prior": 18.5,
-      "adp_move": 0.1,
-      "proj": null,
-      "sleeper_weight": 0.3,
-      "score": 1.2,
-      "unpriced": true,
-      "signals": [
-        "injured",
-        "injury",
-        "ir",
-        "placed on"
-      ],
-      "items": [
-        {
-          "text": "A.J. Brown injury: Patriots receiver to miss more than 4 games on IR. The New England Patriots did not just lose their season opener against the Seattle Seahawks last Wednesday, they also lost wide receiver A.J. Brown to injury. The high-prized offseason trade acquisition suffered a high-ankle sprai",
-          "url": "https://www.patspulpit.com/new-england-patriots-injuries/137172/aj-brown-injury-patriots-receiver-to-miss-6-weeks-high-ankle-sprain",
-          "source": "SBN NE"
-        }
-      ]
-    },
-    {
       "name": "De'Zhaun Stribling",
       "pos": "WR",
       "team": "SF",
@@ -2398,7 +2428,7 @@
       "adp_move": 13.1,
       "proj": null,
       "sleeper_weight": 0.75,
-      "score": 1.128,
+      "score": 1.113,
       "unpriced": false,
       "signals": [
         "carted",
@@ -2532,30 +2562,6 @@
       ]
     },
     {
-      "name": "Jaxon Smith-Njigba",
-      "pos": "WR",
-      "team": "SEA",
-      "adp": 5.8,
-      "adp_prior": 5.5,
-      "adp_move": -0.3,
-      "proj": null,
-      "sleeper_weight": 0.3,
-      "score": 0.994,
-      "unpriced": true,
-      "signals": [
-        "best player",
-        "snaps",
-        "standout"
-      ],
-      "items": [
-        {
-          "text": "PFF grades are LIVE: NFL Week 1. NFL Week 1 featured standout performances across the league, with PFF Grades highlighting the best player from each completed game. Zay Flowers, T.J. Watt, Jaxon Smith-Njigba and Justin Jefferson are among the players who led their respective matchups. See the highes",
-          "url": "https://www.pff.com/news/nfl-pff-grades-are-live-nfl-week-1/",
-          "source": "PFF"
-        }
-      ]
-    },
-    {
       "name": "Lamar Jackson",
       "pos": "QB",
       "team": "BAL",
@@ -2575,29 +2581,6 @@
           "text": "Ravens Snap Count Analysis, Week 1: Wide receiver shuffling amidst injuries. The Baltimore Ravens were victorious in the season opener yesterday, defeating the Indianapolis Colts in a 41-23 win. Here is a breakdown of the team\u2019s player snap counts on offense and defense. Offense Jackson and the star",
           "url": "https://www.baltimorebeatdown.com/baltimore-ravens-scores-results/84879/ravens-snap-count-analysis-week-1-wide-receiver-shuffling-amidst-injuries",
           "source": "SBN BAL"
-        }
-      ]
-    },
-    {
-      "name": "Jadarian Price",
-      "pos": "RB",
-      "team": "SEA",
-      "adp": 54.9,
-      "adp_prior": 59.1,
-      "adp_move": 4.2,
-      "proj": null,
-      "sleeper_weight": 0.5,
-      "score": 0.936,
-      "unpriced": false,
-      "signals": [
-        "carries",
-        "snaps"
-      ],
-      "items": [
-        {
-          "text": "Pre-Snap Reads: Week 1 indicators for Jadarian Price\u2019s role in Seahawks O. Will he get more carries/snaps versus the Cardinals? Or nah?",
-          "url": "https://sports.yahoo.com/articles/pre-snap-reads-week-1-140035173.html",
-          "source": "Yahoo NFL"
         }
       ]
     },
@@ -2642,6 +2625,30 @@
           "text": "Running backs with a 50%+ route share this week alongside a targets per route run rate of 30%+: Bijan Robinson, Christian McCaffrey, Bucky Irving, Ashton Jeanty, Chase Brown",
           "url": "https://bsky.app/profile/lateroundqb.bsky.social/post/3mvi6yjike323",
           "source": "Bluesky @lateroundqb.bsky.social"
+        }
+      ]
+    },
+    {
+      "name": "Travis Etienne Jr.",
+      "pos": "RB",
+      "team": "NO",
+      "adp": 37.3,
+      "adp_prior": 40.3,
+      "adp_move": 3.0,
+      "proj": null,
+      "sleeper_weight": 0.5,
+      "score": 0.9,
+      "unpriced": false,
+      "signals": [
+        "carries",
+        "snap",
+        "targets"
+      ],
+      "items": [
+        {
+          "text": "Fantasy Football Usage & Production Report. The fantasy football Week 1 usage report breaks down the snap counts, routes, targets, carries and situational roles that matter for fantasy managers. Travis Etienne Jr., Chuba Hubbard, Dalton Kincaid and Mark Andrews are among the players with notable uti",
+          "url": "https://www.pff.com/news/fantasy-football-usage-production-report/",
+          "source": "PFF"
         }
       ]
     },
@@ -2778,6 +2785,30 @@
       ]
     },
     {
+      "name": "Jaxon Smith-Njigba",
+      "pos": "WR",
+      "team": "SEA",
+      "adp": 5.8,
+      "adp_prior": 5.5,
+      "adp_move": -0.3,
+      "proj": null,
+      "sleeper_weight": 0.3,
+      "score": 0.864,
+      "unpriced": true,
+      "signals": [
+        "best player",
+        "snaps",
+        "standout"
+      ],
+      "items": [
+        {
+          "text": "PFF grades are LIVE: NFL Week 1. NFL Week 1 featured standout performances across the league, with PFF Grades highlighting the best player from each completed game. Zay Flowers, T.J. Watt, Jaxon Smith-Njigba and Justin Jefferson are among the players who led their respective matchups. See the highes",
+          "url": "https://www.pff.com/news/nfl-pff-grades-are-live-nfl-week-1/",
+          "source": "PFF"
+        }
+      ]
+    },
+    {
       "name": "Ja'Marr Chase",
       "pos": "WR",
       "team": "CIN",
@@ -2786,21 +2817,15 @@
       "adp_move": 0.0,
       "proj": null,
       "sleeper_weight": 0.3,
-      "score": 0.645,
+      "score": 0.569,
       "unpriced": true,
       "signals": [
-        "limited",
-        "shining"
+        "limited"
       ],
       "items": [
         {
           "text": "Bengals\u2019 Ted Karras recounts the time he saved Mike Gesicki\u2019s life during their time with the Dolphins. Cincinnati Bengals tight end Mike Gesicki came up big in Week 1. In a game where Ja\u2019Marr Chase was contained and Tee Higgins was limited, Gesicki became Joe Burrow\u2019s top target as the Tampa Bay Bu",
           "url": "https://www.cincyjungle.com/198908/ted-karras-saved-mike-gesicki-life-choke-bengals-dolphins",
-          "source": "SBN CIN"
-        },
-        {
-          "text": "Bengals beating Bucs without offensive stars shining bodes well for rest of the season. The Cincinnati Bengals&#8217; 33-27 win over the Tampa Bay Buccaneers was a fairly tightly contested affair. You can take so many things away \u2014 both positively and negatively \u2014 from this game. One thing that is a",
-          "url": "https://www.cincyjungle.com/198762/bengals-defense-buccaneers-jamarr-chase-joe-burrow",
           "source": "SBN CIN"
         }
       ]
@@ -2814,21 +2839,15 @@
       "adp_move": -2.3,
       "proj": null,
       "sleeper_weight": 0.3,
-      "score": 0.637,
+      "score": 0.54,
       "unpriced": false,
       "signals": [
-        "snaps",
         "targets"
       ],
       "items": [
         {
           "text": "Running backs with a 50%+ route share this week alongside a targets per route run rate of 30%+: Bijan Robinson, Christian McCaffrey, Bucky Irving, Ashton Jeanty, Chase Brown",
           "url": "https://bsky.app/profile/lateroundqb.bsky.social/post/3mvi6yjike323",
-          "source": "Bluesky @lateroundqb.bsky.social"
-        },
-        {
-          "text": "Ashton Jeanty played 73% of Vegas' offensive snaps on Sunday compared to Mike Washington's 19%.",
-          "url": "https://bsky.app/profile/lateroundqb.bsky.social/post/3mvi6yjike223",
           "source": "Bluesky @lateroundqb.bsky.social"
         }
       ]
