@@ -1,16 +1,16 @@
 {
-  "generated": "2026-09-16T15:49:48.687294+00:00",
+  "generated": "2026-09-16T19:50:58.411787+00:00",
   "stats": {
-    "n_items": 659,
-    "n_players": 103,
-    "n_unpriced": 65,
+    "n_items": 646,
+    "n_players": 106,
+    "n_unpriced": 67,
     "by_source": {
       "Bluesky @minakimes.bsky.social": 32,
-      "Bluesky @rapsheet.bsky.social": 18,
-      "Bluesky @jourdanrodrigue.bsky.social": 15,
+      "Bluesky @rapsheet.bsky.social": 16,
+      "Bluesky @jourdanrodrigue.bsky.social": 10,
       "Bluesky @lateroundqb.bsky.social": 40,
-      "Bluesky @sethwalder.bsky.social": 38,
-      "Bluesky @nateatkins.bsky.social": 15,
+      "Bluesky @sethwalder.bsky.social": 37,
+      "Bluesky @nateatkins.bsky.social": 14,
       "Bluesky @ffnatejahnke.bsky.social": 40,
       "ProFootballTalk": 30,
       "Yahoo NFL": 49,
@@ -29,9 +29,9 @@
       "SBN DEN": 10,
       "SBN DET": 10,
       "SBN GB": 10,
-      "SBN HOU": 7,
+      "SBN HOU": 6,
       "SBN IND": 10,
-      "SBN JAX": 7,
+      "SBN JAX": 6,
       "SBN KC": 10,
       "SBN LAC": 10,
       "SBN LAR": 10,
@@ -46,12 +46,12 @@
       "SBN PIT": 10,
       "SBN SEA": 10,
       "SBN SF": 10,
-      "SBN TB": 6,
+      "SBN TB": 4,
       "SBN TEN": 6,
       "SBN WAS": 10
     },
-    "adp_latest": "2026-09-15",
-    "adp_prior": "2026-09-01",
+    "adp_latest": "2026-09-16",
+    "adp_prior": "2026-09-02",
     "nitter": "configured but returning nothing: https://nitter.net",
     "history_days": 21
   },
@@ -65,14 +65,20 @@
       "adp_move": 0.2,
       "proj": null,
       "sleeper_weight": 1.8,
-      "score": 11.84,
+      "score": 11.928,
       "unpriced": true,
       "signals": [
+        "injured",
         "injury",
         "practice squad",
         "promoted"
       ],
       "items": [
+        {
+          "text": "The 49ers promoted WR KhaDarel Hodge to the 53-man roster and placed TE Jake Tonges (MCL) on injured reserve. They also signed TE Jack Stoll to the practice squad.",
+          "url": "https://bsky.app/profile/rapsheet.bsky.social/post/3mvnrgfnqv22x",
+          "source": "Bluesky @rapsheet.bsky.social"
+        },
         {
           "text": "49ers sign former Bengals 3rd-round pick to the practice squad; promote Brayden Willis. The San Francisco 49ers announced they have promoted tight end Brayden Willis to the active roster. He is expected to replace Jake Tonges. Needing an Alfred Collins replacement, the team signed defensive tackle M",
           "url": "https://www.ninersnation.com/san-francisco-roster/162717/49ers-sign-former-bengals-3rd-round-pick-to-the-practice-squad-promote-brayden-willis",
@@ -82,6 +88,92 @@
           "text": "49ers sign Jack Stoll to the practice squad after Jake Tonges injury. The San Francisco 49ers hosted five players for a tryout after tight end Jake Tonges and defensive tackle Alfred Collins suffered injuries. The team already added a defensive tackle to the practice squad on Tuesday. Here are the t",
           "url": "https://www.ninersnation.com/san-francisco-49ers-injuries/162725/49ers-sign-jack-stoll-to-the-practice-squad-after-jake-tonges-injury",
           "source": "SBN SF"
+        }
+      ]
+    },
+    {
+      "name": "KhaDarel Hodge",
+      "pos": "WR",
+      "team": "SF",
+      "adp": 216.0,
+      "adp_prior": 216.0,
+      "adp_move": 0.0,
+      "proj": null,
+      "sleeper_weight": 1.8,
+      "score": 11.746,
+      "unpriced": true,
+      "signals": [
+        "injured",
+        "ir",
+        "practice squad",
+        "promoted",
+        "snaps"
+      ],
+      "items": [
+        {
+          "text": "The 49ers promoted WR KhaDarel Hodge to the 53-man roster and placed TE Jake Tonges (MCL) on injured reserve. They also signed TE Jack Stoll to the practice squad.",
+          "url": "https://bsky.app/profile/rapsheet.bsky.social/post/3mvnrgfnqv22x",
+          "source": "Bluesky @rapsheet.bsky.social"
+        },
+        {
+          "text": "49ers promote practice squad receiver after placing De\u2019Zhaun Stribling on the IR. ESPN\u2019s Jeremy Fowler tweeted that the San Francisco 49ers are promoting wide receiver KhaDarel Hodge to the active roster. That creates an open spot on the practice squad, which we\u2019ll likely find out about later on Wed",
+          "url": "https://www.ninersnation.com/san-francisco-49ers-news/162753/49ers-promote-practice-squad-receiver-after-placing-dezhaun-stribling-on-the-ir",
+          "source": "SBN SF"
+        }
+      ]
+    },
+    {
+      "name": "Jack Stoll",
+      "pos": "TE",
+      "team": "FA",
+      "adp": 216.0,
+      "adp_prior": 216.0,
+      "adp_move": 0.0,
+      "proj": null,
+      "sleeper_weight": 1.8,
+      "score": 11.718,
+      "unpriced": true,
+      "signals": [
+        "injured",
+        "injury",
+        "practice squad",
+        "promoted"
+      ],
+      "items": [
+        {
+          "text": "The 49ers promoted WR KhaDarel Hodge to the 53-man roster and placed TE Jake Tonges (MCL) on injured reserve. They also signed TE Jack Stoll to the practice squad.",
+          "url": "https://bsky.app/profile/rapsheet.bsky.social/post/3mvnrgfnqv22x",
+          "source": "Bluesky @rapsheet.bsky.social"
+        },
+        {
+          "text": "49ers sign Jack Stoll to the practice squad after Jake Tonges injury. The San Francisco 49ers hosted five players for a tryout after tight end Jake Tonges and defensive tackle Alfred Collins suffered injuries. The team already added a defensive tackle to the practice squad on Tuesday. Here are the t",
+          "url": "https://www.ninersnation.com/san-francisco-49ers-injuries/162725/49ers-sign-jack-stoll-to-the-practice-squad-after-jake-tonges-injury",
+          "source": "SBN SF"
+        }
+      ]
+    },
+    {
+      "name": "Nick Muse",
+      "pos": "TE",
+      "team": "ATL",
+      "adp": 216.0,
+      "adp_prior": 216.0,
+      "adp_move": 0.0,
+      "proj": null,
+      "sleeper_weight": 1.8,
+      "score": 11.7,
+      "unpriced": true,
+      "signals": [
+        "injured",
+        "ir",
+        "out for",
+        "promoted"
+      ],
+      "items": [
+        {
+          "text": "Falcons put Da\u2019Shawn Hand on IR, promote TE Nick Muse to active roster. The Atlanta Falcons have made it official, placing Da\u2019Shawn Hand on injured reserve with an ailment that\u2019s expected to knock him out for the rest of the season. The team has promoted tight end Nick Muse to the 53 man roster in a",
+          "url": "https://www.thefalcoholic.com/atlanta-falcons-news/96274/falcons-put-dashawn-hand-on-ir-promote-te-nick-muse-to-active-roster-khalil-herbert-drake-jackson",
+          "source": "SBN ATL"
         }
       ]
     },
@@ -122,13 +214,10 @@
       "adp_move": 0.0,
       "proj": null,
       "sleeper_weight": 1.8,
-      "score": 10.736,
+      "score": 9.914,
       "unpriced": true,
       "signals": [
-        "hamstring",
-        "injured",
         "injury",
-        "ir",
         "practice squad"
       ],
       "items": [
@@ -141,11 +230,6 @@
           "text": "Chargers signing WR Gary Jennings to active roster. On Tuesday afternoon, CBS Sports\u2019 Matt Zenitz reported that the Chargers are signing wide receiver Gary Jennings to the active roster following an injury to wideout KeAndre Lambert-Smith. Jennings spent this past offseason with the Chargers where h",
           "url": "https://www.boltsfromtheblue.com/los-angeles-chargers-roster/65486/chargers-signing-gary-jennings-keandre-lambert-smith-injury",
           "source": "SBN LAC"
-        },
-        {
-          "text": "Chargers put WR KeAndre Lambert-Smith on IR. Wide receiver KeAndre Lambert-Smith injured his hamstring in Sunday's loss to the Cardinals and he's going to be out of action for at least the next month as a result.",
-          "url": "https://www.nbcsports.com/nfl/profootballtalk/rumor-mill/news/chargers-put-wr-keandre-lambert-smith-on-ir",
-          "source": "ProFootballTalk"
         }
       ]
     },
@@ -171,6 +255,33 @@
           "text": "Seahawks hold tryouts for 3 defensive players, including national champion from Indiana. The Seattle Seahawks are gearing up for their Week 2 divisional showdown with the Arizona Cardinals, most likely with Drew Lock as the starter in place of the injured Sam Darnold. Ahead of Wednesday\u2019s practice (",
           "url": "https://www.fieldgulls.com/seattle-seahawks-roster/24480979/seahawks-roster-news-hold-tryouts-3-defensive-players-including-indiana-national-champion",
           "source": "SBN SEA"
+        }
+      ]
+    },
+    {
+      "name": "DeeJay Dallas",
+      "pos": "RB",
+      "team": "MIN",
+      "adp": 216.0,
+      "adp_prior": 216.0,
+      "adp_move": 0.0,
+      "proj": null,
+      "sleeper_weight": 1.8,
+      "score": 8.588,
+      "unpriced": true,
+      "signals": [
+        "ir"
+      ],
+      "items": [
+        {
+          "text": "Vikings RB Jordan Mason has a small fracture in his thumb, and it has been fixed, per coach Kevin O\u2019Connell. He\u2019s on short-term IR but should be back quickly.\n\nThe team also added DeeJay Dallas to the roster.",
+          "url": "https://bsky.app/profile/rapsheet.bsky.social/post/3mvnsokesls2n",
+          "source": "Bluesky @rapsheet.bsky.social"
+        },
+        {
+          "text": "Vikings place Jordan Mason on IR, sign DeeJay Dallas to 53-man roster. The Vikings will not have one of their key contributors at running back for at least the next four weeks.",
+          "url": "https://www.nbcsports.com/nfl/profootballtalk/rumor-mill/news/vikings-place-jordan-mason-on-ir-sign-deejay-dallas-to-53-man-roster",
+          "source": "ProFootballTalk"
         }
       ]
     },
@@ -219,6 +330,47 @@
       ]
     },
     {
+      "name": "Sam Darnold",
+      "pos": "QB",
+      "team": "SEA",
+      "adp": 144.5,
+      "adp_prior": 143.4,
+      "adp_move": -1.1,
+      "proj": null,
+      "sleeper_weight": 1.1,
+      "score": 8.37,
+      "unpriced": true,
+      "signals": [
+        "ahead of",
+        "injured",
+        "injury",
+        "out for",
+        "sidelined"
+      ],
+      "items": [
+        {
+          "text": "Seahawks rule Sam Darnold out for Week 2. The team does not plan to put Darnold on injured reserve.",
+          "url": "https://www.nbcsports.com/nfl/profootballtalk/rumor-mill/news/seahawks-rule-sam-darnold-out-for-week-2",
+          "source": "ProFootballTalk"
+        },
+        {
+          "text": "With Sam Darnold out, who could the Seahawks look to sign as a third quarterback?. With Sam Darnold dealing with a glute injury that will likely sideline him for the \u201cshort-term\u201d, the Seattle Seahawks may not need to go looking for other starting quarterback options. However, there have been reports",
+          "url": "https://www.fieldgulls.com/seattle-seahawks-injury-report/174833/sam-darnold-injury-who-could-seahawks-look-to-sign-third-quarterback-options",
+          "source": "SBN SEA"
+        },
+        {
+          "text": "2026 NFL Week 2 injury panic meter: Myles Garrett, A.J. Brown, Sam Darnold sidelined with lower body issues. Gauging the outlook for some of the league's biggest Week 1 injuries",
+          "url": "https://www.cbssports.com/nfl/news/2026-nfl-week-2-injury-panic-meter-myles-garrett-a-j-brown-sam-darnold/",
+          "source": "CBS Sports NFL"
+        },
+        {
+          "text": "Arizona Cardinals open as underdogs ahead of matchup with Seattle Seahawks. Happy Victory Monday one and all. Despite everyone not seeing a path, the Arizona Cardinals found a way to victory over the Los Angeles Chargers. Now the question is\u2026 can they do it again? The Arizona Cardinals are 1-0, the ",
+          "url": "https://www.revengeofthebirds.com/arizona-cardinals-odds/94585/arizona-cardinals-open-as-underdogs-ahead-of-matchup-with-seattle-seahawks",
+          "source": "SBN ARI"
+        }
+      ]
+    },
+    {
       "name": "Jimmy Horn Jr.",
       "pos": "WR",
       "team": "CAR",
@@ -261,70 +413,6 @@
           "text": "Chargers sign two-time Super Bowl champion to practice squad. The Los Angeles Chargers are boosting their wide receiver room going into Week 2 against the Las Vegas Raiders. According to ESPN insider Jeremy Fowler, the Chargers are signing wide receiver Marquez Valdes-Scantling to the practice squad",
           "url": "https://www.boltsfromtheblue.com/los-angeles-chargers-news/65498/chargers-sign-two-time-super-bowl-champion-to-practice-squad",
           "source": "SBN LAC"
-        }
-      ]
-    },
-    {
-      "name": "Jack Stoll",
-      "pos": "TE",
-      "team": "FA",
-      "adp": 216.0,
-      "adp_prior": 216.0,
-      "adp_move": 0.0,
-      "proj": null,
-      "sleeper_weight": 1.8,
-      "score": 8.28,
-      "unpriced": true,
-      "signals": [
-        "injury",
-        "practice squad"
-      ],
-      "items": [
-        {
-          "text": "49ers sign Jack Stoll to the practice squad after Jake Tonges injury. The San Francisco 49ers hosted five players for a tryout after tight end Jake Tonges and defensive tackle Alfred Collins suffered injuries. The team already added a defensive tackle to the practice squad on Tuesday. Here are the t",
-          "url": "https://www.ninersnation.com/san-francisco-49ers-injuries/162725/49ers-sign-jack-stoll-to-the-practice-squad-after-jake-tonges-injury",
-          "source": "SBN SF"
-        }
-      ]
-    },
-    {
-      "name": "Sam Darnold",
-      "pos": "QB",
-      "team": "SEA",
-      "adp": 144.5,
-      "adp_prior": 143.4,
-      "adp_move": -1.1,
-      "proj": null,
-      "sleeper_weight": 1.1,
-      "score": 8.144,
-      "unpriced": true,
-      "signals": [
-        "ahead of",
-        "injured",
-        "injury",
-        "sidelined",
-        "starter"
-      ],
-      "items": [
-        {
-          "text": "Seahawks hold tryouts for 3 defensive players, including national champion from Indiana. The Seattle Seahawks are gearing up for their Week 2 divisional showdown with the Arizona Cardinals, most likely with Drew Lock as the starter in place of the injured Sam Darnold. Ahead of Wednesday\u2019s practice (",
-          "url": "https://www.fieldgulls.com/seattle-seahawks-roster/24480979/seahawks-roster-news-hold-tryouts-3-defensive-players-including-indiana-national-champion",
-          "source": "SBN SEA"
-        },
-        {
-          "text": "With Sam Darnold out, who could the Seahawks look to sign as a third quarterback?. With Sam Darnold dealing with a glute injury that will likely sideline him for the \u201cshort-term\u201d, the Seattle Seahawks may not need to go looking for other starting quarterback options. However, there have been reports",
-          "url": "https://www.fieldgulls.com/seattle-seahawks-injury-report/174833/sam-darnold-injury-who-could-seahawks-look-to-sign-third-quarterback-options",
-          "source": "SBN SEA"
-        },
-        {
-          "text": "Seahawks say Sam Darnold has \u2018very unique soft-tissue\u2019 but \u2018short-term\u2019 injury. After several contradicting reports on Seattle Seahawks quarterback Sam Darnold\u2019s injury, confirmation on exactly what he\u2019s dealing with has come to light. According to ESPN\u2019s Brady Henderson, a team spokesperson confirm",
-          "url": "https://www.fieldgulls.com/seattle-seahawks-news/174781/nfl-news-seahawks-sam-darnold-very-unique-soft-tissue-short-term-injury-update",
-          "source": "SBN SEA"
-        },
-        {
-          "text": "2026 NFL Week 2 injury panic meter: Myles Garrett, A.J. Brown, Sam Darnold sidelined with lower body issues. Gauging the outlook for some of the league's biggest Week 1 injuries",
-          "url": "https://www.cbssports.com/nfl/news/2026-nfl-week-2-injury-panic-meter-myles-garrett-a-j-brown-sam-darnold/",
-          "source": "CBS Sports NFL"
         }
       ]
     },
@@ -419,29 +507,6 @@
       ]
     },
     {
-      "name": "Kyle Williams",
-      "pos": "WR",
-      "team": "NE",
-      "adp": 214.8,
-      "adp_prior": 214.0,
-      "adp_move": -0.8,
-      "proj": null,
-      "sleeper_weight": 1.8,
-      "score": 7.2,
-      "unpriced": true,
-      "signals": [
-        "injured",
-        "injury"
-      ],
-      "items": [
-        {
-          "text": "Kyle Williams among Patriots ready to step up after A.J. Brown injury. The New England Patriots are set to be without star wide receiver A.J. Brown for at least the next month after he landed on injured reserve with a high-ankle sprain. It\u2019s a significant loss for the Patriots\u2019 passing attack, but o",
-          "url": "https://www.patspulpit.com/new-england-patriots-news/137222/kyle-williams-ready-to-step-up-aj-brown-injury",
-          "source": "SBN NE"
-        }
-      ]
-    },
-    {
       "name": "Tyler Goodson",
       "pos": "RB",
       "team": "ATL",
@@ -459,40 +524,6 @@
         {
           "text": "Cowboys poach RB Tyler Goodson off Falcons practice squad. Looking for some good news? Well, too bad. The Falcons lost Tyler Goodson, who was a productive runner and receiver this summer and was the team\u2019s de facto third running back, to the Dallas Cowboys. Because Goodson was on the practice squad,",
           "url": "https://www.thefalcoholic.com/atlanta-falcons-news/96223/cowboys-poach-rb-tyler-goodson-off-falcons-practice-squad",
-          "source": "SBN ATL"
-        }
-      ]
-    },
-    {
-      "name": "Cooper Rush",
-      "pos": "QB",
-      "team": "ATL",
-      "adp": 216.0,
-      "adp_prior": 216.0,
-      "adp_move": 0.0,
-      "proj": null,
-      "sleeper_weight": 1.8,
-      "score": 6.372,
-      "unpriced": true,
-      "signals": [
-        "limited",
-        "slot",
-        "snap"
-      ],
-      "items": [
-        {
-          "text": "Falcons &#8211; Steelers recap: New faces, an all-too-familiar result. Atlanta was dealt a tough hand going against the Pittsburgh Steelers on the road with a limited Cooper Rush under center. They looked at their cards, arched an eyebrow, and proceeded to play that lousy hand\u2026well, let\u2019s say not as",
-          "url": "https://www.thefalcoholic.com/atlanta-falcons-analysis/96113/falcons-steelers-recap-new-faces-an-all-too-familiar-loss-cooper-rush-bijan-robinson",
-          "source": "SBN ATL"
-        },
-        {
-          "text": "Falcons snap counts 2026: Who played in the Week 1 loss to the Steelers?. We\u2019ve had a day to sit and ponder this Week 1 loss, and I know what you\u2019re thinking: Snap counts would help me process this. Fortunately, I have those for you to start your Tuesday morning off right. Offense QB Cooper Rush: 60",
-          "url": "https://www.thefalcoholic.com/atlanta-falcons-game-information/96192/falcons-snap-counts-2026-who-played-in-the-week-1-loss-to-the-steelers",
-          "source": "SBN ATL"
-        },
-        {
-          "text": "Cooper Rush seems likely to start at QB for Falcons vs. Panthers in Week 2. We\u2019ll know for certain on Wednesday. But there was a change to the Falcons media availability schedule for this week that hit my inbox Tuesday morning, and the \u201cstarting QB\u201d press conference scheduled for Wednesday now has C",
-          "url": "https://www.thefalcoholic.com/atlanta-falcons-depth-chart/96234/cooper-rush-starting-quarterback-week-2-carolina-panthers-tua-tagovailoa-michael-penix-jr-jack-strand",
           "source": "SBN ATL"
         }
       ]
@@ -632,29 +663,6 @@
       ]
     },
     {
-      "name": "Brayden Willis",
-      "pos": "TE",
-      "team": "SF",
-      "adp": 216.0,
-      "adp_prior": 216.0,
-      "adp_move": 0.0,
-      "proj": null,
-      "sleeper_weight": 1.8,
-      "score": 5.692,
-      "unpriced": true,
-      "signals": [
-        "practice squad",
-        "promoted"
-      ],
-      "items": [
-        {
-          "text": "49ers sign former Bengals 3rd-round pick to the practice squad; promote Brayden Willis. The San Francisco 49ers announced they have promoted tight end Brayden Willis to the active roster. He is expected to replace Jake Tonges. Needing an Alfred Collins replacement, the team signed defensive tackle M",
-          "url": "https://www.ninersnation.com/san-francisco-roster/162717/49ers-sign-former-bengals-3rd-round-pick-to-the-practice-squad-promote-brayden-willis",
-          "source": "SBN SF"
-        }
-      ]
-    },
-    {
       "name": "Lawrence Cager",
       "pos": "TE",
       "team": "FA",
@@ -714,11 +722,12 @@
       "adp_move": -6.8,
       "proj": null,
       "sleeper_weight": 1.5,
-      "score": 5.495,
+      "score": 5.415,
       "unpriced": false,
       "signals": [
         "injured",
         "injury",
+        "ir",
         "practice squad"
       ],
       "items": [
@@ -728,9 +737,37 @@
           "source": "SBN NYG"
         },
         {
-          "text": "We have Jets injury updates on Omar Cooper and Minkah Fitzpatrick. The Jets lost a pair of starters to injury in their Week 1 win over the Tennessee Titans. Wide receiver Omar Cooper suffered an ankle sprain and has been termed \u201cweek-to-week\u201d per Ian Rapoport. He will miss time, but at this point th",
-          "url": "https://www.ganggreennation.com/new-york-jets-injuries/96516/we-have-jets-injury-updates-on-omar-cooper-and-minkah-fitzpatrick",
-          "source": "SBN NYJ"
+          "text": "Jets\u2019 Minkah Fitzpatrick, Omar Cooper Jr. week-to-week, won\u2019t require IR \u2018as of now\u2019. The Jets have received relatively good news on two of their injured players.",
+          "url": "https://sports.yahoo.com/articles/jets-minkah-fitzpatrick-omar-cooper-183437966.html",
+          "source": "Yahoo NFL"
+        }
+      ]
+    },
+    {
+      "name": "Cooper Rush",
+      "pos": "QB",
+      "team": "ATL",
+      "adp": 216.0,
+      "adp_prior": 216.0,
+      "adp_move": 0.0,
+      "proj": null,
+      "sleeper_weight": 1.8,
+      "score": 5.369,
+      "unpriced": true,
+      "signals": [
+        "slot",
+        "snap"
+      ],
+      "items": [
+        {
+          "text": "Falcons snap counts 2026: Who played in the Week 1 loss to the Steelers?. We\u2019ve had a day to sit and ponder this Week 1 loss, and I know what you\u2019re thinking: Snap counts would help me process this. Fortunately, I have those for you to start your Tuesday morning off right. Offense QB Cooper Rush: 60",
+          "url": "https://www.thefalcoholic.com/atlanta-falcons-game-information/96192/falcons-snap-counts-2026-who-played-in-the-week-1-loss-to-the-steelers",
+          "source": "SBN ATL"
+        },
+        {
+          "text": "Cooper Rush seems likely to start at QB for Falcons vs. Panthers in Week 2. We\u2019ll know for certain on Wednesday. But there was a change to the Falcons media availability schedule for this week that hit my inbox Tuesday morning, and the \u201cstarting QB\u201d press conference scheduled for Wednesday now has C",
+          "url": "https://www.thefalcoholic.com/atlanta-falcons-depth-chart/96234/cooper-rush-starting-quarterback-week-2-carolina-panthers-tua-tagovailoa-michael-penix-jr-jack-strand",
+          "source": "SBN ATL"
         }
       ]
     },
@@ -933,31 +970,25 @@
       ]
     },
     {
-      "name": "Deshaun Watson",
-      "pos": "QB",
-      "team": "CLE",
-      "adp": 215.2,
-      "adp_prior": 215.0,
-      "adp_move": -0.2,
+      "name": "Brayden Willis",
+      "pos": "TE",
+      "team": "SF",
+      "adp": 216.0,
+      "adp_prior": 216.0,
+      "adp_move": 0.0,
       "proj": null,
       "sleeper_weight": 1.8,
-      "score": 5.094,
+      "score": 4.95,
       "unpriced": true,
       "signals": [
-        "ir",
-        "snap",
-        "starter"
+        "practice squad",
+        "promoted"
       ],
       "items": [
         {
-          "text": "Cleveland Browns news: More Week 1 takeaways, Deshaun Watson remains, Todd Monken speaks. It might take a while before Cleveland Browns fans are over Week 1 of the 2026 NFL season, but HC Todd Monken is moving on and moving on with QB Deshaun Watson still as his starter. Browns news around the web i",
-          "url": "https://www.dawgsbynature.com/cleveland-browns-news/132698/cleveland-browns-news-more-week-1-takeaways-deshaun-watson-remains-todd-monken-speaks",
-          "source": "SBN CLE"
-        },
-        {
-          "text": "Browns roster: 8 moves made on Tuesday, including Dylan Sampson to IR. Sorting through the rubble of Week 1 for the Cleveland Browns has been a bit of a chore. Very few positives, although Deshaun Watson to Denzel Boston led the NFL in air yards, and a whole lot of concerns, including about the team",
-          "url": "https://www.dawgsbynature.com/cleveland-browns-roster-players/132746/browns-roster-8-moves-made-on-tuesday-including-dylan-sampson-to-ir",
-          "source": "SBN CLE"
+          "text": "49ers sign former Bengals 3rd-round pick to the practice squad; promote Brayden Willis. The San Francisco 49ers announced they have promoted tight end Brayden Willis to the active roster. He is expected to replace Jake Tonges. Needing an Alfred Collins replacement, the team signed defensive tackle M",
+          "url": "https://www.ninersnation.com/san-francisco-roster/162717/49ers-sign-former-bengals-3rd-round-pick-to-the-practice-squad-promote-brayden-willis",
+          "source": "SBN SF"
         }
       ]
     },
@@ -1051,23 +1082,76 @@
       ]
     },
     {
-      "name": "Jacoby Brissett",
+      "name": "Deshaun Watson",
       "pos": "QB",
-      "team": "ARI",
-      "adp": 194.8,
-      "adp_prior": 200.9,
-      "adp_move": 6.1,
+      "team": "CLE",
+      "adp": 215.2,
+      "adp_prior": 215.0,
+      "adp_move": -0.2,
       "proj": null,
       "sleeper_weight": 1.8,
-      "score": 4.118,
-      "unpriced": false,
+      "score": 4.099,
+      "unpriced": true,
       "signals": [
-        "starter"
+        "ir",
+        "snap"
       ],
       "items": [
         {
-          "text": "Jacoby Brissett leads the NFL in passing yards since becoming the Cardinals' starter. Brissett's 277 passing yards on Sunday helped the Cardinals beat the Chargers.",
-          "url": "https://www.nbcsports.com/nfl/profootballtalk/rumor-mill/news/jacoby-brissett-leads-the-nfl-in-passing-yards-since-becoming-the-cardinals-starter",
+          "text": "Browns roster: 8 moves made on Tuesday, including Dylan Sampson to IR. Sorting through the rubble of Week 1 for the Cleveland Browns has been a bit of a chore. Very few positives, although Deshaun Watson to Denzel Boston led the NFL in air yards, and a whole lot of concerns, including about the team",
+          "url": "https://www.dawgsbynature.com/cleveland-browns-roster-players/132746/browns-roster-8-moves-made-on-tuesday-including-dylan-sampson-to-ir",
+          "source": "SBN CLE"
+        }
+      ]
+    },
+    {
+      "name": "Jalen Hurts",
+      "pos": "QB",
+      "team": "PHI",
+      "adp": 73.4,
+      "adp_prior": 72.7,
+      "adp_move": -0.7,
+      "proj": null,
+      "sleeper_weight": 0.75,
+      "score": 3.9,
+      "unpriced": true,
+      "signals": [
+        "hamstring",
+        "injured",
+        "out for"
+      ],
+      "items": [
+        {
+          "text": "Commanders roster moves: Backup linebacker moved to injured reserve. Jalen Hurts\u2019 22-yard scramble on a key 3rd-and-18 was impactful in Philadelphia\u2019s 24-22 victory over the Washington Commanders. It was longer lasting for Washington than just one game. Linebacker Jordan Magee got hurt on that play,",
+          "url": "https://www.hogshaven.com/washington-commanders-injuries/440739/commanders-roster-moves-jordan-magee-injured-reserve",
+          "source": "SBN WAS"
+        }
+      ]
+    },
+    {
+      "name": "Kyler Murray",
+      "pos": "QB",
+      "team": "MIN",
+      "adp": 116.6,
+      "adp_prior": 114.0,
+      "adp_move": -2.6,
+      "proj": null,
+      "sleeper_weight": 1.1,
+      "score": 3.506,
+      "unpriced": false,
+      "signals": [
+        "injury",
+        "limited"
+      ],
+      "items": [
+        {
+          "text": "When will Kyler Murray return? Vikings QB suffered concussion Week 1. Will Kyler Murray play this week? Minnesota Vikings QB in concussion protocol after Week 1. Here's the latest injury update.",
+          "url": "https://sports.yahoo.com/articles/kyler-murray-return-vikings-qb-192952986.html",
+          "source": "Yahoo NFL"
+        },
+        {
+          "text": "Kyler Murray will be a limited participant in Wednesday's practice. Murray is progressing through the concussion protocol after sustaining a hard hit on Sunday.",
+          "url": "https://www.nbcsports.com/nfl/profootballtalk/rumor-mill/news/kyler-murray-will-be-a-limited-participant-in-wednesdays-practice",
           "source": "ProFootballTalk"
         }
       ]
@@ -1161,30 +1245,24 @@
       ]
     },
     {
-      "name": "Patrick Mahomes",
+      "name": "Joe Burrow",
       "pos": "QB",
-      "team": "KC",
-      "adp": 101.8,
-      "adp_prior": 97.7,
-      "adp_move": -4.1,
+      "team": "CIN",
+      "adp": 67.3,
+      "adp_prior": 68.7,
+      "adp_move": 1.4,
       "proj": null,
       "sleeper_weight": 0.75,
-      "score": 3.054,
-      "unpriced": false,
+      "score": 3.12,
+      "unpriced": true,
       "signals": [
-        "acl",
-        "limited"
+        "injury"
       ],
       "items": [
         {
-          "text": "Seahawks fan discussion: How will Kenneth Walker III do in his Chiefs debut?. The final game of Week 1 of the 2026 NFL season is an all-AFC West affair between the Kansas City Chiefs and Denver Broncos. While Patrick Mahomes\u2019 return from his ACL tear is the main story, for Seattle Seahawks fans we\u2019l",
-          "url": "https://www.fieldgulls.com/seattle-seahawks-discussion/174774/seahawks-fan-discussion-how-will-kenneth-walker-iii-do-chiefs-debut-vs-broncos-mnf",
-          "source": "SBN SEA"
-        },
-        {
-          "text": "NFL Week 1 statistical review: Kansas City Chiefs vs. Denver Broncos. The Kansas City Chiefs defeated the Denver Broncos 31-10 on Monday Night Football in Patrick Mahomes\u2019 return. Kansas City limited Denver after its opening touchdown drive while converting two crucial fourth downs into eventual tou",
-          "url": "https://www.pff.com/news/nfl-week-1-statistical-review-kansas-city-chiefs-vs-denver-broncos/",
-          "source": "PFF"
+          "text": "Joe Burrow dealing with back tightness, expects to play against Texans. Bengals quarterback Joe Burrow will be on this week's injury report, but he doesn't expect to be at risk of missing Sunday's game against the Texans.",
+          "url": "https://www.nbcsports.com/nfl/profootballtalk/rumor-mill/news/joe-burrow-dealing-with-back-tightness-expects-to-play-against-texans",
+          "source": "ProFootballTalk"
         }
       ]
     },
@@ -1256,6 +1334,45 @@
       ]
     },
     {
+      "name": "Jordan Mason",
+      "pos": "RB",
+      "team": "MIN",
+      "adp": 91.4,
+      "adp_prior": 96.2,
+      "adp_move": 4.8,
+      "proj": null,
+      "sleeper_weight": 0.75,
+      "score": 2.853,
+      "unpriced": false,
+      "signals": [
+        "injured",
+        "ir",
+        "snaps"
+      ],
+      "items": [
+        {
+          "text": "Vikings Place Jordan Mason on Injured Reserve. The Minnesota Vikings, who already have some issues offensively, will now have to go through the early part of their season without their lead running back. The Vikings announced on Wednesday that they have placed running back Jordan Mason on injured re",
+          "url": "https://www.dailynorseman.com/minnesota-vikings-injuries/99211/minnesota-vikings-place-jordan-mason-injured-reserve",
+          "source": "SBN MIN"
+        },
+        {
+          "text": "Vikings RB Jordan Mason has a small fracture in his thumb, and it has been fixed, per coach Kevin O\u2019Connell. He\u2019s on short-term IR but should be back quickly.\n\nThe team also added DeeJay Dallas to the roster.",
+          "url": "https://bsky.app/profile/rapsheet.bsky.social/post/3mvnsokesls2n",
+          "source": "Bluesky @rapsheet.bsky.social"
+        },
+        {
+          "text": "Vikings place Jordan Mason on IR, sign DeeJay Dallas to 53-man roster. The Vikings will not have one of their key contributors at running back for at least the next four weeks.",
+          "url": "https://www.nbcsports.com/nfl/profootballtalk/rumor-mill/news/vikings-place-jordan-mason-on-ir-sign-deejay-dallas-to-53-man-roster",
+          "source": "ProFootballTalk"
+        },
+        {
+          "text": "Jordan Mason saw 48% of Minnesota's offensive snaps vs. Aaron Jones' 43%. Neither player hit even a 25% route share.",
+          "url": "https://bsky.app/profile/lateroundqb.bsky.social/post/3mvi6yjildh23",
+          "source": "Bluesky @lateroundqb.bsky.social"
+        }
+      ]
+    },
+    {
       "name": "Denzel Boston",
       "pos": "WR",
       "team": "CLE",
@@ -1323,36 +1440,6 @@
       ]
     },
     {
-      "name": "Chuba Hubbard",
-      "pos": "RB",
-      "team": "CAR",
-      "adp": 101.3,
-      "adp_prior": 99.8,
-      "adp_move": -1.5,
-      "proj": null,
-      "sleeper_weight": 0.75,
-      "score": 2.669,
-      "unpriced": true,
-      "signals": [
-        "carries",
-        "snap",
-        "snaps",
-        "targets"
-      ],
-      "items": [
-        {
-          "text": "Fantasy Football Usage & Production Report. The fantasy football Week 1 usage report breaks down the snap counts, routes, targets, carries and situational roles that matter for fantasy managers. Travis Etienne Jr., Chuba Hubbard, Dalton Kincaid and Mark Andrews are among the players with notable uti",
-          "url": "https://www.pff.com/news/fantasy-football-usage-production-report/",
-          "source": "PFF"
-        },
-        {
-          "text": "Panthers RB playing time breakdown, per Next Gen Stats: \n\nChuba Hubbard 86% of snaps\nJonathon Brooks 17% of snaps",
-          "url": "https://bsky.app/profile/sethwalder.bsky.social/post/3mvgczf7kx32p",
-          "source": "Bluesky @sethwalder.bsky.social"
-        }
-      ]
-    },
-    {
       "name": "Dontayvion Wicks",
       "pos": "WR",
       "team": "PHI",
@@ -1371,48 +1458,6 @@
         {
           "text": "Dontayvion Wicks ran only one more route than Makai Lemon in Week 1, and Lemon had a 68% slot rate compared to Wicks' 27%. Both had an 18% target share, but Lemon had an air yards per target rate of zero. Wicks was at nearly 20. And it resulted in 15.3 PPR points vs. 2.5.",
           "url": "https://bsky.app/profile/lateroundqb.bsky.social/post/3mvi6yjildo23",
-          "source": "Bluesky @lateroundqb.bsky.social"
-        }
-      ]
-    },
-    {
-      "name": "Kenneth Walker III",
-      "pos": "RB",
-      "team": "KC",
-      "adp": 13.6,
-      "adp_prior": 13.9,
-      "adp_move": 0.3,
-      "proj": null,
-      "sleeper_weight": 0.3,
-      "score": 2.458,
-      "unpriced": true,
-      "signals": [
-        "acl",
-        "explosive",
-        "goal line",
-        "lead back",
-        "limited",
-        "snap"
-      ],
-      "items": [
-        {
-          "text": "Seahawks fan discussion: How will Kenneth Walker III do in his Chiefs debut?. The final game of Week 1 of the 2026 NFL season is an all-AFC West affair between the Kansas City Chiefs and Denver Broncos. While Patrick Mahomes\u2019 return from his ACL tear is the main story, for Seattle Seahawks fans we\u2019l",
-          "url": "https://www.fieldgulls.com/seattle-seahawks-discussion/174774/seahawks-fan-discussion-how-will-kenneth-walker-iii-do-chiefs-debut-vs-broncos-mnf",
-          "source": "SBN SEA"
-        },
-        {
-          "text": "Seahawks Super Bowl MVP Kenneth Walker III has career-high game in Chiefs debut. Kenneth Walker III wanted to prove he was a lead back when he left the Seattle Seahawks to sign with the Kansas City Chiefs in a huge free agent move. The Super Bowl MVP spent 2025 sharing lead back duties with Zach Cha",
-          "url": "https://www.fieldgulls.com/seattle-seahawks-news/174795/seahawks-super-bowl-mvp-kenneth-walker-iii-career-high-game-chiefs-debut-mnf",
-          "source": "SBN SEA"
-        },
-        {
-          "text": "Chiefs film review: Kenneth Walker makes explosive debut. The Kansas City Chiefs defeated the Denver Broncos 31-10 in a dominating effort at Arrowhead Stadium on Monday Night. In front of a packed house, the Chiefs dominated the Broncos from start to finish in an eye-opening display of firepower. Ma",
-          "url": "https://www.arrowheadpride.com/kansas-city-chiefs-analysis/210338/chiefs-film-review-kenneth-walker-explosive-debut",
-          "source": "SBN KC"
-        },
-        {
-          "text": "Kenneth Walker vulturing other running backs at the goal line? In this economy?",
-          "url": "https://bsky.app/profile/lateroundqb.bsky.social/post/3mvjlwdipg22f",
           "source": "Bluesky @lateroundqb.bsky.social"
         }
       ]
@@ -1441,24 +1486,43 @@
       ]
     },
     {
-      "name": "Caleb Williams",
-      "pos": "QB",
-      "team": "CHI",
-      "adp": 74.0,
-      "adp_prior": 73.8,
-      "adp_move": -0.2,
+      "name": "Kenneth Walker III",
+      "pos": "RB",
+      "team": "KC",
+      "adp": 13.6,
+      "adp_prior": 13.9,
+      "adp_move": 0.3,
       "proj": null,
-      "sleeper_weight": 0.75,
-      "score": 2.25,
+      "sleeper_weight": 0.3,
+      "score": 2.195,
       "unpriced": true,
       "signals": [
-        "explosive"
+        "explosive",
+        "goal line",
+        "lead back",
+        "limited",
+        "snap"
       ],
       "items": [
         {
-          "text": "10 Thoughts on the NFL: Chicago Bears put the League on notice, plus much more. 1. You know what? I\u2019m glad Pro Football Focus gave Caleb Williams a hilariously low grade for his explosive and efficient Week 1 performance against the Carolina Panthers, in which he accounted for four touchdowns. I act",
-          "url": "https://www.windycitygridiron.com/general/122757/10-thoughts-nfl-chicago-bears-nfl-cardinals-vikings-chiefs-ravens",
-          "source": "SBN CHI"
+          "text": "Seahawks Super Bowl MVP Kenneth Walker III has career-high game in Chiefs debut. Kenneth Walker III wanted to prove he was a lead back when he left the Seattle Seahawks to sign with the Kansas City Chiefs in a huge free agent move. The Super Bowl MVP spent 2025 sharing lead back duties with Zach Cha",
+          "url": "https://www.fieldgulls.com/seattle-seahawks-news/174795/seahawks-super-bowl-mvp-kenneth-walker-iii-career-high-game-chiefs-debut-mnf",
+          "source": "SBN SEA"
+        },
+        {
+          "text": "Chiefs film review: Kenneth Walker makes explosive debut. The Kansas City Chiefs defeated the Denver Broncos 31-10 in a dominating effort at Arrowhead Stadium on Monday Night. In front of a packed house, the Chiefs dominated the Broncos from start to finish in an eye-opening display of firepower. Ma",
+          "url": "https://www.arrowheadpride.com/kansas-city-chiefs-analysis/210338/chiefs-film-review-kenneth-walker-explosive-debut",
+          "source": "SBN KC"
+        },
+        {
+          "text": "Kenneth Walker vulturing other running backs at the goal line? In this economy?",
+          "url": "https://bsky.app/profile/lateroundqb.bsky.social/post/3mvjlwdipg22f",
+          "source": "Bluesky @lateroundqb.bsky.social"
+        },
+        {
+          "text": "Chiefs halftime RB snap count\n\nKenneth Walker 28\nEmmett Johnson 10\n\nOut of 38 plays",
+          "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3mvjix462o223",
+          "source": "Bluesky @ffnatejahnke.bsky.social"
         }
       ]
     },
@@ -1485,30 +1549,40 @@
       ]
     },
     {
-      "name": "Ja'Kobi Lane",
+      "name": "Zay Flowers",
       "pos": "WR",
       "team": "BAL",
-      "adp": 144.9,
-      "adp_prior": 149.4,
-      "adp_move": 4.5,
+      "adp": 32.5,
+      "adp_prior": 31.4,
+      "adp_move": -1.1,
       "proj": null,
-      "sleeper_weight": 1.1,
-      "score": 2.175,
-      "unpriced": false,
+      "sleeper_weight": 0.5,
+      "score": 2.19,
+      "unpriced": true,
       "signals": [
         "ahead of",
-        "injury"
+        "best player",
+        "explosive",
+        "hamstring",
+        "injury",
+        "snaps",
+        "standout"
       ],
       "items": [
         {
-          "text": "NFL news, live updates: Ravens WR Ja'Kobi Lane reportedly out about 4 weeks; in Josh Jacobs case, motion made to keep video sealed. Follow along with the latest NFL news ahead of Week 2.",
-          "url": "https://sports.yahoo.com/nfl/live/nfl-news-today-injury-updates-week-2-rumors-rosters-120656469.html",
+          "text": "NFL news, live updates: In Josh Jacobs case, motion made to keep video sealed; Zay Flowers not practicing Wednesday with hamstring injury. Follow along with the latest NFL news ahead of Week 2.",
+          "url": "https://sports.yahoo.com/nfl/live/nfl-news-today-injury-updates-rumors-week-2-rosters-120656469.html",
           "source": "Yahoo NFL"
         },
         {
-          "text": "Ravens rookie WR Ja'Kobi Lane has been ruled out due to a wrist injury.",
-          "url": "https://bsky.app/profile/rapsheet.bsky.social/post/3mvgcgws5nk2m",
-          "source": "Bluesky @rapsheet.bsky.social"
+          "text": "PFF grades are LIVE: NFL Week 1. NFL Week 1 featured standout performances across the league, with PFF Grades highlighting the best player from each completed game. Zay Flowers, T.J. Watt, Jaxon Smith-Njigba and Justin Jefferson are among the players who led their respective matchups. See the highes",
+          "url": "https://www.pff.com/news/nfl-pff-grades-are-live-nfl-week-1/",
+          "source": "PFF"
+        },
+        {
+          "text": "Instant takeaways from the Ravens\u2019 41-23 Week 1 win over the Colts. The Baltimore Ravens throttled the Indianapolis Colts by a score of 41-23 to kick off their 2026 season. Here are the instant takeaways from Baltimore Beatdown\u2019s staff! Explosives, explosives, explosives One positive takeaway from t",
+          "url": "https://www.baltimorebeatdown.com/baltimore-ravens-analysis/84961/instant-takeaways-from-the-ravens-41-23-week-1-win-over-the-colts",
+          "source": "SBN BAL"
         }
       ]
     },
@@ -1583,6 +1657,52 @@
           "text": "Broncos halftime WR snap count\n\nCourtland Sutton 22\nJaylden Waddle 20\nPat Bryant 19\nTroy Franklin 8\nMarvin Mims Jr. 3\n\nOut of 27 plays",
           "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3mvjivdqgfc23",
           "source": "Bluesky @ffnatejahnke.bsky.social"
+        }
+      ]
+    },
+    {
+      "name": "Chuba Hubbard",
+      "pos": "RB",
+      "team": "CAR",
+      "adp": 101.3,
+      "adp_prior": 99.8,
+      "adp_move": -1.5,
+      "proj": null,
+      "sleeper_weight": 0.75,
+      "score": 2.16,
+      "unpriced": true,
+      "signals": [
+        "carries",
+        "snap",
+        "targets"
+      ],
+      "items": [
+        {
+          "text": "Fantasy Football Usage & Production Report. The fantasy football Week 1 usage report breaks down the snap counts, routes, targets, carries and situational roles that matter for fantasy managers. Travis Etienne Jr., Chuba Hubbard, Dalton Kincaid and Mark Andrews are among the players with notable uti",
+          "url": "https://www.pff.com/news/fantasy-football-usage-production-report/",
+          "source": "PFF"
+        }
+      ]
+    },
+    {
+      "name": "Ja'Kobi Lane",
+      "pos": "WR",
+      "team": "BAL",
+      "adp": 144.9,
+      "adp_prior": 149.4,
+      "adp_move": 4.5,
+      "proj": null,
+      "sleeper_weight": 1.1,
+      "score": 2.059,
+      "unpriced": false,
+      "signals": [
+        "ir"
+      ],
+      "items": [
+        {
+          "text": "Ravens will put rookie WR Ja'Kobi Lane on IR. Ravens wide receiver Ja'Kobi Lane is going to miss the next stretch of the season.",
+          "url": "https://www.nbcsports.com/nfl/profootballtalk/rumor-mill/news/ravens-will-put-rookie-wr-jakobi-lane-on-ir",
+          "source": "ProFootballTalk"
         }
       ]
     },
@@ -1703,32 +1823,25 @@
       ]
     },
     {
-      "name": "Zay Flowers",
-      "pos": "WR",
-      "team": "BAL",
-      "adp": 32.5,
-      "adp_prior": 31.4,
-      "adp_move": -1.1,
+      "name": "TreVeyon Henderson",
+      "pos": "RB",
+      "team": "NE",
+      "adp": 65.3,
+      "adp_prior": 60.7,
+      "adp_move": -4.6,
       "proj": null,
-      "sleeper_weight": 0.5,
-      "score": 1.788,
-      "unpriced": true,
+      "sleeper_weight": 0.75,
+      "score": 1.95,
+      "unpriced": false,
       "signals": [
-        "best player",
-        "explosive",
-        "snaps",
-        "standout"
+        "injury",
+        "workload"
       ],
       "items": [
         {
-          "text": "PFF grades are LIVE: NFL Week 1. NFL Week 1 featured standout performances across the league, with PFF Grades highlighting the best player from each completed game. Zay Flowers, T.J. Watt, Jaxon Smith-Njigba and Justin Jefferson are among the players who led their respective matchups. See the highes",
-          "url": "https://www.pff.com/news/nfl-pff-grades-are-live-nfl-week-1/",
-          "source": "PFF"
-        },
-        {
-          "text": "Instant takeaways from the Ravens\u2019 41-23 Week 1 win over the Colts. The Baltimore Ravens throttled the Indianapolis Colts by a score of 41-23 to kick off their 2026 season. Here are the instant takeaways from Baltimore Beatdown\u2019s staff! Explosives, explosives, explosives One positive takeaway from t",
-          "url": "https://www.baltimorebeatdown.com/baltimore-ravens-analysis/84961/instant-takeaways-from-the-ravens-41-23-week-1-win-over-the-colts",
-          "source": "SBN BAL"
+          "text": "Mike Vrabel: TreVeyon Henderson will increase practice workload on Wednesday. There is some positive news on the injury front for one of New England's key young players.",
+          "url": "https://www.nbcsports.com/nfl/profootballtalk/rumor-mill/news/mike-vrabel-treveyon-henderson-will-increase-practice-workload-on-wednesday",
+          "source": "ProFootballTalk"
         }
       ]
     },
@@ -1921,58 +2034,6 @@
       ]
     },
     {
-      "name": "Kaelon Black",
-      "pos": "RB",
-      "team": "SF",
-      "adp": 166.8,
-      "adp_prior": 185.5,
-      "adp_move": 18.7,
-      "proj": null,
-      "sleeper_weight": 1.5,
-      "score": 1.65,
-      "unpriced": false,
-      "signals": [
-        "sleeper",
-        "targets"
-      ],
-      "items": [
-        {
-          "text": "Week 2 waiver wire targets\n\n- Kaelon Black szn\n- A rare opportunity to add a team's top wide receiver\n- Balancing the TEs who had nice stats vs. those with nice route participation rates.\n- Plenty of sleeper QBs who had great Week 1's\n\nwww.pff.com/news/fantasy...",
-          "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3mvhc2apo2c2i",
-          "source": "Bluesky @ffnatejahnke.bsky.social"
-        }
-      ]
-    },
-    {
-      "name": "A.J. Brown",
-      "pos": "WR",
-      "team": "NE",
-      "adp": 18.4,
-      "adp_prior": 18.5,
-      "adp_move": 0.1,
-      "proj": null,
-      "sleeper_weight": 0.3,
-      "score": 1.511,
-      "unpriced": true,
-      "signals": [
-        "injured",
-        "injury",
-        "sidelined"
-      ],
-      "items": [
-        {
-          "text": "Kyle Williams among Patriots ready to step up after A.J. Brown injury. The New England Patriots are set to be without star wide receiver A.J. Brown for at least the next month after he landed on injured reserve with a high-ankle sprain. It\u2019s a significant loss for the Patriots\u2019 passing attack, but o",
-          "url": "https://www.patspulpit.com/new-england-patriots-news/137222/kyle-williams-ready-to-step-up-aj-brown-injury",
-          "source": "SBN NE"
-        },
-        {
-          "text": "2026 NFL Week 2 injury panic meter: Myles Garrett, A.J. Brown, Sam Darnold sidelined with lower body issues. Gauging the outlook for some of the league's biggest Week 1 injuries",
-          "url": "https://www.cbssports.com/nfl/news/2026-nfl-week-2-injury-panic-meter-myles-garrett-a-j-brown-sam-darnold/",
-          "source": "CBS Sports NFL"
-        }
-      ]
-    },
-    {
       "name": "Josh Jacobs",
       "pos": "RB",
       "team": "GB",
@@ -1984,12 +2045,14 @@
       "score": 1.5,
       "unpriced": false,
       "signals": [
-        "ahead of"
+        "ahead of",
+        "hamstring",
+        "injury"
       ],
       "items": [
         {
-          "text": "NFL news, live updates: Ravens WR Ja'Kobi Lane reportedly out about 4 weeks; in Josh Jacobs case, motion made to keep video sealed. Follow along with the latest NFL news ahead of Week 2.",
-          "url": "https://sports.yahoo.com/nfl/live/nfl-news-today-injury-updates-week-2-rumors-rosters-120656469.html",
+          "text": "NFL news, live updates: In Josh Jacobs case, motion made to keep video sealed; Zay Flowers not practicing Wednesday with hamstring injury. Follow along with the latest NFL news ahead of Week 2.",
+          "url": "https://sports.yahoo.com/nfl/live/nfl-news-today-injury-updates-rumors-week-2-rosters-120656469.html",
           "source": "Yahoo NFL"
         }
       ]
@@ -2084,6 +2147,29 @@
       ]
     },
     {
+      "name": "Kaelon Black",
+      "pos": "RB",
+      "team": "SF",
+      "adp": 166.8,
+      "adp_prior": 185.5,
+      "adp_move": 18.7,
+      "proj": null,
+      "sleeper_weight": 1.5,
+      "score": 1.32,
+      "unpriced": false,
+      "signals": [
+        "sleeper",
+        "targets"
+      ],
+      "items": [
+        {
+          "text": "Week 2 waiver wire targets\n\n- Kaelon Black szn\n- A rare opportunity to add a team's top wide receiver\n- Balancing the TEs who had nice stats vs. those with nice route participation rates.\n- Plenty of sleeper QBs who had great Week 1's\n\nwww.pff.com/news/fantasy...",
+          "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3mvhc2apo2c2i",
+          "source": "Bluesky @ffnatejahnke.bsky.social"
+        }
+      ]
+    },
+    {
       "name": "Justin Jefferson",
       "pos": "WR",
       "team": "MIN",
@@ -2165,6 +2251,59 @@
       ]
     },
     {
+      "name": "De'Zhaun Stribling",
+      "pos": "WR",
+      "team": "SF",
+      "adp": 95.2,
+      "adp_prior": 108.3,
+      "adp_move": 13.1,
+      "proj": null,
+      "sleeper_weight": 0.75,
+      "score": 1.17,
+      "unpriced": false,
+      "signals": [
+        "injured",
+        "injury",
+        "ir",
+        "practice squad",
+        "snaps"
+      ],
+      "items": [
+        {
+          "text": "49ers to put WR De'Zhaun Stribling on injured reserve. 49ers rookie wide receiver De'Zhaun Stribling will miss at least four games due to the ankle injury he suffered in last Thursday's season-opening win over the Rams.",
+          "url": "https://www.nbcsports.com/nfl/profootballtalk/rumor-mill/news/49ers-to-put-wr-dezhaun-stribling-on-injured-reserve",
+          "source": "ProFootballTalk"
+        },
+        {
+          "text": "49ers promote practice squad receiver after placing De\u2019Zhaun Stribling on the IR. ESPN\u2019s Jeremy Fowler tweeted that the San Francisco 49ers are promoting wide receiver KhaDarel Hodge to the active roster. That creates an open spot on the practice squad, which we\u2019ll likely find out about later on Wed",
+          "url": "https://www.ninersnation.com/san-francisco-49ers-news/162753/49ers-promote-practice-squad-receiver-after-placing-dezhaun-stribling-on-the-ir",
+          "source": "SBN SF"
+        }
+      ]
+    },
+    {
+      "name": "Patrick Mahomes",
+      "pos": "QB",
+      "team": "KC",
+      "adp": 101.8,
+      "adp_prior": 97.7,
+      "adp_move": -4.1,
+      "proj": null,
+      "sleeper_weight": 0.75,
+      "score": 1.125,
+      "unpriced": false,
+      "signals": [
+        "limited"
+      ],
+      "items": [
+        {
+          "text": "NFL Week 1 statistical review: Kansas City Chiefs vs. Denver Broncos. The Kansas City Chiefs defeated the Denver Broncos 31-10 on Monday Night Football in Patrick Mahomes\u2019 return. Kansas City limited Denver after its opening touchdown drive while converting two crucial fourth downs into eventual tou",
+          "url": "https://www.pff.com/news/nfl-week-1-statistical-review-kansas-city-chiefs-vs-denver-broncos/",
+          "source": "PFF"
+        }
+      ]
+    },
+    {
       "name": "Drake Maye",
       "pos": "QB",
       "team": "NE",
@@ -2183,50 +2322,6 @@
           "text": "Week 2 NFL QB Power Rankings: Josh Allen, Lamar Jackson rise to the top; Drake Maye, Matthew Stafford tumble. Evaluating the NFL's 32 starting quarterbacks ahead of the second week of the 2026 regular season",
           "url": "https://www.cbssports.com/nfl/news/week-2-nfl-qb-power-rankings-josh-allen-lamar-jackson-rise-drake-maye-down/",
           "source": "CBS Sports NFL"
-        }
-      ]
-    },
-    {
-      "name": "Jordan Mason",
-      "pos": "RB",
-      "team": "MIN",
-      "adp": 91.4,
-      "adp_prior": 96.2,
-      "adp_move": 4.8,
-      "proj": null,
-      "sleeper_weight": 0.75,
-      "score": 1.08,
-      "unpriced": false,
-      "signals": [
-        "snaps"
-      ],
-      "items": [
-        {
-          "text": "Jordan Mason saw 48% of Minnesota's offensive snaps vs. Aaron Jones' 43%. Neither player hit even a 25% route share.",
-          "url": "https://bsky.app/profile/lateroundqb.bsky.social/post/3mvi6yjildh23",
-          "source": "Bluesky @lateroundqb.bsky.social"
-        }
-      ]
-    },
-    {
-      "name": "Jonathon Brooks",
-      "pos": "RB",
-      "team": "CAR",
-      "adp": 78.2,
-      "adp_prior": 75.7,
-      "adp_move": -2.5,
-      "proj": null,
-      "sleeper_weight": 0.75,
-      "score": 1.08,
-      "unpriced": false,
-      "signals": [
-        "snaps"
-      ],
-      "items": [
-        {
-          "text": "Panthers RB playing time breakdown, per Next Gen Stats: \n\nChuba Hubbard 86% of snaps\nJonathon Brooks 17% of snaps",
-          "url": "https://bsky.app/profile/sethwalder.bsky.social/post/3mvgczf7kx32p",
-          "source": "Bluesky @sethwalder.bsky.social"
         }
       ]
     },
@@ -2299,23 +2394,24 @@
       ]
     },
     {
-      "name": "Malik Nabers",
+      "name": "A.J. Brown",
       "pos": "WR",
-      "team": "NYG",
-      "adp": 22.8,
-      "adp_prior": 21.9,
-      "adp_move": -0.9,
+      "team": "NE",
+      "adp": 18.4,
+      "adp_prior": 18.5,
+      "adp_move": 0.1,
       "proj": null,
       "sleeper_weight": 0.3,
       "score": 0.96,
       "unpriced": true,
       "signals": [
-        "injury"
+        "injury",
+        "sidelined"
       ],
       "items": [
         {
-          "text": "How John Harbaugh helped Malik Nabers get over mental hurdle in return from knee injury. The first-year Giants coach took an unorthodox approach in preparing his star receiver for Week 1",
-          "url": "https://www.cbssports.com/nfl/news/how-john-harbaugh-helped-malik-nabers-in-return/",
+          "text": "2026 NFL Week 2 injury panic meter: Myles Garrett, A.J. Brown, Sam Darnold sidelined with lower body issues. Gauging the outlook for some of the league's biggest Week 1 injuries",
+          "url": "https://www.cbssports.com/nfl/news/2026-nfl-week-2-injury-panic-meter-myles-garrett-a-j-brown-sam-darnold/",
           "source": "CBS Sports NFL"
         }
       ]
