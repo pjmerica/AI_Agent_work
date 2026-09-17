@@ -98,20 +98,34 @@ def ticker_date(code: str) -> str | None:
 
 
 def resolve_week(kickoffs: list[str]) -> int | None:
-    """Ask ESPN which NFL week these dates belong to.
+    """Which NFL week is this slate?
 
-    Guessing from the calendar is unreliable: the season opens midweek, so the
-    days before it still belong to week 1's slate, not to a prior week.
+    Sleeper's state endpoint is the primary source: it is public, needs no auth,
+    and publishes the current week directly. ESPN's scoreboard was used first but
+    rate-limits aggressively -- it returned 403 and 400 on consecutive calls
+    during week 2 -- which left the board unlabelled.
+
+    ESPN remains a fallback because it answers for an arbitrary date range, while
+    Sleeper only reports "now". That distinction matters if this is ever run
+    against a slate that is not the current one.
     """
+    try:
+        req = Request("https://api.sleeper.app/v1/state/nfl",
+                      headers={"User-Agent": "nfl-props/1.0", "Accept": "application/json"})
+        with urlopen(req, timeout=20) as r:
+            state = json.loads(r.read().decode("utf-8", "replace"))
+        wk = state.get("week")
+        if isinstance(wk, int) and wk > 0 and state.get("season_type") == "regular":
+            return wk
+    except Exception as e:
+        print(f"  ! Sleeper state lookup failed ({e}); trying ESPN")
+
     dates = sorted(d for d in (ticker_date(k) for k in kickoffs) if d)
     if not dates:
         return None
     try:
-        # Plain request: the Kalshi helper sends headers ESPN 403s on.
         url = ("https://site.api.espn.com/apis/site/v2/sports/football/nfl/"
                f"scoreboard?dates={dates[0]}-{dates[-1]}")
-        # ESPN 403s a bare UA on this endpoint; a browser-shaped header set
-        # with a site Referer is accepted.
         req = Request(url, headers={
             "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
                           "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0 Safari/537.36",
@@ -124,7 +138,7 @@ def resolve_week(kickoffs: list[str]) -> int | None:
             data = json.loads(r.read().decode("utf-8", "replace"))
         return (data.get("week") or {}).get("number")
     except Exception as e:
-        print(f"  ! could not resolve week from ESPN ({e}); leaving unlabelled")
+        print(f"  ! could not resolve week from ESPN either ({e}); leaving unlabelled")
         return None
 
 

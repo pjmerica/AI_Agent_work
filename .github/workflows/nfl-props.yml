@@ -2,6 +2,11 @@ name: NFL Projections Scraper
 
 on:
   workflow_dispatch:   # manual-run only — trigger from GitHub Actions UI
+    inputs:
+      multiweek:
+        description: "Also refresh the weeks-1-4 average (costs ~50 Odds API credits)"
+        type: boolean
+        default: false
 
 permissions:
   contents: write
@@ -67,6 +72,7 @@ jobs:
       # so it is deliberately separate from the single-week pull and skipped
       # when the remaining quota cannot cover it.
       - name: Scrape multi-week averaged props
+        if: inputs.multiweek
         run: python scripts/fetch_oddsapi_multiweek.py
         env:
           ODDS_API_KEY: ${{ secrets.ODDS_API_KEY }}
