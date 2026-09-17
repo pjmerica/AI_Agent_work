@@ -58,13 +58,49 @@ MAX_EVENTS = 20
 
 # The Odds API market key -> our internal stat key. These are per-game markets;
 # the API sells no season-long player props (checked 2026-08/09).
-MARKETS = {
+#
+# Billing is one credit per event PER MARKET, so the market list is the main
+# cost dial: 5 markets x 16 events = 80 credits a pull, which exhausts a
+# 500-credit month in six refreshes.
+#
+# Measured against a complete pull (2026-09-06, 171 players) versus what Kalshi
+# already prices for the same slate, the marginal coverage each market buys is:
+#
+#     receptions  +57 players      <- worth paying for
+#     rec_yds     +57 players      <- worth paying for
+#     rush_yds    +21 players
+#     pass_yds     +4 players      <- Kalshi covers QBs nearly as well
+#     pass_tds     +3 players      <- same
+#
+# The default keeps the three that actually add players: both receiving markets
+# and rushing yards. That is 48 credits a pull (~10 a month, enough for two a
+# week) and recovers the 21 backs whose rushing line only the books post -- RB
+# depth is what flex decisions turn on. The two passing markets are dropped
+# because Kalshi already covers quarterbacks to within 3-4 players.
+#
+# Set ODDS_API_MARKETS to a comma-separated list, or "all", to widen it for a
+# one-off deep pull when quota allows.
+ALL_MARKETS = {
     "player_pass_yds":    "pass_yds",
     "player_pass_tds":    "pass_tds",
     "player_rush_yds":    "rush_yds",
     "player_reception_yds": "rec_yds",
     "player_receptions":  "receptions",
 }
+
+DEFAULT_MARKETS = ["player_receptions", "player_reception_yds", "player_rush_yds"]
+
+_requested = os.environ.get("ODDS_API_MARKETS", "").strip()
+if _requested.lower() in ("all", "*"):
+    _keys = list(ALL_MARKETS)
+elif _requested:
+    _keys = [k.strip() for k in _requested.split(",") if k.strip() in ALL_MARKETS]
+    if not _keys:
+        _keys = DEFAULT_MARKETS
+else:
+    _keys = DEFAULT_MARKETS
+
+MARKETS = {k: ALL_MARKETS[k] for k in _keys}
 
 
 def http_json(url: str) -> tuple[object, dict]:
@@ -99,7 +135,8 @@ def main() -> None:
           f"dates: {dict(sorted(by_date.items()))}")
 
     events = events[:MAX_EVENTS]
-    print(f"fetching player props for {len(events)} event(s)…")
+    print(f"fetching {len(MARKETS)} market(s) for {len(events)} event(s) "
+          f"= ~{len(MARKETS) * len(events)} credits: {', '.join(MARKETS)}")
 
     rows: dict[tuple[str, str], dict] = {}
     books: dict[str, int] = {}
