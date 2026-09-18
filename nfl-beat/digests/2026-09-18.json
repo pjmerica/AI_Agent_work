@@ -1,26 +1,26 @@
 {
-  "generated": "2026-09-18T15:30:24.282260+00:00",
+  "generated": "2026-09-18T19:24:08.825319+00:00",
   "stats": {
-    "n_items": 528,
+    "n_items": 516,
     "n_players": 86,
-    "n_unpriced": 72,
+    "n_unpriced": 73,
     "by_source": {
-      "Bluesky @minakimes.bsky.social": 14,
+      "Bluesky @minakimes.bsky.social": 12,
       "Bluesky @rapsheet.bsky.social": 13,
       "Bluesky @jourdanrodrigue.bsky.social": 1,
       "Bluesky @lateroundqb.bsky.social": 5,
-      "Bluesky @sethwalder.bsky.social": 10,
+      "Bluesky @sethwalder.bsky.social": 11,
       "Bluesky @kevinseifert.bsky.social": 1,
-      "Bluesky @nateatkins.bsky.social": 1,
-      "Bluesky @ffnatejahnke.bsky.social": 34,
+      "Bluesky @nateatkins.bsky.social": 2,
+      "Bluesky @ffnatejahnke.bsky.social": 32,
       "ProFootballTalk": 30,
-      "Yahoo NFL": 49,
+      "Yahoo NFL": 48,
       "CBS Sports NFL": 36,
-      "PFF": 24,
+      "PFF": 22,
       "Awful Announcing": 15,
-      "SBN ARI": 6,
+      "SBN ARI": 7,
       "SBN ATL": 10,
-      "SBN BAL": 7,
+      "SBN BAL": 6,
       "SBN BUF": 10,
       "SBN CAR": 8,
       "SBN CHI": 10,
@@ -31,32 +31,112 @@
       "SBN DET": 10,
       "SBN GB": 10,
       "SBN HOU": 6,
-      "SBN IND": 10,
-      "SBN JAX": 5,
+      "SBN IND": 9,
+      "SBN JAX": 4,
       "SBN KC": 10,
       "SBN LAC": 10,
       "SBN LAR": 10,
       "SBN LV": 10,
       "SBN MIA": 10,
-      "SBN MIN": 10,
+      "SBN MIN": 9,
       "SBN NE": 10,
       "SBN NO": 10,
       "SBN NYG": 10,
-      "SBN NYJ": 9,
+      "SBN NYJ": 7,
       "SBN PHI": 10,
       "SBN PIT": 10,
       "SBN SEA": 10,
       "SBN SF": 10,
       "SBN TB": 6,
-      "SBN TEN": 8,
+      "SBN TEN": 6,
       "SBN WAS": 10
     },
-    "adp_latest": "2026-09-17",
-    "adp_prior": "2026-09-03",
+    "adp_latest": "2026-09-18",
+    "adp_prior": "2026-09-04",
     "nitter": "configured but returning nothing: https://nitter.net",
     "history_days": 21
   },
   "players": [
+    {
+      "name": "Michael Penix Jr.",
+      "pos": "QB",
+      "team": "ATL",
+      "adp": 208.9,
+      "adp_prior": 209.5,
+      "adp_move": 0.6,
+      "proj": null,
+      "sleeper_weight": 1.8,
+      "score": 15.339,
+      "unpriced": true,
+      "signals": [
+        "acl",
+        "injury",
+        "sidelined",
+        "starter"
+      ],
+      "items": [
+        {
+          "text": "Falcons to start Cooper Rush vs. Panthers as Michael Penix Jr. continues recovery. Rush took Atlanta's first-team reps Friday and will start against Carolina while Penix continues recovering from last season's ACL tear",
+          "url": "https://www.cbssports.com/nfl/news/falcons-starting-qb-cooper-rush-panthers/",
+          "source": "CBS Sports NFL"
+        },
+        {
+          "text": "Falcons QB Michael Penix Jr., who has yet to play as he recovers from a torn ACL, was a full participant in today\u2019s practice \u2014 as he was last week. Cooper Rush was also a full participant, as well. Tua Tagovailoa was a DNP.",
+          "url": "https://bsky.app/profile/rapsheet.bsky.social/post/3mvql36zkh22q",
+          "source": "Bluesky @rapsheet.bsky.social"
+        },
+        {
+          "text": "The Falcons have a quarterback problem: ft. Joe Patrick: Falcoholic Live, Ep389. The Falcons kept four quarterbacks on their 2026 roster, and somehow couldn&#8217;t put a functional one on the field against the Steelers. Kevin Knight and Adnan Ikic are joined by Joe Patrick to discuss the disastrous",
+          "url": "https://www.thefalcoholic.com/atlanta-falcons-analysis/96282/falcons-have-a-quarterback-problem-cooper-rush-jack-strand-michael-penix-nfl-week-2-2026-ft-joe-patrick-falcoholic-live-ep389",
+          "source": "SBN ATL"
+        },
+        {
+          "text": "Cooper Rush to start again at QB for Falcons in Week 2 vs. Panthers; Michael Penix Jr. out, Tua Tagovailoa doubtful. Penix is still ramping back up after recovering from his knee injury, and Tagovailoa has remained sidelined by his oblique issue.",
+          "url": "https://sports.yahoo.com/nfl/breaking-news/article/cooper-rush-to-start-again-at-qb-for-falcons-in-week-2-vs-panthers-michael-penix-jr-out-tua-tagovailoa-doubtful-163149371.html",
+          "source": "Yahoo NFL"
+        }
+      ]
+    },
+    {
+      "name": "Cooper Rush",
+      "pos": "QB",
+      "team": "ATL",
+      "adp": 216.0,
+      "adp_prior": 216.0,
+      "adp_move": 0.0,
+      "proj": null,
+      "sleeper_weight": 1.8,
+      "score": 15.339,
+      "unpriced": true,
+      "signals": [
+        "acl",
+        "injury",
+        "sidelined",
+        "starter"
+      ],
+      "items": [
+        {
+          "text": "Falcons to start Cooper Rush vs. Panthers as Michael Penix Jr. continues recovery. Rush took Atlanta's first-team reps Friday and will start against Carolina while Penix continues recovering from last season's ACL tear",
+          "url": "https://www.cbssports.com/nfl/news/falcons-starting-qb-cooper-rush-panthers/",
+          "source": "CBS Sports NFL"
+        },
+        {
+          "text": "Falcons QB Michael Penix Jr., who has yet to play as he recovers from a torn ACL, was a full participant in today\u2019s practice \u2014 as he was last week. Cooper Rush was also a full participant, as well. Tua Tagovailoa was a DNP.",
+          "url": "https://bsky.app/profile/rapsheet.bsky.social/post/3mvql36zkh22q",
+          "source": "Bluesky @rapsheet.bsky.social"
+        },
+        {
+          "text": "The Falcons have a quarterback problem: ft. Joe Patrick: Falcoholic Live, Ep389. The Falcons kept four quarterbacks on their 2026 roster, and somehow couldn&#8217;t put a functional one on the field against the Steelers. Kevin Knight and Adnan Ikic are joined by Joe Patrick to discuss the disastrous",
+          "url": "https://www.thefalcoholic.com/atlanta-falcons-analysis/96282/falcons-have-a-quarterback-problem-cooper-rush-jack-strand-michael-penix-nfl-week-2-2026-ft-joe-patrick-falcoholic-live-ep389",
+          "source": "SBN ATL"
+        },
+        {
+          "text": "Cooper Rush to start again at QB for Falcons in Week 2 vs. Panthers; Michael Penix Jr. out, Tua Tagovailoa doubtful. Penix is still ramping back up after recovering from his knee injury, and Tagovailoa has remained sidelined by his oblique issue.",
+          "url": "https://sports.yahoo.com/nfl/breaking-news/article/cooper-rush-to-start-again-at-qb-for-falcons-in-week-2-vs-panthers-michael-penix-jr-out-tua-tagovailoa-doubtful-163149371.html",
+          "source": "Yahoo NFL"
+        }
+      ]
+    },
     {
       "name": "Jimmy Horn Jr.",
       "pos": "WR",
@@ -97,20 +177,20 @@
       ]
     },
     {
-      "name": "Michael Penix Jr.",
+      "name": "Tua Tagovailoa",
       "pos": "QB",
       "team": "ATL",
-      "adp": 208.9,
-      "adp_prior": 209.5,
-      "adp_move": 0.6,
+      "adp": 214.4,
+      "adp_prior": 215.5,
+      "adp_move": 1.1,
       "proj": null,
       "sleeper_weight": 1.8,
-      "score": 11.819,
+      "score": 11.472,
       "unpriced": true,
       "signals": [
         "acl",
         "injury",
-        "starter"
+        "sidelined"
       ],
       "items": [
         {
@@ -119,42 +199,9 @@
           "source": "Bluesky @rapsheet.bsky.social"
         },
         {
-          "text": "The Falcons have a quarterback problem: ft. Joe Patrick: Falcoholic Live, Ep389. The Falcons kept four quarterbacks on their 2026 roster, and somehow couldn&#8217;t put a functional one on the field against the Steelers. Kevin Knight and Adnan Ikic are joined by Joe Patrick to discuss the disastrous",
-          "url": "https://www.thefalcoholic.com/atlanta-falcons-analysis/96282/falcons-have-a-quarterback-problem-cooper-rush-jack-strand-michael-penix-nfl-week-2-2026-ft-joe-patrick-falcoholic-live-ep389",
-          "source": "SBN ATL"
-        },
-        {
-          "text": "Falcons vs. Panthers injury report: Chris Lindstrom, A.J. Terrell updates. We are trucking along as the Atlanta Falcons and Carolina Panthers both held their second practices of the week. There were some injuries we were keeping an eye on following Wednesday\u2019s practice, so we now have some informati",
-          "url": "https://www.thefalcoholic.com/atlanta-falcons-injuries/96310/jawaan-taylor-michael-penix-jr-cooper-rush-tua-tagovailoa",
-          "source": "SBN ATL"
-        }
-      ]
-    },
-    {
-      "name": "Cooper Rush",
-      "pos": "QB",
-      "team": "ATL",
-      "adp": 216.0,
-      "adp_prior": 216.0,
-      "adp_move": 0.0,
-      "proj": null,
-      "sleeper_weight": 1.8,
-      "score": 11.556,
-      "unpriced": true,
-      "signals": [
-        "acl",
-        "starter"
-      ],
-      "items": [
-        {
-          "text": "Falcons QB Michael Penix Jr., who has yet to play as he recovers from a torn ACL, was a full participant in today\u2019s practice \u2014 as he was last week. Cooper Rush was also a full participant, as well. Tua Tagovailoa was a DNP.",
-          "url": "https://bsky.app/profile/rapsheet.bsky.social/post/3mvql36zkh22q",
-          "source": "Bluesky @rapsheet.bsky.social"
-        },
-        {
-          "text": "The Falcons have a quarterback problem: ft. Joe Patrick: Falcoholic Live, Ep389. The Falcons kept four quarterbacks on their 2026 roster, and somehow couldn&#8217;t put a functional one on the field against the Steelers. Kevin Knight and Adnan Ikic are joined by Joe Patrick to discuss the disastrous",
-          "url": "https://www.thefalcoholic.com/atlanta-falcons-analysis/96282/falcons-have-a-quarterback-problem-cooper-rush-jack-strand-michael-penix-nfl-week-2-2026-ft-joe-patrick-falcoholic-live-ep389",
-          "source": "SBN ATL"
+          "text": "Cooper Rush to start again at QB for Falcons in Week 2 vs. Panthers; Michael Penix Jr. out, Tua Tagovailoa doubtful. Penix is still ramping back up after recovering from his knee injury, and Tagovailoa has remained sidelined by his oblique issue.",
+          "url": "https://sports.yahoo.com/nfl/breaking-news/article/cooper-rush-to-start-again-at-qb-for-falcons-in-week-2-vs-panthers-michael-penix-jr-out-tua-tagovailoa-doubtful-163149371.html",
+          "source": "Yahoo NFL"
         }
       ]
     },
@@ -232,24 +279,29 @@
       ]
     },
     {
-      "name": "Tua Tagovailoa",
-      "pos": "QB",
-      "team": "ATL",
-      "adp": 214.4,
-      "adp_prior": 215.5,
-      "adp_move": 1.1,
+      "name": "Cam Skattebo",
+      "pos": "",
+      "team": "",
+      "adp": null,
+      "adp_prior": null,
+      "adp_move": null,
       "proj": null,
-      "sleeper_weight": 1.8,
-      "score": 9.274,
+      "sleeper_weight": 1.9,
+      "score": 9.327,
       "unpriced": true,
       "signals": [
-        "acl"
+        "ahead of"
       ],
       "items": [
         {
-          "text": "Falcons QB Michael Penix Jr., who has yet to play as he recovers from a torn ACL, was a full participant in today\u2019s practice \u2014 as he was last week. Cooper Rush was also a full participant, as well. Tua Tagovailoa was a DNP.",
-          "url": "https://bsky.app/profile/rapsheet.bsky.social/post/3mvql36zkh22q",
-          "source": "Bluesky @rapsheet.bsky.social"
+          "text": "Giants' Cam Skattebo addresses viral video of epic arrival to MetLife ahead of SNF. Skattebo is back and has arrived in style",
+          "url": "https://www.cbssports.com/nfl/news/giants-cam-skattebo-makes-epic-arrival-to-metlife-snf/",
+          "source": "CBS Sports NFL"
+        },
+        {
+          "text": "Aaron Donald return: Cam Skattebo issues blunt message to Rams star defender ahead of 'MNF' matchup. Skattebo told the Rams star to be ready and praised Donald, who is set to make his re-debut with the Rams in Week 2 after coming out of retirement",
+          "url": "https://www.cbssports.com/nfl/news/aaron-donald-return-cam-skattebo-issues-message-to-rams/",
+          "source": "CBS Sports NFL"
         }
       ]
     },
@@ -273,6 +325,34 @@
           "text": "Indianapolis Colts Injury Report: Week 2 Wednesday. The Indianapolis Colts released their Wednesday injury report for Week 2 of the NFL season against the Kansas City Chiefs. Quarterback Anthony Richardson (groin) missed practice on Wednesday. Richardson was seen during the open to the media portion",
           "url": "https://www.stampedeblue.com/indianapolis-colts-injuries/127476/indianapolis-colts-injury-report-week-2-wednesday",
           "source": "SBN IND"
+        }
+      ]
+    },
+    {
+      "name": "DeeJay Dallas",
+      "pos": "RB",
+      "team": "MIN",
+      "adp": 216.0,
+      "adp_prior": 216.0,
+      "adp_move": 0.0,
+      "proj": null,
+      "sleeper_weight": 1.8,
+      "score": 9.095,
+      "unpriced": true,
+      "signals": [
+        "injury",
+        "ir"
+      ],
+      "items": [
+        {
+          "text": "DeeJay Dallas hopes to send a message with his headshot. Vikings running back DeeJay Dallas, who has earned a roster spot following the placement of Jordan Mason on IR with a thumb injury, has provided a headshot for the ages, with eyes bulging wide.",
+          "url": "https://www.nbcsports.com/nfl/profootballtalk/rumor-mill/news/deejay-dallas-hopes-to-send-a-message-with-his-headshot",
+          "source": "ProFootballTalk"
+        },
+        {
+          "text": "Vikings RB Jordan Mason has a small fracture in his thumb, and it has been fixed, per coach Kevin O\u2019Connell. He\u2019s on short-term IR but should be back quickly.\n\nThe team also added DeeJay Dallas to the roster.",
+          "url": "https://bsky.app/profile/rapsheet.bsky.social/post/3mvnsokesls2n",
+          "source": "Bluesky @rapsheet.bsky.social"
         }
       ]
     },
@@ -437,24 +517,75 @@
       ]
     },
     {
-      "name": "Cam Skattebo",
-      "pos": "",
-      "team": "",
-      "adp": null,
-      "adp_prior": null,
-      "adp_move": null,
+      "name": "Chig Okonkwo",
+      "pos": "TE",
+      "team": "WAS",
+      "adp": 151.6,
+      "adp_prior": 149.7,
+      "adp_move": -1.9,
       "proj": null,
-      "sleeper_weight": 1.9,
-      "score": 7.904,
+      "sleeper_weight": 1.5,
+      "score": 7.8,
       "unpriced": true,
       "signals": [
-        "ahead of"
+        "out for"
       ],
       "items": [
         {
-          "text": "Aaron Donald return: Cam Skattebo issues blunt message to Rams star defender ahead of 'MNF' matchup. Skattebo told the Rams star to be ready and praised Donald, who is set to make his re-debut with the Rams in Week 2 after coming out of retirement",
-          "url": "https://www.cbssports.com/nfl/news/aaron-donald-return-cam-skattebo-issues-message-to-rams/",
-          "source": "CBS Sports NFL"
+          "text": "Frankie Luvu, Chig Okonkwo ruled out for the Commanders. The Commanders ruled players out for Week 2 on both sides of the ball on Friday.",
+          "url": "https://www.nbcsports.com/nfl/profootballtalk/rumor-mill/news/frankie-luvu-chig-okonkwo-ruled-out-for-the-commanders",
+          "source": "ProFootballTalk"
+        }
+      ]
+    },
+    {
+      "name": "Alvin Kamara",
+      "pos": "RB",
+      "team": "NO",
+      "adp": 202.4,
+      "adp_prior": 201.2,
+      "adp_move": -1.2,
+      "proj": null,
+      "sleeper_weight": 1.8,
+      "score": 7.488,
+      "unpriced": true,
+      "signals": [
+        "injury"
+      ],
+      "items": [
+        {
+          "text": "Friday\u2019s Saints vs. Ravens final injury report: Alvin Kamara and Cam Jordan are back. 3 players are doubtful for Sunday's matchup at the Ravens",
+          "url": "https://sports.yahoo.com/articles/friday-saints-vs-ravens-final-182727252.html",
+          "source": "Yahoo NFL"
+        }
+      ]
+    },
+    {
+      "name": "Kyler Murray",
+      "pos": "QB",
+      "team": "MIN",
+      "adp": 116.6,
+      "adp_prior": 115.1,
+      "adp_move": -1.5,
+      "proj": null,
+      "sleeper_weight": 1.1,
+      "score": 7.29,
+      "unpriced": true,
+      "signals": [
+        "injury",
+        "ir",
+        "out for"
+      ],
+      "items": [
+        {
+          "text": "Vikings QB Kyler Murray ruled out for Week 2 matchup vs. Bears while in concussion protocol. Minnesota coach Kevin O'Connell said Friday that he expects Murray, who left the team's Week 1 win over the Packers after sustaining a scary hit, to be cleared 'early next week.'",
+          "url": "https://sports.yahoo.com/nfl/article/vikings-qb-kyler-murray-ruled-out-for-week-2-matchup-vs-bears-while-in-concussion-protocol-185741355.html",
+          "source": "Yahoo NFL"
+        },
+        {
+          "text": "Chicago Bears News: Health concerns for Bears, Minnesota Vikings remain. There\u2019s some clarity on both the Chicago Bears and Minnesota Viking injury reports, as one key Viking player, running back Jordan Mason, hits IR. One player still in doubt for Sunday\u2019s game is Vikings quarterback Kyler Murray, ",
+          "url": "https://www.windycitygridiron.com/chicago-bears-news/123044/chicago-bears-news-health-concerns-for-bears-minnesota-vikings-remain",
+          "source": "SBN CHI"
         }
       ]
     },
@@ -531,132 +662,6 @@
       ]
     },
     {
-      "name": "Kyle Juszczyk",
-      "pos": "RB",
-      "team": "SF",
-      "adp": 216.0,
-      "adp_prior": 216.0,
-      "adp_move": 0.0,
-      "proj": null,
-      "sleeper_weight": 1.8,
-      "score": 7.2,
-      "unpriced": true,
-      "signals": [
-        "ahead of",
-        "injury",
-        "limited"
-      ],
-      "items": [
-        {
-          "text": "49ers injury update: De&#8217;Zhaun Stribling will miss \u2018close to 10 weeks\u2019. San Francisco 49ers head coach Kyle Shanahan provided injury updates ahead of Wednesday\u2019s practice. The following players won\u2019t practice today: K Eddy Pineiro (sick)WR De\u2019Zhaun Stribling (ankle)Nick Bosa (rest)Dre Greenlaw ",
-          "url": "https://www.ninersnation.com/san-francisco-49ers-news/162786/49ers-injury-update-dezhaun-stribling-will-miss-close-to-10-weeks",
-          "source": "SBN SF"
-        }
-      ]
-    },
-    {
-      "name": "Chig Okonkwo",
-      "pos": "TE",
-      "team": "WAS",
-      "adp": 151.6,
-      "adp_prior": 149.7,
-      "adp_move": -1.9,
-      "proj": null,
-      "sleeper_weight": 1.5,
-      "score": 6.9,
-      "unpriced": true,
-      "signals": [
-        "hamstring",
-        "injury"
-      ],
-      "items": [
-        {
-          "text": "Commanders vs. Cowboys Thursday injury report: Javon Kinlaw misses practice. The Commanders entered their second practice day without linebacker Frankie Luvu (groin) and tight end Chig Okonkwo (hamstring), keeping their status for Sunday\u2019s Week 2 contest against the Dallas Cowboys in serious doubt. ",
-          "url": "https://www.hogshaven.com/washington-commanders-injuries/440868/commanders-vs-cowboys-thursday-injury-report-frankie-luvu-chig-okonkwo-dorance-armstrong-javon-kinlaw",
-          "source": "SBN WAS"
-        }
-      ]
-    },
-    {
-      "name": "Kyler Murray",
-      "pos": "QB",
-      "team": "MIN",
-      "adp": 116.6,
-      "adp_prior": 115.1,
-      "adp_move": -1.5,
-      "proj": null,
-      "sleeper_weight": 1.1,
-      "score": 6.768,
-      "unpriced": true,
-      "signals": [
-        "injury",
-        "ir",
-        "limited"
-      ],
-      "items": [
-        {
-          "text": "Chicago Bears News: Health concerns for Bears, Minnesota Vikings remain. There\u2019s some clarity on both the Chicago Bears and Minnesota Viking injury reports, as one key Viking player, running back Jordan Mason, hits IR. One player still in doubt for Sunday\u2019s game is Vikings quarterback Kyler Murray, ",
-          "url": "https://www.windycitygridiron.com/chicago-bears-news/123044/chicago-bears-news-health-concerns-for-bears-minnesota-vikings-remain",
-          "source": "SBN CHI"
-        },
-        {
-          "text": "Kyler Murray remained limited in Thursday's practice.. Carson Wentz is set to start for the Vikings if Murray does not clear the concussion protocol.",
-          "url": "https://www.nbcsports.com/nfl/profootballtalk/rumor-mill/news/kyler-murray-remained-limited-in-thursdays-practice",
-          "source": "ProFootballTalk"
-        }
-      ]
-    },
-    {
-      "name": "David Blough",
-      "pos": "QB",
-      "team": "FA",
-      "adp": 216.0,
-      "adp_prior": 216.0,
-      "adp_move": 0.0,
-      "proj": null,
-      "sleeper_weight": 1.8,
-      "score": 6.739,
-      "unpriced": true,
-      "signals": [
-        "snaps"
-      ],
-      "items": [
-        {
-          "text": "Stats and Snaps: What advanced NFL stats tell us about Commanders after loss to Eagles. As the Commanders metrics show the Daronte Jones and David Blough era got off to a sputtering start vs. Eagles",
-          "url": "https://sports.yahoo.com/articles/stats-snaps-advanced-nfl-stats-151404891.html",
-          "source": "Yahoo NFL"
-        }
-      ]
-    },
-    {
-      "name": "Sam Darnold",
-      "pos": "QB",
-      "team": "SEA",
-      "adp": 144.5,
-      "adp_prior": 143.8,
-      "adp_move": -0.7,
-      "proj": null,
-      "sleeper_weight": 1.1,
-      "score": 6.631,
-      "unpriced": true,
-      "signals": [
-        "injured",
-        "injury"
-      ],
-      "items": [
-        {
-          "text": "Seahawks vs Cardinals: 4 game predictions for Week 2 showdown. The Seattle Seahawks opened the season with a 13-10 victory at home in a Super Bowl rematch against the New England Patriots. In case you\u2019ve been living under a rock, Sam Darnold was injured on the first drive and Drew Lock led the Seaha",
-          "url": "https://www.fieldgulls.com/seattle-seahawks-betting-odds-spreads-picks/174979/seahawks-vs-cardinals-4-game-predictions-week-2-nfl-odds",
-          "source": "SBN SEA"
-        },
-        {
-          "text": "Ian Rapoport: Week 4 &#8216;most likely target&#8217; for Sam Darnold&#8217;s return. The ambiguity around Seattle Seahawks quarterback Sam Darnold\u2019s injury, and timeline for a return, is starting to get a little more clear. In an appearance on Good Morning Football on Thursday, NFL Network and ESPN",
-          "url": "https://www.fieldgulls.com/seattle-seahawks-injury-report/174960/ian-rapoport-week-4-most-likely-target-seahawks-sam-darnold-return",
-          "source": "SBN SEA"
-        }
-      ]
-    },
-    {
       "name": "Joshua Palmer",
       "pos": "WR",
       "team": "BUF",
@@ -699,6 +704,34 @@
           "text": "Bills halftime WR snap count\n\nKeon Coleman 27\nDJ Moore 23 (missed final 7 plays with injury)\nKhalil Shakir 23\nJoshua Palmer 12 (5 of 33 before Moore injury, 7 of 7 after)\nGreg Dortch 1\n\nOut of 40 plays",
           "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3mvr2nfg47k2t",
           "source": "Bluesky @ffnatejahnke.bsky.social"
+        }
+      ]
+    },
+    {
+      "name": "Sam Darnold",
+      "pos": "QB",
+      "team": "SEA",
+      "adp": 144.5,
+      "adp_prior": 143.8,
+      "adp_move": -0.7,
+      "proj": null,
+      "sleeper_weight": 1.1,
+      "score": 6.512,
+      "unpriced": true,
+      "signals": [
+        "injured",
+        "injury"
+      ],
+      "items": [
+        {
+          "text": "Seahawks vs Cardinals: 4 game predictions for Week 2 showdown. The Seattle Seahawks opened the season with a 13-10 victory at home in a Super Bowl rematch against the New England Patriots. In case you\u2019ve been living under a rock, Sam Darnold was injured on the first drive and Drew Lock led the Seaha",
+          "url": "https://www.fieldgulls.com/seattle-seahawks-betting-odds-spreads-picks/174979/seahawks-vs-cardinals-4-game-predictions-week-2-nfl-odds",
+          "source": "SBN SEA"
+        },
+        {
+          "text": "Ian Rapoport: Week 4 &#8216;most likely target&#8217; for Sam Darnold&#8217;s return. The ambiguity around Seattle Seahawks quarterback Sam Darnold\u2019s injury, and timeline for a return, is starting to get a little more clear. In an appearance on Good Morning Football on Thursday, NFL Network and ESPN",
+          "url": "https://www.fieldgulls.com/seattle-seahawks-injury-report/174960/ian-rapoport-week-4-most-likely-target-seahawks-sam-darnold-return",
+          "source": "SBN SEA"
         }
       ]
     },
@@ -1023,28 +1056,6 @@
       ]
     },
     {
-      "name": "DeeJay Dallas",
-      "pos": "RB",
-      "team": "MIN",
-      "adp": 216.0,
-      "adp_prior": 216.0,
-      "adp_move": 0.0,
-      "proj": null,
-      "sleeper_weight": 1.8,
-      "score": 5.184,
-      "unpriced": true,
-      "signals": [
-        "ir"
-      ],
-      "items": [
-        {
-          "text": "Vikings RB Jordan Mason has a small fracture in his thumb, and it has been fixed, per coach Kevin O\u2019Connell. He\u2019s on short-term IR but should be back quickly.\n\nThe team also added DeeJay Dallas to the roster.",
-          "url": "https://bsky.app/profile/rapsheet.bsky.social/post/3mvnsokesls2n",
-          "source": "Bluesky @rapsheet.bsky.social"
-        }
-      ]
-    },
-    {
       "name": "Tyler Shough",
       "pos": "QB",
       "team": "NO",
@@ -1089,28 +1100,6 @@
       ]
     },
     {
-      "name": "Carson Wentz",
-      "pos": "QB",
-      "team": "MIN",
-      "adp": 216.0,
-      "adp_prior": 216.0,
-      "adp_move": 0.0,
-      "proj": null,
-      "sleeper_weight": 1.8,
-      "score": 4.968,
-      "unpriced": true,
-      "signals": [
-        "limited"
-      ],
-      "items": [
-        {
-          "text": "Kyler Murray remained limited in Thursday's practice.. Carson Wentz is set to start for the Vikings if Murray does not clear the concussion protocol.",
-          "url": "https://www.nbcsports.com/nfl/profootballtalk/rumor-mill/news/kyler-murray-remained-limited-in-thursdays-practice",
-          "source": "ProFootballTalk"
-        }
-      ]
-    },
-    {
       "name": "Aaron Rodgers",
       "pos": "QB",
       "team": "PIT",
@@ -1129,40 +1118,6 @@
           "text": "Aaron Rodgers and Jordy Nelson headline Packers\u2019 best performances against Jets. The Packers have a long but not especially rich history of meetings with the New York Jets. The two teams have played 14 times in their shared history, but the Packers have won just five of those matchups. Still, the Pa",
           "url": "https://www.acmepackingcompany.com/green-bay-packers-analysis/86647/aaron-rodgers-and-jordy-nelson-headline-packers-best-performances-against-jets",
           "source": "SBN GB"
-        }
-      ]
-    },
-    {
-      "name": "Zay Flowers",
-      "pos": "WR",
-      "team": "BAL",
-      "adp": 32.5,
-      "adp_prior": 31.7,
-      "adp_move": -0.8,
-      "proj": null,
-      "sleeper_weight": 0.5,
-      "score": 4.408,
-      "unpriced": true,
-      "signals": [
-        "injury",
-        "snaps",
-        "stood out"
-      ],
-      "items": [
-        {
-          "text": "Ravens Week 1 film study: Hendrickson, Robinson form powerful EDGE duo. Baltimore\u2019s season opener gave us our first real look at the starting units on both sides of the football, and several players immediately stood out in the Ravens\u2019 41-23 victory over Indianapolis. Zay Flowers wasted little time ",
-          "url": "https://www.baltimorebeatdown.com/baltimore-ravens-analysis/85108/ravens-week-1-film-study-hendrickson-robinson-form-powerful-edge-duo",
-          "source": "SBN BAL"
-        },
-        {
-          "text": "Zay Flowers injury: Who will step up if Ravens star WR misses Week 2 matchup against Saints?. Flowers did not participate in Baltimore's first two practices this week",
-          "url": "https://www.cbssports.com/nfl/news/zay-flowers-injury-who-will-step-up-baltimore-ravens-new-orleans-saints/",
-          "source": "CBS Sports NFL"
-        },
-        {
-          "text": "Highest-graded player of the Week: WR Zay Flowers, Baltimore Ravens. Zay Flowers delivered 150 receiving yards on just 20 offensive snaps before an injury ended his Week 1 performance for the Baltimore Ravens. Flowers averaged 13.64 yards per route run, leading all NFL wide receivers with at least 1",
-          "url": "https://www.pff.com/news/nfl-highest-graded-player-of-the-week-zay-flowers/",
-          "source": "PFF"
         }
       ]
     },
@@ -1207,47 +1162,6 @@
           "text": "Dolphins\u2019 Chop Robinson in concussion protocol; Malik Willis dealing with toe injury. The Miami Dolphins lost their opening contest this past Sunday against the Raiders in Las Vegas. Adding injury to insult, their top pass rusher \u2014 third-year player Chop Robinson \u2014 suffered a concussion in that game",
           "url": "https://www.thephinsider.com/miami-dolphins-injuries/122626/dolphins-chop-robinson-in-concussion-protocol-malik-willis-dealing-with-toe-injury",
           "source": "SBN MIA"
-        }
-      ]
-    },
-    {
-      "name": "D.J. Moore",
-      "pos": "WR",
-      "team": "BUF",
-      "adp": 49.8,
-      "adp_prior": 51.6,
-      "adp_move": 1.8,
-      "proj": null,
-      "sleeper_weight": 0.5,
-      "score": 4.185,
-      "unpriced": true,
-      "signals": [
-        "injured",
-        "injury",
-        "questionable",
-        "snap",
-        "suspended"
-      ],
-      "items": [
-        {
-          "text": "Keon Coleman steps up for Bills following DJ Moore injury. Earlier this year, there was a lot of talk about the future of Buffalo Bills wide receiver Keon Coleman. He was suspended a few times in 2025 for being late to team meetings, and even Bills owner Terry Pegula had less than flattering things ",
-          "url": "https://www.buffalorumblings.com/buffalo-bills-analysis/140632/keon-coleman-steps-up-for-bills-following-dj-moore-injury",
-          "source": "SBN BUF"
-        },
-        {
-          "text": "DJ Moore injury: Bills WR avoids serious shoulder injury. Buffalo Bills wide receiver DJ Moore headed to the locker room with a shoulder injury Thursday night. He dove for a pass in the back of the end zone and immediately grabbed at the area. On Friday morning, Adam Schefter reported Moore isn&#821",
-          "url": "https://www.buffalorumblings.com/buffalo-bills-injuries/140586/dj-moore-injury-bills-wr-heads-to-locker-room-after-hurting-shoulder",
-          "source": "SBN BUF"
-        },
-        {
-          "text": "Report: DJ Moore day-to-day with shoulder injury. Thursday night was a good night for the Bills on most fronts, but one exception was the shoulder injury that knocked wide receiver DJ Moore out of the game in the second quarter.",
-          "url": "https://www.nbcsports.com/nfl/profootballtalk/rumor-mill/news/report-dj-moore-day-to-day-with-shoulder-injury",
-          "source": "ProFootballTalk"
-        },
-        {
-          "text": "D.J. Moore injury: Bills wideout suffers AC Joint injury in win vs. Lions, Week 3 status in doubt. The injury occurred during the second quarter of Buffalo's home opener",
-          "url": "https://www.cbssports.com/nfl/news/d-j-moore-injury-bills-wideout-shoulder-injury/",
-          "source": "CBS Sports NFL"
         }
       ]
     },
@@ -1297,6 +1211,74 @@
       ]
     },
     {
+      "name": "D.J. Moore",
+      "pos": "WR",
+      "team": "BUF",
+      "adp": 49.8,
+      "adp_prior": 51.6,
+      "adp_move": 1.8,
+      "proj": null,
+      "sleeper_weight": 0.5,
+      "score": 3.915,
+      "unpriced": true,
+      "signals": [
+        "injury",
+        "snap",
+        "suspended"
+      ],
+      "items": [
+        {
+          "text": "Keon Coleman steps up for Bills following DJ Moore injury. Earlier this year, there was a lot of talk about the future of Buffalo Bills wide receiver Keon Coleman. He was suspended a few times in 2025 for being late to team meetings, and even Bills owner Terry Pegula had less than flattering things ",
+          "url": "https://www.buffalorumblings.com/buffalo-bills-analysis/140632/keon-coleman-steps-up-for-bills-following-dj-moore-injury",
+          "source": "SBN BUF"
+        },
+        {
+          "text": "DJ Moore injury: Bills WR avoids serious shoulder injury. Buffalo Bills wide receiver DJ Moore headed to the locker room with a shoulder injury Thursday night. He dove for a pass in the back of the end zone and immediately grabbed at the area. On Friday morning, Adam Schefter reported Moore isn&#821",
+          "url": "https://www.buffalorumblings.com/buffalo-bills-injuries/140586/dj-moore-injury-bills-wr-heads-to-locker-room-after-hurting-shoulder",
+          "source": "SBN BUF"
+        },
+        {
+          "text": "D.J. Moore injury: Bills wideout suffers AC Joint injury in win vs. Lions, Week 3 status in doubt. The injury occurred during the second quarter of Buffalo's home opener",
+          "url": "https://www.cbssports.com/nfl/news/d-j-moore-injury-bills-wideout-shoulder-injury/",
+          "source": "CBS Sports NFL"
+        },
+        {
+          "text": "Bills halftime WR snap count\n\nKeon Coleman 27\nDJ Moore 23 (missed final 7 plays with injury)\nKhalil Shakir 23\nJoshua Palmer 12 (5 of 33 before Moore injury, 7 of 7 after)\nGreg Dortch 1\n\nOut of 40 plays",
+          "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3mvr2nfg47k2t",
+          "source": "Bluesky @ffnatejahnke.bsky.social"
+        }
+      ]
+    },
+    {
+      "name": "Zay Flowers",
+      "pos": "WR",
+      "team": "BAL",
+      "adp": 32.5,
+      "adp_prior": 31.7,
+      "adp_move": -0.8,
+      "proj": null,
+      "sleeper_weight": 0.5,
+      "score": 3.789,
+      "unpriced": true,
+      "signals": [
+        "injury",
+        "snaps",
+        "stood out"
+      ],
+      "items": [
+        {
+          "text": "Ravens Week 1 film study: Hendrickson, Robinson form powerful EDGE duo. Baltimore\u2019s season opener gave us our first real look at the starting units on both sides of the football, and several players immediately stood out in the Ravens\u2019 41-23 victory over Indianapolis. Zay Flowers wasted little time ",
+          "url": "https://www.baltimorebeatdown.com/baltimore-ravens-analysis/85108/ravens-week-1-film-study-hendrickson-robinson-form-powerful-edge-duo",
+          "source": "SBN BAL"
+        },
+        {
+          "text": "Highest-graded player of the Week: WR Zay Flowers, Baltimore Ravens. Zay Flowers delivered 150 receiving yards on just 20 offensive snaps before an injury ended his Week 1 performance for the Baltimore Ravens. Flowers averaged 13.64 yards per route run, leading all NFL wide receivers with at least 1",
+          "url": "https://www.pff.com/news/nfl-highest-graded-player-of-the-week-zay-flowers/",
+          "source": "PFF"
+        }
+      ]
+    },
+    {
       "name": "Joe Burrow",
       "pos": "QB",
       "team": "CIN",
@@ -1333,7 +1315,7 @@
       "adp_move": 3.0,
       "proj": null,
       "sleeper_weight": 0.75,
-      "score": 3.337,
+      "score": 3.567,
       "unpriced": false,
       "signals": [
         "injured",
@@ -1347,6 +1329,11 @@
           "source": "SBN CHI"
         },
         {
+          "text": "DeeJay Dallas hopes to send a message with his headshot. Vikings running back DeeJay Dallas, who has earned a roster spot following the placement of Jordan Mason on IR with a thumb injury, has provided a headshot for the ages, with eyes bulging wide.",
+          "url": "https://www.nbcsports.com/nfl/profootballtalk/rumor-mill/news/deejay-dallas-hopes-to-send-a-message-with-his-headshot",
+          "source": "ProFootballTalk"
+        },
+        {
           "text": "Vikings Place Jordan Mason on Injured Reserve. The Minnesota Vikings, who already have some issues offensively, will now have to go through the early part of their season without their lead running back. The Vikings announced on Wednesday that they have placed running back Jordan Mason on injured re",
           "url": "https://www.dailynorseman.com/minnesota-vikings-injuries/99211/minnesota-vikings-place-jordan-mason-injured-reserve",
           "source": "SBN MIN"
@@ -1355,34 +1342,6 @@
           "text": "Vikings RB Jordan Mason has a small fracture in his thumb, and it has been fixed, per coach Kevin O\u2019Connell. He\u2019s on short-term IR but should be back quickly.\n\nThe team also added DeeJay Dallas to the roster.",
           "url": "https://bsky.app/profile/rapsheet.bsky.social/post/3mvnsokesls2n",
           "source": "Bluesky @rapsheet.bsky.social"
-        }
-      ]
-    },
-    {
-      "name": "Dalton Kincaid",
-      "pos": "TE",
-      "team": "BUF",
-      "adp": 116.6,
-      "adp_prior": 118.8,
-      "adp_move": 2.2,
-      "proj": null,
-      "sleeper_weight": 1.1,
-      "score": 3.27,
-      "unpriced": false,
-      "signals": [
-        "injury",
-        "snap"
-      ],
-      "items": [
-        {
-          "text": "Fantasy football recap to the Lions and Bills\n\n- Dalton Kincaid is a top-5 fantasy TE\n- Bills adjusted their WR rotation both before and after DJ Moore's injury\n- Sam LaPorta's no longer on a snap count\n- Snap counts and routes run\n\nwww.pff.com/news/nfl-wee...",
-          "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3mvra7n3yi226",
-          "source": "Bluesky @ffnatejahnke.bsky.social"
-        },
-        {
-          "text": "Bills TE snap count after 3 drives\n\nDawson Knox 24\nDalton Kincaid 20\nJackson Hawes 13\nKeleki Latu 1\n\nOut of 29 plays",
-          "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3mvqxwnvzxc2t",
-          "source": "Bluesky @ffnatejahnke.bsky.social"
         }
       ]
     },
@@ -1437,25 +1396,107 @@
       ]
     },
     {
-      "name": "Omar Cooper Jr.",
-      "pos": "WR",
-      "team": "NYJ",
-      "adp": 180.7,
-      "adp_prior": 176.1,
-      "adp_move": -4.6,
+      "name": "Dalton Kincaid",
+      "pos": "TE",
+      "team": "BUF",
+      "adp": 116.6,
+      "adp_prior": 118.8,
+      "adp_move": 2.2,
       "proj": null,
-      "sleeper_weight": 1.5,
-      "score": 3.0,
+      "sleeper_weight": 1.1,
+      "score": 2.94,
       "unpriced": false,
       "signals": [
-        "injured",
+        "injury",
+        "snap"
+      ],
+      "items": [
+        {
+          "text": "Fantasy football recap to the Lions and Bills\n\n- Dalton Kincaid is a top-5 fantasy TE\n- Bills adjusted their WR rotation both before and after DJ Moore's injury\n- Sam LaPorta's no longer on a snap count\n- Snap counts and routes run\n\nwww.pff.com/news/nfl-wee...",
+          "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3mvra7n3yi226",
+          "source": "Bluesky @ffnatejahnke.bsky.social"
+        },
+        {
+          "text": "Bills TE snap count after 3 drives\n\nDawson Knox 24\nDalton Kincaid 20\nJackson Hawes 13\nKeleki Latu 1\n\nOut of 29 plays",
+          "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3mvqxwnvzxc2t",
+          "source": "Bluesky @ffnatejahnke.bsky.social"
+        }
+      ]
+    },
+    {
+      "name": "Kaelon Black",
+      "pos": "RB",
+      "team": "SF",
+      "adp": 166.8,
+      "adp_prior": 179.7,
+      "adp_move": 12.9,
+      "proj": null,
+      "sleeper_weight": 1.5,
+      "score": 2.877,
+      "unpriced": false,
+      "signals": [
+        "carries",
         "injury"
       ],
       "items": [
         {
-          "text": "We have Jets injury updates on Omar Cooper and Minkah Fitzpatrick. The Jets lost a pair of starters to injury in their Week 1 win over the Tennessee Titans. Wide receiver Omar Cooper suffered an ankle sprain and has been termed \u201cweek-to-week\u201d per Ian Rapoport. He will miss time, but at this point th",
-          "url": "https://www.ganggreennation.com/new-york-jets-injuries/96516/we-have-jets-injury-updates-on-omar-cooper-and-minkah-fitzpatrick",
-          "source": "SBN NYJ"
+          "text": "Dolphins could be without a key contributor against the 49ers in Week 2. There may have been some cause for concern when the San Francisco 49ers added running back Kaelon Black to the injury report with a groin injury on Thursday, but head coach Kyle Shanahan said the team was just being smart with ",
+          "url": "https://www.ninersnation.com/san-francisco-49ers-injuries/162850/dolphins-could-be-without-a-key-contributor-against-the-49ers-in-week-2",
+          "source": "SBN SF"
+        },
+        {
+          "text": "Kaelon Black was added to the 49ers&#8217; injury report. The San Francisco 49ers&#8217; injury report saw a couple of changes Thursday. The players who rested on Wednesday, Christian McCaffrey, Dre Greenlaw, and Trent Williams, were all upgraded to full participants during Thursday&#8217;s session.",
+          "url": "https://www.ninersnation.com/san-francisco-49ers-injuries/162823/kaelon-black-was-added-to-the-49ers-injury-report",
+          "source": "SBN SF"
+        },
+        {
+          "text": "John Lynch: Christian McCaffrey will still have games as workhorse back. One of the biggest takeaways from the San Francisco 49ers 27-7 win over the Los Angeles Rams last weekend was the split at running back. Rookie Kaelon Black ended up with four more carries than Christian McCaffrey, as he went f",
+          "url": "https://www.ninersnation.com/san-francisco-49ers-news/162814/san-francisco-49ers-news-christian-mccaffrey-will-still-have-workhorse-load-in-games-john-lynch-kyle-shanahan",
+          "source": "SBN SF"
+        }
+      ]
+    },
+    {
+      "name": "Kyle Monangai",
+      "pos": "RB",
+      "team": "CHI",
+      "adp": 115.6,
+      "adp_prior": 112.7,
+      "adp_move": -2.9,
+      "proj": null,
+      "sleeper_weight": 1.1,
+      "score": 2.86,
+      "unpriced": false,
+      "signals": [
+        "injury"
+      ],
+      "items": [
+        {
+          "text": "D'Andre Swift, Kyle Monangai good to go for Bears. The Bears had their top two running backs on the injury report this week, but neither one of them is at risk of missing Sunday's game against the Vikings.",
+          "url": "https://www.nbcsports.com/nfl/profootballtalk/rumor-mill/news/dandre-swift-kyle-monangai-good-to-go-for-bears",
+          "source": "ProFootballTalk"
+        }
+      ]
+    },
+    {
+      "name": "Jalen Coker",
+      "pos": "WR",
+      "team": "CAR",
+      "adp": 127.1,
+      "adp_prior": 129.3,
+      "adp_move": 2.2,
+      "proj": null,
+      "sleeper_weight": 1.1,
+      "score": 2.86,
+      "unpriced": false,
+      "signals": [
+        "injury"
+      ],
+      "items": [
+        {
+          "text": "Jalen Coker has no injury designation for Sunday. Wide receiver Jalen Coker is good to go for the Panthers on Sunday.",
+          "url": "https://www.nbcsports.com/nfl/profootballtalk/rumor-mill/news/jalen-coker-has-no-injury-designation-for-sunday",
+          "source": "ProFootballTalk"
         }
       ]
     },
@@ -1531,28 +1572,6 @@
           "text": "Josh McDaniels knows defenses are adjusting to Drake Maye. Now the Patriots must respond.. In his first year playing under offensive coordinator Josh McDaniels, quarterback Drake Maye started 21 games as he led the Patriots to the Super Bowl while finishing second in MVP voting. After seeing what Ma",
           "url": "https://www.patspulpit.com/new-england-patriots-news/137501/josh-mcdaniels-knows-defenses-are-adjusting-to-drake-maye-now-they-must-response",
           "source": "SBN NE"
-        }
-      ]
-    },
-    {
-      "name": "Patrick Mahomes",
-      "pos": "QB",
-      "team": "KC",
-      "adp": 101.8,
-      "adp_prior": 99.0,
-      "adp_move": -2.8,
-      "proj": null,
-      "sleeper_weight": 0.75,
-      "score": 2.73,
-      "unpriced": false,
-      "signals": [
-        "acl"
-      ],
-      "items": [
-        {
-          "text": "Patrick Mahomes: My leg is the least of my worries right now. Despite tearing his ACL and LCL in December, Patrick Mahomes certainly looked healthy on Monday night.",
-          "url": "https://www.nbcsports.com/nfl/profootballtalk/rumor-mill/news/patrick-mahomes-my-leg-is-the-least-of-my-worries-right-now",
-          "source": "ProFootballTalk"
         }
       ]
     },
@@ -1640,34 +1659,6 @@
       ]
     },
     {
-      "name": "Kaelon Black",
-      "pos": "RB",
-      "team": "SF",
-      "adp": 166.8,
-      "adp_prior": 179.7,
-      "adp_move": 12.9,
-      "proj": null,
-      "sleeper_weight": 1.5,
-      "score": 2.505,
-      "unpriced": false,
-      "signals": [
-        "carries",
-        "injury"
-      ],
-      "items": [
-        {
-          "text": "Kaelon Black was added to the 49ers&#8217; injury report. The San Francisco 49ers&#8217; injury report saw a couple of changes Thursday. The players who rested on Wednesday, Christian McCaffrey, Dre Greenlaw, and Trent Williams, were all upgraded to full participants during Thursday&#8217;s session.",
-          "url": "https://www.ninersnation.com/san-francisco-49ers-injuries/162823/kaelon-black-was-added-to-the-49ers-injury-report",
-          "source": "SBN SF"
-        },
-        {
-          "text": "John Lynch: Christian McCaffrey will still have games as workhorse back. One of the biggest takeaways from the San Francisco 49ers 27-7 win over the Los Angeles Rams last weekend was the split at running back. Rookie Kaelon Black ended up with four more carries than Christian McCaffrey, as he went f",
-          "url": "https://www.ninersnation.com/san-francisco-49ers-news/162814/san-francisco-49ers-news-christian-mccaffrey-will-still-have-workhorse-load-in-games-john-lynch-kyle-shanahan",
-          "source": "SBN SF"
-        }
-      ]
-    },
-    {
       "name": "Jalen McMillan",
       "pos": "WR",
       "team": "TB",
@@ -1692,6 +1683,51 @@
       ]
     },
     {
+      "name": "Lamar Jackson",
+      "pos": "QB",
+      "team": "BAL",
+      "adp": 56.6,
+      "adp_prior": 57.4,
+      "adp_move": 0.8,
+      "proj": null,
+      "sleeper_weight": 0.5,
+      "score": 2.288,
+      "unpriced": true,
+      "signals": [
+        "starter"
+      ],
+      "items": [
+        {
+          "text": "Lamar Jackson takes 25-3 record vs. NFC into game against Saints. Ravens quarterback Lamar Jackson has a record of 77-31 as a starter.",
+          "url": "https://www.nbcsports.com/nfl/profootballtalk/rumor-mill/news/lamar-jackson-takes-25-3-record-vs-nfc-into-game-against-saints",
+          "source": "ProFootballTalk"
+        }
+      ]
+    },
+    {
+      "name": "Malik Nabers",
+      "pos": "WR",
+      "team": "NYG",
+      "adp": 22.8,
+      "adp_prior": 21.9,
+      "adp_move": -0.9,
+      "proj": null,
+      "sleeper_weight": 0.3,
+      "score": 2.184,
+      "unpriced": true,
+      "signals": [
+        "acl",
+        "targets"
+      ],
+      "items": [
+        {
+          "text": "\u2018Rusty\u2019 Malik Nabers \u2018left some yards out there\u2019 vs. Cowboys. Malik Nabers caught six passes on nine targets for 69 yards for the New York Giants against the Dallas Cowboys, a successful return for Nabers from a torn ACL as the Giants won, 28-20. How did the 23-year-old assess his performance? \u201cI\u2019m ",
+          "url": "https://www.bigblueview.com/new-york-giants-news/171770/rusty-malik-nabers-left-some-yards-out-there-vs-cowboys",
+          "source": "SBN NYG"
+        }
+      ]
+    },
+    {
       "name": "Malik Davis",
       "pos": "RB",
       "team": "DAL",
@@ -1710,30 +1746,6 @@
           "text": "Cowboys injuries: James Houston upgraded to full participant. Still recovering from the fallout of their sluggish loss to the New York Giants, the Dallas Cowboys continue their practice preparations for the Washington Commanders. A part of the team&#8217;s challenges come from injuries. The Cowboys ",
           "url": "https://www.bloggingtheboys.com/dallas-cowboys-injuries/218508/injuries-james-houston-demarvion-overshown-frankie-luvu",
           "source": "SBN DAL"
-        }
-      ]
-    },
-    {
-      "name": "Alec Pierce",
-      "pos": "WR",
-      "team": "IND",
-      "adp": 91.5,
-      "adp_prior": 95.7,
-      "adp_move": 4.2,
-      "proj": null,
-      "sleeper_weight": 0.75,
-      "score": 2.145,
-      "unpriced": false,
-      "signals": [
-        "injury",
-        "released",
-        "workload"
-      ],
-      "items": [
-        {
-          "text": "Indianapolis Colts Injury Report: Thursday Week 2. The Indianapolis Colts released their Thursday injury report for Week 2 of the NFL season against the Kansas City Chiefs. Wide receiver Alec Pierce (heel() missed practice Thursday. Pierce had been a full participant the day before. Pierce could be ",
-          "url": "https://www.stampedeblue.com/indianapolis-colts-injuries/127524/indianapolis-colts-injury-report-thursday-week-2",
-          "source": "SBN IND"
         }
       ]
     },
@@ -1789,30 +1801,80 @@
       ]
     },
     {
-      "name": "James Cook",
+      "name": "D'Andre Swift",
       "pos": "RB",
-      "team": "BUF",
-      "adp": 8.9,
-      "adp_prior": 9.6,
-      "adp_move": 0.7,
+      "team": "CHI",
+      "adp": 41.5,
+      "adp_prior": 43.0,
+      "adp_move": 1.5,
       "proj": null,
-      "sleeper_weight": 0.3,
-      "score": 1.878,
+      "sleeper_weight": 0.5,
+      "score": 2.08,
       "unpriced": true,
       "signals": [
-        "climbing",
-        "snap"
+        "injury"
       ],
       "items": [
         {
-          "text": "James Cook passes Joe Cribbs on Buffalo Bills\u2019 all-time rushing list. James Cook just keeps climbing. The Buffalo Bills running back entered Thursday night\u2019s game against the Detroit Lions needing 130 rushing yards to pass Joe Cribbs and move into fifth place on the franchise&#8217;s all-time rushin",
-          "url": "https://www.buffalorumblings.com/buffalo-bills-history/140609/james-cook-passes-joe-cribbs-on-buffalo-bills-all-time-rushing-list",
-          "source": "SBN BUF"
+          "text": "D'Andre Swift, Kyle Monangai good to go for Bears. The Bears had their top two running backs on the injury report this week, but neither one of them is at risk of missing Sunday's game against the Vikings.",
+          "url": "https://www.nbcsports.com/nfl/profootballtalk/rumor-mill/news/dandre-swift-kyle-monangai-good-to-go-for-bears",
+          "source": "ProFootballTalk"
+        }
+      ]
+    },
+    {
+      "name": "Alec Pierce",
+      "pos": "WR",
+      "team": "IND",
+      "adp": 91.5,
+      "adp_prior": 95.7,
+      "adp_move": 4.2,
+      "proj": null,
+      "sleeper_weight": 0.75,
+      "score": 1.898,
+      "unpriced": false,
+      "signals": [
+        "injury",
+        "released",
+        "workload"
+      ],
+      "items": [
+        {
+          "text": "Indianapolis Colts Injury Report: Thursday Week 2. The Indianapolis Colts released their Thursday injury report for Week 2 of the NFL season against the Kansas City Chiefs. Wide receiver Alec Pierce (heel() missed practice Thursday. Pierce had been a full participant the day before. Pierce could be ",
+          "url": "https://www.stampedeblue.com/indianapolis-colts-injuries/127524/indianapolis-colts-injury-report-thursday-week-2",
+          "source": "SBN IND"
+        }
+      ]
+    },
+    {
+      "name": "Chris Olave",
+      "pos": "WR",
+      "team": "NO",
+      "adp": 25.5,
+      "adp_prior": 26.5,
+      "adp_move": 1.0,
+      "proj": null,
+      "sleeper_weight": 0.5,
+      "score": 1.818,
+      "unpriced": true,
+      "signals": [
+        "ahead of",
+        "hamstring",
+        "injury",
+        "limited",
+        "out for",
+        "questionable"
+      ],
+      "items": [
+        {
+          "text": "Chris Olave, Chase Young questionable to face Ravens. Wide receiver Chris Olave and defensive end Chase Young practiced for the Saints on Friday, but the team isn't ready to guarantee they'll be in the lineup against the Ravens on Sunday.",
+          "url": "https://www.nbcsports.com/nfl/profootballtalk/rumor-mill/news/chris-olave-chase-young-questionable-to-face-ravens",
+          "source": "ProFootballTalk"
         },
         {
-          "text": "Bills halftime RB snap count\n\nJames Cook III 28\nRay Davis 6\nFrank Gore Jr. 5 (most of the 2 minute drill)\n\nOut of 40 plays",
-          "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3mvr2likhyk2t",
-          "source": "Bluesky @ffnatejahnke.bsky.social"
+          "text": "Thursday\u2019s Saints vs. Ravens injury report: Olave limited with hamstring injury. The New Orleans Saints have wrapped up their 2nd practice ahead of their Week 2 matchup on the road against the Baltimore Ravens on Sunday, September 20th at M&#38;T Bank Stadium. The news broke yesterday evening that S",
+          "url": "https://www.canalstreetchronicles.com/new-orleans-saints-injuries/114899/thursdays-saints-vs-ravens-injury-report-olave-limited-with-hamstring-injury",
+          "source": "SBN NO"
         }
       ]
     },
@@ -1874,37 +1936,30 @@
       ]
     },
     {
-      "name": "Christian McCaffrey",
+      "name": "James Cook",
       "pos": "RB",
-      "team": "SF",
-      "adp": 6.1,
-      "adp_prior": 6.1,
-      "adp_move": 0.0,
+      "team": "BUF",
+      "adp": 8.9,
+      "adp_prior": 9.6,
+      "adp_move": 0.7,
       "proj": null,
       "sleeper_weight": 0.3,
-      "score": 1.628,
+      "score": 1.684,
       "unpriced": true,
       "signals": [
-        "ahead of",
-        "carries",
-        "injury",
-        "limited"
+        "climbing",
+        "snap"
       ],
       "items": [
         {
-          "text": "Kaelon Black was added to the 49ers&#8217; injury report. The San Francisco 49ers&#8217; injury report saw a couple of changes Thursday. The players who rested on Wednesday, Christian McCaffrey, Dre Greenlaw, and Trent Williams, were all upgraded to full participants during Thursday&#8217;s session.",
-          "url": "https://www.ninersnation.com/san-francisco-49ers-injuries/162823/kaelon-black-was-added-to-the-49ers-injury-report",
-          "source": "SBN SF"
+          "text": "James Cook passes Joe Cribbs on Buffalo Bills\u2019 all-time rushing list. James Cook just keeps climbing. The Buffalo Bills running back entered Thursday night\u2019s game against the Detroit Lions needing 130 rushing yards to pass Joe Cribbs and move into fifth place on the franchise&#8217;s all-time rushin",
+          "url": "https://www.buffalorumblings.com/buffalo-bills-history/140609/james-cook-passes-joe-cribbs-on-buffalo-bills-all-time-rushing-list",
+          "source": "SBN BUF"
         },
         {
-          "text": "49ers injury update: De&#8217;Zhaun Stribling will miss \u2018close to 10 weeks\u2019. San Francisco 49ers head coach Kyle Shanahan provided injury updates ahead of Wednesday\u2019s practice. The following players won\u2019t practice today: K Eddy Pineiro (sick)WR De\u2019Zhaun Stribling (ankle)Nick Bosa (rest)Dre Greenlaw ",
-          "url": "https://www.ninersnation.com/san-francisco-49ers-news/162786/49ers-injury-update-dezhaun-stribling-will-miss-close-to-10-weeks",
-          "source": "SBN SF"
-        },
-        {
-          "text": "John Lynch: Christian McCaffrey will still have games as workhorse back. One of the biggest takeaways from the San Francisco 49ers 27-7 win over the Los Angeles Rams last weekend was the split at running back. Rookie Kaelon Black ended up with four more carries than Christian McCaffrey, as he went f",
-          "url": "https://www.ninersnation.com/san-francisco-49ers-news/162814/san-francisco-49ers-news-christian-mccaffrey-will-still-have-workhorse-load-in-games-john-lynch-kyle-shanahan",
-          "source": "SBN SF"
+          "text": "Bills halftime RB snap count\n\nJames Cook III 28\nRay Davis 6\nFrank Gore Jr. 5 (most of the 2 minute drill)\n\nOut of 40 plays",
+          "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3mvr2likhyk2t",
+          "source": "Bluesky @ffnatejahnke.bsky.social"
         }
       ]
     },
@@ -1917,16 +1972,44 @@
       "adp_move": 0.2,
       "proj": null,
       "sleeper_weight": 0.3,
-      "score": 1.5,
+      "score": 1.56,
       "unpriced": true,
       "signals": [
         "surgery"
       ],
       "items": [
         {
-          "text": "Jackson Powers-Johnson, D.J. Glaze settle into roles for the Raiders. Here is a look at how the Las Vegas Raiders\u2019 2024 draft class fared in a 27-13 win over the Miami Dolphins in Week 1 and what to look for Sunday at the Los Angeles Chargers: Brock Bowers: The No. 13 overall pick in the draft misse",
-          "url": "https://www.silverandblackpride.com/las-vegas-raiders-draft/139872/raiders-jackson-powers-johnson-dj-glaze-offensive-line",
-          "source": "SBN LV"
+          "text": "Brock Bowers returns to Raiders practice for first time since knee surgery, but is 'doubtful' for Sunday. Bowers missed Las Vegas' Week 1 win after undergoing a procedure to trim his meniscus.",
+          "url": "https://sports.yahoo.com/nfl/article/brock-bowers-returns-to-raiders-practice-for-first-time-since-knee-surgery-but-is-doubtful-for-sunday-180217625.html",
+          "source": "Yahoo NFL"
+        }
+      ]
+    },
+    {
+      "name": "Christian McCaffrey",
+      "pos": "RB",
+      "team": "SF",
+      "adp": 6.1,
+      "adp_prior": 6.1,
+      "adp_move": 0.0,
+      "proj": null,
+      "sleeper_weight": 0.3,
+      "score": 1.518,
+      "unpriced": true,
+      "signals": [
+        "carries",
+        "injury"
+      ],
+      "items": [
+        {
+          "text": "Kaelon Black was added to the 49ers&#8217; injury report. The San Francisco 49ers&#8217; injury report saw a couple of changes Thursday. The players who rested on Wednesday, Christian McCaffrey, Dre Greenlaw, and Trent Williams, were all upgraded to full participants during Thursday&#8217;s session.",
+          "url": "https://www.ninersnation.com/san-francisco-49ers-injuries/162823/kaelon-black-was-added-to-the-49ers-injury-report",
+          "source": "SBN SF"
+        },
+        {
+          "text": "John Lynch: Christian McCaffrey will still have games as workhorse back. One of the biggest takeaways from the San Francisco 49ers 27-7 win over the Los Angeles Rams last weekend was the split at running back. Rookie Kaelon Black ended up with four more carries than Christian McCaffrey, as he went f",
+          "url": "https://www.ninersnation.com/san-francisco-49ers-news/162814/san-francisco-49ers-news-christian-mccaffrey-will-still-have-workhorse-load-in-games-john-lynch-kyle-shanahan",
+          "source": "SBN SF"
         }
       ]
     },
@@ -1953,28 +2036,24 @@
       ]
     },
     {
-      "name": "Chris Olave",
-      "pos": "WR",
-      "team": "NO",
-      "adp": 25.5,
-      "adp_prior": 26.5,
-      "adp_move": 1.0,
+      "name": "George Kittle",
+      "pos": "TE",
+      "team": "SF",
+      "adp": 107.1,
+      "adp_prior": 112.0,
+      "adp_move": 4.9,
       "proj": null,
-      "sleeper_weight": 0.5,
-      "score": 1.265,
-      "unpriced": true,
+      "sleeper_weight": 0.75,
+      "score": 1.248,
+      "unpriced": false,
       "signals": [
-        "ahead of",
-        "hamstring",
-        "injury",
-        "limited",
-        "out for"
+        "snap"
       ],
       "items": [
         {
-          "text": "Thursday\u2019s Saints vs. Ravens injury report: Olave limited with hamstring injury. The New Orleans Saints have wrapped up their 2nd practice ahead of their Week 2 matchup on the road against the Baltimore Ravens on Sunday, September 20th at M&#38;T Bank Stadium. The news broke yesterday evening that S",
-          "url": "https://www.canalstreetchronicles.com/new-orleans-saints-injuries/114899/thursdays-saints-vs-ravens-injury-report-olave-limited-with-hamstring-injury",
-          "source": "SBN NO"
+          "text": "George Kittle coins a new nickname for the 49ers after a dominant performance against the Rams. The YAC bros are so 2020. That\u2019s a thing of the past. The San Francisco 49ers had the Rams chasing their tails in Week 1 against the Los Angeles Rams because of their overdose of \u201cdash\u201d motion, when a pla",
+          "url": "https://www.ninersnation.com/san-francisco-49ers-analysis/162853/george-kittle-coins-a-new-nickname-for-the-49ers-after-a-dominant-week-1-performance",
+          "source": "SBN SF"
         }
       ]
     },
@@ -2007,30 +2086,6 @@
       ]
     },
     {
-      "name": "George Kittle",
-      "pos": "TE",
-      "team": "SF",
-      "adp": 107.1,
-      "adp_prior": 112.0,
-      "adp_move": 4.9,
-      "proj": null,
-      "sleeper_weight": 0.75,
-      "score": 1.125,
-      "unpriced": false,
-      "signals": [
-        "ahead of",
-        "injury",
-        "limited"
-      ],
-      "items": [
-        {
-          "text": "49ers injury update: De&#8217;Zhaun Stribling will miss \u2018close to 10 weeks\u2019. San Francisco 49ers head coach Kyle Shanahan provided injury updates ahead of Wednesday\u2019s practice. The following players won\u2019t practice today: K Eddy Pineiro (sick)WR De\u2019Zhaun Stribling (ankle)Nick Bosa (rest)Dre Greenlaw ",
-          "url": "https://www.ninersnation.com/san-francisco-49ers-news/162786/49ers-injury-update-dezhaun-stribling-will-miss-close-to-10-weeks",
-          "source": "SBN SF"
-        }
-      ]
-    },
-    {
       "name": "Jameson Williams",
       "pos": "WR",
       "team": "DET",
@@ -2053,29 +2108,6 @@
       ]
     },
     {
-      "name": "Jadarian Price",
-      "pos": "RB",
-      "team": "SEA",
-      "adp": 54.9,
-      "adp_prior": 57.6,
-      "adp_move": 2.7,
-      "proj": null,
-      "sleeper_weight": 0.5,
-      "score": 1.035,
-      "unpriced": false,
-      "signals": [
-        "snaps",
-        "workload"
-      ],
-      "items": [
-        {
-          "text": "Jadarian Price will get more reps moving forward. In his Week 1 debut, running back Jadarian Price was on the field for only 24 snaps \u2014 less than half of the Seahawks' total offensive workload.",
-          "url": "https://www.nbcsports.com/nfl/profootballtalk/rumor-mill/news/jadarian-price-will-get-more-reps-moving-forward",
-          "source": "ProFootballTalk"
-        }
-      ]
-    },
-    {
       "name": "Amon-Ra St. Brown",
       "pos": "WR",
       "team": "DET",
@@ -2094,43 +2126,6 @@
           "text": "Lions halftime WR snap count\n\nJameson Williams 33 (11, 12 and 13 personnel)\nAmon-Ra St. Brown 31 (11 and 12 personnel)\nIsaac TeSlaa 22 (11 personnel)\n\nOut of 33 plays",
           "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3mvr2jkjqbk2t",
           "source": "Bluesky @ffnatejahnke.bsky.social"
-        }
-      ]
-    },
-    {
-      "name": "De'Zhaun Stribling",
-      "pos": "WR",
-      "team": "SF",
-      "adp": 95.2,
-      "adp_prior": 103.4,
-      "adp_move": 8.2,
-      "proj": null,
-      "sleeper_weight": 0.75,
-      "score": 0.874,
-      "unpriced": false,
-      "signals": [
-        "ahead of",
-        "injury",
-        "limited",
-        "out for",
-        "snaps",
-        "surgery"
-      ],
-      "items": [
-        {
-          "text": "How did the 49ers rookies fare in Week 1?. The San Francisco 49ers got some unfortunate injury news regarding second-round pick De\u2019Zhaun Stribling this week, as the rookie wideout will be out for close to 10 weeks after undergoing ankle surgery. Stribling had been poised for a key role in San Franci",
-          "url": "https://www.ninersnation.com/san-francisco-49ers-news/162820/san-francisco-49ers-news-how-did-rookies-fare-week-1-kaelon-black-dezhaun-stribling-gracen-halton",
-          "source": "SBN SF"
-        },
-        {
-          "text": "Kyle Shanahan reveals rare trait that has helped 49ers rookie hit the ground running. While De\u2019Zhaun Stribling endured an unfortunate start to his NFL career as injury struck on his debut, Week 1 of the new campaign saw several promising signs from other members of the 49ers\u2019 rookie class. Romello H",
-          "url": "https://www.ninersnation.com/san-francisco-49ers-news/162794/kyle-shanahan-reveals-rare-trait-helped-49ers-rookie-hit-ground-running",
-          "source": "SBN SF"
-        },
-        {
-          "text": "49ers injury update: De&#8217;Zhaun Stribling will miss \u2018close to 10 weeks\u2019. San Francisco 49ers head coach Kyle Shanahan provided injury updates ahead of Wednesday\u2019s practice. The following players won\u2019t practice today: K Eddy Pineiro (sick)WR De\u2019Zhaun Stribling (ankle)Nick Bosa (rest)Dre Greenlaw ",
-          "url": "https://www.ninersnation.com/san-francisco-49ers-news/162786/49ers-injury-update-dezhaun-stribling-will-miss-close-to-10-weeks",
-          "source": "SBN SF"
         }
       ]
     },
@@ -2200,6 +2195,36 @@
           "text": "Cowboys' recipe for success in Week 2? Start fast and make a splash to help struggling defense. After defensive struggles severely limited possessions in Week 1, Dallas is prioritizing explosive plays from CeeDee Lamb and George Pickens to maximize every drive against Washington",
           "url": "https://www.cbssports.com/nfl/news/cowboys-offense-looks-to-start-fast-week-2-vs-commanders/",
           "source": "CBS Sports NFL"
+        }
+      ]
+    },
+    {
+      "name": "De'Zhaun Stribling",
+      "pos": "WR",
+      "team": "SF",
+      "adp": 95.2,
+      "adp_prior": 103.4,
+      "adp_move": 8.2,
+      "proj": null,
+      "sleeper_weight": 0.75,
+      "score": 0.738,
+      "unpriced": false,
+      "signals": [
+        "injury",
+        "out for",
+        "snaps",
+        "surgery"
+      ],
+      "items": [
+        {
+          "text": "How did the 49ers rookies fare in Week 1?. The San Francisco 49ers got some unfortunate injury news regarding second-round pick De\u2019Zhaun Stribling this week, as the rookie wideout will be out for close to 10 weeks after undergoing ankle surgery. Stribling had been poised for a key role in San Franci",
+          "url": "https://www.ninersnation.com/san-francisco-49ers-news/162820/san-francisco-49ers-news-how-did-rookies-fare-week-1-kaelon-black-dezhaun-stribling-gracen-halton",
+          "source": "SBN SF"
+        },
+        {
+          "text": "Kyle Shanahan reveals rare trait that has helped 49ers rookie hit the ground running. While De\u2019Zhaun Stribling endured an unfortunate start to his NFL career as injury struck on his debut, Week 1 of the new campaign saw several promising signs from other members of the 49ers\u2019 rookie class. Romello H",
+          "url": "https://www.ninersnation.com/san-francisco-49ers-news/162794/kyle-shanahan-reveals-rare-trait-helped-49ers-rookie-hit-ground-running",
+          "source": "SBN SF"
         }
       ]
     },
