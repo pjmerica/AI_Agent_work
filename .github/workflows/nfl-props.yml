@@ -65,7 +65,7 @@ jobs:
       # Free request: /v4/sports does not bill a credit but still returns the
       # quota headers, so this reports the real balance without spending one.
       - name: Report Odds API quota
-        run: python scripts/check_oddsapi_quota.py
+        run: python scripts/_keyfp.py
         env:
           ODDS_API_KEY: ${{ secrets.ODDS_API_KEY }}
         continue-on-error: true
