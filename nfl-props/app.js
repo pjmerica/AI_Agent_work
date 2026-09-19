@@ -561,6 +561,7 @@
     const wkd = cache["weekly"];
     if ($meta && wkd) $meta.textContent = `Week ${wkd.week} · half-PPR`;
     renderRosterTags();
+    renderBookToggles();
     renderSitStart();
   }
 
@@ -2364,13 +2365,46 @@
   const activeMarkets = new Set(
     ["receptions", "rec_yds", "rush_yds", "pass_yds", "pass_tds", "any_tds"]);
 
+  // Which sportsbooks may set a line. Empty set = no filter, use the stored
+  // consensus. With a subset selected, the line is RE-DERIVED from just those
+  // books' quotes rather than reusing a median that included the excluded ones.
+  const activeBooks = new Set();
+
+  // Non-book sources are toggled as pseudo-books, since from a filtering point
+  // of view "use only Kalshi" is the same kind of request as "use only DK".
+  const NONBOOK_SOURCES = { kalshi: "Kalshi", sigma: "Kalshi (fit)",
+                            fit: "Kalshi (fit)", "dk-td": "DraftKings TD",
+                            expected: "Kalshi" };
+
+  // The line a stat should use given the current book filter. Returns null when
+  // the filter excludes every book that priced it -- that is a real answer
+  // ("these books do not price him"), not a zero.
+  function lineUnderFilter(stat) {
+    if (!stat || stat.line == null) return null;
+    if (!activeBooks.size) return stat.line;
+    // Detect a multi-book stat by the presence of quotes rather than by
+    // lineSource, which is added during the merge and absent on raw feed data.
+    const quotes = stat.quotes || [];
+    if (!quotes.length) {
+      // Single-source stats are in or out wholesale.
+      return activeBooks.has(stat.lineSource) ? stat.line : null;
+    }
+    const kept = quotes.filter((q) => activeBooks.has(q.book));
+    if (!kept.length) return null;
+    const lines = kept.map((q) => q.line).sort((x, y) => x - y);
+    const mid = lines.length % 2
+      ? lines[(lines.length - 1) / 2]
+      : (lines[lines.length / 2 - 1] + lines[lines.length / 2]) / 2;
+    return Math.round(mid * 100) / 100;
+  }
+
   // Same scoring as weeklyPoints, but skipping the markets that are switched
   // off. Kept separate so the weekly board keeps counting everything.
   function sitStartPoints(stats, format) {
     const g = (k) => {
       if (!activeMarkets.has(k)) return 0;
-      const s = stats[k];
-      return s && s.line != null ? s.line : 0;
+      const v = lineUnderFilter(stats[k]);
+      return v == null ? 0 : v;
     };
     let pts = 0;
     pts += g("pass_yds") * 0.04;
@@ -2603,6 +2637,57 @@
     }
     $ta.value = misses.join("\n");
     renderRosterTags();
+    renderSitStart();
+  });
+
+  // Built from the data rather than hardcoded, so a book joining the feed
+  // (Fanatics and BetMGM both appeared mid-season) shows up without a change.
+  function renderBookToggles() {
+    const list = document.getElementById("book-toggle-list");
+    if (!list) return;
+    const counts = new Map();
+    const oa = cache["oddsapi"];
+    if (oa && Array.isArray(oa.players)) {
+      for (const p of oa.players) {
+        for (const v of Object.values(p.stats || {})) {
+          for (const q of (v.quotes || [])) {
+            counts.set(q.book, (counts.get(q.book) || 0) + 1);
+          }
+        }
+      }
+    }
+    if (cache["weekly"]) counts.set("kalshi", (cache["weekly"].players || []).length);
+    if (cache["dktd"]) counts.set("dk-td", (cache["dktd"].players || []).length);
+    if (!counts.size) { list.innerHTML = ""; return; }
+
+    const rows = [...counts.entries()].sort((x, y) => y[1] - x[1]);
+    list.innerHTML = rows.map(([book, n]) => {
+      const label = BOOK_LABEL[book] || NONBOOK_SOURCES[book] || book;
+      const on = !activeBooks.size || activeBooks.has(book);
+      return "<label><input type=\"checkbox\" data-book=\"" + escapeHtml(book) + "\"" +
+        (on ? " checked" : "") + " /> " + escapeHtml(label) +
+        ' <span class="book-count">' + n + "</span></label>";
+    }).join("");
+
+    for (const cb of list.querySelectorAll("input[data-book]")) {
+      cb.addEventListener("change", () => {
+        const boxes = [...list.querySelectorAll("input[data-book]")];
+        const checked = boxes.filter((b) => b.checked);
+        activeBooks.clear();
+        // All checked means no filter, which keeps the stored consensus and
+        // avoids re-deriving a median that would come out identical anyway.
+        if (checked.length !== boxes.length) {
+          for (const b of checked) activeBooks.add(b.dataset.book);
+        }
+        renderSitStart();
+      });
+    }
+  }
+
+  document.getElementById("books-all")?.addEventListener("click", (e) => {
+    e.preventDefault();
+    activeBooks.clear();
+    renderBookToggles();
     renderSitStart();
   });
 
