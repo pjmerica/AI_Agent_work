@@ -2097,7 +2097,10 @@
         if (!rec) { rec = { name: p.name, matchup: p.matchup, stats: {} }; merged.set(k, rec); }
         for (const [statKey, v] of Object.entries(p.stats || {})) {
           if (v.line != null) {
-            rec.stats[statKey] = { line: v.line, lineSource: "books", books: v.books };
+            rec.stats[statKey] = {
+              line: v.line, lineSource: "books", books: v.books,
+              min: v.min, max: v.max, quotes: v.quotes || [],
+            };
           }
         }
       }
@@ -2261,6 +2264,41 @@
           "</div></td></tr>";
       }
       html += "</tbody></table></div>";
+
+      // Per-book detail. The consensus answers "who", but a stat where the
+      // books disagree is a weaker signal than one where they all agree, and
+      // that only shows at book level.
+      const bookRows = [];
+      for (const r of rows) {
+        for (const [who, p] of [["a", a], ["b", b]]) {
+          const st = p.stats[r.key];
+          if (!st || !st.quotes || st.quotes.length < 2) continue;
+          if (st.min === st.max) continue;   // unanimous: nothing to show
+          bookRows.push({ who, name: p.name, label: r.label, st });
+        }
+      }
+      if (bookRows.length) {
+        html += '<div class="sitstart-section">Where the books disagree</div>' +
+          '<div class="table-wrap"><table class="slot-table"><thead><tr>' +
+          "<th>Player</th><th>Stat</th><th>Consensus</th>" +
+          "<th>Book lines (low to high)</th></tr></thead><tbody>";
+        for (const br of bookRows) {
+          const qs = br.st.quotes.slice().sort((x, y) => x.line - y.line);
+          const cells = qs.map((q) => {
+            const off = q.line - br.st.line;
+            const col = off > 0 ? "#58d68d" : off < 0 ? "#ff6b6b" : "#6a6a8a";
+            return '<span style="color:' + col + '">' +
+              escapeHtml(BOOK_LABEL[q.book] || q.book) + " " + q.line + "</span>";
+          }).join(" &middot; ");
+          html += "<tr><td class=\"player-name\">" + escapeHtml(br.name) + "</td>" +
+            "<td class=\"h2h-stat-name\">" + escapeHtml(br.label) + "</td>" +
+            '<td style="text-align:right">' + br.st.line +
+            ' <span style="color:#6a6a8a">(' + br.st.min + "&ndash;" + br.st.max +
+            ")</span></td>" +
+            '<td style="font-size:12px">' + cells + "</td></tr>";
+        }
+        html += "</tbody></table></div>";
+      }
 
       // Name the stat driving the gap, and say when the edge is contested.
       // A single "biggest gain" line is misleading when the loser wins other
@@ -2690,6 +2728,9 @@
     betrivers: "BetRivers",
     betonlineag: "BetOnline",
     betmgm: "BetMGM",
+    fanatics: "Fanatics",
+    espnbet: "ESPN BET",
+    hardrockbet: "Hard Rock",
     williamhill_us: "Caesars",
     pointsbetus: "PointsBet",
   };
