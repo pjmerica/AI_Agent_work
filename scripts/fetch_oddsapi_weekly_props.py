@@ -103,6 +103,22 @@ else:
 MARKETS = {k: ALL_MARKETS[k] for k in _keys}
 
 
+def _vig_distance(price) -> float:
+    """How far an American price sits from even money.
+
+    A book's headline line is priced near -110/+100; its alternate rungs sit far
+    out on either side (-230, +150). Distance from zero on the American scale
+    therefore identifies the main line without the book having to label it.
+    """
+    if price is None:
+        return 1e9
+    try:
+        return abs(float(str(price).replace("−", "-").replace("+", "")))
+    except ValueError:
+        return 1e9
+
+
+
 def http_json(url: str) -> tuple[object, dict]:
     req = Request(url, headers={"User-Agent": "nfl-props/1.0", "Accept": "application/json"})
     try:
@@ -182,9 +198,21 @@ def main() -> None:
                     })
                     # Several books quote the same stat. Keep every line so the
                     # consensus is visible rather than picking one book blind.
-                    rec["stats"].setdefault(stat, []).append(
-                        {"book": bname, "line": float(point), "odds": oc.get("price")})
-                    books[bname] = books.get(bname, 0) + 1
+                    # Some books (Bovada, observed 2026-09-19) return a LADDER
+                    # of alternate lines for one player-stat -- 24.5 / 29.5 /
+                    # 34.5 / 39.5 / 44.5 -- rather than a single number. Storing
+                    # every rung would let one book cast five votes in the
+                    # median and wreck any per-book spread comparison, so keep
+                    # only that book's main line: the rung priced closest to
+                    # even money, which is the one it is actually advertising.
+                    quotes = rec["stats"].setdefault(stat, [])
+                    line, price = float(point), oc.get("price")
+                    prev = next((q for q in quotes if q["book"] == bname), None)
+                    if prev is None:
+                        quotes.append({"book": bname, "line": line, "odds": price})
+                        books[bname] = books.get(bname, 0) + 1
+                    elif abs(_vig_distance(price)) < abs(_vig_distance(prev["odds"])):
+                        prev["line"], prev["odds"] = line, price
 
     # Collapse each stat to a median line across books, keeping the spread.
     out = []
