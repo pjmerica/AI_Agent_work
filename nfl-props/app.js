@@ -519,6 +519,7 @@
       }
     }
     renderSleeperChips();
+    renderSleeperBookToggles();
     renderSleeper();
   }
 
@@ -1836,9 +1837,11 @@
   // League scoring differs from the fixed half-PPR the other tabs use, so
   // points are recomputed per league rather than reused.
   function leaguePoints(stats, scoring, position) {
+    // Same book filter Start/Sit uses, so a book unticked on either tab means
+    // the same thing: re-derive the line from only the books still selected.
     const g = (k) => {
-      const s = stats[k];
-      return s && s.line != null ? s.line : 0;
+      const v = lineUnderFilter(stats[k]);
+      return v == null ? 0 : v;
     };
     let pts = 0;
     pts += g("pass_yds") * 0.04;
@@ -1897,6 +1900,28 @@
     recurse(0, 0);
     return best || { total: 0, picks: current.slice() };
   }
+
+  // The list is per-tab markup but the selection is shared, so unticking a
+  // book here and switching to Start/Sit shows the same filtered numbers.
+  function renderSleeperBookToggles() {
+    const list = document.getElementById("sleeper-book-list");
+    if (!list) return;
+    list.innerHTML = bookToggleHTML();
+    for (const cb of list.querySelectorAll("input[data-book]")) {
+      cb.addEventListener("change", () => {
+        applyBookToggle([...list.querySelectorAll("input[data-book]")]);
+        renderSleeper();
+        renderSleeperBookToggles();
+      });
+    }
+  }
+
+  document.getElementById("sleeper-books-all")?.addEventListener("click", (e) => {
+    e.preventDefault();
+    activeBooks.clear();
+    renderSleeperBookToggles();
+    renderSleeper();
+  });
 
   function renderSleeperChips() {
     const $chips = document.getElementById("sleeper-league-chips");
@@ -2358,10 +2383,9 @@
   }
 
 
-  // Which markets count toward a Start/Sit projection. Unchecking one answers
-  // "who starts on receiving volume alone?" -- useful when you distrust a
-  // touchdown number, or want to compare two players on the stat you actually
-  // believe in rather than a blended total.
+  // Every scoring market counts. This was briefly user-toggleable, but the
+  // useful axis turned out to be WHICH BOOK sets the line, not which stat is
+  // counted -- so the set is fixed and the book filter below does the work.
   const activeMarkets = new Set(
     ["receptions", "rec_yds", "rush_yds", "pass_yds", "pass_tds", "any_tds"]);
 
@@ -2372,9 +2396,12 @@
 
   // Non-book sources are toggled as pseudo-books, since from a filtering point
   // of view "use only Kalshi" is the same kind of request as "use only DK".
-  const NONBOOK_SOURCES = { kalshi: "Kalshi", sigma: "Kalshi (fit)",
-                            fit: "Kalshi (fit)", "dk-td": "DraftKings TD",
-                            expected: "Kalshi" };
+  const NONBOOK_SOURCES = { kalshi: "Kalshi", "dk-td": "DraftKings TD" };
+
+  // Kalshi reports HOW a line was read off its ladder, not that it came from
+  // Kalshi. All of these are the same venue as far as filtering is concerned.
+  const KALSHI_METHODS = new Set(
+    ["interpolated", "fitted", "assumed-sigma", "expected", "sigma", "fit", "kalshi"]);
 
   // The line a stat should use given the current book filter. Returns null when
   // the filter excludes every book that priced it -- that is a real answer
@@ -2386,8 +2413,12 @@
     // lineSource, which is added during the merge and absent on raw feed data.
     const quotes = stat.quotes || [];
     if (!quotes.length) {
-      // Single-source stats are in or out wholesale.
-      return activeBooks.has(stat.lineSource) ? stat.line : null;
+      // Single-source stats are in or out wholesale. Kalshi records its
+      // lineSource as the METHOD used to read its ladder -- interpolated,
+      // fitted, assumed-sigma, expected -- not as the venue, so those all map
+      // back to the one pseudo-book the checkbox offers.
+      const venue = KALSHI_METHODS.has(stat.lineSource) ? "kalshi" : stat.lineSource;
+      return activeBooks.has(venue) ? stat.line : null;
     }
     const kept = quotes.filter((q) => activeBooks.has(q.book));
     if (!kept.length) return null;
@@ -2532,28 +2563,6 @@
   // Wraps weeklyChips so an excluded market is visibly not counted rather than
   // silently vanishing -- a line that exists but is switched off is different
   // information from a line that was never posted.
-  // A market that is switched off still renders, but dimmed and struck
-  // through: a line that exists but is excluded is different information from
-  // a line that was never posted, and collapsing the two would hide why a
-  // projection changed.
-  function sitStartChips(p) {
-    const off = Object.keys(p.stats || {}).filter((k) => !activeMarkets.has(k));
-    if (!off.length) return weeklyChips(p);
-    // Render each stat on its own so the excluded ones can be marked without
-    // pattern-matching against generated HTML.
-    const full = { ...p, stats: {} };
-    const parts = [];
-    for (const [k, v] of Object.entries(p.stats || {})) {
-      full.stats = { [k]: v };
-      const chip = weeklyChips(full);
-      if (!chip.includes("market-chip")) continue;
-      parts.push(activeMarkets.has(k)
-        ? chip
-        : chip.replace('class="market-chip ', 'class="market-chip stat-off '));
-    }
-    return parts.join("").replace(/<\/div><div class="markets">/g, "");
-  }
-
   function slotTable(rows, total, unpriced, unmatched, bench) {
     let html = "";
     if (rows.length) {
@@ -2577,7 +2586,7 @@
           '<td class="weekly-game">' + escapeHtml(r.p.matchup || "-") + "</td>" +
           '<td style="text-align:right"><span class="market-pts">' +
           r.p.points.toFixed(1) + "</span></td>" +
-          "<td>" + (r.p.stats ? sitStartChips(r.p) : "") + "</td></tr>";
+          "<td>" + (r.p.stats ? weeklyChips(r.p) : "") + "</td></tr>";
       }
       html += "</tbody></table>";
     }
@@ -2593,7 +2602,7 @@
           escapeHtml(p.position || "?") + "</span></td>" +
           '<td class="weekly-game">' + escapeHtml(p.matchup || "-") + "</td>" +
           '<td style="text-align:right">' + p.points.toFixed(1) + "</td>" +
-          "<td>" + (p.stats ? sitStartChips(p) : "") + "</td></tr>";
+          "<td>" + (p.stats ? weeklyChips(p) : "") + "</td></tr>";
       }
       html += "</tbody></table>";
     }
@@ -2642,9 +2651,11 @@
 
   // Built from the data rather than hardcoded, so a book joining the feed
   // (Fanatics and BetMGM both appeared mid-season) shows up without a change.
-  function renderBookToggles() {
-    const list = document.getElementById("book-toggle-list");
-    if (!list) return;
+  // Book checkbox list, built from whatever is actually in the loaded feeds so
+  // a newly-added book appears without a code change. Shared by Start/Sit and
+  // My Leagues; the selection itself lives in activeBooks, so the two tabs stay
+  // in sync.
+  function bookToggleHTML() {
     const counts = new Map();
     const oa = cache["oddsapi"];
     if (oa && Array.isArray(oa.players)) {
@@ -2658,28 +2669,36 @@
     }
     if (cache["weekly"]) counts.set("kalshi", (cache["weekly"].players || []).length);
     if (cache["dktd"]) counts.set("dk-td", (cache["dktd"].players || []).length);
-    if (!counts.size) { list.innerHTML = ""; return; }
+    if (!counts.size) return "";
 
-    const rows = [...counts.entries()].sort((x, y) => y[1] - x[1]);
-    list.innerHTML = rows.map(([book, n]) => {
+    return [...counts.entries()].sort((x, y) => y[1] - x[1]).map(([book, n]) => {
       const label = BOOK_LABEL[book] || NONBOOK_SOURCES[book] || book;
       const on = !activeBooks.size || activeBooks.has(book);
       return "<label><input type=\"checkbox\" data-book=\"" + escapeHtml(book) + "\"" +
         (on ? " checked" : "") + " /> " + escapeHtml(label) +
         ' <span class="book-count">' + n + "</span></label>";
     }).join("");
+  }
 
+  // All boxes checked means "no filter", which keeps the stored consensus
+  // rather than re-deriving a median that would come out identical.
+  function applyBookToggle(boxes) {
+    const checked = boxes.filter((b) => b.checked);
+    activeBooks.clear();
+    if (checked.length !== boxes.length) {
+      for (const b of checked) activeBooks.add(b.dataset.book);
+    }
+  }
+
+  function renderBookToggles() {
+    const list = document.getElementById("book-toggle-list");
+    if (!list) return;
+    list.innerHTML = bookToggleHTML();
     for (const cb of list.querySelectorAll("input[data-book]")) {
       cb.addEventListener("change", () => {
-        const boxes = [...list.querySelectorAll("input[data-book]")];
-        const checked = boxes.filter((b) => b.checked);
-        activeBooks.clear();
-        // All checked means no filter, which keeps the stored consensus and
-        // avoids re-deriving a median that would come out identical anyway.
-        if (checked.length !== boxes.length) {
-          for (const b of checked) activeBooks.add(b.dataset.book);
-        }
+        applyBookToggle([...list.querySelectorAll("input[data-book]")]);
         renderSitStart();
+        renderBookToggles();
       });
     }
   }
@@ -2690,29 +2709,6 @@
     renderBookToggles();
     renderSitStart();
   });
-
-  (function initMarketToggles() {
-    const box = document.getElementById("market-toggles");
-    if (!box) return;
-    const boxes = [...box.querySelectorAll("input[data-stat]")];
-    const sync = () => {
-      activeMarkets.clear();
-      for (const cb of boxes) if (cb.checked) activeMarkets.add(cb.dataset.stat);
-      renderSitStart();
-    };
-    for (const cb of boxes) cb.addEventListener("change", sync);
-    document.getElementById("markets-all")?.addEventListener("click", (e) => {
-      e.preventDefault();
-      for (const cb of boxes) cb.checked = true;
-      sync();
-    });
-    document.getElementById("markets-none")?.addEventListener("click", (e) => {
-      e.preventDefault();
-      for (const cb of boxes) cb.checked = false;
-      sync();
-    });
-    sync();
-  })();
 
   document.getElementById("roster-clear")?.addEventListener("click", () => {
     rosterSelected.clear();

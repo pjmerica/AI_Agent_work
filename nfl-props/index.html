@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>NFL Season Projections</title>
-  <link rel="stylesheet" href="style.css?v=2026-09-19-bookfilter" />
+  <link rel="stylesheet" href="style.css?v=2026-09-19-leaguebooks" />
 </head>
 <body>
   <div class="container">
@@ -368,11 +368,17 @@
           <strong>QB / RB / RB / WR / WR / TE / FLEX / FLEX</strong> in
           half-PPR. FLEX takes RB, WR or TE.
           <br /><br />
-          Two filters sit above the roster. <strong>Books</strong> re-derives
-          every line from only the sportsbooks you tick &mdash; score off
-          DraftKings alone, or drop a book you think is soft. A player no
-          selected book prices drops out rather than counting as zero.
-          <strong>Markets</strong> untick any stat to leave it out of the total. Useful when you
+<strong>Price from these books</strong> re-derives every line from only the
+          sportsbooks you tick &mdash; score off DraftKings alone, or drop one
+          you think is soft.
+          <br /><br />
+          Narrowing to a single book drops any stat that book does not post, so
+          totals fall: Drake Maye reads 9.7 on the full consensus but 2.8 on
+          DraftKings alone, because DK prices his rushing yards and not his
+          passing. That is the filter working, not a missing line &mdash; use it
+          to ask &ldquo;what does <em>this</em> book think&rdquo;, and leave all
+          books ticked for the best projection.
+ Useful when you
           distrust one number &mdash; a touchdown price is far noisier than a
           receptions line &mdash; or to ask a narrower question, like who starts
           on receiving volume alone. Excluded lines still show, struck through.
@@ -401,20 +407,6 @@
               <button id="roster-demo" class="fmt-btn">Load example</button>
               <button id="roster-clear" class="fmt-btn">Clear</button>
               <span class="weekly-meta" id="sitstart-meta"></span>
-            </div>
-
-            <div class="market-toggles" id="market-toggles">
-              <div class="sitstart-label" style="margin-bottom:6px">
-                Count these markets
-                <a href="#" id="markets-all" class="market-toggle-link">all</a>
-                <a href="#" id="markets-none" class="market-toggle-link">none</a>
-              </div>
-              <label><input type="checkbox" data-stat="receptions" checked /> Rec</label>
-              <label><input type="checkbox" data-stat="rec_yds" checked /> Rec Yds</label>
-              <label><input type="checkbox" data-stat="rush_yds" checked /> Rush Yds</label>
-              <label><input type="checkbox" data-stat="pass_yds" checked /> Pass Yds</label>
-              <label><input type="checkbox" data-stat="pass_tds" checked /> Pass TDs</label>
-              <label><input type="checkbox" data-stat="any_tds" checked /> xTD</label>
             </div>
 
             <div class="market-toggles" id="book-toggles">
@@ -520,6 +512,14 @@
           <span class="weekly-meta" id="sleeper-meta"></span>
         </div>
 
+        <div class="market-toggles" id="sleeper-book-toggles">
+          <div class="sitstart-label" style="margin-bottom:6px">
+            Price from these books
+            <a href="#" id="sleeper-books-all" class="market-toggle-link">all</a>
+          </div>
+          <div id="sleeper-book-list" class="book-toggle-list"></div>
+        </div>
+
         <div id="sleeper-output">
           <div class="empty">Enter a Sleeper username to load your leagues.</div>
         </div>
@@ -537,6 +537,6 @@
   <!-- Version query busts the 10-minute GitHub Pages cache on app.js. Without
        it a stale script can pair with fresh markup and shift every column.
        Bump on any app.js change. -->
-  <script src="app.js?v=2026-09-19-bookfilter"></script>
+  <script src="app.js?v=2026-09-19-leaguebooks"></script>
 </body>
 </html>
