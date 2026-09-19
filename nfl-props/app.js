@@ -2473,14 +2473,15 @@
     if (rows.length) {
       html += '<table class="slot-table"><thead><tr>' +
         '<th>Slot</th><th>Player</th><th>Pos</th><th>Game</th>' +
-        '<th style="text-align:right">Proj</th></tr></thead><tbody>';
+        '<th style="text-align:right">Proj</th>' +
+        "<th>Market lines</th></tr></thead><tbody>";
       for (const r of rows) {
         const isFlex = r.slot === "FLEX";
         const badge = '<span class="slot-badge' + (isFlex ? " flex" : "") + '">' +
                       escapeHtml(r.slot) + "</span>";
         if (!r.p) {
           html += '<tr class="bench-row"><td>' + badge +
-                  '</td><td colspan="4">nobody eligible</td></tr>';
+                  '</td><td colspan="5">nobody eligible</td></tr>';
           continue;
         }
         html += "<tr><td>" + badge + "</td>" +
@@ -2489,7 +2490,8 @@
           escapeHtml(r.p.position || "?") + "</span></td>" +
           '<td class="weekly-game">' + escapeHtml(r.p.matchup || "-") + "</td>" +
           '<td style="text-align:right"><span class="market-pts">' +
-          r.p.points.toFixed(1) + "</span></td></tr>";
+          r.p.points.toFixed(1) + "</span></td>" +
+          "<td>" + (r.p.stats ? weeklyChips(r.p) : "") + "</td></tr>";
       }
       html += "</tbody></table>";
     }
@@ -2504,7 +2506,8 @@
           '<td><span class="pos-badge pos-' + escapeHtml(p.position || "?") + '">' +
           escapeHtml(p.position || "?") + "</span></td>" +
           '<td class="weekly-game">' + escapeHtml(p.matchup || "-") + "</td>" +
-          '<td style="text-align:right">' + p.points.toFixed(1) + "</td></tr>";
+          '<td style="text-align:right">' + p.points.toFixed(1) + "</td>" +
+          "<td>" + (p.stats ? weeklyChips(p) : "") + "</td></tr>";
       }
       html += "</tbody></table>";
     }
