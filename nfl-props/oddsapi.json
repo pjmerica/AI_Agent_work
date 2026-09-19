@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-09-19T18:46:30+00:00",
+  "lastUpdated": "2026-09-19T18:49:22+00:00",
   "season": "2026",
   "source": "The Odds API (per-game, multi-book)",
   "note": "Per-game player props aggregated across US sportsbooks. `line` is the median across books; min/max show the spread and `quotes` keeps each book's own number.",
@@ -12,7 +12,7 @@
     "rush_yds": 85
   },
   "bookCounts": {
-    "draftkings": 402,
+    "draftkings": 403,
     "betonlineag": 378,
     "fanduel": 408,
     "betrivers": 377,
@@ -20,8 +20,8 @@
     "fanatics": 45,
     "bovada": 390
   },
-  "quotaRemaining": "19910",
-  "quotaUsed": "90",
+  "quotaRemaining": "19865",
+  "quotaUsed": "135",
   "players": [
     {
       "name": "AJ Barner",
@@ -443,7 +443,7 @@
             {
               "book": "draftkings",
               "line": 10.5,
-              "odds": -105
+              "odds": -116
             },
             {
               "book": "betonlineag",
@@ -480,8 +480,8 @@
           "quotes": [
             {
               "book": "draftkings",
-              "line": 1.5,
-              "odds": -176
+              "line": 2.5,
+              "odds": 144
             },
             {
               "book": "betonlineag",
@@ -1625,6 +1625,24 @@
       "matchup": "NOBAL",
       "matchupLong": "New Orleans Saints @ Baltimore Ravens",
       "stats": {
+        "receptions": {
+          "line": 1.5,
+          "books": 2,
+          "min": 1.5,
+          "max": 1.5,
+          "quotes": [
+            {
+              "book": "draftkings",
+              "line": 1.5,
+              "odds": -128
+            },
+            {
+              "book": "fanduel",
+              "line": 1.5,
+              "odds": -132
+            }
+          ]
+        },
         "rec_yds": {
           "line": 19.5,
           "books": 1,
@@ -1635,19 +1653,6 @@
               "book": "fanduel",
               "line": 19.5,
               "odds": -113
-            }
-          ]
-        },
-        "receptions": {
-          "line": 1.5,
-          "books": 1,
-          "min": 1.5,
-          "max": 1.5,
-          "quotes": [
-            {
-              "book": "fanduel",
-              "line": 1.5,
-              "odds": -132
             }
           ]
         }
@@ -8936,7 +8941,7 @@
             {
               "book": "draftkings",
               "line": 3.5,
-              "odds": -132
+              "odds": -138
             },
             {
               "book": "betonlineag",
@@ -11161,7 +11166,7 @@
             {
               "book": "draftkings",
               "line": 1.5,
-              "odds": -167
+              "odds": -175
             },
             {
               "book": "betonlineag",
@@ -13649,7 +13654,7 @@
             {
               "book": "draftkings",
               "line": 1.5,
-              "odds": -167
+              "odds": -176
             },
             {
               "book": "betonlineag",
@@ -14360,7 +14365,7 @@
             {
               "book": "draftkings",
               "line": 16.5,
-              "odds": -111
+              "odds": -117
             },
             {
               "book": "betonlineag",
