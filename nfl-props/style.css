@@ -805,3 +805,38 @@ tr.row-nan:hover { opacity: 0.85; }
 .sleeper-login .fmt-btn { border: 1px solid #2e2e42; padding: 9px 16px; }
 .sleeper-login .weekly-meta { align-self: center; }
 .sleeper-error { color: #ff6b6b; }
+
+
+/* ── Per-market toggles (Start/Sit) ───────────────────────────────────────── */
+.market-toggles {
+  margin-top: 14px;
+  padding: 12px;
+  background: #14141c;
+  border: 1px solid #2e2e42;
+  border-radius: 8px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 14px;
+}
+.market-toggles .sitstart-label { width: 100%; margin-bottom: 6px; }
+.market-toggles label {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 12px;
+  color: #a0a0c0;
+  cursor: pointer;
+  user-select: none;
+}
+.market-toggles label:hover { color: #e2e2f0; }
+.market-toggles input { accent-color: #5b4cf5; cursor: pointer; }
+.market-toggle-link {
+  font-size: 11px;
+  color: #5b4cf5;
+  text-decoration: none;
+  margin-left: 8px;
+  text-transform: none;
+  letter-spacing: 0;
+}
+.market-toggle-link:hover { text-decoration: underline; }
+.stat-off { opacity: 0.35; text-decoration: line-through; }

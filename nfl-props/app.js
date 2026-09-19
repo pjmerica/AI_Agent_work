@@ -2356,6 +2356,33 @@
     });
   }
 
+
+  // Which markets count toward a Start/Sit projection. Unchecking one answers
+  // "who starts on receiving volume alone?" -- useful when you distrust a
+  // touchdown number, or want to compare two players on the stat you actually
+  // believe in rather than a blended total.
+  const activeMarkets = new Set(
+    ["receptions", "rec_yds", "rush_yds", "pass_yds", "pass_tds", "any_tds"]);
+
+  // Same scoring as weeklyPoints, but skipping the markets that are switched
+  // off. Kept separate so the weekly board keeps counting everything.
+  function sitStartPoints(stats, format) {
+    const g = (k) => {
+      if (!activeMarkets.has(k)) return 0;
+      const s = stats[k];
+      return s && s.line != null ? s.line : 0;
+    };
+    let pts = 0;
+    pts += g("pass_yds") * 0.04;
+    pts += g("pass_tds") * 4;
+    pts += g("rush_yds") * 0.1;
+    pts += g("rec_yds") * 0.1;
+    pts += g("any_tds") * 6;
+    if (format === "ppr") pts += g("receptions") * 1.0;
+    else if (format === "half") pts += g("receptions") * 0.5;
+    return Math.round(pts * 100) / 100;
+  }
+
   // -- Start/Sit optimizer ----------------------------------------------------
   // Builds the best legal lineup from a pasted roster. FLEX makes greedy
   // filling wrong -- taking the best RB for a base slot can strand a better
@@ -2468,6 +2495,31 @@
     $out.innerHTML = slotTable(rows, best.total, unpriced, unmatched, bench);
   }
 
+  // Wraps weeklyChips so an excluded market is visibly not counted rather than
+  // silently vanishing -- a line that exists but is switched off is different
+  // information from a line that was never posted.
+  // A market that is switched off still renders, but dimmed and struck
+  // through: a line that exists but is excluded is different information from
+  // a line that was never posted, and collapsing the two would hide why a
+  // projection changed.
+  function sitStartChips(p) {
+    const off = Object.keys(p.stats || {}).filter((k) => !activeMarkets.has(k));
+    if (!off.length) return weeklyChips(p);
+    // Render each stat on its own so the excluded ones can be marked without
+    // pattern-matching against generated HTML.
+    const full = { ...p, stats: {} };
+    const parts = [];
+    for (const [k, v] of Object.entries(p.stats || {})) {
+      full.stats = { [k]: v };
+      const chip = weeklyChips(full);
+      if (!chip.includes("market-chip")) continue;
+      parts.push(activeMarkets.has(k)
+        ? chip
+        : chip.replace('class="market-chip ', 'class="market-chip stat-off '));
+    }
+    return parts.join("").replace(/<\/div><div class="markets">/g, "");
+  }
+
   function slotTable(rows, total, unpriced, unmatched, bench) {
     let html = "";
     if (rows.length) {
@@ -2491,7 +2543,7 @@
           '<td class="weekly-game">' + escapeHtml(r.p.matchup || "-") + "</td>" +
           '<td style="text-align:right"><span class="market-pts">' +
           r.p.points.toFixed(1) + "</span></td>" +
-          "<td>" + (r.p.stats ? weeklyChips(r.p) : "") + "</td></tr>";
+          "<td>" + (r.p.stats ? sitStartChips(r.p) : "") + "</td></tr>";
       }
       html += "</tbody></table>";
     }
@@ -2507,7 +2559,7 @@
           escapeHtml(p.position || "?") + "</span></td>" +
           '<td class="weekly-game">' + escapeHtml(p.matchup || "-") + "</td>" +
           '<td style="text-align:right">' + p.points.toFixed(1) + "</td>" +
-          "<td>" + (p.stats ? weeklyChips(p) : "") + "</td></tr>";
+          "<td>" + (p.stats ? sitStartChips(p) : "") + "</td></tr>";
       }
       html += "</tbody></table>";
     }
@@ -2553,6 +2605,29 @@
     renderRosterTags();
     renderSitStart();
   });
+
+  (function initMarketToggles() {
+    const box = document.getElementById("market-toggles");
+    if (!box) return;
+    const boxes = [...box.querySelectorAll("input[data-stat]")];
+    const sync = () => {
+      activeMarkets.clear();
+      for (const cb of boxes) if (cb.checked) activeMarkets.add(cb.dataset.stat);
+      renderSitStart();
+    };
+    for (const cb of boxes) cb.addEventListener("change", sync);
+    document.getElementById("markets-all")?.addEventListener("click", (e) => {
+      e.preventDefault();
+      for (const cb of boxes) cb.checked = true;
+      sync();
+    });
+    document.getElementById("markets-none")?.addEventListener("click", (e) => {
+      e.preventDefault();
+      for (const cb of boxes) cb.checked = false;
+      sync();
+    });
+    sync();
+  })();
 
   document.getElementById("roster-clear")?.addEventListener("click", () => {
     rosterSelected.clear();
