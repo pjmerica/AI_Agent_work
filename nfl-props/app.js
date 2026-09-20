@@ -1,4 +1,35 @@
 (function () {
+  // ── Shared market-filter state ─────────────────────────────────────────────
+  // Declared first because view functions call the renderers synchronously on
+  // tab entry; a later `const` leaves these in the temporal dead zone and the
+  // first call throws, taking the whole tab down.
+
+  // Which sportsbooks may set a line. Empty = no filter, use the stored
+  // consensus. With a subset selected, the line is RE-DERIVED from only those
+  // books' quotes rather than reusing a median that included the excluded ones.
+  const activeBooks = new Set();
+
+  const BOOK_LABEL = {
+    draftkings: "DraftKings",
+    fanduel: "FanDuel",
+    bovada: "Bovada",
+    betrivers: "BetRivers",
+    betonlineag: "BetOnline",
+    betmgm: "BetMGM",
+    fanatics: "Fanatics",
+    espnbet: "ESPN BET",
+    hardrockbet: "Hard Rock",
+    williamhill_us: "Caesars",
+    pointsbetus: "PointsBet",
+  };
+
+  const NONBOOK_SOURCES = { kalshi: "Kalshi", "dk-td": "DraftKings TD" };
+
+  // Kalshi reports HOW a line was read off its ladder, not that it came from
+  // Kalshi, so all of these map to the one venue for filtering purposes.
+  const KALSHI_METHODS = new Set(
+    ["interpolated", "fitted", "assumed-sigma", "expected", "sigma", "fit", "kalshi"]);
+
   // ── State ──────────────────────────────────────────────────────────────────
   // Cache each source's data after first load
   const cache = {};
@@ -2481,20 +2512,8 @@
   const activeMarkets = new Set(
     ["receptions", "rec_yds", "rush_yds", "pass_yds", "pass_tds", "any_tds"]);
 
-  // Which sportsbooks may set a line. Empty set = no filter, use the stored
-  // consensus. With a subset selected, the line is RE-DERIVED from just those
-  // books' quotes rather than reusing a median that included the excluded ones.
-  const activeBooks = new Set();
-
   // Non-book sources are toggled as pseudo-books, since from a filtering point
   // of view "use only Kalshi" is the same kind of request as "use only DK".
-  const NONBOOK_SOURCES = { kalshi: "Kalshi", "dk-td": "DraftKings TD" };
-
-  // Kalshi reports HOW a line was read off its ladder, not that it came from
-  // Kalshi. All of these are the same venue as far as filtering is concerned.
-  const KALSHI_METHODS = new Set(
-    ["interpolated", "fitted", "assumed-sigma", "expected", "sigma", "fit", "kalshi"]);
-
   // The line a stat should use given the current book filter. Returns null when
   // the filter excludes every book that priced it -- that is a real answer
   // ("these books do not price him"), not a zero.
@@ -2982,19 +3001,6 @@
   // those partial totals into the ranking buries fully-priced players.
   let weeklyHideTdOnly = true;
 
-  const BOOK_LABEL = {
-    draftkings: "DraftKings",
-    fanduel: "FanDuel",
-    bovada: "Bovada",
-    betrivers: "BetRivers",
-    betonlineag: "BetOnline",
-    betmgm: "BetMGM",
-    fanatics: "Fanatics",
-    espnbet: "ESPN BET",
-    hardrockbet: "Hard Rock",
-    williamhill_us: "Caesars",
-    pointsbetus: "PointsBet",
-  };
 
   const WEEKLY_SOURCE_LABEL = {
     interpolated: "Kalshi ladder — interpolated 50% strike",
