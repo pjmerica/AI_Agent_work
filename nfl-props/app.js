@@ -1639,6 +1639,31 @@
   // load just to turn 30 ids into names.
 
   const SLEEPER_API = "https://api.sleeper.app/v1";
+
+  // player_id -> actual fantasy points, for players whose game has kicked off.
+  // Sleeper reports gp=1 as soon as a player takes a snap, so this is live
+  // during the slate rather than only after settlement.
+  let sleeperPlayed = null;
+
+  async function loadSleeperPlayed(season, week) {
+    if (sleeperPlayed) return sleeperPlayed;
+    sleeperPlayed = new Map();
+    try {
+      const stats = await sleeperJson(
+        "/stats/nfl/regular/" + season + "/" + week);
+      for (const [pid, v] of Object.entries(stats || {})) {
+        if (!v || !v.gp) continue;
+        sleeperPlayed.set(String(pid), {
+          points: v.pts_half_ppr != null ? v.pts_half_ppr : null,
+          snaps: v.off_snp != null ? v.off_snp : null,
+        });
+      }
+    } catch (e) {
+      // Not fatal: without it the lineup just cannot mark played slots.
+      console.warn("Sleeper stats unavailable", e);
+    }
+    return sleeperPlayed;
+  }
   const SLEEPER_LS_KEY = "nflprops.sleeperUser";
 
   let sleeperLive = null;     // { username, userId, leagues: [...] }
@@ -1739,6 +1764,7 @@
           const e = pmap[String(pid)];
           const pos = e ? e[1] : null;
           return {
+            playerId: String(pid),
             name: e ? e[0] : "Unknown (" + pid + ")",
             position: pos,
             team: e ? e[2] : null,
@@ -1774,6 +1800,10 @@
         sleeperBusy = false;
         return;
       }
+
+      // Which of these players have already played this week.
+      const wkNow = cache["weekly"] && cache["weekly"].week;
+      if (wkNow) await loadSleeperPlayed(season, wkNow);
 
       sleeperLive = { username: user.display_name || name,
                       userId: user.user_id, leagues: built };
@@ -1983,10 +2013,23 @@
     const scored = [], unpriced = [], noMarket = [], played = [];
     for (const r of lg.roster) {
       if (r.unpriced) { noMarket.push(r); continue; }
+
+      // Already played is decided by Sleeper's own stats, not by whether a
+      // betting line still exists: books keep markets up during a game, so the
+      // line-based check only caught players whose game had fully settled.
+      // A player who has taken a snap is locked -- his points are banked and
+      // the decision is gone, so he must not compete for a slot.
+      const done = sleeperPlayed && sleeperPlayed.get(r.playerId);
+      if (done) {
+        played.push({ ...r, actual: done.points, locked: r.starter });
+        continue;
+      }
+
       const p = pool.get(normPlayerName(r.name));
       if (!p || p.tdOnly || p.points <= 0 || !p.position) {
-        // No line AND his team has no remaining game = his week is over.
-        if (!teamIsLive(r.team)) played.push(r);
+        // No line and no remaining game: treat as done even without stats,
+        // which covers a player who never took a snap.
+        if (!teamIsLive(r.team)) played.push({ ...r, actual: null });
         else unpriced.push(r);
         continue;
       }
@@ -2002,7 +2045,21 @@
     }
 
     const slots = lg.slots || [];
-    const best = bestLineupForSlots(scored, slots);
+    // Slots held by a player who has already played are spent -- the optimizer
+    // fills only what is still changeable, so a locked starter is not counted
+    // as an opening.
+    const lockedBySlot = new Map();
+    const lockedStarters = played.filter((r) => r.locked && r.position);
+    const freeSlots = [];
+    const slotUsed = new Array(slots.length).fill(false);
+    for (const r of lockedStarters) {
+      const idx = slots.findIndex((sl, i) =>
+        !slotUsed[i] && (SLOT_ACCEPTS[sl] || []).includes(r.position));
+      if (idx >= 0) { slotUsed[idx] = true; lockedBySlot.set(idx, r); }
+    }
+    slots.forEach((sl, i) => { if (!slotUsed[i]) freeSlots.push({ slot: sl, i }); });
+
+    const best = bestLineupForSlots(scored, freeSlots.map((f) => f.slot));
     const startingNames = new Set(best.picks.filter(Boolean).map((p) => p.name));
     const bench = scored.filter((p) => !startingNames.has(p.name))
       .sort((a, b) => b.points - a.points);
@@ -2014,7 +2071,15 @@
       "<th>Slot</th><th>Player</th><th>Pos</th><th>Game</th>" +
       '<th style="text-align:right">Proj</th>' +
       "<th>Market lines</th></tr></thead><tbody>";
-    best.picks.forEach((p, i) => {
+    // Re-expand the optimizer's answer back over the full slot list, so locked
+    // slots render in place rather than the lineup appearing to shift up.
+    const fullPicks = new Array(slots.length).fill(null);
+    freeSlots.forEach((f, k) => { fullPicks[f.i] = best.picks[k] || null; });
+    for (const [idx, r] of lockedBySlot) {
+      fullPicks[idx] = { ...r, points: r.actual != null ? r.actual : 0, isLocked: true };
+    }
+
+    fullPicks.forEach((p, i) => {
       const slot = slots[i];
       const isFlex = (SLOT_ACCEPTS[slot] || []).length > 1;
       const badge = '<span class="slot-badge' + (isFlex ? " flex" : "") + '">' +
@@ -2024,6 +2089,19 @@
                 '</td><td colspan="5">nobody eligible</td></tr>';
         return;
       }
+      if (p.isLocked) {
+        html += '<tr class="locked-row"><td>' + badge + "</td>" +
+          '<td class="player-name">' + escapeHtml(p.name) +
+          ' <span class="injury-tag" style="color:#6a6a8a">PLAYED</span></td>' +
+          '<td><span class="pos-badge pos-' + escapeHtml(p.position || "?") + '">' +
+          escapeHtml(p.position || "?") + "</span></td>" +
+          '<td class="weekly-game">' + escapeHtml(p.team || "-") + "</td>" +
+          '<td style="text-align:right"><span class="market-pts" style="color:#6a6a8a">' +
+          (p.actual != null ? p.actual.toFixed(1) : "—") + "</span></td>" +
+          '<td style="color:#6a6a8a;font-size:12px">final &mdash; slot spent</td></tr>';
+        return;
+      }
+
       // Flag a change from what is currently set in Sleeper — that is the
       // actionable part, not the lineup itself.
       const swap = p.wasStarter ? "" :
@@ -2040,8 +2118,14 @@
         "<td>" + (p.stats ? weeklyChips(p) : "") + "</td></tr>";
     });
     html += "</tbody></table></div>";
-    html += '<div class="sitstart-total">Projected starters: ' +
-            best.total.toFixed(1) + " pts (K/DEF not projected)</div>";
+    const banked = [...lockedBySlot.values()]
+      .reduce((t, r) => t + (r.actual != null ? r.actual : 0), 0);
+    html += '<div class="sitstart-total">' +
+      (banked > 0
+        ? "Banked " + banked.toFixed(1) + " + projected " + best.total.toFixed(1) +
+          " = " + (banked + best.total).toFixed(1)
+        : "Projected starters: " + best.total.toFixed(1)) +
+      " pts (K/DEF not projected)</div>";
 
     if (bench.length) {
       html += '<div class="sitstart-section">Bench</div>' +

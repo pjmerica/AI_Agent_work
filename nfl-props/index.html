@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>NFL Season Projections</title>
-  <link rel="stylesheet" href="style.css?v=2026-09-20-leaguechips" />
+  <link rel="stylesheet" href="style.css?v=2026-09-20-locked" />
 </head>
 <body>
   <div class="container">
@@ -383,6 +383,11 @@
           receptions line &mdash; or to ask a narrower question, like who starts
           on receiving volume alone. Excluded lines still show, struck through.
           <br /><br />
+          A player whose game has kicked off is <strong>locked</strong>: his
+          actual points are shown, his slot is marked spent, and the optimizer
+          fills only what is still changeable. The total splits into what is
+          banked and what is still to play.
+          <br /><br />
           Every row shows the market lines behind its projection &mdash; hover
           any chip to see each book by name with its own number, and a dotted
           underline marks the ones the books disagree on.
@@ -484,6 +489,11 @@
           <span style="color:#58d68d;font-weight:700">SWAP IN</span>, and
           starters it would bench are marked
           <span class="unmatched" style="font-weight:700">SITTING</span>.
+          A player whose game has kicked off is <strong>locked</strong>: his
+          actual points are shown, his slot is marked spent, and the optimizer
+          fills only what is still changeable. The total splits into what is
+          banked and what is still to play.
+          <br /><br />
           Every row shows the market lines behind its projection &mdash; hover
           any chip for each book by name with its own number.
           Kickers and defenses are listed but never projected &mdash; no book
@@ -539,6 +549,6 @@
   <!-- Version query busts the 10-minute GitHub Pages cache on app.js. Without
        it a stale script can pair with fresh markup and shift every column.
        Bump on any app.js change. -->
-  <script src="app.js?v=2026-09-20-leaguechips"></script>
+  <script src="app.js?v=2026-09-20-locked"></script>
 </body>
 </html>

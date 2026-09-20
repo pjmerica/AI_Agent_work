@@ -852,3 +852,8 @@ tr.row-nan:hover { opacity: 0.85; }
 .book-toggle-list label:hover { color: #e2e2f0; }
 .book-toggle-list input { accent-color: #5b4cf5; cursor: pointer; }
 .book-count { color: #6a6a8a; font-size: 11px; }
+
+/* A lineup slot whose player has already played: the decision is gone, so the
+   row reads as settled rather than as something still to choose. */
+.locked-row { opacity: 0.6; }
+.locked-row td { background: rgba(108, 122, 137, 0.06); }
