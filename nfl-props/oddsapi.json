@@ -1,27 +1,29 @@
 {
-  "lastUpdated": "2026-09-20T15:05:03+00:00",
+  "lastUpdated": "2026-09-20T15:15:43+00:00",
   "season": "2026",
   "source": "The Odds API (per-game, multi-book)",
   "note": "Per-game player props aggregated across US sportsbooks. `line` is the median across books; min/max show the spread and `quotes` keeps each book's own number.",
   "region": "us",
   "eventCount": 15,
-  "playerGameCount": 211,
+  "playerGameCount": 212,
   "statCounts": {
     "rec_yds": 167,
     "receptions": 165,
-    "rush_yds": 86
+    "rush_yds": 86,
+    "pass_tds": 30,
+    "pass_yds": 30
   },
   "bookCounts": {
-    "draftkings": 415,
-    "betonlineag": 405,
-    "fanduel": 416,
-    "betrivers": 395,
-    "betmgm": 373,
-    "fanatics": 45,
-    "bovada": 411
+    "draftkings": 475,
+    "betonlineag": 465,
+    "fanduel": 477,
+    "betrivers": 455,
+    "betmgm": 433,
+    "fanatics": 75,
+    "bovada": 469
   },
-  "quotaRemaining": "19820",
-  "quotaUsed": "180",
+  "quotaRemaining": "19745",
+  "quotaUsed": "255",
   "players": [
     {
       "name": "AJ Barner",
@@ -165,7 +167,7 @@
             {
               "book": "betonlineag",
               "line": 2.5,
-              "odds": -123
+              "odds": -132
             },
             {
               "book": "fanduel",
@@ -190,15 +192,15 @@
           ]
         },
         "rush_yds": {
-          "line": 56.5,
+          "line": 55.5,
           "books": 6,
           "min": 54.5,
           "max": 58.5,
           "quotes": [
             {
               "book": "draftkings",
-              "line": 56.5,
-              "odds": -110
+              "line": 55.5,
+              "odds": -113
             },
             {
               "book": "betonlineag",
@@ -222,7 +224,7 @@
             },
             {
               "book": "bovada",
-              "line": 56.5,
+              "line": 55.5,
               "odds": -115
             }
           ]
@@ -235,6 +237,87 @@
       "matchup": "PITNE",
       "matchupLong": "Pittsburgh Steelers @ New England Patriots",
       "stats": {
+        "pass_tds": {
+          "line": 0.5,
+          "books": 6,
+          "min": 0.5,
+          "max": 1.5,
+          "quotes": [
+            {
+              "book": "draftkings",
+              "line": 0.5,
+              "odds": -250
+            },
+            {
+              "book": "betonlineag",
+              "line": 0.5,
+              "odds": -244
+            },
+            {
+              "book": "fanduel",
+              "line": 1.5,
+              "odds": 185
+            },
+            {
+              "book": "betrivers",
+              "line": 0.5,
+              "odds": -250
+            },
+            {
+              "book": "betmgm",
+              "line": 0.5,
+              "odds": -275
+            },
+            {
+              "book": "bovada",
+              "line": 0.5,
+              "odds": -260
+            }
+          ]
+        },
+        "pass_yds": {
+          "line": 209.5,
+          "books": 7,
+          "min": 204.5,
+          "max": 214.5,
+          "quotes": [
+            {
+              "book": "draftkings",
+              "line": 204.5,
+              "odds": -112
+            },
+            {
+              "book": "betonlineag",
+              "line": 212.5,
+              "odds": -118
+            },
+            {
+              "book": "fanduel",
+              "line": 213.5,
+              "odds": -113
+            },
+            {
+              "book": "betrivers",
+              "line": 209.5,
+              "odds": -115
+            },
+            {
+              "book": "betmgm",
+              "line": 209.5,
+              "odds": -115
+            },
+            {
+              "book": "bovada",
+              "line": 214.5,
+              "odds": 105
+            },
+            {
+              "book": "fanatics",
+              "line": 205.5,
+              "odds": -120
+            }
+          ]
+        },
         "rush_yds": {
           "line": 0.5,
           "books": 3,
@@ -407,7 +490,7 @@
             {
               "book": "betonlineag",
               "line": 2.5,
-              "odds": -127
+              "odds": -125
             },
             {
               "book": "fanduel",
@@ -519,7 +602,7 @@
             {
               "book": "draftkings",
               "line": 12.5,
-              "odds": -113
+              "odds": -109
             },
             {
               "book": "betonlineag",
@@ -528,7 +611,7 @@
             },
             {
               "book": "fanduel",
-              "line": 12.5,
+              "line": 11.5,
               "odds": -113
             },
             {
@@ -539,7 +622,7 @@
             {
               "book": "bovada",
               "line": 12.5,
-              "odds": -115
+              "odds": -110
             }
           ]
         }
@@ -603,7 +686,7 @@
             {
               "book": "betonlineag",
               "line": 1.5,
-              "odds": -105
+              "odds": -102
             },
             {
               "book": "fanduel",
@@ -636,20 +719,20 @@
       "matchupLong": "Washington Commanders @ Dallas Cowboys",
       "stats": {
         "rec_yds": {
-          "line": 25.5,
+          "line": 26.5,
           "books": 6,
           "min": 24.5,
           "max": 28.5,
           "quotes": [
             {
               "book": "draftkings",
-              "line": 25.5,
-              "odds": -113
+              "line": 26.5,
+              "odds": -110
             },
             {
               "book": "betonlineag",
-              "line": 25.5,
-              "odds": -116
+              "line": 28.5,
+              "odds": -114
             },
             {
               "book": "fanduel",
@@ -664,11 +747,11 @@
             {
               "book": "betmgm",
               "line": 24.5,
-              "odds": -111
+              "odds": -120
             },
             {
               "book": "bovada",
-              "line": 25.5,
+              "line": 26.5,
               "odds": -115
             }
           ]
@@ -687,7 +770,7 @@
             {
               "book": "betonlineag",
               "line": 2.5,
-              "odds": 118
+              "odds": 117
             },
             {
               "book": "fanduel",
@@ -844,7 +927,7 @@
             {
               "book": "bovada",
               "line": 69.5,
-              "odds": 105
+              "odds": 110
             }
           ]
         }
@@ -856,6 +939,87 @@
       "matchup": "CLETB",
       "matchupLong": "Cleveland Browns @ Tampa Bay Buccaneers",
       "stats": {
+        "pass_tds": {
+          "line": 1.5,
+          "books": 6,
+          "min": 1.5,
+          "max": 1.5,
+          "quotes": [
+            {
+              "book": "draftkings",
+              "line": 1.5,
+              "odds": -121
+            },
+            {
+              "book": "betonlineag",
+              "line": 1.5,
+              "odds": -130
+            },
+            {
+              "book": "fanduel",
+              "line": 1.5,
+              "odds": -118
+            },
+            {
+              "book": "betrivers",
+              "line": 1.5,
+              "odds": -122
+            },
+            {
+              "book": "betmgm",
+              "line": 1.5,
+              "odds": -115
+            },
+            {
+              "book": "bovada",
+              "line": 1.5,
+              "odds": -125
+            }
+          ]
+        },
+        "pass_yds": {
+          "line": 216.5,
+          "books": 7,
+          "min": 214.5,
+          "max": 226.5,
+          "quotes": [
+            {
+              "book": "draftkings",
+              "line": 216.5,
+              "odds": -112
+            },
+            {
+              "book": "betonlineag",
+              "line": 216.5,
+              "odds": -116
+            },
+            {
+              "book": "fanduel",
+              "line": 216.5,
+              "odds": -113
+            },
+            {
+              "book": "betrivers",
+              "line": 216.5,
+              "odds": -114
+            },
+            {
+              "book": "betmgm",
+              "line": 214.5,
+              "odds": -115
+            },
+            {
+              "book": "bovada",
+              "line": 226.5,
+              "odds": 105
+            },
+            {
+              "book": "fanatics",
+              "line": 215.5,
+              "odds": -110
+            }
+          ]
+        },
         "rush_yds": {
           "line": 16.5,
           "books": 5,
@@ -1042,8 +1206,8 @@
             },
             {
               "book": "betrivers",
-              "line": 44.5,
-              "odds": -113
+              "line": 43.5,
+              "odds": -118
             },
             {
               "book": "betmgm",
@@ -1081,7 +1245,7 @@
             {
               "book": "betrivers",
               "line": 4.5,
-              "odds": -157
+              "odds": -159
             },
             {
               "book": "betmgm",
@@ -1141,6 +1305,87 @@
       "matchup": "JACDEN",
       "matchupLong": "Jacksonville Jaguars @ Denver Broncos",
       "stats": {
+        "pass_tds": {
+          "line": 1.5,
+          "books": 7,
+          "min": 1.5,
+          "max": 1.5,
+          "quotes": [
+            {
+              "book": "draftkings",
+              "line": 1.5,
+              "odds": 110
+            },
+            {
+              "book": "betonlineag",
+              "line": 1.5,
+              "odds": 104
+            },
+            {
+              "book": "fanduel",
+              "line": 1.5,
+              "odds": -102
+            },
+            {
+              "book": "betrivers",
+              "line": 1.5,
+              "odds": 114
+            },
+            {
+              "book": "betmgm",
+              "line": 1.5,
+              "odds": 115
+            },
+            {
+              "book": "fanatics",
+              "line": 1.5,
+              "odds": -105
+            },
+            {
+              "book": "bovada",
+              "line": 1.5,
+              "odds": 110
+            }
+          ]
+        },
+        "pass_yds": {
+          "line": 221.5,
+          "books": 6,
+          "min": 219.5,
+          "max": 231.5,
+          "quotes": [
+            {
+              "book": "draftkings",
+              "line": 221.5,
+              "odds": -112
+            },
+            {
+              "book": "betonlineag",
+              "line": 222.5,
+              "odds": -114
+            },
+            {
+              "book": "fanduel",
+              "line": 220.5,
+              "odds": -113
+            },
+            {
+              "book": "betrivers",
+              "line": 219.5,
+              "odds": -117
+            },
+            {
+              "book": "betmgm",
+              "line": 221.5,
+              "odds": -115
+            },
+            {
+              "book": "bovada",
+              "line": 231.5,
+              "odds": 110
+            }
+          ]
+        },
         "rush_yds": {
           "line": 18.0,
           "books": 6,
@@ -1210,8 +1455,8 @@
             },
             {
               "book": "betrivers",
-              "line": 23.5,
-              "odds": -121
+              "line": 24.5,
+              "odds": -117
             },
             {
               "book": "betmgm",
@@ -1310,15 +1555,15 @@
           ]
         },
         "rush_yds": {
-          "line": 64.0,
+          "line": 63.5,
           "books": 6,
-          "min": 63.5,
-          "max": 70.5,
+          "min": 62.5,
+          "max": 64.5,
           "quotes": [
             {
               "book": "draftkings",
-              "line": 64.5,
-              "odds": -111
+              "line": 62.5,
+              "odds": -113
             },
             {
               "book": "betonlineag",
@@ -1332,8 +1577,8 @@
             },
             {
               "book": "betrivers",
-              "line": 65.5,
-              "odds": -117
+              "line": 64.5,
+              "odds": -115
             },
             {
               "book": "betmgm",
@@ -1342,8 +1587,8 @@
             },
             {
               "book": "bovada",
-              "line": 70.5,
-              "odds": 110
+              "line": 62.5,
+              "odds": -115
             }
           ]
         }
@@ -1569,10 +1814,86 @@
       "matchup": "MIASF",
       "matchupLong": "Miami Dolphins @ San Francisco 49ers",
       "stats": {
+        "pass_tds": {
+          "line": 1.5,
+          "books": 6,
+          "min": 1.5,
+          "max": 1.5,
+          "quotes": [
+            {
+              "book": "draftkings",
+              "line": 1.5,
+              "odds": -197
+            },
+            {
+              "book": "betonlineag",
+              "line": 1.5,
+              "odds": -175
+            },
+            {
+              "book": "fanduel",
+              "line": 1.5,
+              "odds": -196
+            },
+            {
+              "book": "betrivers",
+              "line": 1.5,
+              "odds": -186
+            },
+            {
+              "book": "betmgm",
+              "line": 1.5,
+              "odds": -175
+            },
+            {
+              "book": "bovada",
+              "line": 1.5,
+              "odds": -200
+            }
+          ]
+        },
+        "pass_yds": {
+          "line": 239.0,
+          "books": 6,
+          "min": 237.5,
+          "max": 249.5,
+          "quotes": [
+            {
+              "book": "draftkings",
+              "line": 239.5,
+              "odds": -111
+            },
+            {
+              "book": "betonlineag",
+              "line": 239.5,
+              "odds": -115
+            },
+            {
+              "book": "fanduel",
+              "line": 238.5,
+              "odds": -113
+            },
+            {
+              "book": "betrivers",
+              "line": 237.5,
+              "odds": -115
+            },
+            {
+              "book": "betmgm",
+              "line": 238.5,
+              "odds": -115
+            },
+            {
+              "book": "bovada",
+              "line": 249.5,
+              "odds": 110
+            }
+          ]
+        },
         "rush_yds": {
           "line": 13.5,
-          "books": 6,
-          "min": 12.5,
+          "books": 7,
+          "min": 10.5,
           "max": 13.5,
           "quotes": [
             {
@@ -1593,7 +1914,7 @@
             {
               "book": "betrivers",
               "line": 12.5,
-              "odds": -121
+              "odds": -120
             },
             {
               "book": "betmgm",
@@ -1604,6 +1925,11 @@
               "book": "bovada",
               "line": 13.5,
               "odds": -120
+            },
+            {
+              "book": "fanatics",
+              "line": 10.5,
+              "odds": -165
             }
           ]
         }
@@ -1694,6 +2020,92 @@
       "matchup": "CARATL",
       "matchupLong": "Carolina Panthers @ Atlanta Falcons",
       "stats": {
+        "pass_tds": {
+          "line": 1.5,
+          "books": 7,
+          "min": 1.5,
+          "max": 1.5,
+          "quotes": [
+            {
+              "book": "draftkings",
+              "line": 1.5,
+              "odds": 115
+            },
+            {
+              "book": "betonlineag",
+              "line": 1.5,
+              "odds": 112
+            },
+            {
+              "book": "fanduel",
+              "line": 1.5,
+              "odds": 108
+            },
+            {
+              "book": "betrivers",
+              "line": 1.5,
+              "odds": 116
+            },
+            {
+              "book": "betmgm",
+              "line": 1.5,
+              "odds": 105
+            },
+            {
+              "book": "fanatics",
+              "line": 1.5,
+              "odds": 105
+            },
+            {
+              "book": "bovada",
+              "line": 1.5,
+              "odds": 115
+            }
+          ]
+        },
+        "pass_yds": {
+          "line": 221.5,
+          "books": 7,
+          "min": 218.5,
+          "max": 231.5,
+          "quotes": [
+            {
+              "book": "draftkings",
+              "line": 221.5,
+              "odds": -113
+            },
+            {
+              "book": "betonlineag",
+              "line": 221.5,
+              "odds": -115
+            },
+            {
+              "book": "fanduel",
+              "line": 222.5,
+              "odds": -113
+            },
+            {
+              "book": "betrivers",
+              "line": 218.5,
+              "odds": -115
+            },
+            {
+              "book": "betmgm",
+              "line": 221.5,
+              "odds": -115
+            },
+            {
+              "book": "fanatics",
+              "line": 220.5,
+              "odds": -115
+            },
+            {
+              "book": "bovada",
+              "line": 231.5,
+              "odds": 110
+            }
+          ]
+        },
         "rush_yds": {
           "line": 14.5,
           "books": 7,
@@ -1728,7 +2140,7 @@
             {
               "book": "fanatics",
               "line": 15.5,
-              "odds": 110
+              "odds": 105
             },
             {
               "book": "bovada",
@@ -1764,7 +2176,7 @@
             {
               "book": "fanduel",
               "line": 16.5,
-              "odds": 100
+              "odds": -113
             },
             {
               "book": "betrivers",
@@ -1802,7 +2214,7 @@
             {
               "book": "fanduel",
               "line": 2.5,
-              "odds": 100
+              "odds": -106
             },
             {
               "book": "betrivers",
@@ -1867,6 +2279,82 @@
       "matchup": "CINHOU",
       "matchupLong": "Cincinnati Bengals @ Houston Texans",
       "stats": {
+        "pass_tds": {
+          "line": 1.5,
+          "books": 6,
+          "min": 1.5,
+          "max": 1.5,
+          "quotes": [
+            {
+              "book": "draftkings",
+              "line": 1.5,
+              "odds": -102
+            },
+            {
+              "book": "betonlineag",
+              "line": 1.5,
+              "odds": 104
+            },
+            {
+              "book": "fanduel",
+              "line": 1.5,
+              "odds": 112
+            },
+            {
+              "book": "betrivers",
+              "line": 1.5,
+              "odds": 100
+            },
+            {
+              "book": "betmgm",
+              "line": 1.5,
+              "odds": 110
+            },
+            {
+              "book": "bovada",
+              "line": 1.5,
+              "odds": -105
+            }
+          ]
+        },
+        "pass_yds": {
+          "line": 220.0,
+          "books": 6,
+          "min": 217.5,
+          "max": 232.5,
+          "quotes": [
+            {
+              "book": "draftkings",
+              "line": 222.5,
+              "odds": -111
+            },
+            {
+              "book": "betonlineag",
+              "line": 218.5,
+              "odds": -120
+            },
+            {
+              "book": "fanduel",
+              "line": 219.5,
+              "odds": -113
+            },
+            {
+              "book": "betrivers",
+              "line": 217.5,
+              "odds": -117
+            },
+            {
+              "book": "betmgm",
+              "line": 220.5,
+              "odds": -115
+            },
+            {
+              "book": "bovada",
+              "line": 232.5,
+              "odds": 110
+            }
+          ]
+        },
         "rush_yds": {
           "line": 11.5,
           "books": 6,
@@ -1915,8 +2403,8 @@
       "stats": {
         "rec_yds": {
           "line": 29.5,
-          "books": 5,
-          "min": 27.5,
+          "books": 6,
+          "min": 25.5,
           "max": 32.5,
           "quotes": [
             {
@@ -1928,6 +2416,11 @@
               "book": "betonlineag",
               "line": 29.5,
               "odds": -114
+            },
+            {
+              "book": "fanduel",
+              "line": 25.5,
+              "odds": -113
             },
             {
               "book": "betrivers",
@@ -1960,12 +2453,12 @@
             {
               "book": "betonlineag",
               "line": 2.5,
-              "odds": -164
+              "odds": -159
             },
             {
               "book": "fanduel",
               "line": 2.5,
-              "odds": -158
+              "odds": -130
             },
             {
               "book": "betrivers",
@@ -1985,7 +2478,7 @@
             {
               "book": "fanatics",
               "line": 3.5,
-              "odds": 165
+              "odds": 150
             }
           ]
         }
@@ -1999,8 +2492,8 @@
       "stats": {
         "rec_yds": {
           "line": 38.5,
-          "books": 6,
-          "min": 37.5,
+          "books": 7,
+          "min": 35.5,
           "max": 40.5,
           "quotes": [
             {
@@ -2032,6 +2525,11 @@
               "book": "bovada",
               "line": 38.5,
               "odds": -115
+            },
+            {
+              "book": "fanatics",
+              "line": 35.5,
+              "odds": -135
             }
           ]
         },
@@ -2049,7 +2547,7 @@
             {
               "book": "betonlineag",
               "line": 2.5,
-              "odds": -161
+              "odds": -167
             },
             {
               "book": "fanduel",
@@ -2081,16 +2579,102 @@
       "matchup": "MINCHI",
       "matchupLong": "Minnesota Vikings @ Chicago Bears",
       "stats": {
-        "rush_yds": {
-          "line": 26.5,
-          "books": 6,
-          "min": 24.5,
-          "max": 27.5,
+        "pass_tds": {
+          "line": 1.5,
+          "books": 7,
+          "min": 1.5,
+          "max": 1.5,
           "quotes": [
             {
               "book": "draftkings",
-              "line": 27.5,
-              "odds": -108
+              "line": 1.5,
+              "odds": -126
+            },
+            {
+              "book": "betonlineag",
+              "line": 1.5,
+              "odds": -132
+            },
+            {
+              "book": "fanduel",
+              "line": 1.5,
+              "odds": -120
+            },
+            {
+              "book": "betrivers",
+              "line": 1.5,
+              "odds": -122
+            },
+            {
+              "book": "betmgm",
+              "line": 1.5,
+              "odds": -110
+            },
+            {
+              "book": "fanatics",
+              "line": 1.5,
+              "odds": -140
+            },
+            {
+              "book": "bovada",
+              "line": 1.5,
+              "odds": -125
+            }
+          ]
+        },
+        "pass_yds": {
+          "line": 227.5,
+          "books": 7,
+          "min": 221.5,
+          "max": 238.5,
+          "quotes": [
+            {
+              "book": "draftkings",
+              "line": 228.5,
+              "odds": -111
+            },
+            {
+              "book": "betonlineag",
+              "line": 227.5,
+              "odds": -103
+            },
+            {
+              "book": "fanduel",
+              "line": 225.5,
+              "odds": -113
+            },
+            {
+              "book": "betrivers",
+              "line": 221.5,
+              "odds": -117
+            },
+            {
+              "book": "betmgm",
+              "line": 227.5,
+              "odds": -110
+            },
+            {
+              "book": "fanatics",
+              "line": 225.5,
+              "odds": -115
+            },
+            {
+              "book": "bovada",
+              "line": 238.5,
+              "odds": 110
+            }
+          ]
+        },
+        "rush_yds": {
+          "line": 25.5,
+          "books": 6,
+          "min": 24.5,
+          "max": 26.5,
+          "quotes": [
+            {
+              "book": "draftkings",
+              "line": 26.5,
+              "odds": -114
             },
             {
               "book": "betonlineag",
@@ -2104,8 +2688,8 @@
             },
             {
               "book": "betrivers",
-              "line": 26.5,
-              "odds": -115
+              "line": 24.5,
+              "odds": -117
             },
             {
               "book": "betmgm",
@@ -2114,7 +2698,7 @@
             },
             {
               "book": "bovada",
-              "line": 27.5,
+              "line": 26.5,
               "odds": -110
             }
           ]
@@ -2211,6 +2795,92 @@
       "matchup": "PHITEN",
       "matchupLong": "Philadelphia Eagles @ Tennessee Titans",
       "stats": {
+        "pass_tds": {
+          "line": 0.5,
+          "books": 7,
+          "min": 0.5,
+          "max": 0.5,
+          "quotes": [
+            {
+              "book": "draftkings",
+              "line": 0.5,
+              "odds": -197
+            },
+            {
+              "book": "betonlineag",
+              "line": 0.5,
+              "odds": -200
+            },
+            {
+              "book": "fanduel",
+              "line": 0.5,
+              "odds": -196
+            },
+            {
+              "book": "betrivers",
+              "line": 0.5,
+              "odds": -167
+            },
+            {
+              "book": "betmgm",
+              "line": 0.5,
+              "odds": -190
+            },
+            {
+              "book": "bovada",
+              "line": 0.5,
+              "odds": -200
+            },
+            {
+              "book": "fanatics",
+              "line": 0.5,
+              "odds": -205
+            }
+          ]
+        },
+        "pass_yds": {
+          "line": 185.5,
+          "books": 7,
+          "min": 178.5,
+          "max": 197.5,
+          "quotes": [
+            {
+              "book": "draftkings",
+              "line": 187.5,
+              "odds": -111
+            },
+            {
+              "book": "betonlineag",
+              "line": 187.5,
+              "odds": -114
+            },
+            {
+              "book": "fanduel",
+              "line": 185.5,
+              "odds": -113
+            },
+            {
+              "book": "betrivers",
+              "line": 178.5,
+              "odds": -115
+            },
+            {
+              "book": "betmgm",
+              "line": 184.5,
+              "odds": -115
+            },
+            {
+              "book": "bovada",
+              "line": 197.5,
+              "odds": 110
+            },
+            {
+              "book": "fanatics",
+              "line": 185.5,
+              "odds": -115
+            }
+          ]
+        },
         "rush_yds": {
           "line": 11.5,
           "books": 6,
@@ -2346,6 +3016,82 @@
       "matchup": "MINCHI",
       "matchupLong": "Minnesota Vikings @ Chicago Bears",
       "stats": {
+        "pass_tds": {
+          "line": 1.5,
+          "books": 6,
+          "min": 1.5,
+          "max": 1.5,
+          "quotes": [
+            {
+              "book": "draftkings",
+              "line": 1.5,
+              "odds": 139
+            },
+            {
+              "book": "betonlineag",
+              "line": 1.5,
+              "odds": 139
+            },
+            {
+              "book": "fanduel",
+              "line": 1.5,
+              "odds": 142
+            },
+            {
+              "book": "betrivers",
+              "line": 1.5,
+              "odds": 148
+            },
+            {
+              "book": "betmgm",
+              "line": 1.5,
+              "odds": 120
+            },
+            {
+              "book": "bovada",
+              "line": 1.5,
+              "odds": 135
+            }
+          ]
+        },
+        "pass_yds": {
+          "line": 215.0,
+          "books": 6,
+          "min": 210.5,
+          "max": 225.5,
+          "quotes": [
+            {
+              "book": "draftkings",
+              "line": 215.5,
+              "odds": -112
+            },
+            {
+              "book": "betonlineag",
+              "line": 216.5,
+              "odds": -114
+            },
+            {
+              "book": "fanduel",
+              "line": 214.5,
+              "odds": -113
+            },
+            {
+              "book": "betrivers",
+              "line": 210.5,
+              "odds": -117
+            },
+            {
+              "book": "betmgm",
+              "line": 213.5,
+              "odds": -120
+            },
+            {
+              "book": "bovada",
+              "line": 225.5,
+              "odds": 110
+            }
+          ]
+        },
         "rush_yds": {
           "line": 8.5,
           "books": 5,
@@ -2439,7 +3185,7 @@
             {
               "book": "betonlineag",
               "line": 5.5,
-              "odds": -139
+              "odds": -137
             },
             {
               "book": "fanduel",
@@ -2485,7 +3231,7 @@
             {
               "book": "betonlineag",
               "line": 20.5,
-              "odds": -115
+              "odds": -114
             },
             {
               "book": "fanduel",
@@ -2523,7 +3269,7 @@
             {
               "book": "betonlineag",
               "line": 3.5,
-              "odds": -110
+              "odds": -111
             },
             {
               "book": "fanduel",
@@ -2696,7 +3442,7 @@
             {
               "book": "betonlineag",
               "line": 9.5,
-              "odds": -116
+              "odds": -118
             },
             {
               "book": "fanduel",
@@ -2856,7 +3602,7 @@
             {
               "book": "betonlineag",
               "line": 3.5,
-              "odds": -127
+              "odds": -130
             },
             {
               "book": "fanduel",
@@ -2890,8 +3636,8 @@
       "stats": {
         "rec_yds": {
           "line": 68.5,
-          "books": 6,
-          "min": 67.5,
+          "books": 7,
+          "min": 65.5,
           "max": 72.5,
           "quotes": [
             {
@@ -2923,6 +3669,11 @@
               "book": "bovada",
               "line": 72.5,
               "odds": 110
+            },
+            {
+              "book": "fanatics",
+              "line": 65.5,
+              "odds": -135
             }
           ]
         },
@@ -3102,7 +3853,7 @@
         "rush_yds": {
           "line": 61.0,
           "books": 6,
-          "min": 59.5,
+          "min": 60.5,
           "max": 66.5,
           "quotes": [
             {
@@ -3122,7 +3873,7 @@
             },
             {
               "book": "betrivers",
-              "line": 59.5,
+              "line": 60.5,
               "odds": -114
             },
             {
@@ -3197,7 +3948,7 @@
             {
               "book": "betonlineag",
               "line": 4.5,
-              "odds": 132
+              "odds": 130
             },
             {
               "book": "fanduel",
@@ -3233,7 +3984,7 @@
           "line": 12.5,
           "books": 6,
           "min": 11.5,
-          "max": 12.5,
+          "max": 13.5,
           "quotes": [
             {
               "book": "draftkings",
@@ -3252,8 +4003,8 @@
             },
             {
               "book": "betrivers",
-              "line": 12.5,
-              "odds": -115
+              "line": 13.5,
+              "odds": -112
             },
             {
               "book": "betmgm",
@@ -3291,7 +4042,7 @@
             {
               "book": "betrivers",
               "line": 2.5,
-              "odds": 145
+              "odds": 132
             },
             {
               "book": "betmgm",
@@ -3365,7 +4116,7 @@
             {
               "book": "betonlineag",
               "line": 13.5,
-              "odds": -119
+              "odds": -115
             },
             {
               "book": "fanduel",
@@ -3403,7 +4154,7 @@
             {
               "book": "betonlineag",
               "line": 1.5,
-              "odds": -110
+              "odds": -109
             },
             {
               "book": "fanduel",
@@ -3448,7 +4199,7 @@
             },
             {
               "book": "betonlineag",
-              "line": 54.5,
+              "line": 53.5,
               "odds": -114
             },
             {
@@ -3548,7 +4299,7 @@
             {
               "book": "betmgm",
               "line": 22.5,
-              "odds": -111
+              "odds": -115
             },
             {
               "book": "bovada",
@@ -3603,6 +4354,82 @@
       "matchup": "CARATL",
       "matchupLong": "Carolina Panthers @ Atlanta Falcons",
       "stats": {
+        "pass_tds": {
+          "line": 0.5,
+          "books": 6,
+          "min": 0.5,
+          "max": 1.5,
+          "quotes": [
+            {
+              "book": "draftkings",
+              "line": 0.5,
+              "odds": -261
+            },
+            {
+              "book": "betonlineag",
+              "line": 0.5,
+              "odds": -270
+            },
+            {
+              "book": "fanduel",
+              "line": 1.5,
+              "odds": 175
+            },
+            {
+              "book": "betrivers",
+              "line": 0.5,
+              "odds": -250
+            },
+            {
+              "book": "betmgm",
+              "line": 0.5,
+              "odds": -275
+            },
+            {
+              "book": "bovada",
+              "line": 0.5,
+              "odds": -275
+            }
+          ]
+        },
+        "pass_yds": {
+          "line": 183.5,
+          "books": 6,
+          "min": 182.5,
+          "max": 192.5,
+          "quotes": [
+            {
+              "book": "draftkings",
+              "line": 182.5,
+              "odds": -112
+            },
+            {
+              "book": "betonlineag",
+              "line": 183.5,
+              "odds": -114
+            },
+            {
+              "book": "fanduel",
+              "line": 183.5,
+              "odds": -113
+            },
+            {
+              "book": "betrivers",
+              "line": 190.5,
+              "odds": -114
+            },
+            {
+              "book": "betmgm",
+              "line": 183.5,
+              "odds": -115
+            },
+            {
+              "book": "bovada",
+              "line": 192.5,
+              "odds": 110
+            }
+          ]
+        },
         "rush_yds": {
           "line": 0.5,
           "books": 3,
@@ -3770,7 +4597,7 @@
             {
               "book": "betonlineag",
               "line": 1.5,
-              "odds": -139
+              "odds": -133
             },
             {
               "book": "fanduel",
@@ -3808,7 +4635,7 @@
             {
               "book": "betonlineag",
               "line": 60.5,
-              "odds": -123
+              "odds": -120
             },
             {
               "book": "fanduel",
@@ -3817,8 +4644,8 @@
             },
             {
               "book": "betrivers",
-              "line": 61.5,
-              "odds": -117
+              "line": 62.5,
+              "odds": -114
             },
             {
               "book": "betmgm",
@@ -3841,15 +4668,15 @@
       "matchupLong": "Pittsburgh Steelers @ New England Patriots",
       "stats": {
         "rec_yds": {
-          "line": 59.5,
+          "line": 59.0,
           "books": 6,
           "min": 55.5,
-          "max": 64.5,
+          "max": 63.5,
           "quotes": [
             {
               "book": "draftkings",
-              "line": 59.5,
-              "odds": -110
+              "line": 58.5,
+              "odds": -114
             },
             {
               "book": "betonlineag",
@@ -3863,7 +4690,7 @@
             },
             {
               "book": "betrivers",
-              "line": 57.5,
+              "line": 56.5,
               "odds": -115
             },
             {
@@ -3873,7 +4700,7 @@
             },
             {
               "book": "bovada",
-              "line": 64.5,
+              "line": 63.5,
               "odds": 110
             }
           ]
@@ -3887,12 +4714,12 @@
             {
               "book": "draftkings",
               "line": 4.5,
-              "odds": -106
+              "odds": 101
             },
             {
               "book": "betonlineag",
               "line": 4.5,
-              "odds": -111
+              "odds": -109
             },
             {
               "book": "fanduel",
@@ -3902,7 +4729,7 @@
             {
               "book": "betrivers",
               "line": 4.5,
-              "odds": -103
+              "odds": 100
             },
             {
               "book": "betmgm",
@@ -3912,7 +4739,7 @@
             {
               "book": "bovada",
               "line": 4.5,
-              "odds": -110
+              "odds": 100
             }
           ]
         }
@@ -3924,6 +4751,92 @@
       "matchup": "WASDAL",
       "matchupLong": "Washington Commanders @ Dallas Cowboys",
       "stats": {
+        "pass_tds": {
+          "line": 1.5,
+          "books": 7,
+          "min": 1.5,
+          "max": 2.5,
+          "quotes": [
+            {
+              "book": "draftkings",
+              "line": 1.5,
+              "odds": -204
+            },
+            {
+              "book": "betonlineag",
+              "line": 1.5,
+              "odds": -204
+            },
+            {
+              "book": "fanduel",
+              "line": 1.5,
+              "odds": -198
+            },
+            {
+              "book": "betrivers",
+              "line": 1.5,
+              "odds": -195
+            },
+            {
+              "book": "betmgm",
+              "line": 1.5,
+              "odds": -200
+            },
+            {
+              "book": "bovada",
+              "line": 1.5,
+              "odds": -210
+            },
+            {
+              "book": "fanatics",
+              "line": 2.5,
+              "odds": 155
+            }
+          ]
+        },
+        "pass_yds": {
+          "line": 266.5,
+          "books": 7,
+          "min": 260.5,
+          "max": 276.5,
+          "quotes": [
+            {
+              "book": "draftkings",
+              "line": 266.5,
+              "odds": -112
+            },
+            {
+              "book": "betonlineag",
+              "line": 266.5,
+              "odds": -115
+            },
+            {
+              "book": "fanduel",
+              "line": 266.5,
+              "odds": -113
+            },
+            {
+              "book": "betrivers",
+              "line": 264.5,
+              "odds": -115
+            },
+            {
+              "book": "betmgm",
+              "line": 264.5,
+              "odds": -115
+            },
+            {
+              "book": "bovada",
+              "line": 276.5,
+              "odds": 110
+            },
+            {
+              "book": "fanatics",
+              "line": 260.5,
+              "odds": -120
+            }
+          ]
+        },
         "rush_yds": {
           "line": 8.5,
           "books": 6,
@@ -4022,7 +4935,7 @@
             {
               "book": "betonlineag",
               "line": 3.5,
-              "odds": -130
+              "odds": -133
             },
             {
               "book": "fanduel",
@@ -4106,7 +5019,7 @@
             {
               "book": "betonlineag",
               "line": 4.5,
-              "odds": -135
+              "odds": -143
             },
             {
               "book": "fanduel",
@@ -4162,7 +5075,7 @@
             {
               "book": "betrivers",
               "line": 12.5,
-              "odds": -115
+              "odds": -113
             },
             {
               "book": "betmgm",
@@ -4205,7 +5118,7 @@
             {
               "book": "betmgm",
               "line": 1.5,
-              "odds": -175
+              "odds": -165
             },
             {
               "book": "bovada",
@@ -4514,8 +5427,8 @@
       "stats": {
         "rec_yds": {
           "line": 27.5,
-          "books": 7,
-          "min": 25.5,
+          "books": 6,
+          "min": 26.5,
           "max": 28.5,
           "quotes": [
             {
@@ -4547,11 +5460,6 @@
               "book": "bovada",
               "line": 26.5,
               "odds": -120
-            },
-            {
-              "book": "fanatics",
-              "line": 25.5,
-              "odds": -135
             }
           ]
         },
@@ -4616,8 +5524,8 @@
             },
             {
               "book": "betrivers",
-              "line": 56.5,
-              "odds": -113
+              "line": 57.5,
+              "odds": -114
             },
             {
               "book": "betmgm",
@@ -4643,12 +5551,12 @@
           "line": 35.0,
           "books": 6,
           "min": 34.5,
-          "max": 36.5,
+          "max": 40.5,
           "quotes": [
             {
               "book": "draftkings",
-              "line": 36.5,
-              "odds": -110
+              "line": 35.5,
+              "odds": -114
             },
             {
               "book": "betonlineag",
@@ -4663,7 +5571,7 @@
             {
               "book": "betrivers",
               "line": 34.5,
-              "odds": -118
+              "odds": -114
             },
             {
               "book": "betmgm",
@@ -4672,8 +5580,8 @@
             },
             {
               "book": "bovada",
-              "line": 36.5,
-              "odds": -115
+              "line": 40.5,
+              "odds": 110
             }
           ]
         },
@@ -4686,7 +5594,7 @@
             {
               "book": "draftkings",
               "line": 3.5,
-              "odds": 112
+              "odds": 115
             },
             {
               "book": "betonlineag",
@@ -4701,17 +5609,17 @@
             {
               "book": "betrivers",
               "line": 3.5,
-              "odds": 120
+              "odds": 123
             },
             {
               "book": "betmgm",
               "line": 3.5,
-              "odds": 110
+              "odds": 105
             },
             {
               "book": "bovada",
               "line": 3.5,
-              "odds": 105
+              "odds": 110
             }
           ]
         }
@@ -4746,8 +5654,8 @@
             },
             {
               "book": "betrivers",
-              "line": 62.5,
-              "odds": -113
+              "line": 61.5,
+              "odds": -118
             },
             {
               "book": "betmgm",
@@ -5016,7 +5924,7 @@
             },
             {
               "book": "betonlineag",
-              "line": 31.5,
+              "line": 30.5,
               "odds": -115
             },
             {
@@ -5070,7 +5978,7 @@
             {
               "book": "betmgm",
               "line": 2.5,
-              "odds": -118
+              "odds": -115
             },
             {
               "book": "bovada",
@@ -5204,6 +6112,77 @@
       "matchup": "CLETB",
       "matchupLong": "Cleveland Browns @ Tampa Bay Buccaneers",
       "stats": {
+        "pass_tds": {
+          "line": 0.5,
+          "books": 6,
+          "min": 0.5,
+          "max": 0.5,
+          "quotes": [
+            {
+              "book": "draftkings",
+              "line": 0.5,
+              "odds": -189
+            },
+            {
+              "book": "betonlineag",
+              "line": 0.5,
+              "odds": -204
+            },
+            {
+              "book": "fanduel",
+              "line": 0.5,
+              "odds": -210
+            },
+            {
+              "book": "betrivers",
+              "line": 0.5,
+              "odds": -195
+            },
+            {
+              "book": "betmgm",
+              "line": 0.5,
+              "odds": -185
+            },
+            {
+              "book": "fanatics",
+              "line": 0.5,
+              "odds": -205
+            }
+          ]
+        },
+        "pass_yds": {
+          "line": 174.5,
+          "books": 5,
+          "min": 168.5,
+          "max": 175.5,
+          "quotes": [
+            {
+              "book": "draftkings",
+              "line": 174.5,
+              "odds": -112
+            },
+            {
+              "book": "betonlineag",
+              "line": 175.5,
+              "odds": -116
+            },
+            {
+              "book": "fanduel",
+              "line": 175.5,
+              "odds": -113
+            },
+            {
+              "book": "betrivers",
+              "line": 168.5,
+              "odds": -114
+            },
+            {
+              "book": "betmgm",
+              "line": 174.5,
+              "odds": -105
+            }
+          ]
+        },
         "rush_yds": {
           "line": 22.5,
           "books": 6,
@@ -5480,7 +6459,7 @@
             {
               "book": "betrivers",
               "line": 4.5,
-              "odds": -143
+              "odds": -141
             },
             {
               "book": "betmgm",
@@ -5502,6 +6481,87 @@
       "matchup": "PITNE",
       "matchupLong": "Pittsburgh Steelers @ New England Patriots",
       "stats": {
+        "pass_tds": {
+          "line": 1.5,
+          "books": 7,
+          "min": 1.5,
+          "max": 1.5,
+          "quotes": [
+            {
+              "book": "draftkings",
+              "line": 1.5,
+              "odds": 118
+            },
+            {
+              "book": "betonlineag",
+              "line": 1.5,
+              "odds": 112
+            },
+            {
+              "book": "fanduel",
+              "line": 1.5,
+              "odds": 118
+            },
+            {
+              "book": "betrivers",
+              "line": 1.5,
+              "odds": 114
+            },
+            {
+              "book": "betmgm",
+              "line": 1.5,
+              "odds": 110
+            },
+            {
+              "book": "bovada",
+              "line": 1.5,
+              "odds": 115
+            },
+            {
+              "book": "fanatics",
+              "line": 1.5,
+              "odds": 115
+            }
+          ]
+        },
+        "pass_yds": {
+          "line": 224.5,
+          "books": 6,
+          "min": 223.5,
+          "max": 234.5,
+          "quotes": [
+            {
+              "book": "draftkings",
+              "line": 224.5,
+              "odds": -112
+            },
+            {
+              "book": "betonlineag",
+              "line": 224.5,
+              "odds": -114
+            },
+            {
+              "book": "fanduel",
+              "line": 224.5,
+              "odds": -113
+            },
+            {
+              "book": "betrivers",
+              "line": 223.5,
+              "odds": -117
+            },
+            {
+              "book": "betmgm",
+              "line": 224.5,
+              "odds": -115
+            },
+            {
+              "book": "bovada",
+              "line": 234.5,
+              "odds": 110
+            }
+          ]
+        },
         "rush_yds": {
           "line": 27.5,
           "books": 7,
@@ -5541,7 +6601,7 @@
             {
               "book": "fanatics",
               "line": 25.5,
-              "odds": -135
+              "odds": -140
             }
           ]
         }
@@ -5553,6 +6613,87 @@
       "matchup": "SEAARI",
       "matchupLong": "Seattle Seahawks @ Arizona Cardinals",
       "stats": {
+        "pass_tds": {
+          "line": 1.5,
+          "books": 7,
+          "min": 1.5,
+          "max": 1.5,
+          "quotes": [
+            {
+              "book": "draftkings",
+              "line": 1.5,
+              "odds": 151
+            },
+            {
+              "book": "betonlineag",
+              "line": 1.5,
+              "odds": 149
+            },
+            {
+              "book": "fanduel",
+              "line": 1.5,
+              "odds": 148
+            },
+            {
+              "book": "betrivers",
+              "line": 1.5,
+              "odds": 155
+            },
+            {
+              "book": "betmgm",
+              "line": 1.5,
+              "odds": 160
+            },
+            {
+              "book": "bovada",
+              "line": 1.5,
+              "odds": 150
+            },
+            {
+              "book": "fanatics",
+              "line": 1.5,
+              "odds": 135
+            }
+          ]
+        },
+        "pass_yds": {
+          "line": 207.5,
+          "books": 6,
+          "min": 203.5,
+          "max": 214.5,
+          "quotes": [
+            {
+              "book": "draftkings",
+              "line": 204.5,
+              "odds": -112
+            },
+            {
+              "book": "betonlineag",
+              "line": 207.5,
+              "odds": -116
+            },
+            {
+              "book": "fanduel",
+              "line": 207.5,
+              "odds": -113
+            },
+            {
+              "book": "betrivers",
+              "line": 203.5,
+              "odds": -117
+            },
+            {
+              "book": "betmgm",
+              "line": 207.5,
+              "odds": -115
+            },
+            {
+              "book": "bovada",
+              "line": 214.5,
+              "odds": 110
+            }
+          ]
+        },
         "rush_yds": {
           "line": 7.5,
           "books": 6,
@@ -5582,7 +6723,7 @@
             {
               "book": "betmgm",
               "line": 7.5,
-              "odds": -110
+              "odds": -111
             },
             {
               "book": "bovada",
@@ -5651,7 +6792,7 @@
             {
               "book": "fanatics",
               "line": 1.5,
-              "odds": 120
+              "odds": 125
             }
           ]
         }
@@ -5743,7 +6884,7 @@
           ]
         },
         "receptions": {
-          "line": 3.5,
+          "line": 4.0,
           "books": 6,
           "min": 3.5,
           "max": 4.5,
@@ -5755,8 +6896,8 @@
             },
             {
               "book": "betonlineag",
-              "line": 3.5,
-              "odds": -167
+              "line": 4.5,
+              "odds": 115
             },
             {
               "book": "fanduel",
@@ -6010,6 +7151,82 @@
       "matchup": "GBNYJ",
       "matchupLong": "Green Bay Packers @ New York Jets",
       "stats": {
+        "pass_tds": {
+          "line": 1.5,
+          "books": 6,
+          "min": 1.5,
+          "max": 1.5,
+          "quotes": [
+            {
+              "book": "draftkings",
+              "line": 1.5,
+              "odds": 161
+            },
+            {
+              "book": "betonlineag",
+              "line": 1.5,
+              "odds": 158
+            },
+            {
+              "book": "fanduel",
+              "line": 1.5,
+              "odds": 154
+            },
+            {
+              "book": "betrivers",
+              "line": 1.5,
+              "odds": 180
+            },
+            {
+              "book": "betmgm",
+              "line": 1.5,
+              "odds": 165
+            },
+            {
+              "book": "bovada",
+              "line": 1.5,
+              "odds": 160
+            }
+          ]
+        },
+        "pass_yds": {
+          "line": 208.0,
+          "books": 6,
+          "min": 204.5,
+          "max": 218.5,
+          "quotes": [
+            {
+              "book": "draftkings",
+              "line": 208.5,
+              "odds": -113
+            },
+            {
+              "book": "betonlineag",
+              "line": 207.5,
+              "odds": -116
+            },
+            {
+              "book": "fanduel",
+              "line": 207.5,
+              "odds": -113
+            },
+            {
+              "book": "betrivers",
+              "line": 204.5,
+              "odds": -114
+            },
+            {
+              "book": "betmgm",
+              "line": 210.5,
+              "odds": -115
+            },
+            {
+              "book": "bovada",
+              "line": 218.5,
+              "odds": 110
+            }
+          ]
+        },
         "rush_yds": {
           "line": 7.5,
           "books": 6,
@@ -6034,7 +7251,7 @@
             {
               "book": "betrivers",
               "line": 8.5,
-              "odds": -109
+              "odds": -115
             },
             {
               "book": "betmgm",
@@ -6059,7 +7276,7 @@
         "rush_yds": {
           "line": 29.5,
           "books": 6,
-          "min": 28.5,
+          "min": 27.5,
           "max": 29.5,
           "quotes": [
             {
@@ -6084,8 +7301,8 @@
             },
             {
               "book": "betmgm",
-              "line": 28.5,
-              "odds": -115
+              "line": 27.5,
+              "odds": -120
             },
             {
               "book": "bovada",
@@ -6116,7 +7333,7 @@
             {
               "book": "betonlineag",
               "line": 40.5,
-              "odds": -110
+              "odds": -111
             },
             {
               "book": "fanduel",
@@ -6238,7 +7455,7 @@
             {
               "book": "betonlineag",
               "line": 4.5,
-              "odds": -115
+              "odds": -114
             },
             {
               "book": "fanduel",
@@ -6271,20 +7488,20 @@
       "matchupLong": "Pittsburgh Steelers @ New England Patriots",
       "stats": {
         "rec_yds": {
-          "line": 15.5,
+          "line": 14.5,
           "books": 6,
           "min": 13.5,
           "max": 15.5,
           "quotes": [
             {
               "book": "draftkings",
-              "line": 15.5,
-              "odds": -110
+              "line": 14.5,
+              "odds": -115
             },
             {
               "book": "betonlineag",
-              "line": 15.5,
-              "odds": -116
+              "line": 14.5,
+              "odds": -119
             },
             {
               "book": "fanduel",
@@ -6294,7 +7511,7 @@
             {
               "book": "betrivers",
               "line": 13.5,
-              "odds": -118
+              "odds": -115
             },
             {
               "book": "betmgm",
@@ -6303,8 +7520,8 @@
             },
             {
               "book": "bovada",
-              "line": 15.5,
-              "odds": -115
+              "line": 14.5,
+              "odds": -120
             }
           ]
         },
@@ -6332,12 +7549,12 @@
             {
               "book": "betrivers",
               "line": 1.5,
-              "odds": -107
+              "odds": -106
             },
             {
               "book": "betmgm",
               "line": 1.5,
-              "odds": -110
+              "odds": -111
             },
             {
               "book": "bovada",
@@ -6372,7 +7589,7 @@
             },
             {
               "book": "fanduel",
-              "line": 22.5,
+              "line": 23.5,
               "odds": -113
             },
             {
@@ -6411,7 +7628,7 @@
             {
               "book": "fanduel",
               "line": 2.5,
-              "odds": 124
+              "odds": 112
             },
             {
               "book": "betrivers",
@@ -6607,20 +7824,20 @@
       "matchupLong": "Pittsburgh Steelers @ New England Patriots",
       "stats": {
         "rec_yds": {
-          "line": 39.5,
+          "line": 38.5,
           "books": 6,
           "min": 36.5,
-          "max": 39.5,
+          "max": 43.5,
           "quotes": [
             {
               "book": "draftkings",
-              "line": 39.5,
-              "odds": -109
+              "line": 38.5,
+              "odds": -115
             },
             {
               "book": "betonlineag",
-              "line": 39.5,
-              "odds": -112
+              "line": 38.5,
+              "odds": -119
             },
             {
               "book": "fanduel",
@@ -6629,8 +7846,8 @@
             },
             {
               "book": "betrivers",
-              "line": 37.5,
-              "odds": -115
+              "line": 36.5,
+              "odds": -118
             },
             {
               "book": "betmgm",
@@ -6639,8 +7856,8 @@
             },
             {
               "book": "bovada",
-              "line": 39.5,
-              "odds": -110
+              "line": 43.5,
+              "odds": 110
             }
           ]
         },
@@ -6819,8 +8036,8 @@
             },
             {
               "book": "betonlineag",
-              "line": 75.5,
-              "odds": -122
+              "line": 77.5,
+              "odds": -115
             },
             {
               "book": "fanduel",
@@ -6858,7 +8075,7 @@
             {
               "book": "betonlineag",
               "line": 6.5,
-              "odds": -114
+              "odds": -120
             },
             {
               "book": "fanduel",
@@ -6890,10 +8107,91 @@
       "matchup": "SEAARI",
       "matchupLong": "Seattle Seahawks @ Arizona Cardinals",
       "stats": {
+        "pass_tds": {
+          "line": 1.5,
+          "books": 6,
+          "min": 1.5,
+          "max": 1.5,
+          "quotes": [
+            {
+              "book": "draftkings",
+              "line": 1.5,
+              "odds": 204
+            },
+            {
+              "book": "betonlineag",
+              "line": 1.5,
+              "odds": 186
+            },
+            {
+              "book": "fanduel",
+              "line": 1.5,
+              "odds": 188
+            },
+            {
+              "book": "betrivers",
+              "line": 1.5,
+              "odds": 195
+            },
+            {
+              "book": "betmgm",
+              "line": 1.5,
+              "odds": 165
+            },
+            {
+              "book": "bovada",
+              "line": 1.5,
+              "odds": 200
+            }
+          ]
+        },
+        "pass_yds": {
+          "line": 216.5,
+          "books": 7,
+          "min": 215.5,
+          "max": 228.5,
+          "quotes": [
+            {
+              "book": "draftkings",
+              "line": 218.5,
+              "odds": -112
+            },
+            {
+              "book": "betonlineag",
+              "line": 216.5,
+              "odds": -116
+            },
+            {
+              "book": "fanduel",
+              "line": 216.5,
+              "odds": -113
+            },
+            {
+              "book": "betrivers",
+              "line": 216.5,
+              "odds": -117
+            },
+            {
+              "book": "betmgm",
+              "line": 219.5,
+              "odds": -115
+            },
+            {
+              "book": "bovada",
+              "line": 228.5,
+              "odds": 110
+            },
+            {
+              "book": "fanatics",
+              "line": 215.5,
+              "odds": -115
+            }
+          ]
+        },
         "rush_yds": {
           "line": 9.5,
           "books": 5,
-          "min": 9.5,
+          "min": 8.5,
           "max": 10.5,
           "quotes": [
             {
@@ -6913,8 +8211,8 @@
             },
             {
               "book": "betmgm",
-              "line": 9.5,
-              "odds": -105
+              "line": 8.5,
+              "odds": -120
             },
             {
               "book": "bovada",
@@ -7006,7 +8304,7 @@
             {
               "book": "betmgm",
               "line": 8.5,
-              "odds": -120
+              "odds": -115
             },
             {
               "book": "bovada",
@@ -7044,7 +8342,7 @@
             {
               "book": "betmgm",
               "line": 1.5,
-              "odds": -120
+              "odds": -115
             },
             {
               "book": "bovada",
@@ -7185,8 +8483,8 @@
       "stats": {
         "rec_yds": {
           "line": 26.5,
-          "books": 7,
-          "min": 25.5,
+          "books": 6,
+          "min": 26.5,
           "max": 28.5,
           "quotes": [
             {
@@ -7197,7 +8495,7 @@
             {
               "book": "betonlineag",
               "line": 26.5,
-              "odds": -116
+              "odds": -115
             },
             {
               "book": "fanduel",
@@ -7218,11 +8516,6 @@
               "book": "bovada",
               "line": 26.5,
               "odds": -115
-            },
-            {
-              "book": "fanatics",
-              "line": 25.5,
-              "odds": -120
             }
           ]
         },
@@ -7240,7 +8533,7 @@
             {
               "book": "betonlineag",
               "line": 3.5,
-              "odds": 103
+              "odds": 104
             },
             {
               "book": "fanduel",
@@ -7286,7 +8579,7 @@
             {
               "book": "betonlineag",
               "line": 37.5,
-              "odds": -112
+              "odds": -115
             },
             {
               "book": "fanduel",
@@ -7324,7 +8617,7 @@
             {
               "book": "betonlineag",
               "line": 3.5,
-              "odds": -132
+              "odds": -130
             },
             {
               "book": "fanduel",
@@ -7379,8 +8672,8 @@
             },
             {
               "book": "betrivers",
-              "line": 51.5,
-              "odds": -117
+              "line": 52.5,
+              "odds": -113
             },
             {
               "book": "betmgm",
@@ -7418,7 +8711,7 @@
             {
               "book": "betrivers",
               "line": 4.5,
-              "odds": -108
+              "odds": -109
             },
             {
               "book": "betmgm",
@@ -7440,10 +8733,86 @@
       "matchup": "PHITEN",
       "matchupLong": "Philadelphia Eagles @ Tennessee Titans",
       "stats": {
+        "pass_tds": {
+          "line": 1.5,
+          "books": 6,
+          "min": 1.5,
+          "max": 1.5,
+          "quotes": [
+            {
+              "book": "draftkings",
+              "line": 1.5,
+              "odds": 136
+            },
+            {
+              "book": "betonlineag",
+              "line": 1.5,
+              "odds": 126
+            },
+            {
+              "book": "fanduel",
+              "line": 1.5,
+              "odds": 136
+            },
+            {
+              "book": "betrivers",
+              "line": 1.5,
+              "odds": 138
+            },
+            {
+              "book": "betmgm",
+              "line": 1.5,
+              "odds": 140
+            },
+            {
+              "book": "bovada",
+              "line": 1.5,
+              "odds": 135
+            }
+          ]
+        },
+        "pass_yds": {
+          "line": 206.0,
+          "books": 6,
+          "min": 204.5,
+          "max": 215.5,
+          "quotes": [
+            {
+              "book": "draftkings",
+              "line": 205.5,
+              "odds": -113
+            },
+            {
+              "book": "betonlineag",
+              "line": 205.5,
+              "odds": -115
+            },
+            {
+              "book": "fanduel",
+              "line": 206.5,
+              "odds": -113
+            },
+            {
+              "book": "betrivers",
+              "line": 206.5,
+              "odds": -115
+            },
+            {
+              "book": "betmgm",
+              "line": 204.5,
+              "odds": -115
+            },
+            {
+              "book": "bovada",
+              "line": 215.5,
+              "odds": 110
+            }
+          ]
+        },
         "rush_yds": {
           "line": 30.5,
           "books": 7,
-          "min": 27.5,
+          "min": 28.5,
           "max": 31.5,
           "quotes": [
             {
@@ -7463,8 +8832,8 @@
             },
             {
               "book": "betrivers",
-              "line": 27.5,
-              "odds": -120
+              "line": 28.5,
+              "odds": -114
             },
             {
               "book": "betmgm",
@@ -7696,7 +9065,7 @@
             {
               "book": "betonlineag",
               "line": 2.5,
-              "odds": -111
+              "odds": -110
             },
             {
               "book": "fanduel",
@@ -7759,7 +9128,7 @@
             {
               "book": "fanatics",
               "line": 75.5,
-              "odds": -120
+              "odds": -115
             }
           ]
         }
@@ -7785,7 +9154,7 @@
             {
               "book": "betonlineag",
               "line": 81.5,
-              "odds": -116
+              "odds": -115
             },
             {
               "book": "fanduel",
@@ -7799,7 +9168,7 @@
             },
             {
               "book": "betmgm",
-              "line": 81.5,
+              "line": 80.5,
               "odds": -115
             },
             {
@@ -7860,6 +9229,82 @@
       "matchup": "WASDAL",
       "matchupLong": "Washington Commanders @ Dallas Cowboys",
       "stats": {
+        "pass_tds": {
+          "line": 1.5,
+          "books": 6,
+          "min": 1.5,
+          "max": 1.5,
+          "quotes": [
+            {
+              "book": "draftkings",
+              "line": 1.5,
+              "odds": 126
+            },
+            {
+              "book": "betonlineag",
+              "line": 1.5,
+              "odds": 130
+            },
+            {
+              "book": "fanduel",
+              "line": 1.5,
+              "odds": 134
+            },
+            {
+              "book": "betrivers",
+              "line": 1.5,
+              "odds": 123
+            },
+            {
+              "book": "betmgm",
+              "line": 1.5,
+              "odds": 110
+            },
+            {
+              "book": "bovada",
+              "line": 1.5,
+              "odds": 125
+            }
+          ]
+        },
+        "pass_yds": {
+          "line": 222.5,
+          "books": 6,
+          "min": 219.5,
+          "max": 233.5,
+          "quotes": [
+            {
+              "book": "draftkings",
+              "line": 223.5,
+              "odds": -113
+            },
+            {
+              "book": "betonlineag",
+              "line": 224.5,
+              "odds": -114
+            },
+            {
+              "book": "fanduel",
+              "line": 221.5,
+              "odds": -113
+            },
+            {
+              "book": "betrivers",
+              "line": 221.5,
+              "odds": -117
+            },
+            {
+              "book": "betmgm",
+              "line": 219.5,
+              "odds": -140
+            },
+            {
+              "book": "bovada",
+              "line": 233.5,
+              "odds": 110
+            }
+          ]
+        },
         "rush_yds": {
           "line": 36.0,
           "books": 6,
@@ -7920,7 +9365,7 @@
             {
               "book": "betonlineag",
               "line": 37.5,
-              "odds": -119
+              "odds": -118
             },
             {
               "book": "fanduel",
@@ -8004,7 +9449,7 @@
             {
               "book": "betonlineag",
               "line": 53.5,
-              "odds": -115
+              "odds": -116
             },
             {
               "book": "fanduel",
@@ -8075,9 +9520,9 @@
       "matchupLong": "Pittsburgh Steelers @ New England Patriots",
       "stats": {
         "rec_yds": {
-          "line": 19.0,
+          "line": 18.5,
           "books": 6,
-          "min": 16.5,
+          "min": 17.5,
           "max": 19.5,
           "quotes": [
             {
@@ -8097,13 +9542,13 @@
             },
             {
               "book": "betrivers",
-              "line": 19.5,
-              "odds": -110
+              "line": 18.5,
+              "odds": -118
             },
             {
               "book": "betmgm",
-              "line": 16.5,
-              "odds": -120
+              "line": 17.5,
+              "odds": -115
             },
             {
               "book": "bovada",
@@ -8136,7 +9581,7 @@
             {
               "book": "betrivers",
               "line": 3.5,
-              "odds": 118
+              "odds": 116
             },
             {
               "book": "betmgm",
@@ -8174,7 +9619,7 @@
             {
               "book": "betrivers",
               "line": 42.5,
-              "odds": -114
+              "odds": -113
             },
             {
               "book": "betmgm",
@@ -8197,7 +9642,7 @@
       "matchupLong": "Cincinnati Bengals @ Houston Texans",
       "stats": {
         "rec_yds": {
-          "line": 26.5,
+          "line": 27.0,
           "books": 6,
           "min": 23.5,
           "max": 27.5,
@@ -8209,7 +9654,7 @@
             },
             {
               "book": "betonlineag",
-              "line": 26.5,
+              "line": 27.5,
               "odds": -114
             },
             {
@@ -8364,7 +9809,7 @@
         "rush_yds": {
           "line": 36.5,
           "books": 7,
-          "min": 34.5,
+          "min": 35.5,
           "max": 41.5,
           "quotes": [
             {
@@ -8389,8 +9834,8 @@
             },
             {
               "book": "betmgm",
-              "line": 34.5,
-              "odds": -125
+              "line": 35.5,
+              "odds": -115
             },
             {
               "book": "bovada",
@@ -8413,9 +9858,9 @@
       "matchupLong": "Cleveland Browns @ Tampa Bay Buccaneers",
       "stats": {
         "rec_yds": {
-          "line": 28.0,
-          "books": 6,
-          "min": 26.5,
+          "line": 27.5,
+          "books": 7,
+          "min": 25.5,
           "max": 29.5,
           "quotes": [
             {
@@ -8425,8 +9870,8 @@
             },
             {
               "book": "betonlineag",
-              "line": 29.5,
-              "odds": -116
+              "line": 27.5,
+              "odds": -118
             },
             {
               "book": "fanduel",
@@ -8447,6 +9892,11 @@
               "book": "bovada",
               "line": 26.5,
               "odds": -115
+            },
+            {
+              "book": "fanatics",
+              "line": 25.5,
+              "odds": -135
             }
           ]
         },
@@ -8496,6 +9946,92 @@
       "matchup": "CINHOU",
       "matchupLong": "Cincinnati Bengals @ Houston Texans",
       "stats": {
+        "pass_tds": {
+          "line": 1.5,
+          "books": 7,
+          "min": 1.5,
+          "max": 1.5,
+          "quotes": [
+            {
+              "book": "draftkings",
+              "line": 1.5,
+              "odds": -122
+            },
+            {
+              "book": "betonlineag",
+              "line": 1.5,
+              "odds": -123
+            },
+            {
+              "book": "fanduel",
+              "line": 1.5,
+              "odds": -115
+            },
+            {
+              "book": "betrivers",
+              "line": 1.5,
+              "odds": -122
+            },
+            {
+              "book": "betmgm",
+              "line": 1.5,
+              "odds": -118
+            },
+            {
+              "book": "bovada",
+              "line": 1.5,
+              "odds": -125
+            },
+            {
+              "book": "fanatics",
+              "line": 1.5,
+              "odds": -130
+            }
+          ]
+        },
+        "pass_yds": {
+          "line": 248.5,
+          "books": 7,
+          "min": 245.5,
+          "max": 258.5,
+          "quotes": [
+            {
+              "book": "draftkings",
+              "line": 248.5,
+              "odds": -111
+            },
+            {
+              "book": "betonlineag",
+              "line": 248.5,
+              "odds": -114
+            },
+            {
+              "book": "fanduel",
+              "line": 249.5,
+              "odds": -113
+            },
+            {
+              "book": "betrivers",
+              "line": 248.5,
+              "odds": -115
+            },
+            {
+              "book": "betmgm",
+              "line": 250.5,
+              "odds": -115
+            },
+            {
+              "book": "bovada",
+              "line": 258.5,
+              "odds": 110
+            },
+            {
+              "book": "fanatics",
+              "line": 245.5,
+              "odds": -120
+            }
+          ]
+        },
         "rush_yds": {
           "line": 8.5,
           "books": 6,
@@ -8631,7 +10167,7 @@
           "line": 7.5,
           "books": 6,
           "min": 6.5,
-          "max": 8.5,
+          "max": 7.5,
           "quotes": [
             {
               "book": "draftkings",
@@ -8645,13 +10181,13 @@
             },
             {
               "book": "fanduel",
-              "line": 8.5,
+              "line": 7.5,
               "odds": -102
             },
             {
               "book": "betrivers",
               "line": 7.5,
-              "odds": -120
+              "odds": -114
             },
             {
               "book": "betmgm",
@@ -8679,7 +10215,7 @@
             {
               "book": "betonlineag",
               "line": 1.5,
-              "odds": 155
+              "odds": 158
             },
             {
               "book": "fanduel",
@@ -8689,7 +10225,7 @@
             {
               "book": "betrivers",
               "line": 1.5,
-              "odds": 145
+              "odds": 150
             },
             {
               "book": "betmgm",
@@ -8762,8 +10298,8 @@
             },
             {
               "book": "betonlineag",
-              "line": 13.5,
-              "odds": -111
+              "line": 12.5,
+              "odds": -120
             },
             {
               "book": "fanduel",
@@ -8885,7 +10421,7 @@
             {
               "book": "betonlineag",
               "line": 3.5,
-              "odds": 112
+              "odds": 115
             },
             {
               "book": "fanduel",
@@ -8917,6 +10453,92 @@
       "matchup": "GBNYJ",
       "matchupLong": "Green Bay Packers @ New York Jets",
       "stats": {
+        "pass_tds": {
+          "line": 1.5,
+          "books": 7,
+          "min": 1.5,
+          "max": 1.5,
+          "quotes": [
+            {
+              "book": "draftkings",
+              "line": 1.5,
+              "odds": -130
+            },
+            {
+              "book": "betonlineag",
+              "line": 1.5,
+              "odds": -135
+            },
+            {
+              "book": "fanduel",
+              "line": 1.5,
+              "odds": -122
+            },
+            {
+              "book": "betrivers",
+              "line": 1.5,
+              "odds": -122
+            },
+            {
+              "book": "betmgm",
+              "line": 1.5,
+              "odds": -150
+            },
+            {
+              "book": "bovada",
+              "line": 1.5,
+              "odds": -135
+            },
+            {
+              "book": "fanatics",
+              "line": 1.5,
+              "odds": -140
+            }
+          ]
+        },
+        "pass_yds": {
+          "line": 251.5,
+          "books": 7,
+          "min": 249.5,
+          "max": 261.5,
+          "quotes": [
+            {
+              "book": "draftkings",
+              "line": 251.5,
+              "odds": -111
+            },
+            {
+              "book": "betonlineag",
+              "line": 250.5,
+              "odds": -114
+            },
+            {
+              "book": "fanduel",
+              "line": 254.5,
+              "odds": -113
+            },
+            {
+              "book": "betrivers",
+              "line": 249.5,
+              "odds": -114
+            },
+            {
+              "book": "betmgm",
+              "line": 254.5,
+              "odds": -115
+            },
+            {
+              "book": "bovada",
+              "line": 261.5,
+              "odds": 110
+            },
+            {
+              "book": "fanatics",
+              "line": 250.5,
+              "odds": -120
+            }
+          ]
+        },
         "rush_yds": {
           "line": 7.5,
           "books": 7,
@@ -8956,7 +10578,7 @@
             {
               "book": "fanatics",
               "line": 5.5,
-              "odds": -155
+              "odds": -165
             }
           ]
         }
@@ -8982,7 +10604,7 @@
             {
               "book": "betonlineag",
               "line": 13.5,
-              "odds": -114
+              "odds": -115
             },
             {
               "book": "fanduel",
@@ -9091,7 +10713,7 @@
           ]
         },
         "rush_yds": {
-          "line": 13.0,
+          "line": 12.5,
           "books": 6,
           "min": 11.5,
           "max": 13.5,
@@ -9103,7 +10725,7 @@
             },
             {
               "book": "betonlineag",
-              "line": 13.5,
+              "line": 12.5,
               "odds": -116
             },
             {
@@ -9136,6 +10758,82 @@
       "matchup": "LVLAC",
       "matchupLong": "Las Vegas Raiders @ Los Angeles Chargers",
       "stats": {
+        "pass_tds": {
+          "line": 1.5,
+          "books": 6,
+          "min": 1.5,
+          "max": 1.5,
+          "quotes": [
+            {
+              "book": "draftkings",
+              "line": 1.5,
+              "odds": -120
+            },
+            {
+              "book": "betonlineag",
+              "line": 1.5,
+              "odds": -122
+            },
+            {
+              "book": "fanduel",
+              "line": 1.5,
+              "odds": -122
+            },
+            {
+              "book": "betrivers",
+              "line": 1.5,
+              "odds": -118
+            },
+            {
+              "book": "betmgm",
+              "line": 1.5,
+              "odds": -111
+            },
+            {
+              "book": "bovada",
+              "line": 1.5,
+              "odds": -120
+            }
+          ]
+        },
+        "pass_yds": {
+          "line": 225.5,
+          "books": 6,
+          "min": 221.5,
+          "max": 235.5,
+          "quotes": [
+            {
+              "book": "draftkings",
+              "line": 225.5,
+              "odds": -111
+            },
+            {
+              "book": "betonlineag",
+              "line": 225.5,
+              "odds": -114
+            },
+            {
+              "book": "fanduel",
+              "line": 223.5,
+              "odds": -113
+            },
+            {
+              "book": "betrivers",
+              "line": 221.5,
+              "odds": -117
+            },
+            {
+              "book": "betmgm",
+              "line": 227.5,
+              "odds": -115
+            },
+            {
+              "book": "bovada",
+              "line": 235.5,
+              "odds": 110
+            }
+          ]
+        },
         "rush_yds": {
           "line": 19.5,
           "books": 6,
@@ -9234,7 +10932,7 @@
             {
               "book": "betonlineag",
               "line": 6.5,
-              "odds": -108
+              "odds": -105
             },
             {
               "book": "fanduel",
@@ -9267,7 +10965,7 @@
       "matchupLong": "New Orleans Saints @ Baltimore Ravens",
       "stats": {
         "rec_yds": {
-          "line": 37.5,
+          "line": 37.0,
           "books": 6,
           "min": 36.5,
           "max": 38.5,
@@ -9279,8 +10977,8 @@
             },
             {
               "book": "betonlineag",
-              "line": 38.5,
-              "odds": -122
+              "line": 36.5,
+              "odds": -115
             },
             {
               "book": "fanduel",
@@ -9318,7 +11016,7 @@
             {
               "book": "betonlineag",
               "line": 3.5,
-              "odds": -132
+              "odds": -133
             },
             {
               "book": "fanduel",
@@ -9352,8 +11050,8 @@
       "stats": {
         "rec_yds": {
           "line": 32.5,
-          "books": 7,
-          "min": 30.5,
+          "books": 6,
+          "min": 32.5,
           "max": 32.5,
           "quotes": [
             {
@@ -9364,7 +11062,7 @@
             {
               "book": "betonlineag",
               "line": 32.5,
-              "odds": -116
+              "odds": -115
             },
             {
               "book": "fanduel",
@@ -9385,11 +11083,6 @@
               "book": "bovada",
               "line": 32.5,
               "odds": -115
-            },
-            {
-              "book": "fanatics",
-              "line": 30.5,
-              "odds": -135
             }
           ]
         },
@@ -9491,7 +11184,7 @@
             {
               "book": "betrivers",
               "line": 36.5,
-              "odds": -120
+              "odds": -117
             },
             {
               "book": "bovada",
@@ -9595,18 +11288,18 @@
         "rec_yds": {
           "line": 35.5,
           "books": 6,
-          "min": 35.5,
-          "max": 35.5,
+          "min": 34.5,
+          "max": 39.5,
           "quotes": [
             {
               "book": "draftkings",
-              "line": 35.5,
-              "odds": -111
+              "line": 34.5,
+              "odds": -115
             },
             {
               "book": "betonlineag",
               "line": 35.5,
-              "odds": -115
+              "odds": -116
             },
             {
               "book": "fanduel",
@@ -9625,8 +11318,8 @@
             },
             {
               "book": "bovada",
-              "line": 35.5,
-              "odds": -115
+              "line": 39.5,
+              "odds": 110
             }
           ]
         },
@@ -9804,8 +11497,8 @@
             },
             {
               "book": "betonlineag",
-              "line": 12.5,
-              "odds": -118
+              "line": 13.5,
+              "odds": -115
             },
             {
               "book": "fanduel",
@@ -9881,7 +11574,7 @@
             {
               "book": "betonlineag",
               "line": 26.5,
-              "odds": -114
+              "odds": -115
             },
             {
               "book": "fanduel",
@@ -9992,6 +11685,92 @@
       "matchup": "LVLAC",
       "matchupLong": "Las Vegas Raiders @ Los Angeles Chargers",
       "stats": {
+        "pass_tds": {
+          "line": 1.5,
+          "books": 7,
+          "min": 0.5,
+          "max": 1.5,
+          "quotes": [
+            {
+              "book": "draftkings",
+              "line": 1.5,
+              "odds": 198
+            },
+            {
+              "book": "betonlineag",
+              "line": 1.5,
+              "odds": 190
+            },
+            {
+              "book": "fanduel",
+              "line": 1.5,
+              "odds": 192
+            },
+            {
+              "book": "betrivers",
+              "line": 0.5,
+              "odds": -265
+            },
+            {
+              "book": "betmgm",
+              "line": 0.5,
+              "odds": -250
+            },
+            {
+              "book": "bovada",
+              "line": 1.5,
+              "odds": 200
+            },
+            {
+              "book": "fanatics",
+              "line": 0.5,
+              "odds": -245
+            }
+          ]
+        },
+        "pass_yds": {
+          "line": 192.5,
+          "books": 7,
+          "min": 186.5,
+          "max": 202.5,
+          "quotes": [
+            {
+              "book": "draftkings",
+              "line": 192.5,
+              "odds": -112
+            },
+            {
+              "book": "betonlineag",
+              "line": 192.5,
+              "odds": -115
+            },
+            {
+              "book": "fanduel",
+              "line": 192.5,
+              "odds": -113
+            },
+            {
+              "book": "betrivers",
+              "line": 186.5,
+              "odds": -114
+            },
+            {
+              "book": "betmgm",
+              "line": 193.5,
+              "odds": -115
+            },
+            {
+              "book": "bovada",
+              "line": 202.5,
+              "odds": 110
+            },
+            {
+              "book": "fanatics",
+              "line": 190.5,
+              "odds": -110
+            }
+          ]
+        },
         "rush_yds": {
           "line": 0.5,
           "books": 1,
@@ -10108,7 +11887,7 @@
             {
               "book": "betrivers",
               "line": 37.5,
-              "odds": -113
+              "odds": -115
             },
             {
               "book": "betmgm",
@@ -10118,7 +11897,7 @@
             {
               "book": "fanatics",
               "line": 35.5,
-              "odds": -135
+              "odds": -125
             },
             {
               "book": "bovada",
@@ -10159,7 +11938,7 @@
             {
               "book": "betrivers",
               "line": 31.5,
-              "odds": -120
+              "odds": -118
             },
             {
               "book": "betmgm",
@@ -10169,7 +11948,7 @@
             {
               "book": "fanatics",
               "line": 30.5,
-              "odds": -140
+              "odds": -125
             },
             {
               "book": "bovada",
@@ -10308,6 +12087,87 @@
       "matchup": "NOBAL",
       "matchupLong": "New Orleans Saints @ Baltimore Ravens",
       "stats": {
+        "pass_tds": {
+          "line": 1.5,
+          "books": 7,
+          "min": 1.5,
+          "max": 1.5,
+          "quotes": [
+            {
+              "book": "draftkings",
+              "line": 1.5,
+              "odds": 107
+            },
+            {
+              "book": "betonlineag",
+              "line": 1.5,
+              "odds": 103
+            },
+            {
+              "book": "fanduel",
+              "line": 1.5,
+              "odds": -102
+            },
+            {
+              "book": "betrivers",
+              "line": 1.5,
+              "odds": 100
+            },
+            {
+              "book": "betmgm",
+              "line": 1.5,
+              "odds": 100
+            },
+            {
+              "book": "bovada",
+              "line": 1.5,
+              "odds": 105
+            },
+            {
+              "book": "fanatics",
+              "line": 1.5,
+              "odds": -105
+            }
+          ]
+        },
+        "pass_yds": {
+          "line": 212.5,
+          "books": 6,
+          "min": 210.5,
+          "max": 221.5,
+          "quotes": [
+            {
+              "book": "draftkings",
+              "line": 211.5,
+              "odds": -112
+            },
+            {
+              "book": "betonlineag",
+              "line": 211.5,
+              "odds": -114
+            },
+            {
+              "book": "fanduel",
+              "line": 213.5,
+              "odds": -113
+            },
+            {
+              "book": "betrivers",
+              "line": 213.5,
+              "odds": -114
+            },
+            {
+              "book": "betmgm",
+              "line": 210.5,
+              "odds": -115
+            },
+            {
+              "book": "bovada",
+              "line": 221.5,
+              "odds": 110
+            }
+          ]
+        },
         "rush_yds": {
           "line": 39.5,
           "books": 6,
@@ -10411,7 +12271,7 @@
             {
               "book": "betonlineag",
               "line": 4.5,
-              "odds": 109
+              "odds": 112
             },
             {
               "book": "fanduel",
@@ -10444,20 +12304,20 @@
       "matchupLong": "Pittsburgh Steelers @ New England Patriots",
       "stats": {
         "rec_yds": {
-          "line": 35.5,
-          "books": 7,
-          "min": 35.5,
-          "max": 37.5,
+          "line": 36.0,
+          "books": 6,
+          "min": 34.5,
+          "max": 36.5,
           "quotes": [
             {
               "book": "draftkings",
-              "line": 37.5,
-              "odds": -109
+              "line": 36.5,
+              "odds": -112
             },
             {
               "book": "betonlineag",
               "line": 36.5,
-              "odds": -116
+              "odds": -115
             },
             {
               "book": "fanduel",
@@ -10466,23 +12326,18 @@
             },
             {
               "book": "betrivers",
-              "line": 35.5,
-              "odds": -117
+              "line": 34.5,
+              "odds": -118
             },
             {
               "book": "betmgm",
               "line": 35.5,
-              "odds": -111
+              "odds": -115
             },
             {
               "book": "bovada",
-              "line": 37.5,
-              "odds": -110
-            },
-            {
-              "book": "fanatics",
-              "line": 35.5,
-              "odds": -120
+              "line": 36.5,
+              "odds": -115
             }
           ]
         },
@@ -10495,7 +12350,7 @@
             {
               "book": "draftkings",
               "line": 3.5,
-              "odds": 129
+              "odds": 135
             },
             {
               "book": "betonlineag",
@@ -10510,12 +12365,12 @@
             {
               "book": "betrivers",
               "line": 3.5,
-              "odds": 114
+              "odds": 120
             },
             {
               "book": "bovada",
               "line": 3.5,
-              "odds": 130
+              "odds": 135
             }
           ]
         }
@@ -10695,10 +12550,96 @@
       "matchup": "MIASF",
       "matchupLong": "Miami Dolphins @ San Francisco 49ers",
       "stats": {
+        "pass_tds": {
+          "line": 0.5,
+          "books": 7,
+          "min": 0.5,
+          "max": 0.5,
+          "quotes": [
+            {
+              "book": "draftkings",
+              "line": 0.5,
+              "odds": -151
+            },
+            {
+              "book": "betonlineag",
+              "line": 0.5,
+              "odds": -167
+            },
+            {
+              "book": "fanduel",
+              "line": 0.5,
+              "odds": -170
+            },
+            {
+              "book": "betrivers",
+              "line": 0.5,
+              "odds": -167
+            },
+            {
+              "book": "betmgm",
+              "line": 0.5,
+              "odds": -165
+            },
+            {
+              "book": "bovada",
+              "line": 0.5,
+              "odds": -150
+            },
+            {
+              "book": "fanatics",
+              "line": 0.5,
+              "odds": -170
+            }
+          ]
+        },
+        "pass_yds": {
+          "line": 180.5,
+          "books": 7,
+          "min": 178.5,
+          "max": 189.5,
+          "quotes": [
+            {
+              "book": "draftkings",
+              "line": 179.5,
+              "odds": -112
+            },
+            {
+              "book": "betonlineag",
+              "line": 183.5,
+              "odds": -123
+            },
+            {
+              "book": "fanduel",
+              "line": 185.5,
+              "odds": -113
+            },
+            {
+              "book": "betrivers",
+              "line": 179.5,
+              "odds": -114
+            },
+            {
+              "book": "betmgm",
+              "line": 178.5,
+              "odds": -125
+            },
+            {
+              "book": "bovada",
+              "line": 189.5,
+              "odds": 110
+            },
+            {
+              "book": "fanatics",
+              "line": 180.5,
+              "odds": -120
+            }
+          ]
+        },
         "rush_yds": {
           "line": 37.5,
-          "books": 7,
-          "min": 33.5,
+          "books": 6,
+          "min": 32.5,
           "max": 38.5,
           "quotes": [
             {
@@ -10718,8 +12659,8 @@
             },
             {
               "book": "betrivers",
-              "line": 33.5,
-              "odds": -117
+              "line": 32.5,
+              "odds": -115
             },
             {
               "book": "betmgm",
@@ -10730,11 +12671,6 @@
               "book": "bovada",
               "line": 37.5,
               "odds": -115
-            },
-            {
-              "book": "fanatics",
-              "line": 35.5,
-              "odds": -140
             }
           ]
         }
@@ -10760,7 +12696,7 @@
             {
               "book": "betonlineag",
               "line": 6.5,
-              "odds": -116
+              "odds": -115
             },
             {
               "book": "fanduel",
@@ -10870,7 +12806,7 @@
       "stats": {
         "rec_yds": {
           "line": 46.5,
-          "books": 7,
+          "books": 6,
           "min": 45.5,
           "max": 51.5,
           "quotes": [
@@ -10882,7 +12818,7 @@
             {
               "book": "betonlineag",
               "line": 46.5,
-              "odds": -114
+              "odds": -112
             },
             {
               "book": "fanduel",
@@ -10903,11 +12839,6 @@
               "book": "bovada",
               "line": 51.5,
               "odds": 110
-            },
-            {
-              "book": "fanatics",
-              "line": 45.5,
-              "odds": -115
             }
           ]
         },
@@ -11055,7 +12986,7 @@
             {
               "book": "betonlineag",
               "line": 17.5,
-              "odds": -116
+              "odds": -115
             },
             {
               "book": "fanduel",
@@ -11144,7 +13075,7 @@
             {
               "book": "betonlineag",
               "line": 49.5,
-              "odds": -116
+              "odds": -115
             },
             {
               "book": "fanduel",
@@ -11312,7 +13243,7 @@
             {
               "book": "betonlineag",
               "line": 37.5,
-              "odds": -115
+              "odds": -114
             },
             {
               "book": "fanduel",
@@ -11365,7 +13296,7 @@
             {
               "book": "betmgm",
               "line": 3.5,
-              "odds": -130
+              "odds": -125
             },
             {
               "book": "bovada",
@@ -11480,7 +13411,7 @@
             {
               "book": "betonlineag",
               "line": 24.5,
-              "odds": -116
+              "odds": -115
             },
             {
               "book": "fanduel",
@@ -11689,7 +13620,7 @@
             {
               "book": "betonlineag",
               "line": 8.5,
-              "odds": -115
+              "odds": -116
             },
             {
               "book": "fanduel",
@@ -11699,7 +13630,7 @@
             {
               "book": "betrivers",
               "line": 8.5,
-              "odds": -122
+              "odds": -113
             },
             {
               "book": "bovada",
@@ -11722,17 +13653,17 @@
             {
               "book": "betonlineag",
               "line": 1.5,
-              "odds": 112
+              "odds": 125
             },
             {
               "book": "fanduel",
               "line": 1.5,
-              "odds": 104
+              "odds": 124
             },
             {
               "book": "betrivers",
               "line": 1.5,
-              "odds": 100
+              "odds": 114
             },
             {
               "book": "bovada",
@@ -12152,12 +14083,12 @@
             {
               "book": "betrivers",
               "line": 30.5,
-              "odds": -113
+              "odds": -117
             },
             {
               "book": "betmgm",
               "line": 30.5,
-              "odds": -115
+              "odds": -120
             },
             {
               "book": "bovada",
@@ -12190,12 +14121,12 @@
             {
               "book": "betrivers",
               "line": 3.5,
-              "odds": 112
+              "odds": 102
             },
             {
               "book": "betmgm",
               "line": 3.5,
-              "odds": 105
+              "odds": 100
             },
             {
               "book": "bovada",
@@ -12309,8 +14240,8 @@
             },
             {
               "book": "betonlineag",
-              "line": 12.5,
-              "odds": -116
+              "line": 11.5,
+              "odds": -115
             },
             {
               "book": "fanduel",
@@ -12348,7 +14279,7 @@
             {
               "book": "betonlineag",
               "line": 2.5,
-              "odds": 136
+              "odds": 139
             },
             {
               "book": "fanduel",
@@ -12432,7 +14363,7 @@
             {
               "book": "betonlineag",
               "line": 11.5,
-              "odds": -114
+              "odds": -116
             },
             {
               "book": "fanduel",
@@ -12470,7 +14401,7 @@
             {
               "book": "betonlineag",
               "line": 1.5,
-              "odds": -189
+              "odds": -192
             },
             {
               "book": "fanduel",
@@ -12605,7 +14536,7 @@
             {
               "book": "betmgm",
               "line": 23.5,
-              "odds": -111
+              "odds": -115
             },
             {
               "book": "bovada",
@@ -12702,12 +14633,12 @@
             {
               "book": "draftkings",
               "line": 2.5,
-              "odds": -145
+              "odds": -139
             },
             {
               "book": "betonlineag",
               "line": 2.5,
-              "odds": -149
+              "odds": -147
             },
             {
               "book": "fanduel",
@@ -12727,12 +14658,12 @@
             {
               "book": "bovada",
               "line": 2.5,
-              "odds": -150
+              "odds": -145
             },
             {
               "book": "fanatics",
               "line": 3.5,
-              "odds": 160
+              "odds": 170
             }
           ]
         }
@@ -12745,20 +14676,20 @@
       "matchupLong": "Pittsburgh Steelers @ New England Patriots",
       "stats": {
         "rec_yds": {
-          "line": 17.5,
+          "line": 18.5,
           "books": 6,
           "min": 17.5,
           "max": 19.5,
           "quotes": [
             {
               "book": "draftkings",
-              "line": 17.5,
+              "line": 18.5,
               "odds": -112
             },
             {
               "book": "betonlineag",
-              "line": 17.5,
-              "odds": -116
+              "line": 18.5,
+              "odds": -115
             },
             {
               "book": "fanduel",
@@ -12768,16 +14699,16 @@
             {
               "book": "betrivers",
               "line": 17.5,
-              "odds": -118
+              "odds": -115
             },
             {
               "book": "betmgm",
               "line": 17.5,
-              "odds": -111
+              "odds": -115
             },
             {
               "book": "bovada",
-              "line": 17.5,
+              "line": 18.5,
               "odds": -120
             }
           ]
@@ -12791,7 +14722,7 @@
             {
               "book": "draftkings",
               "line": 2.5,
-              "odds": -143
+              "odds": -154
             },
             {
               "book": "betonlineag",
@@ -12806,7 +14737,7 @@
             {
               "book": "betrivers",
               "line": 2.5,
-              "odds": -157
+              "odds": -162
             },
             {
               "book": "betmgm",
@@ -12816,7 +14747,7 @@
             {
               "book": "bovada",
               "line": 2.5,
-              "odds": -145
+              "odds": -160
             }
           ]
         },
@@ -12849,7 +14780,7 @@
             {
               "book": "betmgm",
               "line": 50.5,
-              "odds": -115
+              "odds": -111
             },
             {
               "book": "bovada",
@@ -12890,7 +14821,7 @@
             {
               "book": "betrivers",
               "line": 13.5,
-              "odds": -117
+              "odds": -113
             },
             {
               "book": "betmgm",
@@ -12913,7 +14844,7 @@
             {
               "book": "draftkings",
               "line": 2.5,
-              "odds": -108
+              "odds": -104
             },
             {
               "book": "betonlineag",
@@ -12928,17 +14859,17 @@
             {
               "book": "betrivers",
               "line": 2.5,
-              "odds": -114
+              "odds": -120
             },
             {
               "book": "betmgm",
               "line": 2.5,
-              "odds": -125
+              "odds": -130
             },
             {
               "book": "bovada",
               "line": 2.5,
-              "odds": -110
+              "odds": -105
             }
           ]
         },
@@ -12966,7 +14897,7 @@
             {
               "book": "betrivers",
               "line": 32.5,
-              "odds": -115
+              "odds": -113
             },
             {
               "book": "betmgm",
@@ -12989,15 +14920,15 @@
       "matchupLong": "Pittsburgh Steelers @ New England Patriots",
       "stats": {
         "rec_yds": {
-          "line": 33.5,
+          "line": 32.5,
           "books": 6,
-          "min": 30.5,
+          "min": 31.5,
           "max": 34.5,
           "quotes": [
             {
               "book": "draftkings",
-              "line": 33.5,
-              "odds": -110
+              "line": 32.5,
+              "odds": -114
             },
             {
               "book": "betonlineag",
@@ -13012,16 +14943,16 @@
             {
               "book": "betrivers",
               "line": 32.5,
-              "odds": -117
+              "odds": -113
             },
             {
               "book": "betmgm",
-              "line": 30.5,
-              "odds": -125
+              "line": 31.5,
+              "odds": -115
             },
             {
               "book": "bovada",
-              "line": 33.5,
+              "line": 32.5,
               "odds": -115
             }
           ]
@@ -13035,12 +14966,12 @@
             {
               "book": "draftkings",
               "line": 2.5,
-              "odds": -147
+              "odds": -141
             },
             {
               "book": "betonlineag",
               "line": 2.5,
-              "odds": -152
+              "odds": -147
             },
             {
               "book": "fanduel",
@@ -13050,7 +14981,7 @@
             {
               "book": "betrivers",
               "line": 2.5,
-              "odds": -129
+              "odds": -125
             },
             {
               "book": "betmgm",
@@ -13060,7 +14991,7 @@
             {
               "book": "bovada",
               "line": 2.5,
-              "odds": -150
+              "odds": -145
             }
           ]
         }
@@ -13086,7 +15017,7 @@
             {
               "book": "betonlineag",
               "line": 39.5,
-              "odds": -119
+              "odds": -116
             },
             {
               "book": "fanduel",
@@ -13158,8 +15089,8 @@
       "stats": {
         "rec_yds": {
           "line": 39.5,
-          "books": 6,
-          "min": 37.5,
+          "books": 7,
+          "min": 35.5,
           "max": 40.5,
           "quotes": [
             {
@@ -13180,17 +15111,22 @@
             {
               "book": "betrivers",
               "line": 39.5,
-              "odds": -117
+              "odds": -114
             },
             {
               "book": "betmgm",
-              "line": 38.5,
+              "line": 39.5,
               "odds": -115
             },
             {
               "book": "bovada",
               "line": 39.5,
               "odds": -115
+            },
+            {
+              "book": "fanatics",
+              "line": 35.5,
+              "odds": -135
             }
           ]
         },
@@ -13218,12 +15154,12 @@
             {
               "book": "betrivers",
               "line": 3.5,
-              "odds": -104
+              "odds": -106
             },
             {
               "book": "betmgm",
               "line": 3.5,
-              "odds": 125
+              "odds": 120
             },
             {
               "book": "bovada",
@@ -13246,7 +15182,7 @@
       "matchupLong": "Washington Commanders @ Dallas Cowboys",
       "stats": {
         "rec_yds": {
-          "line": 30.0,
+          "line": 29.0,
           "books": 6,
           "min": 28.5,
           "max": 30.5,
@@ -13258,8 +15194,8 @@
             },
             {
               "book": "betonlineag",
-              "line": 30.5,
-              "odds": -114
+              "line": 28.5,
+              "odds": -116
             },
             {
               "book": "fanduel",
@@ -13297,7 +15233,7 @@
             {
               "book": "betonlineag",
               "line": 2.5,
-              "odds": -130
+              "odds": -128
             },
             {
               "book": "fanduel",
@@ -13376,7 +15312,7 @@
             {
               "book": "betonlineag",
               "line": 1.5,
-              "odds": 130
+              "odds": 134
             },
             {
               "book": "fanduel",
@@ -13429,7 +15365,7 @@
             {
               "book": "fanatics",
               "line": 15.5,
-              "odds": -135
+              "odds": -125
             }
           ]
         }
@@ -13526,7 +15462,7 @@
           "line": 80.5,
           "books": 6,
           "min": 76.5,
-          "max": 81.5,
+          "max": 80.5,
           "quotes": [
             {
               "book": "draftkings",
@@ -13545,8 +15481,8 @@
             },
             {
               "book": "betrivers",
-              "line": 81.5,
-              "odds": -113
+              "line": 80.5,
+              "odds": -115
             },
             {
               "book": "betmgm",
@@ -13724,7 +15660,7 @@
             {
               "book": "fanatics",
               "line": 3.5,
-              "odds": -125
+              "odds": -120
             },
             {
               "book": "bovada",
@@ -13793,7 +15729,7 @@
             {
               "book": "betonlineag",
               "line": 3.5,
-              "odds": -167
+              "odds": -164
             },
             {
               "book": "fanduel",
@@ -13827,8 +15763,8 @@
       "stats": {
         "rec_yds": {
           "line": 53.5,
-          "books": 6,
-          "min": 52.5,
+          "books": 7,
+          "min": 50.5,
           "max": 58.5,
           "quotes": [
             {
@@ -13860,6 +15796,11 @@
               "book": "bovada",
               "line": 58.5,
               "odds": 110
+            },
+            {
+              "book": "fanatics",
+              "line": 50.5,
+              "odds": -125
             }
           ]
         },
@@ -13933,7 +15874,7 @@
             {
               "book": "betrivers",
               "line": 59.5,
-              "odds": -114
+              "odds": -117
             },
             {
               "book": "betmgm",
@@ -13961,7 +15902,7 @@
             {
               "book": "betonlineag",
               "line": 4.5,
-              "odds": -102
+              "odds": -103
             },
             {
               "book": "fanduel",
@@ -14016,8 +15957,8 @@
             },
             {
               "book": "betrivers",
-              "line": 12.5,
-              "odds": -121
+              "line": 13.5,
+              "odds": -109
             },
             {
               "book": "betmgm",
@@ -14050,7 +15991,7 @@
             {
               "book": "fanduel",
               "line": 1.5,
-              "odds": -138
+              "odds": -122
             },
             {
               "book": "betrivers",
@@ -14314,7 +16255,7 @@
             {
               "book": "fanatics",
               "line": 40.5,
-              "odds": -120
+              "odds": -105
             }
           ]
         }
@@ -14339,8 +16280,8 @@
             },
             {
               "book": "betonlineag",
-              "line": 33.5,
-              "odds": -114
+              "line": 32.5,
+              "odds": -116
             },
             {
               "book": "fanduel",
@@ -14495,20 +16436,20 @@
       "matchupLong": "Pittsburgh Steelers @ New England Patriots",
       "stats": {
         "rec_yds": {
-          "line": 8.0,
+          "line": 7.5,
           "books": 6,
           "min": 7.5,
           "max": 8.5,
           "quotes": [
             {
               "book": "draftkings",
-              "line": 8.5,
-              "odds": -105
+              "line": 7.5,
+              "odds": -120
             },
             {
               "book": "betonlineag",
               "line": 8.5,
-              "odds": -114
+              "odds": -115
             },
             {
               "book": "fanduel",
@@ -14517,18 +16458,18 @@
             },
             {
               "book": "betrivers",
-              "line": 7.5,
-              "odds": -122
+              "line": 8.5,
+              "odds": -110
             },
             {
               "book": "betmgm",
               "line": 7.5,
-              "odds": -120
+              "odds": -125
             },
             {
               "book": "bovada",
-              "line": 8.5,
-              "odds": -110
+              "line": 7.5,
+              "odds": -120
             }
           ]
         },
@@ -14556,7 +16497,7 @@
             {
               "book": "betrivers",
               "line": 1.5,
-              "odds": -115
+              "odds": -121
             },
             {
               "book": "betmgm",
@@ -14594,7 +16535,7 @@
             {
               "book": "betrivers",
               "line": 35.5,
-              "odds": -114
+              "odds": -113
             },
             {
               "book": "betmgm",
@@ -14611,6 +16552,87 @@
       "matchup": "JACDEN",
       "matchupLong": "Jacksonville Jaguars @ Denver Broncos",
       "stats": {
+        "pass_tds": {
+          "line": 1.5,
+          "books": 6,
+          "min": 1.5,
+          "max": 1.5,
+          "quotes": [
+            {
+              "book": "draftkings",
+              "line": 1.5,
+              "odds": 108
+            },
+            {
+              "book": "betonlineag",
+              "line": 1.5,
+              "odds": 112
+            },
+            {
+              "book": "fanduel",
+              "line": 1.5,
+              "odds": 122
+            },
+            {
+              "book": "betrivers",
+              "line": 1.5,
+              "odds": 118
+            },
+            {
+              "book": "betmgm",
+              "line": 1.5,
+              "odds": 125
+            },
+            {
+              "book": "bovada",
+              "line": 1.5,
+              "odds": 110
+            }
+          ]
+        },
+        "pass_yds": {
+          "line": 223.5,
+          "books": 7,
+          "min": 220.5,
+          "max": 233.5,
+          "quotes": [
+            {
+              "book": "draftkings",
+              "line": 223.5,
+              "odds": -113
+            },
+            {
+              "book": "betonlineag",
+              "line": 224.5,
+              "odds": -114
+            },
+            {
+              "book": "fanduel",
+              "line": 222.5,
+              "odds": -113
+            },
+            {
+              "book": "betrivers",
+              "line": 223.5,
+              "odds": -114
+            },
+            {
+              "book": "betmgm",
+              "line": 224.5,
+              "odds": -115
+            },
+            {
+              "book": "fanatics",
+              "line": 220.5,
+              "odds": -115
+            },
+            {
+              "book": "bovada",
+              "line": 233.5,
+              "odds": 110
+            }
+          ]
+        },
         "rush_yds": {
           "line": 16.5,
           "books": 6,
@@ -14625,7 +16647,7 @@
             {
               "book": "betonlineag",
               "line": 16.5,
-              "odds": -114
+              "odds": -111
             },
             {
               "book": "fanduel",
@@ -14742,7 +16764,7 @@
       "matchupLong": "Green Bay Packers @ New York Jets",
       "stats": {
         "rec_yds": {
-          "line": 45.0,
+          "line": 44.5,
           "books": 6,
           "min": 43.5,
           "max": 48.5,
@@ -14754,7 +16776,7 @@
             },
             {
               "book": "betonlineag",
-              "line": 45.5,
+              "line": 43.5,
               "odds": -116
             },
             {
@@ -14793,7 +16815,7 @@
             {
               "book": "betonlineag",
               "line": 3.5,
-              "odds": -133
+              "odds": -135
             },
             {
               "book": "fanduel",
@@ -14955,7 +16977,7 @@
         "rush_yds": {
           "line": 35.0,
           "books": 6,
-          "min": 33.5,
+          "min": 34.5,
           "max": 36.5,
           "quotes": [
             {
@@ -14980,8 +17002,8 @@
             },
             {
               "book": "betmgm",
-              "line": 33.5,
-              "odds": -125
+              "line": 34.5,
+              "odds": -115
             },
             {
               "book": "bovada",
@@ -14998,6 +17020,87 @@
       "matchup": "NOBAL",
       "matchupLong": "New Orleans Saints @ Baltimore Ravens",
       "stats": {
+        "pass_tds": {
+          "line": 1.5,
+          "books": 6,
+          "min": 1.5,
+          "max": 1.5,
+          "quotes": [
+            {
+              "book": "draftkings",
+              "line": 1.5,
+              "odds": 193
+            },
+            {
+              "book": "betonlineag",
+              "line": 1.5,
+              "odds": 186
+            },
+            {
+              "book": "fanduel",
+              "line": 1.5,
+              "odds": 195
+            },
+            {
+              "book": "betrivers",
+              "line": 1.5,
+              "odds": 175
+            },
+            {
+              "book": "betmgm",
+              "line": 1.5,
+              "odds": 175
+            },
+            {
+              "book": "bovada",
+              "line": 1.5,
+              "odds": 190
+            }
+          ]
+        },
+        "pass_yds": {
+          "line": 230.5,
+          "books": 7,
+          "min": 227.5,
+          "max": 240.5,
+          "quotes": [
+            {
+              "book": "draftkings",
+              "line": 230.5,
+              "odds": -112
+            },
+            {
+              "book": "betonlineag",
+              "line": 231.5,
+              "odds": -115
+            },
+            {
+              "book": "fanduel",
+              "line": 231.5,
+              "odds": -113
+            },
+            {
+              "book": "betrivers",
+              "line": 227.5,
+              "odds": -115
+            },
+            {
+              "book": "betmgm",
+              "line": 229.5,
+              "odds": -125
+            },
+            {
+              "book": "bovada",
+              "line": 240.5,
+              "odds": 110
+            },
+            {
+              "book": "fanatics",
+              "line": 230.5,
+              "odds": -110
+            }
+          ]
+        },
         "rush_yds": {
           "line": 16.0,
           "books": 6,
@@ -15058,7 +17161,7 @@
             {
               "book": "betonlineag",
               "line": 37.5,
-              "odds": -114
+              "odds": -115
             },
             {
               "book": "fanduel",
@@ -15180,7 +17283,7 @@
             {
               "book": "betonlineag",
               "line": 1.5,
-              "odds": 103
+              "odds": 104
             },
             {
               "book": "fanduel",
@@ -15337,7 +17440,7 @@
         "rec_yds": {
           "line": 15.5,
           "books": 5,
-          "min": 14.5,
+          "min": 15.5,
           "max": 16.5,
           "quotes": [
             {
@@ -15357,8 +17460,8 @@
             },
             {
               "book": "betrivers",
-              "line": 14.5,
-              "odds": -120
+              "line": 15.5,
+              "odds": -110
             },
             {
               "book": "bovada",
@@ -15391,7 +17494,7 @@
             {
               "book": "betrivers",
               "line": 1.5,
-              "odds": -125
+              "odds": -127
             },
             {
               "book": "bovada",
@@ -15492,6 +17595,87 @@
       "matchup": "INDKC",
       "matchupLong": "Indianapolis Colts @ Kansas City Chiefs",
       "stats": {
+        "pass_tds": {
+          "line": 1.5,
+          "books": 6,
+          "min": 1.5,
+          "max": 1.5,
+          "quotes": [
+            {
+              "book": "draftkings",
+              "line": 1.5,
+              "odds": 158
+            },
+            {
+              "book": "betonlineag",
+              "line": 1.5,
+              "odds": 164
+            },
+            {
+              "book": "fanduel",
+              "line": 1.5,
+              "odds": 165
+            },
+            {
+              "book": "betrivers",
+              "line": 1.5,
+              "odds": 180
+            },
+            {
+              "book": "betmgm",
+              "line": 1.5,
+              "odds": 180
+            },
+            {
+              "book": "bovada",
+              "line": 1.5,
+              "odds": 155
+            }
+          ]
+        },
+        "pass_yds": {
+          "line": 217.5,
+          "books": 7,
+          "min": 215.5,
+          "max": 227.5,
+          "quotes": [
+            {
+              "book": "draftkings",
+              "line": 217.5,
+              "odds": -113
+            },
+            {
+              "book": "betonlineag",
+              "line": 217.5,
+              "odds": -115
+            },
+            {
+              "book": "fanduel",
+              "line": 218.5,
+              "odds": -113
+            },
+            {
+              "book": "betrivers",
+              "line": 216.5,
+              "odds": -115
+            },
+            {
+              "book": "betmgm",
+              "line": 215.5,
+              "odds": -115
+            },
+            {
+              "book": "fanatics",
+              "line": 215.5,
+              "odds": -115
+            },
+            {
+              "book": "bovada",
+              "line": 227.5,
+              "odds": 110
+            }
+          ]
+        },
         "rush_yds": {
           "line": 8.5,
           "books": 5,
@@ -15826,7 +18010,7 @@
             },
             {
               "book": "betonlineag",
-              "line": 29.5,
+              "line": 30.5,
               "odds": -116
             },
             {
@@ -15865,7 +18049,7 @@
             {
               "book": "betonlineag",
               "line": 3.5,
-              "odds": -125
+              "odds": -127
             },
             {
               "book": "fanduel",
@@ -15911,7 +18095,7 @@
             {
               "book": "betonlineag",
               "line": 20.5,
-              "odds": -115
+              "odds": -114
             },
             {
               "book": "fanduel",
@@ -16108,6 +18292,87 @@
       "matchup": "INDKC",
       "matchupLong": "Indianapolis Colts @ Kansas City Chiefs",
       "stats": {
+        "pass_tds": {
+          "line": 1.5,
+          "books": 7,
+          "min": 1.5,
+          "max": 1.5,
+          "quotes": [
+            {
+              "book": "draftkings",
+              "line": 1.5,
+              "odds": -115
+            },
+            {
+              "book": "betonlineag",
+              "line": 1.5,
+              "odds": -118
+            },
+            {
+              "book": "fanduel",
+              "line": 1.5,
+              "odds": -122
+            },
+            {
+              "book": "betrivers",
+              "line": 1.5,
+              "odds": -118
+            },
+            {
+              "book": "betmgm",
+              "line": 1.5,
+              "odds": -110
+            },
+            {
+              "book": "fanatics",
+              "line": 1.5,
+              "odds": -120
+            },
+            {
+              "book": "bovada",
+              "line": 1.5,
+              "odds": -120
+            }
+          ]
+        },
+        "pass_yds": {
+          "line": 221.5,
+          "books": 6,
+          "min": 217.5,
+          "max": 229.5,
+          "quotes": [
+            {
+              "book": "draftkings",
+              "line": 219.5,
+              "odds": -111
+            },
+            {
+              "book": "betonlineag",
+              "line": 221.5,
+              "odds": -114
+            },
+            {
+              "book": "fanduel",
+              "line": 221.5,
+              "odds": -113
+            },
+            {
+              "book": "betrivers",
+              "line": 217.5,
+              "odds": -117
+            },
+            {
+              "book": "betmgm",
+              "line": 227.5,
+              "odds": -115
+            },
+            {
+              "book": "bovada",
+              "line": 229.5,
+              "odds": 110
+            }
+          ]
+        },
         "rush_yds": {
           "line": 17.5,
           "books": 7,
@@ -16257,7 +18522,7 @@
             {
               "book": "betonlineag",
               "line": 42.5,
-              "odds": -111
+              "odds": -114
             },
             {
               "book": "fanduel",
@@ -16346,7 +18611,7 @@
             {
               "book": "betonlineag",
               "line": 43.5,
-              "odds": -115
+              "odds": -111
             },
             {
               "book": "fanduel",
@@ -16384,7 +18649,7 @@
             {
               "book": "betonlineag",
               "line": 4.5,
-              "odds": -135
+              "odds": -123
             },
             {
               "book": "fanduel",
@@ -16404,7 +18669,7 @@
             {
               "book": "bovada",
               "line": 4.5,
-              "odds": -145
+              "odds": -135
             }
           ]
         }
@@ -16920,6 +19185,92 @@
       "matchup": "NYGLAR",
       "matchupLong": "New York Giants @ Los Angeles Rams",
       "stats": {
+        "pass_tds": {
+          "line": 1.5,
+          "books": 7,
+          "min": 1.5,
+          "max": 1.5,
+          "quotes": [
+            {
+              "book": "draftkings",
+              "line": 1.5,
+              "odds": 175
+            },
+            {
+              "book": "betonlineag",
+              "line": 1.5,
+              "odds": 174
+            },
+            {
+              "book": "fanduel",
+              "line": 1.5,
+              "odds": 182
+            },
+            {
+              "book": "betrivers",
+              "line": 1.5,
+              "odds": 195
+            },
+            {
+              "book": "betmgm",
+              "line": 1.5,
+              "odds": 160
+            },
+            {
+              "book": "bovada",
+              "line": 1.5,
+              "odds": 170
+            },
+            {
+              "book": "fanatics",
+              "line": 1.5,
+              "odds": 170
+            }
+          ]
+        },
+        "pass_yds": {
+          "line": 213.5,
+          "books": 7,
+          "min": 210.5,
+          "max": 216.5,
+          "quotes": [
+            {
+              "book": "draftkings",
+              "line": 216.5,
+              "odds": -111
+            },
+            {
+              "book": "betonlineag",
+              "line": 215.5,
+              "odds": -114
+            },
+            {
+              "book": "fanduel",
+              "line": 213.5,
+              "odds": -114
+            },
+            {
+              "book": "betrivers",
+              "line": 212.5,
+              "odds": -117
+            },
+            {
+              "book": "betmgm",
+              "line": 213.5,
+              "odds": -115
+            },
+            {
+              "book": "bovada",
+              "line": 216.5,
+              "odds": -115
+            },
+            {
+              "book": "fanatics",
+              "line": 210.5,
+              "odds": -110
+            }
+          ]
+        },
         "rush_yds": {
           "line": 31.5,
           "books": 6,
@@ -17181,7 +19532,7 @@
             {
               "book": "betonlineag",
               "line": 64.5,
-              "odds": -114
+              "odds": -115
             },
             {
               "book": "fanduel",
@@ -17240,6 +19591,90 @@
               "book": "bovada",
               "line": 5.5,
               "odds": -110
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Matthew Stafford",
+      "kickoff": "2026-09-22",
+      "matchup": "NYGLAR",
+      "matchupLong": "New York Giants @ Los Angeles Rams",
+      "stats": {
+        "pass_tds": {
+          "line": 1.5,
+          "books": 6,
+          "min": 1.5,
+          "max": 1.5,
+          "quotes": [
+            {
+              "book": "draftkings",
+              "line": 1.5,
+              "odds": -203
+            },
+            {
+              "book": "betonlineag",
+              "line": 1.5,
+              "odds": -204
+            },
+            {
+              "book": "fanduel",
+              "line": 1.5,
+              "odds": -198
+            },
+            {
+              "book": "betrivers",
+              "line": 1.5,
+              "odds": -195
+            },
+            {
+              "book": "betmgm",
+              "line": 1.5,
+              "odds": -175
+            },
+            {
+              "book": "bovada",
+              "line": 1.5,
+              "odds": -210
+            }
+          ]
+        },
+        "pass_yds": {
+          "line": 242.5,
+          "books": 6,
+          "min": 241.5,
+          "max": 244.5,
+          "quotes": [
+            {
+              "book": "draftkings",
+              "line": 241.5,
+              "odds": -112
+            },
+            {
+              "book": "betonlineag",
+              "line": 242.5,
+              "odds": -114
+            },
+            {
+              "book": "fanduel",
+              "line": 242.5,
+              "odds": -114
+            },
+            {
+              "book": "betrivers",
+              "line": 243.5,
+              "odds": -117
+            },
+            {
+              "book": "betmgm",
+              "line": 244.5,
+              "odds": -115
+            },
+            {
+              "book": "bovada",
+              "line": 241.5,
+              "odds": -115
             }
           ]
         }
@@ -17334,7 +19769,7 @@
             {
               "book": "betonlineag",
               "line": 6.5,
-              "odds": -128
+              "odds": -130
             },
             {
               "book": "fanduel",
