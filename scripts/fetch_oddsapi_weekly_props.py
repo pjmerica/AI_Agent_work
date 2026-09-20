@@ -72,14 +72,17 @@ MAX_EVENTS = 20
 #     pass_yds     +4 players      <- Kalshi covers QBs nearly as well
 #     pass_tds     +3 players      <- same
 #
-# The default keeps the three that actually add players: both receiving markets
-# and rushing yards. That is 48 credits a pull (~10 a month, enough for two a
-# week) and recovers the 21 backs whose rushing line only the books post -- RB
-# depth is what flex decisions turn on. The two passing markets are dropped
-# because Kalshi already covers quarterbacks to within 3-4 players.
+# The default is every market. This was briefly trimmed to three when the free
+# 500-credit tier ran dry mid-pull, but the account is now on the 20K tier: a
+# five-market pull over sixteen games is 80 credits, which is 0.4% of a month.
 #
-# Set ODDS_API_MARKETS to a comma-separated list, or "all", to widen it for a
-# one-off deep pull when quota allows.
+# The trim had a real cost. Kalshi is the only other source for passing, and its
+# ladders are often a single rung -- Drake Maye's pass_yds came back as one
+# strike at 224.5, which cannot pin down a distribution and resolves to null --
+# so dropping the passing markets left quarterbacks with no yardage line at all.
+#
+# Set ODDS_API_MARKETS to a comma-separated list to narrow it again if quota
+# ever becomes a constraint.
 ALL_MARKETS = {
     "player_pass_yds":    "pass_yds",
     "player_pass_tds":    "pass_tds",
@@ -88,7 +91,7 @@ ALL_MARKETS = {
     "player_receptions":  "receptions",
 }
 
-DEFAULT_MARKETS = ["player_receptions", "player_reception_yds", "player_rush_yds"]
+DEFAULT_MARKETS = list(ALL_MARKETS)
 
 _requested = os.environ.get("ODDS_API_MARKETS", "").strip()
 if _requested.lower() in ("all", "*"):
