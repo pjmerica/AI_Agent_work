@@ -497,6 +497,7 @@
   async function showSleeperView() {
     hideAllViews();
     if ($sleeperView) $sleeperView.classList.remove("hidden");
+    renderSleeperBookToggles();
     for (const [key, file] of [["weekly", "weekly.json"],
                                ["oddsapi", "oddsapi.json"],
                                ["dktd", "dk_td.json"]]) {
@@ -545,6 +546,9 @@
   async function showSitStartView() {
     hideAllViews();
     if ($sitstartView) $sitstartView.classList.remove("hidden");
+    // Draw whatever is already cached immediately so the box is never blank
+    // while the fetches are in flight; it is redrawn below once they land.
+    renderBookToggles();
     if (!cache["weekly"]) {
       try { cache["weekly"] = await fetchJson("weekly.json"); }
       catch (e) { cache["weekly"] = null; }
@@ -2757,14 +2761,24 @@
     }
     if (cache["weekly"]) counts.set("kalshi", (cache["weekly"].players || []).length);
     if (cache["dktd"]) counts.set("dk-td", (cache["dktd"].players || []).length);
-    if (!counts.size) return "";
+
+    // On a cold open nothing is cached yet, and returning "" left the box
+    // blank until something forced a redraw -- which looked like the toggles
+    // needing a click to appear. Fall back to the known sources with no counts
+    // so the control is always present; real counts fill in on the redraw.
+    if (!counts.size) {
+      for (const b of ["fanduel", "draftkings", "bovada", "betonlineag",
+                       "betrivers", "betmgm", "fanatics", "kalshi", "dk-td"]) {
+        counts.set(b, 0);
+      }
+    }
 
     return [...counts.entries()].sort((x, y) => y[1] - x[1]).map(([book, n]) => {
       const label = BOOK_LABEL[book] || NONBOOK_SOURCES[book] || book;
       const on = !activeBooks.size || activeBooks.has(book);
       return "<label><input type=\"checkbox\" data-book=\"" + escapeHtml(book) + "\"" +
         (on ? " checked" : "") + " /> " + escapeHtml(label) +
-        ' <span class="book-count">' + n + "</span></label>";
+        (n ? ' <span class="book-count">' + n + "</span>" : "") + "</label>";
     }).join("");
   }
 
