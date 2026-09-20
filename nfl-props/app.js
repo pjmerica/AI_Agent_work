@@ -1995,6 +1995,7 @@
         position: r.position || p.position,
         matchup: p.matchup,
         points: leaguePoints(p.stats, lg.scoring, r.position || p.position),
+        stats: p.stats,
         injury: r.injury,
         wasStarter: r.starter,
       });
@@ -2011,7 +2012,8 @@
 
     html += '<div class="table-wrap"><table class="slot-table"><thead><tr>' +
       "<th>Slot</th><th>Player</th><th>Pos</th><th>Game</th>" +
-      '<th style="text-align:right">Proj</th></tr></thead><tbody>';
+      '<th style="text-align:right">Proj</th>' +
+      "<th>Market lines</th></tr></thead><tbody>";
     best.picks.forEach((p, i) => {
       const slot = slots[i];
       const isFlex = (SLOT_ACCEPTS[slot] || []).length > 1;
@@ -2019,7 +2021,7 @@
                     escapeHtml(slot) + "</span>";
       if (!p) {
         html += '<tr class="bench-row"><td>' + badge +
-                '</td><td colspan="4">nobody eligible</td></tr>';
+                '</td><td colspan="5">nobody eligible</td></tr>';
         return;
       }
       // Flag a change from what is currently set in Sleeper — that is the
@@ -2034,7 +2036,8 @@
         escapeHtml(p.position || "?") + "</span></td>" +
         '<td class="weekly-game">' + escapeHtml(p.matchup || "-") + "</td>" +
         '<td style="text-align:right"><span class="market-pts">' +
-        p.points.toFixed(1) + "</span></td></tr>";
+        p.points.toFixed(1) + "</span></td>" +
+        "<td>" + (p.stats ? weeklyChips(p) : "") + "</td></tr>";
     });
     html += "</tbody></table></div>";
     html += '<div class="sitstart-total">Projected starters: ' +
@@ -2053,7 +2056,8 @@
           '<td><span class="pos-badge pos-' + escapeHtml(p.position || "?") + '">' +
           escapeHtml(p.position || "?") + "</span></td>" +
           '<td class="weekly-game">' + escapeHtml(p.matchup || "-") + "</td>" +
-          '<td style="text-align:right">' + p.points.toFixed(1) + "</td></tr>";
+          '<td style="text-align:right">' + p.points.toFixed(1) + "</td>" +
+          "<td>" + (p.stats ? weeklyChips(p) : "") + "</td></tr>";
       }
       html += "</tbody></table></div>";
     }
