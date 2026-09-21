@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lineup — market-priced start/sit</title>
+  <link rel="stylesheet" href="style.css?v=2026-09-20-split" />
+</head>
+<body>
+  <div class="container">
+    <header>
+      <a href="../" class="back">&larr; Home</a>
+      <h1>Lineup</h1>
+      <p class="subtitle">
+        Start/sit and waiver calls priced off the betting markets, for
+        <span id="week-label">this week</span>. Sister page to the
+        <a href="../nfl-props/" style="color:#5b4cf5">season draft board</a>.
+      </p>
+    </header>
+
+    <div class="view-tabs" id="view-tabs">
+      <button class="view-tab active" data-view="sitstart">Start/Sit</button>
+      <button class="view-tab" data-view="sleeper">My Leagues</button>
+    </div>
+
+    <main>
+      <div id="sitstart-view">
+        <div class="callout">
+          <strong>Paste your roster, get the optimal lineup.</strong>
+          One player per line &mdash; names are matched loosely, so
+          &ldquo;ceedee lamb&rdquo; or &ldquo;D. Lamb&rdquo; both work. Every
+          player is scored on this week&rsquo;s market lines, then the best
+          legal lineup is chosen for
+          <strong>QB / RB / RB / WR / WR / TE / FLEX / FLEX</strong> in
+          half-PPR. FLEX takes RB, WR or TE.
+          <br /><br />
+<strong>Price from these books</strong> re-derives every line from only the
+          sportsbooks you tick &mdash; score off DraftKings alone, or drop one
+          you think is soft.
+          <br /><br />
+          Narrowing to a single book drops any stat that book does not post, so
+          totals fall: Drake Maye reads 9.7 on the full consensus but 2.8 on
+          DraftKings alone, because DK prices his rushing yards and not his
+          passing. That is the filter working, not a missing line &mdash; use it
+          to ask &ldquo;what does <em>this</em> book think&rdquo;, and leave all
+          books ticked for the best projection.
+ Useful when you
+          distrust one number &mdash; a touchdown price is far noisier than a
+          receptions line &mdash; or to ask a narrower question, like who starts
+          on receiving volume alone. Excluded lines still show, struck through.
+          <br /><br />
+          A player whose game has kicked off is <strong>locked</strong>: his
+          actual points are shown, his slot is marked spent, and the optimizer
+          fills only what is still changeable. The total splits into what is
+          banked and what is still to play.
+          <br /><br />
+          Every row shows the market lines behind its projection &mdash; hover
+          any chip to see each book by name with its own number, and a dotted
+          underline marks the ones the books disagree on.
+          <br /><br />
+          Two players alone works too: add both and the tab tells you which to
+          start and by how much &mdash; or use the H2H tab for a stat-by-stat
+          breakdown. Anything the market hasn&rsquo;t priced is
+          listed separately rather than silently scored as zero &mdash; an
+          unpriced player is a market signal, not a projection of nothing.
+        </div>
+
+        <div class="sitstart-grid">
+          <div class="sitstart-input">
+            <label for="roster-search" class="sitstart-label">Add players</label>
+            <div class="roster-search-wrap">
+              <input type="text" id="roster-search" autocomplete="off" spellcheck="false"
+                     placeholder="Type a name, click to add…" />
+              <div class="suggestions-list" id="roster-suggestions" style="display:none"></div>
+            </div>
+            <div class="selected-players" id="roster-tags"></div>
+            <div class="sitstart-actions">
+              <button id="roster-demo" class="fmt-btn">Load example</button>
+              <button id="roster-clear" class="fmt-btn">Clear</button>
+              <span class="weekly-meta" id="sitstart-meta"></span>
+            </div>
+
+            <div class="market-toggles" id="book-toggles">
+              <div class="sitstart-label" style="margin-bottom:6px">
+                Price from these books
+                <a href="#" id="books-all" class="market-toggle-link">all</a>
+              </div>
+              <div id="book-toggle-list" class="book-toggle-list"></div>
+            </div>
+            <details class="roster-paste">
+              <summary>or paste a list</summary>
+              <textarea id="roster-input" rows="8" spellcheck="false"
+                placeholder="One player per line"></textarea>
+              <button id="roster-go" class="fmt-btn">Add pasted names</button>
+            </details>
+          </div>
+          <div class="sitstart-output" id="sitstart-output">
+            <div class="empty">Paste a roster and hit Optimize.</div>
+          </div>
+        </div>
+      </div>
+
+      <div id="sleeper-view" class="hidden">
+        <div class="callout">
+          <strong>Enter your Sleeper username and get this week&rsquo;s
+          start/sit calls.</strong>
+          Your leagues, rosters and scoring are read live from Sleeper &mdash;
+          no password, nothing stored on a server. Every rostered player is
+          scored on this week&rsquo;s betting lines, then the best legal lineup
+          is built for <em>each league&rsquo;s own</em> slots and scoring.
+          <br /><br />
+          The useful part is the difference from what you already have set:
+          players the optimizer would start who are currently benched are marked
+          <span style="color:#58d68d;font-weight:700">SWAP IN</span>, and
+          starters it would bench are marked
+          <span class="unmatched" style="font-weight:700">SITTING</span>.
+          A player whose game has kicked off is <strong>locked</strong>: his
+          actual points are shown, his slot is marked spent, and the optimizer
+          fills only what is still changeable. The total splits into what is
+          banked and what is still to play.
+          <br /><br />
+          Every row shows the market lines behind its projection &mdash; hover
+          any chip for each book by name with its own number.
+          Kickers and defenses are listed but never projected &mdash; no book
+          prices them. Players whose game has already kicked off are listed
+          separately: the books stop quoting them, so the lineup above covers
+          only who is left to play.
+          <br /><br />
+          <strong>Best available</strong> reads every roster in the league, so
+          anyone left over is a free agent. Those are ranked by the
+          <em>upgrade</em> they would give you, not by raw points &mdash; an
+          unrostered QB tops any points list while being worthless to a team
+          that already starts one.
+        </div>
+
+        <div class="sleeper-login">
+          <div class="h2h-picker" style="max-width:320px">
+            <label class="sitstart-label" for="sleeper-user">Sleeper username</label>
+            <input type="text" id="sleeper-user" autocomplete="username"
+                   spellcheck="false" placeholder="e.g. pjmerica" />
+          </div>
+          <button id="sleeper-go" class="fmt-btn active">Load my leagues</button>
+          <button id="sleeper-forget" class="fmt-btn" hidden>Sign out</button>
+          <span class="weekly-meta" id="sleeper-status"></span>
+        </div>
+
+        <div class="sitstart-actions" style="margin-bottom:14px">
+          <div class="chip-group" id="sleeper-league-chips"></div>
+          <span class="weekly-meta" id="sleeper-meta"></span>
+        </div>
+
+        <div class="market-toggles" id="sleeper-book-toggles">
+          <div class="sitstart-label" style="margin-bottom:6px">
+            Price from these books
+            <a href="#" id="sleeper-books-all" class="market-toggle-link">all</a>
+          </div>
+          <div id="sleeper-book-list" class="book-toggle-list"></div>
+        </div>
+
+        <div id="sleeper-output">
+          <div class="empty">Enter a Sleeper username to load your leagues.</div>
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      Lines from DraftKings, FanDuel, BetMGM, Bovada, BetRivers, BetOnline,
+      Fanatics and Kalshi &middot; data shared with the
+      <a href="../nfl-props/" style="color:#6a6a8a">draft board</a>
+    </footer>
+  </div>
+
+  <script src="app.js?v=2026-09-20-split"></script>
+</body>
+</html>
