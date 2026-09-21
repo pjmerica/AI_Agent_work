@@ -27,6 +27,12 @@
   const fmt = "half";
   let search = "";
 
+  // Roster picker state. Declared up here with the other shared state because
+  // renderSitStart reads it, and a `const` further down leaves it in the
+  // temporal dead zone for any synchronous caller.
+  const rosterSelected = new Set();
+  let suggIndex = -1;
+
   const activeBooks = new Set();
 
   const BOOK_LABEL = {
@@ -629,7 +635,7 @@
 
     const pool = buildSitStartPoolFull();
     if (!pool.size) {
-      $out.innerHTML = '<div class="empty">Week 1 market data has not loaded.</div>';
+      $out.innerHTML = '<div class="empty">Market data has not loaded.</div>';
       return;
     }
     if (!rosterSelected.size) {
@@ -1097,9 +1103,7 @@
     }
   }
 
-  const rosterSelected = new Set();
 
-  let suggIndex = -1;
 
   function rosterPool() {
     return buildSitStartPoolFull();

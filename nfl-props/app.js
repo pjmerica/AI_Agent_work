@@ -2315,7 +2315,7 @@
 
     const pool = h2hPool();
     if (!pool.size) {
-      $out.innerHTML = '<div class="empty">Week 1 market data has not loaded.</div>';
+      $out.innerHTML = '<div class="empty">Market data has not loaded.</div>';
       return;
     }
     const a = h2hFind(rawA, pool), b = h2hFind(rawB, pool);
@@ -2748,7 +2748,7 @@
 
     const pool = buildSitStartPoolFull();
     if (!pool.size) {
-      $out.innerHTML = '<div class="empty">Week 1 market data has not loaded.</div>';
+      $out.innerHTML = '<div class="empty">Market data has not loaded.</div>';
       return;
     }
     if (!rosterSelected.size) {
