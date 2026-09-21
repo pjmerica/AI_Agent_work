@@ -27,6 +27,23 @@
   const fmt = "half";
   let search = "";
 
+  // ── Sleeper session state ──────────────────────────────────────────────────
+  // All declared here, before any renderer runs. These are read from view
+  // functions that fire on tab entry, so a `const`/`let` further down leaves
+  // them in the temporal dead zone.
+
+  // Signed-in user and their leagues, once loaded.
+  let sleeperLive = null;
+  let sleeperBusy = false;
+
+  // player_id -> {points} for players whose game has kicked off. Null until
+  // loadSleeperPlayed fills it; every reader guards on that.
+  let sleeperPlayed = null;
+
+  // Which league each tab is currently showing.
+  let sleeperLeagueIdx = 0;
+  let rootingLeagueIdx = 0;
+
   // Roster picker state. Declared up here with the other shared state because
   // renderSitStart reads it, and a `const` further down leaves it in the
   // temporal dead zone for any synchronous caller.
@@ -1186,12 +1203,9 @@
     renderSitStart();
   }
 
-  let sleeperLeagueIdx = 0;
-
-  let sleeperLive = null;     // { username, userId, leagues: [...] }
 
 
-  let sleeperBusy = false;
+
 
   // -- Rooting guide -----------------------------------------------------------
   // Who to cheer for and against, derived from this week's actual matchup.
@@ -1202,7 +1216,6 @@
   // play is what the rooting interest actually is, and the projections already
   // say how much each one is expected to add.
 
-  let rootingLeagueIdx = 0;
 
   async function loadRootingData() {
     if (!sleeperLive) return null;
