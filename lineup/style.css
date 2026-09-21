@@ -862,3 +862,28 @@ tr.row-nan:hover { opacity: 0.85; }
 .root-mark { font-size: 11px; margin-right: 2px; }
 .root-mark.for { color: #58d68d; }
 .root-mark.against { color: #ff6b6b; }
+
+/* Aggregate rooting view */
+.matchup-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+.matchup-card {
+  flex: 1 1 180px;
+  background: #1a1a24;
+  border: 1px solid #2e2e42;
+  border-left-width: 3px;
+  border-radius: 8px;
+  padding: 10px 12px;
+}
+.matchup-card.ahead  { border-left-color: #58d68d; }
+.matchup-card.behind { border-left-color: #ff6b6b; }
+.matchup-league { font-size: 11px; color: #6a6a8a; text-transform: uppercase;
+  letter-spacing: 0.6px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.matchup-score { font-size: 17px; font-weight: 700; color: #f0f0f8;
+  font-variant-numeric: tabular-nums; margin-top: 3px; }
+.matchup-opp { font-size: 12px; color: #a0a0c0; margin-top: 2px; }
+.league-count { font-size: 11px; font-weight: 700; color: #5b4cf5; }
+.league-names { font-size: 12px; color: #6a6a8a; }

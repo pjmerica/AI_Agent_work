@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Lineup — market-priced start/sit</title>
-  <link rel="stylesheet" href="style.css?v=2026-09-21-statefix" />
+  <link rel="stylesheet" href="style.css?v=2026-09-21-aggregate" />
 </head>
 <body>
   <div class="container">
@@ -166,19 +166,16 @@
       <div id="rooting-view" class="hidden">
         <div class="callout">
           <strong>Who to cheer for, and who to cheer against.</strong>
-          Reads your actual matchup for the week and splits both lineups into
-          what has already played and what is still live.
+          One list across <em>every</em> league, not one per league. A player
+          starting for you in one matchup and against you in another cancels
+          out, and only the net is worth knowing when you sit down to watch.
           <br /><br />
-          Only the live players matter: a starter whose game has finished cannot
-          change the result no matter how he did. Everyone listed is ranked by
-          how much the betting markets expect him to still add, so the players
-          at the top are where the rooting interest actually is.
+          Only players who can still change a result appear: a starter whose
+          game has finished is history however he did. A &times;2 badge means he
+          swings that many leagues the same way, which is what puts him at the
+          top of the list.
           <br /><br />
           Sign in on the <strong>Sleeper Start/Sit</strong> tab first.
-        </div>
-
-        <div class="sitstart-actions" style="margin-bottom:14px">
-          <div class="chip-group" id="rooting-league-chips"></div>
         </div>
 
         <div id="rooting-output">
@@ -194,6 +191,6 @@
     </footer>
   </div>
 
-  <script src="app.js?v=2026-09-21-statefix"></script>
+  <script src="app.js?v=2026-09-21-aggregate"></script>
 </body>
 </html>

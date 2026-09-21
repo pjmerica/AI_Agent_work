@@ -1207,23 +1207,22 @@
 
 
 
-  // -- Rooting guide -----------------------------------------------------------
-  // Who to cheer for and against, derived from this week's actual matchup.
-  //
-  // The useful distinction is not "my players good, theirs bad" -- it is which
-  // players are still LIVE. A player whose game has finished cannot change the
-  // outcome, so he is history regardless of how he did. Everything still to
-  // play is what the rooting interest actually is, and the projections already
-  // say how much each one is expected to add.
 
+  // -- Rooting guide (aggregate) -----------------------------------------------
+  // One list across every league, not one per league. A player can be starting
+  // for you in one matchup and against you in another, and only the NET matters
+  // when you sit down to watch: the per-league view showed Malik Nabers twice
+  // and left you to cancel him out by hand.
+  //
+  // Only players who can still change a result are listed. A starter whose game
+  // has finished is history however he did, so he is excluded rather than
+  // padding the list.
 
   async function loadRootingData() {
     if (!sleeperLive) return null;
-    const season = sleeperSeason();
     const wk = (cache["weekly"] && cache["weekly"].week) || null;
     if (!wk) return null;
 
-    // One matchups call per league. Cached so switching tabs does not refetch.
     if (!cache["matchups"]) cache["matchups"] = {};
     for (const lg of sleeperLive.leagues) {
       if (cache["matchups"][lg.leagueId]) continue;
@@ -1238,21 +1237,21 @@
         cache["matchups"][lg.leagueId] = null;
       }
     }
-    await loadSleeperPlayed(season, wk);
+    await loadSleeperPlayed(sleeperSeason(), wk);
     return true;
   }
 
-  // Resolve a Sleeper player id to name/position/team via the trimmed map.
   function pmapEntry(pid) {
     const pm = (cache["sleeperPlayers"] || {}).players || {};
     return pm[String(pid)] || null;
   }
 
-  function rootingRowsFor(lg) {
+  // Per-league matchup facts, used both for the aggregate tally and the
+  // scoreboard strip.
+  function matchupFor(lg) {
     const bundle = cache["matchups"] && cache["matchups"][lg.leagueId];
     if (!bundle || !Array.isArray(bundle.rows)) return null;
     const { rows, users, rosters } = bundle;
-
     const me = rosters.find((r) => r.owner_id === sleeperLive.userId);
     if (!me) return null;
     const mine = rows.find((r) => r.roster_id === me.roster_id);
@@ -1268,65 +1267,94 @@
     const ownerByRoster = {};
     for (const r of (rosters || [])) ownerByRoster[r.roster_id] = r.owner_id;
 
-    const pool = buildSitStartPoolFull();
-
-    // Split each side's starters into settled and still-to-play. points_live is
-    // what Sleeper has actually banked; projected is what the market expects
-    // from whatever is left.
-    const side = (entry, forMe) => {
-      const out = { live: [], done: [], banked: 0, projected: 0 };
-      const pts = entry.starters_points || [];
-      (entry.starters || []).forEach((pid, i) => {
-        if (!pid || pid === "0") return;
-        const e = pmapEntry(pid);
-        const name = e ? e[0] : "Unknown";
-        const position = e ? e[1] : null;
-        const team = e ? e[2] : null;
-        const actual = typeof pts[i] === "number" ? pts[i] : 0;
-        const played = sleeperPlayed && sleeperPlayed.get(String(pid));
-        const p = pool.get(normPlayerName(name));
-        const proj = p && !p.tdOnly ? p.points : null;
-        const rec = { name, position, team, actual, proj,
-                      matchup: p ? p.matchup : null, forMe };
-        if (played) { out.done.push(rec); out.banked += actual; }
-        else { out.live.push(rec); out.projected += proj || 0; }
-      });
-      // Biggest expected contribution first: that is the strength of the
-      // rooting interest, not the player's overall quality.
-      out.live.sort((a, b) => (b.proj || 0) - (a.proj || 0));
-      out.done.sort((a, b) => b.actual - a.actual);
-      return out;
-    };
-
     return {
+      league: lg.name,
       oppName: nameByUser[ownerByRoster[opp.roster_id]] || "Opponent",
       myScore: mine.points || 0,
       oppScore: opp.points || 0,
-      me: side(mine, true),
-      opp: side(opp, false),
+      mine, opp,
     };
   }
 
-  function rootingTable(title, rows, forMe) {
+  // player_id -> { for: [league], against: [league], proj, ... } across every
+  // league, counting only players still to play.
+  function aggregateRooting() {
+    if (!sleeperLive) return null;
+    const pool = buildSitStartPoolFull();
+    const tally = new Map();
+    const matchups = [];
+
+    for (const lg of sleeperLive.leagues) {
+      const m = matchupFor(lg);
+      if (!m) continue;
+      matchups.push(m);
+
+      for (const [entry, dir] of [[m.mine, "for"], [m.opp, "against"]]) {
+        for (const pid of (entry.starters || [])) {
+          if (!pid || pid === "0") continue;
+          // Already played: the result is banked, so he cannot be rooted for.
+          if (sleeperPlayed && sleeperPlayed.get(String(pid))) continue;
+          const e = pmapEntry(pid);
+          if (!e) continue;
+          const key = String(pid);
+          let rec = tally.get(key);
+          if (!rec) {
+            const p = pool.get(normPlayerName(e[0]));
+            rec = {
+              name: e[0], position: e[1], team: e[2],
+              proj: p && !p.tdOnly ? p.points : null,
+              matchup: p ? p.matchup : null,
+              stats: p ? p.stats : null,
+              for: [], against: [],
+            };
+            tally.set(key, rec);
+          }
+          rec[dir].push(m.league);
+        }
+      }
+    }
+
+    const rows = [...tally.values()].map((r) => ({
+      ...r, net: r.for.length - r.against.length,
+      exposure: r.for.length + r.against.length,
+    }));
+    // Strongest interest first: how many leagues he swings, then how much he is
+    // expected to score. A conflicted player nets to zero and sinks.
+    rows.sort((a, b) => Math.abs(b.net) - Math.abs(a.net) ||
+                        (b.proj || 0) - (a.proj || 0));
+    return { rows, matchups };
+  }
+
+  function rootingList(title, rows, forMe) {
     if (!rows.length) {
       return '<div class="sitstart-section">' + escapeHtml(title) + "</div>" +
-        '<div class="verdict" style="font-size:13px;color:#6a6a8a">' +
-        "Nobody left &mdash; every starter on this side has played.</div>";
+        '<div class="verdict" style="font-size:13px;color:#6a6a8a">Nobody.</div>';
     }
     let html = '<div class="sitstart-section">' + escapeHtml(title) + "</div>" +
       '<div class="table-wrap"><table class="slot-table"><thead><tr>' +
       "<th>Player</th><th>Pos</th><th>Game</th>" +
-      '<th style="text-align:right">Expected</th></tr></thead><tbody>';
+      '<th style="text-align:right">Expected</th><th>Leagues</th>' +
+      "</tr></thead><tbody>";
     for (const r of rows) {
+      const n = Math.abs(r.net);
+      const where = forMe ? r.for : r.against;
+      const other = forMe ? r.against : r.for;
       html += "<tr><td class=\"player-name\">" +
         '<span class="root-mark ' + (forMe ? "for" : "against") + '">' +
-        (forMe ? "▲" : "▼") + "</span> " +
-        escapeHtml(r.name) + "</td>" +
+        (forMe ? "▲" : "▼") + "</span> " + escapeHtml(r.name) +
+        (n > 1 ? ' <span class="league-count">&times;' + n + "</span>" : "") +
+        "</td>" +
         '<td><span class="pos-badge pos-' + escapeHtml(r.position || "?") + '">' +
         escapeHtml(r.position || "?") + "</span></td>" +
         '<td class="weekly-game">' + escapeHtml(r.matchup || r.team || "-") + "</td>" +
         '<td style="text-align:right">' +
-        (r.proj != null ? r.proj.toFixed(1) : "&mdash;") + "</td></tr>";
+        (r.proj != null ? r.proj.toFixed(1) : "&mdash;") + "</td>" +
+        '<td class="league-names">' + escapeHtml(where.join(", ")) +
+        (other.length
+          ? ' <span style="color:#f5b041">(also against you in ' +
+            escapeHtml(other.join(", ")) + ")</span>"
+          : "") +
+        "</td></tr>";
     }
     return html + "</tbody></table></div>";
   }
@@ -1338,86 +1366,53 @@
       $out.innerHTML = '<div class="empty">Sign in on the Sleeper tab first.</div>';
       return;
     }
-    const lg = sleeperLive.leagues[
-      Math.min(rootingLeagueIdx, sleeperLive.leagues.length - 1)];
-    const r = rootingRowsFor(lg);
-    if (!r) {
-      $out.innerHTML = '<div class="empty">No matchup found for this league ' +
-        "this week.</div>";
+    const agg = aggregateRooting();
+    if (!agg || !agg.matchups.length) {
+      $out.innerHTML = '<div class="empty">No matchups found for this week.</div>';
       return;
     }
 
-    const margin = r.myScore - r.oppScore;
-    const swing = r.me.projected - r.opp.projected;
-    const projFinal = margin + swing;
+    const { rows, matchups } = agg;
+    const live = rows.filter((r) => r.exposure > 0);
+    const rootFor = live.filter((r) => r.net > 0);
+    const rootAgainst = live.filter((r) => r.net < 0);
+    const conflicted = live.filter((r) => r.net === 0 && r.exposure > 1);
 
-    let verdict;
-    if (!r.me.live.length && !r.opp.live.length) {
-      verdict = margin > 0
-        ? "Final: you win by " + margin.toFixed(1) + "."
-        : margin < 0
-          ? "Final: you lose by " + Math.abs(margin).toFixed(1) + "."
-          : "Final: dead tie.";
-    } else {
-      const lead = margin >= 0
-        ? "up " + margin.toFixed(1)
-        : "down " + Math.abs(margin).toFixed(1);
-      verdict = "You are <strong>" + lead + "</strong> on " +
-        escapeHtml(r.oppName) + ", with " + r.me.live.length +
-        " starter" + (r.me.live.length === 1 ? "" : "s") + " left to play against their " +
-        r.opp.live.length + ". The market expects that to " +
-        (swing >= 0 ? "add " + swing.toFixed(1) + " to your side"
-                    : "cost you " + Math.abs(swing).toFixed(1)) +
-        ", projecting a final margin of <strong>" +
-        (projFinal >= 0 ? "+" : "") + projFinal.toFixed(1) + "</strong>.";
-    }
-
-    let html = '<div class="verdict">' + verdict + "</div>";
-
-    html += '<div class="h2h-cards">';
-    for (const [label, score, s, cls] of [
-      ["You", r.myScore, r.me, margin >= 0 ? " winner" : ""],
-      [r.oppName, r.oppScore, r.opp, margin < 0 ? " winner" : ""],
-    ]) {
-      html += '<div class="h2h-card' + cls + '">' +
-        '<div class="h2h-card-name">' + escapeHtml(label) + "</div>" +
-        '<div class="h2h-card-pts">' + score.toFixed(1) + "</div>" +
-        '<div class="h2h-card-sub">' + s.done.length + " played &middot; " +
-        s.live.length + " to go</div>" +
-        (s.live.length
-          ? '<div class="h2h-card-meta">+' + s.projected.toFixed(1) + " projected</div>"
-          : '<div class="h2h-card-meta">final</div>') +
+    // Scoreboard strip: every matchup at a glance, so the lists below have
+    // context without needing a league picker.
+    let html = '<div class="matchup-strip">';
+    for (const m of matchups) {
+      const margin = m.myScore - m.oppScore;
+      html += '<div class="matchup-card' + (margin >= 0 ? " ahead" : " behind") + '">' +
+        '<div class="matchup-league">' + escapeHtml(m.league) + "</div>" +
+        '<div class="matchup-score">' + m.myScore.toFixed(1) +
+        ' <span style="color:#6a6a8a">vs</span> ' + m.oppScore.toFixed(1) + "</div>" +
+        '<div class="matchup-opp">' + (margin >= 0 ? "up " : "down ") +
+        Math.abs(margin).toFixed(1) + " &middot; " + escapeHtml(m.oppName) + "</div>" +
         "</div>";
     }
     html += "</div>";
 
-    html += rootingTable("Root FOR — your players still to play", r.me.live, true);
-    html += rootingTable("Root AGAINST — their players still to play", r.opp.live, false);
+    const ahead = matchups.filter((m) => m.myScore >= m.oppScore).length;
+    html += '<div class="verdict">Leading <strong>' + ahead + " of " +
+      matchups.length + "</strong> matchup" + (matchups.length === 1 ? "" : "s") +
+      ". " + (live.length
+        ? live.length + " player" + (live.length === 1 ? "" : "s") +
+          " across your leagues can still change a result."
+        : "Every starter on every side has played &mdash; nothing left to watch.") +
+      "</div>";
 
-    const settled = r.me.done.length + r.opp.done.length;
-    if (settled) {
-      html += '<div class="verdict" style="font-size:13px;color:#6a6a8a">' +
-        settled + " starter" + (settled === 1 ? " has" : "s have") +
-        " already played and cannot change the result.</div>";
+    html += rootingList("Root FOR", rootFor, true);
+    html += rootingList("Root AGAINST", rootAgainst, false);
+
+    if (conflicted.length) {
+      html += '<div class="sitstart-section">Cancels out</div>' +
+        '<div class="verdict" style="font-size:13px;color:#6a6a8a">' +
+        conflicted.map((r) => escapeHtml(r.name) + " (starting for you in " +
+          r.for.length + ", against you in " + r.against.length + ")").join("; ") +
+        " &mdash; nets to nothing, so watch without caring.</div>";
     }
     $out.innerHTML = html;
-  }
-
-  function renderRootingChips() {
-    const $chips = document.getElementById("rooting-league-chips");
-    if (!$chips) return;
-    if (!sleeperLive) { $chips.innerHTML = ""; return; }
-    $chips.innerHTML = sleeperLive.leagues.map((lg, i) =>
-      '<button class="chip' + (i === rootingLeagueIdx ? " active" : "") +
-      '" data-idx="' + i + '">' + escapeHtml(lg.name || "League") + "</button>"
-    ).join("");
-    $chips.querySelectorAll(".chip").forEach((c) => {
-      c.addEventListener("click", () => {
-        rootingLeagueIdx = Number(c.dataset.idx) || 0;
-        renderRootingChips();
-        renderRooting();
-      });
-    });
   }
 
 
@@ -1447,7 +1442,6 @@
       if (saved) await loadSleeperUser(saved);
     }
     await loadRootingData();
-    renderRootingChips();
     renderRooting();
   }
 
