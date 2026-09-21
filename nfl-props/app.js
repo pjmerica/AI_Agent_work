@@ -2559,6 +2559,133 @@
     return Math.round(pts * 100) / 100;
   }
 
+
+  // -- Roster picker -----------------------------------------------------------
+  // Type-to-search, click to add a chip, click the chip to remove. Selection is
+  // a Set of normalized keys so the same player cannot be added twice under two
+  // spellings ("CeeDee Lamb" / "ceedee lamb" collapse to one key).
+  const rosterSelected = new Set();
+  let suggIndex = -1;
+
+  function rosterPool() {
+    return buildSitStartPoolFull();
+  }
+
+  function renderRosterTags() {
+    const $tags = document.getElementById("roster-tags");
+    if (!$tags) return;
+    const pool = rosterPool();
+    if (!rosterSelected.size) {
+      $tags.innerHTML = '<span style="font-size:12px;color:#6a6a8a">No players added yet.</span>';
+      return;
+    }
+    const parts = [];
+    for (const key of rosterSelected) {
+      const p = pool.get(key);
+      const label = p ? p.name : key;
+      // An unpriced player is chipped in amber rather than dropped, so it is
+      // visible that he was added but cannot be ranked.
+      const unpriced = p && (p.tdOnly || p.points <= 0 || !p.position);
+      parts.push('<span class="player-tag' + (unpriced ? " unpriced" : "") +
+        '" data-key="' + escapeHtml(key) + '">' + escapeHtml(label) +
+        (p && p.position
+          ? ' <span class="pos-badge pos-' + escapeHtml(p.position) + '">' +
+            escapeHtml(p.position) + "</span>"
+          : "") +
+        ' <span class="remove">&times;</span></span>');
+    }
+    $tags.innerHTML = parts.join("");
+    $tags.querySelectorAll(".player-tag").forEach((el) => {
+      el.addEventListener("click", () => {
+        rosterSelected.delete(el.dataset.key);
+        renderRosterTags();
+        renderSitStart();
+      });
+    });
+  }
+
+  function renderRosterSuggestions() {
+    const $in = document.getElementById("roster-search");
+    const $sugg = document.getElementById("roster-suggestions");
+    if (!$in || !$sugg) return;
+    const val = $in.value.toLowerCase().trim();
+    if (!val) { $sugg.style.display = "none"; suggIndex = -1; return; }
+
+    const pool = rosterPool();
+    const matches = [...pool.entries()]
+      .filter(([k, p]) => !rosterSelected.has(k) && p.position &&
+                          p.name.toLowerCase().includes(val))
+      // Best projection first: when someone types a surname, the starter should
+      // be the top hit rather than a third-stringer who sorts earlier.
+      .sort((a, b) => b[1].points - a[1].points)
+      .slice(0, 10);
+
+    if (!matches.length) {
+      $sugg.innerHTML = '<div style="color:#6a6a8a;cursor:default">No match on this week’s board</div>';
+      $sugg.style.display = "block";
+      suggIndex = -1;
+      return;
+    }
+    $sugg.innerHTML = matches.map(([k, p], i) =>
+      '<div data-key="' + escapeHtml(k) + '"' + (i === suggIndex ? ' class="active"' : "") + ">" +
+      escapeHtml(p.name) +
+      ' <span class="pos-badge pos-' + escapeHtml(p.position) + '">' +
+      escapeHtml(p.position) + "</span>" +
+      '<span class="sugg-pts">' + p.points.toFixed(1) + "</span></div>"
+    ).join("");
+    $sugg.style.display = "block";
+  }
+
+  function addRosterKey(key) {
+    if (!key) return;
+    rosterSelected.add(key);
+    const $in = document.getElementById("roster-search");
+    const $sugg = document.getElementById("roster-suggestions");
+    if ($in) $in.value = "";
+    if ($sugg) $sugg.style.display = "none";
+    suggIndex = -1;
+    renderRosterTags();
+    renderSitStart();
+  }
+
+  (function initRosterPicker() {
+    const $in = document.getElementById("roster-search");
+    const $sugg = document.getElementById("roster-suggestions");
+    if (!$in || !$sugg) return;
+
+    $in.addEventListener("input", () => { suggIndex = -1; renderRosterSuggestions(); });
+    $in.addEventListener("keydown", (e) => {
+      const items = [...$sugg.querySelectorAll("[data-key]")];
+      if (e.key === "ArrowDown" || e.key === "ArrowUp") {
+        if (!items.length) return;
+        e.preventDefault();
+        suggIndex += (e.key === "ArrowDown" ? 1 : -1);
+        if (suggIndex < 0) suggIndex = items.length - 1;
+        if (suggIndex >= items.length) suggIndex = 0;
+        renderRosterSuggestions();
+      } else if (e.key === "Enter") {
+        e.preventDefault();
+        // Enter with nothing highlighted takes the top hit, which is what
+        // typing a full name and hitting return should obviously do.
+        const pick = items[suggIndex >= 0 ? suggIndex : 0];
+        if (pick) addRosterKey(pick.dataset.key);
+      } else if (e.key === "Escape") {
+        $sugg.style.display = "none";
+        suggIndex = -1;
+      }
+    });
+    $sugg.addEventListener("click", (e) => {
+      const div = e.target.closest("[data-key]");
+      if (div) addRosterKey(div.dataset.key);
+    });
+    document.addEventListener("click", (e) => {
+      if (!$in.contains(e.target) && !$sugg.contains(e.target)) {
+        $sugg.style.display = "none";
+        suggIndex = -1;
+      }
+    });
+  })();
+
   // -- Start/Sit optimizer ----------------------------------------------------
   // Builds the best legal lineup from a pasted roster. FLEX makes greedy
   // filling wrong -- taking the best RB for a base slot can strand a better
