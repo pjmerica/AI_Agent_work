@@ -1333,8 +1333,8 @@
     let html = '<div class="sitstart-section">' + escapeHtml(title) + "</div>" +
       '<div class="table-wrap"><table class="slot-table"><thead><tr>' +
       "<th>Player</th><th>Pos</th><th>Game</th>" +
-      '<th style="text-align:right">Expected</th><th>Leagues</th>' +
-      "</tr></thead><tbody>";
+      '<th style="text-align:right">Expected</th>' +
+      '<th style="text-align:right">Swings</th></tr></thead><tbody>';
     for (const r of rows) {
       const n = Math.abs(r.net);
       const where = forMe ? r.for : r.against;
@@ -1349,11 +1349,8 @@
         '<td class="weekly-game">' + escapeHtml(r.matchup || r.team || "-") + "</td>" +
         '<td style="text-align:right">' +
         (r.proj != null ? r.proj.toFixed(1) : "&mdash;") + "</td>" +
-        '<td class="league-names">' + escapeHtml(where.join(", ")) +
-        (other.length
-          ? ' <span style="color:#f5b041">(also against you in ' +
-            escapeHtml(other.join(", ")) + ")</span>"
-          : "") +
+        '<td class="league-names" style="text-align:right">' +
+        n + (other.length ? ' <span style="color:#f5b041">net</span>' : "") +
         "</td></tr>";
     }
     return html + "</tbody></table></div>";
@@ -1380,25 +1377,21 @@
 
     // Scoreboard strip: every matchup at a glance, so the lists below have
     // context without needing a league picker.
-    let html = '<div class="matchup-strip">';
-    for (const m of matchups) {
-      const margin = m.myScore - m.oppScore;
-      html += '<div class="matchup-card' + (margin >= 0 ? " ahead" : " behind") + '">' +
-        '<div class="matchup-league">' + escapeHtml(m.league) + "</div>" +
-        '<div class="matchup-score">' + m.myScore.toFixed(1) +
-        ' <span style="color:#6a6a8a">vs</span> ' + m.oppScore.toFixed(1) + "</div>" +
-        '<div class="matchup-opp">' + (margin >= 0 ? "up " : "down ") +
-        Math.abs(margin).toFixed(1) + " &middot; " + escapeHtml(m.oppName) + "</div>" +
-        "</div>";
-    }
-    html += "</div>";
+    let html = "";
 
-    const ahead = matchups.filter((m) => m.myScore >= m.oppScore).length;
-    html += '<div class="verdict">Leading <strong>' + ahead + " of " +
-      matchups.length + "</strong> matchup" + (matchups.length === 1 ? "" : "s") +
-      ". " + (live.length
+    // One combined position across every matchup. Listing each league would
+    // put the arithmetic back on you, which is what the aggregate exists to
+    // avoid -- the totals below are what you are collectively playing for.
+    const myTotal = matchups.reduce((t, m) => t + m.myScore, 0);
+    const oppTotal = matchups.reduce((t, m) => t + m.oppScore, 0);
+    const net = myTotal - oppTotal;
+    html += '<div class="verdict">Across all your matchups you have scored ' +
+      "<strong>" + myTotal.toFixed(1) + "</strong> against <strong>" +
+      oppTotal.toFixed(1) + "</strong>, a net of <strong>" +
+      (net >= 0 ? "+" : "") + net.toFixed(1) + "</strong>. " +
+      (live.length
         ? live.length + " player" + (live.length === 1 ? "" : "s") +
-          " across your leagues can still change a result."
+          " can still move that number."
         : "Every starter on every side has played &mdash; nothing left to watch.") +
       "</div>";
 
@@ -1408,8 +1401,8 @@
     if (conflicted.length) {
       html += '<div class="sitstart-section">Cancels out</div>' +
         '<div class="verdict" style="font-size:13px;color:#6a6a8a">' +
-        conflicted.map((r) => escapeHtml(r.name) + " (starting for you in " +
-          r.for.length + ", against you in " + r.against.length + ")").join("; ") +
+        conflicted.map((r) => escapeHtml(r.name) + " (" + r.for.length +
+          " for, " + r.against.length + " against)").join("; ") +
         " &mdash; nets to nothing, so watch without caring.</div>";
     }
     $out.innerHTML = html;
