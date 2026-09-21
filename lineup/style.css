@@ -857,3 +857,8 @@ tr.row-nan:hover { opacity: 0.85; }
    row reads as settled rather than as something still to choose. */
 .locked-row { opacity: 0.6; }
 .locked-row td { background: rgba(108, 122, 137, 0.06); }
+
+/* Rooting direction marker: green up for your players, red down for theirs. */
+.root-mark { font-size: 11px; margin-right: 2px; }
+.root-mark.for { color: #58d68d; }
+.root-mark.against { color: #ff6b6b; }

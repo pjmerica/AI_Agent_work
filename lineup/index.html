@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Lineup — market-priced start/sit</title>
-  <link rel="stylesheet" href="style.css?v=2026-09-20-rename" />
+  <link rel="stylesheet" href="style.css?v=2026-09-20-rooting" />
 </head>
 <body>
   <div class="container">
@@ -21,6 +21,7 @@
     <div class="view-tabs" id="view-tabs">
       <button class="view-tab active" data-view="sitstart">Manual Roster</button>
       <button class="view-tab" data-view="sleeper">Sleeper Start/Sit</button>
+      <button class="view-tab" data-view="rooting">Root For / Against</button>
     </div>
 
     <main>
@@ -161,6 +162,29 @@
           <div class="empty">Enter a Sleeper username to load your leagues.</div>
         </div>
       </div>
+
+      <div id="rooting-view" class="hidden">
+        <div class="callout">
+          <strong>Who to cheer for, and who to cheer against.</strong>
+          Reads your actual matchup for the week and splits both lineups into
+          what has already played and what is still live.
+          <br /><br />
+          Only the live players matter: a starter whose game has finished cannot
+          change the result no matter how he did. Everyone listed is ranked by
+          how much the betting markets expect him to still add, so the players
+          at the top are where the rooting interest actually is.
+          <br /><br />
+          Sign in on the <strong>Sleeper Start/Sit</strong> tab first.
+        </div>
+
+        <div class="sitstart-actions" style="margin-bottom:14px">
+          <div class="chip-group" id="rooting-league-chips"></div>
+        </div>
+
+        <div id="rooting-output">
+          <div class="empty">Sign in on the Sleeper tab first.</div>
+        </div>
+      </div>
     </main>
 
     <footer>
@@ -170,6 +194,6 @@
     </footer>
   </div>
 
-  <script src="app.js?v=2026-09-20-rename"></script>
+  <script src="app.js?v=2026-09-20-rooting"></script>
 </body>
 </html>

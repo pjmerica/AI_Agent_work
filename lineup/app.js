@@ -1192,17 +1192,250 @@
 
 
   let sleeperBusy = false;
+
+  // -- Rooting guide -----------------------------------------------------------
+  // Who to cheer for and against, derived from this week's actual matchup.
+  //
+  // The useful distinction is not "my players good, theirs bad" -- it is which
+  // players are still LIVE. A player whose game has finished cannot change the
+  // outcome, so he is history regardless of how he did. Everything still to
+  // play is what the rooting interest actually is, and the projections already
+  // say how much each one is expected to add.
+
+  let rootingLeagueIdx = 0;
+
+  async function loadRootingData() {
+    if (!sleeperLive) return null;
+    const season = sleeperSeason();
+    const wk = (cache["weekly"] && cache["weekly"].week) || null;
+    if (!wk) return null;
+
+    // One matchups call per league. Cached so switching tabs does not refetch.
+    if (!cache["matchups"]) cache["matchups"] = {};
+    for (const lg of sleeperLive.leagues) {
+      if (cache["matchups"][lg.leagueId]) continue;
+      try {
+        const [rows, users, rosters] = await Promise.all([
+          sleeperJson("/league/" + lg.leagueId + "/matchups/" + wk),
+          sleeperJson("/league/" + lg.leagueId + "/users"),
+          sleeperJson("/league/" + lg.leagueId + "/rosters"),
+        ]);
+        cache["matchups"][lg.leagueId] = { rows, users, rosters };
+      } catch (e) {
+        cache["matchups"][lg.leagueId] = null;
+      }
+    }
+    await loadSleeperPlayed(season, wk);
+    return true;
+  }
+
+  // Resolve a Sleeper player id to name/position/team via the trimmed map.
+  function pmapEntry(pid) {
+    const pm = (cache["sleeperPlayers"] || {}).players || {};
+    return pm[String(pid)] || null;
+  }
+
+  function rootingRowsFor(lg) {
+    const bundle = cache["matchups"] && cache["matchups"][lg.leagueId];
+    if (!bundle || !Array.isArray(bundle.rows)) return null;
+    const { rows, users, rosters } = bundle;
+
+    const me = rosters.find((r) => r.owner_id === sleeperLive.userId);
+    if (!me) return null;
+    const mine = rows.find((r) => r.roster_id === me.roster_id);
+    if (!mine || mine.matchup_id == null) return null;
+    const opp = rows.find((r) => r.matchup_id === mine.matchup_id &&
+                                 r.roster_id !== me.roster_id);
+    if (!opp) return null;
+
+    const nameByUser = {};
+    for (const u of (users || [])) {
+      nameByUser[u.user_id] = u.display_name || u.username || "Opponent";
+    }
+    const ownerByRoster = {};
+    for (const r of (rosters || [])) ownerByRoster[r.roster_id] = r.owner_id;
+
+    const pool = buildSitStartPoolFull();
+
+    // Split each side's starters into settled and still-to-play. points_live is
+    // what Sleeper has actually banked; projected is what the market expects
+    // from whatever is left.
+    const side = (entry, forMe) => {
+      const out = { live: [], done: [], banked: 0, projected: 0 };
+      const pts = entry.starters_points || [];
+      (entry.starters || []).forEach((pid, i) => {
+        if (!pid || pid === "0") return;
+        const e = pmapEntry(pid);
+        const name = e ? e[0] : "Unknown";
+        const position = e ? e[1] : null;
+        const team = e ? e[2] : null;
+        const actual = typeof pts[i] === "number" ? pts[i] : 0;
+        const played = sleeperPlayed && sleeperPlayed.get(String(pid));
+        const p = pool.get(normPlayerName(name));
+        const proj = p && !p.tdOnly ? p.points : null;
+        const rec = { name, position, team, actual, proj,
+                      matchup: p ? p.matchup : null, forMe };
+        if (played) { out.done.push(rec); out.banked += actual; }
+        else { out.live.push(rec); out.projected += proj || 0; }
+      });
+      // Biggest expected contribution first: that is the strength of the
+      // rooting interest, not the player's overall quality.
+      out.live.sort((a, b) => (b.proj || 0) - (a.proj || 0));
+      out.done.sort((a, b) => b.actual - a.actual);
+      return out;
+    };
+
+    return {
+      oppName: nameByUser[ownerByRoster[opp.roster_id]] || "Opponent",
+      myScore: mine.points || 0,
+      oppScore: opp.points || 0,
+      me: side(mine, true),
+      opp: side(opp, false),
+    };
+  }
+
+  function rootingTable(title, rows, forMe) {
+    if (!rows.length) {
+      return '<div class="sitstart-section">' + escapeHtml(title) + "</div>" +
+        '<div class="verdict" style="font-size:13px;color:#6a6a8a">' +
+        "Nobody left &mdash; every starter on this side has played.</div>";
+    }
+    let html = '<div class="sitstart-section">' + escapeHtml(title) + "</div>" +
+      '<div class="table-wrap"><table class="slot-table"><thead><tr>' +
+      "<th>Player</th><th>Pos</th><th>Game</th>" +
+      '<th style="text-align:right">Expected</th></tr></thead><tbody>';
+    for (const r of rows) {
+      html += "<tr><td class=\"player-name\">" +
+        '<span class="root-mark ' + (forMe ? "for" : "against") + '">' +
+        (forMe ? "▲" : "▼") + "</span> " +
+        escapeHtml(r.name) + "</td>" +
+        '<td><span class="pos-badge pos-' + escapeHtml(r.position || "?") + '">' +
+        escapeHtml(r.position || "?") + "</span></td>" +
+        '<td class="weekly-game">' + escapeHtml(r.matchup || r.team || "-") + "</td>" +
+        '<td style="text-align:right">' +
+        (r.proj != null ? r.proj.toFixed(1) : "&mdash;") + "</td></tr>";
+    }
+    return html + "</tbody></table></div>";
+  }
+
+  function renderRooting() {
+    const $out = document.getElementById("rooting-output");
+    if (!$out) return;
+    if (!sleeperLive) {
+      $out.innerHTML = '<div class="empty">Sign in on the Sleeper tab first.</div>';
+      return;
+    }
+    const lg = sleeperLive.leagues[
+      Math.min(rootingLeagueIdx, sleeperLive.leagues.length - 1)];
+    const r = rootingRowsFor(lg);
+    if (!r) {
+      $out.innerHTML = '<div class="empty">No matchup found for this league ' +
+        "this week.</div>";
+      return;
+    }
+
+    const margin = r.myScore - r.oppScore;
+    const swing = r.me.projected - r.opp.projected;
+    const projFinal = margin + swing;
+
+    let verdict;
+    if (!r.me.live.length && !r.opp.live.length) {
+      verdict = margin > 0
+        ? "Final: you win by " + margin.toFixed(1) + "."
+        : margin < 0
+          ? "Final: you lose by " + Math.abs(margin).toFixed(1) + "."
+          : "Final: dead tie.";
+    } else {
+      const lead = margin >= 0
+        ? "up " + margin.toFixed(1)
+        : "down " + Math.abs(margin).toFixed(1);
+      verdict = "You are <strong>" + lead + "</strong> on " +
+        escapeHtml(r.oppName) + ", with " + r.me.live.length +
+        " starter" + (r.me.live.length === 1 ? "" : "s") + " left to play against their " +
+        r.opp.live.length + ". The market expects that to " +
+        (swing >= 0 ? "add " + swing.toFixed(1) + " to your side"
+                    : "cost you " + Math.abs(swing).toFixed(1)) +
+        ", projecting a final margin of <strong>" +
+        (projFinal >= 0 ? "+" : "") + projFinal.toFixed(1) + "</strong>.";
+    }
+
+    let html = '<div class="verdict">' + verdict + "</div>";
+
+    html += '<div class="h2h-cards">';
+    for (const [label, score, s, cls] of [
+      ["You", r.myScore, r.me, margin >= 0 ? " winner" : ""],
+      [r.oppName, r.oppScore, r.opp, margin < 0 ? " winner" : ""],
+    ]) {
+      html += '<div class="h2h-card' + cls + '">' +
+        '<div class="h2h-card-name">' + escapeHtml(label) + "</div>" +
+        '<div class="h2h-card-pts">' + score.toFixed(1) + "</div>" +
+        '<div class="h2h-card-sub">' + s.done.length + " played &middot; " +
+        s.live.length + " to go</div>" +
+        (s.live.length
+          ? '<div class="h2h-card-meta">+' + s.projected.toFixed(1) + " projected</div>"
+          : '<div class="h2h-card-meta">final</div>') +
+        "</div>";
+    }
+    html += "</div>";
+
+    html += rootingTable("Root FOR — your players still to play", r.me.live, true);
+    html += rootingTable("Root AGAINST — their players still to play", r.opp.live, false);
+
+    const settled = r.me.done.length + r.opp.done.length;
+    if (settled) {
+      html += '<div class="verdict" style="font-size:13px;color:#6a6a8a">' +
+        settled + " starter" + (settled === 1 ? " has" : "s have") +
+        " already played and cannot change the result.</div>";
+    }
+    $out.innerHTML = html;
+  }
+
+  function renderRootingChips() {
+    const $chips = document.getElementById("rooting-league-chips");
+    if (!$chips) return;
+    if (!sleeperLive) { $chips.innerHTML = ""; return; }
+    $chips.innerHTML = sleeperLive.leagues.map((lg, i) =>
+      '<button class="chip' + (i === rootingLeagueIdx ? " active" : "") +
+      '" data-idx="' + i + '">' + escapeHtml(lg.name || "League") + "</button>"
+    ).join("");
+    $chips.querySelectorAll(".chip").forEach((c) => {
+      c.addEventListener("click", () => {
+        rootingLeagueIdx = Number(c.dataset.idx) || 0;
+        renderRootingChips();
+        renderRooting();
+      });
+    });
+  }
+
+
   // ── Boot ───────────────────────────────────────────────────────────────────
   const $ssView = document.getElementById("sitstart-view");
   const $lgView = document.getElementById("sleeper-view");
+  const $rtView = document.getElementById("rooting-view");
 
   function showView(name) {
     if ($ssView) $ssView.classList.toggle("hidden", name !== "sitstart");
     if ($lgView) $lgView.classList.toggle("hidden", name !== "sleeper");
+    if ($rtView) $rtView.classList.toggle("hidden", name !== "rooting");
     document.querySelectorAll(".view-tab").forEach((t) =>
       t.classList.toggle("active", t.dataset.view === name));
     if (name === "sitstart") showSitStartView();
+    else if (name === "rooting") showRootingView();
     else showLeaguesView();
+  }
+
+  async function showRootingView() {
+    await loadData();
+    // The matchup needs a signed-in user; restore one if the Sleeper tab has
+    // not been visited yet this session.
+    if (!sleeperLive) {
+      let saved = null;
+      try { saved = localStorage.getItem(SLEEPER_LS_KEY); } catch (e) { saved = null; }
+      if (saved) await loadSleeperUser(saved);
+    }
+    await loadRootingData();
+    renderRootingChips();
+    renderRooting();
   }
 
   async function loadData() {
