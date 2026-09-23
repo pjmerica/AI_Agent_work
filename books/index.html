@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Book-by-Book Projections</title>
+  <link rel="stylesheet" href="style.css?v=2026-09-23-a" />
+</head>
+<body>
+  <header class="page-head">
+    <h1>Book-by-Book Projections</h1>
+    <p class="sub" id="meta">Loading market data…</p>
+  </header>
+
+  <div class="controls">
+    <div class="control-group">
+      <span class="control-label">Scoring</span>
+      <div class="seg" id="format-seg">
+        <button class="seg-btn" data-format="std">Standard</button>
+        <button class="seg-btn active" data-format="half">Half PPR</button>
+        <button class="seg-btn" data-format="ppr">Full PPR</button>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <span class="control-label">Position</span>
+      <div class="seg" id="pos-seg">
+        <button class="seg-btn active" data-pos="ALL">All</button>
+        <button class="seg-btn" data-pos="QB">QB</button>
+        <button class="seg-btn" data-pos="RB">RB</button>
+        <button class="seg-btn" data-pos="WR">WR</button>
+        <button class="seg-btn" data-pos="TE">TE</button>
+      </div>
+    </div>
+
+    <div class="control-group grow">
+      <span class="control-label">Search</span>
+      <input type="search" id="search" placeholder="Player, team or game…" />
+    </div>
+  </div>
+
+  <div id="book-legend" class="book-legend"></div>
+  <div id="output" class="table-wrap"><div class="empty">Loading…</div></div>
+
+  <footer class="page-foot">
+    <p>Each column is one sportsbook's own posted lines, scored into fantasy
+       points. A blank cell means that book has not priced the player.
+       <strong>Consensus</strong> is the median line across every venue that
+       priced each stat, scored the same way &mdash; it is not the average of
+       the columns, because venues price different subsets of stats.</p>
+
+    <p>A number marked <strong class="foot-star">*</strong> is partial: that
+       book posted only some of the player's markets, so its total is real but
+       lower than a like-for-like comparison. Hover it to see what is missing.
+       Partial cells are left out of <strong>Spread</strong>, which is the gap
+       between the highest and lowest US sportsbook that priced the same
+       markets &mdash; genuine disagreement, which in practice is small
+       (under a point almost everywhere).</p>
+
+    <p><strong>Kalshi</strong> and <strong>DK</strong> sit apart for a reason.
+       Kalshi is the only venue here that posts anytime-touchdown markets,
+       worth roughly six points of equity, so its column runs high against
+       books that price yardage only &mdash; and it barely moves when you
+       change the scoring format, because it rarely posts a receptions line.
+       DK is a touchdown-only scrape. Neither is counted in the spread, since
+       a different market set is not a different opinion.</p>
+  </footer>
+
+  <script src="app.js?v=2026-09-23-a"></script>
+</body>
+</html>

@@ -1,0 +1,260 @@
+/* Book-by-book projections.
+ *
+ * The table is the page, so everything else stays quiet. The one piece of
+ * deliberate emphasis is the consensus column, which is what most people want
+ * most of the time; the individual books are there to be scanned across when
+ * a number looks wrong.
+ */
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  padding: 22px 18px 60px;
+  background: #0f0f18;
+  color: #e6e6f0;
+  font: 14px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+        Helvetica, Arial, sans-serif;
+}
+
+.page-head { margin-bottom: 18px; }
+
+.page-head h1 {
+  margin: 0 0 5px;
+  font-size: 21px;
+  font-weight: 650;
+  letter-spacing: -0.2px;
+}
+
+.page-head .sub {
+  margin: 0;
+  font-size: 13px;
+  color: #8a8aa8;
+}
+
+/* -- Controls ------------------------------------------------------------- */
+
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  align-items: flex-end;
+  margin-bottom: 14px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #23233a;
+}
+
+.control-group {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.control-group.grow { flex: 1 1 200px; min-width: 160px; }
+
+.control-label {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.7px;
+  color: #6a6a8a;
+}
+
+.seg {
+  display: inline-flex;
+  background: #191926;
+  border: 1px solid #2c2c44;
+  border-radius: 7px;
+  padding: 2px;
+  gap: 2px;
+}
+
+.seg-btn {
+  appearance: none;
+  border: 0;
+  background: transparent;
+  color: #9a9ab8;
+  font: inherit;
+  font-size: 13px;
+  padding: 6px 13px;
+  border-radius: 5px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.seg-btn:hover { color: #d4d4e8; }
+
+.seg-btn.active {
+  background: #3a3a5c;
+  color: #fff;
+  font-weight: 550;
+}
+
+#search {
+  appearance: none;
+  width: 100%;
+  background: #191926;
+  border: 1px solid #2c2c44;
+  border-radius: 7px;
+  color: #e6e6f0;
+  font: inherit;
+  font-size: 13px;
+  padding: 7px 11px;
+}
+
+#search::placeholder { color: #5a5a78; }
+#search:focus { outline: none; border-color: #4a4a78; }
+
+/* -- Legend --------------------------------------------------------------- */
+
+.book-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-bottom: 14px;
+}
+
+.legend-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #181824;
+  border: 1px solid #28283e;
+  border-radius: 20px;
+  padding: 3px 10px 3px 11px;
+  font-size: 12px;
+  color: #9a9ab8;
+}
+
+.legend-n {
+  background: #2a2a44;
+  color: #c4c4dd;
+  border-radius: 10px;
+  padding: 1px 7px;
+  font-size: 11px;
+  font-variant-numeric: tabular-nums;
+}
+
+/* -- Table ---------------------------------------------------------------- */
+
+.table-wrap {
+  overflow-x: auto;
+  border: 1px solid #23233a;
+  border-radius: 9px;
+}
+
+table.board {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  white-space: nowrap;
+}
+
+table.board th,
+table.board td {
+  padding: 7px 11px;
+  text-align: left;
+  border-bottom: 1px solid #1e1e30;
+}
+
+table.board thead th {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  background: #16161f;
+  color: #8a8aa8;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  border-bottom: 1px solid #2c2c44;
+}
+
+table.board th.num,
+table.board td.num {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+table.board th.sortable { cursor: pointer; user-select: none; }
+table.board th.sortable:hover { color: #d4d4e8; }
+table.board th.sorted { color: #fff; }
+.arrow { margin-left: 4px; font-size: 9px; }
+
+table.board tbody tr:hover td { background: #16161f; }
+
+.col-rank { color: #55557a; width: 46px; font-variant-numeric: tabular-nums; }
+.col-player { font-weight: 550; color: #f0f0f8; }
+.col-game { color: #7a7a9a; font-size: 12px; }
+
+/* The consensus column is the default answer, so it reads as the primary
+   number and the individual books as supporting detail. */
+td.col-consensus {
+  font-weight: 650;
+  color: #fff;
+  background: #1a1a2c;
+}
+th.col-consensus { color: #b4b4d8; background: #1c1c2e; }
+
+/* Kalshi and the DK TD scrape are single-venue and not directly comparable to
+   a full sportsbook column, so they are visually set apart. */
+td.col-alt, th.col-alt { color: #8fa8c8; }
+
+.blank { color: #3a3a55; }
+
+.col-spread { color: #7a7a9a; }
+.col-spread .wide { color: #f5b041; font-weight: 600; }
+
+.pos-badge {
+  display: inline-block;
+  min-width: 30px;
+  text-align: center;
+  padding: 1px 6px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 600;
+  background: #2a2a40;
+  color: #b0b0cc;
+}
+
+.pos-QB { background: #3d2a45; color: #d9a8e8; }
+.pos-RB { background: #22402f; color: #8fd9a8; }
+.pos-WR { background: #1f3550; color: #8fbce8; }
+.pos-TE { background: #4a3620; color: #e8bc8f; }
+
+.empty {
+  padding: 34px 18px;
+  text-align: center;
+  color: #6a6a8a;
+  font-size: 14px;
+}
+
+/* -- Footer --------------------------------------------------------------- */
+
+.page-foot {
+  margin-top: 20px;
+  font-size: 12px;
+  line-height: 1.6;
+  color: #6a6a8a;
+  max-width: 76ch;
+}
+
+.page-foot strong { color: #9a9ab8; }
+
+@media (max-width: 640px) {
+  body { padding: 16px 12px 44px; }
+  .controls { gap: 12px; }
+  table.board th, table.board td { padding: 6px 8px; }
+}
+
+/* A book that priced only some of a player's markets. Its total is real but
+   not comparable to a book that priced everything, so it is dimmed, marked,
+   and left out of the spread. Hover gives the specifics. */
+td.num.partial { color: #7a7a9a; }
+.partial-mark {
+  color: #f5b041;
+  font-size: 10px;
+  vertical-align: super;
+  margin-left: 1px;
+}
+
+.foot-star { color: #f5b041; }
