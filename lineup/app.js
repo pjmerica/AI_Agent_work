@@ -946,9 +946,19 @@
       const mu = (p.matchup || "").trim();
       if (mu.length >= 4) liveTeams.add(mu);
     }
+    // The prop pool alone is not proof of anything: a team with no priced
+    // player at all -- SEA/WAS had two on the whole game in week 3 -- looked
+    // to this check exactly like a team whose game had finished, and every
+    // player on it was filed as already played. The game lines cover all 32
+    // teams, so they answer "has this game kicked off" properly.
     const teamIsLive = (team) => {
       if (!team) return false;
-      for (const mu of liveTeams) if (mu.includes(team)) return true;
+      const gl = gameLineFor(team);
+      if (gl) {
+        if (!gl.kickoff) return true;
+        return Date.parse(gl.kickoff) > Date.now();
+      }
+      for (const mu of liveTeams) if (mu.includes(teamKey(team))) return true;
       return false;
     };
 
@@ -1127,11 +1137,22 @@
         "above only covers who is left to play.</span></div>";
     }
     if (unpriced.length) {
-      html += '<div class="sitstart-section">No market projection</div>' +
+      // These are rostered players the optimizer could not rank, and saying so
+      // matters: a starter who silently vanishes reads as the tool being broken
+      // rather than the market being thin. Show the position and game so the
+      // gap is obvious, and say plainly that it is not a projection of zero.
+      html += '<div class="sitstart-section">No market projection (' +
+        unpriced.length + ")</div>" +
         '<div class="verdict" style="font-size:13px">' +
-        escapeHtml(unpriced.map((r) => r.name).join(", ")) +
+        escapeHtml(unpriced.map((r) =>
+          r.name + " (" + (r.position || "?") + (r.team ? ", " + r.team : "") + ")"
+        ).join(", ")) +
         '<br /><span style="color:#6a6a8a">No book has priced their usage this ' +
-        "week. That usually means an unsettled role, not a projection of zero.</span></div>";
+        "week, so they cannot be ranked and are left out of the lineup above. " +
+        "That is an unpriced role, <strong>not</strong> a projection of zero " +
+        "&mdash; if one of these is a player you would normally start, start " +
+        "him. Coverage is thinnest early in the week and fills in by " +
+        "Sunday.</span></div>";
     }
     if (noMarket.length) {
       html += '<div class="sitstart-section">No game line</div>' +
