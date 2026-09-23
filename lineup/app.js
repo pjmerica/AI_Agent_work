@@ -463,6 +463,74 @@
   // Kickers and defenses have no stat chips because they have no props. Show
   // the game line they were derived from instead, so the number is auditable
   // the same way a prop-derived projection is.
+  // -- Coverage / freshness ----------------------------------------------------
+  // Sportsbooks do not post player props for Sunday games until roughly
+  // Thursday night. Measured on week 2: a Saturday pull had 15 games and 206
+  // player-games priced; a Wednesday pull of week 3 had the Thursday-night
+  // game fully priced and four Sunday games with nothing at all.
+  //
+  // Without saying so, a midweek board looks like a confident projection of
+  // zero for half the slate, which is how "my starter is missing" reads as the
+  // page being broken. This measures how much of the slate is actually priced
+  // and warns while it is still filling in.
+  function coverageState() {
+    const gl = cache["gamelines"];
+    const wkd = cache["weekly"];
+    if (!gl || !Array.isArray(gl.games) || !wkd) return null;
+
+    const now = Date.now();
+    // This week's games only: everything before the last kickoff still ahead
+    // of us, which excludes the future weeks the odds feed also returns.
+    const upcoming = gl.games
+      .filter((g) => g.kickoff && Date.parse(g.kickoff) > now - 4 * 3600 * 1000)
+      .sort((a, b) => Date.parse(a.kickoff) - Date.parse(b.kickoff))
+      .slice(0, 16);
+    if (!upcoming.length) return null;
+
+    // A game counts as priced when books quote player props for it, which is
+    // what the lineup optimizer actually needs. Kalshi alone is not enough --
+    // it posts ladders for games the books have not opened yet.
+    const byGame = new Map();
+    const od = cache["oddsapi"];
+    for (const pl of ((od && od.players) || [])) {
+      const m = (pl.matchup || "").trim();
+      if (m) byGame.set(m, (byGame.get(m) || 0) + 1);
+    }
+    let priced = 0;
+    const thin = [];
+    for (const g of upcoming) {
+      const n = byGame.get(g.matchup) || 0;
+      if (n >= 6) priced++;
+      else thin.push({ matchup: g.matchup, n, kickoff: g.kickoff });
+    }
+    const nextKick = Date.parse(upcoming[0].kickoff);
+    return {
+      total: upcoming.length, priced, thin,
+      hoursToFirst: (nextKick - now) / 3600000,
+    };
+  }
+
+  function coverageBanner() {
+    const c = coverageState();
+    if (!c || !c.thin.length) return "";
+    // Close to kickoff a missing line is real information -- the book has
+    // decided not to price him. Days out it is just early.
+    const early = c.hoursToFirst > 20;
+    const names = c.thin.map((t) => escapeHtml(t.matchup)).join(", ");
+    return '<div class="coverage-note' + (early ? " early" : "") + '">' +
+      "<strong>" + c.priced + " of " + c.total +
+      " games have player props posted.</strong> " +
+      (early
+        ? "Books do not open most Sunday props until Thursday night, so the " +
+          "board fills in over the next day or two. Players in an unpriced " +
+          "game are listed under <em>No market projection</em> rather than " +
+          "ranked &mdash; that is a missing line, not a low projection."
+        : "Still waiting on: " + names + ". Players in those games are listed " +
+          "under <em>No market projection</em> rather than ranked.") +
+      (early ? " Waiting on " + names + "." : "") +
+      "</div>";
+  }
+
   function specialChips(p) {
     const sp = p && p.special;
     if (!sp) return "";
@@ -885,7 +953,8 @@
     }
 
     if (!matched.length) {
-      $out.innerHTML = '<div class="verdict">No pasted player has a priced Week 1 projection.' +
+      $out.innerHTML = coverageBanner() +
+        '<div class="verdict">No pasted player has a priced projection yet.' +
         (unmatched.length ? " Unrecognised: " + escapeHtml(unmatched.join(", ")) + "." : "") +
         "</div>" + slotTable([], null, unpriced, unmatched);
       return;
@@ -903,7 +972,8 @@
         : "Start <strong>" + escapeHtml(a.name) + "</strong>. The market has him at " +
           a.points.toFixed(1) + " half-PPR against " + escapeHtml(b.name) + " at " +
           b.points.toFixed(1) + " &mdash; a " + gap.toFixed(1) + "-point edge.";
-      $out.innerHTML = '<div class="verdict">' + verdict + "</div>" +
+      $out.innerHTML = coverageBanner() +
+        '<div class="verdict">' + verdict + "</div>" +
         slotTable([{ slot: "START", p: a }, { slot: "SIT", p: b }], null, unpriced, unmatched);
       return;
     }
@@ -913,7 +983,8 @@
     const bench = matched.filter((p) => !startingNames.has(p.name))
       .sort((a, b) => b.points - a.points);
     const rows = best.picks.map((p, i) => ({ slot: LINEUP_SLOTS[i].label, p }));
-    $out.innerHTML = slotTable(rows, best.total, unpriced, unmatched, bench);
+    $out.innerHTML = coverageBanner() +
+      slotTable(rows, best.total, unpriced, unmatched, bench);
   }
 
   function renderSleeper() {
@@ -1046,7 +1117,8 @@
     const bench = scored.filter((p) => !startingNames.has(p.name))
       .sort((a, b) => b.points - a.points);
 
-    let html = '<div class="league-scoring">' +
+    let html = coverageBanner() +
+      '<div class="league-scoring">' +
       escapeHtml(slots.join(" / ")) + "</div>";
 
     html += '<div class="table-wrap"><table class="slot-table"><thead><tr>' +

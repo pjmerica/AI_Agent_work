@@ -887,3 +887,25 @@ tr.row-nan:hover { opacity: 0.85; }
 .matchup-opp { font-size: 12px; color: #a0a0c0; margin-top: 2px; }
 .league-count { font-size: 11px; font-weight: 700; color: #5b4cf5; }
 .league-names { font-size: 12px; color: #6a6a8a; }
+
+/* Coverage / freshness banner. Books do not post most Sunday player props
+   until Thursday night, so a midweek board is genuinely incomplete rather
+   than projecting zero. Amber while it is still filling in, grey once the
+   slate is close enough to kickoff that a missing line is a real signal. */
+.coverage-note {
+  margin: 0 0 14px;
+  padding: 10px 13px;
+  border-radius: 7px;
+  font-size: 13px;
+  line-height: 1.5;
+  background: #1c1c2b;
+  border: 1px solid #33334d;
+  color: #a8a8c0;
+}
+.coverage-note.early {
+  background: #2a2218;
+  border-color: #6b5326;
+  color: #e0c98a;
+}
+.coverage-note strong { color: #f0f0f5; }
+.coverage-note em { font-style: normal; color: #c9c9dd; }
