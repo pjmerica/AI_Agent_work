@@ -1550,12 +1550,22 @@
           const key = String(pid);
           let rec = tally.get(key);
           if (!rec) {
-            const p = pool.get(normPlayerName(e[0]));
+            const pos = e[1] === "DST" ? "DEF" : e[1];
+            // Kickers and defenses are started in these matchups too, so they
+            // belong in the rooting list. They price off the game line rather
+            // than the prop pool. The rate card is the league's own, and a
+            // player can appear in several leagues at once, so this uses the
+            // first league that started him -- close enough for ordering a
+            // watch list, where the sign matters more than the decimal.
+            const sp = (pos === "K" || pos === "DEF")
+              ? specialPoints(pos, e[2], lg.scoring) : null;
+            const p = sp ? null : pool.get(normPlayerName(e[0]));
             rec = {
-              name: e[0], position: e[1], team: e[2],
-              proj: p && !p.tdOnly ? p.points : null,
-              matchup: p ? p.matchup : null,
+              name: e[0], position: pos, team: e[2],
+              proj: sp ? sp.points : (p && !p.tdOnly ? p.points : null),
+              matchup: sp ? sp.matchup : (p ? p.matchup : null),
               stats: p ? p.stats : null,
+              special: sp,
               for: [], against: [],
             };
             tally.set(key, rec);
