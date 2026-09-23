@@ -276,6 +276,206 @@
     return Math.round(pts * 100) / 100;
   }
 
+  // -- Defense and kicker scoring from the game line ---------------------------
+  // Neither position has a prop market worth using. Kalshi posts team-sack,
+  // team-turnover and D/ST-touchdown series but leaves every rung unquoted
+  // (bid=None/ask=None across the board, checked 2026-09-23), and The Odds API
+  // sells no D/ST or K props at all. What both positions DO reduce to is the
+  // game line, which is quoted everywhere and is what the books themselves use
+  // to price team props.
+  //
+  // The chain is: total and spread -> each team's implied points -> the fantasy
+  // components. Sleeper's own scoring settings supply the rates, so a league
+  // that pays 10 for a shutout and one that pays 5 get different numbers off
+  // the same line.
+
+  const DST_TEAM_ALIASES = { JAX: "JAC", WSH: "WAS", LAR: "LAR", LA: "LAR" };
+
+  function teamKey(t) {
+    const k = String(t || "").toUpperCase();
+    return DST_TEAM_ALIASES[k] || k;
+  }
+
+  function gameLineFor(team) {
+    const gl = cache["gamelines"];
+    if (!gl || !Array.isArray(gl.games)) return null;
+    const t = teamKey(team);
+    for (const g of gl.games) {
+      if (g.teams && g.teams[t]) {
+        return { ...g.teams[t], matchup: g.matchup, total: g.total,
+                 opp: t === g.home ? g.away : g.home };
+      }
+    }
+    return null;
+  }
+
+  // Probability the opponent lands in each Sleeper points-allowed bucket.
+  //
+  // NFL team scores are roughly Poisson-ish in shape but overdispersed, and the
+  // buckets are wide, so a normal approximation around the implied total is
+  // close enough and far more stable than a discrete model fit to one number.
+  // SD of ~9.7 is the long-run spread of single-team NFL scores around their
+  // closing implied total.
+  const SCORE_SD = 9.7;
+
+  function normCdf(x) {
+    // Abramowitz & Stegun 7.1.26 via erf.
+    const t = 1 / (1 + 0.3275911 * Math.abs(x) / Math.SQRT2);
+    const y = 1 - (((((1.061405429 * t - 1.453152027) * t) + 1.421413741) * t -
+                    0.284496736) * t + 0.254829592) * t *
+              Math.exp(-x * x / 2);
+    return x >= 0 ? 0.5 * (1 + y) : 0.5 * (1 - y);
+  }
+
+  function bucketProbs(mean) {
+    // Bucket edges match Sleeper's pts_allow_* keys.
+    const edges = [0, 6, 13, 20, 27, 34];
+    const p = (v) => normCdf((v + 0.5 - mean) / SCORE_SD);
+    const c = edges.map(p);
+    return {
+      pts_allow_0: c[0],
+      pts_allow_1_6: c[1] - c[0],
+      pts_allow_7_13: c[2] - c[1],
+      pts_allow_14_20: c[3] - c[2],
+      pts_allow_21_27: c[4] - c[3],
+      pts_allow_28_34: c[5] - c[4],
+      pts_allow_35p: 1 - c[5],
+    };
+  }
+
+  // Expected sacks and takeaways scale with how much the opponent trails and
+  // has to throw. League-average is ~2.4 sacks and ~1.3 takeaways per team-game;
+  // each point of favouredness is worth a little of both, since trailing teams
+  // pass more and pass worse.
+  function dstVolume(spread) {
+    const fav = -(spread || 0);              // +7 means this team is a 7-pt favourite
+    return {
+      sacks: Math.max(0.8, 2.35 + fav * 0.055),
+      takeaways: Math.max(0.4, 1.30 + fav * 0.030),
+    };
+  }
+
+  function dstPoints(team, scoring) {
+    const line = gameLineFor(team);
+    if (!line) return null;
+    const sc = (scoring && scoring.raw) || {};
+    const n = (k, d) => (sc[k] != null ? sc[k] : d);
+
+    const probs = bucketProbs(line.oppImplied);
+    let pts = 0;
+    for (const k of Object.keys(probs)) pts += probs[k] * n(k, 0);
+
+    const vol = dstVolume(line.spread);
+    pts += vol.sacks * n("sack", 1);
+
+    // Sleeper splits a takeaway into interception and fumble recovery. The
+    // long-run split is about 55/45, and a forced fumble is scored alongside
+    // the recovery where the league pays for it.
+    const ints = vol.takeaways * 0.55;
+    const fums = vol.takeaways * 0.45;
+    pts += ints * n("int", 2);
+    pts += fums * n("fum_rec", 2);
+    pts += fums * n("ff", 0);
+
+    // Defensive and special-teams touchdowns: ~0.12 per team-game combined.
+    pts += 0.08 * n("def_td", 6);
+    pts += 0.04 * n("def_st_td", 6);
+    pts += 0.035 * n("safe", 2) * 0.5;
+    pts += 0.05 * n("blk_kick", 2);
+
+    return {
+      points: Math.round(pts * 100) / 100,
+      matchup: line.matchup,
+      oppImplied: line.oppImplied,
+      spread: line.spread,
+      detail: { sacks: vol.sacks, takeaways: vol.takeaways, probs },
+    };
+  }
+
+  // A kicker's team total splits into touchdowns and stalled drives. Roughly,
+  // a team scoring T points gets there via ~T/9.3 touchdowns and ~T/10.5 field
+  // goals; the residual after TDs and FGs is two-point and defensive scoring,
+  // which the kicker does not touch.
+  function kickerPoints(team, scoring) {
+    const line = gameLineFor(team);
+    if (!line) return null;
+    const sc = (scoring && scoring.raw) || {};
+    const n = (k, d) => (sc[k] != null ? sc[k] : d);
+    const T = line.implied;
+
+    const tds = Math.max(0, T / 9.3);
+    const fgs = Math.max(0, T / 10.5);
+    const xps = tds * 0.94;                  // conversion rate, net of 2-pt tries
+
+    // FG distance mix, league-average: most attempts are 30-49 yards. Leagues
+    // that pay per yard instead of per bucket are handled by fgm_yds.
+    const mix = { fgm_0_19: 0.02, fgm_20_29: 0.17, fgm_30_39: 0.30,
+                  fgm_40_49: 0.30, fgm_50p: 0.21 };
+    let pts = 0;
+    let bucketed = false;
+    for (const k of Object.keys(mix)) {
+      let rate = n(k, null);
+      if (k === "fgm_50p" && rate == null) {
+        // Some leagues split 50+ into 50-59 and 60+.
+        const a = n("fgm_50_59", null), b = n("fgm_60p", null);
+        if (a != null || b != null) {
+          rate = (a || 0) * 0.85 + (b || 0) * 0.15;
+        }
+      }
+      if (rate) { pts += fgs * mix[k] * rate; bucketed = true; }
+    }
+    // Flat per-make and per-yard scoring, for leagues that use them instead.
+    pts += fgs * n("fgm", 0);
+    pts += fgs * 38 * n("fgm_yds", 0);
+    if (!bucketed && !n("fgm", 0) && !n("fgm_yds", 0)) pts += fgs * 3;
+
+    pts += xps * n("xpm", 1);
+    pts += fgs * 0.16 * n("fgmiss", 0);      // ~16% of attempts miss
+
+    return {
+      points: Math.round(pts * 100) / 100,
+      matchup: line.matchup,
+      implied: T,
+      detail: { fgs, xps },
+    };
+  }
+
+  // One entry point so callers do not have to branch on position.
+  function specialPoints(position, team, scoring) {
+    if (position === "DEF") return dstPoints(team, scoring);
+    if (position === "K") return kickerPoints(team, scoring);
+    return null;
+  }
+
+  // Kickers and defenses have no stat chips because they have no props. Show
+  // the game line they were derived from instead, so the number is auditable
+  // the same way a prop-derived projection is.
+  function specialChips(p) {
+    const sp = p && p.special;
+    if (!sp) return "";
+    const out = [];
+    const chip = (cls, text, title) =>
+      '<span class="stat-chip ' + cls + '" title="' + escapeHtml(title) + '">' +
+      escapeHtml(text) + "</span>";
+    if (p.position === "DEF") {
+      out.push(chip("src-fanduel", "opp " + sp.oppImplied.toFixed(1),
+        "Opponent's implied points: total/2 - spread/2. Drives the " +
+        "points-allowed buckets, which is most of D/ST scoring."));
+      out.push(chip("src-kalshi", "sk " + sp.detail.sacks.toFixed(1),
+        "Expected sacks, scaled by how big a favourite this defense is."));
+      out.push(chip("src-kalshi", "to " + sp.detail.takeaways.toFixed(1),
+        "Expected takeaways (interceptions + fumble recoveries)."));
+    } else {
+      out.push(chip("src-fanduel", "team " + sp.implied.toFixed(1),
+        "This team's implied points: total/2 - spread/2."));
+      out.push(chip("src-kalshi", "fg " + sp.detail.fgs.toFixed(1),
+        "Expected field goals made."));
+      out.push(chip("src-kalshi", "xp " + sp.detail.xps.toFixed(1),
+        "Expected extra points made."));
+    }
+    return out.join("");
+  }
+
   function weeklyChips(p) {
     const order = ["pass_yds", "pass_tds", "rush_yds", "receptions", "rec_yds", "any_tds"];
     const parts = [];
@@ -512,7 +712,8 @@
           '<td class="weekly-game">' + escapeHtml(r.p.matchup || "-") + "</td>" +
           '<td style="text-align:right"><span class="market-pts">' +
           r.p.points.toFixed(1) + "</span></td>" +
-          "<td>" + (r.p.stats ? weeklyChips(r.p) : "") + "</td></tr>";
+          "<td>" + (r.p.stats ? weeklyChips(r.p) : specialChips(r.p)) +
+          "</td></tr>";
       }
       html += "</tbody></table>";
     }
@@ -528,7 +729,7 @@
           escapeHtml(p.position || "?") + "</span></td>" +
           '<td class="weekly-game">' + escapeHtml(p.matchup || "-") + "</td>" +
           '<td style="text-align:right">' + p.points.toFixed(1) + "</td>" +
-          "<td>" + (p.stats ? weeklyChips(p) : "") + "</td></tr>";
+          "<td>" + (p.stats ? weeklyChips(p) : specialChips(p)) + "</td></tr>";
       }
       html += "</tbody></table>";
     }
@@ -740,7 +941,37 @@
 
     const scored = [], unpriced = [], noMarket = [], played = [];
     for (const r of lg.roster) {
-      if (r.unpriced) { noMarket.push(r); continue; }
+      // Kickers and defenses are scored off the game line rather than a player
+      // prop, so they go through specialPoints() before the prop lookup. They
+      // still take the same played/locked path as everyone else.
+      if (r.unpriced) {
+        const doneSp = sleeperPlayed && sleeperPlayed.get(r.playerId);
+        if (doneSp) {
+          played.push({ ...r, actual: doneSp.points, locked: r.starter });
+          continue;
+        }
+        const sp = specialPoints(r.position === "DST" ? "DEF" : r.position,
+                                 r.position === "DEF" || r.position === "DST"
+                                   ? (r.team || r.playerId) : r.team,
+                                 lg.scoring);
+        if (sp && sp.points > 0) {
+          scored.push({
+            name: r.name,
+            position: r.position === "DST" ? "DEF" : r.position,
+            matchup: sp.matchup,
+            points: sp.points,
+            stats: null,
+            special: sp,
+            injury: r.injury,
+            wasStarter: r.starter,
+          });
+        } else if (!teamIsLive(r.team)) {
+          played.push({ ...r, actual: null });
+        } else {
+          noMarket.push(r);
+        }
+        continue;
+      }
 
       // Already played is decided by Sleeper's own stats, not by whether a
       // betting line still exists: books keep markets up during a game, so the
@@ -843,7 +1074,7 @@
         '<td class="weekly-game">' + escapeHtml(p.matchup || "-") + "</td>" +
         '<td style="text-align:right"><span class="market-pts">' +
         p.points.toFixed(1) + "</span></td>" +
-        "<td>" + (p.stats ? weeklyChips(p) : "") + "</td></tr>";
+        "<td>" + (p.stats ? weeklyChips(p) : specialChips(p)) + "</td></tr>";
     });
     html += "</tbody></table></div>";
     const banked = [...lockedBySlot.values()]
@@ -869,7 +1100,7 @@
           escapeHtml(p.position || "?") + "</span></td>" +
           '<td class="weekly-game">' + escapeHtml(p.matchup || "-") + "</td>" +
           '<td style="text-align:right">' + p.points.toFixed(1) + "</td>" +
-          "<td>" + (p.stats ? weeklyChips(p) : "") + "</td></tr>";
+          "<td>" + (p.stats ? weeklyChips(p) : specialChips(p)) + "</td></tr>";
       }
       html += "</tbody></table></div>";
     }
@@ -890,10 +1121,11 @@
         "week. That usually means an unsettled role, not a projection of zero.</span></div>";
     }
     if (noMarket.length) {
-      html += '<div class="sitstart-section">Not covered by props</div>' +
+      html += '<div class="sitstart-section">No game line</div>' +
         '<div class="verdict" style="font-size:13px;color:#6a6a8a">' +
         escapeHtml(noMarket.map((r) => r.name + " (" + (r.position || "?") + ")").join(", ")) +
-        "</div>";
+        "<br />Kickers and defenses are scored from the spread and total; " +
+        "no line is posted for their game yet.</div>";
     }
 
     if (lg.rosteredKeys) {
@@ -1067,8 +1299,9 @@
             position: pos,
             team: e ? e[2] : null,
             starter: starters.has(pid),
-            // No book prices kickers or defenses; they are part of the lineup
-            // but outside what this tool can evaluate.
+            // No book prices kickers or defenses as players. They are scored
+            // from the game line instead (see specialPoints), so this flag now
+            // means "score me off the spread and total", not "unscoreable".
             unpriced: pos === "K" || pos === "DEF" || pos === "DST",
             injury: null,
           };
@@ -1087,6 +1320,11 @@
             rec: sc.rec || 0,
             passTd: sc.pass_td != null ? sc.pass_td : 4,
             bonusRecTe: sc.bonus_rec_te || 0,
+            // D/ST and K scoring varies far more between leagues than skill
+            // scoring does -- one league pays 10 for a shutout, another 5 --
+            // so the whole settings object rides along rather than a fixed
+            // handful of fields. dstPoints()/kickerPoints() read from it.
+            raw: sc,
           },
           roster,
           rosteredKeys,
@@ -1442,6 +1680,7 @@
     for (const [key, file] of [["weekly", "weekly.json"],
                                ["oddsapi", "oddsapi.json"],
                                ["dktd", "dk_td.json"],
+                               ["gamelines", "gamelines.json"],
                                ["data", "data.json"],
                                ["clay", "clay.json"]]) {
       if (!cache[key]) {

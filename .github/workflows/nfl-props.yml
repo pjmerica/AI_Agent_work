@@ -76,6 +76,17 @@ jobs:
           ODDS_API_KEY: ${{ secrets.ODDS_API_KEY }}
         continue-on-error: true
 
+      # Game spreads and totals, for scoring D/ST and K -- neither has a prop
+      # market worth using (Kalshi posts team-sack/turnover/D-TD markets but
+      # leaves them unquoted). Unlike player props these come off the bulk
+      # /odds endpoint: one credit per market for the WHOLE slate, so the
+      # step costs 2 credits rather than 80.
+      - name: Scrape game spreads and totals
+        run: python scripts/fetch_game_lines.py
+        env:
+          ODDS_API_KEY: ${{ secrets.ODDS_API_KEY }}
+        continue-on-error: true
+
       # Weeks 1-4 averaged. Costs one credit per event (~64 for four weeks),
       # so it is deliberately separate from the single-week pull and skipped
       # when the remaining quota cannot cover it.
@@ -109,6 +120,7 @@ jobs:
                   nfl-props/weekly.json nfl-props/oddsapi.json \
                   nfl-props/multiweek.json \
                   nfl-props/dk_td.json \
+                  nfl-props/gamelines.json \
                   nfl-props/sleeper_players.json
           git diff --staged --quiet || git commit -m "chore: refresh NFL projections [skip ci]"
           git push
