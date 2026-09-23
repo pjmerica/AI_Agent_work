@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-09-23T19:54:04+00:00",
+  "lastUpdated": "2026-09-23T20:37:43+00:00",
   "season": "2026",
   "source": "The Odds API (per-game, multi-book)",
   "note": "Per-game player props aggregated across US sportsbooks. `line` is the median across books; min/max show the spread and `quotes` keeps each book's own number.",
@@ -21,8 +21,8 @@
     "betmgm": 30,
     "bovada": 3
   },
-  "quotaRemaining": "19688",
-  "quotaUsed": "312",
+  "quotaRemaining": "19574",
+  "quotaUsed": "426",
   "players": [
     {
       "name": "Bijan Robinson",
@@ -32,7 +32,7 @@
       "stats": {
         "rec_yds": {
           "line": 40.5,
-          "books": 4,
+          "books": 5,
           "min": 38.5,
           "max": 40.5,
           "quotes": [
@@ -44,12 +44,17 @@
             {
               "book": "betrivers",
               "line": 40.5,
-              "odds": -114
+              "odds": -113
             },
             {
               "book": "betonlineag",
               "line": 40.5,
               "odds": -114
+            },
+            {
+              "book": "fanatics",
+              "line": 40.5,
+              "odds": -120
             },
             {
               "book": "betmgm",
@@ -72,12 +77,12 @@
             {
               "book": "betrivers",
               "line": 4.5,
-              "odds": -148
+              "odds": -143
             },
             {
               "book": "betonlineag",
               "line": 4.5,
-              "odds": -123
+              "odds": -122
             },
             {
               "book": "betmgm",
@@ -100,7 +105,7 @@
             {
               "book": "betrivers",
               "line": 78.5,
-              "odds": -113
+              "odds": -114
             },
             {
               "book": "betonlineag",
@@ -136,7 +141,7 @@
             {
               "book": "betrivers",
               "line": 22.5,
-              "odds": -118
+              "odds": -117
             },
             {
               "book": "betonlineag",
@@ -200,7 +205,7 @@
             {
               "book": "betonlineag",
               "line": 1.5,
-              "odds": 117
+              "odds": 113
             }
           ]
         },
@@ -218,7 +223,7 @@
             {
               "book": "betrivers",
               "line": 16.5,
-              "odds": -122
+              "odds": -120
             },
             {
               "book": "betonlineag",
@@ -254,7 +259,7 @@
             {
               "book": "betrivers",
               "line": 68.5,
-              "odds": -117
+              "odds": -118
             },
             {
               "book": "betonlineag",
@@ -282,7 +287,7 @@
             {
               "book": "betrivers",
               "line": 4.5,
-              "odds": -150
+              "odds": -148
             },
             {
               "book": "betonlineag",
@@ -318,7 +323,7 @@
             {
               "book": "betrivers",
               "line": 65.5,
-              "odds": -117
+              "odds": -115
             },
             {
               "book": "betonlineag",
@@ -346,17 +351,17 @@
             {
               "book": "betrivers",
               "line": 5.5,
-              "odds": 102
+              "odds": 100
             },
             {
               "book": "betonlineag",
               "line": 5.5,
-              "odds": 107
+              "odds": 106
             },
             {
               "book": "fanatics",
               "line": 5.5,
-              "odds": 100
+              "odds": -110
             },
             {
               "book": "betmgm",
@@ -415,7 +420,7 @@
             {
               "book": "betrivers",
               "line": 1.5,
-              "odds": -159
+              "odds": -162
             },
             {
               "book": "betonlineag",
@@ -451,7 +456,7 @@
             {
               "book": "betrivers",
               "line": 8.5,
-              "odds": -118
+              "odds": -112
             },
             {
               "book": "betonlineag",
@@ -479,12 +484,12 @@
             {
               "book": "betrivers",
               "line": 1.5,
-              "odds": 140
+              "odds": 145
             },
             {
               "book": "betonlineag",
               "line": 1.5,
-              "odds": 141
+              "odds": 136
             },
             {
               "book": "betmgm",
@@ -515,17 +520,17 @@
             {
               "book": "betrivers",
               "line": 1.5,
-              "odds": -121
+              "odds": -118
             },
             {
               "book": "betonlineag",
               "line": 1.5,
-              "odds": -120
+              "odds": -119
             },
             {
               "book": "fanatics",
               "line": 1.5,
-              "odds": -125
+              "odds": -115
             },
             {
               "book": "betmgm",
@@ -537,7 +542,7 @@
         "pass_yds": {
           "line": 226.5,
           "books": 5,
-          "min": 224.5,
+          "min": 223.5,
           "max": 229.5,
           "quotes": [
             {
@@ -547,8 +552,8 @@
             },
             {
               "book": "betrivers",
-              "line": 224.5,
-              "odds": -114
+              "line": 223.5,
+              "odds": -117
             },
             {
               "book": "betonlineag",
@@ -558,7 +563,7 @@
             {
               "book": "fanatics",
               "line": 225.5,
-              "odds": -115
+              "odds": -120
             },
             {
               "book": "betmgm",
@@ -570,8 +575,8 @@
         "rush_yds": {
           "line": 8.5,
           "books": 5,
-          "min": 7.5,
-          "max": 10.5,
+          "min": 5.5,
+          "max": 8.5,
           "quotes": [
             {
               "book": "fanduel",
@@ -590,8 +595,8 @@
             },
             {
               "book": "fanatics",
-              "line": 10.5,
-              "odds": 115
+              "line": 5.5,
+              "odds": -180
             },
             {
               "book": "betmgm",
@@ -609,7 +614,7 @@
       "matchupLong": "Atlanta Falcons @ Green Bay Packers",
       "stats": {
         "rush_yds": {
-          "line": 35.5,
+          "line": 35.0,
           "books": 4,
           "min": 34.5,
           "max": 35.5,
@@ -626,8 +631,8 @@
             },
             {
               "book": "betonlineag",
-              "line": 35.5,
-              "odds": -115
+              "line": 34.5,
+              "odds": -114
             },
             {
               "book": "betmgm",
@@ -658,7 +663,7 @@
             {
               "book": "betrivers",
               "line": 36.5,
-              "odds": -115
+              "odds": -114
             },
             {
               "book": "betonlineag",
@@ -722,7 +727,7 @@
             {
               "book": "betrivers",
               "line": 6.5,
-              "odds": -107
+              "odds": -108
             },
             {
               "book": "betonlineag",
@@ -745,12 +750,12 @@
             {
               "book": "betrivers",
               "line": 1.5,
-              "odds": 160
+              "odds": 155
             },
             {
               "book": "betonlineag",
               "line": 1.5,
-              "odds": 161
+              "odds": 164
             }
           ]
         },
@@ -768,7 +773,7 @@
             {
               "book": "betrivers",
               "line": 25.5,
-              "odds": -113
+              "odds": -112
             },
             {
               "book": "betonlineag",
@@ -786,9 +791,9 @@
       "matchupLong": "Atlanta Falcons @ Green Bay Packers",
       "stats": {
         "rec_yds": {
-          "line": 53.5,
-          "books": 5,
-          "min": 50.5,
+          "line": 54.0,
+          "books": 4,
+          "min": 51.5,
           "max": 55.5,
           "quotes": [
             {
@@ -805,11 +810,6 @@
               "book": "betonlineag",
               "line": 55.5,
               "odds": -114
-            },
-            {
-              "book": "fanatics",
-              "line": 50.5,
-              "odds": -135
             },
             {
               "book": "betmgm",
@@ -837,7 +837,7 @@
             {
               "book": "betonlineag",
               "line": 4.5,
-              "odds": 112
+              "odds": 113
             },
             {
               "book": "betmgm",
@@ -858,7 +858,7 @@
           "line": 0.5,
           "books": 4,
           "min": 0.5,
-          "max": 1.5,
+          "max": 0.5,
           "quotes": [
             {
               "book": "fanduel",
@@ -868,12 +868,12 @@
             {
               "book": "betrivers",
               "line": 0.5,
-              "odds": -250
+              "odds": -245
             },
             {
               "book": "betonlineag",
-              "line": 1.5,
-              "odds": 186
+              "line": 0.5,
+              "odds": -270
             },
             {
               "book": "betmgm",
@@ -896,12 +896,12 @@
             {
               "book": "betrivers",
               "line": 203.5,
-              "odds": -117
+              "odds": -114
             },
             {
               "book": "betonlineag",
               "line": 205.5,
-              "odds": -114
+              "odds": -111
             },
             {
               "book": "betmgm",
@@ -924,7 +924,7 @@
             {
               "book": "betrivers",
               "line": 3.5,
-              "odds": -114
+              "odds": -112
             },
             {
               "book": "betonlineag",
@@ -955,12 +955,12 @@
             {
               "book": "betrivers",
               "line": 9.5,
-              "odds": -114
+              "odds": -113
             },
             {
               "book": "betonlineag",
               "line": 9.5,
-              "odds": -115
+              "odds": -114
             },
             {
               "book": "betmgm",
@@ -1006,7 +1006,7 @@
       "matchupLong": "Atlanta Falcons @ Green Bay Packers",
       "stats": {
         "rec_yds": {
-          "line": 10.0,
+          "line": 9.5,
           "books": 4,
           "min": 9.5,
           "max": 10.5,
@@ -1019,12 +1019,12 @@
             {
               "book": "betrivers",
               "line": 9.5,
-              "odds": -117
+              "odds": -118
             },
             {
               "book": "betonlineag",
-              "line": 10.5,
-              "odds": -122
+              "line": 9.5,
+              "odds": -115
             },
             {
               "book": "betmgm",
@@ -1052,7 +1052,7 @@
             {
               "book": "betonlineag",
               "line": 1.5,
-              "odds": 132
+              "odds": 130
             },
             {
               "book": "betmgm",
@@ -1111,7 +1111,7 @@
             {
               "book": "betrivers",
               "line": 3.5,
-              "odds": -159
+              "odds": -162
             },
             {
               "book": "betonlineag",
@@ -1180,7 +1180,7 @@
             {
               "book": "fanatics",
               "line": 215.5,
-              "odds": -120
+              "odds": -115
             }
           ]
         }
@@ -1234,7 +1234,7 @@
             {
               "book": "betonlineag",
               "line": 3.5,
-              "odds": -141
+              "odds": -145
             }
           ]
         }
@@ -1326,7 +1326,7 @@
         "pass_yds": {
           "line": 216.0,
           "books": 4,
-          "min": 212.5,
+          "min": 214.5,
           "max": 216.5,
           "quotes": [
             {
@@ -1341,7 +1341,7 @@
             },
             {
               "book": "betonlineag",
-              "line": 212.5,
+              "line": 214.5,
               "odds": -118
             },
             {
@@ -1461,8 +1461,8 @@
       "stats": {
         "rec_yds": {
           "line": 21.5,
-          "books": 4,
-          "min": 20.5,
+          "books": 3,
+          "min": 21.5,
           "max": 22.5,
           "quotes": [
             {
@@ -1479,11 +1479,6 @@
               "book": "betonlineag",
               "line": 21.5,
               "odds": -114
-            },
-            {
-              "book": "fanatics",
-              "line": 20.5,
-              "odds": -140
             }
           ]
         },
@@ -1534,7 +1529,7 @@
             {
               "book": "fanatics",
               "line": 55.5,
-              "odds": -135
+              "odds": -125
             }
           ]
         }
@@ -1683,7 +1678,7 @@
             {
               "book": "fanatics",
               "line": 1.5,
-              "odds": -180
+              "odds": -185
             }
           ]
         },
@@ -1706,7 +1701,7 @@
             {
               "book": "fanatics",
               "line": 235.5,
-              "odds": -120
+              "odds": -115
             }
           ]
         }
@@ -1786,7 +1781,7 @@
             {
               "book": "betonlineag",
               "line": 2.5,
-              "odds": -139
+              "odds": -143
             }
           ]
         }
@@ -1840,7 +1835,7 @@
             {
               "book": "betonlineag",
               "line": 6.5,
-              "odds": -145
+              "odds": -147
             }
           ]
         }
@@ -1976,7 +1971,7 @@
             {
               "book": "betonlineag",
               "line": 2.5,
-              "odds": -208
+              "odds": -185
             }
           ]
         }
@@ -2069,7 +2064,7 @@
             {
               "book": "betonlineag",
               "line": 49.5,
-              "odds": -114
+              "odds": -115
             }
           ]
         },
@@ -2092,7 +2087,7 @@
             {
               "book": "betonlineag",
               "line": 3.5,
-              "odds": -139
+              "odds": -145
             }
           ]
         }
@@ -2146,7 +2141,7 @@
             {
               "book": "betonlineag",
               "line": 4.5,
-              "odds": 104
+              "odds": 106
             }
           ]
         }
@@ -2177,7 +2172,7 @@
             {
               "book": "fanatics",
               "line": 1.5,
-              "odds": -150
+              "odds": -145
             },
             {
               "book": "betonlineag",
@@ -2287,7 +2282,7 @@
             {
               "book": "betonlineag",
               "line": 3.5,
-              "odds": -128
+              "odds": -122
             }
           ]
         },
@@ -2310,7 +2305,7 @@
             {
               "book": "betonlineag",
               "line": 59.5,
-              "odds": -114
+              "odds": -116
             }
           ]
         }
@@ -2400,7 +2395,7 @@
             {
               "book": "betonlineag",
               "line": 89.5,
-              "odds": -111
+              "odds": -110
             }
           ]
         }
@@ -2482,7 +2477,7 @@
             {
               "book": "betonlineag",
               "line": 25.5,
-              "odds": -115
+              "odds": -114
             }
           ]
         }
@@ -2562,7 +2557,7 @@
             {
               "book": "betrivers",
               "line": 10.5,
-              "odds": -112
+              "odds": -121
             },
             {
               "book": "betonlineag",
@@ -2585,19 +2580,19 @@
             {
               "book": "betrivers",
               "line": 1.5,
-              "odds": 102
+              "odds": -110
             },
             {
               "book": "betonlineag",
               "line": 1.5,
-              "odds": 109
+              "odds": -105
             }
           ]
         },
         "rush_yds": {
           "line": 24.5,
           "books": 3,
-          "min": 21.5,
+          "min": 24.5,
           "max": 24.5,
           "quotes": [
             {
@@ -2608,12 +2603,12 @@
             {
               "book": "betrivers",
               "line": 24.5,
-              "odds": -112
+              "odds": -118
             },
             {
               "book": "betonlineag",
-              "line": 21.5,
-              "odds": -116
+              "line": 24.5,
+              "odds": -114
             }
           ]
         }
@@ -2726,7 +2721,7 @@
             {
               "book": "fanatics",
               "line": 215.5,
-              "odds": -125
+              "odds": -120
             }
           ]
         }
@@ -2757,7 +2752,7 @@
             {
               "book": "betonlineag",
               "line": 59.5,
-              "odds": -114
+              "odds": -112
             }
           ]
         },
@@ -2888,7 +2883,7 @@
             {
               "book": "betonlineag",
               "line": 6.5,
-              "odds": -133
+              "odds": -132
             }
           ]
         }
@@ -2909,7 +2904,7 @@
             {
               "book": "fanduel",
               "line": 1.5,
-              "odds": 174
+              "odds": 182
             },
             {
               "book": "betrivers",
@@ -2919,7 +2914,7 @@
             {
               "book": "betonlineag",
               "line": 1.5,
-              "odds": 152
+              "odds": 158
             }
           ]
         },
@@ -3163,7 +3158,7 @@
             {
               "book": "betonlineag",
               "line": 81.5,
-              "odds": -116
+              "odds": -112
             }
           ]
         }
@@ -3176,8 +3171,8 @@
       "matchupLong": "New York Jets @ Detroit Lions",
       "stats": {
         "rec_yds": {
-          "line": 54.5,
-          "books": 3,
+          "line": 55.0,
+          "books": 4,
           "min": 54.5,
           "max": 55.5,
           "quotes": [
@@ -3195,6 +3190,11 @@
               "book": "betonlineag",
               "line": 54.5,
               "odds": -114
+            },
+            {
+              "book": "fanatics",
+              "line": 55.5,
+              "odds": -110
             }
           ]
         },
@@ -3258,7 +3258,7 @@
             {
               "book": "fanatics",
               "line": 2.5,
-              "odds": 160
+              "odds": 155
             }
           ]
         },
@@ -3399,7 +3399,7 @@
             {
               "book": "fanatics",
               "line": 35.5,
-              "odds": -135
+              "odds": -140
             }
           ]
         }
@@ -3512,7 +3512,7 @@
             {
               "book": "betonlineag",
               "line": 2.5,
-              "odds": -152
+              "odds": -149
             }
           ]
         }
@@ -3548,7 +3548,7 @@
             {
               "book": "fanatics",
               "line": 1.5,
-              "odds": -150
+              "odds": -145
             }
           ]
         },
@@ -3576,7 +3576,7 @@
             {
               "book": "fanatics",
               "line": 235.5,
-              "odds": -115
+              "odds": -110
             }
           ]
         },
@@ -3630,7 +3630,7 @@
             {
               "book": "betonlineag",
               "line": 1.5,
-              "odds": 134
+              "odds": 130
             }
           ]
         },
@@ -3653,7 +3653,7 @@
             {
               "book": "betonlineag",
               "line": 222.5,
-              "odds": -115
+              "odds": -112
             }
           ]
         },
@@ -3676,12 +3676,12 @@
             {
               "book": "betonlineag",
               "line": 19.5,
-              "odds": -114
+              "odds": -116
             },
             {
               "book": "fanatics",
               "line": 20.5,
-              "odds": -105
+              "odds": 105
             }
           ]
         }
@@ -3755,7 +3755,7 @@
         "rec_yds": {
           "line": 22.5,
           "books": 3,
-          "min": 20.5,
+          "min": 19.5,
           "max": 23.5,
           "quotes": [
             {
@@ -3770,8 +3770,8 @@
             },
             {
               "book": "betonlineag",
-              "line": 20.5,
-              "odds": -112
+              "line": 19.5,
+              "odds": -120
             }
           ]
         },
@@ -3799,7 +3799,7 @@
             {
               "book": "fanatics",
               "line": 3.5,
-              "odds": 120
+              "odds": 115
             }
           ]
         },
@@ -3817,7 +3817,7 @@
             {
               "book": "betrivers",
               "line": 85.5,
-              "odds": -113
+              "odds": -115
             },
             {
               "book": "betonlineag",
@@ -3864,8 +3864,8 @@
         },
         "pass_yds": {
           "line": 211.5,
-          "books": 4,
-          "min": 210.5,
+          "books": 3,
+          "min": 211.5,
           "max": 214.5,
           "quotes": [
             {
@@ -3876,17 +3876,12 @@
             {
               "book": "betrivers",
               "line": 214.5,
-              "odds": -117
+              "odds": -114
             },
             {
               "book": "betonlineag",
               "line": 211.5,
               "odds": -114
-            },
-            {
-              "book": "fanatics",
-              "line": 210.5,
-              "odds": -105
             }
           ]
         }
@@ -4063,7 +4058,7 @@
             {
               "book": "betonlineag",
               "line": 1.5,
-              "odds": -145
+              "odds": -147
             }
           ]
         },
@@ -4109,7 +4104,7 @@
             {
               "book": "fanatics",
               "line": 35.5,
-              "odds": -150
+              "odds": -140
             },
             {
               "book": "betonlineag",
@@ -4286,7 +4281,7 @@
             {
               "book": "fanatics",
               "line": 25.5,
-              "odds": -135
+              "odds": -125
             }
           ]
         },
@@ -4368,7 +4363,7 @@
             {
               "book": "fanatics",
               "line": 4.5,
-              "odds": 130
+              "odds": 125
             }
           ]
         }
@@ -4450,7 +4445,7 @@
             {
               "book": "betonlineag",
               "line": 60.5,
-              "odds": -114
+              "odds": -109
             }
           ]
         }
@@ -4504,7 +4499,7 @@
             {
               "book": "betonlineag",
               "line": 4.5,
-              "odds": -147
+              "odds": -152
             },
             {
               "book": "fanatics",
@@ -4545,7 +4540,7 @@
             {
               "book": "fanatics",
               "line": 35.5,
-              "odds": -110
+              "odds": -105
             }
           ]
         },
@@ -4568,7 +4563,7 @@
             {
               "book": "betonlineag",
               "line": 3.5,
-              "odds": -145
+              "odds": -149
             },
             {
               "book": "bovada",
@@ -4609,7 +4604,7 @@
             {
               "book": "betonlineag",
               "line": 1.5,
-              "odds": -213
+              "odds": -208
             }
           ]
         },
@@ -4650,7 +4645,7 @@
             {
               "book": "betrivers",
               "line": 17.5,
-              "odds": -121
+              "odds": -114
             }
           ]
         }
@@ -4704,7 +4699,7 @@
             {
               "book": "betonlineag",
               "line": 3.5,
-              "odds": 128
+              "odds": 126
             }
           ]
         }
@@ -4817,7 +4812,7 @@
             {
               "book": "betonlineag",
               "line": 2.5,
-              "odds": 112
+              "odds": 109
             }
           ]
         },
@@ -4953,7 +4948,7 @@
             {
               "book": "fanatics",
               "line": 4.5,
-              "odds": -135
+              "odds": -140
             }
           ]
         }
@@ -5066,7 +5061,7 @@
             {
               "book": "betonlineag",
               "line": 4.5,
-              "odds": 109
+              "odds": 110
             }
           ]
         }
@@ -5282,7 +5277,7 @@
             {
               "book": "betonlineag",
               "line": 1.5,
-              "odds": -101
+              "odds": 100
             },
             {
               "book": "fanatics",
@@ -5392,7 +5387,7 @@
             {
               "book": "betonlineag",
               "line": 6.5,
-              "odds": -130
+              "odds": -135
             }
           ]
         }
@@ -5449,7 +5444,7 @@
             {
               "book": "betrivers",
               "line": 1.5,
-              "odds": 100
+              "odds": 102
             },
             {
               "book": "betonlineag",
@@ -5459,13 +5454,13 @@
             {
               "book": "fanatics",
               "line": 1.5,
-              "odds": 100
+              "odds": 105
             }
           ]
         },
         "pass_yds": {
-          "line": 252.5,
-          "books": 3,
+          "line": 251.5,
+          "books": 4,
           "min": 249.5,
           "max": 252.5,
           "quotes": [
@@ -5477,12 +5472,17 @@
             {
               "book": "betrivers",
               "line": 249.5,
-              "odds": -117
+              "odds": -114
             },
             {
               "book": "betonlineag",
               "line": 252.5,
               "odds": -114
+            },
+            {
+              "book": "fanatics",
+              "line": 250.5,
+              "odds": -115
             }
           ]
         }
@@ -5590,7 +5590,7 @@
             {
               "book": "betonlineag",
               "line": 5.5,
-              "odds": 122
+              "odds": 120
             }
           ]
         }
@@ -5783,7 +5783,7 @@
             {
               "book": "fanatics",
               "line": 55.5,
-              "odds": -135
+              "odds": -125
             }
           ]
         },
@@ -5811,7 +5811,7 @@
             {
               "book": "fanatics",
               "line": 5.5,
-              "odds": 130
+              "odds": 135
             }
           ]
         }
@@ -5842,7 +5842,7 @@
             {
               "book": "betonlineag",
               "line": 55.5,
-              "odds": -114
+              "odds": -112
             }
           ]
         }
@@ -5933,8 +5933,8 @@
       "stats": {
         "rec_yds": {
           "line": 72.5,
-          "books": 3,
-          "min": 69.5,
+          "books": 4,
+          "min": 70.5,
           "max": 72.5,
           "quotes": [
             {
@@ -5949,8 +5949,13 @@
             },
             {
               "book": "betonlineag",
-              "line": 69.5,
-              "odds": -114
+              "line": 72.5,
+              "odds": -116
+            },
+            {
+              "book": "fanatics",
+              "line": 70.5,
+              "odds": -125
             }
           ]
         },
@@ -5973,7 +5978,7 @@
             {
               "book": "betonlineag",
               "line": 5.5,
-              "odds": -116
+              "odds": -120
             }
           ]
         }
@@ -5986,8 +5991,8 @@
       "matchupLong": "Philadelphia Eagles @ Chicago Bears",
       "stats": {
         "rec_yds": {
-          "line": 40.0,
-          "books": 4,
+          "line": 39.5,
+          "books": 3,
           "min": 38.5,
           "max": 41.5,
           "quotes": [
@@ -6005,11 +6010,6 @@
               "book": "betonlineag",
               "line": 38.5,
               "odds": -114
-            },
-            {
-              "book": "fanatics",
-              "line": 40.5,
-              "odds": -125
             }
           ]
         },
@@ -6032,12 +6032,12 @@
             {
               "book": "betonlineag",
               "line": 2.5,
-              "odds": -179
+              "odds": -185
             },
             {
               "book": "fanatics",
               "line": 3.5,
-              "odds": 130
+              "odds": 135
             }
           ]
         }
@@ -6068,7 +6068,7 @@
             {
               "book": "betonlineag",
               "line": 1.5,
-              "odds": 136
+              "odds": 132
             },
             {
               "book": "fanatics",
@@ -6078,7 +6078,7 @@
           ]
         },
         "pass_yds": {
-          "line": 215.0,
+          "line": 215.5,
           "books": 4,
           "min": 210.5,
           "max": 218.5,
@@ -6095,13 +6095,13 @@
             },
             {
               "book": "betonlineag",
-              "line": 214.5,
+              "line": 215.5,
               "odds": -116
             },
             {
               "book": "fanatics",
               "line": 215.5,
-              "odds": -110
+              "odds": -120
             }
           ]
         },
@@ -6119,7 +6119,7 @@
             {
               "book": "betrivers",
               "line": 24.5,
-              "odds": -113
+              "odds": -115
             },
             {
               "book": "betonlineag",
@@ -6144,7 +6144,7 @@
         "rec_yds": {
           "line": 13.5,
           "books": 3,
-          "min": 11.5,
+          "min": 12.5,
           "max": 14.5,
           "quotes": [
             {
@@ -6159,15 +6159,15 @@
             },
             {
               "book": "betonlineag",
-              "line": 11.5,
-              "odds": -123
+              "line": 12.5,
+              "odds": -110
             }
           ]
         },
         "receptions": {
           "line": 2.5,
           "books": 3,
-          "min": 1.5,
+          "min": 2.5,
           "max": 2.5,
           "quotes": [
             {
@@ -6182,31 +6182,31 @@
             },
             {
               "book": "betonlineag",
-              "line": 1.5,
-              "odds": -208
+              "line": 2.5,
+              "odds": 128
             }
           ]
         },
         "rush_yds": {
-          "line": 73.5,
+          "line": 71.5,
           "books": 3,
           "min": 68.5,
-          "max": 74.5,
+          "max": 71.5,
           "quotes": [
             {
               "book": "fanduel",
-              "line": 74.5,
+              "line": 71.5,
               "odds": -114
             },
             {
               "book": "betrivers",
-              "line": 73.5,
-              "odds": -113
+              "line": 71.5,
+              "odds": -118
             },
             {
               "book": "betonlineag",
               "line": 68.5,
-              "odds": -114
+              "odds": -116
             }
           ]
         }
