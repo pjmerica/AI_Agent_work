@@ -153,6 +153,16 @@ def main() -> None:
         time.sleep(0.6)
 
     out = sorted(rows.values(), key=lambda r: -r["xTD"])
+
+    # Refuse to overwrite a good file with nothing. DraftKings posts anytime-TD
+    # markets only a few days out, so an early-week run legitimately finds zero
+    # -- and rate-limits after a handful of requests, which looks identical.
+    # Either way the previous week's file is more useful than an empty one.
+    if not out:
+        print("No anytime-TD markets posted yet; keeping the existing file.",
+              file=sys.stderr)
+        return
+
     OUT_FILE.write_text(json.dumps({
         "lastUpdated": datetime.now(timezone.utc).isoformat(timespec="seconds"),
         "season": "2026",
