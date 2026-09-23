@@ -296,17 +296,30 @@
     return DST_TEAM_ALIASES[k] || k;
   }
 
+  // The Odds API returns every game it has posted, which runs several weeks
+  // ahead -- each team appears more than once. Take the team's SOONEST game
+  // that has not already kicked off, so a defense is never scored off next
+  // week's line.
   function gameLineFor(team) {
     const gl = cache["gamelines"];
     if (!gl || !Array.isArray(gl.games)) return null;
     const t = teamKey(team);
+    const now = Date.now();
+    let best = null, bestAt = Infinity;
     for (const g of gl.games) {
-      if (g.teams && g.teams[t]) {
-        return { ...g.teams[t], matchup: g.matchup, total: g.total,
-                 opp: t === g.home ? g.away : g.home };
-      }
+      if (!g.teams || !g.teams[t]) continue;
+      const at = g.kickoff ? Date.parse(g.kickoff) : NaN;
+      // A game already under way is still this week's game: keep it rather
+      // than skipping ahead, and let the played/locked check retire the slot.
+      const score = isNaN(at) ? 0 : (at < now ? now - at : at - now);
+      const future = isNaN(at) || at >= now - 4 * 3600 * 1000;
+      if (!future) continue;
+      if (score < bestAt) { bestAt = score; best = g; }
     }
-    return null;
+    if (!best) return null;
+    return { ...best.teams[t], matchup: best.matchup, total: best.total,
+             kickoff: best.kickoff,
+             opp: t === best.home ? best.away : best.home };
   }
 
   // Probability the opponent lands in each Sleeper points-allowed bucket.
