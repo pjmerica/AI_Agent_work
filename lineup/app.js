@@ -677,6 +677,10 @@
     if (checked.length !== boxes.length) {
       for (const b of checked) activeBooks.add(b.dataset.book);
     }
+    // The chip swap counts are derived from filtered projections, so they are
+    // stale the moment the filter moves. Cleared here rather than at each call
+    // site so a new toggle cannot forget to do it.
+    clearSwapCounts();
   }
 
   /* Per-game baseline from a season projection.
@@ -1425,6 +1429,60 @@
     $out.innerHTML = html;
   }
 
+  /* How many changes a league's lineup needs, for the chip badges.
+   *
+   * With four leagues the useful question on arriving is "which of these needs
+   * attention", and answering it previously meant clicking every chip in turn.
+   * This runs the same optimizer the tab does and counts the players it would
+   * start who are currently benched.
+   *
+   * Cached per league and cleared whenever the book filter changes, since the
+   * count depends on the projections and re-optimising four rosters on every
+   * keystroke would be wasteful.
+   */
+  const swapCountCache = new Map();
+
+  function clearSwapCounts() { swapCountCache.clear(); }
+
+  function swapCountFor(lg) {
+    if (swapCountCache.has(lg.leagueId)) return swapCountCache.get(lg.leagueId);
+    let n = null;
+    try {
+      const pool = buildSitStartPoolFull();
+      const slots = lg.slots || [];
+      const scored = [];
+      for (const r of (lg.roster || [])) {
+        if (sleeperPlayed && sleeperPlayed.get(r.playerId)) continue;
+        if (r.unpriced) {
+          const pos = r.position === "DST" ? "DEF" : r.position;
+          const sp = specialPoints(pos, r.team, lg.scoring);
+          if (sp && sp.points > 0) {
+            scored.push({ name: r.name, position: pos, points: sp.points,
+                          wasStarter: r.starter });
+          }
+          continue;
+        }
+        const p = pool.get(normPlayerName(r.name));
+        if (!p || p.tdOnly || !p.position) continue;
+        const pts = leaguePoints(p.stats, lg.scoring, r.position || p.position);
+        if (pts > 0) {
+          scored.push({ name: r.name, position: r.position || p.position,
+                        points: pts, wasStarter: r.starter });
+        }
+      }
+      // Slots held by a player who has already played are not openings.
+      const lockedCount = (lg.roster || []).filter(
+        (r) => r.starter && sleeperPlayed && sleeperPlayed.get(r.playerId)).length;
+      const openSlots = slots.slice(0, Math.max(0, slots.length - lockedCount));
+      const best = bestLineupForSlots(scored, openSlots);
+      n = best.picks.filter((x) => x && !x.wasStarter).length;
+    } catch (e) {
+      n = null;
+    }
+    swapCountCache.set(lg.leagueId, n);
+    return n;
+  }
+
   function renderSleeperChips() {
     const $chips = document.getElementById("sleeper-league-chips");
     const sl = sleeperLive;
@@ -1432,11 +1490,21 @@
       if ($chips) $chips.innerHTML = "";
       return;
     }
-    $chips.innerHTML = sl.leagues.map((lg, i) =>
-      '<button class="chip' + (i === sleeperLeagueIdx ? " active" : "") +
-      '" data-idx="' + i + '" title="' + escapeHtml(lg.name || "") + '">' +
-      escapeHtml(lg.name || "League " + (i + 1)) + "</button>"
-    ).join("");
+    $chips.innerHTML = sl.leagues.map((lg, i) => {
+      const n = swapCountFor(lg);
+      const badge = n
+        ? ' <span class="chip-count">' + n + "</span>"
+        : n === 0
+          ? ' <span class="chip-ok" title="Lineup is already optimal">&check;</span>'
+          : "";
+      const tip = n
+        ? (n === 1 ? "1 change suggested" : n + " changes suggested")
+        : n === 0 ? "Lineup is already optimal" : (lg.name || "");
+      return '<button class="chip' + (i === sleeperLeagueIdx ? " active" : "") +
+        (n ? " has-swaps" : "") +
+        '" data-idx="' + i + '" title="' + escapeHtml(tip) + '">' +
+        escapeHtml(lg.name || "League " + (i + 1)) + badge + "</button>";
+    }).join("");
     $chips.querySelectorAll(".chip").forEach((c) => {
       c.addEventListener("click", () => {
         sleeperLeagueIdx = Number(c.dataset.idx) || 0;
@@ -1517,6 +1585,7 @@
   }
 
   async function loadSleeperUser(username) {
+    clearSwapCounts();
     const name = (username || "").trim().replace(/^@/, "");
     if (!name) { sleeperStatus("Enter a username first.", true); return; }
     if (sleeperBusy) return;
@@ -2108,6 +2177,7 @@
   document.getElementById("books-all")?.addEventListener("click", (e) => {
     e.preventDefault();
     activeBooks.clear();
+    clearSwapCounts();
     renderBookToggles();
     renderSitStart();
   });
@@ -2157,6 +2227,7 @@
   document.getElementById("sleeper-books-all")?.addEventListener("click", (e) => {
     e.preventDefault();
     activeBooks.clear();
+    clearSwapCounts();
     renderSleeperBookToggles();
     renderSleeper();
   });

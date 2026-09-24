@@ -975,3 +975,28 @@ tr.row-nan:hover { opacity: 0.85; }
    table does rather than describing it. */
 .tag-swap { color: #58d68d; font-weight: 700; }
 .tag-sit { color: #e8a0a0; font-weight: 700; }
+
+/* League chips carry their own swap count, so "which team needs attention"
+   is answerable without clicking through every league in turn. */
+.chip-count {
+  display: inline-block;
+  margin-left: 6px;
+  min-width: 17px;
+  padding: 0 5px;
+  border-radius: 9px;
+  background: #2e7d4f;
+  color: #eafff2;
+  font-size: 11px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.chip.active .chip-count { background: #3fa96a; }
+
+.chip-ok {
+  margin-left: 6px;
+  color: #4a8a63;
+  font-weight: 700;
+}
+
+.chip.active .chip-ok { color: #7fd6a0; }
