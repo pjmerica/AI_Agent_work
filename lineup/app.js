@@ -484,9 +484,6 @@
     return null;
   }
 
-  // Kickers and defenses have no stat chips because they have no props. Show
-  // the game line they were derived from instead, so the number is auditable
-  // the same way a prop-derived projection is.
   // -- Coverage / freshness ----------------------------------------------------
   // Sportsbooks do not post player props for Sunday games until roughly
   // Thursday night. Measured on week 2: a Saturday pull had 15 games and 206
@@ -577,28 +574,45 @@
       "</div>";
   }
 
+  /* Chips for the game-line positions.
+   *
+   * These used to read "opp 20.0sk 2.5to 1.2", which is three problems at
+   * once: the class was stat-chip, which does not exist in the stylesheet, so
+   * they rendered as unstyled text with no spacing or borders and ran into each
+   * other; the abbreviations were opaque; and nothing said these come from the
+   * game line rather than a player prop. Same markup as weeklyChips now, with
+   * labels that read as words.
+   */
   function specialChips(p) {
     const sp = p && p.special;
     if (!sp) return "";
+    const chip = (label, value, title) =>
+      '<span class="market-chip src-gameline" title="' + escapeHtml(title) + '">' +
+      '<span class="mk-label">' + escapeHtml(label) + "</span> " +
+      escapeHtml(value) + "</span>";
+
+    const line = "Derived from the game line, not a player prop: no book " +
+      "prices kickers or defenses directly.";
     const out = [];
-    const chip = (cls, text, title) =>
-      '<span class="stat-chip ' + cls + '" title="' + escapeHtml(title) + '">' +
-      escapeHtml(text) + "</span>";
     if (p.position === "DEF") {
-      out.push(chip("src-fanduel", "opp " + sp.oppImplied.toFixed(1),
-        "Opponent's implied points: total/2 - spread/2. Drives the " +
-        "points-allowed buckets, which is most of D/ST scoring."));
-      out.push(chip("src-kalshi", "sk " + sp.detail.sacks.toFixed(1),
-        "Expected sacks, scaled by how big a favourite this defense is."));
-      out.push(chip("src-kalshi", "to " + sp.detail.takeaways.toFixed(1),
-        "Expected takeaways (interceptions + fumble recoveries)."));
+      out.push(chip("Opp pts", sp.oppImplied.toFixed(1),
+        "Points the opponent is expected to score, from the spread and total. " +
+        "This is what drives the points-allowed buckets, which is most of D/ST " +
+        "scoring. " + line));
+      out.push(chip("Sacks", sp.detail.sacks.toFixed(1),
+        "Expected sacks. Scales with how big a favourite this defense is, " +
+        "since trailing teams pass more. " + line));
+      out.push(chip("Takeaways", sp.detail.takeaways.toFixed(1),
+        "Expected interceptions plus fumble recoveries. " + line));
     } else {
-      out.push(chip("src-fanduel", "team " + sp.implied.toFixed(1),
-        "This team's implied points: total/2 - spread/2."));
-      out.push(chip("src-kalshi", "fg " + sp.detail.fgs.toFixed(1),
-        "Expected field goals made."));
-      out.push(chip("src-kalshi", "xp " + sp.detail.xps.toFixed(1),
-        "Expected extra points made."));
+      out.push(chip("Team pts", sp.implied.toFixed(1),
+        "Points this kicker's own team is expected to score, from the spread " +
+        "and total. It splits into the field goals and extra points below. " +
+        line));
+      out.push(chip("FG", sp.detail.fgs.toFixed(1),
+        "Expected field goals made. " + line));
+      out.push(chip("XP", sp.detail.xps.toFixed(1),
+        "Expected extra points made. " + line));
     }
     return out.join("");
   }

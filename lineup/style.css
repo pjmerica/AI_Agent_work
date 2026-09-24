@@ -1032,3 +1032,11 @@ tr.row-nan:hover { opacity: 0.85; }
 .root-table td,
 .root-table th { padding-left: 7px; padding-right: 7px; }
 .root-table .player-name { white-space: normal; }
+
+/* Kicker and defense chips. Same shape as the market chips, but a distinct
+   border so it reads at a glance that these come from the game line rather
+   than from a book quoting that player. */
+.market-chip.src-gameline {
+  border-color: rgba(143, 168, 200, 0.45);
+  color: #cdd8e6;
+}

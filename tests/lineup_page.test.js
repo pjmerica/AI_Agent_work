@@ -162,6 +162,27 @@ setTimeout(() => {
   check("back to sitstart", !$("sitstart-view").classList.contains("hidden"));
 
   console.log("");
+  console.log("=== every chip class the app emits is actually styled ===");
+  // The K/DEF chips shipped with class "stat-chip", which appears nowhere in
+  // the stylesheet, so they rendered as unstyled text with no spacing and ran
+  // together: "opp 20.0sk 2.5to 1.2". Nothing caught it, because the markup was
+  // present and the numbers were right.
+  const css = fs.readFileSync(path.join(ROOT, "lineup/style.css"), "utf8");
+  const appTxt = fs.readFileSync(path.join(ROOT, "lineup/app.js"), "utf8");
+  const emitted = new Set();
+  for (const m of appTxt.matchAll(/class="([a-z0-9 _-]+)"/gi)) {
+    for (const c of m[1].trim().split(/\s+/)) {
+      if (c) emitted.add(c);
+    }
+  }
+  // Classes the app only reads or toggles, or that come from shared markup.
+  const IGNORE = new Set(["hidden", "active", "chip", "view-tab"]);
+  const unstyled = [...emitted].filter((c) =>
+    !IGNORE.has(c) && !css.includes("." + c));
+  check("no chip/element class is missing from the stylesheet",
+    unstyled.length === 0, unstyled.join(", "));
+
+  console.log("");
   console.log("=== help sections ===");
   const helps = window.document.querySelectorAll("details.help");
   check("collapsible help blocks", helps.length === 3, helps.length + "");
