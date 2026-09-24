@@ -1000,3 +1000,35 @@ tr.row-nan:hover { opacity: 0.85; }
 }
 
 .chip.active .chip-ok { color: #7fd6a0; }
+
+/* -- Rooting: two lists, side by side ---------------------------------------
+   Root FOR and Root AGAINST are read against each other -- the question is
+   whether your side or theirs has more left to come -- so stacking them put a
+   scroll between the two halves of one comparison. */
+.root-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+  align-items: start;
+}
+
+.root-col { min-width: 0; }
+
+@media (max-width: 860px) {
+  .root-columns { grid-template-columns: 1fr; gap: 4px; }
+}
+
+/* The Game column only ever holds a six-character matchup code, but the
+   DraftKings feed writes "CAR Panthers @ CLE Browns" and was forcing the
+   column four times wider than it needs. shortMatchup normalises the text;
+   this stops the column claiming space it no longer uses. */
+.root-table .col-game {
+  width: 1%;
+  white-space: nowrap;
+  font-size: 11px;
+  letter-spacing: 0.2px;
+}
+
+.root-table td,
+.root-table th { padding-left: 7px; padding-right: 7px; }
+.root-table .player-name { white-space: normal; }

@@ -943,7 +943,7 @@
           '<td class="player-name">' + escapeHtml(r.p.name) + "</td>" +
           '<td><span class="pos-badge pos-' + escapeHtml(r.p.position || "?") + '">' +
           escapeHtml(r.p.position || "?") + "</span></td>" +
-          '<td class="weekly-game">' + escapeHtml(r.p.matchup || "-") + "</td>" +
+          '<td class="weekly-game">' + escapeHtml(shortMatchup(r.p.matchup) || "-") + "</td>" +
           '<td style="text-align:right"><span class="market-pts">' +
           r.p.points.toFixed(1) + "</span></td>" +
           "<td>" + (r.p.stats ? weeklyChips(r.p) : specialChips(r.p)) +
@@ -961,7 +961,7 @@
         html += '<tr class="bench-row"><td class="player-name">' + escapeHtml(p.name) + "</td>" +
           '<td><span class="pos-badge pos-' + escapeHtml(p.position || "?") + '">' +
           escapeHtml(p.position || "?") + "</span></td>" +
-          '<td class="weekly-game">' + escapeHtml(p.matchup || "-") + "</td>" +
+          '<td class="weekly-game">' + escapeHtml(shortMatchup(p.matchup) || "-") + "</td>" +
           '<td style="text-align:right">' + p.points.toFixed(1) + "</td>" +
           "<td>" + (p.stats ? weeklyChips(p) : specialChips(p)) + "</td></tr>";
       }
@@ -1120,7 +1120,7 @@
       html += '<tr><td class="player-name">' + escapeHtml(f.name) + "</td>" +
         '<td><span class="pos-badge pos-' + escapeHtml(f.position) + '">' +
         escapeHtml(f.position) + "</span></td>" +
-        '<td class="weekly-game">' + escapeHtml(f.matchup || "-") + "</td>" +
+        '<td class="weekly-game">' + escapeHtml(shortMatchup(f.matchup) || "-") + "</td>" +
         '<td style="text-align:right">' + f.points.toFixed(1) + "</td>" +
         '<td style="text-align:right"><span style="color:#58d68d;font-weight:700">+' +
         f.upgrade.toFixed(1) + "</span></td>" +
@@ -1372,7 +1372,7 @@
         swap + "</td>" +
         '<td><span class="pos-badge pos-' + escapeHtml(p.position || "?") + '">' +
         escapeHtml(p.position || "?") + "</span></td>" +
-        '<td class="weekly-game">' + escapeHtml(p.matchup || "-") + "</td>" +
+        '<td class="weekly-game">' + escapeHtml(shortMatchup(p.matchup) || "-") + "</td>" +
         '<td style="text-align:right"><span class="market-pts">' +
         p.points.toFixed(1) + "</span></td>" +
         "<td>" + (p.stats ? weeklyChips(p) : specialChips(p)) + "</td></tr>";
@@ -1399,7 +1399,7 @@
           swap + "</td>" +
           '<td><span class="pos-badge pos-' + escapeHtml(p.position || "?") + '">' +
           escapeHtml(p.position || "?") + "</span></td>" +
-          '<td class="weekly-game">' + escapeHtml(p.matchup || "-") + "</td>" +
+          '<td class="weekly-game">' + escapeHtml(shortMatchup(p.matchup) || "-") + "</td>" +
           '<td style="text-align:right">' + p.points.toFixed(1) + "</td>" +
           "<td>" + (p.stats ? weeklyChips(p) : specialChips(p)) + "</td></tr>";
       }
@@ -1992,16 +1992,50 @@
     return { rows, matchups };
   }
 
+  /* Matchups arrive in two shapes and the long one is unreadable in a table.
+   *
+   * Kalshi and The Odds API write "CARCLE"; the DraftKings scrape writes
+   * "CAR Panthers @ CLE Browns", four times the width, which forced the Game
+   * column wide enough to squeeze everything else. Normalising on display
+   * rather than in the data keeps the name joins untouched.
+   */
+  function shortMatchup(m) {
+    const s = String(m || "").trim();
+    if (!s) return "";
+    const at = s.split(" @ ");
+    if (at.length !== 2) return s;
+    // "CAR Panthers @ CLE Browns" -> "CARCLE", away team first, as Kalshi does.
+    // The two LA and two NY clubs share a city prefix, so the nickname is what
+    // separates them -- taking the prefix alone turned LAC@BUF into "LABUF"
+    // and NYJ@DET into "NYDET", neither of which is a real matchup code.
+    const SPLIT = {
+      "LA Chargers": "LAC", "LA Rams": "LAR",
+      "NY Jets": "NYJ", "NY Giants": "NYG",
+    };
+    const code = (side) => {
+      const t = side.trim();
+      for (const k of Object.keys(SPLIT)) {
+        if (t.startsWith(k)) return SPLIT[k];
+      }
+      const hit = t.match(/^([A-Z]{2,3})(?![A-Za-z])/);
+      return hit ? hit[1] : "";
+    };
+    // DraftKings says JAX where Kalshi says JAC, so codes go through the same
+    // alias table the defense lookup uses.
+    const a = teamKey(code(at[0])), h = teamKey(code(at[1]));
+    return a && h ? a + h : s;
+  }
+
   function rootingList(title, rows, forMe) {
     if (!rows.length) {
       return '<div class="sitstart-section">' + escapeHtml(title) + "</div>" +
         '<div class="verdict" style="font-size:13px;color:#6a6a8a">Nobody.</div>';
     }
     let html = '<div class="sitstart-section">' + escapeHtml(title) + "</div>" +
-      '<div class="table-wrap"><table class="slot-table"><thead><tr>' +
-      "<th>Player</th><th>Pos</th><th>Game</th>" +
-      '<th style="text-align:right">Expected</th>' +
-      '<th style="text-align:right">Swings</th></tr></thead><tbody>';
+      '<div class="table-wrap"><table class="slot-table root-table"><thead><tr>' +
+      "<th>Player</th><th>Pos</th><th class=\"col-game\">Game</th>" +
+      '<th style="text-align:right">Exp</th>' +
+      '<th style="text-align:right">Sw</th></tr></thead><tbody>';
     for (const r of rows) {
       const n = Math.abs(r.net);
       const where = forMe ? r.for : r.against;
@@ -2013,7 +2047,8 @@
         "</td>" +
         '<td><span class="pos-badge pos-' + escapeHtml(r.position || "?") + '">' +
         escapeHtml(r.position || "?") + "</span></td>" +
-        '<td class="weekly-game">' + escapeHtml(r.matchup || r.team || "-") + "</td>" +
+        '<td class="weekly-game col-game">' +
+        escapeHtml(shortMatchup(r.matchup) || r.team || "-") + "</td>" +
         '<td style="text-align:right">' +
         (r.proj != null ? r.proj.toFixed(1) : "&mdash;") + "</td>" +
         '<td class="league-names" style="text-align:right">' +
@@ -2063,8 +2098,14 @@
         : "Every starter on every side has played &mdash; nothing left to watch.") +
       "</div>";
 
-    html += rootingList("Root FOR", rootFor, true);
-    html += rootingList("Root AGAINST", rootAgainst, false);
+    // Side by side: the two lists are read against each other, not in
+    // sequence -- the question is whether your side or theirs has more left to
+    // come. Stacking them put a scroll between the comparison. Collapses to one
+    // column on a narrow screen.
+    html += '<div class="root-columns">' +
+      '<div class="root-col">' + rootingList("Root FOR", rootFor, true) + "</div>" +
+      '<div class="root-col">' + rootingList("Root AGAINST", rootAgainst, false) +
+      "</div></div>";
 
     if (conflicted.length) {
       html += '<div class="sitstart-section">Cancels out</div>' +

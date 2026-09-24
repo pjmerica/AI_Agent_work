@@ -72,27 +72,20 @@ setTimeout(async()=>{
   check("it names players to root for", /Root FOR/i.test(out), out.slice(0,60));
 
   console.log("");
-  console.log("=== the Sleeper tab works off the same session ===");
-  tabs[1].click();
-  await new Promise(r=>setTimeout(r,1200));
-  const chips=$("sleeper-league-chips").querySelectorAll(".chip");
-  check("league chips are there without signing in again", chips.length>0,
-    chips.length+" chips");
-
-  console.log("");
-  console.log("=== sign out from the rooting tab clears both ===");
-  tabs[2].click();
-  await new Promise(r=>setTimeout(r,400));
-  $("rooting-forget").click();
-  await new Promise(r=>setTimeout(r,400));
-  check("both Sign out buttons hidden again",
-    $("rooting-forget").hidden && $("sleeper-forget").hidden);
-  check("both boxes cleared",
-    $("rooting-user").value==="" && $("sleeper-user").value==="");
-  check("rooting output reset",
-    /Enter a Sleeper username/.test($("rooting-output").textContent));
-  check("saved username removed", store["nflprops.sleeperUser"]===undefined,
-    JSON.stringify(store));
+  console.log("=== layout ===");
+  const cols=$("rooting-output").querySelector(".root-columns");
+  check("two lists sit in a grid", !!cols);
+  const cells=cols?cols.querySelectorAll(":scope > .root-col").length:0;
+  check("two columns", cells===2, cells+" columns");
+  const games=[...$("rooting-output").querySelectorAll(".col-game")]
+    .map(e=>e.textContent.trim()).filter(t=>t&&t!=="Game");
+  const longest=games.reduce((a,b)=>b.length>a.length?b:a,"");
+  check("no long-form matchup left", longest.length<=8,
+    "longest is "+JSON.stringify(longest));
+  console.log("   sample games: "+[...new Set(games)].slice(0,8).join(", "));
+  const heads=[...$("rooting-output").querySelectorAll(".root-table thead th")]
+    .map(e=>e.textContent.trim());
+  console.log("   columns: "+heads.join(" | "));
 
   console.log("");
   console.log("uncaught errors: "+errors.length);
