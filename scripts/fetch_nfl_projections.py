@@ -68,6 +68,9 @@ class ProjectionsTableParser(HTMLParser):
         self.cur_row: list[str] = []
         self.cur_cell: list[str] = []
         self.rows: list[list[str]] = []
+        # The LAST header row is the one with the stat labels; FantasyPros puts
+        # a grouping row ("PASSING | RUSHING | MISC") above it.
+        self.header_rows: list[list[str]] = []
 
     def handle_starttag(self, tag, attrs):
         d = dict(attrs)
@@ -102,6 +105,8 @@ class ProjectionsTableParser(HTMLParser):
             self.in_tr = False
             if self.in_tbody and self.cur_row:
                 self.rows.append(self.cur_row[:])
+            elif self.in_thead and self.cur_row:
+                self.header_rows.append(self.cur_row[:])
         elif tag == "th":
             if self.in_thead:
                 self.cur_row.append("".join(self.cur_cell).strip())
@@ -144,70 +149,145 @@ def extract_name_and_team(player_cell: str) -> tuple[str, str]:
 # We map *which raw header label* contains each stat.
 # FantasyPros sometimes uses identical column headers (e.g. ATT for passing AND rushing)
 # so we have to dedupe by position in the header row.
-def collect_stats(rows: list[list[str]], pos: str) -> list[dict]:
-    """Convert raw FantasyPros rows (positional) to normalized stat dicts.
+def stat_columns(header: list[str], pos: str) -> dict:
+    """Map our stat keys to column indices, using the header labels.
 
-    Column layouts (Player is always cell[0]):
-      QB:   Player | ATT CMP YDS TDS INTS | ATT YDS TDS | FL | FPTS
-      RB:   Player | ATT YDS TDS | REC YDS TDS | FL | FPTS
-      WR:   Player | REC YDS TDS | ATT YDS TDS | FL | FPTS
-      TE:   Player | REC YDS TDS | FL | FPTS
+    Indices used to be hardcoded, and FantasyPros inserted a BYE column at
+    index 1. Every stat then read one column to its left: passing yards landed
+    in pass_tds, so Drake Maye came back with 4142.7 passing touchdowns and a
+    projection of 19,415 points. Nothing downstream noticed, because nothing
+    downstream knew what a plausible number looked like.
+
+    The labels repeat across stat groups -- ATT, YDS and TDS appear under both
+    PASSING and RUSHING -- so position alone is not enough to identify a column.
+    What disambiguates them is order: the groups always run passing, then
+    rushing, then receiving, in the layout each position uses. So this walks the
+    header left to right and assigns each repeated label to the next group in
+    that position's sequence.
     """
+    # Which stat group each repeated label belongs to, in header order.
+    GROUPS = {
+        "qb": ["pass", "rush"],
+        "rb": ["rush", "rec"],
+        "wr": ["rec", "rush"],
+        "te": ["rec"],
+    }
+    # Label -> our key, per group.
+    KEYS = {
+        "pass": {"YDS": "pass_yds", "TDS": "pass_tds", "INTS": "pass_ints",
+                 "INT": "pass_ints"},
+        "rush": {"YDS": "rush_yds", "TDS": "rush_tds"},
+        "rec": {"YDS": "rec_yds", "TDS": "rec_tds", "REC": "receptions"},
+    }
+    groups = GROUPS.get(pos, [])
+    cols: dict[str, int] = {}
+    gi = 0
+    seen_in_group: set[str] = set()
+
+    for i, raw in enumerate(header):
+        label = raw.strip().upper()
+        if label in ("PLAYER", "BYE", ""):
+            continue
+        if label == "FL":
+            cols["fumbles_lost"] = i
+            continue
+        if label == "FPTS":
+            cols["fpts"] = i
+            continue
+        if label in ("ATT", "CMP"):
+            # Attempts and completions are not scored, but ATT marks the start
+            # of a new group for every position whose groups begin with it.
+            if label == "ATT" and seen_in_group:
+                gi += 1
+                seen_in_group = set()
+            continue
+        if gi >= len(groups):
+            continue
+        group = groups[gi]
+        # REC opens the receiving group for RB, where it follows rushing.
+        if label == "REC" and group != "rec" and "rec" in groups:
+            gi = groups.index("rec")
+            group = "rec"
+            seen_in_group = set()
+        if label in seen_in_group:
+            gi += 1
+            seen_in_group = set()
+            if gi >= len(groups):
+                continue
+            group = groups[gi]
+        key = KEYS.get(group, {}).get(label)
+        if key and key not in cols:
+            cols[key] = i
+            seen_in_group.add(label)
+    return cols
+
+
+# Sanity bounds for a FULL SEASON projection. A layout change shifts columns
+# rather than emptying them, so the failure mode is a plausible-looking number
+# in the wrong field -- which only a range check catches.
+STAT_BOUNDS = {
+    "pass_yds": 6000.0, "pass_tds": 70.0, "pass_ints": 40.0,
+    "rush_yds": 2500.0, "rush_tds": 35.0,
+    "rec_yds": 2500.0, "rec_tds": 35.0, "receptions": 200.0,
+    "fumbles_lost": 20.0,
+}
+
+
+def implausible(stats: dict) -> str | None:
+    """Return a description of the first out-of-range stat, or None."""
+    for key, cap in STAT_BOUNDS.items():
+        v = stats.get(key, 0.0)
+        if v > cap:
+            return f"{key}={v:.1f} exceeds {cap:.0f}"
+    return None
+
+
+def collect_stats(rows: list[list[str]], header: list[str], pos: str) -> list[dict]:
+    """Convert raw FantasyPros rows to normalized stat dicts."""
+    cols = stat_columns(header, pos)
+    if not cols:
+        print(f"  {pos.upper()}: could not map any columns from header "
+              f"{header!r}", file=sys.stderr)
+        return []
+
+    def cell(cells: list[str], key: str) -> float:
+        i = cols.get(key)
+        if i is None or i >= len(cells):
+            return 0.0
+        return parse_float(cells[i])
+
     out = []
+    rejected = 0
     for cells in rows:
         if not cells:
             continue
-        player_raw = cells[0]
-        name, team = extract_name_and_team(player_raw)
+        name, team = extract_name_and_team(cells[0])
         if not name:
             continue
 
         stats = {
-            "pass_yds": 0.0, "pass_tds": 0.0, "pass_ints": 0.0,
-            "rush_yds": 0.0, "rush_tds": 0.0,
-            "rec_yds": 0.0, "rec_tds": 0.0, "receptions": 0.0,
-            "fumbles_lost": 0.0,
+            "pass_yds": cell(cells, "pass_yds"),
+            "pass_tds": cell(cells, "pass_tds"),
+            "pass_ints": cell(cells, "pass_ints"),
+            "rush_yds": cell(cells, "rush_yds"),
+            "rush_tds": cell(cells, "rush_tds"),
+            "rec_yds": cell(cells, "rec_yds"),
+            "rec_tds": cell(cells, "rec_tds"),
+            "receptions": cell(cells, "receptions"),
+            "fumbles_lost": cell(cells, "fumbles_lost"),
         }
-        fp_consensus = parse_float(cells[-1]) if len(cells) > 1 else 0.0
 
-        if pos == "qb":
-            # Indices: 1 ATT, 2 CMP, 3 pass YDS, 4 pass TDS, 5 INTS,
-            #          6 ATT, 7 rush YDS, 8 rush TDS, 9 FL, 10 FPTS
-            if len(cells) >= 11:
-                stats["pass_yds"]     = parse_float(cells[3])
-                stats["pass_tds"]     = parse_float(cells[4])
-                stats["pass_ints"]    = parse_float(cells[5])
-                stats["rush_yds"]     = parse_float(cells[7])
-                stats["rush_tds"]     = parse_float(cells[8])
-                stats["fumbles_lost"] = parse_float(cells[9])
+        bad = implausible(stats)
+        if bad:
+            if rejected == 0:
+                print(f"  {pos.upper()}: {name} has {bad} -- column mapping is "
+                      f"probably wrong for this layout", file=sys.stderr)
+            rejected += 1
+            continue
 
-        elif pos == "rb":
-            # 1 ATT, 2 rush YDS, 3 rush TDS, 4 REC, 5 rec YDS, 6 rec TDS, 7 FL, 8 FPTS
-            if len(cells) >= 9:
-                stats["rush_yds"]     = parse_float(cells[2])
-                stats["rush_tds"]     = parse_float(cells[3])
-                stats["receptions"]   = parse_float(cells[4])
-                stats["rec_yds"]      = parse_float(cells[5])
-                stats["rec_tds"]      = parse_float(cells[6])
-                stats["fumbles_lost"] = parse_float(cells[7])
-
-        elif pos == "wr":
-            # 1 REC, 2 rec YDS, 3 rec TDS, 4 ATT, 5 rush YDS, 6 rush TDS, 7 FL, 8 FPTS
-            if len(cells) >= 9:
-                stats["receptions"]   = parse_float(cells[1])
-                stats["rec_yds"]      = parse_float(cells[2])
-                stats["rec_tds"]      = parse_float(cells[3])
-                stats["rush_yds"]     = parse_float(cells[5])
-                stats["rush_tds"]     = parse_float(cells[6])
-                stats["fumbles_lost"] = parse_float(cells[7])
-
-        elif pos == "te":
-            # 1 REC, 2 rec YDS, 3 rec TDS, 4 FL, 5 FPTS
-            if len(cells) >= 6:
-                stats["receptions"]   = parse_float(cells[1])
-                stats["rec_yds"]      = parse_float(cells[2])
-                stats["rec_tds"]      = parse_float(cells[3])
-                stats["fumbles_lost"] = parse_float(cells[4])
+        i = cols.get("fpts")
+        fp_consensus = parse_float(cells[i]) if i is not None and i < len(cells) \
+            else parse_float(cells[-1])
 
         out.append({
             "name": name,
@@ -216,6 +296,10 @@ def collect_stats(rows: list[list[str]], pos: str) -> list[dict]:
             "stats": stats,
             "fp_consensus": fp_consensus,
         })
+
+    if rejected:
+        print(f"  {pos.upper()}: dropped {rejected} rows as implausible",
+              file=sys.stderr)
     return out
 
 
@@ -257,7 +341,13 @@ def fetch_position(pos: str) -> list[dict]:
     if not parser.rows:
         print(f"  WARNING: no rows parsed for {pos}")
         return []
-    return collect_stats(parser.rows, pos)
+    # The stat labels are on the LAST header row; the one above groups them
+    # into PASSING / RUSHING / RECEIVING.
+    header = parser.header_rows[-1] if parser.header_rows else []
+    if not header:
+        print(f"  WARNING: no header row for {pos}; cannot map columns")
+        return []
+    return collect_stats(parser.rows, header, pos)
 
 
 def main():

@@ -2365,9 +2365,9 @@
                      p.stats.any_tds.line != null;
 
       // Fill usage from the season projection when only a touchdown is priced.
-      // Clay over the FantasyPros feed because data.json currently carries
-      // corrupt totals (4142.7 passing TDs). Exact name match only: a filled
-      // stat is a number, and the loose surname key is not safe for numbers.
+      // Clay first because it covers 424 players against the FantasyPros feed's
+      // 40. Exact name match only: a filled stat is a number, and the loose
+      // surname key is not safe for numbers.
       let filled = false;
       if (tdOnly) {
         const perGame = projPerGame(lookupProjExact(clayLut, p.name)) ||

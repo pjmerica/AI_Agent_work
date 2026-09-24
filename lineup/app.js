@@ -761,9 +761,9 @@
                      p.stats.any_tds.line != null;
 
       // Fill usage from the season projection when the market priced only a
-      // touchdown. Clay is preferred over the FantasyPros feed because
-      // data.json is currently carrying corrupt totals (4142.7 passing TDs),
-      // which would swamp anything derived from it.
+      // touchdown. Clay first because it covers 424 players against the
+      // FantasyPros feed's 40 -- FantasyPros only serves a dozen rows per
+      // position without JavaScript, so that file is a thin fallback.
       let filled = false;
       if (tdOnly) {
         // Exact match only: a filled stat line is a number, and the loose
