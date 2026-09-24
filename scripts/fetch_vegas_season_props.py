@@ -158,9 +158,14 @@ def main() -> None:
 
     players = parse_markets(payload)
     if not players:
-        print("ERROR: no season-long player props found. FanDuel may have changed "
-              "their market naming, or the futures page is down.", file=sys.stderr)
-        sys.exit(1)
+        # Not an error. FanDuel, like Bovada, carries season-long PLAYER props
+        # in the preseason and drops them once the season is under way -- both
+        # went empty around week 2 of 2026. Exiting non-zero would fail the
+        # workflow every run for a market that simply is not offered, so keep
+        # the file on disk and say why.
+        print("No season-long player props posted. FanDuel drops these once the "
+              "season is under way; keeping the existing file.", file=sys.stderr)
+        return
 
     out = sorted(players.values(), key=lambda p: (p["position"] or "ZZ", p["name"]))
 

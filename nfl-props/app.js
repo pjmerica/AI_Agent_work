@@ -477,6 +477,26 @@
    * Rankings tab still advertising "Week 1" on a week 3 slate, and the two
    * callouts were never corrected at all.
    */
+  /* Age of a data file, in plain words.
+   *
+   * A raw timestamp does not communicate staleness -- "9/12/2026" reads as a
+   * date, not as "this is eleven days old". That matters here because both
+   * season-long player-prop sources went dry: FanDuel and Bovada carry these
+   * markets in the preseason and drop them once the season is under way, so
+   * vegas.json and bovada.json are frozen at their last good pull rather than
+   * being refreshed. The scrapers keep the old file on purpose; the page has
+   * to say the lines are old.
+   */
+  function ageNote(stamp) {
+    if (!stamp) return "";
+    const days = (Date.now() - new Date(stamp).getTime()) / 86400000;
+    if (!isFinite(days) || days < 2) return "";
+    const n = Math.round(days);
+    return ' <span class="stale-note" title="These markets are no longer ' +
+      'posted, so the file is frozen at its last good pull.">&middot; ' +
+      n + " days old</span>";
+  }
+
   function applyWeekLabels() {
     const wk = cache["weekly"];
     if (!wk || wk.week == null) return;
@@ -1600,7 +1620,9 @@
     const stamps = [vegas.lastUpdated, cache["kalshi"] && cache["kalshi"].lastUpdated]
       .filter(Boolean).map((s) => new Date(s));
     if ($lu && stamps.length) {
-      $lu.textContent = new Date(Math.min(...stamps)).toLocaleString();
+      const oldest = new Date(Math.min(...stamps));
+      $lu.innerHTML = escapeHtml(oldest.toLocaleString()) +
+        ageNote(oldest.toISOString());
     }
   }
 

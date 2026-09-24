@@ -30,8 +30,23 @@ from urllib.request import Request, urlopen
 
 OUT_FILE = Path(__file__).resolve().parent.parent / "nfl-props" / "bovada.json"
 
-URL = ("https://www.bovada.lv/services/sports/event/coupon/events/A/description"
-       "/football/nfl-season-player-props?lang=en")
+# Bovada moves this coupon around, so try the known paths in order and take
+# the first that yields player props.
+#
+# As of 2026-09-24 none of them do: nfl-season-player-props returns an empty
+# document, and nfl-season-props / nfl-futures carry only team markets (playoff
+# odds, Super Bowl winner). Bovada appears to pull season-long PLAYER props once
+# the season is under way, which matches how thin these markets get generally.
+# That is a market fact, not a scrape failure, and main() now says so and keeps
+# the existing file rather than exiting non-zero.
+BASE = ("https://www.bovada.lv/services/sports/event/coupon/events/A/description"
+        "/football/")
+PATHS = [
+    "nfl-season-player-props",
+    "nfl-season-props",
+    "nfl-futures",
+]
+URL = BASE + PATHS[0] + "?lang=en"
 
 UA = ("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
       "(KHTML, like Gecko) Chrome/126.0 Safari/537.36")
@@ -164,12 +179,29 @@ def parse_events(payload: object) -> dict[str, dict]:
 
 def main() -> None:
     print("Fetching Bovada NFL season-long player props…")
-    players = parse_events(http_get_json(URL))
+
+    players: dict = {}
+    for path in PATHS:
+        url = BASE + path + "?lang=en"
+        try:
+            found = parse_events(http_get_json(url))
+        except Exception as e:                       # noqa: BLE001
+            print(f"  {path}: {e}", file=sys.stderr)
+            continue
+        print(f"  {path}: {len(found)} players")
+        if found:
+            players = found
+            break
 
     if not players:
-        print("ERROR: no season-long player props found. Bovada may have changed "
-              "the coupon path or market naming.", file=sys.stderr)
-        sys.exit(1)
+        # Not an error. Bovada carries only team futures for the season once it
+        # is under way; exiting non-zero here would fail the workflow every run
+        # and, worse, an earlier version wrote the empty result over 118 good
+        # rows. Keep what is on disk and say why.
+        print("No season-long player props posted at any known Bovada path. "
+              "Bovada carries only team futures for the season right now; "
+              "keeping the existing file.", file=sys.stderr)
+        return
 
     out = sorted(players.values(), key=lambda p: p["name"])
     stat_counts: dict[str, int] = {}

@@ -857,3 +857,11 @@ tr.row-nan:hover { opacity: 0.85; }
    row reads as settled rather than as something still to choose. */
 .locked-row { opacity: 0.6; }
 .locked-row td { background: rgba(108, 122, 137, 0.06); }
+
+/* Marks a data file that is no longer being refreshed. Both season-long
+   player-prop sources go dry once the season starts, so the lines behind the
+   Vegas tab are frozen rather than current -- a raw date does not say that. */
+.stale-note {
+  color: #d4a04a;
+  font-weight: 600;
+}
