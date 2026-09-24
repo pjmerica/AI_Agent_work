@@ -1564,11 +1564,40 @@
     return res.json();
   }
 
+  /* Sign-in lives on two tabs.
+   *
+   * Sleeper Start/Sit and Root For/Against both need the same account, and
+   * sending someone to another tab to type a username they are already looking
+   * at a box for is a pointless detour. So the markup carries two forms and
+   * every helper here updates both -- one sleeperLive, two sets of controls.
+   */
+  const SLEEPER_FORMS = [
+    { user: "sleeper-user", forget: "sleeper-forget", status: "sleeper-status" },
+    { user: "rooting-user", forget: "rooting-forget", status: "rooting-status" },
+  ];
+
   function sleeperStatus(msg, isError) {
-    const $s = document.getElementById("sleeper-status");
-    if (!$s) return;
-    $s.textContent = msg || "";
-    $s.classList.toggle("sleeper-error", !!isError);
+    for (const f of SLEEPER_FORMS) {
+      const $s = document.getElementById(f.status);
+      if (!$s) continue;
+      $s.textContent = msg || "";
+      $s.classList.toggle("sleeper-error", !!isError);
+    }
+  }
+
+  // Reflect signed-in state on both forms: the username in each box and the
+  // Sign out button shown or hidden together.
+  function syncSleeperForms() {
+    const signedIn = !!sleeperLive;
+    const name = signedIn ? (sleeperLive.username || "") : "";
+    for (const f of SLEEPER_FORMS) {
+      const $u = document.getElementById(f.user);
+      // Do not clobber what someone is mid-way through typing on the form they
+      // are actually using.
+      if ($u && document.activeElement !== $u) $u.value = name;
+      const $f = document.getElementById(f.forget);
+      if ($f) $f.hidden = !signedIn;
+    }
   }
 
   function sleeperSeason() {
@@ -1728,12 +1757,19 @@
                       userId: user.user_id, leagues: built };
       sleeperLeagueIdx = 0;
       try { localStorage.setItem(SLEEPER_LS_KEY, name); } catch (e) { /* private mode */ }
-      const $forget = document.getElementById("sleeper-forget");
-      if ($forget) $forget.hidden = false;
+      syncSleeperForms();
       sleeperStatus("Signed in as " + (user.display_name || name) +
                     " · " + built.length + " league" + (built.length === 1 ? "" : "s"));
       renderSleeperChips();
       renderSleeper();
+      // Whichever tab signed in, the other one's view is now stale. This app
+      // tracks the visible view by class rather than a variable, so ask the DOM
+      // -- referencing a currentView here (as the sibling app has) threw and
+      // surfaced as "Sleeper request failed".
+      const $rt = document.getElementById("rooting-view");
+      if ($rt && !$rt.classList.contains("hidden")) {
+        loadRootingData().then(renderRooting);
+      }
     } catch (e) {
       sleeperStatus("Sleeper request failed: " + (e && e.message ? e.message : e), true);
     } finally {
@@ -1991,7 +2027,8 @@
     const $out = document.getElementById("rooting-output");
     if (!$out) return;
     if (!sleeperLive) {
-      $out.innerHTML = '<div class="empty">Sign in on the Sleeper tab first.</div>';
+      $out.innerHTML = '<div class="empty">Enter a Sleeper username above to ' +
+        "see who to root for.</div>";
       return;
     }
     const agg = aggregateRooting();
@@ -2058,13 +2095,17 @@
 
   async function showRootingView() {
     await loadData();
-    // The matchup needs a signed-in user; restore one if the Sleeper tab has
-    // not been visited yet this session.
+    // The matchup needs a signed-in user; restore one if neither tab has been
+    // used yet this session.
     if (!sleeperLive) {
       let saved = null;
       try { saved = localStorage.getItem(SLEEPER_LS_KEY); } catch (e) { saved = null; }
       if (saved) await loadSleeperUser(saved);
     }
+    // Show the signed-in name and the Sign out button on this tab's own form,
+    // so arriving here already signed in does not look like being signed out.
+    syncSleeperForms();
+    if (!sleeperLive) { renderRooting(); return; }
     await loadRootingData();
     renderRooting();
   }
@@ -2112,6 +2153,7 @@
         return;
       }
     }
+    syncSleeperForms();
     renderSleeperChips();
     renderSleeperBookToggles();
     renderSleeper();
@@ -2219,28 +2261,48 @@
     renderSitStart();
   });
 
-  document.getElementById("sleeper-go")?.addEventListener("click", () => {
-    const $u = document.getElementById("sleeper-user");
-    loadSleeperUser($u ? $u.value : "");
-  });
-  document.getElementById("sleeper-user")?.addEventListener("keydown", (e) => {
-    if (e.key === "Enter") loadSleeperUser(e.target.value);
-  });
-  document.getElementById("sleeper-forget")?.addEventListener("click", () => {
+  function sleeperSignOut() {
     sleeperLive = null;
+    sleeperPlayed = null;
+    sleeperPlayedKey = null;
+    clearSwapCounts();
+    // Matchups are per-account, so they cannot survive a sign-out.
+    cache["matchups"] = {};
     try { localStorage.removeItem(SLEEPER_LS_KEY); } catch (e) { /* ignore */ }
-    const $u = document.getElementById("sleeper-user");
-    if ($u) $u.value = "";
-    const $forget = document.getElementById("sleeper-forget");
-    if ($forget) $forget.hidden = true;
+    for (const f of SLEEPER_FORMS) {
+      const $u = document.getElementById(f.user);
+      if ($u) $u.value = "";
+    }
+    syncSleeperForms();
     const $chips = document.getElementById("sleeper-league-chips");
     if ($chips) $chips.innerHTML = "";
     const $meta = document.getElementById("sleeper-meta");
     if ($meta) $meta.textContent = "";
     sleeperStatus("");
     const $out = document.getElementById("sleeper-output");
-    if ($out) $out.innerHTML = '<div class="empty">Enter a Sleeper username to load your leagues.</div>';
-  });
+    if ($out) {
+      $out.innerHTML = '<div class="empty">Enter a Sleeper username to load ' +
+        "your leagues.</div>";
+    }
+    const $root = document.getElementById("rooting-output");
+    if ($root) {
+      $root.innerHTML = '<div class="empty">Enter a Sleeper username to see ' +
+        "who to root for.</div>";
+    }
+  }
+
+  // Both tabs' controls, wired the same way.
+  for (const f of SLEEPER_FORMS) {
+    const go = f.user === "sleeper-user" ? "sleeper-go" : "rooting-go";
+    document.getElementById(go)?.addEventListener("click", () => {
+      const $u = document.getElementById(f.user);
+      loadSleeperUser($u ? $u.value : "");
+    });
+    document.getElementById(f.user)?.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") loadSleeperUser(e.target.value);
+    });
+    document.getElementById(f.forget)?.addEventListener("click", sleeperSignOut);
+  }
 
   document.getElementById("sleeper-books-all")?.addEventListener("click", (e) => {
     e.preventDefault();

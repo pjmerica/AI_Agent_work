@@ -25,6 +25,7 @@ node tests/board_page.test.js
 node tests/lineup_optimizer.test.js
 node tests/board_optimizer.test.js
 node tests/sleeper_tab.test.js      # hits the live Sleeper API
+node tests/rooting_login.test.js    # hits the live Sleeper API
 node tests/live_smoke.test.js       # hits the published site
 python tests/td_conversion.test.py
 node tests/dst_model.test.js 2       # week number; hits Sleeper
@@ -112,3 +113,16 @@ projection itself. The model mean runs about a point under actual because it
 cannot foresee a defensive touchdown, and its spread is ~1.4 against a real ~6.5
 — a game line knows the expected script and nothing about the pick-six that
 decides the week. These numbers rank defenses; they do not forecast scores.
+
+**`rooting_login.test.js`** — signs in from the Root For/Against tab without
+ever touching the Sleeper tab, then checks both tabs' controls agree: the other
+form fills in, both Sign out buttons appear, the league chips are there without
+signing in again, and signing out from either clears everything including the
+saved username. It starts from an empty `localStorage` so the only way in is the
+form under test.
+
+It caught a real bug on its first run. The sign-in handler referenced
+`currentView`, which exists in `nfl-props/app.js` but not in `lineup/app.js` —
+that app tracks the visible view by class. The ReferenceError surfaced to the
+user as "Sleeper request failed", which points at the network rather than at the
+code.

@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Lineup — market-priced start/sit</title>
-  <link rel="stylesheet" href="style.css?v=2026-09-24-cal" />
+  <link rel="stylesheet" href="style.css?v=2026-09-24-rootlogin" />
 </head>
 <body>
   <div class="container">
@@ -176,7 +176,17 @@
           One list across <em>every</em> league combined. A player starting for
           you in one matchup and against you in another cancels out, and the
           net is the only thing worth knowing when you sit down to watch.
-          Sign in on the <strong>Sleeper Start/Sit</strong> tab first.
+        </div>
+
+        <div class="sleeper-login" id="rooting-login">
+          <div class="h2h-picker" style="max-width:320px">
+            <label class="sitstart-label" for="rooting-user">Sleeper username</label>
+            <input type="text" id="rooting-user" autocomplete="username"
+                   spellcheck="false" placeholder="e.g. pjmerica" />
+          </div>
+          <button id="rooting-go" class="fmt-btn active">Load my leagues</button>
+          <button id="rooting-forget" class="fmt-btn" hidden>Sign out</button>
+          <span class="weekly-meta" id="rooting-status"></span>
         </div>
 
         <details class="help">
@@ -186,11 +196,15 @@
             starter whose game has finished is history however he did. The
             <strong>Swings</strong> column counts how many of your matchups he
             moves the same way, which is what puts him at the top.</p>
+
+            <p>Signing in here and on <strong>Sleeper Start/Sit</strong> is the
+            same sign-in &mdash; do it on whichever tab you happen to be on and
+            the other one is ready too.</p>
           </div>
         </details>
 
         <div id="rooting-output">
-          <div class="empty">Sign in on the Sleeper tab first.</div>
+          <div class="empty">Enter a Sleeper username to see who to root for.</div>
         </div>
       </div>
     </main>
@@ -202,6 +216,6 @@
     </footer>
   </div>
 
-  <script src="app.js?v=2026-09-24-cal"></script>
+  <script src="app.js?v=2026-09-24-rootlogin"></script>
 </body>
 </html>
