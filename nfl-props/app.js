@@ -1729,7 +1729,7 @@
       html += '<tr><td class="player-name">' + escapeHtml(f.name) + "</td>" +
         '<td><span class="pos-badge pos-' + escapeHtml(f.position) + '">' +
         escapeHtml(f.position) + "</span></td>" +
-        '<td class="weekly-game">' + escapeHtml(f.matchup || "-") + "</td>" +
+        '<td class="weekly-game">' + escapeHtml(shortMatchup(f.matchup) || "-") + "</td>" +
         '<td style="text-align:right">' + f.points.toFixed(1) + "</td>" +
         '<td style="text-align:right"><span style="color:#58d68d;font-weight:700">+' +
         f.upgrade.toFixed(1) + "</span></td>" +
@@ -2270,7 +2270,7 @@
         swap + "</td>" +
         '<td><span class="pos-badge pos-' + escapeHtml(p.position || "?") + '">' +
         escapeHtml(p.position || "?") + "</span></td>" +
-        '<td class="weekly-game">' + escapeHtml(p.matchup || "-") + "</td>" +
+        '<td class="weekly-game">' + escapeHtml(shortMatchup(p.matchup) || "-") + "</td>" +
         '<td style="text-align:right"><span class="market-pts">' +
         p.points.toFixed(1) + "</span></td>" +
         "<td>" + (p.stats ? weeklyChips(p) : "") + "</td></tr>";
@@ -2297,7 +2297,7 @@
           swap + "</td>" +
           '<td><span class="pos-badge pos-' + escapeHtml(p.position || "?") + '">' +
           escapeHtml(p.position || "?") + "</span></td>" +
-          '<td class="weekly-game">' + escapeHtml(p.matchup || "-") + "</td>" +
+          '<td class="weekly-game">' + escapeHtml(shortMatchup(p.matchup) || "-") + "</td>" +
           '<td style="text-align:right">' + p.points.toFixed(1) + "</td>" +
           "<td>" + (p.stats ? weeklyChips(p) : "") + "</td></tr>";
       }
@@ -2395,6 +2395,40 @@
     return { ...best.teams[t], matchup: best.matchup, total: best.total,
              kickoff: best.kickoff,
              opp: t === best.home ? best.away : best.home };
+  }
+
+  /* Matchups arrive in two shapes and the long one is unreadable in a table.
+   *
+   * Kalshi and The Odds API write "CARCLE"; the DraftKings scrape writes
+   * "CAR Panthers @ CLE Browns", four times the width, which forced the Game
+   * column wide enough to squeeze everything else. Normalising on display
+   * rather than in the data keeps the name joins untouched.
+   */
+  function shortMatchup(m) {
+    const s = String(m || "").trim();
+    if (!s) return "";
+    const at = s.split(" @ ");
+    if (at.length !== 2) return s;
+    // "CAR Panthers @ CLE Browns" -> "CARCLE", away team first, as Kalshi does.
+    // The two LA and two NY clubs share a city prefix, so the nickname is what
+    // separates them -- taking the prefix alone turned LAC@BUF into "LABUF"
+    // and NYJ@DET into "NYDET", neither of which is a real matchup code.
+    const SPLIT = {
+      "LA Chargers": "LAC", "LA Rams": "LAR",
+      "NY Jets": "NYJ", "NY Giants": "NYG",
+    };
+    const code = (side) => {
+      const t = side.trim();
+      for (const k of Object.keys(SPLIT)) {
+        if (t.startsWith(k)) return SPLIT[k];
+      }
+      const hit = t.match(/^([A-Z]{2,3})(?![A-Za-z])/);
+      return hit ? hit[1] : "";
+    };
+    // DraftKings says JAX where Kalshi says JAC, so codes go through the same
+    // alias table the defense lookup uses.
+    const a = teamKey(code(at[0])), h = teamKey(code(at[1]));
+    return a && h ? a + h : s;
   }
 
   function buildSitStartPoolFull() {
@@ -3010,7 +3044,7 @@
           '<td class="player-name">' + escapeHtml(r.p.name) + "</td>" +
           '<td><span class="pos-badge pos-' + escapeHtml(r.p.position || "?") + '">' +
           escapeHtml(r.p.position || "?") + "</span></td>" +
-          '<td class="weekly-game">' + escapeHtml(r.p.matchup || "-") + "</td>" +
+          '<td class="weekly-game">' + escapeHtml(shortMatchup(r.p.matchup) || "-") + "</td>" +
           '<td style="text-align:right"><span class="market-pts">' +
           r.p.points.toFixed(1) + "</span></td>" +
           "<td>" + (r.p.stats ? weeklyChips(r.p) : "") + "</td></tr>";
@@ -3027,7 +3061,7 @@
         html += '<tr class="bench-row"><td class="player-name">' + escapeHtml(p.name) + "</td>" +
           '<td><span class="pos-badge pos-' + escapeHtml(p.position || "?") + '">' +
           escapeHtml(p.position || "?") + "</span></td>" +
-          '<td class="weekly-game">' + escapeHtml(p.matchup || "-") + "</td>" +
+          '<td class="weekly-game">' + escapeHtml(shortMatchup(p.matchup) || "-") + "</td>" +
           '<td style="text-align:right">' + p.points.toFixed(1) + "</td>" +
           "<td>" + (p.stats ? weeklyChips(p) : "") + "</td></tr>";
       }

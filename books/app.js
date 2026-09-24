@@ -48,6 +48,33 @@
     "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"
   };
 
+  // Matchups arrive in two shapes: Kalshi and The Odds API write "CARCLE", the
+  // DraftKings scrape writes "CAR Panthers @ CLE Browns". Normalised on display
+  // so one column does not have to fit the long form.
+  var MATCHUP_SPLIT = {
+    "LA Chargers": "LAC", "LA Rams": "LAR",
+    "NY Jets": "NYJ", "NY Giants": "NYG"
+  };
+  var MATCHUP_ALIAS = { JAX: "JAC", WSH: "WAS", LA: "LAR" };
+
+  function shortMatchup(m) {
+    var s = String(m == null ? "" : m).trim();
+    if (!s) return "";
+    var at = s.split(" @ ");
+    if (at.length !== 2) return s;
+    function code(side) {
+      var t = side.trim();
+      for (var k in MATCHUP_SPLIT) {
+        if (t.indexOf(k) === 0) return MATCHUP_SPLIT[k];
+      }
+      var hit = t.match(/^([A-Z]{2,3})(?![A-Za-z])/);
+      var c = hit ? hit[1] : "";
+      return MATCHUP_ALIAS[c] || c;
+    }
+    var a = code(at[0]), h = code(at[1]);
+    return a && h ? a + h : s;
+  }
+
   function escapeHtml(s) {
     return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) {
       return ESCAPES[c];
@@ -407,7 +434,7 @@
         '<td class="col-pos"><span class="pos-badge pos-' +
           escapeHtml(r.position || "NA") + '">' +
           escapeHtml(r.position || "—") + "</span></td>" +
-        '<td class="col-game">' + escapeHtml(r.matchup || "—") + "</td>";
+        '<td class="col-game">' + escapeHtml(shortMatchup(r.matchup) || "—") + "</td>";
       live.forEach(function (b) {
         var v = cellValue(r, b.key);
         var partial = v != null && b.key !== "consensus" && b.key !== "dk" &&
