@@ -21,7 +21,9 @@ click that changes nothing.
 npm install --no-save jsdom
 node tests/lineup_page.test.js
 node tests/books_page.test.js
+node tests/board_page.test.js
 node tests/lineup_optimizer.test.js
+node tests/board_optimizer.test.js
 node tests/sleeper_tab.test.js      # hits the live Sleeper API
 ```
 
@@ -55,8 +57,18 @@ across the jsdom boundary hands back a raw compressed body — `r.text()` gave
 224 bytes of gzip where the real payload is 413 bytes of JSON, which the page
 read as "no such user". It reads `arrayBuffer()` and decodes in Node instead.
 
-**`lineup_optimizer.test.js`** — compares `bestLineupForSlots` against a
+**`board_page.test.js`** — walks all nine tabs on the `nfl-props` board,
+checking each panel becomes visible and the data-driven ones produce rows. Also
+asserts the week labels are stamped from `weekly.json` rather than left at the
+markup's hardcoded "Week 1", which is what they used to read on a Week 3 slate
+until the weekly tab was opened. Note that panel ids do not all follow the
+`data-view` name — `rankings` lives in `#table-view`.
+
+**`lineup_optimizer.test.js`** and **`board_optimizer.test.js`** — compare `bestLineupForSlots` against a
 brute-force assignment on 1,500 randomised rosters across three slot layouts.
-The optimizer uses branch-and-bound, so this is what establishes that the
-pruning only cuts branches that cannot win. It caught nothing, which is the
-result you want from it.
+Both files carry the same implementation — `bestLineupForSlots` was lifted
+verbatim from `lineup/app.js` into `nfl-props/app.js` rather than retyped, so
+the two cannot drift — and each is tested against its own copy. The optimizer
+uses branch-and-bound, so this is what establishes that the pruning only cuts
+branches that cannot win. It caught nothing, which is the result you want from
+it.
