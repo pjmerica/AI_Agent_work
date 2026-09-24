@@ -185,6 +185,9 @@ table.board tbody tr:hover td { background: #16161f; }
 .col-rank { color: #55557a; width: 46px; font-variant-numeric: tabular-nums; }
 .col-player { font-weight: 550; color: #f0f0f8; }
 .col-game { color: #7a7a9a; font-size: 12px; }
+/* Holds a fixed-width badge and nothing else, so it should not claim the
+   space a header word would. It was the one column class with no rule. */
+.col-pos { width: 1%; white-space: nowrap; }
 
 /* The consensus column is the default answer, so it reads as the primary
    number and the individual books as supporting detail. */

@@ -162,6 +162,29 @@ setTimeout(() => {
   check("back to sitstart", !$("sitstart-view").classList.contains("hidden"));
 
   console.log("");
+  console.log("=== unticking the last book stays unticked ===");
+  // An empty activeBooks meant "no filter", so clearing the last checkbox was
+  // indistinguishable from clearing none: every box redrew ticked and the
+  // numbers jumped back to the full consensus -- the opposite of the click.
+  $("roster-demo").click();
+  const bx = () => [...$("book-toggle-list").querySelectorAll("input[data-book]")];
+  for (let i = 0; i < 20; i++) {
+    const on = bx().find((b) => b.checked);
+    if (!on) break;
+    on.checked = false;
+    on.dispatchEvent(new window.Event("change", { bubbles: true }));
+  }
+  check("no book is left ticked", bx().every((b) => !b.checked),
+    bx().filter((b) => b.checked).length + " still on");
+  const offTxt = txt($("sitstart-output"));
+  check("it says why rather than showing an empty lineup",
+    /No books selected/i.test(offTxt), offTxt.slice(0, 80));
+  check("no stray NaN", !/NaN/.test(offTxt));
+  $("books-all").click();
+  check("'all' brings every book back", bx().every((b) => b.checked));
+  check("and the board returns", !!$("sitstart-output").querySelector("table"));
+
+  console.log("");
   console.log("=== every chip class the app emits is actually styled ===");
   // The K/DEF chips shipped with class "stat-chip", which appears nowhere in
   // the stylesheet, so they rendered as unstyled text with no spacing and ran

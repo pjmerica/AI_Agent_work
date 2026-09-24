@@ -50,7 +50,17 @@
   const rosterSelected = new Set();
   let suggIndex = -1;
 
+  /* Which books the projections are priced from.
+   *
+   * An empty set means "no filter -- use everything", which is the right
+   * default but made unticking the LAST book indistinguishable from unticking
+   * none: activeBooks came back empty, every box redrew ticked, and the
+   * numbers jumped back to the full consensus. The click did the opposite of
+   * what it looked like. booksAllOff records that the user really did clear
+   * the selection.
+   */
   const activeBooks = new Set();
+  let booksAllOff = false;
 
   const BOOK_LABEL = {
     draftkings: "DraftKings",
@@ -213,6 +223,7 @@
     // Dropping it here would make unticking one sportsbook silently delete a
     // projection that sportsbook never provided.
     if (stat.lineSource === "projected") return stat.line;
+    if (booksAllOff) return null;
     if (!activeBooks.size) return stat.line;
     // Detect a multi-book stat by the presence of quotes rather than by
     // lineSource, which is added during the merge and absent on raw feed data.
@@ -696,7 +707,8 @@
 
     return [...counts.entries()].sort((x, y) => y[1] - x[1]).map(([book, n]) => {
       const label = BOOK_LABEL[book] || NONBOOK_SOURCES[book] || book;
-      const on = !activeBooks.size || activeBooks.has(book);
+      const on = booksAllOff ? false
+               : (!activeBooks.size || activeBooks.has(book));
       return "<label><input type=\"checkbox\" data-book=\"" + escapeHtml(book) + "\"" +
         (on ? " checked" : "") + " /> " + escapeHtml(label) +
         (n ? ' <span class="book-count">' + n + "</span>" : "") + "</label>";
@@ -706,6 +718,7 @@
   function applyBookToggle(boxes) {
     const checked = boxes.filter((b) => b.checked);
     activeBooks.clear();
+    booksAllOff = boxes.length > 0 && checked.length === 0;
     if (checked.length !== boxes.length) {
       for (const b of checked) activeBooks.add(b.dataset.book);
     }
@@ -1148,9 +1161,19 @@
     return html;
   }
 
+  // Shown wherever a lineup would be, when the book filter excludes everything.
+  // "nobody eligible" in every slot is technically true and tells you nothing.
+  function noBooksNotice() {
+    return '<div class="coverage-note early">' +
+      "<strong>No books selected.</strong> Every line is filtered out, so " +
+      "nothing can be ranked. Tick a book above, or use " +
+      "<strong>all</strong> to go back to the full consensus.</div>";
+  }
+
   function renderSitStart() {
     const $out = document.getElementById("sitstart-output");
     if (!$out) return;
+    if (booksAllOff) { $out.innerHTML = noBooksNotice(); return; }
 
     const pool = buildSitStartPoolFull();
     if (!pool.size) {
@@ -1211,6 +1234,7 @@
     const $out = document.getElementById("sleeper-output");
     const $meta = document.getElementById("sleeper-meta");
     if (!$out) return;
+    if (booksAllOff) { $out.innerHTML = noBooksNotice(); return; }
 
     const sl = sleeperLive;
     if (!sl || !Array.isArray(sl.leagues) || !sl.leagues.length) {
@@ -2292,6 +2316,7 @@
   document.getElementById("books-all")?.addEventListener("click", (e) => {
     e.preventDefault();
     activeBooks.clear();
+    booksAllOff = false;
     clearSwapCounts();
     renderBookToggles();
     renderSitStart();
@@ -2362,6 +2387,7 @@
   document.getElementById("sleeper-books-all")?.addEventListener("click", (e) => {
     e.preventDefault();
     activeBooks.clear();
+    booksAllOff = false;
     clearSwapCounts();
     renderSleeperBookToggles();
     renderSleeper();

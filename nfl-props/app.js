@@ -7,7 +7,15 @@
   // Which sportsbooks may set a line. Empty = no filter, use the stored
   // consensus. With a subset selected, the line is RE-DERIVED from only those
   // books' quotes rather than reusing a median that included the excluded ones.
+  /* Which books the projections are priced from.
+   *
+   * An empty set means "no filter -- use everything", which made unticking the
+   * LAST book indistinguishable from unticking none: every box redrew ticked
+   * and the numbers jumped back to the full consensus, the opposite of what
+   * the click asked for. booksAllOff records a genuinely empty selection.
+   */
   const activeBooks = new Set();
+  let booksAllOff = false;
 
   const BOOK_LABEL = {
     draftkings: "DraftKings",
@@ -2097,6 +2105,7 @@
   document.getElementById("sleeper-books-all")?.addEventListener("click", (e) => {
     e.preventDefault();
     activeBooks.clear();
+    booksAllOff = false;
     renderSleeperBookToggles();
     renderSleeper();
   });
@@ -2126,6 +2135,7 @@
     const $out = document.getElementById("sleeper-output");
     const $meta = document.getElementById("sleeper-meta");
     if (!$out) return;
+    if (booksAllOff) { $out.innerHTML = noBooksNotice(); return; }
 
     const sl = sleeperLive;
     if (!sl || !Array.isArray(sl.leagues) || !sl.leagues.length) {
@@ -2742,6 +2752,7 @@
     if (!stat || stat.line == null) return null;
     // A projected fill is not a book, so the book filter has no opinion on it.
     if (stat.lineSource === "projected") return stat.line;
+    if (booksAllOff) return null;
     if (!activeBooks.size) return stat.line;
     // Detect a multi-book stat by the presence of quotes rather than by
     // lineSource, which is added during the merge and absent on raw feed data.
@@ -2965,9 +2976,19 @@
     return best;
   }
 
+  // Shown wherever a lineup would be, when the book filter excludes everything.
+  // "nobody eligible" in every slot is technically true and tells you nothing.
+  function noBooksNotice() {
+    return '<div class="verdict" style="border-left:3px solid #6b5326">' +
+      "<strong>No books selected.</strong> Every line is filtered out, so " +
+      "nothing can be ranked. Tick a book above, or use " +
+      "<strong>all</strong> to go back to the full consensus.</div>";
+  }
+
   function renderSitStart() {
     const $out = document.getElementById("sitstart-output");
     if (!$out) return;
+    if (booksAllOff) { $out.innerHTML = noBooksNotice(); return; }
 
     const pool = buildSitStartPoolFull();
     if (!pool.size) {
@@ -3144,7 +3165,8 @@
 
     return [...counts.entries()].sort((x, y) => y[1] - x[1]).map(([book, n]) => {
       const label = BOOK_LABEL[book] || NONBOOK_SOURCES[book] || book;
-      const on = !activeBooks.size || activeBooks.has(book);
+      const on = booksAllOff ? false
+               : (!activeBooks.size || activeBooks.has(book));
       return "<label><input type=\"checkbox\" data-book=\"" + escapeHtml(book) + "\"" +
         (on ? " checked" : "") + " /> " + escapeHtml(label) +
         (n ? ' <span class="book-count">' + n + "</span>" : "") + "</label>";
@@ -3156,6 +3178,7 @@
   function applyBookToggle(boxes) {
     const checked = boxes.filter((b) => b.checked);
     activeBooks.clear();
+    booksAllOff = boxes.length > 0 && checked.length === 0;
     if (checked.length !== boxes.length) {
       for (const b of checked) activeBooks.add(b.dataset.book);
     }
@@ -3177,6 +3200,7 @@
   document.getElementById("books-all")?.addEventListener("click", (e) => {
     e.preventDefault();
     activeBooks.clear();
+    booksAllOff = false;
     renderBookToggles();
     renderSitStart();
   });
