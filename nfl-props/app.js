@@ -570,6 +570,7 @@
     renderSleeperBookToggles();
     for (const [key, file] of [["weekly", "weekly.json"],
                                ["oddsapi", "oddsapi.json"],
+                               ["gamelines", "gamelines.json"],
                                ["dktd", "dk_td.json"]]) {
       if (!cache[key]) {
         try { cache[key] = await fetchJson(file); }
@@ -599,6 +600,7 @@
     if ($h2hView) $h2hView.classList.remove("hidden");
     for (const [key, file] of [["weekly", "weekly.json"],
                                ["oddsapi", "oddsapi.json"],
+                               ["gamelines", "gamelines.json"],
                                ["dktd", "dk_td.json"]]) {
       if (!cache[key]) {
         try { cache[key] = await fetchJson(file); }
@@ -2150,8 +2152,18 @@
       const mu = (p.matchup || "").trim();
       if (mu.length >= 4) liveTeams.add(mu);
     }
+    // The prop pool alone is not proof of anything: a team with no priced
+    // player at all -- SEA/WAS had two on the whole game midweek -- looked to
+    // this check exactly like a team whose game had finished, and every player
+    // on it was filed as already played and silently dropped. The game lines
+    // cover all 32 teams, so they answer "has this kicked off" properly.
     const teamIsLive = (team) => {
       if (!team) return false;
+      const gl = gameLineFor(team);
+      if (gl) {
+        if (!gl.kickoff) return true;
+        return Date.parse(gl.kickoff) > Date.now();
+      }
       for (const mu of liveTeams) if (mu.includes(team)) return true;
       return false;
     };
@@ -2301,11 +2313,21 @@
         "above only covers who is left to play.</span></div>";
     }
     if (unpriced.length) {
-      html += '<div class="sitstart-section">No market projection</div>' +
+      // These are rostered players the optimizer could not rank, and saying so
+      // matters: a starter who silently vanishes reads as the tool being broken
+      // rather than the market being thin.
+      html += '<div class="sitstart-section">No market projection (' +
+        unpriced.length + ")</div>" +
         '<div class="verdict" style="font-size:13px">' +
-        escapeHtml(unpriced.map((r) => r.name).join(", ")) +
+        escapeHtml(unpriced.map((r) =>
+          r.name + " (" + (r.position || "?") + (r.team ? ", " + r.team : "") + ")"
+        ).join(", ")) +
         '<br /><span style="color:#6a6a8a">No book has priced their usage this ' +
-        "week. That usually means an unsettled role, not a projection of zero.</span></div>";
+        "week, so they cannot be ranked and are left out of the lineup above. " +
+        "That is an unpriced role, <strong>not</strong> a projection of zero " +
+        "&mdash; if one of these is a player you would normally start, start " +
+        "him. Coverage is thinnest early in the week and fills in by " +
+        "Sunday.</span></div>";
     }
     if (noMarket.length) {
       html += '<div class="sitstart-section">Not covered by props</div>' +
@@ -2342,6 +2364,39 @@
 
   // Same merge as Start/Sit but keeping the raw stats, which H2H needs for the
   // breakdown. Start/Sit only needs the total, so it discards them.
+  const DST_TEAM_ALIASES = { JAX: "JAC", WSH: "WAS", LAR: "LAR", LA: "LAR" };
+
+  function teamKey(t) {
+    const k = String(t || "").toUpperCase();
+    return DST_TEAM_ALIASES[k] || k;
+  }
+
+  // The Odds API returns every game it has posted, which runs several weeks
+  // ahead -- each team appears more than once. Take the team's SOONEST game
+  // that has not already kicked off, so a defense is never scored off next
+  // week's line.
+  function gameLineFor(team) {
+    const gl = cache["gamelines"];
+    if (!gl || !Array.isArray(gl.games)) return null;
+    const t = teamKey(team);
+    const now = Date.now();
+    let best = null, bestAt = Infinity;
+    for (const g of gl.games) {
+      if (!g.teams || !g.teams[t]) continue;
+      const at = g.kickoff ? Date.parse(g.kickoff) : NaN;
+      // A game already under way is still this week's game: keep it rather
+      // than skipping ahead, and let the played/locked check retire the slot.
+      const score = isNaN(at) ? 0 : (at < now ? now - at : at - now);
+      const future = isNaN(at) || at >= now - 4 * 3600 * 1000;
+      if (!future) continue;
+      if (score < bestAt) { bestAt = score; best = g; }
+    }
+    if (!best) return null;
+    return { ...best.teams[t], matchup: best.matchup, total: best.total,
+             kickoff: best.kickoff,
+             opp: t === best.home ? best.away : best.home };
+  }
+
   function buildSitStartPoolFull() {
     const wk = cache["weekly"], oa = cache["oddsapi"], dk = cache["dktd"];
     const merged = new Map();
