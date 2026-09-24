@@ -469,6 +469,25 @@
     if ($sleeperView) $sleeperView.classList.add("hidden");
   }
 
+  /* Stamp the real week number over the markup's placeholders.
+   *
+   * The markup ships "Week 1" in three places -- the tab button and two
+   * callouts -- so the page reads sensibly before any fetch. This used to be
+   * corrected inside renderWeekly, which meant the board opened on the
+   * Rankings tab still advertising "Week 1" on a week 3 slate, and the two
+   * callouts were never corrected at all.
+   */
+  function applyWeekLabels() {
+    const wk = cache["weekly"];
+    if (!wk || wk.week == null) return;
+    const label = "Week " + wk.week;
+    const $tab = document.querySelector("[data-week-label]");
+    if ($tab) $tab.textContent = label;
+    for (const el of document.querySelectorAll("[data-week-name]")) {
+      el.textContent = label;
+    }
+  }
+
   function showTableView() {
     hideAllViews();
     if ($tableView) $tableView.classList.remove("hidden");
@@ -3308,11 +3327,7 @@
 
     players.sort((a, b) => (weeklySortDesc ? b.points - a.points : a.points - b.points));
 
-    // Keep the tab label honest as the season rolls: the markup ships "Week 1"
-    // so the tab reads correctly before any fetch, but the data knows its own
-    // week and wins once loaded.
-    const $tab = document.querySelector('.view-tab[data-view="weekly"]');
-    if ($tab && wk.week != null) $tab.textContent = `Week ${wk.week}`;
+    applyWeekLabels();
 
     if ($meta) {
       const games = wk.gameCount || 0;
@@ -3795,4 +3810,17 @@
   }
 
   load();
+
+  // The week number lives in weekly.json, which no view fetches until it is
+  // opened -- so the board used to sit on the Rankings tab advertising "Week 1"
+  // on a week 3 slate. Fetch it once at boot purely to stamp the labels; the
+  // views that need the data still load it themselves and hit the browser
+  // cache.
+  (async () => {
+    if (!cache["weekly"]) {
+      try { cache["weekly"] = await fetchJson("weekly.json"); }
+      catch (e) { return; }
+    }
+    applyWeekLabels();
+  })();
 })();
