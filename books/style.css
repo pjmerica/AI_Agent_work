@@ -258,3 +258,35 @@ td.num.partial { color: #7a7a9a; }
 }
 
 .foot-star { color: #f5b041; }
+
+/* Toggle control, matching the segmented buttons. */
+.toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #191926;
+  border: 1px solid #2c2c44;
+  border-radius: 7px;
+  padding: 7px 12px;
+  font-size: 13px;
+  color: #9a9ab8;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.toggle:hover { color: #d4d4e8; }
+.toggle input { accent-color: #5b4cf5; margin: 0; cursor: pointer; }
+
+/* A row nobody priced beyond a touchdown. Its total is a floor, not a
+   projection, so it is dimmed and tagged rather than ranked as an equal. */
+tr.td-only td { color: #7a7a9a; }
+tr.td-only .col-player { color: #9a9ab8; font-weight: 500; }
+.td-only-tag {
+  margin-left: 6px;
+  padding: 1px 6px;
+  border-radius: 4px;
+  background: #2e2620;
+  color: #c9a06a;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+}

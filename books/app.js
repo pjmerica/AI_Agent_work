@@ -25,6 +25,7 @@
   var search = "";
   var sortKey = "consensus";
   var sortDir = -1;
+  var hideTdOnly = true;
 
   // Column order is fixed rather than derived from the data so the table does
   // not reshuffle between refreshes as books come and go.
@@ -230,9 +231,24 @@
                    (r.matchup || "")).toLowerCase();
         if (hay.indexOf(q) === -1) return false;
       }
+      if (hideTdOnly && isTdOnly(r)) return false;
       // A row with nothing priced anywhere is noise.
       return Object.keys(r.consensus).length > 0;
     });
+  }
+
+  /* A row nobody priced beyond a touchdown.
+   *
+   * 200 of 455 rows on the week 3 board are in this state, and their totals
+   * are not comparable to a fully-priced player: Jonathan Taylor comes out at
+   * 3.4 next to Trey McBride at 12.6, which is a statement about market
+   * coverage rather than about the players. Sorting them into the same list
+   * without saying so is the misleading part, so they are marked and can be
+   * hidden.
+   */
+  function isTdOnly(r) {
+    var keys = Object.keys(r.consensus);
+    return keys.length === 1 && keys[0] === "any_tds";
   }
 
   function cellValue(r, bookKey) {
@@ -381,9 +397,13 @@
       var spread = vals.length > 1
         ? Math.max.apply(null, vals) - Math.min.apply(null, vals) : null;
 
-      html += "<tr>" +
+      var tdOnly = isTdOnly(r);
+      html += '<tr' + (tdOnly ? ' class="td-only"' : "") + ">" +
         '<td class="col-rank">' + (i + 1) + "</td>" +
-        '<td class="col-player">' + escapeHtml(r.name) + "</td>" +
+        '<td class="col-player">' + escapeHtml(r.name) +
+        (tdOnly ? ' <span class="td-only-tag" title="No venue priced this ' +
+          'player beyond an anytime touchdown, so this total is a floor ' +
+          'rather than a projection.">TD only</span>' : "") + "</td>" +
         '<td class="col-pos"><span class="pos-badge pos-' +
           escapeHtml(r.position || "NA") + '">' +
           escapeHtml(r.position || "—") + "</span></td>" +
@@ -474,6 +494,13 @@
         ps.querySelectorAll("button").forEach(function (x) {
           x.classList.toggle("active", x === b);
         });
+        render();
+      });
+    }
+    var h = document.getElementById("hide-tdonly");
+    if (h) {
+      h.addEventListener("change", function () {
+        hideTdOnly = h.checked;
         render();
       });
     }
