@@ -28,6 +28,7 @@ and uses this to fill gaps.
 from __future__ import annotations
 
 import json
+import math
 import re
 import sys
 import time
@@ -65,6 +66,42 @@ def http_json(url: str) -> dict:
         raise RuntimeError(f"HTTP {e.code}") from None
     except URLError as e:
         raise RuntimeError(f"network error: {e}") from None
+
+
+# Convert P(scores at least one TD) into EXPECTED touchdowns.
+#
+# These two are not the same number, and the board treats them as one: Kalshi's
+# any_tds is a true expectation summed off a 1+/2+/3+ ladder, while a
+# sportsbook's anytime-TD price is only P(X >= 1). For most players the gap is
+# nothing -- a receiver who scores 0.15 times a game almost never scores twice.
+# For a goal-line back it is large, and it runs one way: Jahmyr Gibbs priced at
+# 0.72 by DraftKings is 1.10 expected TDs on Kalshi, a 2.3-point difference in
+# half-PPR, and 47 players in week 3 had DraftKings as their only TD source.
+#
+# If touchdowns were Poisson, E[X] = -ln(1 - P(X>=1)) exactly. Measured against
+# 206 players Kalshi and DraftKings both priced, that overshoots (mean error
+# +0.042) because scoring is more concentrated than Poisson -- the players who
+# score are the ones who get the carries. Half the Poisson correction fits
+# best, and the improvement is where it matters:
+#
+#     conversion            overall MAE   goal-line MAE (E[X] >= 0.35, n=53)
+#     raw P(X>=1)              0.0346        0.0744
+#     full Poisson             0.0426        0.0311
+#     half Poisson (below)     0.0225        0.0264
+#
+# Re-derive this if the fit ever looks wrong: the check is to pair this file
+# against weekly.json on name and compare with Kalshi's any_tds.
+POISSON_SHARE = 0.50
+
+
+def expected_tds(p: float) -> float:
+    """P(at least one TD) -> expected TDs."""
+    if p <= 0:
+        return 0.0
+    if p >= 1:
+        return 1.0
+    poisson = -math.log(1.0 - p)
+    return p + POISSON_SHARE * (poisson - p)
 
 
 def american_to_prob(odds) -> float | None:
@@ -140,7 +177,7 @@ def main() -> None:
         # hold on two-way NFL props is ~4-6%, and 0.94 sits in the middle.
         VIG = 0.94
         for label, odds, p in quotes:
-            fair = p * VIG
+            fair = expected_tds(p * VIG)
             rows[label] = {
                 "name": label,
                 "matchup": name,
