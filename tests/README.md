@@ -25,6 +25,7 @@ node tests/board_page.test.js
 node tests/lineup_optimizer.test.js
 node tests/board_optimizer.test.js
 node tests/sleeper_tab.test.js      # hits the live Sleeper API
+node tests/live_smoke.test.js       # hits the published site
 ```
 
 Run them from the repo root, or set `REPO_ROOT`. Each exits non-zero on
@@ -72,3 +73,15 @@ the two cannot drift — and each is tested against its own copy. The optimizer
 uses branch-and-bound, so this is what establishes that the pruning only cuts
 branches that cannot win. It caught nothing, which is the result you want from
 it.
+
+**`live_smoke.test.js`** — fetches the three published pages and their `app.js`
+over the network and runs them, so what it checks is what a visitor actually
+gets. Everything else here runs against the working tree, which cannot catch a
+bad deploy: a stale cache stamp, a file that never got committed, a Pages build
+that has not finished.
+
+One thing to know if this file ever misbehaves: `fetch()` in this environment
+returns the raw gzip body rather than decompressing it, so responses are
+inflated by hand (`1f 8b` magic number). Without that the page source arrives as
+binary and fails to parse — which looked exactly like all three sites being
+broken. The same trap is why `sleeper_tab.test.js` reads `arrayBuffer()`.
