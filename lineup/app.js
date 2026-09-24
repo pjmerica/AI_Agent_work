@@ -39,10 +39,10 @@
   // player_id -> {points} for players whose game has kicked off. Null until
   // loadSleeperPlayed fills it; every reader guards on that.
   let sleeperPlayed = null;
+  let sleeperPlayedKey = null;
 
   // Which league each tab is currently showing.
   let sleeperLeagueIdx = 0;
-  let rootingLeagueIdx = 0;
 
   // Roster picker state. Declared up here with the other shared state because
   // renderSitStart reads it, and a `const` further down leaves it in the
@@ -972,6 +972,41 @@
       candidates.push({ p, pts });
     }
 
+    /* Kickers and defenses, which the prop pool cannot supply.
+     *
+     * They were absent from the wire entirely: no kicker appears in the pool
+     * at all, and Kalshi names a defense "ATL Falcons D/ST" where Sleeper says
+     * "Atlanta Falcons", so the rostered-key check never matched and neither
+     * did anything else. In a league with K and DEF slots that meant the
+     * waiver list could not suggest one even with the slot empty.
+     *
+     * The game-line model prices both, and the Sleeper player map is the
+     * authority on who exists and what they are called, so the candidates come
+     * from there.
+     */
+    if (slots.includes("K") || slots.includes("DEF") || slots.includes("DST")) {
+      const pmap = (cache["sleeperPlayers"] || {}).players || {};
+      for (const pid of Object.keys(pmap)) {
+        const e = pmap[pid];
+        const pos = e[1] === "DST" ? "DEF" : e[1];
+        if (pos !== "K" && pos !== "DEF") continue;
+        if (!slots.includes(pos) && !(pos === "DEF" && slots.includes("DST"))) {
+          continue;
+        }
+        if (rosteredKeys.has(normPlayerName(e[0]))) continue;
+        // A player whose game has kicked off cannot be picked up and started.
+        if (sleeperPlayed && sleeperPlayed.get(String(pid))) continue;
+        const sp = specialPoints(pos, e[2], lg.scoring);
+        if (!sp || sp.points <= 0) continue;
+        if (!emptySlot && sp.points <= weakestStarter) continue;
+        candidates.push({
+          p: { name: e[0], position: pos, matchup: sp.matchup,
+               stats: null, special: sp },
+          pts: sp.points,
+        });
+      }
+    }
+
     const out = [];
     for (const { p, pts } of candidates) {
       const withHim = bestLineupForSlots(
@@ -991,12 +1026,30 @@
         position: p.position,
         matchup: p.matchup,
         points: pts,
+        stats: p.stats,
+        special: p.special || null,
         upgrade: gain,
         replaces: dropped.length ? dropped[0] : null,
       });
     }
     out.sort((a, b) => b.upgrade - a.upgrade || b.points - a.points);
-    return out;
+
+    /* Cap kickers and defenses at the best two each.
+     *
+     * Their projections cluster inside a couple of points of one another -- ten
+     * kickers sat between +0.1 and +2.7 in one league -- so a list sorted
+     * purely by gain filled with eight kickers and buried the skill-position
+     * pickups that are actually worth a roster move. Two is enough to say "your
+     * kicker is beatable and here is who by"; the rest is noise.
+     */
+    const capped = [];
+    let nK = 0, nD = 0;
+    for (const f of out) {
+      if (f.position === "K") { if (nK >= 2) continue; nK++; }
+      else if (f.position === "DEF") { if (nD >= 2) continue; nD++; }
+      capped.push(f);
+    }
+    return capped;
   }
 
   function freeAgentTable(fas, lg) {
@@ -1412,7 +1465,13 @@
   }
 
   async function loadSleeperPlayed(season, week) {
-    if (sleeperPlayed) return sleeperPlayed;
+    // Keyed by season and week, not just "already loaded". Both current callers
+    // pass the same week so the old unconditional cache happened to be
+    // correct, but it would have served last week's played flags after a week
+    // rollover -- silently locking slots for players who have not kicked off.
+    const key = season + ":" + week;
+    if (sleeperPlayed && sleeperPlayedKey === key) return sleeperPlayed;
+    sleeperPlayedKey = key;
     sleeperPlayed = new Map();
     try {
       const stats = await sleeperJson(
