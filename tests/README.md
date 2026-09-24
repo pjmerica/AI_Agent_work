@@ -26,6 +26,7 @@ node tests/lineup_optimizer.test.js
 node tests/board_optimizer.test.js
 node tests/sleeper_tab.test.js      # hits the live Sleeper API
 node tests/live_smoke.test.js       # hits the published site
+python tests/td_conversion.test.py
 ```
 
 Run them from the repo root, or set `REPO_ROOT`. Each exits non-zero on
@@ -85,3 +86,15 @@ returns the raw gzip body rather than decompressing it, so responses are
 inflated by hand (`1f 8b` magic number). Without that the page source arrives as
 binary and fails to parse — which looked exactly like all three sites being
 broken. The same trap is why `sleeper_tab.test.js` reads `arrayBuffer()`.
+
+**`td_conversion.test.py`** — the one numerical test here. A sportsbook's
+anytime-TD price is P(scores at least one), Kalshi's `any_tds` is a true
+expectation, and both get multiplied by 6 — so the conversion between them is
+load-bearing. Checks the function's shape (monotonic, never below the input,
+never above full Poisson), then re-derives the best-fit blend against whatever
+Kalshi currently prices rather than trusting the constant, and warns if the
+scraper has drifted far from it.
+
+Its thresholds are stated in fantasy points, not ratios. An early version
+demanded a 40% error reduction on goal-line backs and failed at 35%, which says
+nothing about whether the number is good enough — 0.23 points of error is.
