@@ -34,7 +34,13 @@ SOURCE_PRIORITY = {"auto": 2, "manual": 1}
 
 def main() -> None:
     if not UD_ADP.exists():
-        raise SystemExit(f"ADP history not found: {UD_ADP}")
+        # The CSV lives in a different repo, which CI does not check out, so
+        # this is the normal state there rather than a failure -- the committed
+        # adp.json stands in. Exiting 0 keeps the workflow log honest about
+        # which steps actually broke. Set UD_ADP_PATH to point at it elsewhere.
+        print(f"ADP history not found at {UD_ADP}; keeping the committed "
+              f"adp.json. Set UD_ADP_PATH to override.")
+        return
 
     # name -> (date, source_priority, row). Keep the newest date; break ties on
     # the same date by source priority.
