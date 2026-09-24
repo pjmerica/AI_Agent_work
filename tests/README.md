@@ -27,6 +27,7 @@ node tests/board_optimizer.test.js
 node tests/sleeper_tab.test.js      # hits the live Sleeper API
 node tests/live_smoke.test.js       # hits the published site
 python tests/td_conversion.test.py
+node tests/dst_model.test.js 2       # week number; hits Sleeper
 ```
 
 Run them from the repo root, or set `REPO_ROOT`. Each exits non-zero on
@@ -98,3 +99,16 @@ scraper has drifted far from it.
 Its thresholds are stated in fantasy points, not ratios. An early version
 demanded a 40% error reduction on goal-line backs and failed at 35%, which says
 nothing about whether the number is good enough — 0.23 points of error is.
+
+**`dst_model.test.js`** — backtests the defense model against what defenses
+actually scored in a completed week. Kickers and defenses have no prop market,
+so they are priced off the game line, and that is a claim worth checking rather
+than assuming.
+
+It asserts the *components*, which is what the model actually claims: sacks and
+takeaways within 0.5 of the real per-game rate, `SCORE_SD` within 2 of the real
+spread of points allowed. It deliberately does not assert accuracy of the
+projection itself. The model mean runs about a point under actual because it
+cannot foresee a defensive touchdown, and its spread is ~1.4 against a real ~6.5
+— a game line knows the expected script and nothing about the pick-six that
+decides the week. These numbers rank defenses; they do not forecast scores.

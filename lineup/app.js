@@ -294,6 +294,16 @@
   // components. Sleeper's own scoring settings supply the rates, so a league
   // that pays 10 for a shutout and one that pays 5 get different numbers off
   // the same line.
+  //
+  // Backtested against weeks 1-2 of 2026 (63 team-games). The components line
+  // up: sacks 2.33 modelled against 2.32-2.41 actual, takeaways 1.11 against
+  // 0.91-1.35, points-allowed SD 10.8 against 10.3-11.0. The mean sits about a
+  // point low, which is the defensive touchdowns it cannot foresee.
+  //
+  // What it cannot do is spread: model SD is ~1.4 where real D/ST scores swing
+  // ~6. That is inherent -- a game line knows the expected game script and
+  // nothing about the pick-six that decides the week -- so these numbers rank
+  // defenses sensibly and should not be read as forecasts of an actual score.
 
   const DST_TEAM_ALIASES = { JAX: "JAC", WSH: "WAS", LAR: "LAR", LA: "LAR" };
 
@@ -335,7 +345,11 @@
   // close enough and far more stable than a discrete model fit to one number.
   // SD of ~9.7 is the long-run spread of single-team NFL scores around their
   // closing implied total.
-  const SCORE_SD = 9.7;
+  // SD of a single team's score around its closing implied total. Measured at
+  // 11.0 across 64 team-games in weeks 1-2 of 2026; 9.7 was the prior estimate
+  // and ran about 12% low, which made the points-allowed buckets too confident
+  // -- it understated both shutouts and blowouts.
+  const SCORE_SD = 10.8;
 
   function normCdf(x) {
     // Abramowitz & Stegun 7.1.26 via erf.
@@ -363,14 +377,18 @@
   }
 
   // Expected sacks and takeaways scale with how much the opponent trails and
-  // has to throw. League-average is ~2.4 sacks and ~1.3 takeaways per team-game;
-  // each point of favouredness is worth a little of both, since trailing teams
+  // has to throw. Baselines measured over 64 team-games in weeks 1-2 of 2026:
+  // 2.33 sacks and 1.11 takeaways per team-game. The earlier takeaway baseline
+  // of 1.30 was about 17% high, which quietly added a fifth of a point to every
+  // defense.
+  //
+  // Each point of favouredness is worth a little of both, since trailing teams
   // pass more and pass worse.
   function dstVolume(spread) {
-    const fav = -(spread || 0);              // +7 means this team is a 7-pt favourite
+    const fav = -(spread || 0);              // +7 means a 7-point favourite
     return {
-      sacks: Math.max(0.8, 2.35 + fav * 0.055),
-      takeaways: Math.max(0.4, 1.30 + fav * 0.030),
+      sacks: Math.max(0.8, 2.33 + fav * 0.055),
+      takeaways: Math.max(0.35, 1.11 + fav * 0.030),
     };
   }
 
@@ -387,11 +405,11 @@
     const vol = dstVolume(line.spread);
     pts += vol.sacks * n("sack", 1);
 
-    // Sleeper splits a takeaway into interception and fumble recovery. The
-    // long-run split is about 55/45, and a forced fumble is scored alongside
-    // the recovery where the league pays for it.
-    const ints = vol.takeaways * 0.55;
-    const fums = vol.takeaways * 0.45;
+    // Sleeper splits a takeaway into interception and fumble recovery. Measured
+    // at 58/42 over weeks 1-2; a forced fumble is scored alongside the recovery
+    // where the league pays for it.
+    const ints = vol.takeaways * 0.58;
+    const fums = vol.takeaways * 0.42;
     pts += ints * n("int", 2);
     pts += fums * n("fum_rec", 2);
     pts += fums * n("ff", 0);
