@@ -144,8 +144,6 @@
     K: ["K"], DEF: ["DEF"], DST: ["DEF"],
   };
 
-  const activeMarkets = new Set(
-    ["receptions", "rec_yds", "rush_yds", "pass_yds", "pass_tds", "any_tds"]);
 
   const SLEEPER_API = "https://api.sleeper.app/v1";
 
@@ -236,10 +234,17 @@
     return Math.round(mid * 100) / 100;
   }
 
+  // Half-PPR points from a set of market lines.
+  //
+  // This reads through the book filter. It did not, which meant the Manual
+  // Roster tab's "price from these books" control did nothing at all: the pool
+  // caches each player's points from here, so unticking Kalshi still left Josh
+  // Allen with his xTD 0.75 and an unchanged 23.3. The Sleeper tab was fine
+  // because it scores through leaguePoints, which always filtered.
   function weeklyPoints(stats, format) {
     const g = (k) => {
-      const s = stats[k];
-      return s && s.line != null ? s.line : 0;
+      const v = lineUnderFilter(stats[k]);
+      return v == null ? 0 : v;
     };
     let pts = 0;
     pts += g("pass_yds") * 0.04;
@@ -256,22 +261,6 @@
     return Math.round(pts * 100) / 100;
   }
 
-  function sitStartPoints(stats, format) {
-    const g = (k) => {
-      if (!activeMarkets.has(k)) return 0;
-      const v = lineUnderFilter(stats[k]);
-      return v == null ? 0 : v;
-    };
-    let pts = 0;
-    pts += g("pass_yds") * 0.04;
-    pts += g("pass_tds") * 4;
-    pts += g("rush_yds") * 0.1;
-    pts += g("rec_yds") * 0.1;
-    pts += g("any_tds") * 6;
-    if (format === "ppr") pts += g("receptions") * 1.0;
-    else if (format === "half") pts += g("receptions") * 0.5;
-    return Math.round(pts * 100) / 100;
-  }
 
   function leaguePoints(stats, scoring, position) {
     // Same book filter Start/Sit uses, so a book unticked on either tab means
@@ -633,8 +622,12 @@
       } else {
         detail = `${s.rungs} strikes`;
       }
+      // A line the book filter excluded still shows, struck through, so it is
+      // obvious the number exists and why it is not counted -- rather than the
+      // stat silently vanishing and the total dropping for no visible reason.
+      const off = lineUnderFilter(s) == null;
       parts.push(
-        `<span class="market-chip ${cls}${s.lineSource === "books" && s.min !== s.max ? " book-split" : ""}" ` +
+        `<span class="market-chip ${cls}${off ? " stat-off" : ""}${s.lineSource === "books" && s.min !== s.max ? " book-split" : ""}" ` +
         `title="${escapeHtml(WEEKLY_SOURCE_LABEL[s.lineSource] || "")}\n${escapeHtml(detail)}">` +
         `<span class="mk-label">${escapeHtml(STAT_LABELS[k] || k)}</span> ` +
         `${mark}${s.line.toFixed(dec)}</span>`
@@ -2036,6 +2029,137 @@
     renderSleeperBookToggles();
     renderSleeper();
   }
+
+  /* -- Event wiring -----------------------------------------------------------
+   * This was missing entirely when lineup/ was split out of nfl-props: the
+   * markup shipped with a search box, suggestion list, paste area, demo and
+   * clear buttons, a Sleeper sign-in and two "all books" links, and not one of
+   * them was connected. Only the tab switcher was. The Manual Roster tab did
+   * nothing at all, and Sleeper sign-in worked only when localStorage already
+   * held a username from the other site -- which is why it looked fine in
+   * testing, where the functions were driven directly rather than through the
+   * page.
+   */
+  (function initRosterPicker() {
+    const $in = document.getElementById("roster-search");
+    const $sugg = document.getElementById("roster-suggestions");
+    if (!$in || !$sugg) return;
+
+    $in.addEventListener("input", () => { suggIndex = -1; renderRosterSuggestions(); });
+    $in.addEventListener("keydown", (e) => {
+      const items = [...$sugg.querySelectorAll("[data-key]")];
+      if (e.key === "ArrowDown" || e.key === "ArrowUp") {
+        if (!items.length) return;
+        e.preventDefault();
+        suggIndex += (e.key === "ArrowDown" ? 1 : -1);
+        if (suggIndex < 0) suggIndex = items.length - 1;
+        if (suggIndex >= items.length) suggIndex = 0;
+        renderRosterSuggestions();
+      } else if (e.key === "Enter") {
+        e.preventDefault();
+        // Enter with nothing highlighted takes the top hit, which is what
+        // typing a full name and hitting return should obviously do.
+        const pick = items[suggIndex >= 0 ? suggIndex : 0];
+        if (pick) addRosterKey(pick.dataset.key);
+      } else if (e.key === "Escape") {
+        $sugg.style.display = "none";
+        suggIndex = -1;
+      }
+    });
+    $sugg.addEventListener("click", (e) => {
+      const div = e.target.closest("[data-key]");
+      if (div) addRosterKey(div.dataset.key);
+    });
+    document.addEventListener("click", (e) => {
+      if (!$in.contains(e.target) && !$sugg.contains(e.target)) {
+        $sugg.style.display = "none";
+        suggIndex = -1;
+      }
+    });
+  })();
+
+  // The paste path stays available for a whole roster at once; each line goes
+  // through the same loose matcher and becomes a chip. Lines that do not
+  // resolve are left in the box so it is obvious which ones failed.
+  document.getElementById("roster-go")?.addEventListener("click", () => {
+    const $ta = document.getElementById("roster-input");
+    if (!$ta) return;
+    const pool = buildSitStartPoolFull();
+    const altIndex = new Map();
+    for (const [k, p] of pool) {
+      const alt = altPlayerKey(p.name);
+      if (!altIndex.has(alt)) altIndex.set(alt, []);
+      altIndex.get(alt).push(k);
+    }
+    const misses = [];
+    for (const line of $ta.value.split("\n").map((l) => l.trim()).filter(Boolean)) {
+      const cleaned = line.replace(/\s*[-–—(].*$/, "").trim();
+      const k = normPlayerName(cleaned);
+      if (pool.has(k)) { rosterSelected.add(k); continue; }
+      const hits = altIndex.get(altPlayerKey(cleaned));
+      if (hits && hits.length === 1) { rosterSelected.add(hits[0]); continue; }
+      misses.push(line);
+    }
+    $ta.value = misses.join("\n");
+    renderRosterTags();
+    renderSitStart();
+  });
+
+  document.getElementById("books-all")?.addEventListener("click", (e) => {
+    e.preventDefault();
+    activeBooks.clear();
+    renderBookToggles();
+    renderSitStart();
+  });
+
+  document.getElementById("roster-clear")?.addEventListener("click", () => {
+    rosterSelected.clear();
+    renderRosterTags();
+    renderSitStart();
+  });
+
+  document.getElementById("roster-demo")?.addEventListener("click", () => {
+    const pool = buildSitStartPoolFull();
+    rosterSelected.clear();
+    for (const n of ["Josh Allen", "Jahmyr Gibbs", "Bijan Robinson", "Puka Nacua",
+                     "CeeDee Lamb", "Brock Bowers", "Chase Brown",
+                     "Jaxon Smith-Njigba", "Trey McBride", "Derrick Henry"]) {
+      const k = normPlayerName(n);
+      if (pool.has(k)) rosterSelected.add(k);
+    }
+    renderRosterTags();
+    renderSitStart();
+  });
+
+  document.getElementById("sleeper-go")?.addEventListener("click", () => {
+    const $u = document.getElementById("sleeper-user");
+    loadSleeperUser($u ? $u.value : "");
+  });
+  document.getElementById("sleeper-user")?.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") loadSleeperUser(e.target.value);
+  });
+  document.getElementById("sleeper-forget")?.addEventListener("click", () => {
+    sleeperLive = null;
+    try { localStorage.removeItem(SLEEPER_LS_KEY); } catch (e) { /* ignore */ }
+    const $u = document.getElementById("sleeper-user");
+    if ($u) $u.value = "";
+    const $forget = document.getElementById("sleeper-forget");
+    if ($forget) $forget.hidden = true;
+    const $chips = document.getElementById("sleeper-league-chips");
+    if ($chips) $chips.innerHTML = "";
+    const $meta = document.getElementById("sleeper-meta");
+    if ($meta) $meta.textContent = "";
+    sleeperStatus("");
+    const $out = document.getElementById("sleeper-output");
+    if ($out) $out.innerHTML = '<div class="empty">Enter a Sleeper username to load your leagues.</div>';
+  });
+
+  document.getElementById("sleeper-books-all")?.addEventListener("click", (e) => {
+    e.preventDefault();
+    activeBooks.clear();
+    renderSleeperBookToggles();
+    renderSleeper();
+  });
 
   document.getElementById("view-tabs")?.addEventListener("click", (e) => {
     const tab = e.target.closest(".view-tab");

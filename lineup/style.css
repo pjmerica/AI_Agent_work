@@ -920,3 +920,58 @@ tr.row-nan:hover { opacity: 0.85; }
 }
 
 .coverage-note .coverage-sub { display: block; margin-top: 6px; opacity: 0.85; }
+
+/* -- Collapsible help ------------------------------------------------------
+   The callouts had grown to 320 words of prose sitting between the reader and
+   the tool. The lead stays visible because it explains what the tab is; the
+   mechanics move in here, where they are one click away when a number looks
+   wrong and invisible the rest of the time. */
+.help {
+  margin: 0 0 16px;
+  border: 1px solid #2a2a40;
+  border-radius: 8px;
+  background: #15151f;
+}
+
+.help > summary {
+  padding: 9px 14px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 550;
+  color: #9a9ab8;
+  list-style: none;
+  user-select: none;
+}
+
+.help > summary::-webkit-details-marker { display: none; }
+
+.help > summary::before {
+  content: "\203A";
+  display: inline-block;
+  margin-right: 8px;
+  color: #5b5b80;
+  transition: transform 0.15s ease;
+}
+
+.help[open] > summary::before { transform: rotate(90deg); }
+.help > summary:hover { color: #d4d4e8; }
+
+.help-body {
+  padding: 2px 16px 14px 30px;
+  font-size: 13px;
+  line-height: 1.62;
+  color: #8a8aa8;
+  border-top: 1px solid #22223a;
+  margin-top: 2px;
+  padding-top: 12px;
+}
+
+.help-body p { margin: 0 0 11px; }
+.help-body p:last-child { margin-bottom: 0; }
+.help-body strong { color: #b4b4d0; }
+.help-body em { color: #a0a0bc; font-style: italic; }
+
+/* Inline copies of the row markers, so the help text shows the same thing the
+   table does rather than describing it. */
+.tag-swap { color: #58d68d; font-weight: 700; }
+.tag-sit { color: #e8a0a0; font-weight: 700; }
