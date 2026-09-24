@@ -121,6 +121,7 @@
     expected: "Expected count — sum of P(X ≥ k) across the ladder",
     books: "Sportsbook consensus — median across books",
     "dk-td": "DraftKings anytime-TD price, de-vigged (P of 1+, so slightly low)",
+    projected: "PROJECTION, not a market price — season estimate / 17",
   };
 
   const LINEUP_SLOTS = [
@@ -196,8 +197,24 @@
     return lut.byKey.get(normPlayerName(name)) || lut.byAlt.get(altPlayerKey(name)) || null;
   }
 
+  /* Exact-name lookup, for when a wrong match would be worse than no match.
+   *
+   * lookupProj falls back to an initial-plus-surname key, which is right for
+   * reading a position -- matching the wrong Williams still yields "QB" -- but
+   * wrong for copying numbers. It handed CJ Williams (0.045 expected TDs, a
+   * deep bench receiver) Caleb Williams's 16.7-point quarterback projection,
+   * and the same key collides A.J. Brown with Amon-Ra St. Brown.
+   */
+  function lookupProjExact(lut, name) {
+    return lut.byKey.get(normPlayerName(name)) || null;
+  }
+
   function lineUnderFilter(stat) {
     if (!stat || stat.line == null) return null;
+    // A projected fill is not a book, so the book filter has no opinion on it.
+    // Dropping it here would make unticking one sportsbook silently delete a
+    // projection that sportsbook never provided.
+    if (stat.lineSource === "projected") return stat.line;
     if (!activeBooks.size) return stat.line;
     // Detect a multi-book stat by the presence of quotes rather than by
     // lineSource, which is added during the merge and absent on raw feed data.
@@ -510,6 +527,20 @@
     };
   }
 
+  // How many players in the pool are carrying a projected fill rather than a
+  // posted line. Stated alongside the coverage count, since the two together
+  // are the honest picture of a midweek board.
+  function projFillCount() {
+    try {
+      const pool = buildSitStartPoolFull();
+      let n = 0;
+      pool.forEach((p) => { if (p.projFilled) n++; });
+      return n;
+    } catch (e) {
+      return 0;
+    }
+  }
+
   function coverageBanner() {
     const c = coverageState();
     if (!c || !c.thin.length) return "";
@@ -528,6 +559,14 @@
         : "Still waiting on: " + names + ". Players in those games are listed " +
           "under <em>No market projection</em> rather than ranked.") +
       (early ? " Waiting on " + names + "." : "") +
+      (function () {
+        const n = projFillCount();
+        if (!n) return "";
+        return " <span class=\"coverage-sub\">" + n + " player" +
+          (n === 1 ? " is" : "s are") + " ranked on a season projection " +
+          "(marked ≈) because the market priced only a touchdown for " +
+          "them &mdash; a baseline, not a price.</span>";
+      })() +
       "</div>";
   }
 
@@ -565,10 +604,14 @@
       if (!s || s.line == null) continue;
       const dec = k === "any_tds" ? 2
                 : (k.endsWith("_tds") || k === "receptions") ? 1 : 0;
-      const cls = s.lineSource === "fitted" ? "src-fit"
+      const cls = s.lineSource === "projected" ? "src-proj"
+                : s.lineSource === "fitted" ? "src-fit"
                 : s.lineSource === "books" ? "src-fanduel"
                 : s.lineSource === "dk-td" ? "src-bovada" : "src-kalshi";
-      const mark = s.lineSource === "fitted" ? "~" : "";
+      // A projected fill carries a distinct mark so it never reads as a
+      // posted line at a glance.
+      const mark = s.lineSource === "projected" ? "≈"
+                 : s.lineSource === "fitted" ? "~" : "";
       // Name each book and the number it posted, so a consensus is auditable
       // rather than a black box. Books that agree collapse to one line; the
       // interesting case is the one that disagrees.
@@ -584,6 +627,9 @@
         if (s.min !== s.max) detail += `\nspread ${s.min}–${s.max}`;
       } else if (s.lineSource === "dk-td") {
         detail = `DraftKings ${s.odds}`;
+      } else if (s.lineSource === "projected") {
+        detail = "Mike Clay season projection / 17. No book posted this " +
+          "market, so this is a neutral-matchup baseline, not a price.";
       } else {
         detail = `${s.rungs} strikes`;
       }
@@ -640,6 +686,39 @@
     }
   }
 
+  /* Per-game baseline from a season projection.
+   *
+   * 198 of 297 players on the week 3 board had a touchdown line and nothing
+   * else, which the tdOnly rule correctly refuses to rank -- 0.56 expected TDs
+   * is 3.4 points, and that is not a Jonathan Taylor projection. But dropping
+   * him entirely is worse than showing a floor: it emptied lineup slots while a
+   * genuine starter sat in a "no market projection" list, which is how a thin
+   * Wednesday board reads as a broken page.
+   *
+   * Mike Clay's season numbers cover 424 players, so a seventeenth of them is a
+   * defensible neutral-matchup baseline. It is NOT a market price and is
+   * labelled as such everywhere it surfaces: no book posted it, it ignores this
+   * week's opponent, and it does not move when a book filter changes.
+   */
+  const GAMES_IN_SEASON = 17;
+
+  // Only stats the weekly board also carries, so a filled gap is comparable to
+  // a real line rather than introducing a category nothing else prices.
+  const PROJ_FILL_STATS = ["pass_yds", "pass_tds", "rush_yds", "rec_yds",
+                           "receptions"];
+
+  function projPerGame(proj) {
+    if (!proj || !proj.stats) return null;
+    const out = {};
+    for (const k of PROJ_FILL_STATS) {
+      const v = proj.stats[k];
+      if (typeof v === "number" && isFinite(v) && v > 0) {
+        out[k] = Math.round((v / GAMES_IN_SEASON) * 10) / 10;
+      }
+    }
+    return Object.keys(out).length ? out : null;
+  }
+
   function buildSitStartPoolFull() {
     const wk = cache["weekly"], oa = cache["oddsapi"], dk = cache["dktd"];
     const merged = new Map();
@@ -681,13 +760,39 @@
     for (const [key, p] of merged) {
       const fp = lookupProj(fpLut, p.name), clay = lookupProj(clayLut, p.name);
       const priced = Object.values(p.stats).filter((s) => s.line != null);
+      const tdOnly = priced.length === 1 && p.stats.any_tds &&
+                     p.stats.any_tds.line != null;
+
+      // Fill usage from the season projection when the market priced only a
+      // touchdown. Clay is preferred over the FantasyPros feed because
+      // data.json is currently carrying corrupt totals (4142.7 passing TDs),
+      // which would swamp anything derived from it.
+      let filled = false;
+      if (tdOnly) {
+        // Exact match only: a filled stat line is a number, and the loose
+        // surname key is not safe for numbers.
+        const clayExact = lookupProjExact(clayLut, p.name);
+        const fpExact = lookupProjExact(fpLut, p.name);
+        const perGame = projPerGame(clayExact) || projPerGame(fpExact);
+        if (perGame) {
+          for (const [statKey, v] of Object.entries(perGame)) {
+            if (p.stats[statKey] && p.stats[statKey].line != null) continue;
+            p.stats[statKey] = { line: v, lineSource: "projected" };
+            filled = true;
+          }
+        }
+      }
+
       pool.set(key, {
         name: p.name,
         matchup: p.matchup || "",
         position: (fp && fp.position) || (clay && clay.position) || null,
         points: weeklyPoints(p.stats, "half"),
         stats: p.stats,
-        tdOnly: priced.length === 1 && p.stats.any_tds && p.stats.any_tds.line != null,
+        // Still flagged as unpriced usage even once filled, so callers that
+        // want market-only numbers can still tell the difference.
+        tdOnly: tdOnly && !filled,
+        projFilled: filled,
         statCount: priced.length,
       });
     }

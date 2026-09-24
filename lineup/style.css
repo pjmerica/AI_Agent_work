@@ -909,3 +909,14 @@ tr.row-nan:hover { opacity: 0.85; }
 }
 .coverage-note strong { color: #f0f0f5; }
 .coverage-note em { font-style: normal; color: #c9c9dd; }
+
+/* A projected fill: no book posted this market, so the number is a season
+   estimate divided by 17 rather than a price. Deliberately the coolest, least
+   confident colour on the board, and always prefixed with a squiggle. */
+.market-chip.src-proj {
+  background: #23232f;
+  border-color: #3a3a4e;
+  color: #9a9ab0;
+}
+
+.coverage-note .coverage-sub { display: block; margin-top: 6px; opacity: 0.85; }
