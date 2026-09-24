@@ -1397,6 +1397,43 @@
     return lut.byKey.get(normPlayerName(name)) || lut.byAlt.get(altPlayerKey(name)) || null;
   }
 
+  /* Exact-name lookup, for when a wrong match is worse than no match.
+   *
+   * lookupProj falls back to an initial-plus-surname key, which is right for
+   * reading a position -- matching the wrong Williams still yields "QB" -- and
+   * wrong for copying numbers. It handed CJ Williams, a deep bench receiver
+   * with 0.045 expected TDs, Caleb Williams's quarterback projection.
+   */
+  function lookupProjExact(lut, name) {
+    return lut.byKey.get(normPlayerName(name)) || null;
+  }
+
+  /* Per-game baseline from a season projection.
+   *
+   * Most of the weekly board is a touchdown line and nothing else -- 198 of 297
+   * players in week 3 -- which the tdOnly rule rightly refuses to rank on. But
+   * dropping them left lineup slots empty while genuine starters sat in a "no
+   * market projection" list. Mike Clay's season numbers over 17 are a
+   * defensible neutral-matchup floor. Never presented as a price: the chip
+   * carries its own source and marker.
+   */
+  const GAMES_IN_SEASON = 17;
+
+  const PROJ_FILL_STATS = ["pass_yds", "pass_tds", "rush_yds", "rec_yds",
+                           "receptions"];
+
+  function projPerGame(proj) {
+    if (!proj || !proj.stats) return null;
+    const out = {};
+    for (const k of PROJ_FILL_STATS) {
+      const v = proj.stats[k];
+      if (typeof v === "number" && isFinite(v) && v > 0) {
+        out[k] = Math.round((v / GAMES_IN_SEASON) * 10) / 10;
+      }
+    }
+    return Object.keys(out).length ? out : null;
+  }
+
   function fmtNum(v, dec) {
     if (v == null || !isFinite(v)) return "—";
     return v.toFixed(dec == null ? 1 : dec);
@@ -2291,13 +2328,34 @@
     for (const [key, p] of merged) {
       const fp = lookupProj(fpLut, p.name), clay = lookupProj(clayLut, p.name);
       const priced = Object.values(p.stats).filter((s) => s.line != null);
+      const tdOnly = priced.length === 1 && p.stats.any_tds &&
+                     p.stats.any_tds.line != null;
+
+      // Fill usage from the season projection when only a touchdown is priced.
+      // Clay over the FantasyPros feed because data.json currently carries
+      // corrupt totals (4142.7 passing TDs). Exact name match only: a filled
+      // stat is a number, and the loose surname key is not safe for numbers.
+      let filled = false;
+      if (tdOnly) {
+        const perGame = projPerGame(lookupProjExact(clayLut, p.name)) ||
+                        projPerGame(lookupProjExact(fpLut, p.name));
+        if (perGame) {
+          for (const [statKey, v] of Object.entries(perGame)) {
+            if (p.stats[statKey] && p.stats[statKey].line != null) continue;
+            p.stats[statKey] = { line: v, lineSource: "projected" };
+            filled = true;
+          }
+        }
+      }
+
       pool.set(key, {
         name: p.name,
         matchup: p.matchup || "",
         position: (fp && fp.position) || (clay && clay.position) || null,
         points: weeklyPoints(p.stats, "half"),
         stats: p.stats,
-        tdOnly: priced.length === 1 && p.stats.any_tds && p.stats.any_tds.line != null,
+        tdOnly: tdOnly && !filled,
+        projFilled: filled,
         statCount: priced.length,
       });
     }
@@ -2538,6 +2596,8 @@
   // ("these books do not price him"), not a zero.
   function lineUnderFilter(stat) {
     if (!stat || stat.line == null) return null;
+    // A projected fill is not a book, so the book filter has no opinion on it.
+    if (stat.lineSource === "projected") return stat.line;
     if (!activeBooks.size) return stat.line;
     // Detect a multi-book stat by the presence of quotes rather than by
     // lineSource, which is added during the merge and absent on raw feed data.
@@ -3154,6 +3214,7 @@
     expected: "Expected count — sum of P(X ≥ k) across the ladder",
     books: "Sportsbook consensus — median across books",
     "dk-td": "DraftKings anytime-TD price, de-vigged (P of 1+, so slightly low)",
+    projected: "PROJECTION, not a market price — season estimate / 17",
   };
 
   function weeklyChips(p) {
@@ -3164,10 +3225,14 @@
       if (!s || s.line == null) continue;
       const dec = k === "any_tds" ? 2
                 : (k.endsWith("_tds") || k === "receptions") ? 1 : 0;
-      const cls = s.lineSource === "fitted" ? "src-fit"
+      const cls = s.lineSource === "projected" ? "src-proj"
+                : s.lineSource === "fitted" ? "src-fit"
                 : s.lineSource === "books" ? "src-fanduel"
                 : s.lineSource === "dk-td" ? "src-bovada" : "src-kalshi";
-      const mark = s.lineSource === "fitted" ? "~" : "";
+      // A projected fill carries a distinct mark so it never reads as a posted
+      // line at a glance.
+      const mark = s.lineSource === "projected" ? "≈"
+                 : s.lineSource === "fitted" ? "~" : "";
       // Name each book and the number it posted, so a consensus is auditable
       // rather than a black box. Books that agree collapse to one line; the
       // interesting case is the one that disagrees.
@@ -3183,11 +3248,17 @@
         if (s.min !== s.max) detail += `\nspread ${s.min}–${s.max}`;
       } else if (s.lineSource === "dk-td") {
         detail = `DraftKings ${s.odds}`;
+      } else if (s.lineSource === "projected") {
+        detail = "Mike Clay season projection / 17. No book posted this " +
+          "market, so this is a neutral-matchup baseline, not a price.";
       } else {
         detail = `${s.rungs} strikes`;
       }
+      // A line the book filter excluded still shows, struck through, so it is
+      // obvious the number exists and why it is not counted.
+      const off = lineUnderFilter(s) == null;
       parts.push(
-        `<span class="market-chip ${cls}${s.lineSource === "books" && s.min !== s.max ? " book-split" : ""}" ` +
+        `<span class="market-chip ${cls}${off ? " stat-off" : ""}${s.lineSource === "books" && s.min !== s.max ? " book-split" : ""}" ` +
         `title="${escapeHtml(WEEKLY_SOURCE_LABEL[s.lineSource] || "")}\n${escapeHtml(detail)}">` +
         `<span class="mk-label">${escapeHtml(STAT_LABELS[k] || k)}</span> ` +
         `${mark}${s.line.toFixed(dec)}</span>`
@@ -3196,10 +3267,14 @@
     return `<div class="markets">${parts.join("")}</div>`;
   }
 
+  // Reads through the book filter. It did not, which meant the Start/Sit tab's
+  // book control changed nothing: the pool caches each player's points from
+  // here, so unticking a venue left the number untouched. Same bug was fixed in
+  // lineup/app.js; ported so the two do not disagree.
   function weeklyPoints(stats, format) {
     const g = (k) => {
-      const s = stats[k];
-      return s && s.line != null ? s.line : 0;
+      const v = lineUnderFilter(stats[k]);
+      return v == null ? 0 : v;
     };
     let pts = 0;
     pts += g("pass_yds") * 0.04;
