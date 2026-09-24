@@ -492,9 +492,9 @@
     const days = (Date.now() - new Date(stamp).getTime()) / 86400000;
     if (!isFinite(days) || days < 2) return "";
     const n = Math.round(days);
-    return ' <span class="stale-note" title="These markets are no longer ' +
-      'posted, so the file is frozen at its last good pull.">&middot; ' +
-      n + " days old</span>";
+    return ' <span class="stale-note" title="This file is not being ' +
+      'refreshed: either the market is no longer posted, or the pull is ' +
+      'gated behind a workflow flag.">&middot; ' + n + " days old</span>";
   }
 
   function applyWeekLabels() {
@@ -3204,7 +3204,12 @@
     players.sort((a, b) => (multiSortDesc ? b.points - a.points : a.points - b.points));
 
     if ($meta) {
-      $meta.textContent = `weeks 1-${mw.weeksCovered} · ${mw.eventCount} games · ${mw.playerCount} players`;
+      // This pull is gated behind a workflow flag because it costs ~64 API
+      // credits, so it is deliberately not refreshed every run -- which means
+      // it can silently be weeks behind the rest of the board.
+      $meta.innerHTML = escapeHtml(
+        `weeks 1-${mw.weeksCovered} · ${mw.eventCount} games · ` +
+        `${mw.playerCount} players`) + ageNote(mw.lastUpdated);
     }
 
     if (!players.length) {
