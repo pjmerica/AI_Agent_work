@@ -92,15 +92,45 @@
   // Name keys. Suffixes and punctuation differ between feeds ("Marvin
   // Harrison Jr." vs "Marvin Harrison"), so matching on a normalised key is
   // what lets one row carry quotes from several sources.
+  /* Whole-name fixes, kept in step with lineup/app.js.
+   *
+   * Without these the table carried Cam Ward and Cameron Ward as two rows for
+   * one quarterback -- the first with his market lines, the second with only the
+   * DraftKings touchdown, tagged "TD only". A reader comparing books would have
+   * been comparing one player against himself.
+   *
+   * Listed individually rather than as a cam -> cameron rule, which would merge
+   * every Cam with every Cameron and be wrong more often than right.
+   */
+  var NAME_ALIASES = {
+    "cam skattebo": "cameron skattebo",
+    "quishon judkins": "quinshon judkins",
+    "cam ward": "cameron ward",
+    "josh palmer": "joshua palmer",
+    "chig okonkwo": "chigoziem okonkwo"
+  };
+
+  var FIRST_ALIASES = {
+    ken: "kenneth", kenny: "kenneth", mike: "michael", matt: "matthew",
+    nick: "nicholas", chris: "christopher", tony: "anthony", rob: "robert",
+    bob: "robert", dan: "daniel", danny: "daniel", joe: "joseph",
+    tom: "thomas", will: "william", billy: "william", bill: "william",
+    ben: "benjamin", alex: "alexander", jon: "jonathan",
+    tj: "t j", dj: "d j", aj: "a j", cj: "c j", jk: "j k", dk: "d k"
+  };
+
   function normName(s) {
-    return String(s || "")
-      .toLowerCase()
-      .replace(/\./g, "")
-      .replace(/[‘’']/g, "")
-      .replace(/\s+(jr|sr|ii|iii|iv|v)$/g, "")
-      .replace(/[^a-z\s-]/g, "")
-      .replace(/\s+/g, " ")
-      .trim();
+    if (!s) return "";
+    var out = String(s).toLowerCase();
+    out = out.replace(/\s+(jr|sr|ii|iii|iv|v)\.?$/i, "");
+    out = out.replace(/[^a-z0-9 ]/g, " ");
+    out = out.replace(/\s+/g, " ").trim();
+    var parts = out.split(" ");
+    if (parts.length >= 2 && FIRST_ALIASES[parts[0]]) {
+      parts[0] = FIRST_ALIASES[parts[0]];
+      out = parts.join(" ");
+    }
+    return NAME_ALIASES[out] || out;
   }
 
   // Fantasy points from a set of stat lines. The scoring format only changes

@@ -34,6 +34,36 @@ setTimeout(()=>{
   console.log("   top row: "+firstRow().slice(0,100));
 
   console.log("");
+  console.log("=== one row per player ===");
+  // Without name aliasing this table carried Cam Ward and Cameron Ward as two
+  // rows for one quarterback -- one with his market lines, one with just the
+  // DraftKings touchdown, tagged "TD only". Someone comparing books would have
+  // been comparing a player against himself.
+  $("hide-tdonly").checked = false;
+  $("hide-tdonly").dispatchEvent(new window.Event("change", { bubbles: true }));
+  const allNames = [...window.document.querySelectorAll("table.board tbody .col-player")]
+    .map((e) => e.textContent.replace(/TD only/, "").trim());
+  const dupes = [...new Set(allNames.filter((n, i) => allNames.indexOf(n) !== i))];
+  check("no player appears twice", dupes.length === 0,
+    dupes.slice(0, 5).join(", "));
+  // And the specific split that was broken, in both toggle states -- the search
+  // has to be re-applied after changing the toggle, since changing it re-renders.
+  for (const hide of [false, true]) {
+    $("hide-tdonly").checked = hide;
+    $("hide-tdonly").dispatchEvent(new window.Event("change", { bubbles: true }));
+    $("search").value = "ward";
+    $("search").dispatchEvent(new window.Event("input", { bubbles: true }));
+    const wardRows = [...window.document.querySelectorAll("table.board tbody tr")]
+      .filter((tr) => /Ward/.test(tr.querySelector(".col-player").textContent));
+    check("Cam Ward is a single row (TD-only " + (hide ? "hidden" : "shown") + ")",
+      wardRows.length === 1,
+      wardRows.length + " rows: " + wardRows.map((tr) =>
+        tr.querySelector(".col-player").textContent.trim()).join(" / "));
+  }
+  $("search").value = "";
+  $("search").dispatchEvent(new window.Event("input", { bubbles: true }));
+
+  console.log("");
   console.log("=== scoring toggle ===");
   // Check a pass-catcher, not whatever sorts first: the top row is a QB with no
   // receptions line, whose total is identical in all three formats by design.
