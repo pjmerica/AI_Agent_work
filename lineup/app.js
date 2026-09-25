@@ -109,9 +109,26 @@
     "dk": "d k",
   };
 
+  /* Whole-name fixes, for splits a first-name rule cannot safely make.
+   *
+   * A blanket cam -> cameron would merge every Cam with every Cameron, which is
+   * wrong more often than it is right, so these are listed one by one. Each was
+   * found by grouping the data files on surname and looking for first names
+   * where one is a prefix of the other AND the two share a team -- see
+   * tests/name_matching.test.js, which re-runs that search.
+   *
+   * Cost of missing one: Cam Ward is "Cam Ward" to Kalshi, the books and
+   * Sleeper but "Cameron Ward" to DraftKings and Clay, so his touchdown line
+   * and his projection both failed to join his market lines. Joshua Palmer is
+   * priced only for a touchdown, so losing Clay's "Josh Palmer" row meant
+   * losing the usage fill that would have made him rankable at all.
+   */
   const FULL_NAME_ALIASES = {
     "cam skattebo": "cameron skattebo",
     "quishon judkins": "quinshon judkins",
+    "cam ward": "cameron ward",
+    "josh palmer": "joshua palmer",
+    "chig okonkwo": "chigoziem okonkwo",
   };
 
   const STAT_LABELS = {

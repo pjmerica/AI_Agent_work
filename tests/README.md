@@ -23,6 +23,7 @@ node tests/lineup_page.test.js
 node tests/books_page.test.js
 node tests/board_page.test.js
 node tests/apps_agree.test.js
+node tests/name_matching.test.js
 node tests/lineup_interact.test.js
 node tests/books_interact.test.js
 node tests/lineup_optimizer.test.js
@@ -162,3 +163,20 @@ other.
 
 Verified it detects drift: changing `GAMES_IN_SEASON` from 17 to 16 in one file
 alone surfaces as 106 players disagreeing.
+
+**`name_matching.test.js`** — five feeds spell players five ways and every join
+between them is on name, so this checks both failure directions.
+
+Too loose merges two people and attributes one player's lines to another: the
+initial-plus-surname key handed CJ Williams, a deep-bench receiver, Caleb
+Williams's quarterback projection. Too strict splits one person in two and his
+sources never meet: Cam Ward is "Cam Ward" to Kalshi, the books and Sleeper but
+"Cameron Ward" to DraftKings and Clay, so his touchdown line and his projection
+sat on a player nothing else knew about.
+
+Beyond the fixed cases it **re-runs the search that found them** — group every
+name in the data on surname, flag pairs where one first name is a prefix of the
+other and the two share a team. That combination is one person spelled two ways,
+not two people. It found three: Cam/Cameron Ward, Josh/Joshua Palmer,
+Chig/Chigoziem Okonkwo. Leaving the search in the test means the next one
+surfaces on its own rather than waiting to be noticed.
