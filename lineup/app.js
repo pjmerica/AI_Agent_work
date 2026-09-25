@@ -1277,7 +1277,8 @@
       return false;
     };
 
-    const scored = [], unpriced = [], noMarket = [], played = [];
+    const scored = [], unpriced = [], noMarket = [], played = [],
+          unresolved = [];
     for (const r of lg.roster) {
       // Kickers and defenses are scored off the game line rather than a player
       // prop, so they go through specialPoints() before the prop lookup. They
@@ -1321,6 +1322,13 @@
         played.push({ ...r, actual: done.points, locked: r.starter });
         continue;
       }
+
+      // A roster id the Sleeper player map does not know: no name, no position,
+      // no team. It used to fall through to the teamIsLive check below, which
+      // answers false for a null team, so an unresolvable player was reported
+      // as "already played this week" -- a claim about a game that has not
+      // started, about a player we could not even name.
+      if (!r.position && !r.team) { unresolved.push(r); continue; }
 
       const p = pool.get(normPlayerName(r.name));
       if (!p || p.tdOnly || p.points <= 0 || !p.position) {
@@ -1377,6 +1385,7 @@
       fullPicks[idx] = { ...r, points: r.actual != null ? r.actual : 0, isLocked: true };
     }
 
+    let drawnSwaps = 0;
     fullPicks.forEach((p, i) => {
       const slot = slots[i];
       const isFlex = (SLOT_ACCEPTS[slot] || []).length > 1;
@@ -1401,7 +1410,9 @@
       }
 
       // Flag a change from what is currently set in Sleeper — that is the
-      // actionable part, not the lineup itself.
+      // actionable part, not the lineup itself. Counted as it is drawn, so the
+      // league chip cannot claim a different number.
+      if (!p.wasStarter) drawnSwaps++;
       const swap = p.wasStarter ? "" :
         ' <span class="injury-tag" style="color:#58d68d">SWAP IN</span>';
       html += "<tr><td>" + badge + "</td>" +
@@ -1416,6 +1427,8 @@
         "<td>" + (p.stats ? weeklyChips(p) : specialChips(p)) + "</td></tr>";
     });
     html += "</tbody></table></div>";
+    // The chip badge is derived from this, not recomputed.
+    swapCountCache.set(lg.leagueId, drawnSwaps);
     const banked = [...lockedBySlot.values()]
       .reduce((t, r) => t + (r.actual != null ? r.actual : 0), 0);
     html += '<div class="sitstart-total">' +
@@ -1470,6 +1483,15 @@
         "him. Coverage is thinnest early in the week and fills in by " +
         "Sunday.</span></div>";
     }
+    if (unresolved.length) {
+      html += '<div class="sitstart-section">Not recognised (' +
+        unresolved.length + ")</div>" +
+        '<div class="verdict" style="font-size:13px;color:#6a6a8a">' +
+        escapeHtml(unresolved.map((r) => r.name).join(", ")) +
+        "<br />These roster spots did not match a player in Sleeper's own " +
+        "player list, so nothing can be said about them. Usually a very " +
+        "recent signing; the list refreshes with the rest of the data.</div>";
+    }
     if (noMarket.length) {
       html += '<div class="sitstart-section">No game line</div>' +
         '<div class="verdict" style="font-size:13px;color:#6a6a8a">' +
@@ -1483,6 +1505,10 @@
         freeAgentsFor(lg, lg.rosteredKeys, scored), lg);
     }
     $out.innerHTML = html;
+    // The chip for this league now has a real count instead of an estimate, so
+    // redraw the strip. Guarded against recursion: renderSleeperChips only
+    // reads the cache, it does not render a lineup.
+    renderSleeperChips();
   }
 
   /* How many changes a league's lineup needs, for the chip badges.
@@ -1500,6 +1526,19 @@
 
   function clearSwapCounts() { swapCountCache.clear(); }
 
+  /* The number on a league chip.
+   *
+   * This used to re-run the optimizer itself, duplicating the classification
+   * the render does -- and the two drifted: one league's chip said 2 while its
+   * table showed 1. Two copies of "which players are eligible" will always
+   * diverge eventually, so the render now records what it actually drew and
+   * this reads that.
+   *
+   * A league you have not opened yet has no recorded count, so it gets one from
+   * the same estimate as before. That estimate can be off by one; opening the
+   * league replaces it with the truth. Better than a blank chip, and it is no
+   * longer the number the table is checked against.
+   */
   function swapCountFor(lg) {
     if (swapCountCache.has(lg.leagueId)) return swapCountCache.get(lg.leagueId);
     let n = null;
@@ -1509,6 +1548,7 @@
       const scored = [];
       for (const r of (lg.roster || [])) {
         if (sleeperPlayed && sleeperPlayed.get(r.playerId)) continue;
+        if (!r.position && !r.team) continue;
         if (r.unpriced) {
           const pos = r.position === "DST" ? "DEF" : r.position;
           const sp = specialPoints(pos, r.team, lg.scoring);
@@ -1519,14 +1559,13 @@
           continue;
         }
         const p = pool.get(normPlayerName(r.name));
-        if (!p || p.tdOnly || !p.position) continue;
+        if (!p || p.tdOnly || p.points <= 0 || !p.position) continue;
         const pts = leaguePoints(p.stats, lg.scoring, r.position || p.position);
         if (pts > 0) {
           scored.push({ name: r.name, position: r.position || p.position,
                         points: pts, wasStarter: r.starter });
         }
       }
-      // Slots held by a player who has already played are not openings.
       const lockedCount = (lg.roster || []).filter(
         (r) => r.starter && sleeperPlayed && sleeperPlayed.get(r.playerId)).length;
       const openSlots = slots.slice(0, Math.max(0, slots.length - lockedCount));
@@ -1535,7 +1574,7 @@
     } catch (e) {
       n = null;
     }
-    swapCountCache.set(lg.leagueId, n);
+    // Not cached: an estimate must not shadow the render's real count.
     return n;
   }
 

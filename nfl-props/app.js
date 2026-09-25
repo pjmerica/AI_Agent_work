@@ -2178,7 +2178,8 @@
       return false;
     };
 
-    const scored = [], unpriced = [], noMarket = [], played = [];
+    const scored = [], unpriced = [], noMarket = [], played = [],
+          unresolved = [];
     for (const r of lg.roster) {
       if (r.unpriced) { noMarket.push(r); continue; }
 
@@ -2192,6 +2193,13 @@
         played.push({ ...r, actual: done.points, locked: r.starter });
         continue;
       }
+
+      // A roster id the Sleeper player map does not know: no name, no position,
+      // no team. It used to fall through to the teamIsLive check below, which
+      // answers false for a null team, so an unresolvable player was reported
+      // as "already played this week" -- a claim about a game that has not
+      // started, about a player we could not even name.
+      if (!r.position && !r.team) { unresolved.push(r); continue; }
 
       const p = pool.get(normPlayerName(r.name));
       if (!p || p.tdOnly || p.points <= 0 || !p.position) {
@@ -2338,6 +2346,15 @@
         "&mdash; if one of these is a player you would normally start, start " +
         "him. Coverage is thinnest early in the week and fills in by " +
         "Sunday.</span></div>";
+    }
+    if (unresolved.length) {
+      html += '<div class="sitstart-section">Not recognised (' +
+        unresolved.length + ")</div>" +
+        '<div class="verdict" style="font-size:13px;color:#6a6a8a">' +
+        escapeHtml(unresolved.map((r) => r.name).join(", ")) +
+        "<br />These roster spots did not match a player in Sleeper's own " +
+        "player list, so nothing can be said about them. Usually a very " +
+        "recent signing; the list refreshes with the rest of the data.</div>";
     }
     if (noMarket.length) {
       html += '<div class="sitstart-section">Not covered by props</div>' +

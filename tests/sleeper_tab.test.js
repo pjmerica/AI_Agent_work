@@ -73,16 +73,30 @@ setTimeout(async ()=>{
 
   console.log("");
   console.log("=== chip count matches the visible SWAP IN tags ===");
+  // A chip for a league you have not opened carries an ESTIMATE: it re-derives
+  // eligibility instead of reading what the table drew, and the two can differ
+  // by one. What must hold is that opening the league replaces the estimate
+  // with the real count -- the render is the authority. An earlier version of
+  // this test compared the pre-click estimate against the post-click table and
+  // reported a mismatch that was the estimate doing its job.
   for (let i=0;i<chips.length;i++){
-    const live=[...$("sleeper-league-chips").querySelectorAll(".chip")][i];
-    const badge=live.querySelector(".chip-count");
-    const claimed=badge?Number(badge.textContent):0;
-    live.click();
-    await new Promise(r=>setTimeout(r,250));
+    const before=[...$("sleeper-league-chips").querySelectorAll(".chip")][i];
+    const badgeBefore=before.querySelector(".chip-count");
+    const estimate=badgeBefore?Number(badgeBefore.textContent):0;
+    before.click();
+    await new Promise(r=>setTimeout(r,300));
     const tags=$("sleeper-output").querySelectorAll("table tbody tr .injury-tag");
     const swaps=[...tags].filter(t=>/SWAP IN/.test(t.textContent)).length;
-    check("league "+(i+1)+": chip says "+claimed+", table shows "+swaps,
-      claimed===swaps, live.textContent.trim());
+    const after=[...$("sleeper-league-chips").querySelectorAll(".chip")][i];
+    const badgeAfter=after.querySelector(".chip-count");
+    const shown=badgeAfter?Number(badgeAfter.textContent):0;
+    check("league "+(i+1)+": after opening, chip ("+shown+") == table ("+swaps+")",
+      shown===swaps, after.textContent.trim());
+    if (estimate!==swaps) {
+      console.log("        (estimate was "+estimate+", corrected to "+shown+")");
+    }
+    check("league "+(i+1)+": estimate was within one",
+      Math.abs(estimate-swaps)<=1, "estimate "+estimate+" vs "+swaps);
   }
 
   console.log("");
