@@ -22,6 +22,8 @@ npm install --no-save jsdom
 node tests/lineup_page.test.js
 node tests/books_page.test.js
 node tests/board_page.test.js
+node tests/lineup_interact.test.js
+node tests/books_interact.test.js
 node tests/lineup_optimizer.test.js
 node tests/board_optimizer.test.js
 node tests/sleeper_tab.test.js      # hits the live Sleeper API
@@ -126,3 +128,22 @@ It caught a real bug on its first run. The sign-in handler referenced
 that app tracks the visible view by class. The ReferenceError surfaced to the
 user as "Sleeper request failed", which points at the network rather than at the
 code.
+
+**`lineup_interact.test.js`** and **`books_interact.test.js`** — the
+single-action tests above check that each control works. These check that
+*sequences* of them do: pressing a button twice, adding a player who is already
+added, pasting a list you already pasted, unticking every book, stacking a
+position filter on a search that contradicts it, sorting every column in turn.
+
+This is the pair that earns its keep. It found the book filter inverting itself
+when the last checkbox was cleared — untick the ninth book and all nine came
+back on, with the projection jumping from 18.8 to 23.6. No single-action test
+could see it, because every individual click behaved correctly; only the ninth
+one in a row was wrong.
+
+A caution on the books file: one of its checks failed on its first run and the
+fault was the test's, not the app's. It read a fixed column index while sorting
+a different column, so it reported "blanks mixed with numbers" that was just the
+unsorted neighbour column. Sorting was correct all along — 60 numbers then 123
+blanks, cleanly separated. Verify which column a failure is actually reading
+before believing it.
