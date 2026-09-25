@@ -22,6 +22,7 @@ npm install --no-save jsdom
 node tests/lineup_page.test.js
 node tests/books_page.test.js
 node tests/board_page.test.js
+node tests/apps_agree.test.js
 node tests/lineup_interact.test.js
 node tests/books_interact.test.js
 node tests/lineup_optimizer.test.js
@@ -147,3 +148,17 @@ a different column, so it reported "blanks mixed with numbers" that was just the
 unsorted neighbour column. Sorting was correct all along — 60 numbers then 123
 blanks, cleanly separated. Verify which column a failure is actually reading
 before believing it.
+
+**`apps_agree.test.js`** — builds the projection pool from both `lineup/app.js`
+and `nfl-props/app.js` against the same data files and compares every player.
+
+The two share ancestry: lineup was split out of the board, and shared logic has
+been ported back and forth since. Every port is a chance for one to keep a fix
+the other misses, and that has happened twice — the board spent a day with a
+silent-drop bug lineup had already fixed, and before that the whole
+projection-fill feature existed in only one of them. When they last diverged the
+gap was 143 of 297 players, with Brock Bowers at 1.8 on one page and 10.1 on the
+other.
+
+Verified it detects drift: changing `GAMES_IN_SEASON` from 17 to 16 in one file
+alone surfaces as 106 players disagreeing.
