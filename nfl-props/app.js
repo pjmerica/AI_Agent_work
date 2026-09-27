@@ -2004,6 +2004,24 @@
     K: ["K"], DEF: ["DEF"], DST: ["DEF"],
   };
 
+  /* Short labels for Sleeper's slot names.
+   *
+   * Sleeper calls a superflex slot "SUPER_FLEX" and a receiver-flex
+   * "REC_FLEX". Rendered raw, a ten-character badge forced the Slot column
+   * nearly twice as wide as the four slots that actually need it, and read as
+   * "SUPER_FLEXKyler Murray" once the name ran into it.
+   */
+  const SLOT_LABELS = {
+    SUPER_FLEX: "SFLEX",
+    WRRB_FLEX: "W/R",
+    REC_FLEX: "W/T",
+    DST: "DEF",
+  };
+
+  function slotLabel(slot) {
+    return SLOT_LABELS[slot] || slot;
+  }
+
   // League scoring differs from the fixed half-PPR the other tabs use, so
   // points are recomputed per league rather than reused.
   function leaguePoints(stats, scoring, position) {
@@ -2276,7 +2294,7 @@
       const slot = slots[i];
       const isFlex = (SLOT_ACCEPTS[slot] || []).length > 1;
       const badge = '<span class="slot-badge' + (isFlex ? " flex" : "") + '">' +
-                    escapeHtml(slot) + "</span>";
+                    escapeHtml(slotLabel(slot)) + "</span>";
       if (!p) {
         html += '<tr class="bench-row"><td>' + badge +
                 '</td><td colspan="5">nobody eligible</td></tr>';
@@ -2318,7 +2336,7 @@
         ? "Banked " + banked.toFixed(1) + " + projected " + best.total.toFixed(1) +
           " = " + (banked + best.total).toFixed(1)
         : "Projected starters: " + best.total.toFixed(1)) +
-      " pts (K/DEF not projected)</div>";
+      ' pts <span style="color:#6a6a8a;font-weight:400">&middot; K and DEF are not projected here; the <a href="../lineup/" style="color:#5b4cf5">lineup page</a> prices them off the game line</span></div>';
 
     if (bench.length) {
       html += '<div class="sitstart-section">Bench</div>' +
@@ -3089,7 +3107,7 @@
       for (const r of rows) {
         const isFlex = r.slot === "FLEX";
         const badge = '<span class="slot-badge' + (isFlex ? " flex" : "") + '">' +
-                      escapeHtml(r.slot) + "</span>";
+                      escapeHtml(slotLabel(r.slot)) + "</span>";
         if (!r.p) {
           html += '<tr class="bench-row"><td>' + badge +
                   '</td><td colspan="5">nobody eligible</td></tr>';

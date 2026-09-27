@@ -1040,3 +1040,8 @@ tr.row-nan:hover { opacity: 0.85; }
   border-color: rgba(143, 168, 200, 0.45);
   color: #cdd8e6;
 }
+
+/* The Slot column holds a short badge and nothing else. Without this it sized
+   itself to the widest label, which Sleeper spells "SUPER_FLEX". */
+.slot-table th:first-child,
+.slot-table td:first-child { width: 1%; white-space: nowrap; }

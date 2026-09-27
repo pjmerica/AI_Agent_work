@@ -116,11 +116,40 @@ setTimeout(() => {
 
   console.log("");
   console.log("=== paste path ===");
+  // Take the names from the current board rather than hardcoding them. A player
+  // whose game has finished is purged from every market source, so a fixed list
+  // rots the moment that week's first game settles -- this check failed on the
+  // Saturday after Bijan Robinson played on Thursday, which said nothing about
+  // the paste path.
+  // Names come from the search suggestions, which draw on the whole board --
+  // reading the lineup table instead only sees whoever is already added.
+  function suggest(prefix) {
+    const $s = $("roster-search");
+    $s.value = prefix;
+    $s.dispatchEvent(new window.Event("input", { bubbles: true }));
+    return [...$("roster-suggestions").querySelectorAll("[data-key]")]
+      .map((d) => {
+        // Own text only: the badge and the points are child spans.
+        let name = "";
+        for (const node of d.childNodes) {
+          if (node.nodeType === 3) name += node.textContent;
+        }
+        return name.trim();
+      })
+      .filter(Boolean);
+  }
+  const twoReal = [...new Set([...suggest("a"), ...suggest("e")])].slice(0, 2);
+  $("roster-search").value = "";
+  $("roster-search").dispatchEvent(new window.Event("input", { bubbles: true }));
+  check("found two board players to paste", twoReal.length === 2,
+    twoReal.join(", "));
+  const NL = String.fromCharCode(10);
   $("roster-clear").click();
-  $("roster-input").value = "Josh Allen\nBijan Robinson\nNot A Real Person";
+  $("roster-input").value = twoReal.join(NL) + NL + "Not A Real Person";
   $("roster-go").click();
   const pasted = $("roster-tags").querySelectorAll(".player-tag");
-  check("pasted names became chips", pasted.length >= 2, pasted.length + " chips");
+  check("pasted names became chips", pasted.length === twoReal.length,
+    pasted.length + " chips from " + twoReal.join(", "));
   check("unmatched line left in the box",
     /Not A Real Person/.test($("roster-input").value),
     JSON.stringify($("roster-input").value));
