@@ -14,6 +14,10 @@
    * and the numbers jumped back to the full consensus, the opposite of what
    * the click asked for. booksAllOff records a genuinely empty selection.
    */
+  // How much of the DraftKings file the current slate actually uses.
+  let dkDropped = 0;
+  let dkTotal = 0;
+
   const activeBooks = new Set();
   let booksAllOff = false;
 
@@ -2517,7 +2521,31 @@
       }
     }
     if (dk && Array.isArray(dk.players)) {
+      /* Only entries whose game is on the current board.
+       *
+       * The scraper refuses to overwrite a good file with nothing, which stops a
+       * rate-limited run from wiping the data -- but nothing stopped that kept
+       * file being served after its games had played. DraftKings blocks CI
+       * runners, so this file only refreshes on a local run, and it sat two days
+       * stale across the week 3/4 rollover: every entry was a week 3 game while
+       * the rest of the board had moved to week 4. Without this check last
+       * week's touchdown numbers merged straight into this week's lines.
+       */
+      const liveGames = new Set();
+      for (const p of ((wk && wk.players) || [])) {
+        if (p.matchup) liveGames.add(p.matchup);
+      }
+      for (const p of ((oa && oa.players) || [])) {
+        if (p.matchup) liveGames.add(p.matchup);
+      }
+      let dropped = 0;
       for (const p of dk.players) {
+        // shortMatchup turns "TEN Titans @ NY Giants" into "TENNYG", which is
+        // how the other feeds spell it.
+        if (liveGames.size && !liveGames.has(shortMatchup(p.matchup))) {
+          dropped++;
+          continue;
+        }
         const k = normPlayerName(p.name);
         let rec = merged.get(k);
         if (!rec) { rec = { name: p.name, matchup: p.matchup, stats: {} }; merged.set(k, rec); }
@@ -2526,6 +2554,10 @@
           rec.stats.any_tds = { line: p.xTD, lineSource: "dk-td", odds: p.americanOdds };
         }
       }
+      // Read by the coverage banner, so a wholly stale source is stated rather
+      // than silently contributing nothing.
+      dkDropped = dropped;
+      dkTotal = dk.players.length;
     }
 
     const fpLut = buildProjLookup(cache["data"]);

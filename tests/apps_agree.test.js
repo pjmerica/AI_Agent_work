@@ -39,6 +39,9 @@ const WANTED = [
   /const GAMES_IN_SEASON = \d+;/,
   /const PROJ_FILL_STATS = \[[\s\S]*?\];/,
   /function projPerGame\(proj\)[\s\S]*?\n  \}/,
+  /const DST_TEAM_ALIASES = \{[\s\S]*?\};/,
+  /function teamKey\(t\)[\s\S]*?\n  \}/,
+  /function shortMatchup\(m\)[\s\S]*?\n  \}/,
   /function buildSitStartPoolFull\(\)[\s\S]*?\n  \}/,
 ];
 

@@ -39,7 +39,13 @@ setTimeout(async()=>{
   console.log("=== position filter + search interact correctly ===");
   const pb=(p)=>$("pos-seg").querySelector('[data-pos="'+p+'"]');
   pb("TE").click();
-  $("search").value="mcbride";
+  // Take a name off the board rather than hardcoding one that rots at the week
+  // rollover.
+  const anyName = (() => {
+    const e = window.document.querySelector("table.board tbody .col-player");
+    return e ? e.textContent.replace(/TD only/, "").trim().split(/\s+/).pop() : "";
+  })();
+  $("search").value = anyName.toLowerCase();
   $("search").dispatchEvent(new window.Event("input",{bubbles:true}));
   const both=rows();
   check("TE + search narrows to few rows", both>0 && both<=3, both+" rows");

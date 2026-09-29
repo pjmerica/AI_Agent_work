@@ -46,19 +46,29 @@ setTimeout(()=>{
   const dupes = [...new Set(allNames.filter((n, i) => allNames.indexOf(n) !== i))];
   check("no player appears twice", dupes.length === 0,
     dupes.slice(0, 5).join(", "));
-  // And the specific split that was broken, in both toggle states -- the search
-  // has to be re-applied after changing the toggle, since changing it re-renders.
-  for (const hide of [false, true]) {
-    $("hide-tdonly").checked = hide;
-    $("hide-tdonly").dispatchEvent(new window.Event("change", { bubbles: true }));
-    $("search").value = "ward";
-    $("search").dispatchEvent(new window.Event("input", { bubbles: true }));
-    const wardRows = [...window.document.querySelectorAll("table.board tbody tr")]
-      .filter((tr) => /Ward/.test(tr.querySelector(".col-player").textContent));
-    check("Cam Ward is a single row (TD-only " + (hide ? "hidden" : "shown") + ")",
-      wardRows.length === 1,
-      wardRows.length + " rows: " + wardRows.map((tr) =>
-        tr.querySelector(".col-player").textContent.trim()).join(" / "));
+  // Then the same claim as a search: pick a surname that is actually on this
+  // week's board rather than naming a player. "Cam Ward" was the case that
+  // broke, and he is off the board entirely two weeks later.
+  const surnames = allNames.map((n) => n.split(/\s+/).pop())
+    .filter((x) => x && x.length > 3);
+  const counts = {};
+  for (const x of surnames) counts[x] = (counts[x] || 0) + 1;
+  const uniqueSurname = Object.keys(counts).find((x) => counts[x] === 1);
+  if (uniqueSurname) {
+    for (const hide of [false, true]) {
+      $("hide-tdonly").checked = hide;
+      $("hide-tdonly").dispatchEvent(new window.Event("change", { bubbles: true }));
+      $("search").value = uniqueSurname.toLowerCase();
+      $("search").dispatchEvent(new window.Event("input", { bubbles: true }));
+      const hits = [...window.document.querySelectorAll("table.board tbody tr")]
+        .filter((tr) => new RegExp(uniqueSurname, "i")
+          .test(tr.querySelector(".col-player").textContent));
+      check('"' + uniqueSurname + '" is a single row (TD-only ' +
+        (hide ? "hidden" : "shown") + ")", hits.length === 1,
+        hits.length + " rows");
+    }
+  } else {
+    check("found a unique surname to search", false, "none on this board");
   }
   $("search").value = "";
   $("search").dispatchEvent(new window.Event("input", { bubbles: true }));
@@ -72,7 +82,20 @@ setTimeout(()=>{
       .find(x=>x.querySelector(".col-player").textContent.includes(name));
     return r?[...r.querySelectorAll("td")].map(t=>t.textContent.trim()).join(" | "):"(none)";
   };
-  const WR="McBride";
+  // A player whose total actually moves with the reception rate. Picking a name
+  // is what rotted here before, so find one: a TE or WR near the top of the
+  // board is priced for receptions by definition.
+  const WR = (() => {
+    const rows = [...window.document.querySelectorAll("table.board tbody tr")];
+    for (const tr of rows) {
+      const pos = tr.querySelector(".col-pos");
+      if (!pos || !/^(WR|TE)$/.test(pos.textContent.trim())) continue;
+      const nm = tr.querySelector(".col-player").textContent
+        .replace(/TD only/, "").trim();
+      if (nm) return nm;
+    }
+    return "";
+  })();
   const wrBase=rowFor(WR);
   check("found a pass-catcher to test", wrBase!=="(none)", wrBase.slice(0,60));
   const base=firstRow();
@@ -118,10 +141,14 @@ setTimeout(()=>{
 
   console.log("");
   console.log("=== search ===");
-  $("search").value="mcbride";
+  // Search for a surname from the board, not a fixed name.
+  const someSurname = (WR || "").split(/\s+/).pop() || "";
+  $("search").value = someSurname.toLowerCase();
   $("search").dispatchEvent(new window.Event("input",{bubbles:true}));
-  check("search narrows to a few rows", rowCount()>0 && rowCount()<=3, rowCount()+" rows");
-  check("the match is right", /McBride/i.test(firstRow()), firstRow().slice(0,60));
+  check("search narrows the list", someSurname &&
+    rowCount() > 0 && rowCount() <= 4, someSurname + " -> " + rowCount() + " rows");
+  check("the match is right", someSurname &&
+    new RegExp(someSurname, "i").test(firstRow()), firstRow().slice(0,60));
   $("search").value="";
   $("search").dispatchEvent(new window.Event("input",{bubbles:true}));
   check("clearing search restores", rowCount()===hidden);
@@ -130,12 +157,39 @@ setTimeout(()=>{
   console.log("=== column sorting ===");
   const hdr=[...window.document.querySelectorAll("th.sortable")];
   check("sortable headers", hdr.length>1, hdr.length+"");
-  const beforeSort=firstRow();
-  hdr[1].click();   // a book column
-  check("clicking a book header re-sorted", firstRow()!==beforeSort);
-  const desc=firstRow();
-  hdr[1].click();   // same header again reverses
-  check("clicking again reversed it", firstRow()!==desc);
+  // Check the ORDER, not that the top row changed. The same player can lead two
+  // adjacent columns -- Josh Allen tops both FanDuel and BetRivers -- so a
+  // "first row changed" test reports a failure that is really the data agreeing.
+  const colOf = (label) => {
+    const heads = [...window.document.querySelectorAll("table.board thead th")]
+      .map((t) => t.textContent.replace(/[\u25bc\u25b2]/g, "").trim());
+    return heads.findIndex((h) => h === label);
+  };
+  const sortedDesc = (idx) => {
+    const v = [...window.document.querySelectorAll("table.board tbody tr")]
+      .map((tr) => {
+        const td = [...tr.querySelectorAll("td")][idx];
+        return td ? parseFloat(td.textContent) : NaN;
+      })
+      .filter((x) => !isNaN(x));
+    return v.every((x, i) => i === 0 || v[i - 1] >= x);
+  };
+  const sortedAsc = (idx) => {
+    const v = [...window.document.querySelectorAll("table.board tbody tr")]
+      .map((tr) => {
+        const td = [...tr.querySelectorAll("td")][idx];
+        return td ? parseFloat(td.textContent) : NaN;
+      })
+      .filter((x) => !isNaN(x));
+    return v.every((x, i) => i === 0 || v[i - 1] <= x);
+  };
+  const bookHead = hdr[1];
+  const bookIdx = colOf(bookHead.textContent.replace(/[\u25bc\u25b2]/g, "").trim());
+  bookHead.click();
+  check("clicking a book header sorts it descending",
+    bookIdx >= 0 && sortedDesc(bookIdx), "column index " + bookIdx);
+  bookHead.click();
+  check("clicking again sorts ascending", sortedAsc(bookIdx));
 
   console.log("");
   console.log("uncaught errors: "+errors.length);

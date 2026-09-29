@@ -83,23 +83,26 @@ def http_json(url: str) -> dict:
 # scoring is more concentrated than Poisson, because the players who score are
 # the ones getting the carries -- so only part of that correction is applied.
 #
-# How much is a judgement call, and the two obvious metrics disagree. On 235
-# paired players:
+# How much is fitted across weeks, not to one slate. On 735 paired players over
+# weeks 2-4 of 2026, mean absolute error against Kalshi's own expectation:
 #
-#     alpha   overall MAE   goal-line MAE (E[X] >= 0.35, n=56)
-#      0.00      0.0332         0.0599
-#      0.20      0.0311         0.0391
-#      0.35      0.0320         0.0323
-#      0.50      0.0373         0.0427
-#      1.00      0.0692         0.1365
+#     alpha   goal-line MAE (E[X] >= 0.35)   overall MAE
+#      0.00        0.0764                      0.0326
+#      0.20        0.0542                      0.0296
+#      0.35        0.0449                      0.0293
+#      0.40        0.0442  <- goal-line best
+#      0.30                                    0.0291  <- overall best
+#      0.50        0.0472                      0.0318
 #
-# Overall MAE bottoms out near 0.20, but that average is dominated by 83
-# tail players whose correction is a rounding error either way. The error that
-# costs a lineup decision is on the goal-line group, which bottoms out near
-# 0.35 -- and 0.35 gives up almost nothing overall. So 0.35.
+# Goal-line bottoms out at 0.40 and overall at 0.30, so 0.35 sits between them.
+# The goal-line group is the one that decides a lineup: the tail dominates the
+# overall average and its correction is a rounding error either way.
 #
-# Re-derive if this drifts: tests/td_conversion.test.py pairs this file against
-# weekly.json and reports the best-fit blend for the current data.
+# A SINGLE week is not enough to fit this, and trying cost some time. Checked on
+# week 4 before its games had been played, the best overall fit came out at 0.00
+# -- while weeks 2 and 3 each put the goal-line best at 0.35-0.50. A midweek
+# slate has thin lines and wanders. tests/td_conversion.test.py reports the
+# current slate's fit as a note and asserts the error bounds instead.
 POISSON_SHARE = 0.35
 
 
