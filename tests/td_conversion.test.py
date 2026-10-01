@@ -119,12 +119,12 @@ if wk_file.exists() and dk_file.exists():
         print(f"  note  best fit on this slate: {best_all[0]:.2f} overall"
               + (f", {fit(hi)[0]:.2f} goal-line" if hi and len(hi) >= 10 else "")
               + f"; scraper uses {dk.POISSON_SHARE:.2f}")
-        print("  note  fit across weeks 2-4 (735 pairs): 0.40 goal-line, "
-              "0.30 overall -- see the comment in fetch_dk_td_scorers.py")
+        print("  note  fit across weeks 1-4 (241 goal-line pairs): 0.60 is the "
+              "optimum for convert-then-de-vig; see fetch_dk_td_scorers.py")
         # Only a gross departure is a failure: the blend must still be a partial
         # Poisson correction, not raw probability or the full correction.
         check("the configured blend is a partial correction",
-              0.05 <= dk.POISSON_SHARE <= 0.60,
+              0.05 <= dk.POISSON_SHARE <= 0.85,
               f"configured {dk.POISSON_SHARE:.2f}")
 else:
     print()

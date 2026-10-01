@@ -396,10 +396,10 @@
   // SD of ~9.7 is the long-run spread of single-team NFL scores around their
   // closing implied total.
   // SD of a single team's score around its closing implied total. Measured at
-  // 11.0 across 64 team-games in weeks 1-2 of 2026; 9.7 was the prior estimate
-  // and ran about 12% low, which made the points-allowed buckets too confident
-  // -- it understated both shutouts and blowouts.
-  const SCORE_SD = 10.8;
+  // 10.3 across 96 team-games in weeks 1-3 of 2026 (per week: 11.25, 10.29,
+  // 8.73 -- week 3 alone would argue for 8.7, which is why this is not set from
+  // one slate). Was 9.7, then 10.8 on two weeks' data.
+  const SCORE_SD = 10.3;
 
   function normCdf(x) {
     // Abramowitz & Stegun 7.1.26 via erf.
@@ -427,18 +427,18 @@
   }
 
   // Expected sacks and takeaways scale with how much the opponent trails and
-  // has to throw. Baselines measured over 64 team-games in weeks 1-2 of 2026:
-  // 2.33 sacks and 1.11 takeaways per team-game. The earlier takeaway baseline
-  // of 1.30 was about 17% high, which quietly added a fifth of a point to every
-  // defense.
+  // has to throw. Baselines measured over 96 team-games in weeks 1-3 of 2026:
+  // 2.20 sacks and 1.16 takeaways per team-game. Both move around by week --
+  // sacks ran 2.25 / 2.41 / 1.94 and takeaways 1.31 / 0.91 / 1.25 -- so these
+  // are the pooled means, not the latest week's.
   //
   // Each point of favouredness is worth a little of both, since trailing teams
   // pass more and pass worse.
   function dstVolume(spread) {
     const fav = -(spread || 0);              // +7 means a 7-point favourite
     return {
-      sacks: Math.max(0.8, 2.33 + fav * 0.055),
-      takeaways: Math.max(0.35, 1.11 + fav * 0.030),
+      sacks: Math.max(0.8, 2.20 + fav * 0.055),
+      takeaways: Math.max(0.35, 1.16 + fav * 0.030),
     };
   }
 

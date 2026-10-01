@@ -83,27 +83,30 @@ def http_json(url: str) -> dict:
 # scoring is more concentrated than Poisson, because the players who score are
 # the ones getting the carries -- so only part of that correction is applied.
 #
-# How much is fitted across weeks, not to one slate. On 735 paired players over
-# weeks 2-4 of 2026, mean absolute error against Kalshi's own expectation:
+# Fitted across weeks, never one slate, and on the same quantity the code feeds
+# it. On 1,202 paired players over weeks 1-4 of 2026, goal-line mean absolute
+# error against Kalshi's own expectation (241 players with E[X] >= 0.35), in
+# fantasy points:
 #
-#     alpha   goal-line MAE (E[X] >= 0.35)   overall MAE
-#      0.00        0.0764                      0.0326
-#      0.20        0.0542                      0.0296
-#      0.35        0.0449                      0.0293
-#      0.40        0.0442  <- goal-line best
-#      0.30                                    0.0291  <- overall best
-#      0.50        0.0472                      0.0318
+#     alpha   convert then de-vig (what this does)
+#      0.30          0.33
+#      0.40          0.25
+#      0.50          0.18
+#      0.60          0.14  <- best
+#      0.70          0.15
 #
-# Goal-line bottoms out at 0.40 and overall at 0.30, so 0.35 sits between them.
-# The goal-line group is the one that decides a lineup: the tail dominates the
-# overall average and its correction is a rounding error either way.
+# Raw probability, with no conversion at all, is 0.49 points. So the correction
+# is worth about a third of a point on the players it matters for.
 #
-# A SINGLE week is not enough to fit this, and trying cost some time. Checked on
-# week 4 before its games had been played, the best overall fit came out at 0.00
-# -- while weeks 2 and 3 each put the goal-line best at 0.35-0.50. A midweek
-# slate has thin lines and wanders. tests/td_conversion.test.py reports the
-# current slate's fit as a note and asserts the error bounds instead.
-POISSON_SHARE = 0.35
+# Two earlier values were wrong for the same reason: 0.35 and then 0.40 were
+# fitted against the raw probability while the code applied them after the vig
+# haircut, so the fit and the data measured different inputs. Keep those in step
+# -- tests/td_conversion.test.py reads impliedProb, which is exactly what
+# expected_tds receives now.
+#
+# Do not move this on one slate. Week 4 alone argued for 0.00 before its games
+# were played and 0.55 after; the four-week fit is stable.
+POISSON_SHARE = 0.60
 
 
 def expected_tds(p: float) -> float:
@@ -189,7 +192,13 @@ def main() -> None:
         # hold on two-way NFL props is ~4-6%, and 0.94 sits in the middle.
         VIG = 0.94
         for label, odds, p in quotes:
-            fair = expected_tds(p * VIG)
+            # Convert, THEN de-vig. The Poisson relation holds between a
+            # probability and a count, so the conversion takes the quoted
+            # probability; the vig is a haircut on the result. Doing it the other
+            # way round also meant POISSON_SHARE was fitted on raw impliedProb
+            # but applied to a de-vigged value, which cost 0.12 of a fantasy
+            # point on goal-line backs.
+            fair = expected_tds(p) * VIG
             rows[label] = {
                 "name": label,
                 "matchup": name,
