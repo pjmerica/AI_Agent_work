@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Lineup — market-priced start/sit</title>
-  <link rel="stylesheet" href="style.css?v=2026-10-01-est" />
+  <link rel="stylesheet" href="style.css?v=2026-10-01-tdonly" />
 </head>
 <body>
   <div class="container">
@@ -55,12 +55,15 @@
             &mdash; it is a season projection divided by 17, used when the only
             thing anyone priced was a touchdown.</p>
 
-            <p>A row tagged <span class="proj-tag">EST</span> is one of those:
-            the books have not posted that player's yardage or receptions this
-            week, so his total is an estimate rather than a price. It is on the
-            row because a total looks the same either way &mdash; Justin
-            Jefferson read 17.6 in week 4 with only his touchdown actually
-            priced. An injury tag beside it usually explains why.</p>
+            <p>A row tagged <span class="proj-tag">TD ONLY</span> is one of
+            those: a book priced that player's touchdown and nothing else, so
+            the market has an opinion on <em>whether</em> he scores and none on
+            how much he does. Everything behind the total is a season estimate.
+            It is on the row because a total looks the same either way &mdash;
+            Justin Jefferson read 17.6 in week 4 with only his touchdown
+            actually priced. An injury tag beside it usually explains why. A row
+            reading <span class="proj-tag">EST</span> instead is the rarer case
+            where some other mix of stats is missing.</p>
 
             <p>A player whose game has kicked off is <strong>locked</strong>:
             his actual points show, his slot is spent, and the optimizer fills
@@ -223,6 +226,6 @@
     </footer>
   </div>
 
-  <script src="app.js?v=2026-10-01-est"></script>
+  <script src="app.js?v=2026-10-01-tdonly"></script>
 </body>
 </html>

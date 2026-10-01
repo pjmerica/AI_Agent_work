@@ -168,6 +168,8 @@ setTimeout(async () => {
   console.log("=== rows built on a projection are tagged ===");
   let sawTagged = false;
   let mismatched = [];
+  const labelWrong = [];
+  const labelCounts = {};
   for (let i = 0; i < chips.length; i++) {
     [...$("sleeper-league-chips").querySelectorAll(".chip")][i].click();
     await new Promise((r) => setTimeout(r, 400));
@@ -175,8 +177,29 @@ setTimeout(async () => {
     for (const tr of rows) {
       const nameCell = tr.querySelector(".player-name");
       if (!nameCell) continue;
-      const tagged = !!nameCell.querySelector(".proj-tag");
-      if (tagged) sawTagged = true;
+      const tagEl = nameCell.querySelector(".proj-tag");
+      const tagged = !!tagEl;
+      if (tagged) {
+        sawTagged = true;
+        const label = tagEl.textContent.trim();
+        labelCounts[label] = (labelCounts[label] || 0) + 1;
+        // "TD ONLY" claims the touchdown is the single priced stat. The chips on
+        // the row say which stats came from a market, so they can check it.
+        const chips = [...tr.querySelectorAll(".market-chip")];
+        const marketChips = chips.filter((c) => !c.classList.contains("src-proj"));
+        const labels = marketChips
+          .map((c) => (c.querySelector(".mk-label") || {}).textContent || "")
+          .map((x) => x.trim());
+        const onlyTd = labels.length === 1 && /td/i.test(labels[0]);
+        if (label === "TD ONLY" && labels.length && !onlyTd) {
+          labelWrong.push(nameCell.textContent.trim().slice(0, 24) +
+            " priced: " + labels.join("/"));
+        }
+        if (label === "EST" && onlyTd) {
+          labelWrong.push(nameCell.textContent.trim().slice(0, 24) +
+            " should read TD ONLY");
+        }
+      }
       // Any tagged row must also show at least one projected chip, and vice
       // versa -- the row tag and the chips are derived separately, so they can
       // disagree.
@@ -188,9 +211,15 @@ setTimeout(async () => {
       }
     }
   }
-  check("at least one row carries the EST tag", sawTagged);
+  check("at least one row carries the tag", sawTagged);
   check("the row tag agrees with the chips on every row",
     mismatched.length === 0, mismatched.slice(0, 3).join(" | "));
+  check('"TD ONLY" is only used where a TD really is the only priced stat',
+    labelWrong.length === 0, labelWrong.slice(0, 3).join(" | "));
+  console.log("        labels seen: " +
+    (Object.keys(labelCounts).length
+      ? Object.entries(labelCounts).map(([k, v]) => k + " x" + v).join(", ")
+      : "none"));
 
   console.log("");
   console.log("uncaught errors: " + errors.length);

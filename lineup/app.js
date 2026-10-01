@@ -2121,22 +2121,34 @@
    *
    * The individual stat chips already carry an approx sign, but that is easy to
    * miss on a row whose total looks like every other total. Justin Jefferson in
-   * week 4 is the case that prompted this: 14.4 points, and every bit of the
+   * week 4 is the case that prompted this: 17.6 points, and every bit of the
    * yardage and receptions behind it came from a season estimate divided by 17.
-   * The only thing a book priced was his touchdown. Someone reading the lineup
-   * has no way to tell that apart from a fully-priced 14.4 without hovering
-   * every chip.
+   * The only thing a book priced was his touchdown.
    *
-   * 136 of 465 players on the week 4 board are in this state, so the tag is not
-   * rare -- which is the point. It says "the market has not priced this player,
-   * this is an estimate" at a glance.
+   * The label says WHAT was priced rather than just "estimated", because that is
+   * the actionable part -- "TD only" tells you the market has an opinion on
+   * whether he scores and none on how much he does. Checked against the board:
+   * all 136 filled players have exactly one market stat and it is always the
+   * touchdown, so the label is literally true rather than a generalisation. The
+   * fallback covers a future case where that stops holding.
    */
   function projTag(p) {
     if (!p || !p.projFilled) return "";
-    return ' <span class="proj-tag" title="Usage is a season projection ' +
-      'divided by 17, not a market price: no book has posted this player\'s ' +
-      'yardage or receptions this week. Only his touchdown price is real.">' +
-      "EST</span>";
+    const priced = Object.keys(p.stats || {}).filter((k) => {
+      const st = p.stats[k];
+      return st && st.line != null && st.lineSource !== "projected";
+    });
+    const tdOnlyPriced = priced.length === 1 && priced[0] === "any_tds";
+    const label = tdOnlyPriced ? "TD ONLY" : "EST";
+    const why = tdOnlyPriced
+      ? "A book priced his touchdown and nothing else. The yardage and " +
+        "receptions here are a season projection divided by 17, not a market " +
+        "price -- the market has an opinion on whether he scores, none on how " +
+        "much he does."
+      : "Usage is a season projection divided by 17, not a market price: no " +
+        "book has posted this player's yardage or receptions this week.";
+    return ' <span class="proj-tag" title="' + escapeHtml(why) + '">' +
+      label + "</span>";
   }
 
   // One phrase for a row or a list: "IR (Hamstring)" or "Questionable (Thigh)".
