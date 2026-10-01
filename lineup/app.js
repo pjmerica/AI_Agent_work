@@ -1496,7 +1496,8 @@
         ' <span class="injury-tag" style="color:#58d68d">SWAP IN</span>';
       html += "<tr><td>" + badge + "</td>" +
         '<td class="player-name">' + escapeHtml(p.name) +
-        (p.injury ? ' <span class="injury-tag">' + escapeHtml(p.injury) + "</span>" : "") +
+        (p.injury ? ' <span class="injury-tag" title="Sleeper injury status">' +
+          escapeHtml(injuryLabel(p.injury)) + "</span>" : "") +
         swap + "</td>" +
         '<td><span class="pos-badge pos-' + escapeHtml(p.position || "?") + '">' +
         escapeHtml(p.position || "?") + "</span></td>" +
@@ -1525,7 +1526,8 @@
           ? ' <span class="injury-tag">SITTING</span>' : "";
         html += '<tr class="bench-row"><td class="player-name">' +
           escapeHtml(p.name) +
-          (p.injury ? ' <span class="injury-tag">' + escapeHtml(p.injury) + "</span>" : "") +
+          (p.injury ? ' <span class="injury-tag" title="Sleeper injury status">' +
+          escapeHtml(injuryLabel(p.injury)) + "</span>" : "") +
           swap + "</td>" +
           '<td><span class="pos-badge pos-' + escapeHtml(p.position || "?") + '">' +
           escapeHtml(p.position || "?") + "</span></td>" +
@@ -1549,18 +1551,48 @@
       // matters: a starter who silently vanishes reads as the tool being broken
       // rather than the market being thin. Show the position and game so the
       // gap is obvious, and say plainly that it is not a projection of zero.
-      html += '<div class="sitstart-section">No market projection (' +
-        unpriced.length + ")</div>" +
-        '<div class="verdict" style="font-size:13px">' +
-        escapeHtml(unpriced.map((r) =>
-          r.name + " (" + (r.position || "?") + (r.team ? ", " + r.team : "") + ")"
-        ).join(", ")) +
-        '<br /><span style="color:#6a6a8a">No book has priced their usage this ' +
-        "week, so they cannot be ranked and are left out of the lineup above. " +
-        "That is an unpriced role, <strong>not</strong> a projection of zero " +
-        "&mdash; if one of these is a player you would normally start, start " +
-        "him. Coverage is thinnest early in the week and fills in by " +
-        "Sunday.</span></div>";
+      /* Split the unpriced list by WHY the line is missing.
+       *
+       * "No book priced him" and "he is on IR" are opposite instructions, and
+       * reporting them together was the less useful half of the answer. An
+       * injury status explains most of this list in practice: of 16 unpriced
+       * players across these rosters in week 4, ten had one.
+       */
+      const hurt = unpriced.filter((r) => r.injury);
+      const quiet = unpriced.filter((r) => !r.injury);
+      const nameOf = (r) =>
+        r.name + " (" + (r.position || "?") + (r.team ? ", " + r.team : "") + ")";
+
+      if (hurt.length) {
+        html += '<div class="sitstart-section">Injured &mdash; no line because ' +
+          "he may not play (" + hurt.length + ")</div>" +
+          '<div class="verdict" style="font-size:13px">' +
+          hurt.map((r) =>
+            escapeHtml(nameOf(r)) +
+            ' <span class="injury-tag">' + escapeHtml(injuryLabel(r.injury)) +
+            "</span>").join("<br />") +
+          '<br /><span style="color:#6a6a8a">The books have not priced these ' +
+          "players because their status is in doubt, which is a reason not to " +
+          "start them rather than a gap in coverage. " +
+          (hurt.some((r) => r.injury.sidelined)
+            ? "Anyone marked IR, PUP, Out or NA is not playing at all."
+            : "All of these are game-time decisions, so check again closer to " +
+              "kickoff.") +
+          "</span></div>";
+      }
+
+      if (quiet.length) {
+        html += '<div class="sitstart-section">No market projection (' +
+          quiet.length + ")</div>" +
+          '<div class="verdict" style="font-size:13px">' +
+          escapeHtml(quiet.map(nameOf).join(", ")) +
+          '<br /><span style="color:#6a6a8a">No book has priced their usage this ' +
+          "week and Sleeper lists no injury, so they cannot be ranked and are " +
+          "left out of the lineup above. That is an unpriced role, " +
+          "<strong>not</strong> a projection of zero &mdash; if one of these is " +
+          "a player you would normally start, start him. Coverage is thinnest " +
+          "early in the week and fills in by Sunday.</span></div>";
+      }
     }
     if (unresolved.length) {
       html += '<div class="sitstart-section">Not recognised (' +
@@ -1871,7 +1903,7 @@
             // from the game line instead (see specialPoints), so this flag now
             // means "score me off the spread and total", not "unscoreable".
             unpriced: pos === "K" || pos === "DEF" || pos === "DST",
-            injury: null,
+            injury: injuryFor(pid),
           };
         });
         roster.sort((a, b) => (a.starter === b.starter ? 0 : a.starter ? -1 : 1) ||
@@ -2052,6 +2084,38 @@
     }
     await loadSleeperPlayed(sleeperSeason(), wk);
     return true;
+  }
+
+  /* Injury status, used to explain a missing line.
+   *
+   * A rostered player with no betting line is one of two very different things:
+   * the market has not got to him yet, or he is hurt and will not play. The page
+   * reported both as "no market projection", which is the less useful half of
+   * the answer -- "wait and check again" and "do not start him" look identical.
+   *
+   * Sleeper publishes the status in the same dictionary the player map is built
+   * from, so it rides along in the map at no extra fetch. The lookup only
+   * matters when a line is missing, which is exactly when it is consulted.
+   */
+  const INJURY_SIDELINED = new Set(["IR", "PUP", "Out", "Sus", "NA", "DNR", "COV"]);
+
+  function injuryFor(pid) {
+    const e = pmapEntry(pid);
+    if (!e || e.length < 4 || !e[3]) return null;
+    const status = e[3];
+    return {
+      status,
+      bodyPart: e.length > 4 ? e[4] : null,
+      // Out for the week, as opposed to a game-time decision. The distinction
+      // is what separates "he is not playing" from "he might not finish".
+      sidelined: INJURY_SIDELINED.has(status),
+    };
+  }
+
+  // One phrase for a row or a list: "IR (Hamstring)" or "Questionable (Thigh)".
+  function injuryLabel(inj) {
+    if (!inj) return "";
+    return inj.status + (inj.bodyPart ? " (" + inj.bodyPart + ")" : "");
   }
 
   function pmapEntry(pid) {

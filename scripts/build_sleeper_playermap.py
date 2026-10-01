@@ -6,6 +6,13 @@ just to turn ~30 roster IDs into names. Filtering to players who are on an NFL
 team and play a fantasy-scoring position drops that to ~880 entries and ~30 KB,
 which is cheap enough to ship as a static asset.
 
+Each entry also carries the player's injury status, which answers a question the
+board could not: when a rostered player has no betting line, is that because the
+market has not got to him or because he is hurt? Those are opposite signals --
+one says "wait", the other says "do not start him" -- and the page was reporting
+both as "no market projection". Sleeper publishes the status in this same
+dictionary, so it costs nothing extra to carry.
+
 Arrays rather than objects, and two-letter keys, because the field names would
 otherwise be most of the payload at this size.
 
@@ -57,13 +64,25 @@ def main() -> None:
             continue
         name = v.get("full_name") or " ".join(
             x for x in (v.get("first_name"), v.get("last_name")) if x) or str(pid)
-        out[str(pid)] = [name, pos, team or str(pid)]
+        entry = [name, pos, team or str(pid)]
+        # Only append when there is something to say: an injury status is the
+        # exception, so most entries stay three items and the file stays small.
+        status = (v.get("injury_status") or "").strip()
+        if status:
+            part = (v.get("injury_body_part") or "").strip()
+            entry.append(status)
+            if part:
+                entry.append(part)
+        out[str(pid)] = entry
 
     payload = {
         "lastUpdated": datetime.now(timezone.utc).isoformat(timespec="seconds"),
         "note": ("Trimmed Sleeper player map so the browser can resolve rosters "
                  "without the 14.6 MB upstream dictionary. Each value is "
-                 "[name, position, team]."),
+                 "[name, position, team] and, for a player carrying one, "
+                 "[..., injuryStatus] or [..., injuryStatus, bodyPart]. The "
+                 "status is what tells an unpriced player apart from an injured "
+                 "one."),
         "playerCount": len(out),
         "players": out,
     }
@@ -71,8 +90,9 @@ def main() -> None:
     OUT_FILE.write_text(json.dumps(payload, separators=(",", ":")), encoding="utf-8")
 
     kb = OUT_FILE.stat().st_size / 1024
+    hurt = sum(1 for v in out.values() if len(v) > 3)
     print(f"\nWrote {OUT_FILE}")
-    print(f"  {len(out)} players, {kb:.1f} KB")
+    print(f"  {len(out)} players, {kb:.1f} KB, {hurt} carrying an injury status")
 
 
 if __name__ == "__main__":

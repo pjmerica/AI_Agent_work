@@ -24,6 +24,7 @@ node tests/books_page.test.js
 node tests/board_page.test.js
 node tests/apps_agree.test.js
 node tests/name_matching.test.js
+node tests/injury_reason.test.js    # hits the live Sleeper API
 node tests/lineup_interact.test.js
 node tests/books_interact.test.js
 node tests/lineup_optimizer.test.js
@@ -180,3 +181,18 @@ other and the two share a team. That combination is one person spelled two ways,
 not two people. It found three: Cam/Cameron Ward, Josh/Joshua Palmer,
 Chig/Chigoziem Okonkwo. Leaving the search in the test means the next one
 surfaces on its own rather than waiting to be noticed.
+
+**`injury_reason.test.js`** — a rostered player with no betting line is either
+hurt or simply not priced yet, and those are opposite instructions. The page used
+to report both as "no market projection".
+
+Checks three things: that `sleeper_players.json` carries the status at all and is
+still small enough to ship (the status rides along in the player map, so there is
+no second fetch); that the sidelined/game-time split is right at the boundaries —
+IR, PUP, Out, Sus, NA, DNR, COV mean not playing, while Questionable and Doubtful
+are still game-time calls; and that the page renders the two groups as separate
+sections.
+
+The useful assertion is **every status present in the data is classified**. A new
+Sleeper code would otherwise fall through and read as playable, which is the
+failure direction that costs you a lineup slot.
