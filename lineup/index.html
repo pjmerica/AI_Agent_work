@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Lineup — market-priced start/sit</title>
-  <link rel="stylesheet" href="style.css?v=2026-10-01-inj" />
+  <link rel="stylesheet" href="style.css?v=2026-10-01-est" />
 </head>
 <body>
   <div class="container">
@@ -54,6 +54,13 @@
             A chip marked <strong>&asymp;</strong> is not a market price at all
             &mdash; it is a season projection divided by 17, used when the only
             thing anyone priced was a touchdown.</p>
+
+            <p>A row tagged <span class="proj-tag">EST</span> is one of those:
+            the books have not posted that player's yardage or receptions this
+            week, so his total is an estimate rather than a price. It is on the
+            row because a total looks the same either way &mdash; Justin
+            Jefferson read 17.6 in week 4 with only his touchdown actually
+            priced. An injury tag beside it usually explains why.</p>
 
             <p>A player whose game has kicked off is <strong>locked</strong>:
             his actual points show, his slot is spent, and the optimizer fills
@@ -216,6 +223,6 @@
     </footer>
   </div>
 
-  <script src="app.js?v=2026-10-01-inj"></script>
+  <script src="app.js?v=2026-10-01-est"></script>
 </body>
 </html>

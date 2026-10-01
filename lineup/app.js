@@ -1046,7 +1046,8 @@
           continue;
         }
         html += "<tr><td>" + badge + "</td>" +
-          '<td class="player-name">' + escapeHtml(r.p.name) + "</td>" +
+          '<td class="player-name">' + escapeHtml(r.p.name) +
+          projTag(r.p) + "</td>" +
           '<td><span class="pos-badge pos-' + escapeHtml(r.p.position || "?") + '">' +
           escapeHtml(r.p.position || "?") + "</span></td>" +
           '<td class="weekly-game">' + escapeHtml(shortMatchup(r.p.matchup) || "-") + "</td>" +
@@ -1064,7 +1065,8 @@
     if (bench && bench.length) {
       html += '<div class="sitstart-section">Bench</div><table class="slot-table"><tbody>';
       for (const p of bench) {
-        html += '<tr class="bench-row"><td class="player-name">' + escapeHtml(p.name) + "</td>" +
+        html += '<tr class="bench-row"><td class="player-name">' +
+          escapeHtml(p.name) + projTag(p) + "</td>" +
           '<td><span class="pos-badge pos-' + escapeHtml(p.position || "?") + '">' +
           escapeHtml(p.position || "?") + "</span></td>" +
           '<td class="weekly-game">' + escapeHtml(shortMatchup(p.matchup) || "-") + "</td>" +
@@ -1424,6 +1426,7 @@
         points: leaguePoints(p.stats, lg.scoring, r.position || p.position),
         stats: p.stats,
         injury: r.injury,
+        projFilled: p.projFilled,
         wasStarter: r.starter,
       });
     }
@@ -1496,6 +1499,7 @@
         ' <span class="injury-tag" style="color:#58d68d">SWAP IN</span>';
       html += "<tr><td>" + badge + "</td>" +
         '<td class="player-name">' + escapeHtml(p.name) +
+        projTag(p) +
         (p.injury ? ' <span class="injury-tag" title="Sleeper injury status">' +
           escapeHtml(injuryLabel(p.injury)) + "</span>" : "") +
         swap + "</td>" +
@@ -1526,7 +1530,8 @@
           ? ' <span class="injury-tag">SITTING</span>' : "";
         html += '<tr class="bench-row"><td class="player-name">' +
           escapeHtml(p.name) +
-          (p.injury ? ' <span class="injury-tag" title="Sleeper injury status">' +
+          projTag(p) +
+        (p.injury ? ' <span class="injury-tag" title="Sleeper injury status">' +
           escapeHtml(injuryLabel(p.injury)) + "</span>" : "") +
           swap + "</td>" +
           '<td><span class="pos-badge pos-' + escapeHtml(p.position || "?") + '">' +
@@ -2110,6 +2115,28 @@
       // is what separates "he is not playing" from "he might not finish".
       sidelined: INJURY_SIDELINED.has(status),
     };
+  }
+
+  /* Flags a row whose usage is a projection, not a market price.
+   *
+   * The individual stat chips already carry an approx sign, but that is easy to
+   * miss on a row whose total looks like every other total. Justin Jefferson in
+   * week 4 is the case that prompted this: 14.4 points, and every bit of the
+   * yardage and receptions behind it came from a season estimate divided by 17.
+   * The only thing a book priced was his touchdown. Someone reading the lineup
+   * has no way to tell that apart from a fully-priced 14.4 without hovering
+   * every chip.
+   *
+   * 136 of 465 players on the week 4 board are in this state, so the tag is not
+   * rare -- which is the point. It says "the market has not priced this player,
+   * this is an estimate" at a glance.
+   */
+  function projTag(p) {
+    if (!p || !p.projFilled) return "";
+    return ' <span class="proj-tag" title="Usage is a season projection ' +
+      'divided by 17, not a market price: no book has posted this player\'s ' +
+      'yardage or receptions this week. Only his touchdown price is real.">' +
+      "EST</span>";
   }
 
   // One phrase for a row or a list: "IR (Hamstring)" or "Questionable (Thigh)".

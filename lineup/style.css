@@ -1045,3 +1045,23 @@ tr.row-nan:hover { opacity: 0.85; }
    itself to the widest label, which Sleeper spells "SUPER_FLEX". */
 .slot-table th:first-child,
 .slot-table td:first-child { width: 1%; white-space: nowrap; }
+
+/* Marks a row whose usage is a season projection rather than a market price.
+   The stat chips already carry an approx sign, but a row total looks the same
+   either way -- Justin Jefferson's 14.4 was entirely estimated yardage with
+   only his touchdown priced, and nothing on the row said so. Amber because it
+   is a caveat, not an error. */
+.proj-tag {
+  display: inline-block;
+  margin-left: 6px;
+  padding: 1px 5px;
+  border-radius: 3px;
+  border: 1px dashed rgba(120, 170, 255, 0.5);
+  background: rgba(120, 170, 255, 0.08);
+  color: #9cc0f0;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.6px;
+  vertical-align: middle;
+  cursor: help;
+}

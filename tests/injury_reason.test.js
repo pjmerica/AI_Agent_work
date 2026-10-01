@@ -160,6 +160,38 @@ setTimeout(async () => {
       txt.slice(0, 70));
   }
 
+  // ---- the EST tag --------------------------------------------------------
+  // The stat chips carry an approx sign, but a row total looks identical whether
+  // it came from a book or from a season estimate. Justin Jefferson in week 4 is
+  // the case: 14.4 points of which only the touchdown was priced.
+  console.log("");
+  console.log("=== rows built on a projection are tagged ===");
+  let sawTagged = false;
+  let mismatched = [];
+  for (let i = 0; i < chips.length; i++) {
+    [...$("sleeper-league-chips").querySelectorAll(".chip")][i].click();
+    await new Promise((r) => setTimeout(r, 400));
+    const rows = [...$("sleeper-output").querySelectorAll("table.slot-table tbody tr")];
+    for (const tr of rows) {
+      const nameCell = tr.querySelector(".player-name");
+      if (!nameCell) continue;
+      const tagged = !!nameCell.querySelector(".proj-tag");
+      if (tagged) sawTagged = true;
+      // Any tagged row must also show at least one projected chip, and vice
+      // versa -- the row tag and the chips are derived separately, so they can
+      // disagree.
+      const hasProjChip = !!tr.querySelector(".market-chip.src-proj");
+      const hasAnyChip = !!tr.querySelector(".market-chip");
+      if (hasAnyChip && tagged !== hasProjChip) {
+        mismatched.push(nameCell.textContent.trim().slice(0, 28) +
+          " tag=" + tagged + " chip=" + hasProjChip);
+      }
+    }
+  }
+  check("at least one row carries the EST tag", sawTagged);
+  check("the row tag agrees with the chips on every row",
+    mismatched.length === 0, mismatched.slice(0, 3).join(" | "));
+
   console.log("");
   console.log("uncaught errors: " + errors.length);
   errors.slice(0, 4).forEach((e) => console.log("   " + e));
