@@ -2619,5 +2619,18 @@
     if (tab) showView(tab.dataset.view);
   });
 
-  loadData().then(() => showView("sitstart"));
+  /* Which tab opens first.
+   *
+   * The page is served at two URLs on ez-dubs-website -- Start/Sit and Root
+   * For/Against are separate nav entries and separate directories -- but both
+   * load this same file, so the logic cannot drift between them. Each page sets
+   * window.LINEUP_DEFAULT_VIEW; a URL hash overrides it, so an existing
+   * deep-link still works. Falls back to the first tab when neither is set.
+   */
+  const VALID_VIEWS = new Set(["sitstart", "sleeper", "rooting"]);
+  const hashView = (window.location.hash || "").replace(/^#/, "");
+  const wanted = VALID_VIEWS.has(hashView) ? hashView
+    : VALID_VIEWS.has(window.LINEUP_DEFAULT_VIEW) ? window.LINEUP_DEFAULT_VIEW
+    : "sitstart";
+  loadData().then(() => showView(wanted));
 })();
