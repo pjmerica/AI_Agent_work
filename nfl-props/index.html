@@ -548,7 +548,22 @@
     </footer>
   </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <!-- Chart.js, pinned by hash. Two things to know before changing this URL:
+       1. It points at dist/chart.umd.js, NOT dist/chart.umd.min.js. The .min
+          file does not exist in the published package -- jsdelivr minifies it
+          on the fly, and its own banner says "Do NOT use SRI with dynamically
+          generated files", because those bytes can change without the version
+          changing. chart.umd.js is byte-identical to the npm tarball (verified
+          against npm's published sha512), already minified, and smaller.
+       2. The integrity hash must be recomputed if the version changes, or the
+          browser will refuse to load it:
+            curl -sL <url> | openssl dgst -sha384 -binary | openssl base64 -A
+       Without SRI, anyone who can tamper with the CDN response runs arbitrary
+       JS on this page. -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.js"
+          integrity="sha384-dug+JxfBvklEQdJ4AYuBBAIScUz0bVN73xpy273gcAwHjb3qI0fXmuYNaNfdyYJG"
+          crossorigin="anonymous"
+          referrerpolicy="no-referrer"></script>
   <!-- Version query busts the 10-minute GitHub Pages cache on app.js. Without
        it a stale script can pair with fresh markup and shift every column.
        Bump on any app.js change. -->
