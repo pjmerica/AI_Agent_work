@@ -22,6 +22,9 @@ a.back {
   text-decoration: none;
   margin-bottom: 16px;
   display: inline-block;
+  /* WCAG 2.2 (2.5.8) asks for a 24x24px minimum target; this link measured 17px
+     tall. The padding is absorbed by the margin below, so nothing moves. */
+  padding: 4px 2px;
 }
 a.back:hover { color: #5b4cf5; }
 
@@ -167,7 +170,12 @@ header h1 { font-size: 28px; font-weight: 700; color: #fff; }
   background: #1a1a24;
   border: 1px solid #2e2e42;
   border-radius: 12px;
-  overflow: hidden;
+  /* overflow-x must scroll, not hide. At a 320px viewport the table is 358px
+     wide, and `overflow: hidden` made the rightmost columns permanently
+     unreachable -- no scrollbar and no swipe. overflow-y stays hidden so the
+     table's square corners are still clipped by the 12px radius. */
+  overflow-x: auto;
+  overflow-y: hidden;
 }
 
 .rankings {
@@ -1059,7 +1067,9 @@ tr.row-nan:hover { opacity: 0.85; }
   border: 1px dashed rgba(120, 170, 255, 0.5);
   background: rgba(120, 170, 255, 0.08);
   color: #9cc0f0;
-  font-size: 9px;
+  /* Was 9px. This tag warns that a projection is NOT from Vegas books,
+     so it should not be the least readable thing on the page. */
+  font-size: 11px;
   font-weight: 700;
   letter-spacing: 0.6px;
   vertical-align: middle;

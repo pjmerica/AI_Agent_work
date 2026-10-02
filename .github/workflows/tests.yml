@@ -37,5 +37,18 @@ jobs:
         with:
           python-version: '3.12'
       - run: npm install --no-audit --no-fund
+
       - name: Run the test suites
         run: node tests/run_all.js --offline
+
+      # Needs a real browser: only an engine applies media queries and measures
+      # layout. Chrome is installed rather than assumed at a path, because the
+      # test skips when the binary is missing and a wrong guess would verify
+      # nothing while still reporting success.
+      - uses: browser-actions/setup-chrome@v1
+        id: chrome
+
+      - name: Check mobile layout at phone widths
+        run: node tests/mobile_layout.test.js
+        env:
+          CHROME_BIN: ${{ steps.chrome.outputs.chrome-path }}

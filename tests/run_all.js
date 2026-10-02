@@ -25,6 +25,11 @@ const offline = process.argv.includes("--offline");
 // These reach the live Sleeper / Pages endpoints.
 const NETWORK = new Set(["live_smoke.test.js"]);
 
+// Needs real Chrome, which not every machine has, and is slow because it launches
+// a browser per page per width. CI runs it as its own step with Chrome installed,
+// so --offline leaves it out here.
+const NEEDS_BROWSER = new Set(["mobile_layout.test.js"]);
+
 // Fail loudly and early rather than letting 10 suites each crash with the same
 // unhelpful stack.
 try {
@@ -46,6 +51,11 @@ const pyTests = fs.readdirSync(TESTS_DIR).filter((f) => f.endsWith(".test.py")).
 let failed = [], crashed = [], skipped = [], passed = 0;
 
 for (const f of suites) {
+  // Browser suites are always skipped here and run as their own CI step. They
+  // launch a browser per page per width, and sharing a process tree with the
+  // other suites made them contend for ports and CPU -- which surfaced as empty
+  // page captures, i.e. a flaky failure that looks like a real layout bug.
+  if (NEEDS_BROWSER.has(f)) { skipped.push(f); continue; }
   if (offline && NETWORK.has(f)) { skipped.push(f); continue; }
   process.stdout.write(`\n=== ${f} ===\n`);
   try {
@@ -113,7 +123,7 @@ for (const f of pyTests) {
 
 console.log("\n" + "=".repeat(60));
 console.log(`${passed} suite(s) passed`);
-if (skipped.length) console.log(`${skipped.length} skipped (network): ${skipped.join(", ")}`);
+if (skipped.length) console.log(`${skipped.length} skipped (network/browser): ${skipped.join(", ")}`);
 if (failed.length)  console.log(`${failed.length} FAILED: ${failed.join(", ")}`);
 if (crashed.length) console.log(`${crashed.length} CRASHED (never ran any check): ${crashed.join(", ")}`);
 process.exit(failed.length + crashed.length ? 1 : 0);

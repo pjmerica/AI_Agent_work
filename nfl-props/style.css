@@ -22,6 +22,9 @@ a.back {
   text-decoration: none;
   margin-bottom: 16px;
   display: inline-block;
+  /* WCAG 2.2 (2.5.8) asks for a 24x24px minimum target; this link measured 17px
+     tall. The padding is absorbed by the margin below, so nothing moves. */
+  padding: 4px 2px;
 }
 a.back:hover { color: #5b4cf5; }
 
@@ -167,7 +170,12 @@ header h1 { font-size: 28px; font-weight: 700; color: #fff; }
   background: #1a1a24;
   border: 1px solid #2e2e42;
   border-radius: 12px;
-  overflow: hidden;
+  /* overflow-x must scroll, not hide. At a 320px viewport the table is 358px
+     wide, and `overflow: hidden` made the rightmost columns permanently
+     unreachable -- no scrollbar and no swipe. overflow-y stays hidden so the
+     table's square corners are still clipped by the 12px radius. */
+  overflow-x: auto;
+  overflow-y: hidden;
 }
 
 .rankings {
@@ -318,6 +326,26 @@ footer {
   font-size: 12px;
   color: #6a6a8a;
   padding-top: 16px;
+}
+
+/* Ten tabs cannot fit a phone. Measured at a true 390px viewport, this strip was
+   840px wide and made the ENTIRE page scroll sideways -- header and content with
+   it -- because a flex row does not wrap by default and nothing clipped it.
+   Letting just this element scroll keeps the tabs on one line and holds the page
+   still. -webkit-overflow-scrolling gives iOS momentum; the hidden scrollbar
+   keeps a 10px bar off a strip that is only ~44px tall, and the tabs stay
+   reachable by swipe and by keyboard. */
+@media (max-width: 760px) {
+  .view-tabs {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    align-self: stretch;
+  }
+  .view-tabs::-webkit-scrollbar { display: none; }
+  /* Without this the tabs shrink to fit instead of scrolling, which squeezes
+     the labels to an unreadable width. */
+  .view-tab { flex: 0 0 auto; }
 }
 
 @media (max-width: 700px) {

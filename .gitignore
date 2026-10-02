@@ -6,3 +6,7 @@ __pycache__/
 # npm's install tree. Only the test suite needs packages (jsdom); the pages
 # themselves load nothing from npm. package-lock.json IS committed.
 node_modules/
+
+# Temp harness pages written by tests/mobile_layout.test.js. It cleans up after
+# itself, but a crashed or killed run can leave one behind.
+__phone_harness*.html
