@@ -1,0 +1,41 @@
+name: Tests
+
+# These widgets are plain static files with no build step, so nothing else would
+# catch a broken page until someone loaded it in a browser. The suites parse the
+# real markup with jsdom and click the real buttons.
+#
+# They also exist because the suite was unrunnable for a while without anyone
+# noticing: jsdom was never declared as a dependency, so `require("jsdom")` only
+# resolved by accident from a parent directory. Running it from a clean checkout
+# is what keeps that honest.
+#
+# --offline skips live_smoke.test.js, which hits the Sleeper API and the Pages
+# site. A third party being down should not turn this red.
+on:
+  push:
+    branches: [master]
+    paths:
+      - 'lineup/**'
+      - 'nfl-props/**'
+      - 'books/**'
+      - 'tests/**'
+      - 'package.json'
+      - '.github/workflows/tests.yml'
+  pull_request:
+    branches: [master]
+  workflow_dispatch:
+
+jobs:
+  widgets:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: npm install --no-audit --no-fund
+      - name: Run the test suites
+        run: node tests/run_all.js --offline
