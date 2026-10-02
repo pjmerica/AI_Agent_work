@@ -139,10 +139,39 @@ def nfl_dropdown(prefix: str, active: str | None) -> str:
             </div>"""
 
 
-OLD_BB_RE = re.compile(
-    r'[ \t]*<div class="nav-dd">\s*'
-    r'<button[^>]*class="nav-dd-btn[^"]*"[^>]*>\s*Best Ball \(NFL\)[\s\S]*?'
-    r'</div>\s*</div>')
+def find_nav_dd(html: str, label: str) -> tuple[int, int] | None:
+    """Span of the <div class="nav-dd"> whose button text starts with `label`.
+
+    Brace-counted, not regex-matched. The old version ended in a fixed number of
+    </div>s, which silently broke when the menu gained a nesting level: it
+    consumed three closers where the nested markup has four, leaving an orphan
+    </div> on every page. Counting is the only form that survives the markup
+    getting deeper.
+    """
+    for m in re.finditer(r'[ \t]*<div class="nav-dd">', html):
+        btn = re.compile(r'<button[^>]*class="nav-dd-btn[^"]*"[^>]*>\s*' +
+                         re.escape(label))
+        if not btn.match(html, html.find("<button", m.end())):
+            # Cheap check that this is the right dropdown before walking it.
+            seg = html[m.end():m.end() + 400]
+            if label not in seg:
+                continue
+        i = m.end()
+        depth = 1
+        while i < len(html):
+            nxt_open = html.find("<div", i)
+            nxt_close = html.find("</div>", i)
+            if nxt_close == -1:
+                return None
+            if nxt_open != -1 and nxt_open < nxt_close:
+                depth += 1
+                i = nxt_open + 4
+            else:
+                depth -= 1
+                i = nxt_close + 6
+                if depth == 0:
+                    return (m.start(), i)
+    return None
 
 
 def rewrite_nav(html: str, prefix: str, active: str | None) -> tuple[str, list[str]]:
@@ -151,22 +180,15 @@ def rewrite_nav(html: str, prefix: str, active: str | None) -> tuple[str, list[s
     if '<nav class="site-nav">' not in html:
         return html, ["no site-nav (skipped)"]
 
-    if OLD_BB_RE.search(html):
-        html = OLD_BB_RE.sub(nfl_dropdown(prefix, active), html, count=1)
+    # "Best Ball (NFL)" on a fresh repo, "NFL" on one already ported -- handling
+    # both is what makes a re-run safe.
+    span = find_nav_dd(html, "Best Ball (NFL)") or find_nav_dd(html, "NFL")
+    if span:
+        lo, hi = span
+        html = html[:lo] + nfl_dropdown(prefix, active) + html[hi:]
         notes.append("nav rewritten")
-    elif ">NFL <span" in html:
-        # Already ported: replace the NFL block so re-runs stay idempotent.
-        cur = re.compile(
-            r'[ \t]*<div class="nav-dd">\s*'
-            r'<button[^>]*class="nav-dd-btn[^"]*"[^>]*>\s*NFL[\s\S]*?'
-            r'</div>\s*</div>\s*</div>')
-        if cur.search(html):
-            html = cur.sub(nfl_dropdown(prefix, active), html, count=1)
-            notes.append("nav refreshed")
-        else:
-            notes.append("NFL nav present but unparsed -- CHECK BY HAND")
     else:
-        notes.append("Best Ball dropdown not found -- CHECK BY HAND")
+        notes.append("NFL/Best Ball dropdown not found -- CHECK BY HAND")
 
     if ".nav-dd-sub" not in html:
         # Append to the page's own <style>, which is where all its CSS lives.
@@ -199,9 +221,56 @@ def lift_style(dest: Path) -> str | None:
     return m.group(0) if m else None
 
 
+def drop_view(html: str, view: str) -> str:
+    """Remove one <div id="{view}-view"> block, matching nested divs properly.
+
+    A regex cannot do this: the view bodies contain dozens of nested <div>s, so
+    anything non-greedy stops at the first </div> and anything greedy eats the
+    rest of the page.
+    """
+    start = html.find(f'<div id="{view}-view"')
+    if start == -1:
+        return html
+    # Walk forward counting div open/close from the opening tag.
+    i, depth = start, 0
+    while i < len(html):
+        nxt_open = html.find("<div", i)
+        nxt_close = html.find("</div>", i)
+        if nxt_close == -1:
+            return html                       # malformed; leave it alone
+        if nxt_open != -1 and nxt_open < nxt_close:
+            depth += 1
+            i = nxt_open + 4
+        else:
+            depth -= 1
+            i = nxt_close + 6
+            if depth == 0:
+                # Take the line's leading whitespace and trailing newline too.
+                line_start = html.rfind("\n", 0, start) + 1
+                end = i
+                if html[end:end + 1] == "\n":
+                    end += 1
+                return html[:line_start] + html[end:]
+    return html
+
+
 def build_page(slug: str, cfg: dict, nav: str, site_style: str) -> str:
     """One page: site chrome + the lineup markup, pointed at the shared assets."""
     html = (SRC / "lineup" / "index.html").read_text(encoding="utf-8")
+
+    # Drop the in-page tab strip, and the views this page does not show.
+    #
+    # On AI_Agent_work one page carries all three views and the strip switches
+    # them. Here each view has its own URL and nav entry, so a strip beside the
+    # nav would be a second control doing the same job. Removing the unused
+    # views' markup too keeps each page to what it actually renders -- app.js
+    # guards every lookup, so the absent ids are not an error.
+    html = re.sub(r'[ \t]*<div class="view-tabs" id="view-tabs">[\s\S]*?</div>\n',
+                  "", html, count=1)
+    for view in ("sitstart", "sleeper", "rooting"):
+        if view == cfg["view"]:
+            continue
+        html = drop_view(html, view)
 
     # Shared assets, one directory up.
     html = html.replace('href="style.css', f'href="../{SHARED}/style.css')
