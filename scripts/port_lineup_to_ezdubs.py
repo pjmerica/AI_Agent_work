@@ -348,6 +348,43 @@ def note_claude(dest: Path) -> None:
     print("  annotated CLAUDE.md")
 
 
+
+def carry_head_metas(existing_path, new_html: str) -> str:
+    """Preserve <meta http-equiv=...> tags the destination page already has.
+
+    The pages are regenerated from a template, so a tag added by hand in the
+    destination -- a Content-Security-Policy, most importantly -- would vanish on
+    the next run. Re-inserting it after the charset meta, where the site's other
+    dashboards carry it, keeps that from being a silent security regression.
+    """
+    if not existing_path.exists():
+        return new_html
+    old = existing_path.read_text(encoding="utf-8", errors="replace")
+    # Capture the tag only. An earlier version also consumed the trailing
+    # newline and then re-added one, so every run left two blank lines in <head>
+    # and the port stopped being idempotent.
+    keep = re.findall(r'<meta\s+http-equiv=[^>]*>', old, flags=re.I)
+    if not keep:
+        return new_html
+    out = new_html
+    for tag in keep:
+        # Match on the directive name so a reworded policy is not duplicated.
+        name = re.search(r'http-equiv=["\']([^"\']+)', tag, flags=re.I)
+        if name and re.search(r'http-equiv=["\']' + re.escape(name.group(1)),
+                              out, flags=re.I):
+            continue
+        m = re.search(r'(?i)([ \t]*<meta\s+charset=[^>]*>\s*\n)', out)
+        if not m:
+            continue
+        out = out[:m.end(1)] + "  " + tag.strip() + "\n" + out[m.end(1):]
+        print(f"    carried over: {name.group(1) if name else 'meta'}")
+    # Collapse blank-line runs left in <head> by earlier versions of this
+    # function, so re-running converges instead of growing the file.
+    out = re.sub(r'(<meta\s+http-equiv=[^>]*>\n)(?:[ \t]*\n)+', r'\1', out,
+                 flags=re.I)
+    return out
+
+
 def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("--write", action="store_true")
@@ -403,23 +440,57 @@ def main() -> None:
         out.mkdir(parents=True, exist_ok=True)
         html, _ = rewrite_nav(build_page(slug, cfg, nav, site_style or ""),
                               "../", slug)
+        # The page is rebuilt from a template, so anything added to the
+        # destination's <head> by hand would be silently dropped. That already
+        # happened once with the Content-Security-Policy: re-running this to pick
+        # up a stylesheet change removed the CSP from both pages and said nothing.
+        # Carry such tags across instead.
+        html = carry_head_metas(out / "index.html", html)
         (out / "index.html").write_text(html, encoding="utf-8", newline="\n")
         if cfg["data"] == "data/":
             (out / "data").mkdir(exist_ok=True)
             for f in DATA_FILES:
                 src = SRC / "nfl-props" / f
-                if src.exists():
-                    shutil.copy2(src, out / "data" / f)
+                if not src.exists():
+                    continue
+                dst = out / "data" / f
+                # Compare bytes first. Copying unconditionally rewrote every file
+                # on every run -- 40k insertions and 40k deletions of pure
+                # line-ending churn -- which buries any real data change in the
+                # diff and makes the commit meaningless.
+                # Compare with line endings normalised, not raw bytes. This repo
+                # has no .gitattributes, so its JSON sits on disk as CRLF while
+                # the destination stores LF -- so a raw byte compare never matched
+                # and every run rewrote all six files (40k insertions and 40k
+                # deletions of pure churn, hiding any real data change).
+                raw = src.read_bytes().replace(b"\r\n", b"\n")
+                if dst.exists() and dst.read_bytes().replace(b"\r\n", b"\n") == raw:
+                    continue
+                # Write LF, matching what the destination repo stores.
+                dst.write_bytes(raw)
 
     # --- documentation -------------------------------------------------------
     # The destination repo has to explain itself to whoever opens it next, and
     # the two-URLs-one-app arrangement is the part most likely to be "tidied"
     # into two copies by someone who does not know why it is shared.
     doc_src = SRC / "docs" / "ezdubs-nfl-redraft.md"
+    doc_dst = dest / "dashboards" / "NFL_REDRAFT.md"
     if doc_src.exists():
-        (dest / "dashboards" / "NFL_REDRAFT.md").write_text(
-            doc_src.read_text(encoding="utf-8"), encoding="utf-8", newline="\n")
-        print("\n  wrote dashboards/NFL_REDRAFT.md")
+        # Write it only if it does not exist yet. The destination copy gets edited
+        # in place -- it is the file a future agent reads first -- and overwriting
+        # it from here once discarded notes that only applied to the destination
+        # repo. If both have changed, that is for a human to reconcile.
+        if not doc_dst.exists():
+            doc_dst.write_text(doc_src.read_text(encoding="utf-8"),
+                               encoding="utf-8", newline="\n")
+            print("\n  wrote dashboards/NFL_REDRAFT.md")
+        elif doc_dst.read_text(encoding="utf-8") != doc_src.read_text(encoding="utf-8"):
+            print("\n  dashboards/NFL_REDRAFT.md differs from docs/"
+                  "ezdubs-nfl-redraft.md and was LEFT ALONE.")
+            print("    The destination copy may carry notes this repo does not."
+                  " Reconcile by hand if needed.")
+        else:
+            print("\n  dashboards/NFL_REDRAFT.md already current")
     else:
         print(f"\n  WARNING: {doc_src} missing; destination will be undocumented")
 
