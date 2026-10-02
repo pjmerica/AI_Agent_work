@@ -53,10 +53,10 @@ body {
 .control-group.grow { flex: 1 1 200px; min-width: 160px; }
 
 .control-label {
-  font-size: 11px;
+  font-size: 12px;
   text-transform: uppercase;
   letter-spacing: 0.7px;
-  color: #6a6a8a;
+  color: #a0a0c0;
 }
 
 .seg {
@@ -101,7 +101,7 @@ body {
   padding: 7px 11px;
 }
 
-#search::placeholder { color: #5a5a78; }
+#search::placeholder { color: #8a8aa8; }
 #search:focus { outline: none; border-color: #4a4a78; }
 
 /* -- Legend --------------------------------------------------------------- */
@@ -130,7 +130,7 @@ body {
   color: #c4c4dd;
   border-radius: 10px;
   padding: 1px 7px;
-  font-size: 11px;
+  font-size: 12px;
   font-variant-numeric: tabular-nums;
 }
 
@@ -161,8 +161,8 @@ table.board thead th {
   top: 0;
   z-index: 2;
   background: #16161f;
-  color: #8a8aa8;
-  font-size: 11px;
+  color: #a8a8c4;
+  font-size: 12px;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.6px;
@@ -182,9 +182,9 @@ table.board th.sorted { color: #fff; }
 
 table.board tbody tr:hover td { background: #16161f; }
 
-.col-rank { color: #55557a; width: 46px; font-variant-numeric: tabular-nums; }
+.col-rank { color: #8a8aa8; width: 46px; font-variant-numeric: tabular-nums; }
 .col-player { font-weight: 550; color: #f0f0f8; }
-.col-game { color: #7a7a9a; font-size: 12px; }
+.col-game { color: #9ca0bd; font-size: 12px; }
 /* Holds a fixed-width badge and nothing else, so it should not claim the
    space a header word would. It was the one column class with no rule. */
 .col-pos { width: 1%; white-space: nowrap; }
@@ -204,7 +204,7 @@ td.col-alt, th.col-alt { color: #8fa8c8; }
 
 .blank { color: #3a3a55; }
 
-.col-spread { color: #7a7a9a; }
+.col-spread { color: #9ca0bd; }
 .col-spread .wide { color: #f5b041; font-weight: 600; }
 
 .pos-badge {
@@ -227,7 +227,7 @@ td.col-alt, th.col-alt { color: #8fa8c8; }
 .empty {
   padding: 34px 18px;
   text-align: center;
-  color: #6a6a8a;
+  color: #a0a0c0;
   font-size: 14px;
 }
 
@@ -237,7 +237,7 @@ td.col-alt, th.col-alt { color: #8fa8c8; }
   margin-top: 20px;
   font-size: 12px;
   line-height: 1.6;
-  color: #6a6a8a;
+  color: #a0a0c0;
   max-width: 76ch;
 }
 
@@ -252,7 +252,7 @@ td.col-alt, th.col-alt { color: #8fa8c8; }
 /* A book that priced only some of a player's markets. Its total is real but
    not comparable to a book that priced everything, so it is dimmed, marked,
    and left out of the spread. Hover gives the specifics. */
-td.num.partial { color: #7a7a9a; }
+td.num.partial { color: #9ca0bd; }
 .partial-mark {
   color: #f5b041;
   font-size: 10px;
@@ -281,7 +281,7 @@ td.num.partial { color: #7a7a9a; }
 
 /* A row nobody priced beyond a touchdown. Its total is a floor, not a
    projection, so it is dimmed and tagged rather than ranked as an equal. */
-tr.td-only td { color: #7a7a9a; }
+tr.td-only td { color: #9ca0bd; }
 tr.td-only .col-player { color: #9a9ab8; font-weight: 500; }
 .td-only-tag {
   margin-left: 6px;
