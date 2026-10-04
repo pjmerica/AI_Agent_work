@@ -1,26 +1,26 @@
 {
-  "generated": "2026-10-04T16:13:16.743963+00:00",
+  "generated": "2026-10-04T19:54:13.228213+00:00",
   "stats": {
-    "n_items": 571,
-    "n_players": 132,
-    "n_unpriced": 97,
+    "n_items": 625,
+    "n_players": 162,
+    "n_unpriced": 118,
     "by_source": {
-      "Bluesky @minakimes.bsky.social": 32,
-      "Bluesky @rapsheet.bsky.social": 17,
-      "Bluesky @jourdanrodrigue.bsky.social": 7,
+      "Bluesky @minakimes.bsky.social": 36,
+      "Bluesky @rapsheet.bsky.social": 20,
+      "Bluesky @jourdanrodrigue.bsky.social": 14,
       "Bluesky @lateroundqb.bsky.social": 7,
-      "Bluesky @sethwalder.bsky.social": 20,
+      "Bluesky @sethwalder.bsky.social": 24,
       "Bluesky @kevinseifert.bsky.social": 2,
-      "Bluesky @nateatkins.bsky.social": 17,
+      "Bluesky @nateatkins.bsky.social": 40,
       "Bluesky @ffnatejahnke.bsky.social": 40,
       "ProFootballTalk": 30,
-      "Yahoo NFL": 48,
+      "Yahoo NFL": 50,
       "CBS Sports NFL": 36,
-      "PFF": 13,
+      "PFF": 15,
       "Awful Announcing": 15,
-      "SBN ARI": 8,
+      "SBN ARI": 9,
       "SBN ATL": 9,
-      "SBN BAL": 6,
+      "SBN BAL": 9,
       "SBN BUF": 10,
       "SBN CAR": 7,
       "SBN CHI": 10,
@@ -30,11 +30,11 @@
       "SBN DEN": 10,
       "SBN DET": 10,
       "SBN GB": 10,
-      "SBN HOU": 4,
+      "SBN HOU": 5,
       "SBN IND": 10,
       "SBN JAX": 5,
       "SBN KC": 10,
-      "SBN LAC": 7,
+      "SBN LAC": 10,
       "SBN LAR": 10,
       "SBN LV": 10,
       "SBN MIA": 10,
@@ -47,8 +47,8 @@
       "SBN PIT": 10,
       "SBN SEA": 10,
       "SBN SF": 10,
-      "SBN TB": 6,
-      "SBN TEN": 5,
+      "SBN TB": 8,
+      "SBN TEN": 4,
       "SBN WAS": 10
     },
     "adp_latest": "2026-09-04",
@@ -58,6 +58,34 @@
   },
   "players": [
     {
+      "name": "Tyson Bagent",
+      "pos": "QB",
+      "team": "CHI",
+      "adp": 216.0,
+      "adp_prior": 216.0,
+      "adp_move": 0.0,
+      "proj": null,
+      "sleeper_weight": 1.8,
+      "score": 12.332,
+      "unpriced": true,
+      "signals": [
+        "injured",
+        "starting lineup"
+      ],
+      "items": [
+        {
+          "text": "Tyson Bagent and Case Keenum started for the Bears. Would it be Tyson Bagent or Case Keenum in the starting lineup for the Bears on Sunday against the Jets?",
+          "url": "https://www.nbcsports.com/nfl/profootballtalk/rumor-mill/news/tyson-bagent-and-case-keenum-started-for-the-bears",
+          "source": "ProFootballTalk"
+        },
+        {
+          "text": "Bears expected to start inexperienced QB &#8211; Can Jets take advantage?. As far as I am aware, as of the time of writing this article, the Chicago Bears had made no official announcement regarding who will start for them at quarterback in place of the injured Caleb Williams. Nonetheless, rumors in",
+          "url": "https://www.ganggreennation.com/new-york-jets-analysis/97227/bears-expected-to-start-inexperienced-qb-can-jets-take-advantage",
+          "source": "SBN NYJ"
+        }
+      ]
+    },
+    {
       "name": "Marcus Mariota",
       "pos": "QB",
       "team": "WAS",
@@ -66,23 +94,107 @@
       "adp_move": 0.0,
       "proj": null,
       "sleeper_weight": 1.8,
-      "score": 11.564,
+      "score": 11.928,
       "unpriced": true,
       "signals": [
-        "injury",
-        "out for",
-        "questionable"
+        "injured",
+        "injury"
       ],
       "items": [
         {
-          "text": "Terry McLaurin out for Commanders in London Sunday. Commanders quarterback Marcus Mariota will not have wide receiver Terry McLaurin as a target in Sunday's game against the Colts.",
-          "url": "https://www.nbcsports.com/nfl/profootballtalk/rumor-mill/news/terry-mclaurin-out-for-commanders-in-london-sunday",
-          "source": "ProFootballTalk"
+          "text": "Dan Quinn: The goal is to have Jayden Daniels start vs the Giants. The Washington Commanders jumped out to a 6-0 lead over the Indianapolis Colts, taking advantage of some early turnovers. The game quickly turned when QB Marcus Mariota left the game with a knee injury. Dan Quinn told Molly McGrath d",
+          "url": "https://www.hogshaven.com/pressers/444616/dan-quinn-goal-have-jayden-daniels-start-vs-giants",
+          "source": "SBN WAS"
+        },
+        {
+          "text": "Commanders injury update: Marcus Mariota dealing with knee injury. Jayden Daniels was formally ruled out of Sunday\u2019s game against the Indianapolis Colts, yet they felt good about their quarterback situation. &#160; That was due to veteran backup, Marcus Mariota, a proven commodity capable of winning",
+          "url": "https://www.hogshaven.com/washington-commanders-news/446176/commanders-injury-update-marcus-mariota-knee-colts-jayden-daniels",
+          "source": "SBN WAS"
+        },
+        {
+          "text": "Commanders QB Marcus Mariota aggravated his MCL injury and now will have tests, per Molly McGrath. Expect him to miss some time.\n\nThat said, there is hope that QB Jayden Daniels (elbow) is back next week.",
+          "url": "https://bsky.app/profile/rapsheet.bsky.social/post/3mx2siewu7s2z",
+          "source": "Bluesky @rapsheet.bsky.social"
+        }
+      ]
+    },
+    {
+      "name": "Athan Kaliakmanis",
+      "pos": "",
+      "team": "",
+      "adp": null,
+      "adp_prior": null,
+      "adp_move": null,
+      "proj": null,
+      "sleeper_weight": 1.9,
+      "score": 11.14,
+      "unpriced": true,
+      "signals": [
+        "injury",
+        "questionable",
+        "snap"
+      ],
+      "items": [
+        {
+          "text": "How Athan Kaliakmanis fared in Washington Commanders loss to Colts. The Commanders drafted Athan Kaliamanis with the expectation that he wouldn\u2019t play a meaningful snap this season. There wasn\u2019t even a guarantee the seventh-round selection would even make the 53-man roster, a position he earned with",
+          "url": "https://www.hogshaven.com/washington-commanders-analysis/446197/athan-kaliakmanis-washington-commanders-loss-indianapolis-colts-marcus-mariota",
+          "source": "SBN WAS"
         },
         {
           "text": "Commanders QB Marcus Mariota is officially questionable with a knee injury. Athan Kaliakmanis in at QB.",
           "url": "https://bsky.app/profile/rapsheet.bsky.social/post/3mx2l6wqmq22z",
           "source": "Bluesky @rapsheet.bsky.social"
+        }
+      ]
+    },
+    {
+      "name": "Jameis Winston",
+      "pos": "QB",
+      "team": "NYG",
+      "adp": 215.9,
+      "adp_prior": 216.0,
+      "adp_move": 0.1,
+      "proj": null,
+      "sleeper_weight": 1.8,
+      "score": 10.702,
+      "unpriced": true,
+      "signals": [
+        "injury",
+        "out for",
+        "starter"
+      ],
+      "items": [
+        {
+          "text": "Cardinals vs. Giants Week 4 TV Map. The Arizona Cardinals (1-2-0) have the opportunity to get back to even in the standings against the New York Football Giants, who are struggling at the quarterback position. Starter Jaxson Dart is out for the year, and his replacement, journeyman Jameis Winston, i",
+          "url": "https://www.revengeofthebirds.com/arizona-cardinals-game-information/95147/cardinals-vs-giants-week-4-tv-map",
+          "source": "SBN ARI"
+        },
+        {
+          "text": "NFL writer Arif Hasan on his viral Jameis Winston column: \u2018I have been thinking about this one for a while\u2019. Some view New York Giants quarterback Jameis Winston as fun-loving and goofy, while others see him quite differently. The Heisman Trophy winner and a former No. 1 overall draft pick never liv",
+          "url": "https://awfulannouncing.com/nfl/nfl-writer-arif-hasan-on-his-viral-jameis-winston-column-i-have-been-thinking-about-this-one-for-a-while.html",
+          "source": "Awful Announcing"
+        }
+      ]
+    },
+    {
+      "name": "Jared Wiley",
+      "pos": "TE",
+      "team": "KC",
+      "adp": 216.0,
+      "adp_prior": 216.0,
+      "adp_move": 0.0,
+      "proj": null,
+      "sleeper_weight": 1.8,
+      "score": 10.296,
+      "unpriced": true,
+      "signals": [
+        "released"
+      ],
+      "items": [
+        {
+          "text": "Chiefs-Raiders Inactives: rookie defensive back Jadon Canady scratched. The Kansas City Chiefs have released their list of inactive players for Sunday\u2019s game against the Las Vegas Raiders. The Chiefs will play without tackles Josh Simmons and Diego Pounds, defensive end Jack Pyburn, tight end Jared ",
+          "url": "https://www.arrowheadpride.com/kansas-city-chiefs-injuries/190707/chiefs-raiders-inactives-rookie-defensive-back-jadon-canady-scratched",
+          "source": "SBN KC"
         }
       ]
     },
@@ -95,7 +207,7 @@
       "adp_move": 0.0,
       "proj": null,
       "sleeper_weight": 1.8,
-      "score": 10.093,
+      "score": 9.864,
       "unpriced": true,
       "signals": [
         "ahead of",
@@ -114,29 +226,102 @@
           "text": "Colts halftime WR snap count\n\nLaquon Treadwell 31\nJosh Downs 29\nAshton Dulin 19\nDeion Burks 8\nNick Westbrook-Ikhine 3\n\nOut of 36 plays",
           "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3mx2o2kgvek2b",
           "source": "Bluesky @ffnatejahnke.bsky.social"
+        }
+      ]
+    },
+    {
+      "name": "Case Keenum",
+      "pos": "QB",
+      "team": "CHI",
+      "adp": 216.0,
+      "adp_prior": 216.0,
+      "adp_move": 0.0,
+      "proj": null,
+      "sleeper_weight": 1.8,
+      "score": 9.734,
+      "unpriced": true,
+      "signals": [
+        "starting lineup"
+      ],
+      "items": [
+        {
+          "text": "Tyson Bagent and Case Keenum started for the Bears. Would it be Tyson Bagent or Case Keenum in the starting lineup for the Bears on Sunday against the Jets?",
+          "url": "https://www.nbcsports.com/nfl/profootballtalk/rumor-mill/news/tyson-bagent-and-case-keenum-started-for-the-bears",
+          "source": "ProFootballTalk"
+        }
+      ]
+    },
+    {
+      "name": "Konata Mumpfield",
+      "pos": "WR",
+      "team": "LAR",
+      "adp": 216.0,
+      "adp_prior": 216.0,
+      "adp_move": 0.0,
+      "proj": null,
+      "sleeper_weight": 1.8,
+      "score": 9.397,
+      "unpriced": true,
+      "signals": [
+        "injury",
+        "questionable",
+        "snap"
+      ],
+      "items": [
+        {
+          "text": "Konata Mumpfield is questionable to return with a shoulder injury.",
+          "url": "https://bsky.app/profile/nateatkins.bsky.social/post/3mx32x5crm22o",
+          "source": "Bluesky @nateatkins.bsky.social"
         },
         {
-          "text": "Sunday injury statuses continued\n\nQuestionable\nWR - Zay Flowers, Mike Evans, Jalen Coker, Terry McLaurin, Ladd McConkey, Keenan Allen, Chris Moore, Ashton Dulin\nTE - Kenyon Sadiq, Eli Raridon, Colby Parkinson",
-          "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3mwwdmeaz422u",
+          "text": "Rams halftime WR snap count\n\nDavante Adams 34\nPuka Nacua 31\nJordan Whittington 19\nTutu Atwell 10\nKonata Mumpfield 6\n\nOut of 35 plays",
+          "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3mx32lmmwe224",
           "source": "Bluesky @ffnatejahnke.bsky.social"
         }
       ]
     },
     {
-      "name": "Colby Parkinson",
-      "pos": "TE",
+      "name": "Jordan Whittington",
+      "pos": "WR",
       "team": "LAR",
-      "adp": 212.8,
-      "adp_prior": 212.2,
-      "adp_move": -0.6,
+      "adp": 216.0,
+      "adp_prior": 216.0,
+      "adp_move": 0.0,
       "proj": null,
       "sleeper_weight": 1.8,
-      "score": 9.543,
+      "score": 9.397,
+      "unpriced": true,
+      "signals": [
+        "red zone",
+        "snap"
+      ],
+      "items": [
+        {
+          "text": "Rams special teams issues are back.\n\nA 41-yard punt return by Britain Covey sets the Eagles up in the red zone.\n\nLooks like the refs might have missed a block in the back against Jordan Whittington? It was at least close.",
+          "url": "https://bsky.app/profile/nateatkins.bsky.social/post/3mx2yfmiots2o",
+          "source": "Bluesky @nateatkins.bsky.social"
+        },
+        {
+          "text": "Rams halftime WR snap count\n\nDavante Adams 34\nPuka Nacua 31\nJordan Whittington 19\nTutu Atwell 10\nKonata Mumpfield 6\n\nOut of 35 plays",
+          "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3mx32lmmwe224",
+          "source": "Bluesky @ffnatejahnke.bsky.social"
+        }
+      ]
+    },
+    {
+      "name": "Tutu Atwell",
+      "pos": "WR",
+      "team": "LAR",
+      "adp": 215.9,
+      "adp_prior": 216.0,
+      "adp_move": 0.1,
+      "proj": null,
+      "sleeper_weight": 1.8,
+      "score": 9.397,
       "unpriced": true,
       "signals": [
         "injured",
-        "injury",
-        "questionable"
+        "snap"
       ],
       "items": [
         {
@@ -145,116 +330,22 @@
           "source": "Bluesky @nateatkins.bsky.social"
         },
         {
-          "text": "Additionally, TE Colby Parkinson is questionable with a shoulder injury and OLB Josaiah Stewart is questionable with a groin injury.",
-          "url": "https://bsky.app/profile/nateatkins.bsky.social/post/3mww4y3gdrk2o",
-          "source": "Bluesky @nateatkins.bsky.social"
-        },
-        {
-          "text": "Sunday injury statuses continued\n\nQuestionable\nWR - Zay Flowers, Mike Evans, Jalen Coker, Terry McLaurin, Ladd McConkey, Keenan Allen, Chris Moore, Ashton Dulin\nTE - Kenyon Sadiq, Eli Raridon, Colby Parkinson",
-          "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3mwwdmeaz422u",
+          "text": "Rams halftime WR snap count\n\nDavante Adams 34\nPuka Nacua 31\nJordan Whittington 19\nTutu Atwell 10\nKonata Mumpfield 6\n\nOut of 35 plays",
+          "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3mx32lmmwe224",
           "source": "Bluesky @ffnatejahnke.bsky.social"
         }
       ]
     },
     {
-      "name": "Tanner McKee",
-      "pos": "QB",
-      "team": "PHI",
+      "name": "Mack Hollins",
+      "pos": "WR",
+      "team": "NE",
       "adp": 216.0,
       "adp_prior": 216.0,
       "adp_move": 0.0,
       "proj": null,
       "sleeper_weight": 1.8,
       "score": 9.36,
-      "unpriced": true,
-      "signals": [
-        "depth chart"
-      ],
-      "items": [
-        {
-          "text": "Report: Tanner McKee will be the Eagles' No. 2 QB Sunday. The Eagles are reportedly making a change to their quarterback depth chart for Sunday's game against the Rams.",
-          "url": "https://www.nbcsports.com/nfl/profootballtalk/rumor-mill/news/report-tanner-mckee-will-be-the-eagles-no-2-qb-sunday",
-          "source": "ProFootballTalk"
-        }
-      ]
-    },
-    {
-      "name": "Jalon Daniels",
-      "pos": "QB",
-      "team": "TB",
-      "adp": 216.0,
-      "adp_prior": 216.0,
-      "adp_move": 0.0,
-      "proj": null,
-      "sleeper_weight": 1.8,
-      "score": 9.36,
-      "unpriced": true,
-      "signals": [
-        "injury"
-      ],
-      "items": [
-        {
-          "text": "Packers-Buccaneers Preview: Green Bay travels to Tampa Bay. The Green Bay Packers (1-2) visit a 0-3 Tampa Bay Buccaneers team on Sunday at 1 p.m. ET as a 4-point favorite, and the matchup is defined by one injury: Baker Mayfield is out with a dislocated right thumb, so undrafted rookie Jalon Daniels",
-          "url": "https://www.acmepackingcompany.com/green-bay-packers-analysis/87514/packers-buccaneers-preview-green-bay-travels-to-tampa-bay",
-          "source": "SBN GB"
-        }
-      ]
-    },
-    {
-      "name": "Tyson Bagent",
-      "pos": "QB",
-      "team": "CHI",
-      "adp": 216.0,
-      "adp_prior": 216.0,
-      "adp_move": 0.0,
-      "proj": null,
-      "sleeper_weight": 1.8,
-      "score": 9.36,
-      "unpriced": true,
-      "signals": [
-        "injured"
-      ],
-      "items": [
-        {
-          "text": "Bears expected to start inexperienced QB &#8211; Can Jets take advantage?. As far as I am aware, as of the time of writing this article, the Chicago Bears had made no official announcement regarding who will start for them at quarterback in place of the injured Caleb Williams. Nonetheless, rumors in",
-          "url": "https://www.ganggreennation.com/new-york-jets-analysis/97227/bears-expected-to-start-inexperienced-qb-can-jets-take-advantage",
-          "source": "SBN NYJ"
-        }
-      ]
-    },
-    {
-      "name": "Jameis Winston",
-      "pos": "QB",
-      "team": "NYG",
-      "adp": 215.9,
-      "adp_prior": 216.0,
-      "adp_move": 0.1,
-      "proj": null,
-      "sleeper_weight": 1.8,
-      "score": 9.0,
-      "unpriced": true,
-      "signals": [
-        "out for",
-        "starter"
-      ],
-      "items": [
-        {
-          "text": "Cardinals vs. Giants Week 4 TV Map. The Arizona Cardinals (1-2-0) have the opportunity to get back to even in the standings against the New York Football Giants, who are struggling at the quarterback position. Starter Jaxson Dart is out for the year, and his replacement, journeyman Jameis Winston, i",
-          "url": "https://www.revengeofthebirds.com/arizona-cardinals-game-information/95147/cardinals-vs-giants-week-4-tv-map",
-          "source": "SBN ARI"
-        }
-      ]
-    },
-    {
-      "name": "Hollywood Brown",
-      "pos": "",
-      "team": "",
-      "adp": null,
-      "adp_prior": null,
-      "adp_move": null,
-      "proj": null,
-      "sleeper_weight": 1.9,
-      "score": 8.651,
       "unpriced": true,
       "signals": [
         "injury",
@@ -262,14 +353,9 @@
       ],
       "items": [
         {
-          "text": "Eagles-Rams inactives: Lane Johnson is OUT. The Philadelphia Eagles officially announced the inactives list for their Week 4 game against the Los Angeles Rams. The following Eagles players WILL NOT PLAY: Lane Johnson, Fred Johnson, DeVonta Smith, Dallas Goedert, Zack Baun, Marcus Epps, Hollywood Bro",
-          "url": "https://www.bleedinggreennation.com/news/185346/eagles-rams-inactives-lane-johsnon-is-out",
-          "source": "SBN PHI"
-        },
-        {
-          "text": "Sunday injury statuses\n\nOut\nQB - Caleb Williams, Jayden Daniels, Baker Mayfield\nRB - Breece Hall, Jadarian Price, Rachaad White, Zach Charbonnet\nWR - Justin Jefferson, DeVonta Smith, Caleb Douglas, Adonai Mitchell, Xavier Legette, Hollywood Brown, Colbie Young, Brenen Thompson",
-          "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3mwwdme7gd22u",
-          "source": "Bluesky @ffnatejahnke.bsky.social"
+          "text": "Patriots leading receiver leaves Bills game with injury. New England Patriots wide receiver Mack Hollins is questionable to return to Sunday\u2019s game with a calf injury. The injury came on the Patriots opening drive of the second half on an incomplete pass on the opposite side of the field. Hollins wa",
+          "url": "https://www.patspulpit.com/new-england-patriots-injuries/139432/patriots-leading-receiver-leaves-bills-game-with-injury",
+          "source": "SBN NE"
         }
       ]
     },
@@ -305,6 +391,57 @@
       ]
     },
     {
+      "name": "Colby Parkinson",
+      "pos": "TE",
+      "team": "LAR",
+      "adp": 212.8,
+      "adp_prior": 212.2,
+      "adp_move": -0.6,
+      "proj": null,
+      "sleeper_weight": 1.8,
+      "score": 8.525,
+      "unpriced": true,
+      "signals": [
+        "injured",
+        "injury",
+        "questionable"
+      ],
+      "items": [
+        {
+          "text": "The Rams are down two TEs now with Terrance Ferguson (injured reserve) and Colby Parkinson (out with shoulder).\n\nJust three active: Tyler Higbee, Davis Allen and Max Klare.\n\nExpect more 3-WR sets. Tutu Atwell is active, taking Xavier Smith\u2019s former WR spot.",
+          "url": "https://bsky.app/profile/nateatkins.bsky.social/post/3mx2q5k7lzk2m",
+          "source": "Bluesky @nateatkins.bsky.social"
+        },
+        {
+          "text": "Additionally, TE Colby Parkinson is questionable with a shoulder injury and OLB Josaiah Stewart is questionable with a groin injury.",
+          "url": "https://bsky.app/profile/nateatkins.bsky.social/post/3mww4y3gdrk2o",
+          "source": "Bluesky @nateatkins.bsky.social"
+        }
+      ]
+    },
+    {
+      "name": "Jaleel McLaughlin",
+      "pos": "RB",
+      "team": "CLE",
+      "adp": 216.0,
+      "adp_prior": 216.0,
+      "adp_move": 0.0,
+      "proj": null,
+      "sleeper_weight": 1.8,
+      "score": 8.424,
+      "unpriced": true,
+      "signals": [
+        "snaps"
+      ],
+      "items": [
+        {
+          "text": "How many snaps for Jerry Jeudy, Jaleel McLaughlin have for Browns offense in win over Steelers?. Finally, we saw a productive first half from the Browns&#8217; offense, as they put 21 points on the board in the second quarter. That built a cushion that allowed them some breathing room when things di",
+          "url": "https://www.dawgsbynature.com/cleveland-browns-analysis/134291/how-many-snaps-for-jerry-jeudy-jaleel-mclaughlin-have-for-browns-offense-in-win-over-steelers",
+          "source": "SBN CLE"
+        }
+      ]
+    },
+    {
       "name": "Jake Haener",
       "pos": "QB",
       "team": "NYG",
@@ -328,53 +465,90 @@
       ]
     },
     {
-      "name": "Athan Kaliakmanis",
-      "pos": "",
-      "team": "",
-      "adp": null,
-      "adp_prior": null,
-      "adp_move": null,
+      "name": "Sam Hartman",
+      "pos": "QB",
+      "team": "WAS",
+      "adp": 216.0,
+      "adp_prior": 216.0,
+      "adp_move": 0.0,
       "proj": null,
-      "sleeper_weight": 1.9,
-      "score": 7.904,
+      "sleeper_weight": 1.8,
+      "score": 8.424,
       "unpriced": true,
       "signals": [
-        "injury",
-        "questionable"
+        "snap"
       ],
       "items": [
         {
-          "text": "Commanders QB Marcus Mariota is officially questionable with a knee injury. Athan Kaliakmanis in at QB.",
-          "url": "https://bsky.app/profile/rapsheet.bsky.social/post/3mx2l6wqmq22z",
-          "source": "Bluesky @rapsheet.bsky.social"
+          "text": "How Athan Kaliakmanis fared in Washington Commanders loss to Colts. The Commanders drafted Athan Kaliamanis with the expectation that he wouldn\u2019t play a meaningful snap this season. There wasn\u2019t even a guarantee the seventh-round selection would even make the 53-man roster, a position he earned with",
+          "url": "https://www.hogshaven.com/washington-commanders-analysis/446197/athan-kaliakmanis-washington-commanders-loss-indianapolis-colts-marcus-mariota",
+          "source": "SBN WAS"
         }
       ]
     },
     {
-      "name": "Tyjae Spears",
-      "pos": "RB",
-      "team": "TEN",
-      "adp": 153.9,
-      "adp_prior": 155.6,
-      "adp_move": 1.7,
+      "name": "Jalon Daniels",
+      "pos": "QB",
+      "team": "TB",
+      "adp": 216.0,
+      "adp_prior": 216.0,
+      "adp_move": 0.0,
       "proj": null,
-      "sleeper_weight": 1.5,
-      "score": 7.672,
+      "sleeper_weight": 1.8,
+      "score": 8.28,
       "unpriced": true,
       "signals": [
-        "injury",
-        "questionable"
+        "injury"
       ],
       "items": [
         {
-          "text": "TItans RB Tyjae Spears, dealing with an ankle injury and questionable, is expected to play today.",
-          "url": "https://bsky.app/profile/rapsheet.bsky.social/post/3mx2d76t5rc2z",
-          "source": "Bluesky @rapsheet.bsky.social"
-        },
+          "text": "Packers-Buccaneers Preview: Green Bay travels to Tampa Bay. The Green Bay Packers (1-2) visit a 0-3 Tampa Bay Buccaneers team on Sunday at 1 p.m. ET as a 4-point favorite, and the matchup is defined by one injury: Baker Mayfield is out with a dislocated right thumb, so undrafted rookie Jalon Daniels",
+          "url": "https://www.acmepackingcompany.com/green-bay-packers-analysis/87514/packers-buccaneers-preview-green-bay-travels-to-tampa-bay",
+          "source": "SBN GB"
+        }
+      ]
+    },
+    {
+      "name": "Odell Beckham Jr.",
+      "pos": "WR",
+      "team": "NYG",
+      "adp": 215.6,
+      "adp_prior": 215.9,
+      "adp_move": 0.3,
+      "proj": null,
+      "sleeper_weight": 1.8,
+      "score": 8.237,
+      "unpriced": true,
+      "signals": [
+        "released"
+      ],
+      "items": [
         {
-          "text": "Sunday injury statuses continued\n\nOut\nTE - Dallas Goedert, Terrance Ferguson, Mason Taylor, Charlie Kolar, Ko Kieft\n\nQuestionable\nQB - Trey Lance, Aidan O'Connell\nRB - Tyjae Spears, Ray Davis, Reggie Gilliam",
-          "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3mwwdmeay4s2u",
-          "source": "Bluesky @ffnatejahnke.bsky.social"
+          "text": "Odell Beckham Jr. addresses Giants cutting him: 'I shoulda known better'. In his first public comments since being released, Beckham said the Giants \"won\" from the attention surrounding his return",
+          "url": "https://www.cbssports.com/nfl/news/odell-beckham-jr-released-giants-comments-2026/",
+          "source": "CBS Sports NFL"
+        }
+      ]
+    },
+    {
+      "name": "Britain Covey",
+      "pos": "WR",
+      "team": "PHI",
+      "adp": 216.0,
+      "adp_prior": 216.0,
+      "adp_move": 0.0,
+      "proj": null,
+      "sleeper_weight": 1.8,
+      "score": 7.488,
+      "unpriced": true,
+      "signals": [
+        "red zone"
+      ],
+      "items": [
+        {
+          "text": "Rams special teams issues are back.\n\nA 41-yard punt return by Britain Covey sets the Eagles up in the red zone.\n\nLooks like the refs might have missed a block in the back against Jordan Whittington? It was at least close.",
+          "url": "https://bsky.app/profile/nateatkins.bsky.social/post/3mx2yfmiots2o",
+          "source": "Bluesky @nateatkins.bsky.social"
         }
       ]
     },
@@ -385,28 +559,6 @@
       "adp": 216.0,
       "adp_prior": 216.0,
       "adp_move": 0.0,
-      "proj": null,
-      "sleeper_weight": 1.8,
-      "score": 7.488,
-      "unpriced": true,
-      "signals": [
-        "injured"
-      ],
-      "items": [
-        {
-          "text": "The Rams are down two TEs now with Terrance Ferguson (injured reserve) and Colby Parkinson (out with shoulder).\n\nJust three active: Tyler Higbee, Davis Allen and Max Klare.\n\nExpect more 3-WR sets. Tutu Atwell is active, taking Xavier Smith\u2019s former WR spot.",
-          "url": "https://bsky.app/profile/nateatkins.bsky.social/post/3mx2q5k7lzk2m",
-          "source": "Bluesky @nateatkins.bsky.social"
-        }
-      ]
-    },
-    {
-      "name": "Tutu Atwell",
-      "pos": "WR",
-      "team": "LAR",
-      "adp": 215.9,
-      "adp_prior": 216.0,
-      "adp_move": 0.1,
       "proj": null,
       "sleeper_weight": 1.8,
       "score": 7.488,
@@ -489,6 +641,51 @@
       ]
     },
     {
+      "name": "Will Shipley",
+      "pos": "RB",
+      "team": "PHI",
+      "adp": 216.0,
+      "adp_prior": 216.0,
+      "adp_move": 0.0,
+      "proj": null,
+      "sleeper_weight": 1.8,
+      "score": 7.488,
+      "unpriced": true,
+      "signals": [
+        "injured",
+        "snap"
+      ],
+      "items": [
+        {
+          "text": "Eagles halftime RB snap count\n\nWill Shipley 15\nTank Bigsby 14\nSaquon Barkley 4 (injured)\n\nOut of 33 plays",
+          "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3mx32zs3vw224",
+          "source": "Bluesky @ffnatejahnke.bsky.social"
+        }
+      ]
+    },
+    {
+      "name": "Tyler Huntley",
+      "pos": "QB",
+      "team": "BAL",
+      "adp": 216.0,
+      "adp_prior": 216.0,
+      "adp_move": 0.0,
+      "proj": null,
+      "sleeper_weight": 1.8,
+      "score": 7.488,
+      "unpriced": true,
+      "signals": [
+        "injury"
+      ],
+      "items": [
+        {
+          "text": "Lamar Jackson leaves Ravens-Titans game with ankle injury, replaced by Tyler Huntley in second half. Baltimore Ravens quarterback Lamar Jackson left Sunday's game with an ankle injury and was replaced at the start of the second half by backup Tyler Huntley.",
+          "url": "https://sports.yahoo.com/nfl/breaking-news/article/lamar-jackson-leaves-ravens-titans-game-with-ankle-injury-replaced-by-tyler-huntley-in-second-half-185204555.html",
+          "source": "Yahoo NFL"
+        }
+      ]
+    },
+    {
       "name": "Velus Jones Jr.",
       "pos": "WR",
       "team": "SEA",
@@ -556,6 +753,50 @@
       ]
     },
     {
+      "name": "Jahdae Walker",
+      "pos": "",
+      "team": "",
+      "adp": null,
+      "adp_prior": null,
+      "adp_move": null,
+      "proj": null,
+      "sleeper_weight": 1.9,
+      "score": 7.114,
+      "unpriced": true,
+      "signals": [
+        "snap"
+      ],
+      "items": [
+        {
+          "text": "Bears 1st half WR snap count\n\nRome Odunze 48\nLuther Burden III 29\nKalif Raymond 26\nJahdae Walker 2\nZavion Thomas 2\n\nOut of 51 plays",
+          "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3mx32fdgnws24",
+          "source": "Bluesky @ffnatejahnke.bsky.social"
+        }
+      ]
+    },
+    {
+      "name": "Kenny Gainwell",
+      "pos": "",
+      "team": "",
+      "adp": null,
+      "adp_prior": null,
+      "adp_move": null,
+      "proj": null,
+      "sleeper_weight": 1.9,
+      "score": 7.114,
+      "unpriced": true,
+      "signals": [
+        "snap"
+      ],
+      "items": [
+        {
+          "text": "Buccaneers halftime RB snap count\n\nBucky Irving 18\nKenny Gainwell 12\nSean Tucker 3\n\nOut of 31 plays",
+          "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3mx327pcjs224",
+          "source": "Bluesky @ffnatejahnke.bsky.social"
+        }
+      ]
+    },
+    {
       "name": "Drew Ogletree",
       "pos": "",
       "team": "",
@@ -578,31 +819,46 @@
       ]
     },
     {
-      "name": "Zach Charbonnet",
-      "pos": "RB",
-      "team": "SEA",
-      "adp": 165.8,
-      "adp_prior": 161.6,
-      "adp_move": -4.2,
+      "name": "Aaron Rodgers",
+      "pos": "QB",
+      "team": "PIT",
+      "adp": 183.8,
+      "adp_prior": 182.9,
+      "adp_move": -0.9,
       "proj": null,
       "sleeper_weight": 1.5,
-      "score": 7.103,
-      "unpriced": false,
+      "score": 7.02,
+      "unpriced": true,
       "signals": [
-        "acl",
-        "injured",
-        "injury"
+        "snap"
       ],
       "items": [
         {
-          "text": "Jadarian Price out until November after landing on injured reserve. The Seattle Seahawks had a big hole to fill at running back in the offseason. First, on the way to winning Super Bowl LX in memorable fashion by thumping the New England Patriots 29-13, 2023 second round pick Zach Charbonnet was los",
-          "url": "https://www.fieldgulls.com/seattle-seahawks-news/176351/jadarian-price-out-until-november-after-landing-on-injured-reserve",
-          "source": "SBN SEA"
-        },
+          "text": "Emmanuel McNeil-Warren delivers for Browns defense, as snap counts double against Pittsburgh. The Browns&#8217; defense allowed 299 passing yards against Aaron Rodgers, keeping that 300-yard streak alive by the literal thinnest of margins. The pressure kept coming from a variety of spots, sacking Ro",
+          "url": "https://www.dawgsbynature.com/cleveland-browns-analysis/134292/emmanuel-mcneil-warren-delivers-for-browns-defense-as-snap-counts-double-against-pittsburgh",
+          "source": "SBN CLE"
+        }
+      ]
+    },
+    {
+      "name": "Hollywood Brown",
+      "pos": "",
+      "team": "",
+      "adp": null,
+      "adp_prior": null,
+      "adp_move": null,
+      "proj": null,
+      "sleeper_weight": 1.9,
+      "score": 6.916,
+      "unpriced": true,
+      "signals": [
+        "questionable"
+      ],
+      "items": [
         {
-          "text": "Sunday injury statuses\n\nOut\nQB - Caleb Williams, Jayden Daniels, Baker Mayfield\nRB - Breece Hall, Jadarian Price, Rachaad White, Zach Charbonnet\nWR - Justin Jefferson, DeVonta Smith, Caleb Douglas, Adonai Mitchell, Xavier Legette, Hollywood Brown, Colbie Young, Brenen Thompson",
-          "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3mwwdme7gd22u",
-          "source": "Bluesky @ffnatejahnke.bsky.social"
+          "text": "Eagles-Rams inactives: Lane Johnson is OUT. The Philadelphia Eagles officially announced the inactives list for their Week 4 game against the Los Angeles Rams. The following Eagles players WILL NOT PLAY: Lane Johnson, Fred Johnson, DeVonta Smith, Dallas Goedert, Zack Baun, Marcus Epps, Hollywood Bro",
+          "url": "https://www.bleedinggreennation.com/news/185346/eagles-rams-inactives-lane-johsnon-is-out",
+          "source": "SBN PHI"
         }
       ]
     },
@@ -625,6 +881,497 @@
           "text": "Eagles-Rams inactives: Lane Johnson is OUT. The Philadelphia Eagles officially announced the inactives list for their Week 4 game against the Los Angeles Rams. The following Eagles players WILL NOT PLAY: Lane Johnson, Fred Johnson, DeVonta Smith, Dallas Goedert, Zack Baun, Marcus Epps, Hollywood Bro",
           "url": "https://www.bleedinggreennation.com/news/185346/eagles-rams-inactives-lane-johsnon-is-out",
           "source": "SBN PHI"
+        }
+      ]
+    },
+    {
+      "name": "Zach Charbonnet",
+      "pos": "RB",
+      "team": "SEA",
+      "adp": 165.8,
+      "adp_prior": 161.6,
+      "adp_move": -4.2,
+      "proj": null,
+      "sleeper_weight": 1.5,
+      "score": 6.915,
+      "unpriced": false,
+      "signals": [
+        "acl",
+        "injured",
+        "placed on"
+      ],
+      "items": [
+        {
+          "text": "Jadarian Price out until November after landing on injured reserve. The Seattle Seahawks had a big hole to fill at running back in the offseason. First, on the way to winning Super Bowl LX in memorable fashion by thumping the New England Patriots 29-13, 2023 second round pick Zach Charbonnet was los",
+          "url": "https://www.fieldgulls.com/seattle-seahawks-news/176351/jadarian-price-out-until-november-after-landing-on-injured-reserve",
+          "source": "SBN SEA"
+        },
+        {
+          "text": "Seahawks bringing in two-time Pro Bowl running back Joe Mixon for visit. It was announced that the Seattle Seahawks are working out two-time Pro Bowl running back, Joe Mixon, according to FOX Sports\u2019 Jay Glazer. Seattle working out a running back is not too surprising considering the injuries that h",
+          "url": "https://www.fieldgulls.com/seattle-seahawks-news/176408/nfl-news-seahawks-bringing-in-joe-mixon-visit",
+          "source": "SBN SEA"
+        }
+      ]
+    },
+    {
+      "name": "Chimere Dike",
+      "pos": "WR",
+      "team": "TEN",
+      "adp": 216.0,
+      "adp_prior": 215.9,
+      "adp_move": -0.1,
+      "proj": null,
+      "sleeper_weight": 1.8,
+      "score": 6.739,
+      "unpriced": true,
+      "signals": [
+        "snap"
+      ],
+      "items": [
+        {
+          "text": "Titans halftime WR snap count\n\nCarnell Tate 29\nElic Ayomanor 21\nWan'Dale Robinson 18\nCalvin Ridley 18\nChimere Dike 4\n\nOut of 35 plays",
+          "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3mx333sz3nc24",
+          "source": "Bluesky @ffnatejahnke.bsky.social"
+        }
+      ]
+    },
+    {
+      "name": "Elic Ayomanor",
+      "pos": "WR",
+      "team": "TEN",
+      "adp": 215.9,
+      "adp_prior": 215.9,
+      "adp_move": 0.0,
+      "proj": null,
+      "sleeper_weight": 1.8,
+      "score": 6.739,
+      "unpriced": true,
+      "signals": [
+        "snap"
+      ],
+      "items": [
+        {
+          "text": "Titans halftime WR snap count\n\nCarnell Tate 29\nElic Ayomanor 21\nWan'Dale Robinson 18\nCalvin Ridley 18\nChimere Dike 4\n\nOut of 35 plays",
+          "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3mx333sz3nc24",
+          "source": "Bluesky @ffnatejahnke.bsky.social"
+        }
+      ]
+    },
+    {
+      "name": "Darius Cooper",
+      "pos": "WR",
+      "team": "PHI",
+      "adp": 216.0,
+      "adp_prior": 216.0,
+      "adp_move": 0.0,
+      "proj": null,
+      "sleeper_weight": 1.8,
+      "score": 6.739,
+      "unpriced": true,
+      "signals": [
+        "snap"
+      ],
+      "items": [
+        {
+          "text": "Eagles halftime WR snap count\n\nDontayvion Wicks 32\nDarius Cooper 31\nMakai Lemon 24\nElijah Moore 5\n\nOut of 33 plays",
+          "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3mx32yw4cqc24",
+          "source": "Bluesky @ffnatejahnke.bsky.social"
+        }
+      ]
+    },
+    {
+      "name": "Elijah Moore",
+      "pos": "WR",
+      "team": "PHI",
+      "adp": 216.0,
+      "adp_prior": 216.0,
+      "adp_move": 0.0,
+      "proj": null,
+      "sleeper_weight": 1.8,
+      "score": 6.739,
+      "unpriced": true,
+      "signals": [
+        "snap"
+      ],
+      "items": [
+        {
+          "text": "Eagles halftime WR snap count\n\nDontayvion Wicks 32\nDarius Cooper 31\nMakai Lemon 24\nElijah Moore 5\n\nOut of 33 plays",
+          "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3mx32yw4cqc24",
+          "source": "Bluesky @ffnatejahnke.bsky.social"
+        }
+      ]
+    },
+    {
+      "name": "Xavier Hutchinson",
+      "pos": "WR",
+      "team": "HOU",
+      "adp": 215.8,
+      "adp_prior": 215.6,
+      "adp_move": -0.2,
+      "proj": null,
+      "sleeper_weight": 1.8,
+      "score": 6.739,
+      "unpriced": true,
+      "signals": [
+        "snap"
+      ],
+      "items": [
+        {
+          "text": "Texans halftime WR snap count\n\nNico Collins 19\nKayshon Boutte 18\nJaylin Noel 15\nJared Wayne 9\nXavier Hutchinson 8\n\nOut of 28 plays",
+          "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3mx32tb6las24",
+          "source": "Bluesky @ffnatejahnke.bsky.social"
+        }
+      ]
+    },
+    {
+      "name": "Jared Wayne",
+      "pos": "WR",
+      "team": "HOU",
+      "adp": 216.0,
+      "adp_prior": 216.0,
+      "adp_move": 0.0,
+      "proj": null,
+      "sleeper_weight": 1.8,
+      "score": 6.739,
+      "unpriced": true,
+      "signals": [
+        "snap"
+      ],
+      "items": [
+        {
+          "text": "Texans halftime WR snap count\n\nNico Collins 19\nKayshon Boutte 18\nJaylin Noel 15\nJared Wayne 9\nXavier Hutchinson 8\n\nOut of 28 plays",
+          "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3mx32tb6las24",
+          "source": "Bluesky @ffnatejahnke.bsky.social"
+        }
+      ]
+    },
+    {
+      "name": "Elijah Sarratt",
+      "pos": "WR",
+      "team": "BAL",
+      "adp": 215.6,
+      "adp_prior": 215.1,
+      "adp_move": -0.5,
+      "proj": null,
+      "sleeper_weight": 1.8,
+      "score": 6.739,
+      "unpriced": true,
+      "signals": [
+        "snap"
+      ],
+      "items": [
+        {
+          "text": "Ravens halftime WR snap count\n\nZay Flowers 26\nDevontez Walker 22\nRathod Bateman 15\nElijah Sarratt 13\n\nOut of 33 plays",
+          "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3mx32rg6lac24",
+          "source": "Bluesky @ffnatejahnke.bsky.social"
+        }
+      ]
+    },
+    {
+      "name": "Devontez Walker",
+      "pos": "WR",
+      "team": "BAL",
+      "adp": 216.0,
+      "adp_prior": 216.0,
+      "adp_move": 0.0,
+      "proj": null,
+      "sleeper_weight": 1.8,
+      "score": 6.739,
+      "unpriced": true,
+      "signals": [
+        "snap"
+      ],
+      "items": [
+        {
+          "text": "Ravens halftime WR snap count\n\nZay Flowers 26\nDevontez Walker 22\nRathod Bateman 15\nElijah Sarratt 13\n\nOut of 33 plays",
+          "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3mx32rg6lac24",
+          "source": "Bluesky @ffnatejahnke.bsky.social"
+        }
+      ]
+    },
+    {
+      "name": "Kendrick Bourne",
+      "pos": "WR",
+      "team": "ARI",
+      "adp": 215.9,
+      "adp_prior": 216.0,
+      "adp_move": 0.1,
+      "proj": null,
+      "sleeper_weight": 1.8,
+      "score": 6.739,
+      "unpriced": true,
+      "signals": [
+        "snap"
+      ],
+      "items": [
+        {
+          "text": "Cardinals 1st half WR snap count\n\nMichael WIlson 29\nMarvin Harrison Jr. 22\nKendrick Bourne 22\nJalen Brooks 2\n\nOut of 31 plays",
+          "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3mx32hkvwd224",
+          "source": "Bluesky @ffnatejahnke.bsky.social"
+        }
+      ]
+    },
+    {
+      "name": "Jalen Brooks",
+      "pos": "WR",
+      "team": "ARI",
+      "adp": 216.0,
+      "adp_prior": 216.0,
+      "adp_move": 0.0,
+      "proj": null,
+      "sleeper_weight": 1.8,
+      "score": 6.739,
+      "unpriced": true,
+      "signals": [
+        "snap"
+      ],
+      "items": [
+        {
+          "text": "Cardinals 1st half WR snap count\n\nMichael WIlson 29\nMarvin Harrison Jr. 22\nKendrick Bourne 22\nJalen Brooks 2\n\nOut of 31 plays",
+          "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3mx32hkvwd224",
+          "source": "Bluesky @ffnatejahnke.bsky.social"
+        }
+      ]
+    },
+    {
+      "name": "Cole Kmet",
+      "pos": "TE",
+      "team": "CHI",
+      "adp": 215.9,
+      "adp_prior": 215.9,
+      "adp_move": 0.0,
+      "proj": null,
+      "sleeper_weight": 1.8,
+      "score": 6.739,
+      "unpriced": true,
+      "signals": [
+        "snap"
+      ],
+      "items": [
+        {
+          "text": "Bears 1st half TE snap count\n\nColston Loveland 50\nCole Kmet 35\nSam Roush 9\n\nOut of 51 plays",
+          "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3mx32g2vbhs24",
+          "source": "Bluesky @ffnatejahnke.bsky.social"
+        }
+      ]
+    },
+    {
+      "name": "Sam Roush",
+      "pos": "TE",
+      "team": "CHI",
+      "adp": 216.0,
+      "adp_prior": 216.0,
+      "adp_move": 0.0,
+      "proj": null,
+      "sleeper_weight": 1.8,
+      "score": 6.739,
+      "unpriced": true,
+      "signals": [
+        "snap"
+      ],
+      "items": [
+        {
+          "text": "Bears 1st half TE snap count\n\nColston Loveland 50\nCole Kmet 35\nSam Roush 9\n\nOut of 51 plays",
+          "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3mx32g2vbhs24",
+          "source": "Bluesky @ffnatejahnke.bsky.social"
+        }
+      ]
+    },
+    {
+      "name": "Kalif Raymond",
+      "pos": "WR",
+      "team": "CHI",
+      "adp": 215.9,
+      "adp_prior": 216.0,
+      "adp_move": 0.1,
+      "proj": null,
+      "sleeper_weight": 1.8,
+      "score": 6.739,
+      "unpriced": true,
+      "signals": [
+        "snap"
+      ],
+      "items": [
+        {
+          "text": "Bears 1st half WR snap count\n\nRome Odunze 48\nLuther Burden III 29\nKalif Raymond 26\nJahdae Walker 2\nZavion Thomas 2\n\nOut of 51 plays",
+          "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3mx32fdgnws24",
+          "source": "Bluesky @ffnatejahnke.bsky.social"
+        }
+      ]
+    },
+    {
+      "name": "Zavion Thomas",
+      "pos": "WR",
+      "team": "CHI",
+      "adp": 214.3,
+      "adp_prior": 215.8,
+      "adp_move": 1.5,
+      "proj": null,
+      "sleeper_weight": 1.8,
+      "score": 6.739,
+      "unpriced": true,
+      "signals": [
+        "snap"
+      ],
+      "items": [
+        {
+          "text": "Bears 1st half WR snap count\n\nRome Odunze 48\nLuther Burden III 29\nKalif Raymond 26\nJahdae Walker 2\nZavion Thomas 2\n\nOut of 51 plays",
+          "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3mx32fdgnws24",
+          "source": "Bluesky @ffnatejahnke.bsky.social"
+        }
+      ]
+    },
+    {
+      "name": "Jeremy Ruckert",
+      "pos": "TE",
+      "team": "NYJ",
+      "adp": 216.0,
+      "adp_prior": 216.0,
+      "adp_move": 0.0,
+      "proj": null,
+      "sleeper_weight": 1.8,
+      "score": 6.739,
+      "unpriced": true,
+      "signals": [
+        "snap"
+      ],
+      "items": [
+        {
+          "text": "Jets 1st half TE snap count\n\nKenyon Sadiq 14\nJelani Woods 5\nJeremy Ruckert 4\n\nOut of 16 plays",
+          "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3mx32cqsats24",
+          "source": "Bluesky @ffnatejahnke.bsky.social"
+        }
+      ]
+    },
+    {
+      "name": "Jelani Woods",
+      "pos": "TE",
+      "team": "NYJ",
+      "adp": 216.0,
+      "adp_prior": 216.0,
+      "adp_move": 0.0,
+      "proj": null,
+      "sleeper_weight": 1.8,
+      "score": 6.739,
+      "unpriced": true,
+      "signals": [
+        "snap"
+      ],
+      "items": [
+        {
+          "text": "Jets 1st half TE snap count\n\nKenyon Sadiq 14\nJelani Woods 5\nJeremy Ruckert 4\n\nOut of 16 plays",
+          "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3mx32cqsats24",
+          "source": "Bluesky @ffnatejahnke.bsky.social"
+        }
+      ]
+    },
+    {
+      "name": "Tez Johnson",
+      "pos": "WR",
+      "team": "TB",
+      "adp": 215.9,
+      "adp_prior": 216.0,
+      "adp_move": 0.1,
+      "proj": null,
+      "sleeper_weight": 1.8,
+      "score": 6.739,
+      "unpriced": true,
+      "signals": [
+        "snap"
+      ],
+      "items": [
+        {
+          "text": "Buccaneers halftime WR snap count\n\nEmeka Egbuka 28\nChris Godwin 28\nTez Johnson 19\nTed Hurst 9\nKameron Johnson 1\n\nOut of 31 plays",
+          "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3mx32an47ek24",
+          "source": "Bluesky @ffnatejahnke.bsky.social"
+        }
+      ]
+    },
+    {
+      "name": "Josh Cameron",
+      "pos": "WR",
+      "team": "JAX",
+      "adp": 216.0,
+      "adp_prior": 216.0,
+      "adp_move": 0.0,
+      "proj": null,
+      "sleeper_weight": 1.8,
+      "score": 6.739,
+      "unpriced": true,
+      "signals": [
+        "snap"
+      ],
+      "items": [
+        {
+          "text": "Jaguars halftime WR snap count\n\nParker Washington 28\nJakobi Meyers 27\nBrian Thomas Jr. 22\nJosh Cameron 8\n\nOut of 31 plays",
+          "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3mx3247daqs24",
+          "source": "Bluesky @ffnatejahnke.bsky.social"
+        }
+      ]
+    },
+    {
+      "name": "LeQuint Allen",
+      "pos": "RB",
+      "team": "JAX",
+      "adp": 216.0,
+      "adp_prior": 215.9,
+      "adp_move": -0.1,
+      "proj": null,
+      "sleeper_weight": 1.8,
+      "score": 6.739,
+      "unpriced": true,
+      "signals": [
+        "snap"
+      ],
+      "items": [
+        {
+          "text": "Jaguars halftime RB snap count\n\nBhayshul Tuten 18\nChris Rodriguez Jr. 7\nLeQuint Allen 5\nAmeer Abdullah 1\n\nOut of 31 plays",
+          "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3mx322y2zjs24",
+          "source": "Bluesky @ffnatejahnke.bsky.social"
+        }
+      ]
+    },
+    {
+      "name": "Ameer Abdullah",
+      "pos": "RB",
+      "team": "JAX",
+      "adp": 216.0,
+      "adp_prior": 216.0,
+      "adp_move": 0.0,
+      "proj": null,
+      "sleeper_weight": 1.8,
+      "score": 6.739,
+      "unpriced": true,
+      "signals": [
+        "snap"
+      ],
+      "items": [
+        {
+          "text": "Jaguars halftime RB snap count\n\nBhayshul Tuten 18\nChris Rodriguez Jr. 7\nLeQuint Allen 5\nAmeer Abdullah 1\n\nOut of 31 plays",
+          "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3mx322y2zjs24",
+          "source": "Bluesky @ffnatejahnke.bsky.social"
+        }
+      ]
+    },
+    {
+      "name": "Chris Brooks",
+      "pos": "RB",
+      "team": "GB",
+      "adp": 214.3,
+      "adp_prior": 216.0,
+      "adp_move": 1.7,
+      "proj": null,
+      "sleeper_weight": 1.8,
+      "score": 6.739,
+      "unpriced": true,
+      "signals": [
+        "snap"
+      ],
+      "items": [
+        {
+          "text": "Packers halftime RB snap count\n\nMarShawn Lloyd 16\nChris Brooks 10\nKaleb Johnson 6\n\nOut of 32 plays",
+          "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3mx2zvrsfrc24",
+          "source": "Bluesky @ffnatejahnke.bsky.social"
         }
       ]
     },
@@ -893,6 +1640,97 @@
       ]
     },
     {
+      "name": "Garrett Nussmeier",
+      "pos": "QB",
+      "team": "KC",
+      "adp": 216.0,
+      "adp_prior": 216.0,
+      "adp_move": 0.0,
+      "proj": null,
+      "sleeper_weight": 1.8,
+      "score": 6.646,
+      "unpriced": true,
+      "signals": [
+        "released"
+      ],
+      "items": [
+        {
+          "text": "Chiefs-Raiders Inactives: rookie defensive back Jadon Canady scratched. The Kansas City Chiefs have released their list of inactive players for Sunday\u2019s game against the Las Vegas Raiders. The Chiefs will play without tackles Josh Simmons and Diego Pounds, defensive end Jack Pyburn, tight end Jared ",
+          "url": "https://www.arrowheadpride.com/kansas-city-chiefs-injuries/190707/chiefs-raiders-inactives-rookie-defensive-back-jadon-canady-scratched",
+          "source": "SBN KC"
+        }
+      ]
+    },
+    {
+      "name": "Joe Mixon",
+      "pos": "RB",
+      "team": "FA",
+      "adp": 216.0,
+      "adp_prior": 216.0,
+      "adp_move": 0.0,
+      "proj": null,
+      "sleeper_weight": 1.8,
+      "score": 6.318,
+      "unpriced": true,
+      "signals": [
+        "injured",
+        "placed on"
+      ],
+      "items": [
+        {
+          "text": "Seahawks bringing in two-time Pro Bowl running back Joe Mixon for visit. It was announced that the Seattle Seahawks are working out two-time Pro Bowl running back, Joe Mixon, according to FOX Sports\u2019 Jay Glazer. Seattle working out a running back is not too surprising considering the injuries that h",
+          "url": "https://www.fieldgulls.com/seattle-seahawks-news/176408/nfl-news-seahawks-bringing-in-joe-mixon-visit",
+          "source": "SBN SEA"
+        }
+      ]
+    },
+    {
+      "name": "Tyjae Spears",
+      "pos": "RB",
+      "team": "TEN",
+      "adp": 153.9,
+      "adp_prior": 155.6,
+      "adp_move": 1.7,
+      "proj": null,
+      "sleeper_weight": 1.5,
+      "score": 6.24,
+      "unpriced": true,
+      "signals": [
+        "injury",
+        "questionable"
+      ],
+      "items": [
+        {
+          "text": "TItans RB Tyjae Spears, dealing with an ankle injury and questionable, is expected to play today.",
+          "url": "https://bsky.app/profile/rapsheet.bsky.social/post/3mx2d76t5rc2z",
+          "source": "Bluesky @rapsheet.bsky.social"
+        }
+      ]
+    },
+    {
+      "name": "Tank Bigsby",
+      "pos": "RB",
+      "team": "PHI",
+      "adp": 152.7,
+      "adp_prior": 152.2,
+      "adp_move": -0.5,
+      "proj": null,
+      "sleeper_weight": 1.5,
+      "score": 6.24,
+      "unpriced": true,
+      "signals": [
+        "injured",
+        "snap"
+      ],
+      "items": [
+        {
+          "text": "Eagles halftime RB snap count\n\nWill Shipley 15\nTank Bigsby 14\nSaquon Barkley 4 (injured)\n\nOut of 33 plays",
+          "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3mx32zs3vw224",
+          "source": "Bluesky @ffnatejahnke.bsky.social"
+        }
+      ]
+    },
+    {
       "name": "J.J. McCarthy",
       "pos": "QB",
       "team": "MIN",
@@ -901,323 +1739,17 @@
       "adp_move": 0.0,
       "proj": null,
       "sleeper_weight": 1.8,
-      "score": 6.739,
+      "score": 5.99,
       "unpriced": true,
       "signals": [
+        "package",
         "practice squad"
       ],
       "items": [
         {
-          "text": "Giants\u2019 QB J.J. McCarthy is active for game vs. Cardinals. Giants will carry three quarterbacks after elevating Jake Haener from the practice squad.",
-          "url": "https://sports.yahoo.com/articles/giants-qb-j-j-mccarthy-154646426.html",
-          "source": "Yahoo NFL"
-        }
-      ]
-    },
-    {
-      "name": "Dillon Gabriel",
-      "pos": "QB",
-      "team": "CLE",
-      "adp": 216.0,
-      "adp_prior": 216.0,
-      "adp_move": 0.0,
-      "proj": null,
-      "sleeper_weight": 1.8,
-      "score": 6.739,
-      "unpriced": true,
-      "signals": [
-        "ir"
-      ],
-      "items": [
-        {
-          "text": "Cleveland Browns: Another QB decision looms on the horizon. Dillon Gabriel\u2019s time on the IR list coming to an end. How will GM Andrew Berry deal with the looming roster decision?",
-          "url": "https://sports.yahoo.com/articles/cleveland-browns-another-qb-decision-150000790.html",
-          "source": "Yahoo NFL"
-        }
-      ]
-    },
-    {
-      "name": "Emanuel Wilson",
-      "pos": "RB",
-      "team": "SEA",
-      "adp": 216.0,
-      "adp_prior": 215.9,
-      "adp_move": -0.1,
-      "proj": null,
-      "sleeper_weight": 1.8,
-      "score": 6.624,
-      "unpriced": true,
-      "signals": [
-        "injured",
-        "injury"
-      ],
-      "items": [
-        {
-          "text": "Seahawks place rookie Jadarian Price on injured reserve. The rookie aggravated a chest injury and will miss at least four games, leaving Emanuel Wilson and George Holani to shoulder backfield duties during a grueling stretch",
-          "url": "https://www.cbssports.com/nfl/news/seahawks-place-rookie-jadarian-price-injured-reserve/",
-          "source": "CBS Sports NFL"
-        }
-      ]
-    },
-    {
-      "name": "George Holani",
-      "pos": "RB",
-      "team": "SEA",
-      "adp": 213.2,
-      "adp_prior": 213.5,
-      "adp_move": 0.3,
-      "proj": null,
-      "sleeper_weight": 1.8,
-      "score": 6.624,
-      "unpriced": true,
-      "signals": [
-        "injured",
-        "injury"
-      ],
-      "items": [
-        {
-          "text": "Seahawks place rookie Jadarian Price on injured reserve. The rookie aggravated a chest injury and will miss at least four games, leaving Emanuel Wilson and George Holani to shoulder backfield duties during a grueling stretch",
-          "url": "https://www.cbssports.com/nfl/news/seahawks-place-rookie-jadarian-price-injured-reserve/",
-          "source": "CBS Sports NFL"
-        }
-      ]
-    },
-    {
-      "name": "Easton Stick",
-      "pos": "QB",
-      "team": "TB",
-      "adp": 216.0,
-      "adp_prior": 216.0,
-      "adp_move": 0.0,
-      "proj": null,
-      "sleeper_weight": 1.8,
-      "score": 5.962,
-      "unpriced": true,
-      "signals": [
-        "practice squad"
-      ],
-      "items": [
-        {
-          "text": "Bucs elevate QB Easton Stick from practice squad. The Buccaneers elevated linebacker Caden Fordham and quarterback Easton Stick from the practice squad for Sunday's game against the Packers, the team announced.",
-          "url": "https://www.nbcsports.com/nfl/profootballtalk/rumor-mill/news/bucs-elevated-qb-easton-stick-from-practice-squad",
-          "source": "ProFootballTalk"
-        }
-      ]
-    },
-    {
-      "name": "Jalen Coker",
-      "pos": "WR",
-      "team": "CAR",
-      "adp": 129.3,
-      "adp_prior": 129.3,
-      "adp_move": 0.0,
-      "proj": null,
-      "sleeper_weight": 1.1,
-      "score": 5.832,
-      "unpriced": true,
-      "signals": [
-        "injury",
-        "limited",
-        "questionable"
-      ],
-      "items": [
-        {
-          "text": "Fantasy Rankings have been updated for all of the over night injury news and inactives this morning. Make sure Terry McLaurin and Jalen Coker are out of your lineups!\n\nwww.pff.com/news/fantasy...",
-          "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3mx2gjfrryk2r",
-          "source": "Bluesky @ffnatejahnke.bsky.social"
-        },
-        {
-          "text": "NFL injury update: Panthers likely without top WR vs. Lions. According to a report from ESPN\u2019s Adam Schefter, the Carolina Panthers are likely to be without their top receiver against the Detroit Lions on Sunday night. Schefter is reporting that wide receiver Jalen Coker is \u201cunlikely to play\u201d in Wee",
-          "url": "https://www.prideofdetroit.com/detroit-lions-news/175606/nfl-injury-update-jalen-coker-out-carolina-panthers-detroit-lions",
-          "source": "SBN DET"
-        },
-        {
-          "text": "Sunday injury statuses continued\n\nQuestionable\nWR - Zay Flowers, Mike Evans, Jalen Coker, Terry McLaurin, Ladd McConkey, Keenan Allen, Chris Moore, Ashton Dulin\nTE - Kenyon Sadiq, Eli Raridon, Colby Parkinson",
-          "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3mwwdmeaz422u",
-          "source": "Bluesky @ffnatejahnke.bsky.social"
-        }
-      ]
-    },
-    {
-      "name": "Chris Moore",
-      "pos": "WR",
-      "team": "BAL",
-      "adp": 216.0,
-      "adp_prior": 216.0,
-      "adp_move": 0.0,
-      "proj": null,
-      "sleeper_weight": 1.8,
-      "score": 5.76,
-      "unpriced": true,
-      "signals": [
-        "injury",
-        "questionable"
-      ],
-      "items": [
-        {
-          "text": "Sunday injury statuses continued\n\nQuestionable\nWR - Zay Flowers, Mike Evans, Jalen Coker, Terry McLaurin, Ladd McConkey, Keenan Allen, Chris Moore, Ashton Dulin\nTE - Kenyon Sadiq, Eli Raridon, Colby Parkinson",
-          "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3mwwdmeaz422u",
-          "source": "Bluesky @ffnatejahnke.bsky.social"
-        }
-      ]
-    },
-    {
-      "name": "Eli Raridon",
-      "pos": "TE",
-      "team": "NE",
-      "adp": 215.2,
-      "adp_prior": 215.1,
-      "adp_move": -0.1,
-      "proj": null,
-      "sleeper_weight": 1.8,
-      "score": 5.76,
-      "unpriced": true,
-      "signals": [
-        "injury",
-        "questionable"
-      ],
-      "items": [
-        {
-          "text": "Sunday injury statuses continued\n\nQuestionable\nWR - Zay Flowers, Mike Evans, Jalen Coker, Terry McLaurin, Ladd McConkey, Keenan Allen, Chris Moore, Ashton Dulin\nTE - Kenyon Sadiq, Eli Raridon, Colby Parkinson",
-          "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3mwwdmeaz422u",
-          "source": "Bluesky @ffnatejahnke.bsky.social"
-        }
-      ]
-    },
-    {
-      "name": "Mason Taylor",
-      "pos": "TE",
-      "team": "NYJ",
-      "adp": 215.5,
-      "adp_prior": 215.7,
-      "adp_move": 0.2,
-      "proj": null,
-      "sleeper_weight": 1.8,
-      "score": 5.76,
-      "unpriced": true,
-      "signals": [
-        "injury",
-        "questionable"
-      ],
-      "items": [
-        {
-          "text": "Sunday injury statuses continued\n\nOut\nTE - Dallas Goedert, Terrance Ferguson, Mason Taylor, Charlie Kolar, Ko Kieft\n\nQuestionable\nQB - Trey Lance, Aidan O'Connell\nRB - Tyjae Spears, Ray Davis, Reggie Gilliam",
-          "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3mwwdmeay4s2u",
-          "source": "Bluesky @ffnatejahnke.bsky.social"
-        }
-      ]
-    },
-    {
-      "name": "Trey Lance",
-      "pos": "QB",
-      "team": "LAC",
-      "adp": 216.0,
-      "adp_prior": 216.0,
-      "adp_move": 0.0,
-      "proj": null,
-      "sleeper_weight": 1.8,
-      "score": 5.76,
-      "unpriced": true,
-      "signals": [
-        "injury",
-        "questionable"
-      ],
-      "items": [
-        {
-          "text": "Sunday injury statuses continued\n\nOut\nTE - Dallas Goedert, Terrance Ferguson, Mason Taylor, Charlie Kolar, Ko Kieft\n\nQuestionable\nQB - Trey Lance, Aidan O'Connell\nRB - Tyjae Spears, Ray Davis, Reggie Gilliam",
-          "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3mwwdmeay4s2u",
-          "source": "Bluesky @ffnatejahnke.bsky.social"
-        }
-      ]
-    },
-    {
-      "name": "Ko Kieft",
-      "pos": "TE",
-      "team": "TB",
-      "adp": 216.0,
-      "adp_prior": 216.0,
-      "adp_move": 0.0,
-      "proj": null,
-      "sleeper_weight": 1.8,
-      "score": 5.76,
-      "unpriced": true,
-      "signals": [
-        "injury",
-        "questionable"
-      ],
-      "items": [
-        {
-          "text": "Sunday injury statuses continued\n\nOut\nTE - Dallas Goedert, Terrance Ferguson, Mason Taylor, Charlie Kolar, Ko Kieft\n\nQuestionable\nQB - Trey Lance, Aidan O'Connell\nRB - Tyjae Spears, Ray Davis, Reggie Gilliam",
-          "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3mwwdmeay4s2u",
-          "source": "Bluesky @ffnatejahnke.bsky.social"
-        }
-      ]
-    },
-    {
-      "name": "Reggie Gilliam",
-      "pos": "RB",
-      "team": "NE",
-      "adp": 216.0,
-      "adp_prior": 216.0,
-      "adp_move": 0.0,
-      "proj": null,
-      "sleeper_weight": 1.8,
-      "score": 5.76,
-      "unpriced": true,
-      "signals": [
-        "injury",
-        "questionable"
-      ],
-      "items": [
-        {
-          "text": "Sunday injury statuses continued\n\nOut\nTE - Dallas Goedert, Terrance Ferguson, Mason Taylor, Charlie Kolar, Ko Kieft\n\nQuestionable\nQB - Trey Lance, Aidan O'Connell\nRB - Tyjae Spears, Ray Davis, Reggie Gilliam",
-          "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3mwwdmeay4s2u",
-          "source": "Bluesky @ffnatejahnke.bsky.social"
-        }
-      ]
-    },
-    {
-      "name": "Aidan O'Connell",
-      "pos": "QB",
-      "team": "LV",
-      "adp": 216.0,
-      "adp_prior": 216.0,
-      "adp_move": 0.0,
-      "proj": null,
-      "sleeper_weight": 1.8,
-      "score": 5.76,
-      "unpriced": true,
-      "signals": [
-        "injury",
-        "questionable"
-      ],
-      "items": [
-        {
-          "text": "Sunday injury statuses continued\n\nOut\nTE - Dallas Goedert, Terrance Ferguson, Mason Taylor, Charlie Kolar, Ko Kieft\n\nQuestionable\nQB - Trey Lance, Aidan O'Connell\nRB - Tyjae Spears, Ray Davis, Reggie Gilliam",
-          "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3mwwdmeay4s2u",
-          "source": "Bluesky @ffnatejahnke.bsky.social"
-        }
-      ]
-    },
-    {
-      "name": "Xavier Legette",
-      "pos": "WR",
-      "team": "CAR",
-      "adp": 215.8,
-      "adp_prior": 215.4,
-      "adp_move": -0.4,
-      "proj": null,
-      "sleeper_weight": 1.8,
-      "score": 5.76,
-      "unpriced": true,
-      "signals": [
-        "injury"
-      ],
-      "items": [
-        {
-          "text": "Sunday injury statuses\n\nOut\nQB - Caleb Williams, Jayden Daniels, Baker Mayfield\nRB - Breece Hall, Jadarian Price, Rachaad White, Zach Charbonnet\nWR - Justin Jefferson, DeVonta Smith, Caleb Douglas, Adonai Mitchell, Xavier Legette, Hollywood Brown, Colbie Young, Brenen Thompson",
-          "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3mwwdme7gd22u",
-          "source": "Bluesky @ffnatejahnke.bsky.social"
+          "text": "NY Giants\u2019 QB J.J. McCarthy is active for game vs. Arizona Cardinals. Newly-acquired quarterback J.J. McCarthy is active on Sunday for the New York Giants against the Arizona Cardinals. It is uncertain whether McCarthy will be the No. 2 or No. 3 quarterback. The Giants elevated quarterback Jake Haen",
+          "url": "https://www.bigblueview.com/new-york-giants-roster/173986/jj-mccarthy-is-active-for-game-vs-arizona-cardinals",
+          "source": "SBN NYG"
         }
       ]
     },
@@ -1244,43 +1776,24 @@
       ]
     },
     {
-      "name": "Caleb Williams",
-      "pos": "QB",
-      "team": "CHI",
-      "adp": 73.8,
-      "adp_prior": 72.9,
-      "adp_move": -0.9,
+      "name": "Jerry Jeudy",
+      "pos": "WR",
+      "team": "CLE",
+      "adp": 204.9,
+      "adp_prior": 197.2,
+      "adp_move": -7.7,
       "proj": null,
-      "sleeper_weight": 0.75,
-      "score": 5.338,
-      "unpriced": true,
+      "sleeper_weight": 1.8,
+      "score": 5.265,
+      "unpriced": false,
       "signals": [
-        "hamstring",
-        "injured",
-        "injury",
-        "out for",
-        "sidelined"
+        "snaps"
       ],
       "items": [
         {
-          "text": "Bears expected to start inexperienced QB &#8211; Can Jets take advantage?. As far as I am aware, as of the time of writing this article, the Chicago Bears had made no official announcement regarding who will start for them at quarterback in place of the injured Caleb Williams. Nonetheless, rumors in",
-          "url": "https://www.ganggreennation.com/new-york-jets-analysis/97227/bears-expected-to-start-inexperienced-qb-can-jets-take-advantage",
-          "source": "SBN NYJ"
-        },
-        {
-          "text": "Bears vs. Jets Injury Report: Braxton Jones out for Chicago, N.Y. down 4 starters. The Chicago Bears and New York Jets meet on Sunday in the Windy City, and both teams will be without key contributors. No surprise that Caleb Williams will miss his second consecutive game with his hamstring injury, b",
-          "url": "https://www.windycitygridiron.com/chicago-bears-injuries/124262/bears-vs-jets-injury-report-braxton-jones-out-for-chicago-n-y-down-4-starters",
-          "source": "SBN CHI"
-        },
-        {
-          "text": "Chicago Bears vs. New York Jets &#8211; Game Picks and Predictions. Sunday at Soldier Field (12:00pm CST), the Chicago Bears welcome the New York Jets to the gridiron in a contest where both teams have key players injured and sidelined. The Jets walk in at 1\u20132 without Breece Hall (quad), their dynam",
-          "url": "https://www.windycitygridiron.com/chicago-bears-analysis/124324/chicago-bears-vs-new-york-jets-game-picks-and-predictions",
-          "source": "SBN CHI"
-        },
-        {
-          "text": "Sunday injury statuses\n\nOut\nQB - Caleb Williams, Jayden Daniels, Baker Mayfield\nRB - Breece Hall, Jadarian Price, Rachaad White, Zach Charbonnet\nWR - Justin Jefferson, DeVonta Smith, Caleb Douglas, Adonai Mitchell, Xavier Legette, Hollywood Brown, Colbie Young, Brenen Thompson",
-          "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3mwwdme7gd22u",
-          "source": "Bluesky @ffnatejahnke.bsky.social"
+          "text": "How many snaps for Jerry Jeudy, Jaleel McLaughlin have for Browns offense in win over Steelers?. Finally, we saw a productive first half from the Browns&#8217; offense, as they put 21 points on the board in the second quarter. That built a cushion that allowed them some breathing room when things di",
+          "url": "https://www.dawgsbynature.com/cleveland-browns-analysis/134291/how-many-snaps-for-jerry-jeudy-jaleel-mclaughlin-have-for-browns-offense-in-win-over-steelers",
+          "source": "SBN CLE"
         }
       ]
     },
@@ -1316,7 +1829,7 @@
       "adp_move": -2.1,
       "proj": null,
       "sleeper_weight": 1.1,
-      "score": 4.893,
+      "score": 5.012,
       "unpriced": false,
       "signals": [
         "ahead of",
@@ -1324,6 +1837,11 @@
         "released"
       ],
       "items": [
+        {
+          "text": "Buccaneers vs. Packers: Inactives for Week 4. The Tampa Bay Buccaneers and Green Bay Packers have released their inactive lists ahead of Sunday\u2019s Week 4 matchup at Raymond James Stadium. The biggest absence for Tampa Bay is quarterback Baker Mayfield, who will miss his first start as a Buccaneer aft",
+          "url": "https://www.bucsnation.com/tampa-bay-buccaneers-injuries/68874/buccaneers-packers-inactives-nfl-week-4",
+          "source": "SBN TB"
+        },
         {
           "text": "NFL predictions: Will Packers get back to winning ways against Bucs?. This week, the Green Bay Packers have a great opportunity to get their record back to even and find a bit of offensive identity. The 1-2 Packers face an Tampa Bay Buccaneers squad that is already 0-3 and is missing starting quarte",
           "url": "https://www.acmepackingcompany.com/green-bay-packers-odds/87299/packers-vs-buccaneers-predictions-week-3-picks",
@@ -1333,16 +1851,35 @@
           "text": "Packers-Buccaneers Preview: Green Bay travels to Tampa Bay. The Green Bay Packers (1-2) visit a 0-3 Tampa Bay Buccaneers team on Sunday at 1 p.m. ET as a 4-point favorite, and the matchup is defined by one injury: Baker Mayfield is out with a dislocated right thumb, so undrafted rookie Jalon Daniels",
           "url": "https://www.acmepackingcompany.com/green-bay-packers-analysis/87514/packers-buccaneers-preview-green-bay-travels-to-tampa-bay",
           "source": "SBN GB"
+        }
+      ]
+    },
+    {
+      "name": "Caleb Williams",
+      "pos": "QB",
+      "team": "CHI",
+      "adp": 73.8,
+      "adp_prior": 72.9,
+      "adp_move": -0.9,
+      "proj": null,
+      "sleeper_weight": 0.75,
+      "score": 4.883,
+      "unpriced": true,
+      "signals": [
+        "hamstring",
+        "injured",
+        "sidelined"
+      ],
+      "items": [
+        {
+          "text": "Bears expected to start inexperienced QB &#8211; Can Jets take advantage?. As far as I am aware, as of the time of writing this article, the Chicago Bears had made no official announcement regarding who will start for them at quarterback in place of the injured Caleb Williams. Nonetheless, rumors in",
+          "url": "https://www.ganggreennation.com/new-york-jets-analysis/97227/bears-expected-to-start-inexperienced-qb-can-jets-take-advantage",
+          "source": "SBN NYJ"
         },
         {
-          "text": "Buccaneers vs. Packers: Inactives for Week 4. The Tampa Bay Buccaneers and Green Bay Packers have released their inactive lists ahead of Sunday\u2019s Week 4 matchup at Raymond James Stadium. The biggest absence for Tampa Bay is quarterback Baker Mayfield, who will miss his first start as a Buccaneer aft",
-          "url": "https://sports.yahoo.com/articles/buccaneers-vs-packers-inactives-week-155630374.html",
-          "source": "Yahoo NFL"
-        },
-        {
-          "text": "Sunday injury statuses\n\nOut\nQB - Caleb Williams, Jayden Daniels, Baker Mayfield\nRB - Breece Hall, Jadarian Price, Rachaad White, Zach Charbonnet\nWR - Justin Jefferson, DeVonta Smith, Caleb Douglas, Adonai Mitchell, Xavier Legette, Hollywood Brown, Colbie Young, Brenen Thompson",
-          "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3mwwdme7gd22u",
-          "source": "Bluesky @ffnatejahnke.bsky.social"
+          "text": "Chicago Bears vs. New York Jets &#8211; Game Picks and Predictions. Sunday at Soldier Field (12:00pm CST), the Chicago Bears welcome the New York Jets to the gridiron in a contest where both teams have key players injured and sidelined. The Jets walk in at 1\u20132 without Breece Hall (quad), their dynam",
+          "url": "https://www.windycitygridiron.com/chicago-bears-analysis/124324/chicago-bears-vs-new-york-jets-game-picks-and-predictions",
+          "source": "SBN CHI"
         }
       ]
     },
@@ -1365,50 +1902,6 @@
           "text": "49ers WR Mike Evans was able to practice late this week despite a rib injury and said he\u2019ll do his best to be out there. The team has expressed optimism, though as George Kittle noted, \u201cFractured ribs suck.\u201d",
           "url": "https://bsky.app/profile/rapsheet.bsky.social/post/3mx2fo3bunc2z",
           "source": "Bluesky @rapsheet.bsky.social"
-        }
-      ]
-    },
-    {
-      "name": "Carsen Ryan",
-      "pos": "",
-      "team": "",
-      "adp": null,
-      "adp_prior": null,
-      "adp_move": null,
-      "proj": null,
-      "sleeper_weight": 1.9,
-      "score": 4.378,
-      "unpriced": true,
-      "signals": [
-        "snap"
-      ],
-      "items": [
-        {
-          "text": "Browns halftime TE/FB snap count\n\nHarold Fannin Jr. 27\nBlake Whiteheart 10\nMichael Burton 4\nCarsen Ryan 1\n\nOut of 29 plays",
-          "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3mwubqeweec2x",
-          "source": "Bluesky @ffnatejahnke.bsky.social"
-        }
-      ]
-    },
-    {
-      "name": "Riley Nowakowski",
-      "pos": "",
-      "team": "",
-      "adp": null,
-      "adp_prior": null,
-      "adp_move": null,
-      "proj": null,
-      "sleeper_weight": 1.9,
-      "score": 4.378,
-      "unpriced": true,
-      "signals": [
-        "snap"
-      ],
-      "items": [
-        {
-          "text": "Steelers halftime TE/FB snap count\n\nPat Freiermuth 31\nDarnell Washington 28\nRobert Tonyan 1\nRiley Nowakowski 1\n\nOut of 38 plays",
-          "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3mwubld323c2x",
-          "source": "Bluesky @ffnatejahnke.bsky.social"
         }
       ]
     },
@@ -1457,6 +1950,73 @@
       ]
     },
     {
+      "name": "Jalen Coker",
+      "pos": "WR",
+      "team": "CAR",
+      "adp": 129.3,
+      "adp_prior": 129.3,
+      "adp_move": 0.0,
+      "proj": null,
+      "sleeper_weight": 1.1,
+      "score": 4.29,
+      "unpriced": true,
+      "signals": [
+        "injury",
+        "limited"
+      ],
+      "items": [
+        {
+          "text": "NFL injury update: Panthers likely without top WR vs. Lions. According to a report from ESPN\u2019s Adam Schefter, the Carolina Panthers are likely to be without their top receiver against the Detroit Lions on Sunday night. Schefter is reporting that wide receiver Jalen Coker is \u201cunlikely to play\u201d in Wee",
+          "url": "https://www.prideofdetroit.com/detroit-lions-news/175606/nfl-injury-update-jalen-coker-out-carolina-panthers-detroit-lions",
+          "source": "SBN DET"
+        }
+      ]
+    },
+    {
+      "name": "Calvin Ridley",
+      "pos": "WR",
+      "team": "TEN",
+      "adp": 202.3,
+      "adp_prior": 199.4,
+      "adp_move": -2.9,
+      "proj": null,
+      "sleeper_weight": 1.8,
+      "score": 4.212,
+      "unpriced": false,
+      "signals": [
+        "snap"
+      ],
+      "items": [
+        {
+          "text": "Titans halftime WR snap count\n\nCarnell Tate 29\nElic Ayomanor 21\nWan'Dale Robinson 18\nCalvin Ridley 18\nChimere Dike 4\n\nOut of 35 plays",
+          "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3mx333sz3nc24",
+          "source": "Bluesky @ffnatejahnke.bsky.social"
+        }
+      ]
+    },
+    {
+      "name": "Sean Tucker",
+      "pos": "RB",
+      "team": "TB",
+      "adp": 213.2,
+      "adp_prior": 202.1,
+      "adp_move": -11.1,
+      "proj": null,
+      "sleeper_weight": 1.8,
+      "score": 4.212,
+      "unpriced": false,
+      "signals": [
+        "snap"
+      ],
+      "items": [
+        {
+          "text": "Buccaneers halftime RB snap count\n\nBucky Irving 18\nKenny Gainwell 12\nSean Tucker 3\n\nOut of 31 plays",
+          "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3mx327pcjs224",
+          "source": "Bluesky @ffnatejahnke.bsky.social"
+        }
+      ]
+    },
+    {
       "name": "Darren Waller",
       "pos": "TE",
       "team": "CAR",
@@ -1475,270 +2035,6 @@
           "text": "Emergency waiver-wire targets for NFL Week 4. The Week 4 fantasy football waiver wire features options across every position as injuries create new opportunities. Dontayvion Wicks and Darren Waller could benefit from expanded roles, while C.J. Stroud offers a quarterback option with Nico Collins ret",
           "url": "https://www.pff.com/news/fantasy-football-week-4-emergency-waiver-wire/",
           "source": "PFF"
-        }
-      ]
-    },
-    {
-      "name": "Blake Whiteheart",
-      "pos": "TE",
-      "team": "CLE",
-      "adp": 216.0,
-      "adp_prior": 216.0,
-      "adp_move": 0.0,
-      "proj": null,
-      "sleeper_weight": 1.8,
-      "score": 4.147,
-      "unpriced": true,
-      "signals": [
-        "snap"
-      ],
-      "items": [
-        {
-          "text": "Browns halftime TE/FB snap count\n\nHarold Fannin Jr. 27\nBlake Whiteheart 10\nMichael Burton 4\nCarsen Ryan 1\n\nOut of 29 plays",
-          "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3mwubqeweec2x",
-          "source": "Bluesky @ffnatejahnke.bsky.social"
-        }
-      ]
-    },
-    {
-      "name": "Michael Burton",
-      "pos": "RB",
-      "team": "CLE",
-      "adp": 216.0,
-      "adp_prior": 216.0,
-      "adp_move": 0.0,
-      "proj": null,
-      "sleeper_weight": 1.8,
-      "score": 4.147,
-      "unpriced": true,
-      "signals": [
-        "snap"
-      ],
-      "items": [
-        {
-          "text": "Browns halftime TE/FB snap count\n\nHarold Fannin Jr. 27\nBlake Whiteheart 10\nMichael Burton 4\nCarsen Ryan 1\n\nOut of 29 plays",
-          "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3mwubqeweec2x",
-          "source": "Bluesky @ffnatejahnke.bsky.social"
-        }
-      ]
-    },
-    {
-      "name": "Isaiah Bond",
-      "pos": "WR",
-      "team": "CLE",
-      "adp": 216.0,
-      "adp_prior": 215.9,
-      "adp_move": -0.1,
-      "proj": null,
-      "sleeper_weight": 1.8,
-      "score": 4.147,
-      "unpriced": true,
-      "signals": [
-        "snap"
-      ],
-      "items": [
-        {
-          "text": "Browns halftime WR snap count\n\nDenzel Boston 28\nKC Concepcion 26\nMalachi Corley 7\nJerry Jeudy 7\nIsaiah Bond 4\n\nOut of 29 plays",
-          "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3mwubpdmqqs2x",
-          "source": "Bluesky @ffnatejahnke.bsky.social"
-        }
-      ]
-    },
-    {
-      "name": "Malachi Corley",
-      "pos": "WR",
-      "team": "CLE",
-      "adp": 216.0,
-      "adp_prior": 216.0,
-      "adp_move": 0.0,
-      "proj": null,
-      "sleeper_weight": 1.8,
-      "score": 4.147,
-      "unpriced": true,
-      "signals": [
-        "snap"
-      ],
-      "items": [
-        {
-          "text": "Browns halftime WR snap count\n\nDenzel Boston 28\nKC Concepcion 26\nMalachi Corley 7\nJerry Jeudy 7\nIsaiah Bond 4\n\nOut of 29 plays",
-          "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3mwubpdmqqs2x",
-          "source": "Bluesky @ffnatejahnke.bsky.social"
-        }
-      ]
-    },
-    {
-      "name": "Jaleel McLaughlin",
-      "pos": "RB",
-      "team": "CLE",
-      "adp": 216.0,
-      "adp_prior": 216.0,
-      "adp_move": 0.0,
-      "proj": null,
-      "sleeper_weight": 1.8,
-      "score": 4.147,
-      "unpriced": true,
-      "signals": [
-        "snap"
-      ],
-      "items": [
-        {
-          "text": "Browns halftime RB snap count\n\nQuinshon Judkins 23\nRaheim Sanders  6\nJaleel McLaughlin 1\n\nOut of 29 plays",
-          "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3mwubomb6us2x",
-          "source": "Bluesky @ffnatejahnke.bsky.social"
-        }
-      ]
-    },
-    {
-      "name": "Raheim Sanders",
-      "pos": "RB",
-      "team": "CLE",
-      "adp": 216.0,
-      "adp_prior": 216.0,
-      "adp_move": 0.0,
-      "proj": null,
-      "sleeper_weight": 1.8,
-      "score": 4.147,
-      "unpriced": true,
-      "signals": [
-        "snap"
-      ],
-      "items": [
-        {
-          "text": "Browns halftime RB snap count\n\nQuinshon Judkins 23\nRaheim Sanders  6\nJaleel McLaughlin 1\n\nOut of 29 plays",
-          "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3mwubomb6us2x",
-          "source": "Bluesky @ffnatejahnke.bsky.social"
-        }
-      ]
-    },
-    {
-      "name": "Pat Freiermuth",
-      "pos": "TE",
-      "team": "PIT",
-      "adp": 195.7,
-      "adp_prior": 196.8,
-      "adp_move": 1.1,
-      "proj": null,
-      "sleeper_weight": 1.8,
-      "score": 4.147,
-      "unpriced": true,
-      "signals": [
-        "snap"
-      ],
-      "items": [
-        {
-          "text": "Steelers halftime TE/FB snap count\n\nPat Freiermuth 31\nDarnell Washington 28\nRobert Tonyan 1\nRiley Nowakowski 1\n\nOut of 38 plays",
-          "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3mwubld323c2x",
-          "source": "Bluesky @ffnatejahnke.bsky.social"
-        }
-      ]
-    },
-    {
-      "name": "Darnell Washington",
-      "pos": "TE",
-      "team": "PIT",
-      "adp": 215.4,
-      "adp_prior": 215.4,
-      "adp_move": 0.0,
-      "proj": null,
-      "sleeper_weight": 1.8,
-      "score": 4.147,
-      "unpriced": true,
-      "signals": [
-        "snap"
-      ],
-      "items": [
-        {
-          "text": "Steelers halftime TE/FB snap count\n\nPat Freiermuth 31\nDarnell Washington 28\nRobert Tonyan 1\nRiley Nowakowski 1\n\nOut of 38 plays",
-          "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3mwubld323c2x",
-          "source": "Bluesky @ffnatejahnke.bsky.social"
-        }
-      ]
-    },
-    {
-      "name": "Robert Tonyan",
-      "pos": "TE",
-      "team": "PIT",
-      "adp": 216.0,
-      "adp_prior": 216.0,
-      "adp_move": 0.0,
-      "proj": null,
-      "sleeper_weight": 1.8,
-      "score": 4.147,
-      "unpriced": true,
-      "signals": [
-        "snap"
-      ],
-      "items": [
-        {
-          "text": "Steelers halftime TE/FB snap count\n\nPat Freiermuth 31\nDarnell Washington 28\nRobert Tonyan 1\nRiley Nowakowski 1\n\nOut of 38 plays",
-          "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3mwubld323c2x",
-          "source": "Bluesky @ffnatejahnke.bsky.social"
-        }
-      ]
-    },
-    {
-      "name": "Roman Wilson",
-      "pos": "WR",
-      "team": "PIT",
-      "adp": 216.0,
-      "adp_prior": 215.9,
-      "adp_move": -0.1,
-      "proj": null,
-      "sleeper_weight": 1.8,
-      "score": 4.147,
-      "unpriced": true,
-      "signals": [
-        "snap"
-      ],
-      "items": [
-        {
-          "text": "Steelers halftime WR snap count\n\nDK Metcalf 37\nMichael Pittman Jr. 26\nRoman Wilson 12\nGermie Bernard 12\nBen Skowronek 4\n\nOut of 38 plays",
-          "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3mwubki5jps2x",
-          "source": "Bluesky @ffnatejahnke.bsky.social"
-        }
-      ]
-    },
-    {
-      "name": "Ben Skowronek",
-      "pos": "WR",
-      "team": "PIT",
-      "adp": 216.0,
-      "adp_prior": 216.0,
-      "adp_move": 0.0,
-      "proj": null,
-      "sleeper_weight": 1.8,
-      "score": 4.147,
-      "unpriced": true,
-      "signals": [
-        "snap"
-      ],
-      "items": [
-        {
-          "text": "Steelers halftime WR snap count\n\nDK Metcalf 37\nMichael Pittman Jr. 26\nRoman Wilson 12\nGermie Bernard 12\nBen Skowronek 4\n\nOut of 38 plays",
-          "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3mwubki5jps2x",
-          "source": "Bluesky @ffnatejahnke.bsky.social"
-        }
-      ]
-    },
-    {
-      "name": "Travis Homer",
-      "pos": "RB",
-      "team": "PIT",
-      "adp": 216.0,
-      "adp_prior": 216.0,
-      "adp_move": 0.0,
-      "proj": null,
-      "sleeper_weight": 1.8,
-      "score": 4.147,
-      "unpriced": true,
-      "signals": [
-        "snap"
-      ],
-      "items": [
-        {
-          "text": "Steelers halftime RB snap count\n\nJaylen Warren 36\nTravis Homer 2\n\nOut of 38 plays",
-          "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3mwubjgae522x",
-          "source": "Bluesky @ffnatejahnke.bsky.social"
         }
       ]
     },
@@ -1765,68 +2061,219 @@
       ]
     },
     {
-      "name": "Brenen Thompson",
-      "pos": "WR",
-      "team": "LAC",
-      "adp": 215.9,
-      "adp_prior": 215.9,
-      "adp_move": 0.0,
+      "name": "Dallas Goedert",
+      "pos": "TE",
+      "team": "PHI",
+      "adp": 131.7,
+      "adp_prior": 135.0,
+      "adp_move": 3.3,
       "proj": null,
-      "sleeper_weight": 1.8,
-      "score": 3.888,
-      "unpriced": true,
+      "sleeper_weight": 1.1,
+      "score": 3.645,
+      "unpriced": false,
       "signals": [
-        "injury"
+        "hamstring",
+        "injury",
+        "questionable"
       ],
       "items": [
         {
-          "text": "Sunday injury statuses\n\nOut\nQB - Caleb Williams, Jayden Daniels, Baker Mayfield\nRB - Breece Hall, Jadarian Price, Rachaad White, Zach Charbonnet\nWR - Justin Jefferson, DeVonta Smith, Caleb Douglas, Adonai Mitchell, Xavier Legette, Hollywood Brown, Colbie Young, Brenen Thompson",
-          "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3mwwdme7gd22u",
+          "text": "Eagles vs. Rams: Live score updates, highlights, injury news. Well, the Philadelphia Eagles are playing a football game today. And they\u2019ll be doing it without a lot of their key players. No Lane Johnson, no DeVonta Smith, no Zack Baun, no Dallas Goedert \u2026 among others. Their Week 4 opponent, the Los",
+          "url": "https://www.bleedinggreennation.com/philadelphia-eagles-game-information/185378/eagles-vs-rams-live-score-updates-highlights-injury-news",
+          "source": "SBN PHI"
+        },
+        {
+          "text": "Saquon Barkley has a hamstring injury and is questionable to return.\n\nThis is one mighty banged-up Eagles offense at the moment. Also down DeVonta Smith, Lane Johnson and Dallas Goedert.",
+          "url": "https://bsky.app/profile/nateatkins.bsky.social/post/3mx2vym5zck2o",
+          "source": "Bluesky @nateatkins.bsky.social"
+        },
+        {
+          "text": "Eagles-Rams inactives: Lane Johnson is OUT. The Philadelphia Eagles officially announced the inactives list for their Week 4 game against the Los Angeles Rams. The following Eagles players WILL NOT PLAY: Lane Johnson, Fred Johnson, DeVonta Smith, Dallas Goedert, Zack Baun, Marcus Epps, Hollywood Bro",
+          "url": "https://www.bleedinggreennation.com/news/185346/eagles-rams-inactives-lane-johsnon-is-out",
+          "source": "SBN PHI"
+        }
+      ]
+    },
+    {
+      "name": "Chig Okonkwo",
+      "pos": "TE",
+      "team": "WAS",
+      "adp": 149.7,
+      "adp_prior": 145.7,
+      "adp_move": -4.0,
+      "proj": null,
+      "sleeper_weight": 1.1,
+      "score": 3.609,
+      "unpriced": false,
+      "signals": [
+        "running with",
+        "snap"
+      ],
+      "items": [
+        {
+          "text": "Fantasy Football Recap is up and running with the Commanders and Colts. Will be updated throughout the day.\n\n- Making sense of the Commanders backfield\n- How both teams adjusted without top WRs\n- Chig Okonkwo returned for Washington\n\nwww.pff.com/news/fantasy...",
+          "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3mx2vqejrds24",
+          "source": "Bluesky @ffnatejahnke.bsky.social"
+        },
+        {
+          "text": "Commanders halftime TE snap count\n\nChig Okonkwo 22\nJohn Bates 16\nBen Sinnott 11\n\nOut of 30 plays",
+          "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3mx2o7ko3ok2b",
           "source": "Bluesky @ffnatejahnke.bsky.social"
         }
       ]
     },
     {
-      "name": "Colbie Young",
+      "name": "Dontayvion Wicks",
       "pos": "WR",
-      "team": "CIN",
-      "adp": 215.9,
-      "adp_prior": 215.9,
-      "adp_move": 0.0,
+      "team": "PHI",
+      "adp": 157.6,
+      "adp_prior": 164.2,
+      "adp_move": 6.6,
       "proj": null,
-      "sleeper_weight": 1.8,
-      "score": 3.888,
-      "unpriced": true,
+      "sleeper_weight": 1.5,
+      "score": 3.579,
+      "unpriced": false,
       "signals": [
-        "injury"
+        "snap",
+        "targets"
       ],
       "items": [
         {
-          "text": "Sunday injury statuses\n\nOut\nQB - Caleb Williams, Jayden Daniels, Baker Mayfield\nRB - Breece Hall, Jadarian Price, Rachaad White, Zach Charbonnet\nWR - Justin Jefferson, DeVonta Smith, Caleb Douglas, Adonai Mitchell, Xavier Legette, Hollywood Brown, Colbie Young, Brenen Thompson",
-          "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3mwwdme7gd22u",
+          "text": "Eagles halftime WR snap count\n\nDontayvion Wicks 32\nDarius Cooper 31\nMakai Lemon 24\nElijah Moore 5\n\nOut of 33 plays",
+          "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3mx32yw4cqc24",
+          "source": "Bluesky @ffnatejahnke.bsky.social"
+        },
+        {
+          "text": "Emergency waiver-wire targets for NFL Week 4. The Week 4 fantasy football waiver wire features options across every position as injuries create new opportunities. Dontayvion Wicks and Darren Waller could benefit from expanded roles, while C.J. Stroud offers a quarterback option with Nico Collins ret",
+          "url": "https://www.pff.com/news/fantasy-football-week-4-emergency-waiver-wire/",
+          "source": "PFF"
+        }
+      ]
+    },
+    {
+      "name": "DeVonta Smith",
+      "pos": "WR",
+      "team": "PHI",
+      "adp": 27.9,
+      "adp_prior": 27.7,
+      "adp_move": -0.2,
+      "proj": null,
+      "sleeper_weight": 0.5,
+      "score": 3.559,
+      "unpriced": true,
+      "signals": [
+        "hamstring",
+        "injury",
+        "questionable"
+      ],
+      "items": [
+        {
+          "text": "Eagles vs. Rams: Live score updates, highlights, injury news. Well, the Philadelphia Eagles are playing a football game today. And they\u2019ll be doing it without a lot of their key players. No Lane Johnson, no DeVonta Smith, no Zack Baun, no Dallas Goedert \u2026 among others. Their Week 4 opponent, the Los",
+          "url": "https://www.bleedinggreennation.com/philadelphia-eagles-game-information/185378/eagles-vs-rams-live-score-updates-highlights-injury-news",
+          "source": "SBN PHI"
+        },
+        {
+          "text": "Saquon Barkley has a hamstring injury and is questionable to return.\n\nThis is one mighty banged-up Eagles offense at the moment. Also down DeVonta Smith, Lane Johnson and Dallas Goedert.",
+          "url": "https://bsky.app/profile/nateatkins.bsky.social/post/3mx2vym5zck2o",
+          "source": "Bluesky @nateatkins.bsky.social"
+        },
+        {
+          "text": "Darius Cooper's outstanding catch gives Eagles 13-3 lead over Rams. With DeVonta Smith out due to a hamstring injury, the Eagles needed someone to step up at receiver.",
+          "url": "https://www.nbcsports.com/nfl/profootballtalk/rumor-mill/news/darius-coopers-outstanding-catch-gives-eagles-13-3-lead-over-rams",
+          "source": "ProFootballTalk"
+        },
+        {
+          "text": "Eagles-Rams inactives: Lane Johnson is OUT. The Philadelphia Eagles officially announced the inactives list for their Week 4 game against the Los Angeles Rams. The following Eagles players WILL NOT PLAY: Lane Johnson, Fred Johnson, DeVonta Smith, Dallas Goedert, Zack Baun, Marcus Epps, Hollywood Bro",
+          "url": "https://www.bleedinggreennation.com/news/185346/eagles-rams-inactives-lane-johsnon-is-out",
+          "source": "SBN PHI"
+        }
+      ]
+    },
+    {
+      "name": "Kenyon Sadiq",
+      "pos": "TE",
+      "team": "NYJ",
+      "adp": 179.5,
+      "adp_prior": 181.8,
+      "adp_move": 2.3,
+      "proj": null,
+      "sleeper_weight": 1.5,
+      "score": 3.51,
+      "unpriced": false,
+      "signals": [
+        "snap"
+      ],
+      "items": [
+        {
+          "text": "Jets 1st half TE snap count\n\nKenyon Sadiq 14\nJelani Woods 5\nJeremy Ruckert 4\n\nOut of 16 plays",
+          "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3mx32cqsats24",
           "source": "Bluesky @ffnatejahnke.bsky.social"
         }
       ]
     },
     {
-      "name": "Justin Herbert",
-      "pos": "QB",
-      "team": "LAC",
-      "adp": 84.0,
-      "adp_prior": 83.7,
-      "adp_move": -0.3,
+      "name": "Jaylin Noel",
+      "pos": "WR",
+      "team": "HOU",
+      "adp": 204.1,
+      "adp_prior": 211.3,
+      "adp_move": 7.2,
       "proj": null,
-      "sleeper_weight": 0.75,
-      "score": 3.795,
-      "unpriced": true,
+      "sleeper_weight": 1.8,
+      "score": 3.37,
+      "unpriced": false,
       "signals": [
-        "released"
+        "snap"
       ],
       "items": [
         {
-          "text": "5Qs and 5As, Seahawks vs. Chargers preview: What\u2019s wrong with Jim Harbaugh\u2019s team?. The Seattle Seahawks and Los Angeles Chargers looked like a fascinating game when the schedule was released in May. You have the reigning Super Bowl champions going against a Jim Harbaugh team led by quarterback Just",
-          "url": "https://www.fieldgulls.com/seattle-seahawks-game-analysis/176309/seahawks-vs-chargers-preview-whats-wrong-with-jim-harbaugh-team-justin-herbert",
-          "source": "SBN SEA"
+          "text": "Texans halftime WR snap count\n\nNico Collins 19\nKayshon Boutte 18\nJaylin Noel 15\nJared Wayne 9\nXavier Hutchinson 8\n\nOut of 28 plays",
+          "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3mx32tb6las24",
+          "source": "Bluesky @ffnatejahnke.bsky.social"
+        }
+      ]
+    },
+    {
+      "name": "Ted Hurst",
+      "pos": "WR",
+      "team": "TB",
+      "adp": 196.0,
+      "adp_prior": 199.4,
+      "adp_move": 3.4,
+      "proj": null,
+      "sleeper_weight": 1.8,
+      "score": 3.37,
+      "unpriced": false,
+      "signals": [
+        "snap"
+      ],
+      "items": [
+        {
+          "text": "Buccaneers halftime WR snap count\n\nEmeka Egbuka 28\nChris Godwin 28\nTez Johnson 19\nTed Hurst 9\nKameron Johnson 1\n\nOut of 31 plays",
+          "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3mx32an47ek24",
+          "source": "Bluesky @ffnatejahnke.bsky.social"
+        }
+      ]
+    },
+    {
+      "name": "Kaleb Johnson",
+      "pos": "RB",
+      "team": "GB",
+      "adp": 211.0,
+      "adp_prior": 216.0,
+      "adp_move": 5.0,
+      "proj": null,
+      "sleeper_weight": 1.8,
+      "score": 3.37,
+      "unpriced": false,
+      "signals": [
+        "snap"
+      ],
+      "items": [
+        {
+          "text": "Packers halftime RB snap count\n\nMarShawn Lloyd 16\nChris Brooks 10\nKaleb Johnson 6\n\nOut of 32 plays",
+          "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3mx2zvrsfrc24",
+          "source": "Bluesky @ffnatejahnke.bsky.social"
         }
       ]
     },
@@ -1853,6 +2300,62 @@
       ]
     },
     {
+      "name": "Zay Flowers",
+      "pos": "WR",
+      "team": "BAL",
+      "adp": 31.7,
+      "adp_prior": 30.9,
+      "adp_move": -0.8,
+      "proj": null,
+      "sleeper_weight": 0.5,
+      "score": 3.313,
+      "unpriced": true,
+      "signals": [
+        "injury",
+        "questionable",
+        "snap"
+      ],
+      "items": [
+        {
+          "text": "Baltimore Ravens vs. Tennessee Titans Week 4 game discussion. The Baltimore Ravens (2-1) will kick off their Week 4 matchup with the Tennessee Titans (0-3) at M&#38;T Bank Stadium at 1:00 p.m. ET. Wide receiver Zay Flowers and left tackle Ronnie Stanley are both active despite being designated as qu",
+          "url": "https://www.baltimorebeatdown.com/baltimore-ravens-discussion/85904/baltimore-ravens-vs-tennessee-titans-week-4-game-discussion",
+          "source": "SBN BAL"
+        },
+        {
+          "text": "Ravens halftime WR snap count\n\nZay Flowers 26\nDevontez Walker 22\nRathod Bateman 15\nElijah Sarratt 13\n\nOut of 33 plays",
+          "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3mx32rg6lac24",
+          "source": "Bluesky @ffnatejahnke.bsky.social"
+        },
+        {
+          "text": "Ravens upgrade Lamar Jackson, Zay Flowers on Thursday injury report. The Baltimore Ravens posted an encouraging injury report on Thursday with several key players, including quarterback Lamar Jackson and wide receiver Zay Flowers, upgraded to full participation. Head coach Jesse Minter already calme",
+          "url": "https://www.baltimorebeatdown.com/baltimore-ravens-injuries/85816/ravens-upgrade-lamar-jackson-zay-flowers-on-thursday-injury-report",
+          "source": "SBN BAL"
+        }
+      ]
+    },
+    {
+      "name": "Justin Herbert",
+      "pos": "QB",
+      "team": "LAC",
+      "adp": 84.0,
+      "adp_prior": 83.7,
+      "adp_move": -0.3,
+      "proj": null,
+      "sleeper_weight": 0.75,
+      "score": 3.3,
+      "unpriced": true,
+      "signals": [
+        "released"
+      ],
+      "items": [
+        {
+          "text": "5Qs and 5As, Seahawks vs. Chargers preview: What\u2019s wrong with Jim Harbaugh\u2019s team?. The Seattle Seahawks and Los Angeles Chargers looked like a fascinating game when the schedule was released in May. You have the reigning Super Bowl champions going against a Jim Harbaugh team led by quarterback Just",
+          "url": "https://www.fieldgulls.com/seattle-seahawks-game-analysis/176309/seahawks-vs-chargers-preview-whats-wrong-with-jim-harbaugh-team-justin-herbert",
+          "source": "SBN SEA"
+        }
+      ]
+    },
+    {
       "name": "Jayden Daniels",
       "pos": "QB",
       "team": "WAS",
@@ -1861,9 +2364,10 @@
       "adp_move": -2.4,
       "proj": null,
       "sleeper_weight": 0.75,
-      "score": 3.337,
+      "score": 3.107,
       "unpriced": false,
       "signals": [
+        "injured",
         "injury",
         "out for",
         "practice squad",
@@ -1871,95 +2375,24 @@
       ],
       "items": [
         {
+          "text": "Commanders injury update: Marcus Mariota dealing with knee injury. Jayden Daniels was formally ruled out of Sunday\u2019s game against the Indianapolis Colts, yet they felt good about their quarterback situation. &#160; That was due to veteran backup, Marcus Mariota, a proven commodity capable of winning",
+          "url": "https://www.hogshaven.com/washington-commanders-news/446176/commanders-injury-update-marcus-mariota-knee-colts-jayden-daniels",
+          "source": "SBN WAS"
+        },
+        {
           "text": "Washington Commanders vs Indianapolis Colts Inactives: Terry McLaurin out for London game. The Washington Commanders released their final injury report for Sunday morning\u2019s game on Friday and then made two roster moves yesterday. LB Ale Kaho and RB Craig Reynolds were elevated from the practice squa",
           "url": "https://www.hogshaven.com/washington-commanders-injuries/446085/washington-commanders-vs-indianapolis-colts-inactives-terry-mclaurin-out-london-game",
           "source": "SBN WAS"
         },
         {
-          "text": "Marcus Mariota ruled out in Week 4 with right knee injury, Commanders already down Jayden Daniels. The Commanders are already without starting quarterback Jayden Daniels in Week 4.",
-          "url": "https://sports.yahoo.com/nfl/breaking-news/article/marcus-mariota-leaves-week-4-with-injury-with-commanders-already-without-jayden-daniels-135842780.html",
-          "source": "Yahoo NFL"
+          "text": "Commanders QB Marcus Mariota aggravated his MCL injury and now will have tests, per Molly McGrath. Expect him to miss some time.\n\nThat said, there is hope that QB Jayden Daniels (elbow) is back next week.",
+          "url": "https://bsky.app/profile/rapsheet.bsky.social/post/3mx2siewu7s2z",
+          "source": "Bluesky @rapsheet.bsky.social"
         },
         {
-          "text": "Sunday injury statuses\n\nOut\nQB - Caleb Williams, Jayden Daniels, Baker Mayfield\nRB - Breece Hall, Jadarian Price, Rachaad White, Zach Charbonnet\nWR - Justin Jefferson, DeVonta Smith, Caleb Douglas, Adonai Mitchell, Xavier Legette, Hollywood Brown, Colbie Young, Brenen Thompson",
-          "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3mwwdme7gd22u",
-          "source": "Bluesky @ffnatejahnke.bsky.social"
-        }
-      ]
-    },
-    {
-      "name": "Keenan Allen",
-      "pos": "WR",
-      "team": "IND",
-      "adp": 154.6,
-      "adp_prior": 175.6,
-      "adp_move": 21.0,
-      "proj": null,
-      "sleeper_weight": 1.5,
-      "score": 3.202,
-      "unpriced": false,
-      "signals": [
-        "injury",
-        "limited",
-        "out for",
-        "questionable"
-      ],
-      "items": [
-        {
-          "text": "Colts\u2019 Keenan Allen downgraded to OUT for London game with groin injury. Indianapolis Colts wide receiver Keenan Allen was downgraded to OUT with a groin injury and will miss Sunday morning\u2019s affair against the Washington Commanders in London. Colts head coach Shane Steichen initially announced that",
-          "url": "https://www.stampedeblue.com/indianapolis-colts-injuries/128298/keenan-allen-downgraded-to-out-for-london-game-with-groin-injury",
-          "source": "SBN IND"
-        },
-        {
-          "text": "Sunday injury statuses continued\n\nQuestionable\nWR - Zay Flowers, Mike Evans, Jalen Coker, Terry McLaurin, Ladd McConkey, Keenan Allen, Chris Moore, Ashton Dulin\nTE - Kenyon Sadiq, Eli Raridon, Colby Parkinson",
-          "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3mwwdmeaz422u",
-          "source": "Bluesky @ffnatejahnke.bsky.social"
-        }
-      ]
-    },
-    {
-      "name": "Kenyon Sadiq",
-      "pos": "TE",
-      "team": "NYJ",
-      "adp": 179.5,
-      "adp_prior": 181.8,
-      "adp_move": 2.3,
-      "proj": null,
-      "sleeper_weight": 1.5,
-      "score": 3.0,
-      "unpriced": false,
-      "signals": [
-        "injury",
-        "questionable"
-      ],
-      "items": [
-        {
-          "text": "Sunday injury statuses continued\n\nQuestionable\nWR - Zay Flowers, Mike Evans, Jalen Coker, Terry McLaurin, Ladd McConkey, Keenan Allen, Chris Moore, Ashton Dulin\nTE - Kenyon Sadiq, Eli Raridon, Colby Parkinson",
-          "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3mwwdmeaz422u",
-          "source": "Bluesky @ffnatejahnke.bsky.social"
-        }
-      ]
-    },
-    {
-      "name": "Ray Davis",
-      "pos": "RB",
-      "team": "BUF",
-      "adp": 186.1,
-      "adp_prior": 188.8,
-      "adp_move": 2.7,
-      "proj": null,
-      "sleeper_weight": 1.5,
-      "score": 3.0,
-      "unpriced": false,
-      "signals": [
-        "injury",
-        "questionable"
-      ],
-      "items": [
-        {
-          "text": "Sunday injury statuses continued\n\nOut\nTE - Dallas Goedert, Terrance Ferguson, Mason Taylor, Charlie Kolar, Ko Kieft\n\nQuestionable\nQB - Trey Lance, Aidan O'Connell\nRB - Tyjae Spears, Ray Davis, Reggie Gilliam",
-          "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3mwwdmeay4s2u",
-          "source": "Bluesky @ffnatejahnke.bsky.social"
+          "text": "Dan Quinn: The goal is to have Jayden Daniels start vs the Giants. The Washington Commanders jumped out to a 6-0 lead over the Indianapolis Colts, taking advantage of some early turnovers. The game quickly turned when QB Marcus Mariota left the game with a knee injury. Dan Quinn told Molly McGrath d",
+          "url": "https://www.hogshaven.com/pressers/444616/dan-quinn-goal-have-jayden-daniels-start-vs-giants",
+          "source": "SBN WAS"
         }
       ]
     },
@@ -2008,55 +2441,59 @@
       ]
     },
     {
-      "name": "Charlie Kolar",
-      "pos": "TE",
-      "team": "LAC",
-      "adp": 208.8,
-      "adp_prior": 213.5,
-      "adp_move": 4.7,
+      "name": "Jaxson Dart",
+      "pos": "QB",
+      "team": "NYG",
+      "adp": 106.6,
+      "adp_prior": 102.2,
+      "adp_move": -4.4,
       "proj": null,
-      "sleeper_weight": 1.8,
-      "score": 2.88,
+      "sleeper_weight": 0.75,
+      "score": 2.987,
       "unpriced": false,
       "signals": [
         "injury",
-        "questionable"
+        "out for",
+        "starter"
       ],
       "items": [
         {
-          "text": "Sunday injury statuses continued\n\nOut\nTE - Dallas Goedert, Terrance Ferguson, Mason Taylor, Charlie Kolar, Ko Kieft\n\nQuestionable\nQB - Trey Lance, Aidan O'Connell\nRB - Tyjae Spears, Ray Davis, Reggie Gilliam",
-          "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3mwwdmeay4s2u",
-          "source": "Bluesky @ffnatejahnke.bsky.social"
+          "text": "Cardinals vs. Giants Week 4 TV Map. The Arizona Cardinals (1-2-0) have the opportunity to get back to even in the standings against the New York Football Giants, who are struggling at the quarterback position. Starter Jaxson Dart is out for the year, and his replacement, journeyman Jameis Winston, i",
+          "url": "https://www.revengeofthebirds.com/arizona-cardinals-game-information/95147/cardinals-vs-giants-week-4-tv-map",
+          "source": "SBN ARI"
+        },
+        {
+          "text": "NFL writer Arif Hasan on his viral Jameis Winston column: \u2018I have been thinking about this one for a while\u2019. Some view New York Giants quarterback Jameis Winston as fun-loving and goofy, while others see him quite differently. The Heisman Trophy winner and a former No. 1 overall draft pick never liv",
+          "url": "https://awfulannouncing.com/nfl/nfl-writer-arif-hasan-on-his-viral-jameis-winston-column-i-have-been-thinking-about-this-one-for-a-while.html",
+          "source": "Awful Announcing"
+        },
+        {
+          "text": "5 Good Questions with Big Blue View: What are the Giants fans thoughts on the Harbaugh era?. Happy Saturday one and all. Ed Valentine, the longtime leader of Big Blue View was kind enough to bring out of retirement the \u201cFive Questions with the Enemies\u201d so lets get to know the New York Giants a littl",
+          "url": "https://www.revengeofthebirds.com/arizona-cardinals-news/95221/5-good-questions-with-big-blue-view-what-are-the-giants-fans-thoughts-on-the-harbaugh-era",
+          "source": "SBN ARI"
         }
       ]
     },
     {
-      "name": "Zay Flowers",
-      "pos": "WR",
+      "name": "Lamar Jackson",
+      "pos": "QB",
       "team": "BAL",
-      "adp": 31.7,
-      "adp_prior": 30.9,
-      "adp_move": -0.8,
+      "adp": 57.4,
+      "adp_prior": 56.2,
+      "adp_move": -1.2,
       "proj": null,
       "sleeper_weight": 0.5,
-      "score": 2.847,
+      "score": 2.888,
       "unpriced": true,
       "signals": [
-        "hamstring",
         "injury",
-        "limited",
         "questionable"
       ],
       "items": [
         {
-          "text": "Ravens WR Zay Flowers, who was limited this week with a hamstring injury, is expected to play today, source said. He was questionable.",
-          "url": "https://bsky.app/profile/rapsheet.bsky.social/post/3mx2fug5mxs2z",
-          "source": "Bluesky @rapsheet.bsky.social"
-        },
-        {
-          "text": "Sunday injury statuses continued\n\nQuestionable\nWR - Zay Flowers, Mike Evans, Jalen Coker, Terry McLaurin, Ladd McConkey, Keenan Allen, Chris Moore, Ashton Dulin\nTE - Kenyon Sadiq, Eli Raridon, Colby Parkinson",
-          "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3mwwdmeaz422u",
-          "source": "Bluesky @ffnatejahnke.bsky.social"
+          "text": "Ravens QB Lamar Jackson exits game vs. Titans with ankle injury. Baltimore Ravens quarterback Lamar Jackson is questionable to return to Sunday\u2019s matchup with the Tennessee Titans due to an ankle injury suffered on a sack at the end of the first half. Jackson had been playing brilliantly up to that ",
+          "url": "https://www.baltimorebeatdown.com/baltimore-ravens-injuries/85910/ravens-qb-lamar-jackson-exits-game-vs-titans-with-ankle-injury",
+          "source": "SBN BAL"
         },
         {
           "text": "Ravens upgrade Lamar Jackson, Zay Flowers on Thursday injury report. The Baltimore Ravens posted an encouraging injury report on Thursday with several key players, including quarterback Lamar Jackson and wide receiver Zay Flowers, upgraded to full participation. Head coach Jesse Minter already calme",
@@ -2066,42 +2503,112 @@
       ]
     },
     {
-      "name": "Ladd McConkey",
+      "name": "Carnell Tate",
       "pos": "WR",
-      "team": "LAC",
-      "adp": 33.5,
-      "adp_prior": 33.3,
-      "adp_move": -0.2,
+      "team": "TEN",
+      "adp": 63.2,
+      "adp_prior": 61.8,
+      "adp_move": -1.4,
       "proj": null,
-      "sleeper_weight": 0.5,
-      "score": 2.847,
+      "sleeper_weight": 0.75,
+      "score": 2.808,
       "unpriced": true,
       "signals": [
-        "did not practice",
-        "injury",
-        "limited",
-        "questionable"
+        "snap"
       ],
       "items": [
         {
-          "text": "Chargers WR Ladd McConkey is likely to play today after battling a foot injury all week, source said. McConkey recently fought through a rib injury, and this is not considered as serious.",
-          "url": "https://bsky.app/profile/rapsheet.bsky.social/post/3mx2fs33wi22z",
-          "source": "Bluesky @rapsheet.bsky.social"
-        },
-        {
-          "text": "Chargers Injury Report: Ladd McConkey, Derwin James questionable vs. Seahawks. The Chargers have one of their larger game status lists of the year and it\u2019s unfortunately only Week Four. After sitting out Thursday\u2019s practice with a foot injury, wide receiver Ladd McConkey apparently returned to pract",
-          "url": "https://www.boltsfromtheblue.com/los-angeles-chargers-injuries/65947/chargers-injury-report-ladd-mcconkey-derwin-james-seahawks-charlie-kolar",
-          "source": "SBN LAC"
-        },
-        {
-          "text": "Sunday injury statuses continued\n\nQuestionable\nWR - Zay Flowers, Mike Evans, Jalen Coker, Terry McLaurin, Ladd McConkey, Keenan Allen, Chris Moore, Ashton Dulin\nTE - Kenyon Sadiq, Eli Raridon, Colby Parkinson",
-          "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3mwwdmeaz422u",
+          "text": "Titans halftime WR snap count\n\nCarnell Tate 29\nElic Ayomanor 21\nWan'Dale Robinson 18\nCalvin Ridley 18\nChimere Dike 4\n\nOut of 35 plays",
+          "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3mx333sz3nc24",
           "source": "Bluesky @ffnatejahnke.bsky.social"
-        },
+        }
+      ]
+    },
+    {
+      "name": "Makai Lemon",
+      "pos": "WR",
+      "team": "PHI",
+      "adp": 83.2,
+      "adp_prior": 82.6,
+      "adp_move": -0.6,
+      "proj": null,
+      "sleeper_weight": 0.75,
+      "score": 2.808,
+      "unpriced": true,
+      "signals": [
+        "snap"
+      ],
+      "items": [
         {
-          "text": "Chargers Injury Report: Ladd McConkey sits out Thursday\u2019s practice. The Chargers look to have received some bad news regarding one of their best players on Thursday. After practicing in a limited fashion on Wednesday, wide receiver Ladd McConkey did not practice at all on Thursday. Furthermore, when",
-          "url": "https://www.boltsfromtheblue.com/los-angeles-chargers-injuries/65906/chargers-injury-report-ladd-mcconkey-donte-jackson",
-          "source": "SBN LAC"
+          "text": "Eagles halftime WR snap count\n\nDontayvion Wicks 32\nDarius Cooper 31\nMakai Lemon 24\nElijah Moore 5\n\nOut of 33 plays",
+          "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3mx32yw4cqc24",
+          "source": "Bluesky @ffnatejahnke.bsky.social"
+        }
+      ]
+    },
+    {
+      "name": "Marvin Harrison Jr.",
+      "pos": "WR",
+      "team": "ARI",
+      "adp": 65.0,
+      "adp_prior": 66.3,
+      "adp_move": 1.3,
+      "proj": null,
+      "sleeper_weight": 0.75,
+      "score": 2.808,
+      "unpriced": true,
+      "signals": [
+        "snap"
+      ],
+      "items": [
+        {
+          "text": "Cardinals 1st half WR snap count\n\nMichael WIlson 29\nMarvin Harrison Jr. 22\nKendrick Bourne 22\nJalen Brooks 2\n\nOut of 31 plays",
+          "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3mx32hkvwd224",
+          "source": "Bluesky @ffnatejahnke.bsky.social"
+        }
+      ]
+    },
+    {
+      "name": "Michael Wilson",
+      "pos": "WR",
+      "team": "ARI",
+      "adp": 91.2,
+      "adp_prior": 90.8,
+      "adp_move": -0.4,
+      "proj": null,
+      "sleeper_weight": 0.75,
+      "score": 2.808,
+      "unpriced": true,
+      "signals": [
+        "snap"
+      ],
+      "items": [
+        {
+          "text": "Cardinals 1st half WR snap count\n\nMichael WIlson 29\nMarvin Harrison Jr. 22\nKendrick Bourne 22\nJalen Brooks 2\n\nOut of 31 plays",
+          "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3mx32hkvwd224",
+          "source": "Bluesky @ffnatejahnke.bsky.social"
+        }
+      ]
+    },
+    {
+      "name": "Brian Thomas Jr.",
+      "pos": "WR",
+      "team": "JAX",
+      "adp": 65.5,
+      "adp_prior": 64.1,
+      "adp_move": -1.4,
+      "proj": null,
+      "sleeper_weight": 0.75,
+      "score": 2.808,
+      "unpriced": true,
+      "signals": [
+        "snap"
+      ],
+      "items": [
+        {
+          "text": "Jaguars halftime WR snap count\n\nParker Washington 28\nJakobi Meyers 27\nBrian Thomas Jr. 22\nJosh Cameron 8\n\nOut of 31 plays",
+          "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3mx3247daqs24",
+          "source": "Bluesky @ffnatejahnke.bsky.social"
         }
       ]
     },
@@ -2172,102 +2679,6 @@
       ]
     },
     {
-      "name": "Dontayvion Wicks",
-      "pos": "WR",
-      "team": "PHI",
-      "adp": 157.6,
-      "adp_prior": 164.2,
-      "adp_move": 6.6,
-      "proj": null,
-      "sleeper_weight": 1.5,
-      "score": 2.808,
-      "unpriced": false,
-      "signals": [
-        "targets"
-      ],
-      "items": [
-        {
-          "text": "Emergency waiver-wire targets for NFL Week 4. The Week 4 fantasy football waiver wire features options across every position as injuries create new opportunities. Dontayvion Wicks and Darren Waller could benefit from expanded roles, while C.J. Stroud offers a quarterback option with Nico Collins ret",
-          "url": "https://www.pff.com/news/fantasy-football-week-4-emergency-waiver-wire/",
-          "source": "PFF"
-        }
-      ]
-    },
-    {
-      "name": "Breece Hall",
-      "pos": "RB",
-      "team": "NYJ",
-      "adp": 30.1,
-      "adp_prior": 31.3,
-      "adp_move": 1.2,
-      "proj": null,
-      "sleeper_weight": 0.5,
-      "score": 2.795,
-      "unpriced": true,
-      "signals": [
-        "hamstring",
-        "injured",
-        "injury",
-        "sidelined"
-      ],
-      "items": [
-        {
-          "text": "Chicago Bears vs. New York Jets &#8211; Game Picks and Predictions. Sunday at Soldier Field (12:00pm CST), the Chicago Bears welcome the New York Jets to the gridiron in a contest where both teams have key players injured and sidelined. The Jets walk in at 1\u20132 without Breece Hall (quad), their dynam",
-          "url": "https://www.windycitygridiron.com/chicago-bears-analysis/124324/chicago-bears-vs-new-york-jets-game-picks-and-predictions",
-          "source": "SBN CHI"
-        },
-        {
-          "text": "Sunday injury statuses\n\nOut\nQB - Caleb Williams, Jayden Daniels, Baker Mayfield\nRB - Breece Hall, Jadarian Price, Rachaad White, Zach Charbonnet\nWR - Justin Jefferson, DeVonta Smith, Caleb Douglas, Adonai Mitchell, Xavier Legette, Hollywood Brown, Colbie Young, Brenen Thompson",
-          "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3mwwdme7gd22u",
-          "source": "Bluesky @ffnatejahnke.bsky.social"
-        }
-      ]
-    },
-    {
-      "name": "Terry McLaurin",
-      "pos": "WR",
-      "team": "WAS",
-      "adp": 50.1,
-      "adp_prior": 47.7,
-      "adp_move": -2.4,
-      "proj": null,
-      "sleeper_weight": 0.5,
-      "score": 2.78,
-      "unpriced": false,
-      "signals": [
-        "hamstring",
-        "injury",
-        "limited",
-        "out for",
-        "practice squad",
-        "questionable",
-        "released",
-        "wr1"
-      ],
-      "items": [
-        {
-          "text": "Washington Commanders vs Indianapolis Colts Inactives: Terry McLaurin out for London game. The Washington Commanders released their final injury report for Sunday morning\u2019s game on Friday and then made two roster moves yesterday. LB Ale Kaho and RB Craig Reynolds were elevated from the practice squa",
-          "url": "https://www.hogshaven.com/washington-commanders-injuries/446085/washington-commanders-vs-indianapolis-colts-inactives-terry-mclaurin-out-london-game",
-          "source": "SBN WAS"
-        },
-        {
-          "text": "Fantasy Rankings have been updated for all of the over night injury news and inactives this morning. Make sure Terry McLaurin and Jalen Coker are out of your lineups!\n\nwww.pff.com/news/fantasy...",
-          "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3mx2gjfrryk2r",
-          "source": "Bluesky @ffnatejahnke.bsky.social"
-        },
-        {
-          "text": "Commanders injury update: Terry McLaurin reportedly unlikely to play vs. Colts. The Washington Commanders could be without their WR1 on Sunday versus Indianapolis, as Terry McLaurin deals with a new hamstring injury. He showed up on the injury report Friday, and was listed as questionable for the ga",
-          "url": "https://www.hogshaven.com/washington-commanders-injuries/445984/commanders-injury-update-terry-mclaurin-unlikely-to-play-vs-colts",
-          "source": "SBN WAS"
-        },
-        {
-          "text": "NFL Week 4 injury report: Justin Jefferson out, Nico Collins in; Terry McLaurin suffers late-week injury. Here's a look at each game designation for Week 4 in the NFL",
-          "url": "https://www.cbssports.com/nfl/news/nfl-week-4-injury-report-justin-jefferson-aaron-donald-terry-mclaurin/",
-          "source": "CBS Sports NFL"
-        }
-      ]
-    },
-    {
       "name": "Tyler Shough",
       "pos": "QB",
       "team": "NO",
@@ -2314,85 +2725,47 @@
       ]
     },
     {
-      "name": "Jaxson Dart",
-      "pos": "QB",
-      "team": "NYG",
-      "adp": 106.6,
-      "adp_prior": 102.2,
-      "adp_move": -4.4,
+      "name": "Ladd McConkey",
+      "pos": "WR",
+      "team": "LAC",
+      "adp": 33.5,
+      "adp_prior": 33.3,
+      "adp_move": -0.2,
       "proj": null,
-      "sleeper_weight": 0.75,
-      "score": 2.681,
-      "unpriced": false,
+      "sleeper_weight": 0.5,
+      "score": 2.651,
+      "unpriced": true,
       "signals": [
+        "did not practice",
         "injury",
-        "out for",
-        "starter"
+        "limited",
+        "questionable"
       ],
       "items": [
         {
-          "text": "Cardinals vs. Giants Week 4 TV Map. The Arizona Cardinals (1-2-0) have the opportunity to get back to even in the standings against the New York Football Giants, who are struggling at the quarterback position. Starter Jaxson Dart is out for the year, and his replacement, journeyman Jameis Winston, i",
-          "url": "https://www.revengeofthebirds.com/arizona-cardinals-game-information/95147/cardinals-vs-giants-week-4-tv-map",
-          "source": "SBN ARI"
+          "text": "Chargers WR Ladd McConkey is likely to play today after battling a foot injury all week, source said. McConkey recently fought through a rib injury, and this is not considered as serious.",
+          "url": "https://bsky.app/profile/rapsheet.bsky.social/post/3mx2fs33wi22z",
+          "source": "Bluesky @rapsheet.bsky.social"
         },
         {
-          "text": "5 Good Questions with Big Blue View: What are the Giants fans thoughts on the Harbaugh era?. Happy Saturday one and all. Ed Valentine, the longtime leader of Big Blue View was kind enough to bring out of retirement the \u201cFive Questions with the Enemies\u201d so lets get to know the New York Giants a littl",
-          "url": "https://www.revengeofthebirds.com/arizona-cardinals-news/95221/5-good-questions-with-big-blue-view-what-are-the-giants-fans-thoughts-on-the-harbaugh-era",
-          "source": "SBN ARI"
-        }
-      ]
-    },
-    {
-      "name": "Jerry Jeudy",
-      "pos": "WR",
-      "team": "CLE",
-      "adp": 204.9,
-      "adp_prior": 197.2,
-      "adp_move": -7.7,
-      "proj": null,
-      "sleeper_weight": 1.8,
-      "score": 2.592,
-      "unpriced": false,
-      "signals": [
-        "snap"
-      ],
-      "items": [
+          "text": "Chargers Injury Report: Ladd McConkey, Derwin James questionable vs. Seahawks. The Chargers have one of their larger game status lists of the year and it\u2019s unfortunately only Week Four. After sitting out Thursday\u2019s practice with a foot injury, wide receiver Ladd McConkey apparently returned to pract",
+          "url": "https://www.boltsfromtheblue.com/los-angeles-chargers-injuries/65947/chargers-injury-report-ladd-mcconkey-derwin-james-seahawks-charlie-kolar",
+          "source": "SBN LAC"
+        },
         {
-          "text": "Browns halftime WR snap count\n\nDenzel Boston 28\nKC Concepcion 26\nMalachi Corley 7\nJerry Jeudy 7\nIsaiah Bond 4\n\nOut of 29 plays",
-          "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3mwubpdmqqs2x",
-          "source": "Bluesky @ffnatejahnke.bsky.social"
+          "text": "Chargers Injury Report: Ladd McConkey sits out Thursday\u2019s practice. The Chargers look to have received some bad news regarding one of their best players on Thursday. After practicing in a limited fashion on Wednesday, wide receiver Ladd McConkey did not practice at all on Thursday. Furthermore, when",
+          "url": "https://www.boltsfromtheblue.com/los-angeles-chargers-injuries/65906/chargers-injury-report-ladd-mcconkey-donte-jackson",
+          "source": "SBN LAC"
         }
       ]
     },
     {
-      "name": "Germie Bernard",
+      "name": "Wan'Dale Robinson",
       "pos": "WR",
-      "team": "PIT",
-      "adp": 205.8,
-      "adp_prior": 202.6,
-      "adp_move": -3.2,
-      "proj": null,
-      "sleeper_weight": 1.8,
-      "score": 2.592,
-      "unpriced": false,
-      "signals": [
-        "snap"
-      ],
-      "items": [
-        {
-          "text": "Steelers halftime WR snap count\n\nDK Metcalf 37\nMichael Pittman Jr. 26\nRoman Wilson 12\nGermie Bernard 12\nBen Skowronek 4\n\nOut of 38 plays",
-          "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3mwubki5jps2x",
-          "source": "Bluesky @ffnatejahnke.bsky.social"
-        }
-      ]
-    },
-    {
-      "name": "Chig Okonkwo",
-      "pos": "TE",
-      "team": "WAS",
-      "adp": 149.7,
-      "adp_prior": 145.7,
-      "adp_move": -4.0,
+      "team": "TEN",
+      "adp": 115.6,
+      "adp_prior": 111.7,
+      "adp_move": -3.9,
       "proj": null,
       "sleeper_weight": 1.1,
       "score": 2.574,
@@ -2402,70 +2775,30 @@
       ],
       "items": [
         {
-          "text": "Commanders halftime TE snap count\n\nChig Okonkwo 22\nJohn Bates 16\nBen Sinnott 11\n\nOut of 30 plays",
-          "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3mx2o7ko3ok2b",
+          "text": "Titans halftime WR snap count\n\nCarnell Tate 29\nElic Ayomanor 21\nWan'Dale Robinson 18\nCalvin Ridley 18\nChimere Dike 4\n\nOut of 35 plays",
+          "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3mx333sz3nc24",
           "source": "Bluesky @ffnatejahnke.bsky.social"
         }
       ]
     },
     {
-      "name": "Dallas Goedert",
-      "pos": "TE",
-      "team": "PHI",
-      "adp": 131.7,
-      "adp_prior": 135.0,
-      "adp_move": 3.3,
+      "name": "Jakobi Meyers",
+      "pos": "WR",
+      "team": "JAX",
+      "adp": 123.1,
+      "adp_prior": 116.2,
+      "adp_move": -6.9,
       "proj": null,
       "sleeper_weight": 1.1,
-      "score": 2.504,
+      "score": 2.574,
       "unpriced": false,
       "signals": [
-        "injury",
-        "questionable"
+        "snap"
       ],
       "items": [
         {
-          "text": "Eagles-Rams inactives: Lane Johnson is OUT. The Philadelphia Eagles officially announced the inactives list for their Week 4 game against the Los Angeles Rams. The following Eagles players WILL NOT PLAY: Lane Johnson, Fred Johnson, DeVonta Smith, Dallas Goedert, Zack Baun, Marcus Epps, Hollywood Bro",
-          "url": "https://www.bleedinggreennation.com/news/185346/eagles-rams-inactives-lane-johsnon-is-out",
-          "source": "SBN PHI"
-        },
-        {
-          "text": "Sunday injury statuses continued\n\nOut\nTE - Dallas Goedert, Terrance Ferguson, Mason Taylor, Charlie Kolar, Ko Kieft\n\nQuestionable\nQB - Trey Lance, Aidan O'Connell\nRB - Tyjae Spears, Ray Davis, Reggie Gilliam",
-          "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3mwwdmeay4s2u",
-          "source": "Bluesky @ffnatejahnke.bsky.social"
-        }
-      ]
-    },
-    {
-      "name": "Terrance Ferguson",
-      "pos": "TE",
-      "team": "LAR",
-      "adp": 154.3,
-      "adp_prior": 167.3,
-      "adp_move": 13.0,
-      "proj": null,
-      "sleeper_weight": 1.5,
-      "score": 2.485,
-      "unpriced": false,
-      "signals": [
-        "injured",
-        "injury",
-        "questionable"
-      ],
-      "items": [
-        {
-          "text": "The Rams are down two TEs now with Terrance Ferguson (injured reserve) and Colby Parkinson (out with shoulder).\n\nJust three active: Tyler Higbee, Davis Allen and Max Klare.\n\nExpect more 3-WR sets. Tutu Atwell is active, taking Xavier Smith\u2019s former WR spot.",
-          "url": "https://bsky.app/profile/nateatkins.bsky.social/post/3mx2q5k7lzk2m",
-          "source": "Bluesky @nateatkins.bsky.social"
-        },
-        {
-          "text": "The Rams have placed TE Terrance Ferguson on injured reserve with his ankle. He\u2019ll miss at least the next four games.",
-          "url": "https://bsky.app/profile/nateatkins.bsky.social/post/3mwwba7timk2e",
-          "source": "Bluesky @nateatkins.bsky.social"
-        },
-        {
-          "text": "Sunday injury statuses continued\n\nOut\nTE - Dallas Goedert, Terrance Ferguson, Mason Taylor, Charlie Kolar, Ko Kieft\n\nQuestionable\nQB - Trey Lance, Aidan O'Connell\nRB - Tyjae Spears, Ray Davis, Reggie Gilliam",
-          "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3mwwdmeay4s2u",
+          "text": "Jaguars halftime WR snap count\n\nParker Washington 28\nJakobi Meyers 27\nBrian Thomas Jr. 22\nJosh Cameron 8\n\nOut of 31 plays",
+          "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3mx3247daqs24",
           "source": "Bluesky @ffnatejahnke.bsky.social"
         }
       ]
@@ -2495,28 +2828,6 @@
       ]
     },
     {
-      "name": "Adonai Mitchell",
-      "pos": "WR",
-      "team": "NYJ",
-      "adp": 166.7,
-      "adp_prior": 172.5,
-      "adp_move": 5.8,
-      "proj": null,
-      "sleeper_weight": 1.5,
-      "score": 2.4,
-      "unpriced": false,
-      "signals": [
-        "injury"
-      ],
-      "items": [
-        {
-          "text": "Sunday injury statuses\n\nOut\nQB - Caleb Williams, Jayden Daniels, Baker Mayfield\nRB - Breece Hall, Jadarian Price, Rachaad White, Zach Charbonnet\nWR - Justin Jefferson, DeVonta Smith, Caleb Douglas, Adonai Mitchell, Xavier Legette, Hollywood Brown, Colbie Young, Brenen Thompson",
-          "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3mwwdme7gd22u",
-          "source": "Bluesky @ffnatejahnke.bsky.social"
-        }
-      ]
-    },
-    {
       "name": "Caleb Douglas",
       "pos": "WR",
       "team": "MIA",
@@ -2525,38 +2836,64 @@
       "adp_move": 5.1,
       "proj": null,
       "sleeper_weight": 1.5,
-      "score": 2.4,
+      "score": 2.36,
       "unpriced": false,
       "signals": [
-        "injury"
+        "released"
       ],
       "items": [
         {
-          "text": "Sunday injury statuses\n\nOut\nQB - Caleb Williams, Jayden Daniels, Baker Mayfield\nRB - Breece Hall, Jadarian Price, Rachaad White, Zach Charbonnet\nWR - Justin Jefferson, DeVonta Smith, Caleb Douglas, Adonai Mitchell, Xavier Legette, Hollywood Brown, Colbie Young, Brenen Thompson",
-          "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3mwwdme7gd22u",
-          "source": "Bluesky @ffnatejahnke.bsky.social"
+          "text": "Dolphins vs. Vikings inactive players: Justin Jefferson, Caleb Douglas headline unavailable players. The Miami Dolphins and Minnesota Vikings kick off a Week 4 showdown at 4:05 p.m. Eastern this afternoon. Both teams have released their inactive player lists for the game, dropping down to the league",
+          "url": "https://www.thephinsider.com/miami-dolphins-injuries/123397/dolphins-vs-vikings-inactive-players-justin-jefferson-caleb-douglas-headline-unavailable-players",
+          "source": "SBN MIA"
         }
       ]
     },
     {
-      "name": "Brock Purdy",
-      "pos": "QB",
-      "team": "SF",
-      "adp": 103.8,
-      "adp_prior": 102.2,
-      "adp_move": -1.6,
+      "name": "Keenan Allen",
+      "pos": "WR",
+      "team": "IND",
+      "adp": 154.6,
+      "adp_prior": 175.6,
+      "adp_move": 21.0,
       "proj": null,
-      "sleeper_weight": 0.75,
-      "score": 2.4,
-      "unpriced": true,
+      "sleeper_weight": 1.5,
+      "score": 2.344,
+      "unpriced": false,
       "signals": [
-        "ahead of"
+        "injury",
+        "limited",
+        "out for"
       ],
       "items": [
         {
-          "text": "49ers vs. Broncos prediction: MVP favorite Brock Purdy and San Francisco look to stay undef. What you need to know ahead of these teams facing off on Sunday",
-          "url": "https://www.cbssports.com/nfl/news/49ers-vs-broncos-where-to-watch-pick-odds-prediction/",
-          "source": "CBS Sports NFL"
+          "text": "Colts\u2019 Keenan Allen downgraded to OUT for London game with groin injury. Indianapolis Colts wide receiver Keenan Allen was downgraded to OUT with a groin injury and will miss Sunday morning\u2019s affair against the Washington Commanders in London. Colts head coach Shane Steichen initially announced that",
+          "url": "https://www.stampedeblue.com/indianapolis-colts-injuries/128298/keenan-allen-downgraded-to-out-for-london-game-with-groin-injury",
+          "source": "SBN IND"
+        }
+      ]
+    },
+    {
+      "name": "Breece Hall",
+      "pos": "RB",
+      "team": "NYJ",
+      "adp": 30.1,
+      "adp_prior": 31.3,
+      "adp_move": 1.2,
+      "proj": null,
+      "sleeper_weight": 0.5,
+      "score": 2.3,
+      "unpriced": true,
+      "signals": [
+        "hamstring",
+        "injured",
+        "sidelined"
+      ],
+      "items": [
+        {
+          "text": "Chicago Bears vs. New York Jets &#8211; Game Picks and Predictions. Sunday at Soldier Field (12:00pm CST), the Chicago Bears welcome the New York Jets to the gridiron in a contest where both teams have key players injured and sidelined. The Jets walk in at 1\u20132 without Breece Hall (quad), their dynam",
+          "url": "https://www.windycitygridiron.com/chicago-bears-analysis/124324/chicago-bears-vs-new-york-jets-game-picks-and-predictions",
+          "source": "SBN CHI"
         }
       ]
     },
@@ -2574,6 +2911,7 @@
       "signals": [
         "injured",
         "injury",
+        "snap",
         "targets"
       ],
       "items": [
@@ -2588,159 +2926,14 @@
           "source": "Yahoo NFL"
         },
         {
-          "text": "NFL Week 4 injury report: Justin Jefferson out, Nico Collins in; Terry McLaurin suffers late-week injury. Here's a look at each game designation for Week 4 in the NFL",
-          "url": "https://www.cbssports.com/nfl/news/nfl-week-4-injury-report-justin-jefferson-aaron-donald-terry-mclaurin/",
-          "source": "CBS Sports NFL"
+          "text": "Texans halftime WR snap count\n\nNico Collins 19\nKayshon Boutte 18\nJaylin Noel 15\nJared Wayne 9\nXavier Hutchinson 8\n\nOut of 28 plays",
+          "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3mx32tb6las24",
+          "source": "Bluesky @ffnatejahnke.bsky.social"
         },
         {
           "text": "Emergency waiver-wire targets for NFL Week 4. The Week 4 fantasy football waiver wire features options across every position as injuries create new opportunities. Dontayvion Wicks and Darren Waller could benefit from expanded roles, while C.J. Stroud offers a quarterback option with Nico Collins ret",
           "url": "https://www.pff.com/news/fantasy-football-week-4-emergency-waiver-wire/",
           "source": "PFF"
-        }
-      ]
-    },
-    {
-      "name": "DeVonta Smith",
-      "pos": "WR",
-      "team": "PHI",
-      "adp": 27.9,
-      "adp_prior": 27.7,
-      "adp_move": -0.2,
-      "proj": null,
-      "sleeper_weight": 0.5,
-      "score": 2.277,
-      "unpriced": true,
-      "signals": [
-        "injury",
-        "questionable"
-      ],
-      "items": [
-        {
-          "text": "Eagles-Rams inactives: Lane Johnson is OUT. The Philadelphia Eagles officially announced the inactives list for their Week 4 game against the Los Angeles Rams. The following Eagles players WILL NOT PLAY: Lane Johnson, Fred Johnson, DeVonta Smith, Dallas Goedert, Zack Baun, Marcus Epps, Hollywood Bro",
-          "url": "https://www.bleedinggreennation.com/news/185346/eagles-rams-inactives-lane-johsnon-is-out",
-          "source": "SBN PHI"
-        },
-        {
-          "text": "Sunday injury statuses\n\nOut\nQB - Caleb Williams, Jayden Daniels, Baker Mayfield\nRB - Breece Hall, Jadarian Price, Rachaad White, Zach Charbonnet\nWR - Justin Jefferson, DeVonta Smith, Caleb Douglas, Adonai Mitchell, Xavier Legette, Hollywood Brown, Colbie Young, Brenen Thompson",
-          "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3mwwdme7gd22u",
-          "source": "Bluesky @ffnatejahnke.bsky.social"
-        }
-      ]
-    },
-    {
-      "name": "Rachaad White",
-      "pos": "RB",
-      "team": "WAS",
-      "adp": 119.3,
-      "adp_prior": 115.3,
-      "adp_move": -4.0,
-      "proj": null,
-      "sleeper_weight": 1.1,
-      "score": 2.2,
-      "unpriced": false,
-      "signals": [
-        "injury"
-      ],
-      "items": [
-        {
-          "text": "Sunday injury statuses\n\nOut\nQB - Caleb Williams, Jayden Daniels, Baker Mayfield\nRB - Breece Hall, Jadarian Price, Rachaad White, Zach Charbonnet\nWR - Justin Jefferson, DeVonta Smith, Caleb Douglas, Adonai Mitchell, Xavier Legette, Hollywood Brown, Colbie Young, Brenen Thompson",
-          "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3mwwdme7gd22u",
-          "source": "Bluesky @ffnatejahnke.bsky.social"
-        }
-      ]
-    },
-    {
-      "name": "Puka Nacua",
-      "pos": "WR",
-      "team": "LAR",
-      "adp": 4.3,
-      "adp_prior": 4.2,
-      "adp_move": -0.1,
-      "proj": null,
-      "sleeper_weight": 0.3,
-      "score": 1.732,
-      "unpriced": true,
-      "signals": [
-        "injury",
-        "limited",
-        "out for"
-      ],
-      "items": [
-        {
-          "text": "Aaron Donald ruled out for Week 4 against Eagles. The Los Angeles Rams have ruled out defensive tackle Aaron Donald for Week 4\u2019s game against the Philadelphia Eagles with a back injury, but they do believe that Puka Nacua will return. Unfortunately, the super duo of Myles Garrett and Donald has yet ",
-          "url": "https://www.turfshowtimes.com/los-angeles-rams-injuries/150538/aaron-donald-ruled-out-eagles-injury",
-          "source": "SBN LAR"
-        },
-        {
-          "text": "Puka Nacua (hip) practiced for the second straight day. Limited yesterday and we\u2019ll learn today\u2019s load in a bit.",
-          "url": "https://bsky.app/profile/nateatkins.bsky.social/post/3mwts5y4xvs2f",
-          "source": "Bluesky @nateatkins.bsky.social"
-        }
-      ]
-    },
-    {
-      "name": "DK Metcalf",
-      "pos": "WR",
-      "team": "PIT",
-      "adp": 74.9,
-      "adp_prior": 74.8,
-      "adp_move": -0.1,
-      "proj": null,
-      "sleeper_weight": 0.75,
-      "score": 1.728,
-      "unpriced": true,
-      "signals": [
-        "snap"
-      ],
-      "items": [
-        {
-          "text": "Steelers halftime WR snap count\n\nDK Metcalf 37\nMichael Pittman Jr. 26\nRoman Wilson 12\nGermie Bernard 12\nBen Skowronek 4\n\nOut of 38 plays",
-          "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3mwubki5jps2x",
-          "source": "Bluesky @ffnatejahnke.bsky.social"
-        }
-      ]
-    },
-    {
-      "name": "Jaylen Warren",
-      "pos": "RB",
-      "team": "PIT",
-      "adp": 69.1,
-      "adp_prior": 69.7,
-      "adp_move": 0.6,
-      "proj": null,
-      "sleeper_weight": 0.75,
-      "score": 1.728,
-      "unpriced": true,
-      "signals": [
-        "snap"
-      ],
-      "items": [
-        {
-          "text": "Steelers halftime RB snap count\n\nJaylen Warren 36\nTravis Homer 2\n\nOut of 38 plays",
-          "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3mwubjgae522x",
-          "source": "Bluesky @ffnatejahnke.bsky.social"
-        }
-      ]
-    },
-    {
-      "name": "Lamar Jackson",
-      "pos": "QB",
-      "team": "BAL",
-      "adp": 57.4,
-      "adp_prior": 56.2,
-      "adp_move": -1.2,
-      "proj": null,
-      "sleeper_weight": 0.5,
-      "score": 1.6,
-      "unpriced": true,
-      "signals": [
-        "injury"
-      ],
-      "items": [
-        {
-          "text": "Ravens upgrade Lamar Jackson, Zay Flowers on Thursday injury report. The Baltimore Ravens posted an encouraging injury report on Thursday with several key players, including quarterback Lamar Jackson and wide receiver Zay Flowers, upgraded to full participation. Head coach Jesse Minter already calme",
-          "url": "https://www.baltimorebeatdown.com/baltimore-ravens-injuries/85816/ravens-upgrade-lamar-jackson-zay-flowers-on-thursday-injury-report",
-          "source": "SBN BAL"
         }
       ]
     },
@@ -2753,44 +2946,410 @@
       "adp_move": -4.9,
       "proj": null,
       "sleeper_weight": 0.5,
-      "score": 1.598,
+      "score": 2.224,
       "unpriced": false,
       "signals": [
+        "ahead of",
         "injury",
         "questionable"
       ],
       "items": [
+        {
+          "text": "49ers get Romello Height back; Mike Evans will play today. San Francisco 49ers wide receiver Mike Evans was listed as questionable heading into Week 4 with a rib injury. Kyle Shanahan said his star wideout would be a game-time decision. Evans told the media on Friday, &#8220;It&#8217;s my job&#8221;",
+          "url": "https://www.ninersnation.com/san-francisco-49ers-injuries/163687/49ers-get-romello-height-back-mike-evans-will-play-today",
+          "source": "SBN SF"
+        },
         {
           "text": "49ers WR Mike Evans was able to practice late this week despite a rib injury and said he\u2019ll do his best to be out there. The team has expressed optimism, though as George Kittle noted, \u201cFractured ribs suck.\u201d",
           "url": "https://bsky.app/profile/rapsheet.bsky.social/post/3mx2fo3bunc2z",
           "source": "Bluesky @rapsheet.bsky.social"
         },
         {
-          "text": "Sunday injury statuses continued\n\nQuestionable\nWR - Zay Flowers, Mike Evans, Jalen Coker, Terry McLaurin, Ladd McConkey, Keenan Allen, Chris Moore, Ashton Dulin\nTE - Kenyon Sadiq, Eli Raridon, Colby Parkinson",
-          "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3mwwdmeaz422u",
-          "source": "Bluesky @ffnatejahnke.bsky.social"
+          "text": "49ers WR Mike Evans will be active vs. Broncos. The Denver Broncos mostly got healthy this week to take on the San Francisco 49ers which makes the inactives list rather straight-forward and a lot like what we say ahead of Week 1. They\u2019ll be without edge rusher Deondrea Tillman, but everyone else are",
+          "url": "https://sports.yahoo.com/articles/49ers-wr-mike-evans-active-185910760.html",
+          "source": "Yahoo NFL"
         }
       ]
     },
     {
-      "name": "Denzel Boston",
-      "pos": "WR",
-      "team": "CLE",
-      "adp": 144.6,
-      "adp_prior": 139.9,
-      "adp_move": -4.7,
+      "name": "Terrance Ferguson",
+      "pos": "TE",
+      "team": "LAR",
+      "adp": 154.3,
+      "adp_prior": 167.3,
+      "adp_move": 13.0,
+      "proj": null,
+      "sleeper_weight": 1.5,
+      "score": 2.22,
+      "unpriced": false,
+      "signals": [
+        "injured"
+      ],
+      "items": [
+        {
+          "text": "The Rams are down two TEs now with Terrance Ferguson (injured reserve) and Colby Parkinson (out with shoulder).\n\nJust three active: Tyler Higbee, Davis Allen and Max Klare.\n\nExpect more 3-WR sets. Tutu Atwell is active, taking Xavier Smith\u2019s former WR spot.",
+          "url": "https://bsky.app/profile/nateatkins.bsky.social/post/3mx2q5k7lzk2m",
+          "source": "Bluesky @nateatkins.bsky.social"
+        },
+        {
+          "text": "The Rams have placed TE Terrance Ferguson on injured reserve with his ankle. He\u2019ll miss at least the next four games.",
+          "url": "https://bsky.app/profile/nateatkins.bsky.social/post/3mwwba7timk2e",
+          "source": "Bluesky @nateatkins.bsky.social"
+        }
+      ]
+    },
+    {
+      "name": "Chris Rodriguez",
+      "pos": "RB",
+      "team": "JAX",
+      "adp": 122.6,
+      "adp_prior": 126.3,
+      "adp_move": 3.7,
       "proj": null,
       "sleeper_weight": 1.1,
-      "score": 1.584,
+      "score": 2.059,
       "unpriced": false,
       "signals": [
         "snap"
       ],
       "items": [
         {
-          "text": "Browns halftime WR snap count\n\nDenzel Boston 28\nKC Concepcion 26\nMalachi Corley 7\nJerry Jeudy 7\nIsaiah Bond 4\n\nOut of 29 plays",
-          "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3mwubpdmqqs2x",
+          "text": "Jaguars halftime RB snap count\n\nBhayshul Tuten 18\nChris Rodriguez Jr. 7\nLeQuint Allen 5\nAmeer Abdullah 1\n\nOut of 31 plays",
+          "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3mx322y2zjs24",
           "source": "Bluesky @ffnatejahnke.bsky.social"
+        }
+      ]
+    },
+    {
+      "name": "Terry McLaurin",
+      "pos": "WR",
+      "team": "WAS",
+      "adp": 50.1,
+      "adp_prior": 47.7,
+      "adp_move": -2.4,
+      "proj": null,
+      "sleeper_weight": 0.5,
+      "score": 2.031,
+      "unpriced": false,
+      "signals": [
+        "injury",
+        "out for",
+        "practice squad",
+        "released"
+      ],
+      "items": [
+        {
+          "text": "Washington Commanders vs Indianapolis Colts Inactives: Terry McLaurin out for London game. The Washington Commanders released their final injury report for Sunday morning\u2019s game on Friday and then made two roster moves yesterday. LB Ale Kaho and RB Craig Reynolds were elevated from the practice squa",
+          "url": "https://www.hogshaven.com/washington-commanders-injuries/446085/washington-commanders-vs-indianapolis-colts-inactives-terry-mclaurin-out-london-game",
+          "source": "SBN WAS"
+        }
+      ]
+    },
+    {
+      "name": "Saquon Barkley",
+      "pos": "RB",
+      "team": "PHI",
+      "adp": 13.0,
+      "adp_prior": 13.7,
+      "adp_move": 0.7,
+      "proj": null,
+      "sleeper_weight": 0.3,
+      "score": 1.927,
+      "unpriced": true,
+      "signals": [
+        "hamstring",
+        "injured",
+        "injury",
+        "out for",
+        "snap"
+      ],
+      "items": [
+        {
+          "text": "Saquon Barkley is OUT for the rest of the game with a hamstring injury.",
+          "url": "https://bsky.app/profile/nateatkins.bsky.social/post/3mx2yqfife22o",
+          "source": "Bluesky @nateatkins.bsky.social"
+        },
+        {
+          "text": "Eagles halftime RB snap count\n\nWill Shipley 15\nTank Bigsby 14\nSaquon Barkley 4 (injured)\n\nOut of 33 plays",
+          "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3mx32zs3vw224",
+          "source": "Bluesky @ffnatejahnke.bsky.social"
+        }
+      ]
+    },
+    {
+      "name": "Davante Adams",
+      "pos": "WR",
+      "team": "LAR",
+      "adp": 51.3,
+      "adp_prior": 52.4,
+      "adp_move": 1.1,
+      "proj": null,
+      "sleeper_weight": 0.5,
+      "score": 1.872,
+      "unpriced": true,
+      "signals": [
+        "snap"
+      ],
+      "items": [
+        {
+          "text": "Rams halftime WR snap count\n\nDavante Adams 34\nPuka Nacua 31\nJordan Whittington 19\nTutu Atwell 10\nKonata Mumpfield 6\n\nOut of 35 plays",
+          "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3mx32lmmwe224",
+          "source": "Bluesky @ffnatejahnke.bsky.social"
+        }
+      ]
+    },
+    {
+      "name": "Kyren Williams",
+      "pos": "RB",
+      "team": "LAR",
+      "adp": 31.2,
+      "adp_prior": 31.0,
+      "adp_move": -0.2,
+      "proj": null,
+      "sleeper_weight": 0.5,
+      "score": 1.872,
+      "unpriced": true,
+      "signals": [
+        "snap"
+      ],
+      "items": [
+        {
+          "text": "Rams halftime RB snap count\n\nKyren Williams 26\nBlake Corum 9\n\nOut of 35 plays",
+          "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3mx32kh73cc24",
+          "source": "Bluesky @ffnatejahnke.bsky.social"
+        }
+      ]
+    },
+    {
+      "name": "Colston Loveland",
+      "pos": "TE",
+      "team": "CHI",
+      "adp": 42.7,
+      "adp_prior": 44.4,
+      "adp_move": 1.7,
+      "proj": null,
+      "sleeper_weight": 0.5,
+      "score": 1.872,
+      "unpriced": true,
+      "signals": [
+        "snap"
+      ],
+      "items": [
+        {
+          "text": "Bears 1st half TE snap count\n\nColston Loveland 50\nCole Kmet 35\nSam Roush 9\n\nOut of 51 plays",
+          "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3mx32g2vbhs24",
+          "source": "Bluesky @ffnatejahnke.bsky.social"
+        }
+      ]
+    },
+    {
+      "name": "Rome Odunze",
+      "pos": "WR",
+      "team": "CHI",
+      "adp": 57.6,
+      "adp_prior": 58.3,
+      "adp_move": 0.7,
+      "proj": null,
+      "sleeper_weight": 0.5,
+      "score": 1.872,
+      "unpriced": true,
+      "signals": [
+        "snap"
+      ],
+      "items": [
+        {
+          "text": "Bears 1st half WR snap count\n\nRome Odunze 48\nLuther Burden III 29\nKalif Raymond 26\nJahdae Walker 2\nZavion Thomas 2\n\nOut of 51 plays",
+          "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3mx32fdgnws24",
+          "source": "Bluesky @ffnatejahnke.bsky.social"
+        }
+      ]
+    },
+    {
+      "name": "Bhayshul Tuten",
+      "pos": "RB",
+      "team": "JAX",
+      "adp": 49.8,
+      "adp_prior": 50.1,
+      "adp_move": 0.3,
+      "proj": null,
+      "sleeper_weight": 0.5,
+      "score": 1.872,
+      "unpriced": true,
+      "signals": [
+        "snap"
+      ],
+      "items": [
+        {
+          "text": "Jaguars halftime RB snap count\n\nBhayshul Tuten 18\nChris Rodriguez Jr. 7\nLeQuint Allen 5\nAmeer Abdullah 1\n\nOut of 31 plays",
+          "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3mx322y2zjs24",
+          "source": "Bluesky @ffnatejahnke.bsky.social"
+        }
+      ]
+    },
+    {
+      "name": "Kayshon Boutte",
+      "pos": "WR",
+      "team": "HOU",
+      "adp": 169.4,
+      "adp_prior": 206.3,
+      "adp_move": 36.9,
+      "proj": null,
+      "sleeper_weight": 1.5,
+      "score": 1.755,
+      "unpriced": false,
+      "signals": [
+        "snap"
+      ],
+      "items": [
+        {
+          "text": "Texans halftime WR snap count\n\nNico Collins 19\nKayshon Boutte 18\nJaylin Noel 15\nJared Wayne 9\nXavier Hutchinson 8\n\nOut of 28 plays",
+          "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3mx32tb6las24",
+          "source": "Bluesky @ffnatejahnke.bsky.social"
+        }
+      ]
+    },
+    {
+      "name": "Blake Corum",
+      "pos": "RB",
+      "team": "LAR",
+      "adp": 85.6,
+      "adp_prior": 88.6,
+      "adp_move": 3.0,
+      "proj": null,
+      "sleeper_weight": 0.75,
+      "score": 1.755,
+      "unpriced": false,
+      "signals": [
+        "snap"
+      ],
+      "items": [
+        {
+          "text": "Rams halftime RB snap count\n\nKyren Williams 26\nBlake Corum 9\n\nOut of 35 plays",
+          "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3mx32kh73cc24",
+          "source": "Bluesky @ffnatejahnke.bsky.social"
+        }
+      ]
+    },
+    {
+      "name": "Braelon Allen",
+      "pos": "RB",
+      "team": "NYJ",
+      "adp": 180.7,
+      "adp_prior": 193.9,
+      "adp_move": 13.2,
+      "proj": null,
+      "sleeper_weight": 1.5,
+      "score": 1.755,
+      "unpriced": false,
+      "signals": [
+        "snap"
+      ],
+      "items": [
+        {
+          "text": "Jets 1st half RB snap count\n\nBraelon Allen 16\n\nOut of 16 plays",
+          "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3mx32bmu55224",
+          "source": "Bluesky @ffnatejahnke.bsky.social"
+        }
+      ]
+    },
+    {
+      "name": "TreVeyon Henderson",
+      "pos": "RB",
+      "team": "NE",
+      "adp": 61.1,
+      "adp_prior": 57.5,
+      "adp_move": -3.6,
+      "proj": null,
+      "sleeper_weight": 0.75,
+      "score": 1.755,
+      "unpriced": false,
+      "signals": [
+        "snap"
+      ],
+      "items": [
+        {
+          "text": "Patriots halftime RB snap count\n\nRhamondre Stevenson 19\nTreVeyon Henderson 13\n\nOut of 30 plays",
+          "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3mx325udaac24",
+          "source": "Bluesky @ffnatejahnke.bsky.social"
+        }
+      ]
+    },
+    {
+      "name": "Chris Godwin",
+      "pos": "WR",
+      "team": "TB",
+      "adp": 82.3,
+      "adp_prior": 85.8,
+      "adp_move": 3.5,
+      "proj": null,
+      "sleeper_weight": 0.75,
+      "score": 1.75,
+      "unpriced": false,
+      "signals": [
+        "injury",
+        "snap"
+      ],
+      "items": [
+        {
+          "text": "Buccaneers halftime WR snap count\n\nEmeka Egbuka 28\nChris Godwin 28\nTez Johnson 19\nTed Hurst 9\nKameron Johnson 1\n\nOut of 31 plays",
+          "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3mx32an47ek24",
+          "source": "Bluesky @ffnatejahnke.bsky.social"
+        },
+        {
+          "text": "Buccaneers vs. Packers: Thursday injury report for Week 4. The Tampa Bay Buccaneers saw some encouraging movement on Thursday\u2019s injury report as they continue preparations for Sunday\u2019s matchup against the Green Bay Packers. Wide receiver Chris Godwin Jr. was a full participant after sitting out Wedn",
+          "url": "https://www.bucsnation.com/tampa-bay-buccaneers-injuries/68826/buccaneers-packers-thursday-injury-report-nfl-week-4",
+          "source": "SBN TB"
+        }
+      ]
+    },
+    {
+      "name": "Justin Jefferson",
+      "pos": "WR",
+      "team": "MIN",
+      "adp": 11.2,
+      "adp_prior": 11.0,
+      "adp_move": -0.2,
+      "proj": null,
+      "sleeper_weight": 0.3,
+      "score": 1.716,
+      "unpriced": true,
+      "signals": [
+        "released"
+      ],
+      "items": [
+        {
+          "text": "Dolphins vs. Vikings inactive players: Justin Jefferson, Caleb Douglas headline unavailable players. The Miami Dolphins and Minnesota Vikings kick off a Week 4 showdown at 4:05 p.m. Eastern this afternoon. Both teams have released their inactive player lists for the game, dropping down to the league",
+          "url": "https://www.thephinsider.com/miami-dolphins-injuries/123397/dolphins-vs-vikings-inactive-players-justin-jefferson-caleb-douglas-headline-unavailable-players",
+          "source": "SBN MIA"
+        }
+      ]
+    },
+    {
+      "name": "Ja'Marr Chase",
+      "pos": "WR",
+      "team": "CIN",
+      "adp": 3.1,
+      "adp_prior": 3.0,
+      "adp_move": -0.1,
+      "proj": null,
+      "sleeper_weight": 0.3,
+      "score": 1.59,
+      "unpriced": true,
+      "signals": [
+        "hamstring",
+        "injured",
+        "injury"
+      ],
+      "items": [
+        {
+          "text": "Ja'Marr Chase ruled out after concussion evaluation. Chase was injured in the second quarter against the Jaguars.",
+          "url": "https://www.nbcsports.com/nfl/profootballtalk/rumor-mill/news/jamarr-chase-ruled-out-after-concussion-evaluation",
+          "source": "ProFootballTalk"
+        },
+        {
+          "text": "Week 4 NFL scores, live updates: Saquon Barkley ruled out with hamstring injury, Ja'Marr Chase out with concussion. Follow along with all of Sunday's action in Week 4.",
+          "url": "https://sports.yahoo.com/nfl/live/nfl-live-updates-scores-week-4-news-schedule-highlights-inactives-stats-where-to-watch-121103604.html",
+          "source": "Yahoo NFL"
         }
       ]
     },
@@ -2832,60 +3391,50 @@
       "adp_move": 4.0,
       "proj": null,
       "sleeper_weight": 0.5,
-      "score": 1.574,
+      "score": 1.534,
       "unpriced": false,
       "signals": [
         "acl",
         "injured",
-        "injury"
+        "placed on"
       ],
       "items": [
+        {
+          "text": "Ty Okada remains out as Julian Love returns to Seahawks secondary. The Seattle Seahawks return to the friendly confines of Lumen Field to host the winless Los Angeles Chargers in Week 4 after having fallen to the previously-winless Washington Commanders on the road in Week 3. When Seattle takes to t",
+          "url": "https://www.fieldgulls.com/seattle-seahawks-news/176416/ty-okada-remains-out-as-julian-love-returns-to-seattle-seahawks-secondary-chargers-week-4",
+          "source": "SBN SEA"
+        },
+        {
+          "text": "Seahawks bringing in two-time Pro Bowl running back Joe Mixon for visit. It was announced that the Seattle Seahawks are working out two-time Pro Bowl running back, Joe Mixon, according to FOX Sports\u2019 Jay Glazer. Seattle working out a running back is not too surprising considering the injuries that h",
+          "url": "https://www.fieldgulls.com/seattle-seahawks-news/176408/nfl-news-seahawks-bringing-in-joe-mixon-visit",
+          "source": "SBN SEA"
+        },
         {
           "text": "Jadarian Price out until November after landing on injured reserve. The Seattle Seahawks had a big hole to fill at running back in the offseason. First, on the way to winning Super Bowl LX in memorable fashion by thumping the New England Patriots 29-13, 2023 second round pick Zach Charbonnet was los",
           "url": "https://www.fieldgulls.com/seattle-seahawks-news/176351/jadarian-price-out-until-november-after-landing-on-injured-reserve",
           "source": "SBN SEA"
-        },
-        {
-          "text": "Seahawks place rookie Jadarian Price on injured reserve. The rookie aggravated a chest injury and will miss at least four games, leaving Emanuel Wilson and George Holani to shoulder backfield duties during a grueling stretch",
-          "url": "https://www.cbssports.com/nfl/news/seahawks-place-rookie-jadarian-price-injured-reserve/",
-          "source": "CBS Sports NFL"
-        },
-        {
-          "text": "Sunday injury statuses\n\nOut\nQB - Caleb Williams, Jayden Daniels, Baker Mayfield\nRB - Breece Hall, Jadarian Price, Rachaad White, Zach Charbonnet\nWR - Justin Jefferson, DeVonta Smith, Caleb Douglas, Adonai Mitchell, Xavier Legette, Hollywood Brown, Colbie Young, Brenen Thompson",
-          "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3mwwdme7gd22u",
-          "source": "Bluesky @ffnatejahnke.bsky.social"
         }
       ]
     },
     {
-      "name": "Justin Jefferson",
-      "pos": "WR",
-      "team": "MIN",
-      "adp": 11.2,
-      "adp_prior": 11.0,
-      "adp_move": -0.2,
+      "name": "Rhamondre Stevenson",
+      "pos": "RB",
+      "team": "NE",
+      "adp": 65.9,
+      "adp_prior": 70.3,
+      "adp_move": 4.4,
       "proj": null,
-      "sleeper_weight": 0.3,
-      "score": 1.511,
-      "unpriced": true,
+      "sleeper_weight": 0.75,
+      "score": 1.404,
+      "unpriced": false,
       "signals": [
-        "injury"
+        "snap"
       ],
       "items": [
         {
-          "text": "NFL Week 4 injury report: Justin Jefferson out, Nico Collins in; Terry McLaurin suffers late-week injury. Here's a look at each game designation for Week 4 in the NFL",
-          "url": "https://www.cbssports.com/nfl/news/nfl-week-4-injury-report-justin-jefferson-aaron-donald-terry-mclaurin/",
-          "source": "CBS Sports NFL"
-        },
-        {
-          "text": "Sunday injury statuses\n\nOut\nQB - Caleb Williams, Jayden Daniels, Baker Mayfield\nRB - Breece Hall, Jadarian Price, Rachaad White, Zach Charbonnet\nWR - Justin Jefferson, DeVonta Smith, Caleb Douglas, Adonai Mitchell, Xavier Legette, Hollywood Brown, Colbie Young, Brenen Thompson",
-          "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3mwwdme7gd22u",
+          "text": "Patriots halftime RB snap count\n\nRhamondre Stevenson 19\nTreVeyon Henderson 13\n\nOut of 30 plays",
+          "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3mx325udaac24",
           "source": "Bluesky @ffnatejahnke.bsky.social"
-        },
-        {
-          "text": "Vikings rule out Justin Jefferson for Sunday\u2019s game against Miami Dolphins. The Minnesota Vikings will be without top wide receiver Justin Jefferson for their Week 4 game against the Miami Dolphins, head coach Kevin O\u2019Connell told the media on Friday. Jefferson is dealing with an ankle injury that h",
-          "url": "https://www.thephinsider.com/miami-dolphins-news/123337/justin-jefferson-injury-update-out-miami-dolphins-at-minnesota-vikings-week-4-news",
-          "source": "SBN MIA"
         }
       ]
     },
@@ -2918,35 +3467,6 @@
       ]
     },
     {
-      "name": "Quinshon Judkins",
-      "pos": "RB",
-      "team": "CLE",
-      "adp": 54.4,
-      "adp_prior": 53.6,
-      "adp_move": -0.8,
-      "proj": null,
-      "sleeper_weight": 0.5,
-      "score": 1.326,
-      "unpriced": true,
-      "signals": [
-        "explosive",
-        "limited",
-        "snap"
-      ],
-      "items": [
-        {
-          "text": "Browns halftime RB snap count\n\nQuinshon Judkins 23\nRaheim Sanders  6\nJaleel McLaughlin 1\n\nOut of 29 plays",
-          "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3mwubomb6us2x",
-          "source": "Bluesky @ffnatejahnke.bsky.social"
-        },
-        {
-          "text": "Fantasy football: 3 running backs lacking explosive plays. Fantasy football managers have received limited explosive rushing production from Jeremiyah Love, Jacory Croskey-Merritt and Quinshon Judkins through three weeks. Love has only one run of 10-plus yards, while Croskey-Merritt and Judkins have",
-          "url": "https://www.pff.com/news/fantasy-football-3-running-backs-lacking-explosive-plays/",
-          "source": "PFF"
-        }
-      ]
-    },
-    {
       "name": "Travis Etienne Jr.",
       "pos": "RB",
       "team": "NO",
@@ -2967,28 +3487,6 @@
           "text": "Saints\u00a0RB Travis Etienne will go on Injured Reserve, coach Kellen Moore. He\u2019s dealing with a hamstring injury.",
           "url": "https://bsky.app/profile/rapsheet.bsky.social/post/3mwtqv7jvns2u",
           "source": "Bluesky @rapsheet.bsky.social"
-        }
-      ]
-    },
-    {
-      "name": "KC Concepcion",
-      "pos": "WR",
-      "team": "CLE",
-      "adp": 108.5,
-      "adp_prior": 114.2,
-      "adp_move": 5.7,
-      "proj": null,
-      "sleeper_weight": 1.1,
-      "score": 1.267,
-      "unpriced": false,
-      "signals": [
-        "snap"
-      ],
-      "items": [
-        {
-          "text": "Browns halftime WR snap count\n\nDenzel Boston 28\nKC Concepcion 26\nMalachi Corley 7\nJerry Jeudy 7\nIsaiah Bond 4\n\nOut of 29 plays",
-          "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3mwubpdmqqs2x",
-          "source": "Bluesky @ffnatejahnke.bsky.social"
         }
       ]
     },
@@ -3016,24 +3514,90 @@
       ]
     },
     {
-      "name": "Chris Godwin",
-      "pos": "WR",
-      "team": "TB",
-      "adp": 82.3,
-      "adp_prior": 85.8,
-      "adp_move": 3.5,
+      "name": "Brock Bowers",
+      "pos": "TE",
+      "team": "LV",
+      "adp": 20.1,
+      "adp_prior": 20.1,
+      "adp_move": 0.0,
       "proj": null,
-      "sleeper_weight": 0.75,
-      "score": 1.2,
-      "unpriced": false,
+      "sleeper_weight": 0.3,
+      "score": 1.248,
+      "unpriced": true,
       "signals": [
         "injury"
       ],
       "items": [
         {
-          "text": "Buccaneers vs. Packers: Thursday injury report for Week 4. The Tampa Bay Buccaneers saw some encouraging movement on Thursday\u2019s injury report as they continue preparations for Sunday\u2019s matchup against the Green Bay Packers. Wide receiver Chris Godwin Jr. was a full participant after sitting out Wedn",
-          "url": "https://www.bucsnation.com/tampa-bay-buccaneers-injuries/68826/buccaneers-packers-thursday-injury-report-nfl-week-4",
-          "source": "SBN TB"
+          "text": "Brock Bowers officially active for Raiders-Chiefs. Brock Bowers was added to the injury report with an illness on Sunday, but he is still active for the Week 4 matchup against the Chiefs.",
+          "url": "https://www.nbcsports.com/nfl/profootballtalk/rumor-mill/news/brock-bowers-officially-active-for-raiders-chiefs",
+          "source": "ProFootballTalk"
+        }
+      ]
+    },
+    {
+      "name": "Luther Burden III",
+      "pos": "WR",
+      "team": "CHI",
+      "adp": 43.7,
+      "adp_prior": 45.8,
+      "adp_move": 2.1,
+      "proj": null,
+      "sleeper_weight": 0.5,
+      "score": 1.17,
+      "unpriced": false,
+      "signals": [
+        "snap"
+      ],
+      "items": [
+        {
+          "text": "Bears 1st half WR snap count\n\nRome Odunze 48\nLuther Burden III 29\nKalif Raymond 26\nJahdae Walker 2\nZavion Thomas 2\n\nOut of 51 plays",
+          "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3mx32fdgnws24",
+          "source": "Bluesky @ffnatejahnke.bsky.social"
+        }
+      ]
+    },
+    {
+      "name": "Emeka Egbuka",
+      "pos": "WR",
+      "team": "TB",
+      "adp": 37.1,
+      "adp_prior": 34.5,
+      "adp_move": -2.6,
+      "proj": null,
+      "sleeper_weight": 0.5,
+      "score": 1.17,
+      "unpriced": false,
+      "signals": [
+        "snap"
+      ],
+      "items": [
+        {
+          "text": "Buccaneers halftime WR snap count\n\nEmeka Egbuka 28\nChris Godwin 28\nTez Johnson 19\nTed Hurst 9\nKameron Johnson 1\n\nOut of 31 plays",
+          "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3mx32an47ek24",
+          "source": "Bluesky @ffnatejahnke.bsky.social"
+        }
+      ]
+    },
+    {
+      "name": "Jaxon Smith-Njigba",
+      "pos": "WR",
+      "team": "SEA",
+      "adp": 5.6,
+      "adp_prior": 5.5,
+      "adp_move": -0.1,
+      "proj": null,
+      "sleeper_weight": 0.3,
+      "score": 1.17,
+      "unpriced": true,
+      "signals": [
+        "limited"
+      ],
+      "items": [
+        {
+          "text": "Chargers-Seahawks Game Thread: Derwin-less Bolts look to slow Jaxon Smith-Njigba\u2019s hotstart. Welcome to another week of Chargers football. The Chargers are without Derwin James this week who was among this week\u2019s inactives after missing Thursday\u2019s practice and participating in a limited fashion on b",
+          "url": "https://www.boltsfromtheblue.com/general/66002/chargers-seahawks-game-thread-derwin-less-bolts-look-to-slow-jaxon-smith-njigbas-hotstart",
+          "source": "SBN LAC"
         }
       ]
     },
@@ -3060,6 +3624,50 @@
       ]
     },
     {
+      "name": "Chase Brown",
+      "pos": "RB",
+      "team": "CIN",
+      "adp": 14.0,
+      "adp_prior": 14.9,
+      "adp_move": 0.9,
+      "proj": null,
+      "sleeper_weight": 0.3,
+      "score": 1.123,
+      "unpriced": true,
+      "signals": [
+        "carries"
+      ],
+      "items": [
+        {
+          "text": "Chase Brown currently has 6 carries for 8 yds",
+          "url": "https://bsky.app/profile/minakimes.bsky.social/post/3mx2yo63py22j",
+          "source": "Bluesky @minakimes.bsky.social"
+        }
+      ]
+    },
+    {
+      "name": "Puka Nacua",
+      "pos": "WR",
+      "team": "LAR",
+      "adp": 4.3,
+      "adp_prior": 4.2,
+      "adp_move": -0.1,
+      "proj": null,
+      "sleeper_weight": 0.3,
+      "score": 1.123,
+      "unpriced": true,
+      "signals": [
+        "snap"
+      ],
+      "items": [
+        {
+          "text": "Rams halftime WR snap count\n\nDavante Adams 34\nPuka Nacua 31\nJordan Whittington 19\nTutu Atwell 10\nKonata Mumpfield 6\n\nOut of 35 plays",
+          "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3mx32lmmwe224",
+          "source": "Bluesky @ffnatejahnke.bsky.social"
+        }
+      ]
+    },
+    {
       "name": "Jonathan Taylor",
       "pos": "RB",
       "team": "IND",
@@ -3077,50 +3685,6 @@
         {
           "text": "Colts halftime RB snap count\n\nJonathan Taylor 26\nSeth McGowan 10\n\nOut of 36 plays",
           "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3mx2nzomqyk2b",
-          "source": "Bluesky @ffnatejahnke.bsky.social"
-        }
-      ]
-    },
-    {
-      "name": "Harold Fannin",
-      "pos": "TE",
-      "team": "CLE",
-      "adp": 106.7,
-      "adp_prior": 103.7,
-      "adp_move": -3.0,
-      "proj": null,
-      "sleeper_weight": 0.75,
-      "score": 1.08,
-      "unpriced": false,
-      "signals": [
-        "snap"
-      ],
-      "items": [
-        {
-          "text": "Browns halftime TE/FB snap count\n\nHarold Fannin Jr. 27\nBlake Whiteheart 10\nMichael Burton 4\nCarsen Ryan 1\n\nOut of 29 plays",
-          "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3mwubqeweec2x",
-          "source": "Bluesky @ffnatejahnke.bsky.social"
-        }
-      ]
-    },
-    {
-      "name": "Michael Pittman Jr.",
-      "pos": "WR",
-      "team": "PIT",
-      "adp": 102.8,
-      "adp_prior": 99.5,
-      "adp_move": -3.3,
-      "proj": null,
-      "sleeper_weight": 0.75,
-      "score": 1.08,
-      "unpriced": false,
-      "signals": [
-        "snap"
-      ],
-      "items": [
-        {
-          "text": "Steelers halftime WR snap count\n\nDK Metcalf 37\nMichael Pittman Jr. 26\nRoman Wilson 12\nGermie Bernard 12\nBen Skowronek 4\n\nOut of 38 plays",
-          "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3mwubki5jps2x",
           "source": "Bluesky @ffnatejahnke.bsky.social"
         }
       ]
@@ -3144,6 +3708,72 @@
           "text": "Packers film room: What went wrong on the Falcons 55-yard run. Bijan Robinson&#8217;s 55-yarder against the Green Bay Packers in week three was the play that turned the game. It came on first down after a roughing the passer penalty on edge rusher Brenton Cox on third down that would have forced the",
           "url": "https://www.acmepackingcompany.com/green-bay-packers-analysis/87480/packers-film-room-what-went-wrong-on-the-falcons-55-yard-run",
           "source": "SBN GB"
+        }
+      ]
+    },
+    {
+      "name": "Bucky Irving",
+      "pos": "RB",
+      "team": "TB",
+      "adp": 51.3,
+      "adp_prior": 54.6,
+      "adp_move": 3.3,
+      "proj": null,
+      "sleeper_weight": 0.5,
+      "score": 0.936,
+      "unpriced": false,
+      "signals": [
+        "snap"
+      ],
+      "items": [
+        {
+          "text": "Buccaneers halftime RB snap count\n\nBucky Irving 18\nKenny Gainwell 12\nSean Tucker 3\n\nOut of 31 plays",
+          "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3mx327pcjs224",
+          "source": "Bluesky @ffnatejahnke.bsky.social"
+        }
+      ]
+    },
+    {
+      "name": "Parker Washington",
+      "pos": "WR",
+      "team": "JAX",
+      "adp": 54.3,
+      "adp_prior": 58.5,
+      "adp_move": 4.2,
+      "proj": null,
+      "sleeper_weight": 0.5,
+      "score": 0.936,
+      "unpriced": false,
+      "signals": [
+        "snap"
+      ],
+      "items": [
+        {
+          "text": "Jaguars halftime WR snap count\n\nParker Washington 28\nJakobi Meyers 27\nBrian Thomas Jr. 22\nJosh Cameron 8\n\nOut of 31 plays",
+          "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3mx3247daqs24",
+          "source": "Bluesky @ffnatejahnke.bsky.social"
+        }
+      ]
+    },
+    {
+      "name": "MarShawn Lloyd",
+      "pos": "RB",
+      "team": "GB",
+      "adp": 103.6,
+      "adp_prior": 156.3,
+      "adp_move": 52.7,
+      "proj": null,
+      "sleeper_weight": 0.75,
+      "score": 0.878,
+      "unpriced": false,
+      "signals": [
+        "snap"
+      ],
+      "items": [
+        {
+          "text": "Packers halftime RB snap count\n\nMarShawn Lloyd 16\nChris Brooks 10\nKaleb Johnson 6\n\nOut of 32 plays",
+          "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3mx2zvrsfrc24",
+          "source": "Bluesky @ffnatejahnke.bsky.social"
         }
       ]
     },
@@ -3242,6 +3872,29 @@
       "adp": 28.4,
       "adp_prior": 28.3,
       "adp_move": -0.1,
+      "proj": null,
+      "sleeper_weight": 0.5,
+      "score": 0.42,
+      "unpriced": true,
+      "signals": [
+        "explosive",
+        "limited"
+      ],
+      "items": [
+        {
+          "text": "Fantasy football: 3 running backs lacking explosive plays. Fantasy football managers have received limited explosive rushing production from Jeremiyah Love, Jacory Croskey-Merritt and Quinshon Judkins through three weeks. Love has only one run of 10-plus yards, while Croskey-Merritt and Judkins have",
+          "url": "https://www.pff.com/news/fantasy-football-3-running-backs-lacking-explosive-plays/",
+          "source": "PFF"
+        }
+      ]
+    },
+    {
+      "name": "Quinshon Judkins",
+      "pos": "RB",
+      "team": "CLE",
+      "adp": 54.4,
+      "adp_prior": 53.6,
+      "adp_move": -0.8,
       "proj": null,
       "sleeper_weight": 0.5,
       "score": 0.42,
