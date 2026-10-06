@@ -52,21 +52,34 @@ once.
 
 ## Keeping the data fresh — THE ONE ONGOING COST
 
-**As shipped these are a static snapshot.** The files above are whatever the
-source repo had when the port ran. Nothing updates them.
+**The data refreshes automatically on both sides.** In the destination repo,
+`.github/workflows/nfl-data-pull.yml` runs `scripts/pull_nfl_data.py`, which
+mirrors the seven JSON files from this repo's Pages site and commits only when
+something actually changed.
 
-For a live page, add a workflow modelled on this repo's existing
-`scripts/pull_pred_arbs.py`, which already pulls JSON off another GitHub Pages
-site on a cron. Same shape, pointed at:
+It mirrors rather than re-running the scrapers, deliberately: the Odds API bills
+per event per market, so a second pipeline would double the credit burn for
+identical numbers, no `ODDS_API_KEY` has to exist in that repo at all, and the two
+sites cannot drift apart.
 
-```
-https://pjmerica.github.io/AI_Agent_work/nfl-props/<file>.json
-```
+Upstream, this repo's `nfl-props.yml` refreshes on a schedule built around how
+books actually post, which is very uneven across the week:
 
-Cadence that matches the upstream: the source repo refreshes on a schedule plus
-manual runs, and coverage changes a lot through the week — sportsbooks do not
-post most Sunday props until Thursday night, so a Wednesday snapshot legitimately
-has a third of the slate unpriced. Twice a day Thursday through Sunday is enough.
+| ET | Why |
+|---|---|
+| Wed 10:00pm | books begin opening Sunday props |
+| Thu 10:00am, 3:00pm, 7:00pm | Thursday is the biggest jump of the week — week 3 went 99 to 183 player-games overnight. The 7pm run lands before TNF. |
+| Fri / Sat 10:00am | coverage fills in, lines move |
+| Sun 10:00am, 12:00pm | pre-kickoff, then a last look before the 1pm games |
+
+Nothing runs Monday or Tuesday: almost no Sunday props are posted that early, so
+a refresh then spends credits to learn nothing. A single-week run measured 36
+Odds API credits, so the eight runs come to roughly 1,250 a month.
+
+This is why a midweek board legitimately shows part of the slate unpriced — a
+Tuesday pull of week 5 had 6 of 15 games with usable props. The page says so
+rather than implying the numbers are complete, and it warns outright when the
+props describe a week that has already been played.
 
 One upstream caveat worth knowing: `dk_td.json` only refreshes from a **local**
 run, because DraftKings blocks GitHub Actions runners (403). It can therefore be

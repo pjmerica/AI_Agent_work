@@ -1,7 +1,35 @@
 name: NFL Projections Scraper
 
 on:
-  workflow_dispatch:   # manual-run only — trigger from GitHub Actions UI
+  # Times are ET in these comments, UTC in the expressions (GitHub schedules in
+  # UTC and ignores DST), matching the convention in nfl-beat.yml. Written for
+  # EDT = UTC-4; once EST returns in November each run lands an hour earlier in
+  # ET, which does not matter for a morning refresh.
+  #
+  # The cadence follows how books actually post, which is very uneven: almost
+  # nothing for Sunday is up on Monday or Tuesday, Wednesday evening is when it
+  # starts, and Thursday is the single biggest jump of the week (week 3 went 99
+  # to 183 player-games overnight). There is no point refreshing early in the
+  # week -- see the coverage note on the page.
+  #
+  # Cost: a single-week run measured 36 Odds API credits (19,920 -> 19,884 on
+  # 2026-10-06), so eight runs a week is ~290/week, ~1,250/month. A scheduled run
+  # leaves `inputs` empty, so the multiweek step (gated on `if: inputs.multiweek`,
+  # ~64 credits) stays manual-only and never fires on a schedule.
+  #
+  # If the quota ever does run short, drop the Friday and Saturday runs first:
+  # those two days move the least, because Thursday night is when the Sunday
+  # props actually open.
+  schedule:
+    - cron: '0 2 * * 4'      # Wed 10:00pm ET — books start opening Sunday props
+    - cron: '0 14 * * 4'     # Thu 10:00am ET — morning pass
+    - cron: '0 19 * * 4'     # Thu  3:00pm ET — afternoon pass
+    - cron: '0 23 * * 4'     # Thu  7:00pm ET — before TNF; biggest jump of the week
+    - cron: '0 14 * * 5'     # Fri 10:00am ET
+    - cron: '0 14 * * 6'     # Sat 10:00am ET
+    - cron: '0 14 * * 0'     # Sun 10:00am ET — pre-kickoff
+    - cron: '0 16 * * 0'     # Sun 12:00pm ET — last look before the 1pm games
+  workflow_dispatch:   # also runnable by hand from the Actions UI
     inputs:
       multiweek:
         description: "Also refresh the weeks-1-4 average (costs ~50 Odds API credits)"
