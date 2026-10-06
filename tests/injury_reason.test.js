@@ -53,12 +53,18 @@ const grab = (re) => {
   if (!m) throw new Error("MISSING " + String(re).slice(0, 44));
   return m[0];
 };
+globalThis.ARGV_LOOKUP = pmap.players;
 const H = eval("(function(){" + [
   grab(/const INJURY_SIDELINED = new Set\([\s\S]*?\);/),
+  grab(/const INJURY_NONE = new Set\([\s\S]*?\);/),
   grab(/function injuryFor\(pid\)[\s\S]*?\n  \}/),
   grab(/function injuryLabel\(inj\)[\s\S]*?\n  \}/),
+  // LOOKUP has to be bound here or injuryFor() throws the moment anything calls
+  // it. Nothing did until the "renders no injury tag" check below, so this was a
+  // latent break in the harness rather than a regression.
+  "const LOOKUP = ARGV_LOOKUP;",
   "function pmapEntry(pid){return LOOKUP[String(pid)]||null;}",
-].join("\n") + ";return{injuryFor,injuryLabel,INJURY_SIDELINED}})()");
+].join("\n") + ";return{injuryFor,injuryLabel,INJURY_SIDELINED,INJURY_NONE}})()");
 
 // Statuses Sleeper actually publishes, split by whether the player can play.
 for (const s of ["IR", "PUP", "Out", "Sus", "NA", "DNR", "COV"]) {
@@ -79,10 +85,25 @@ check("no injury means no label", H.injuryLabel(null) === "");
 // Every status present in the data must be classified one way or the other,
 // otherwise a new Sleeper code silently reads as "playable".
 const seen = [...new Set(hurt.map((v) => v[3]))];
-const KNOWN = new Set([...H.INJURY_SIDELINED, "Questionable", "Doubtful"]);
+// Every code the app accounts for: out for the week, a game-time call, or an
+// explicit "no designation" like Sleeper's "Active" (set on a player who was hurt
+// and has since been cleared). Anything outside all three is genuinely new and
+// would otherwise read as playable by default.
+const KNOWN = new Set([...H.INJURY_SIDELINED, ...H.INJURY_NONE,
+                       "Questionable", "Doubtful"]);
 const unknown = seen.filter((s) => !KNOWN.has(s));
 check("every status in the data is classified", unknown.length === 0,
   "unclassified: " + unknown.join(", "));
+// "Active" means the opposite of an injury, so it must not render a chip in the
+// slot where IR and Out appear. Found live: one player (Joe Mixon) carried it.
+for (const benign of [...H.INJURY_NONE].filter((x) => x)) {
+  const pid = Object.keys(pmap.players).find(
+    (k) => (pmap.players[k] || [])[3] === benign);
+  if (!pid) continue;
+  check('"' + benign + '" renders no injury tag',
+    H.injuryFor(pid) === null,
+    "injuryFor returned " + JSON.stringify(H.injuryFor(pid)));
+}
 console.log("        statuses present: " + seen.sort().join(", "));
 
 // ---- the page renders the two groups apart ----------------------------------

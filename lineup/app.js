@@ -2172,10 +2172,19 @@
    */
   const INJURY_SIDELINED = new Set(["IR", "PUP", "Out", "Sus", "NA", "DNR", "COV"]);
 
+  // Sleeper sets injury_status to "Active" for a player who was hurt and has been
+  // cleared. That is the absence of a designation, not a designation, so it must
+  // not render a chip: a tag reading "Active" in the slot where IR and Out appear
+  // is worse than no tag. Named explicitly rather than left to fall through,
+  // because an unrecognised code should be visible, and the only way to keep that
+  // assertion meaningful is to account for the benign codes too.
+  const INJURY_NONE = new Set(["Active", "", "NULL", "null"]);
+
   function injuryFor(pid) {
     const e = pmapEntry(pid);
     if (!e || e.length < 4 || !e[3]) return null;
     const status = e[3];
+    if (INJURY_NONE.has(status)) return null;
     return {
       status,
       bodyPart: e.length > 4 ? e[4] : null,
