@@ -41,17 +41,39 @@ const server = http.createServer((req, res) => {
   fs.createReadStream(f).pipe(res);
 });
 
+// Kill the whole tree, not just the parent. Chrome forks children, and killing
+// only the process we spawned orphans them: after a dozen runs there were 13 live
+// chrome.exe processes and new instances started returning nothing at all, which
+// looked like a flaky test rather than a leak.
+function killTree(p) {
+  if (!p || p.killed) return;
+  try {
+    if (process.platform === "win32") {
+      require("child_process").execFileSync(
+        "taskkill", ["/PID", String(p.pid), "/T", "/F"],
+        { stdio: "ignore", timeout: 10000 });
+    } else {
+      process.kill(-p.pid, "SIGKILL");
+    }
+  } catch { /* already gone */ }
+  try { p.kill("SIGKILL"); } catch { /* already gone */ }
+}
+
 function runChrome(url) {
   return new Promise((resolve) => {
     let out = "";
     const p = spawn(CHROME, [
-      "--headless=new", "--disable-gpu", "--no-sandbox", "--hide-scrollbars",
+      "--headless=new", "--disable-gpu", "--no-sandbox",
+      // A throwaway profile per run. Two headless instances sharing the default
+      // profile fail in confusing, silent ways.
+      "--user-data-dir=" + fs.mkdtempSync(
+        require("path").join(require("os").tmpdir(), "chrome-test-")), "--hide-scrollbars",
       "--window-size=1200,1000", "--virtual-time-budget=20000", "--dump-dom", url,
     ]);
     p.stdout.on("data", (d) => (out += d));
     p.stderr.on("data", () => {});
-    const t = setTimeout(() => { try { p.kill(); } catch {} }, 90000);
-    p.on("close", () => { clearTimeout(t); resolve(out); });
+    const t = setTimeout(() => { killTree(p); }, 90000);
+    p.on("close", () => { clearTimeout(t); killTree(p); resolve(out); });
   });
 }
 
