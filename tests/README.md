@@ -18,26 +18,53 @@ click that changes nothing.
 ## Running
 
 ```sh
-npm install --no-save jsdom
-node tests/lineup_page.test.js
-node tests/books_page.test.js
-node tests/board_page.test.js
-node tests/apps_agree.test.js
-node tests/name_matching.test.js
-node tests/injury_reason.test.js    # hits the live Sleeper API
-node tests/lineup_interact.test.js
-node tests/books_interact.test.js
-node tests/lineup_optimizer.test.js
-node tests/board_optimizer.test.js
-node tests/sleeper_tab.test.js      # hits the live Sleeper API
-node tests/rooting_login.test.js    # hits the live Sleeper API
-node tests/live_smoke.test.js       # hits the published site
-python tests/td_conversion.test.py
-node tests/dst_model.test.js 2       # week number; hits Sleeper
+npm install          # once; installs jsdom, which most of these need
+npm test             # everything except the network and browser suites
 ```
 
-Run them from the repo root, or set `REPO_ROOT`. Each exits non-zero on
-failure.
+`npm test` runs `tests/run_all.js`, which is the thing to use. It reports each
+suite's result, and it distinguishes a suite that **failed** from one that
+**crashed before running a single check** — the second is worse and used to be
+nearly invisible in a wall of output. It exits non-zero on either.
+
+To run one suite on its own:
+
+```sh
+node tests/lineup_page.test.js
+python tests/td_conversion.test.py
+node tests/dst_model.test.js 2        # week number; hits Sleeper
+```
+
+Run from the repo root, or set `REPO_ROOT`. Each exits non-zero on failure.
+
+### Why there is a package.json
+
+Because there wasn't one, and every jsdom suite in this repo was unrunnable as a
+result. `require("jsdom")` only ever resolved by accident, from a `node_modules`
+that happened to sit in a parent directory of wherever the tests were being run
+from. From the repo root they all died with `MODULE_NOT_FOUND`, and a clean clone
+could not run them at all. Earlier instructions here said to
+`npm install --no-save jsdom`, which left nothing behind for the next person.
+
+jsdom is a declared devDependency now and the lockfile is committed. Do not go
+back to installing it ad hoc.
+
+### Suites that do not run by default
+
+| Suite | Needs | Why it is separate |
+|---|---|---|
+| `live_smoke.test.js` | network | Hits the published Pages site and the Sleeper API. A third party being down should not turn the build red. |
+| `mobile_layout.test.js` | real Chrome | Launches a browser per page per width. Sharing a process tree with the other suites made them contend for ports and CPU, which surfaced as empty page captures — a flake that reads exactly like a real layout bug. |
+
+Both skip cleanly when their dependency is absent. **Under CI they fail instead
+of skipping**, because a skip there means the job reports success having verified
+nothing — which is precisely how the jsdom breakage above went unnoticed.
+
+CI runs `node tests/run_all.js --offline`, then `mobile_layout.test.js` as its own
+step with Chrome installed explicitly. It is installed rather than assumed at a
+path: the first guess was `/usr/bin/google-chrome` and the runner actually
+resolves it to `/opt/hostedtoolcache/setup-chrome/...`, so a hardcoded path would
+have skipped silently and still gone green.
 
 ## What each one covers
 
@@ -196,3 +223,55 @@ sections.
 The useful assertion is **every status present in the data is classified**. A new
 Sleeper code would otherwise fall through and read as playable, which is the
 failure direction that costs you a lineup slot.
+
+**`contrast.test.js`** — computes the WCAG contrast ratio of every text colour
+declaration in the three stylesheets.
+
+It exists because the pages had quietly standardised on `#6a6a8a` for almost all
+secondary text — column headers, captions, chip labels, counts, footers. That is
+3.32:1 against the card background, under the 4.5:1 AA floor, so the labels
+naming each number were the hardest thing on the page to read. 67 declarations
+were below the line.
+
+It parses the CSS rather than measuring the rendered page, so it needs no browser
+and runs in the normal suite. Two details that matter: it strips comments first,
+because a hex mentioned in prose is not a declaration (an earlier fix of mine
+landed inside a comment and changed nothing while looking right), and it compares
+against each file's **darkest** background, so a pass is never a false pass. It
+allows 3:1 only for genuinely large text, and carries an explicit allowlist — the
+brand purple `#5b4cf5` and the deliberately faint `#3a3a55` "no data" dash, each
+with its reason.
+
+**`mobile_layout.test.js`** — measures all three pages at 390, 360 and 320px and
+fails on a page that scrolls sideways or a scroll container that clips its
+contents.
+
+Two bugs it was written for, both invisible at desktop width: `#view-tabs` was a
+non-wrapping flex row of ten tabs totalling 840px, so every phone scrolled the
+whole page sideways, header and all; and `.table-wrap` used `overflow: hidden`,
+so at 320px a 358px table had its rightmost columns permanently unreachable — no
+scrollbar, no swipe, no sign anything was missing.
+
+It measures inside an **iframe** sized to the target width because headless
+Chrome clamps `--window-size` to a 500px minimum viewport: ask for 390 and you
+get 500, and at 500px neither bug above is visible. That clamp is why both
+shipped. Its server also takes an OS-assigned port — a fixed one left it
+reporting "probe did not run" on pages that were fine, because after repeated
+runs `listen()` still resolved while nothing was served.
+
+**`cdn_integrity.test.js`** — requires Subresource Integrity on every
+cross-origin `<script>`.
+
+Without it, anyone able to tamper with a CDN response runs arbitrary JavaScript
+on a page where visitors type their Sleeper username. It walks every HTML file in
+the repo rather than a fixed list, so a new page cannot slip past.
+
+It also guards a subtler trap. The Chart.js tag pointed at
+`dist/chart.umd.min.js`, which **does not exist** in the published package —
+jsdelivr minifies it per request, and its own response banner says "Do NOT use
+SRI with dynamically generated files", because those bytes can change without the
+version changing. A hash pinned there would have started blocking the script
+eventually. `dist/chart.umd.js` is the real published file: byte-identical to the
+npm tarball, already minified, and smaller.
+
+**`run_all.js`** — not a suite. See **Running** above.

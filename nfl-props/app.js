@@ -516,6 +516,76 @@
    * being refreshed. The scrapers keep the old file on purpose; the page has
    * to say the lines are old.
    */
+  /* Copied verbatim from lineup/app.js. Do not edit one without the
+     other -- tests/apps_agree.test.js exists because these two files
+     have silently diverged before. */
+  /* Is the prop data describing a slate that has already been played?
+   *
+   * These come apart because the props workflow is manual-dispatch only (the
+   * Odds API bills per request), so between runs weekly.json keeps describing a
+   * finished week. On 2026-10-06 the board read "Week 4" while week 5 was being
+   * played, with all 349 props for completed games and nothing saying so.
+   *
+   * Compared by date rather than week number: gamelines.json carries no per-game
+   * week field, so this reads weekly.json's own kickoff day codes (26OCT05) and
+   * asks whether the schedule still has kickoffs ahead of the last of them.
+   */
+  const KICK_MONTHS = { JAN: 0, FEB: 1, MAR: 2, APR: 3, MAY: 4, JUN: 5,
+                        JUL: 6, AUG: 7, SEP: 8, OCT: 9, NOV: 10, DEC: 11 };
+
+  function parseKickCode(code) {
+    // "26OCT05" -> Date(2026-10-05). Returns null on anything unexpected, so a
+    // format change degrades to "no warning" rather than a wrong warning.
+    const m = /^(\d{2})([A-Z]{3})(\d{2})$/.exec(String(code || "").trim());
+    if (!m) return null;
+    const mon = KICK_MONTHS[m[2]];
+    if (mon === undefined) return null;
+    return Date.UTC(2000 + Number(m[1]), mon, Number(m[3]));
+  }
+
+  function staleWeekState() {
+    const wkd = cache["weekly"];
+    const gl = cache["gamelines"];
+    if (!wkd || !gl || !Array.isArray(gl.games)) return null;
+    const codes = (wkd.kickoffs || []).map(parseKickCode).filter((d) => d);
+    if (!codes.length) return null;
+    const now = Date.now();
+    // End of the last day the props cover. A game can run ~6h past midnight UTC
+    // kickoff, so allow a day before calling that slate finished.
+    const lastPropDay = Math.max.apply(null, codes) + 36 * 3600 * 1000;
+    if (lastPropDay > now) return null;          // props still describe live games
+    const ahead = gl.games
+      .filter((g) => g.kickoff && Date.parse(g.kickoff) > now)
+      .map((g) => Date.parse(g.kickoff));
+    if (!ahead.length) return null;              // nothing scheduled: offseason
+    return {
+      dataWeek: Number(wkd.week) || null,
+      lastPropDay: Math.max.apply(null, codes),
+      nextKickoff: Math.min.apply(null, ahead),
+      lastUpdated: wkd.lastUpdated || null,
+    };
+  }
+
+  function staleWeekBanner() {
+    const s = staleWeekState();
+    if (!s) return "";
+    const days = Math.round((Date.now() - s.lastPropDay) / 86400000);
+    return '<div class="coverage-note stale-week">' +
+      "<strong>" +
+      (s.dataWeek ? "These prices are from week " + s.dataWeek + ", whose games "
+                  : "These prices are for games that ") +
+      "finished " + (days <= 1 ? "yesterday" : days + " days ago") +
+      ".</strong> Every line below is for a game already played, so none of it " +
+      "can set a lineup. The market data refreshes on a manual run &mdash; " +
+      "until then this is a record of a past week, not a projection." +
+      (s.lastUpdated
+        ? ' <span class="coverage-sub">Last refreshed ' +
+          escapeHtml(String(s.lastUpdated).slice(0, 16).replace("T", " ")) +
+          " UTC.</span>"
+        : "") +
+      "</div>";
+  }
+
   function ageNote(stamp) {
     if (!stamp) return "";
     const days = (Date.now() - new Date(stamp).getTime()) / 86400000;
@@ -666,6 +736,7 @@
     const $meta = document.getElementById("sitstart-meta");
     const wkd = cache["weekly"];
     if ($meta && wkd) $meta.textContent = `Week ${wkd.week} · half-PPR`;
+
     renderRosterTags();
     renderBookToggles();
     renderSitStart();
@@ -3072,15 +3143,20 @@
   function renderSitStart() {
     const $out = document.getElementById("sitstart-output");
     if (!$out) return;
-    if (booksAllOff) { $out.innerHTML = noBooksNotice(); return; }
+    // If the props describe a slate that has already been played, that outranks
+    // everything else on this view -- the numbers look exactly like live ones.
+    // Prefixed to every branch, including the empty ones: a stale board with no
+    // roster picked is still a stale board.
+    const stale = staleWeekBanner();
+    if (booksAllOff) { $out.innerHTML = stale + noBooksNotice(); return; }
 
     const pool = buildSitStartPoolFull();
     if (!pool.size) {
-      $out.innerHTML = '<div class="empty">Market data has not loaded.</div>';
+      $out.innerHTML = stale + '<div class="empty">Market data has not loaded.</div>';
       return;
     }
     if (!rosterSelected.size) {
-      $out.innerHTML = '<div class="empty">Add players to build a lineup.</div>';
+      $out.innerHTML = stale + '<div class="empty">Add players to build a lineup.</div>';
       return;
     }
 
@@ -3095,7 +3171,7 @@
     }
 
     if (!matched.length) {
-      $out.innerHTML = '<div class="verdict">No pasted player has a priced Week 1 projection.' +
+      $out.innerHTML = stale + '<div class="verdict">No pasted player has a priced Week 1 projection.' +
         (unmatched.length ? " Unrecognised: " + escapeHtml(unmatched.join(", ")) + "." : "") +
         "</div>" + slotTable([], null, unpriced, unmatched);
       return;
@@ -3113,7 +3189,7 @@
         : "Start <strong>" + escapeHtml(a.name) + "</strong>. The market has him at " +
           a.points.toFixed(1) + " half-PPR against " + escapeHtml(b.name) + " at " +
           b.points.toFixed(1) + " &mdash; a " + gap.toFixed(1) + "-point edge.";
-      $out.innerHTML = '<div class="verdict">' + verdict + "</div>" +
+      $out.innerHTML = stale + '<div class="verdict">' + verdict + "</div>" +
         slotTable([{ slot: "START", p: a }, { slot: "SIT", p: b }], null, unpriced, unmatched);
       return;
     }
@@ -3123,7 +3199,7 @@
     const bench = matched.filter((p) => !startingNames.has(p.name))
       .sort((a, b) => b.points - a.points);
     const rows = best.picks.map((p, i) => ({ slot: LINEUP_SLOTS[i].label, p }));
-    $out.innerHTML = slotTable(rows, best.total, unpriced, unmatched, bench);
+    $out.innerHTML = stale + slotTable(rows, best.total, unpriced, unmatched, bench);
   }
 
   // Wraps weeklyChips so an excluded market is visibly not counted rather than

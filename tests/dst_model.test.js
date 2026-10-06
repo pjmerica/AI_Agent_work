@@ -34,8 +34,37 @@ const TEAMS=["ARI","ATL","BAL","BUF","CAR","CHI","CIN","CLE","DAL","DEN","DET","
   // week's -- but it answers whether the model's spread of outputs matches the
   // spread of real D/ST scores, which is the part that would be obviously
   // wrong if the model were broken.
-  const week=Number(process.argv[2]||2);
-  const st=await (await fetch("https://api.sleeper.app/v1/stats/nfl/regular/2026/"+week)).json();
+  // Ask Sleeper what week it is rather than hardcoding one. This read
+  // `argv[2] || 2` with the season fixed at 2026, and run_all.js passes no
+  // argument -- so it was backtesting week 2 while the season was on week 4, and
+  // it would have broken outright in January.
+  let season="2026", week=Number(process.argv[2]||0);
+  try {
+    const stt=await (await fetch("https://api.sleeper.app/v1/state/nfl")).json();
+    if (stt && stt.season) season=String(stt.season);
+    // The current week is in progress, so the most recent COMPLETED one is the
+    // one before it. Week 1 in progress leaves nothing to backtest.
+    if (!week && stt && stt.week) week=Math.max(1, Number(stt.week)-1);
+  } catch { /* fall through to the default below */ }
+  if (!week) week=2;
+  // Pull every completed week, not only the latest. A single week is 32 numbers
+  // and its spread swings a long way: pts-allowed SD measured 9.51, 10.00, 8.66
+  // and 7.56 across weeks 1-4 of 2026, so testing SCORE_SD against whichever
+  // week happens to be last is close to a coin flip. The pooled figure is a
+  // claim worth asserting.
+  const weeks=[];
+  for (let w=1; w<=week; w++) {
+    try {
+      const r=await fetch(
+        "https://api.sleeper.app/v1/stats/nfl/regular/"+season+"/"+w);
+      const j=await r.json();
+      if (j && Object.keys(j).length) weeks.push({week:w, stats:j});
+    } catch { /* skip a week Sleeper will not serve */ }
+  }
+  if (!weeks.length) { console.error("no completed weeks available"); process.exit(1); }
+  console.log("backtesting "+season+" weeks 1-"+week+
+              " ("+weeks.length+" completed), components vs pooled actuals");
+  const st=weeks[weeks.length-1].stats;
 
   const rows=[];
   for (const t of TEAMS) {
@@ -68,7 +97,25 @@ const TEAMS=["ARI","ATL","BAL","BUF","CAR","CHI","CIN","CLE","DAL","DEN","DET","
     "   model mean "+mean(rows.map(r=>r.mTO)).toFixed(2));
   console.log("  pts allow  actual mean "+mean(rows.map(r=>r.ptsAllow)).toFixed(2)+
     "   model implied mean "+mean(rows.map(r=>r.mOpp)).toFixed(2));
-  console.log("  actual pts-allowed SD  "+sd(rows.map(r=>r.ptsAllow)).toFixed(2)+
+  // Per-week spreads, then the pooled one. Printing each keeps a genuine drift
+  // over the season visible instead of averaging it into silence.
+  const weekSDs=[];
+  const pooledPtsAllow=[];
+  for (const wk of weeks) {
+    const vals=[];
+    for (const t of TEAMS) {
+      const a=wk.stats[t];
+      if (a && a.pts_allow != null) vals.push(a.pts_allow);
+    }
+    if (vals.length) {
+      weekSDs.push({week:wk.week, n:vals.length, sd:sd(vals)});
+      for (const v of vals) pooledPtsAllow.push(v);
+    }
+  }
+  console.log("  pts-allowed SD by week: "+
+    weekSDs.map(w=>"wk"+w.week+" "+w.sd.toFixed(2)).join("  "));
+  console.log("  pooled pts-allowed SD  "+sd(pooledPtsAllow).toFixed(2)+
+    " over "+pooledPtsAllow.length+" team-games"+
     "   model assumes SCORE_SD "+(src.match(/const SCORE_SD = ([\d.]+)/)[1]));
 
   // The components are what the model actually claims. Its mean running a
@@ -83,14 +130,16 @@ const TEAMS=["ARI","ATL","BAL","BUF","CAR","CHI","CIN","CLE","DAL","DEN","DET","
   console.log("");
   const aSack=mean(rows.map(r=>r.sacks)), mSack=mean(rows.map(r=>r.mSack));
   const aTO=mean(rows.map(r=>r.takeaways)), mTO=mean(rows.map(r=>r.mTO));
-  const aSD=sd(rows.map(r=>r.ptsAllow));
+  // Pooled, not single-week: see the comment above the fetch loop.
+  const aSD=sd(pooledPtsAllow.length ? pooledPtsAllow : rows.map(r=>r.ptsAllow));
   const modelSD=Number(src.match(/const SCORE_SD = ([\d.]+)/)[1]);
   assert("sack baseline within 0.5 of actual", Math.abs(aSack-mSack)<0.5,
     aSack.toFixed(2)+" vs "+mSack.toFixed(2));
   assert("takeaway baseline within 0.5 of actual", Math.abs(aTO-mTO)<0.5,
     aTO.toFixed(2)+" vs "+mTO.toFixed(2));
-  assert("SCORE_SD within 2 of actual", Math.abs(aSD-modelSD)<2,
-    aSD.toFixed(2)+" vs "+modelSD);
+  assert("SCORE_SD within 2 of pooled actual", Math.abs(aSD-modelSD)<2,
+    aSD.toFixed(2)+" vs "+modelSD+
+    " (per-week: "+weekSDs.map(w=>w.sd.toFixed(2)).join(", ")+")");
   assert("model mean is in the right neighbourhood",
     Math.abs(mean(rows.map(r=>r.actual))-mean(rows.map(r=>r.model)))<3,
     mean(rows.map(r=>r.actual)).toFixed(2)+" vs "+mean(rows.map(r=>r.model)).toFixed(2));
