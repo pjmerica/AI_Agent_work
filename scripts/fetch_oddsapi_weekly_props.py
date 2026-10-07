@@ -135,6 +135,54 @@ def http_json(url: str) -> tuple[object, dict]:
         raise RuntimeError(f"network error: {e}") from None
 
 
+
+def guard_against_collapse(out_file: Path, new_rows: list) -> None:
+    """Exit rather than replace a populated board with a partial one.
+
+    No `week` field here, so the comparison is scoped by matchup: when this run
+    covers the same games as the existing file, coverage should only have grown,
+    because books add props as kickoff approaches rather than withdrawing them. A
+    run whose matchups have largely moved on is a new slate and legitimately thin.
+    """
+    MIN_RATIO = 0.60
+    if not out_file.exists():
+        return
+    try:
+        prev = json.loads(out_file.read_text(encoding="utf-8"))
+    except Exception:
+        return
+    if not isinstance(prev, dict):
+        return                      # valid JSON that is not an object
+    prev_players = prev.get("players")
+    if not isinstance(prev_players, list) or not prev_players:
+        return
+    prev_count = len(prev_players)
+    new_count = len(new_rows)
+
+    def matchups(rows):
+        out = set()
+        for r in rows:
+            m = (r.get("matchup") or "").strip() if isinstance(r, dict) else ""
+            if m:
+                out.add(m)
+        return out
+
+    prev_m, new_m = matchups(prev_players), matchups(new_rows)
+    if prev_m and new_m:
+        overlap = len(prev_m & new_m) / len(prev_m)
+        if overlap < 0.5:
+            return                  # different slate; thin is expected
+    if new_count >= prev_count * MIN_RATIO:
+        return
+    print(f"ERROR: multi-book props collapsed from {prev_count} to {new_count} "
+          f"players on the same slate. Books add props as kickoff approaches, "
+          f"they do not withdraw them, so this run probably failed part-way "
+          f"(rate limit, quota, or an API change). Keeping the existing file.",
+          file=sys.stderr)
+    print(f"  Re-run to retry. To override, delete {out_file.name} first.",
+          file=sys.stderr)
+    sys.exit(1)
+
 def main() -> None:
     key = os.environ.get("ODDS_API_KEY")
     if not key:
@@ -243,6 +291,8 @@ def main() -> None:
     remaining = hdrs.get("x-requests-remaining")
     used = hdrs.get("x-requests-used")
 
+    # Do not let a part-way failure blank the file the board relies on most.
+    guard_against_collapse(OUT_FILE, out)
     OUT_FILE.write_text(json.dumps({
         "lastUpdated": datetime.now(timezone.utc).isoformat(timespec="seconds"),
         "season": "2026",

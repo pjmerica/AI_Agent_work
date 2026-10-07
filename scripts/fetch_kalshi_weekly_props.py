@@ -164,6 +164,43 @@ def parse_event(ticker: str) -> tuple[str | None, str | None]:
     return m.group("date"), m.group("teams")
 
 
+
+def guard_against_collapse(out_file: Path, new_week, new_count: int,
+                           label: str) -> None:
+    """Exit rather than replace a full board with a partial one.
+
+    Coverage only accumulates within a week -- books add games as kickoff
+    approaches, they do not take them away -- so a large drop against the file
+    already on disk means this run failed part-way, not that the market shrank.
+    A new week is exempt: a fresh slate legitimately starts with a fraction of
+    the rows it will end with.
+    """
+    MIN_RATIO = 0.60
+    try:
+        prev = json.loads(out_file.read_text(encoding="utf-8"))
+    except Exception:
+        return                      # no usable previous file; nothing to protect
+    if not isinstance(prev, dict):
+        # Valid JSON that is not an object -- a truncated or hand-edited file.
+        # Nothing to compare against, and .get() on it would abort the scrape.
+        return
+    prev_count = (prev.get("playerGameCount") or prev.get("playerCount")
+                  or (len(prev.get("players", [])) if isinstance(
+                      prev.get("players"), list) else 0))
+    if not prev_count:
+        return
+    if str(prev.get("week")) != str(new_week):
+        return                      # different slate, thin is expected
+    if new_count >= prev_count * MIN_RATIO:
+        return
+    print(f"ERROR: {label} collapsed from {prev_count} to {new_count} rows "
+          f"within week {new_week}. Coverage only grows through the week, so "
+          f"this run probably failed part-way (rate limit, timeout, or an API "
+          f"change). Keeping the existing file.", file=sys.stderr)
+    print(f"  Re-run to retry. To override, delete {out_file.name} first.",
+          file=sys.stderr)
+    sys.exit(1)
+
 def main() -> None:
     # player -> {"name", "games": {event: {...}}}, keyed per game because a
     # player appears once per matchup and we must not merge across weeks.
@@ -256,6 +293,8 @@ def main() -> None:
 
     kickoffs = sorted({r["kickoff"] for r in out if r["kickoff"]})
     week = resolve_week(list(kickoffs))
+    # Do not let a part-way failure replace a full board with a stub.
+    guard_against_collapse(OUT_FILE, week, len(out), "Kalshi weekly props")
     OUT_FILE.write_text(json.dumps({
         "lastUpdated": datetime.now(timezone.utc).isoformat(timespec="seconds"),
         "season": "2026",
