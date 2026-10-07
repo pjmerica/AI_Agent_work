@@ -78,12 +78,14 @@ jobs:
       # Per-game markets for the upcoming slate. Kalshi purges settled markets,
       # so this always fetches the next week's games.
       - name: Scrape Kalshi per-game (weekly) props
+        id: kalshi_weekly
         run: python scripts/fetch_kalshi_weekly_props.py
         continue-on-error: true
 
       # DraftKings anytime-TD. Free, no key, but needs Origin+Referer headers
       # or every request 403s. Covers 429 players to Kalshi's 236.
       - name: Scrape DraftKings TD scorers
+        id: dk_td
         run: python scripts/fetch_dk_td_scorers.py
         continue-on-error: true
 
@@ -99,6 +101,7 @@ jobs:
         continue-on-error: true
 
       - name: Scrape The Odds API per-game props
+        id: oddsapi_weekly
         run: python scripts/fetch_oddsapi_weekly_props.py
         env:
           ODDS_API_KEY: ${{ secrets.ODDS_API_KEY }}
@@ -110,6 +113,7 @@ jobs:
       # /odds endpoint: one credit per market for the WHOLE slate, so the
       # step costs 2 credits rather than 80.
       - name: Scrape game spreads and totals
+        id: gamelines
         run: python scripts/fetch_game_lines.py
         env:
           ODDS_API_KEY: ${{ secrets.ODDS_API_KEY }}
@@ -129,6 +133,7 @@ jobs:
       # Trimmed Sleeper player-ID map (~31 KB) so the page can resolve ANY
       # user's roster in the browser. Sleeper's own dictionary is 14.6 MB.
       - name: Build Sleeper player map
+        id: playermap
         run: python scripts/build_sleeper_playermap.py
         continue-on-error: true
 
@@ -152,3 +157,44 @@ jobs:
                   nfl-props/sleeper_players.json
           git diff --staged --quiet || git commit -m "chore: refresh NFL projections [skip ci]"
           git push
+
+      # Every scraper above is continue-on-error, so without this the job goes
+      # green even when every source failed. That was survivable while runs were
+      # manual and watched; on a schedule it has to speak up.
+      #
+      # The four board-critical sources fail the job. The season-long ones are
+      # reported only: FanDuel and Bovada genuinely drop these markets once the
+      # season is under way, which is why they are non-fatal to begin with.
+      - name: Report what refreshed
+        if: always()
+        run: |
+          {
+            echo "### NFL props refresh"
+            echo ""
+            echo "| source | outcome |"
+            echo "|---|---|"
+            echo "| Kalshi per-game | ${{ steps.kalshi_weekly.outcome }} |"
+            echo "| Odds API per-game | ${{ steps.oddsapi_weekly.outcome }} |"
+            echo "| Game lines | ${{ steps.gamelines.outcome }} |"
+            echo "| Sleeper player map | ${{ steps.playermap.outcome }} |"
+            echo "| DraftKings TD (often blocked on CI) | ${{ steps.dk_td.outcome }} |"
+            echo ""
+            echo "#### Data on disk after this run"
+            echo ""
+            echo '```'
+            python scripts/report_data_state.py || echo "(report failed)"
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
+
+          # Fail the job if a source the board cannot do without did not succeed.
+          bad=""
+          [ "${{ steps.kalshi_weekly.outcome }}" = "success" ] || bad="$bad kalshi-per-game"
+          [ "${{ steps.oddsapi_weekly.outcome }}" = "success" ] || bad="$bad odds-api-per-game"
+          [ "${{ steps.gamelines.outcome }}" = "success" ] || bad="$bad game-lines"
+          [ "${{ steps.playermap.outcome }}" = "success" ] || bad="$bad sleeper-player-map"
+          if [ -n "$bad" ]; then
+            echo "Board-critical source(s) failed:$bad" >&2
+            echo "" >> "$GITHUB_STEP_SUMMARY"
+            echo "**Failed:**$bad" >> "$GITHUB_STEP_SUMMARY"
+            exit 1
+          fi
