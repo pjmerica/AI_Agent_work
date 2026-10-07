@@ -18,15 +18,27 @@ function diffClass(d) {
 
 function renderPair(pair) {
   const { polymarket: pm, predictit: km, score, diff, arb, arbProfit, buyYesOn, buyNoOn } = pair;
+  // Reasons the scraper could not trust this pair. An empty list is not proof
+  // it is sound, but a non-empty one is a concrete reason not to stake money.
+  const suspicion = Array.isArray(pair.suspicion) ? pair.suspicion : [];
+  const trusted = arb && suspicion.length === 0;
   const pmCheaper = pm.yesPrice <= km.yesPrice;
 
   const card = document.createElement('div');
-  card.className = 'card' + (arb ? ' arb' : '');
-  card.dataset.arb = arb ? '1' : '0';
+  card.className = 'card' + (trusted ? ' arb' : '') + (suspicion.length ? ' suspect' : '');
+  // Only unflagged pairs count as arb for the filter and the header tally.
+  card.dataset.arb = trusted ? '1' : '0';
+  card.dataset.suspect = suspicion.length ? '1' : '0';
 
   card.innerHTML = `
     <div class="card-title">${esc(pm.title)}</div>
-    ${arb ? `
+    ${suspicion.length ? `
+      <div class="suspect-badge">
+        <strong>Not a tradable arb.</strong>
+        ${suspicion.map((r) => `<div>· ${esc(r)}</div>`).join('')}
+      </div>
+    ` : ''}
+    ${trusted ? `
       <div class="arb-badge">
         ⚡ Arb: buy YES on ${esc(buyYesOn)}, NO on ${esc(buyNoOn)} · +${arbProfit}¢ per $1
       </div>` : ''}
@@ -70,8 +82,16 @@ async function main() {
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     const data = await res.json();
 
-    const arbCount = data.matches.filter(m => m.arb).length;
-    count.textContent   = `${data.matchCount} matched pairs · ${arbCount} arb opportunities · ${data.polymarketCount} Polymarket + ${data.predictitCount} PredictIt markets`;
+    // Count only pairs with no suspicion flags. Counting all of them read as
+    // "131 arb opportunities" when most were opposite-party or different-question
+    // pairs showing a ~97c phantom edge.
+    const arbCount = data.matches.filter(
+      (m) => m.arb && !(Array.isArray(m.suspicion) && m.suspicion.length)).length;
+    const flagged = data.matches.filter(
+      (m) => Array.isArray(m.suspicion) && m.suspicion.length).length;
+    count.textContent = `${data.matchCount} matched pairs · ${arbCount} look tradable`
+      + (flagged ? ` · ${flagged} flagged as not comparable` : '')
+      + ` · ${data.polymarketCount} Polymarket + ${data.predictitCount} PredictIt markets`;
     updated.textContent = 'Last updated: ' + new Date(data.lastUpdated).toLocaleString();
 
     grid.innerHTML = '';

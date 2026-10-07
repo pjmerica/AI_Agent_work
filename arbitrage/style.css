@@ -220,3 +220,19 @@ header h1 {
   .markets { grid-template-columns: 1fr; }
   .divider { align-items: flex-start; }
 }
+
+/* A pair the scraper could not trust. Deliberately not styled like the arb badge:
+   it is a warning, not an instruction. Kept visible rather than dropped because
+   the prices are still a useful reference. */
+.suspect-badge {
+  margin-top: 10px;
+  padding: 8px 10px;
+  border: 1px dashed rgba(255, 107, 107, 0.5);
+  border-radius: 8px;
+  background: rgba(255, 107, 107, 0.07);
+  color: #ffc9c9;
+  font-size: 12px;
+  line-height: 1.5;
+}
+.suspect-badge strong { color: #ff8f8f; }
+.card.suspect { opacity: 0.85; }

@@ -80,8 +80,66 @@ const SKIP_CAPS = new Set([
 // Extract named entities from the ORIGINAL (un-normalised) title.
 // Only two-word proper noun bigrams count as valid entities to avoid false matches on
 // single common words like "China", "Trump", "April", numbers, etc.
+// US states and the district shorthand political markets use. A political title
+// rarely has a usable capitalised bigram -- SKIP_CAPS removes Republican, Senate,
+// House, Governor, Election and the rest, which is right, because those words are
+// shared boilerplate -- but it almost always names a place, and the place is what
+// actually distinguishes one race from another. Without this, 306 of 527 PredictIt
+// titles yielded no entity at all and could never match anything.
+const STATES = [
+  'alabama','alaska','arizona','arkansas','california','colorado','connecticut',
+  'delaware','florida','georgia','hawaii','idaho','illinois','indiana','iowa',
+  'kansas','kentucky','louisiana','maine','maryland','massachusetts','michigan',
+  'minnesota','mississippi','missouri','montana','nebraska','nevada',
+  'new hampshire','new jersey','new mexico','new york','north carolina',
+  'north dakota','ohio','oklahoma','oregon','pennsylvania','rhode island',
+  'south carolina','south dakota','tennessee','texas','utah','vermont',
+  'virginia','washington','west virginia','wisconsin','wyoming',
+];
+// Longest first, so "west virginia" is not read as "virginia". This exact bug has
+// hit both prediction-market repos before; see AGENTS.md.
+const STATES_BY_LENGTH = STATES.slice().sort((a, b) => b.length - a.length);
+
+function placeEntities(title) {
+  const out = new Set();
+  const low = ' ' + String(title).toLowerCase().replace(/[^a-z0-9 -]/g, ' ')
+    .replace(/\s+/g, ' ') + ' ';
+  let rest = low;
+  for (const st of STATES_BY_LENGTH) {
+    if (rest.includes(' ' + st + ' ')) {
+      out.add('state:' + st);
+      rest = rest.split(' ' + st + ' ').join(' ');
+    }
+  }
+  // Chamber control with no state named is a NATIONAL market, and that is the
+  // most valuable thing to pair: both platforms carry "who controls the Senate
+  // after the 2026 midterms". Without an entity of its own it names no place and
+  // so could never match. Keyed separately from a state so a Georgia Senate race
+  // cannot pair with the national one.
+  // District shorthand: OH-14, NY-17, CA-22. Collected BEFORE the national
+  // fallback below: otherwise a district market also picks up a national
+  // entity and can pair with the chamber-control race, which is the OH-14
+  // versus "win the House" false match this mechanism exists to prevent.
+  for (const m of String(title).matchAll(/\b([A-Z]{2})-(\d{1,2})\b/g)) {
+    out.add('district:' + m[1].toLowerCase() + '-' + String(Number(m[2])));
+  }
+
+  if (!out.size) {
+    const low2 = String(title).toLowerCase();
+    const chamber = /\bsenate\b/.test(low2) ? 'senate'
+      : /\bhouse\b/.test(low2) ? 'house'
+      : /\bpresident|white house\b/.test(low2) ? 'president' : null;
+    if (chamber && /\bcontrol|majority|balance of power|win the\b/.test(low2)) {
+      out.add('national:' + chamber);
+    }
+  }
+
+  return out;
+}
+
 function extractEntities(title) {
   const entities = new Set();
+  for (const e of placeEntities(title)) entities.add(e);
   const words = title.replace(/["""'']/g, '').split(/\s+/);
 
   for (let i = 0; i < words.length - 1; i++) {
@@ -107,11 +165,41 @@ function entityOverlap(titleA, titleB) {
 // ── Fetchers ──────────────────────────────────────────────────────────────────
 async function fetchPolymarket() {
   console.log('Fetching Polymarket…');
-  const res = await fetch(
-    'https://gamma-api.polymarket.com/markets?limit=500&active=true&closed=false&order=volume&ascending=false'
-  );
-  if (!res.ok) throw new Error(`Polymarket HTTP ${res.status}`);
-  const data = await res.json();
+  // The Gamma API caps a page at 100 regardless of `limit`, and does it silently:
+  // limit=500 returns 100 with no error. That kept this widget empty for weeks --
+  // the top 100 by volume are weather, sports spreads and exact-score markets,
+  // while PredictIt is almost entirely US politics, so the two inputs had no
+  // topical overlap and nothing could match. The political markets are there
+  // (371 of them), below the cap.
+  const PAGE = 100;
+  const MAX_PAGES = 30;              // ~3,000; the active set is ~2,100
+  const data = [];
+  for (let page = 0; page < MAX_PAGES; page++) {
+    // No `order` parameter. Paging this endpoint with &order=volume returns ZERO
+    // political markets at every offset, while the same pages without it return
+    // 371 -- including ones with 32k and 216k volume, so this is not the sort
+    // correctly de-prioritising thin markets, it is the sort dropping rows.
+    // Order does not matter here regardless: the matcher scores every pair.
+    const url = 'https://gamma-api.polymarket.com/markets'
+      + '?limit=' + PAGE + '&offset=' + (page * PAGE)
+      + '&active=true&closed=false';
+    const res = await fetch(url);
+    if (!res.ok) {
+      // Only the first page is fatal. A later one failing should not throw away
+      // an otherwise usable board.
+      if (page === 0) throw new Error(`Polymarket HTTP ${res.status}`);
+      console.error(`  page ${page} failed (HTTP ${res.status}); keeping ${data.length}`);
+      break;
+    }
+    const batch = await res.json();
+    if (!Array.isArray(batch) || batch.length === 0) break;
+    // The API mixes non-objects into the array -- that is what crashed a naive
+    // scan of this endpoint earlier -- so filter before anything reads a field.
+    for (const m of batch) {
+      if (m && typeof m === 'object') data.push(m);
+    }
+    if (batch.length < PAGE) break;
+  }
 
   return data
     .filter(m => m.question && m.outcomePrices && !m.closed)
@@ -223,6 +311,83 @@ function score(pmTitle, piTitle) {
   return j + e * 0.3;
 }
 
+/* Which party a market is asking to win, or null when it is not that kind of
+ * question.
+ *
+ * This exists because the two platforms phrase the same race from opposite sides.
+ * Polymarket lists "Will the Democrats win the West Virginia Senate race" while
+ * PredictIt lists "Will Republican win the 2026 US Senate election in West
+ * Virginia". Comparing those two prices directly reads a near-certain Republican
+ * hold as a 95-cent arbitrage, which is the single biggest source of fake
+ * opportunities on a political board -- AGENTS.md records the same bug, and the
+ * same fix, in both prediction-market repos.
+ */
+function partyAsked(title) {
+  const t = String(title).toLowerCase();
+  // "will X win" / "will the Xs win" -- the subject is the party being asked about.
+  const dem = /\b(democrat|democrats|democratic|dem)\b/.test(t);
+  const gop = /\b(republican|republicans|gop)\b/.test(t);
+  if (dem === gop) return null;        // both or neither: cannot tell
+  return dem ? 'dem' : 'gop';
+}
+
+/* Reasons to distrust a pair, as a list of short strings.
+ *
+ * An empty list does not prove a pair is sound, but a non-empty one is a concrete
+ * reason not to stake money on it. The thresholds follow the sibling repos
+ * (AGENTS.md): a double-digit return on a liquid political market is a mismatch,
+ * not an opportunity.
+ */
+function suspicionReasons(pm, pi, opts) {
+  const out = [];
+  const profit = opts.arbProfit;
+  if (profit > 15) {
+    out.push('return of ' + profit.toFixed(1) + '% is too large to be real; '
+      + 'these are probably different questions');
+  }
+  const a = String(pm.title).toLowerCase();
+  const b = String(pi.title).toLowerCase();
+
+  // "which race is closest" / "margin of victory" is not "who wins".
+  const bucket = /closest|margin|by \d|\d+%-\d+%|or fewer|or more|to \d+ seats/;
+  if (bucket.test(a) !== bucket.test(b)) {
+    out.push('one side is a margin or bucket market, the other is a plain winner');
+  }
+
+  // Different deadline years cannot be the same question.
+  const yearsOf = (t) => new Set((t.match(/\b20\d\d\b/g) || []));
+  const ya = yearsOf(a), yb = yearsOf(b);
+  if (ya.size && yb.size && ![...ya].some((y) => yb.has(y))) {
+    out.push('deadline years do not overlap (' + [...ya].join('/') + ' vs '
+      + [...yb].join('/') + ')');
+  }
+
+  // Both name a person, but not the same person: different candidates in one race.
+  const namesOf = (t) => new Set(
+    (String(t).match(/\b[A-Z][a-z]{2,}\s+[A-Z][a-z]{2,}\b/g) || [])
+      .map((n) => n.toLowerCase())
+      .filter((n) => !/^(will|the|which|republican|democratic|united|new |north|south|west |east )/.test(n)));
+  const na = namesOf(pm.title), nb = namesOf(pi.title);
+  if (na.size && nb.size && ![...na].some((n) => nb.has(n))) {
+    out.push('each side names a different person');
+  }
+
+  // "Will X leave before June?" and "Will X be the NEXT to leave?" are different
+  // questions: the second is a race between candidates, so X can leave and still
+  // lose it. Same for "which of these 10 leaders will go first". These read as
+  // near-identical to a token comparison, so they have to be caught explicitly.
+  const ordinal = /next|which of these|first to|closest/;
+  if (ordinal.test(a) !== ordinal.test(b)) {
+    out.push('one side asks who is NEXT or closest, a race between candidates; '
+      + 'the other asks only whether it happens');
+  }
+
+  if (opts.partyFlipped) {
+    out.push('opposite-party phrasing; one price was inverted to compare');
+  }
+  return out;
+}
+
 function findMatches(polyMarkets, piMarkets) {
   const pairs  = [];
   const usedPI = new Set();
@@ -239,9 +404,22 @@ function findMatches(polyMarkets, piMarkets) {
     usedPI.add(best.url + best.title);
 
     const jScore = jaccard(pm.title, best.title);
-    const diff   = Math.abs(pm.yesPrice - best.yesPrice);
-    const [cheap, dear] = pm.yesPrice <= best.yesPrice ? [pm, best] : [best, pm];
-    const arbCost   = cheap.yesPrice + (1 - dear.yesPrice);
+
+    // If the two titles ask about opposite parties, they are opposite
+    // propositions and their prices must not be compared as-is: a near-certain
+    // Republican hold shows up as a ~95c "arbitrage" that would simply lose.
+    // Flip the PredictIt side so both describe the same party's chance.
+    const pmParty = partyAsked(pm.title);
+    const piParty = partyAsked(best.title);
+    const flipped = Boolean(pmParty && piParty && pmParty !== piParty);
+    const piYes = flipped ? 1 - best.yesPrice : best.yesPrice;
+
+    const diff   = Math.abs(pm.yesPrice - piYes);
+    const cheapIsPm = pm.yesPrice <= piYes;
+    const cheapPrice = cheapIsPm ? pm.yesPrice : piYes;
+    const dearPrice  = cheapIsPm ? piYes : pm.yesPrice;
+    const [cheap, dear] = cheapIsPm ? [pm, best] : [best, pm];
+    const arbCost   = cheapPrice + (1 - dearPrice);
     const arbProfit = (1 - arbCost) * 100;
 
     pairs.push({
@@ -250,7 +428,11 @@ function findMatches(polyMarkets, piMarkets) {
       score:      Math.round(jScore * 100),
       entities:   entityOverlap(pm.title, best.title),
       diff:       Math.round(diff * 100 * 10) / 10,
+      // True when the two markets ask about opposite parties and one price was
+      // inverted to compare them. Worth showing: it changes what "buy YES" means.
+      partyFlipped: flipped,
       arb:        arbCost < 0.995,
+      suspicion:  suspicionReasons(pm, best, { arbProfit, partyFlipped: flipped }),
       arbProfit:  Math.round(arbProfit * 10) / 10,
       buyYesOn:   cheap.platform,
       buyNoOn:    dear.platform,
@@ -275,7 +457,11 @@ async function main() {
   console.log(`PredictIt:  ${pi.length} markets`);
 
   const matches = findMatches(poly, pi);
+  const clean = matches.filter((m) => m.arb && m.suspicion.length === 0);
+  const doubtful = matches.filter((m) => m.arb && m.suspicion.length > 0);
   console.log(`Matched:    ${matches.length} pairs`);
+  console.log(`  arb, no suspicion flags: ${clean.length}`);
+  console.log(`  arb but flagged:         ${doubtful.length}`);
 
   // Log top matches for review
   matches.slice(0, 10).forEach(m =>
@@ -287,6 +473,8 @@ async function main() {
     polymarketCount:  poly.length,
     predictitCount:   pi.length,
     matchCount:       matches.length,
+    arbCleanCount:    clean.length,
+    arbFlaggedCount:  doubtful.length,
     matches,
   };
 
