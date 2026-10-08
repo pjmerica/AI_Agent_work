@@ -376,7 +376,7 @@ function suspicionReasons(pm, pi, opts) {
   // questions: the second is a race between candidates, so X can leave and still
   // lose it. Same for "which of these 10 leaders will go first". These read as
   // near-identical to a token comparison, so they have to be caught explicitly.
-  const ordinal = /next|which of these|first to|closest/;
+  const ordinal = /\bnext\b|\bwhich of these\b|\bfirst to\b|\bclosest\b/;
   if (ordinal.test(a) !== ordinal.test(b)) {
     out.push('one side asks who is NEXT or closest, a race between candidates; '
       + 'the other asks only whether it happens');
