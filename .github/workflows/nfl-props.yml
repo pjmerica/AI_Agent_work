@@ -12,6 +12,18 @@ on:
   # to 183 player-games overnight). There is no point refreshing early in the
   # week -- see the coverage note on the page.
   #
+  # DO NOT TRUST THESE TIMES TO THE MINUTE. GitHub queues scheduled runs on free
+  # tier and the delay is large: measured against this repo's own scrape.yml
+  # (declared 0 */6 * * *), actual firings ran 43, 53, 262, 273, 284 and 287
+  # minutes late -- a median of about 4.5 hours, worst overnight. The first run of
+  # this schedule, declared 02:00 UTC, landed at 08:40.
+  #
+  # So treat each slot as "some time in the next few hours", not an appointment.
+  # That is why there are several Thursday slots rather than one well-placed one:
+  # with this much jitter, coverage comes from having more attempts, not from
+  # picking a better minute. workflow_dispatch is the only way to get a refresh
+  # at a time you choose.
+  #
   # Cost: a single-week run measured 36 Odds API credits (19,920 -> 19,884 on
   # 2026-10-06), so eight runs a week is ~290/week, ~1,250/month. A scheduled run
   # leaves `inputs` empty, so the multiweek step (gated on `if: inputs.multiweek`,
