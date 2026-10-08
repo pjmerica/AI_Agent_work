@@ -45,6 +45,27 @@ const server = http.createServer((req, res) => {
 // only the process we spawned orphans them: after a dozen runs there were 13 live
 // chrome.exe processes and new instances started returning nothing at all, which
 // looked like a flaky test rather than a leak.
+// Remove a throwaway profile directory once Chrome is done with it. Without this
+// they accumulate -- 270 of them was enough to stop Chrome starting at all, with
+// no output on stdout or stderr, which looks exactly like a broken page.
+function rmProfile(dir) {
+  if (!dir) return;
+  try { fs.rmSync(dir, { recursive: true, force: true, maxRetries: 3 }); }
+  catch { /* Chrome may still hold a handle; the startup sweep will get it */ }
+}
+
+// Clear profiles orphaned by an earlier run that was interrupted.
+function sweepOldProfiles() {
+  try {
+    const tmp = require("os").tmpdir();
+    for (const name of fs.readdirSync(tmp)) {
+      if (name.startsWith("chrome-test-")) {
+        rmProfile(require("path").join(tmp, name));
+      }
+    }
+  } catch { /* best effort */ }
+}
+
 function killTree(p) {
   if (!p || p.killed) return;
   try {
@@ -62,24 +83,42 @@ function killTree(p) {
 function runChrome(url) {
   return new Promise((resolve) => {
     let out = "";
+    const profileDir = fs.mkdtempSync(
+      require("path").join(require("os").tmpdir(), "chrome-test-"));
     const p = spawn(CHROME, [
       "--headless=new", "--disable-gpu", "--no-sandbox",
       // A throwaway profile per run. Two headless instances sharing the default
       // profile fail in confusing, silent ways.
-      "--user-data-dir=" + fs.mkdtempSync(
-        require("path").join(require("os").tmpdir(), "chrome-test-")), "--hide-scrollbars",
+      "--user-data-dir=" + profileDir, "--hide-scrollbars",
       "--window-size=1200,1000", "--virtual-time-budget=20000", "--dump-dom", url,
     ]);
     p.stdout.on("data", (d) => (out += d));
     p.stderr.on("data", () => {});
     const t = setTimeout(() => { killTree(p); }, 90000);
-    p.on("close", () => { clearTimeout(t); killTree(p); resolve(out); });
+    p.on("close", () => {
+      clearTimeout(t);
+      // Resolve BEFORE sweeping the tree. Killing on close reaped the pipe
+      // before Node had drained it, so the captured DOM came back empty and
+      // every page looked broken. The sweep still runs, just after.
+      resolve(out);
+      setImmediate(() => { killTree(p); rmProfile(profileDir); });
+    });
   });
 }
 
-const PAGES = [["lineup", "lineup/index.html"],
-               ["nfl-props", "nfl-props/index.html"],
-               ["books", "books/index.html"]];
+// Discovered from disk, not listed. A hardcoded list covered only the three pages
+// I happened to be working on while twelve others went unmeasured -- and the bugs
+// this test exists to catch (a nav strip forcing the page sideways, a table
+// wrapper clipping its own columns) are not specific to those three.
+const PAGES = fs.readdirSync(REPO, { withFileTypes: true })
+  .filter((e) => e.isDirectory()
+    && !e.name.startsWith(".")
+    && e.name !== "node_modules"
+    && e.name !== "tests"
+    && e.name !== "scripts"
+    && e.name !== "docs"
+    && fs.existsSync(path.join(REPO, e.name, "index.html")))
+  .map((e) => [e.name, e.name + "/index.html"]);
 const WIDTHS = [390, 360, 320];
 
 (async () => {
@@ -92,6 +131,7 @@ const WIDTHS = [390, 360, 320];
     console.log("SKIP: " + msg + ". Mobile layout NOT verified.");
     process.exit(0);
   }
+  sweepOldProfiles();
   await new Promise((r) => server.listen(PORT, "127.0.0.1", r));
   PORT = server.address().port;
   const tmp = [];
@@ -102,7 +142,7 @@ const WIDTHS = [390, 360, 320];
       // A harness page holding one iframe at the exact phone width.
       const harness = `<!doctype html><html><head><meta charset="utf-8"><title>h</title>
 <style>html,body{margin:0;padding:0}iframe{border:0;width:${W}px;height:844px}</style></head>
-<body><iframe id="f" src="/${rel}"></iframe>
+<body><iframe id="f" src="/${encodeURI(rel)}"></iframe>
 <script>
 window.addEventListener("load", function () {
   setTimeout(function () {
@@ -163,12 +203,16 @@ window.addEventListener("load", function () {
 </script></body></html>`;
       // Unique per page/width so consecutive Chrome launches never read a file
       // the next iteration is overwriting.
-      const hRel = `__phone_harness_${name}_${W}.html`;
+      // Slugified: one page is "Net Worth and income calculator", and a
+      // filename with spaces produced a URL with raw spaces that no page
+      // could load -- which looked like all 15 pages failing at once.
+      const slug = name.replace(/[^A-Za-z0-9_-]+/g, "-");
+      const hRel = `__phone_harness_${slug}_${W}.html`;
       const hAbs = path.join(REPO, hRel);
       fs.writeFileSync(hAbs, harness);
       tmp.push(hAbs);
 
-      const dom = await runChrome(`http://127.0.0.1:${PORT}/${hRel}`);
+      const dom = await runChrome(`http://127.0.0.1:${PORT}/${encodeURI(hRel)}`);
       const m = dom.match(/<pre id="__phone__">([\s\S]*?)<\/pre>/);
       if (!m) {
         console.log(`${name} @ ${W}px: probe did not run`);

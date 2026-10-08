@@ -65,6 +65,23 @@ h1 {
   gap: 4px;
 }
 
+/* At 320px the three tabs total 325px, and a flex row does not wrap, so the whole
+   page scrolled sideways -- header and content with it -- for 5px of tab. Letting
+   just this strip scroll keeps the tabs on one line and holds the page still. The
+   scrollbar is hidden because a 10px bar under a ~40px strip is worse than the
+   swipe affordance it replaces; the tabs stay reachable by swipe and keyboard. */
+@media (max-width: 420px) {
+  .tabs {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .tabs::-webkit-scrollbar { display: none; }
+  /* Without this the tabs shrink to fit instead of scrolling, squeezing the
+     labels to an unreadable width. */
+  .tab { flex: 0 0 auto; }
+}
+
 .tab {
   background: transparent;
   border: none;
