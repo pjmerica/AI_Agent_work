@@ -566,6 +566,36 @@
     };
   }
 
+  /* The DraftKings touchdown file, when it has outlived its week.
+   *
+   * dk_td.json only refreshes from a LOCAL run -- DraftKings answers GitHub
+   * Actions runners with a 403 -- so it can sit days behind the rest of the
+   * board. The drop logic handles it correctly: entries whose game is not on the
+   * current slate are discarded, so no stale price reaches a projection. What was
+   * missing is telling the reader, because the visible result is anytime-TD
+   * prices absent for every player on a page that otherwise looks complete.
+   *
+   * lineup/app.js says this inside its coverage banner; nfl-props has no coverage
+   * banner, which is why dkDropped and dkTotal were being written here and never
+   * read.
+   */
+  function dkStaleNotice() {
+    if (!(dkTotal > 0 && dkDropped === dkTotal)) return "";
+    const stamp = (cache["dktd"] || {}).lastUpdated;
+    return '<div class="coverage-note stale-week">' +
+      "<strong>No anytime-touchdown prices this week.</strong> The DraftKings " +
+      "file is from a previous week &mdash; all " + dkTotal + " entries are for " +
+      "games already played, so it is contributing nothing. Everything else on " +
+      "this board is current." +
+      (stamp
+        ? ' <span class="coverage-sub">That file last refreshed ' +
+          escapeHtml(String(stamp).slice(0, 10)) +
+          "; it only updates on a local run, because DraftKings blocks CI." +
+          "</span>"
+        : "") +
+      "</div>";
+  }
+
   function staleWeekBanner() {
     const s = staleWeekState();
     if (!s) return "";
@@ -3147,7 +3177,7 @@
     // everything else on this view -- the numbers look exactly like live ones.
     // Prefixed to every branch, including the empty ones: a stale board with no
     // roster picked is still a stale board.
-    const stale = staleWeekBanner();
+    const stale = staleWeekBanner() + dkStaleNotice();
     if (booksAllOff) { $out.innerHTML = stale + noBooksNotice(); return; }
 
     const pool = buildSitStartPoolFull();
