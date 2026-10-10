@@ -23,7 +23,7 @@ const ROOT = path.resolve(TESTS_DIR, "..");
 const offline = process.argv.includes("--offline");
 
 // These reach the live Sleeper / Pages endpoints.
-const NETWORK = new Set(["live_smoke.test.js"]);
+const NETWORK = new Set(["live_smoke.test.js", "kicker_model.test.js"]);
 
 // Needs real Chrome, which not every machine has, and is slow because it launches
 // a browser per page per width. CI runs it as its own step with Chrome installed,
