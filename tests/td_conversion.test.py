@@ -152,5 +152,63 @@ else:
     print("=== skipping the Kalshi comparison: data files not present ===")
 
 print()
+# ---------------------------------------------------------------------------
+# The Odds API anytime-TD path, added 2026-10-10 because DraftKings 403s GitHub
+# runners and so could never refresh unattended.
+# ---------------------------------------------------------------------------
+print()
+print("=== the Odds API anytime-TD fallback ===")
+
+import importlib.util as _ilu
+import sys as _sys
+
+_sys.path.insert(0, str(ROOT / "scripts"))
+_spec = _ilu.spec_from_file_location("_oa", ROOT / "scripts" / "fetch_oddsapi_weekly_props.py")
+_oa = _ilu.module_from_spec(_spec)
+try:
+    _spec.loader.exec_module(_oa)
+except SystemExit:
+    pass  # the module exits early without an API key, which is fine here
+
+# It must agree with DraftKings to the last digit. Both quote P(>=1 TD) and both
+# must arrive as an EXPECTED count, because the board does any_tds * 6 -- so a
+# raw probability would understate every back who can score twice.
+_dk_path = ROOT / "nfl-props" / "dk_td.json"
+if _dk_path.exists():
+    _dk = json.loads(_dk_path.read_text(encoding="utf-8"))
+    _checked = _bad = 0
+    for _p in (_dk.get("players") or []):
+        _o, _x = _p.get("americanOdds"), _p.get("xTD")
+        if _o is None or _x is None:
+            continue
+        _mine = _oa._anytime_point(str(_o).replace("−", "-").replace("+", ""))
+        if _mine is None:
+            continue
+        _checked += 1
+        if abs(_mine - _x) > 0.002:
+            _bad += 1
+    check(f"matches DraftKings on all {_checked} prices", _checked > 50 and _bad == 0,
+          f"{_bad} mismatch(es) of {_checked}")
+
+# Convert THEN de-vig, not the other way round. Getting this backwards cost 0.12
+# of a fantasy point on goal-line backs once already, because POISSON_SHARE is
+# fitted on the raw implied probability.
+_p_even = _oa._anytime_point("-110")
+check("an even-money price converts above its raw probability",
+      _p_even is not None and _p_even > 0.50,
+      f"-110 -> {_p_even}")
+
+# Non-player outcomes must never reach the board as selectable players.
+check('"No Scorer" is classed as a non-player outcome',
+      "no scorer" in _oa.NON_PLAYER_OUTCOMES)
+check("a real name containing a listed word is not dropped",
+      "fielder jones" not in _oa.NON_PLAYER_OUTCOMES)
+
+# Unusable prices must return None rather than a wrong number.
+for _bad_price in (None, "", "abc", 0):
+    check(f"rejects an unusable price ({_bad_price!r})",
+          _oa._anytime_point(_bad_price) is None)
+
+
 print(f"{'FAILED: ' + ', '.join(failures) if failures else 'all checks passed'}")
 sys.exit(1 if failures else 0)

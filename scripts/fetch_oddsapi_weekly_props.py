@@ -163,6 +163,14 @@ ALL_MARKETS = {
     "player_anytime_td":  "any_tds",
 }
 
+# Outcomes in a player-prop market that are not players. Anytime TD carries
+# "No Scorer" (nobody scores in the game); the others are defensive against
+# shapes other books use for the same idea.
+NON_PLAYER_OUTCOMES = {
+    "no scorer", "no touchdown scorer", "no touchdown", "none",
+    "any other player", "other", "field",
+}
+
 DEFAULT_MARKETS = list(ALL_MARKETS)
 
 _requested = os.environ.get("ODDS_API_MARKETS", "").strip()
@@ -309,6 +317,13 @@ def main() -> None:
                     player = (oc.get("description") or "").strip()
                     point = oc.get("point")
                     if not player:
+                        continue
+                    # The anytime-TD market includes outcomes that are not people:
+                    # "No Scorer" is the no-touchdown-in-the-game selection. Left
+                    # in, it becomes a selectable "player" in the board's search
+                    # box. Matched exactly rather than by substring so a real name
+                    # containing one of these words is not dropped.
+                    if player.casefold() in NON_PLAYER_OUTCOMES:
                         continue
                     oc_name = (oc.get("name") or "").lower()
                     # Anytime TD is a yes/no market: no over/under number, and the
