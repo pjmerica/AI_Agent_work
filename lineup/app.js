@@ -932,8 +932,16 @@
         const k = normPlayerName(p.name);
         let rec = merged.get(k);
         if (!rec) { rec = { name: p.name, matchup: p.matchup, stats: {} }; merged.set(k, rec); }
+        // DraftKings wins over the Odds API fallback. The merge order is
+        // weekly -> oddsapi -> dk, and oddsapi now also carries anytime_td (added
+        // because DraftKings 403s GitHub runners, so it cannot refresh
+        // unattended). A plain "only if empty" guard would therefore let the
+        // fallback beat the real book price purely because it is merged first.
+        // DK's number is a book quote for exactly this market, so it overrides --
+        // but only when it is for a game on the current slate, which the caller
+        // has already filtered.
         const cur = rec.stats.any_tds;
-        if (!cur || cur.line == null) {
+        if (!cur || cur.line == null || cur.lineSource !== "dk-td") {
           rec.stats.any_tds = { line: p.xTD, lineSource: "dk-td", odds: p.americanOdds };
         }
       }

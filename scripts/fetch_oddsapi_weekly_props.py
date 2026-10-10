@@ -19,6 +19,11 @@ remaining quota is read back from response headers and printed.
 """
 from __future__ import annotations
 
+# fetch_dk_td_scorers lives beside this file; importing its TD conversion
+# keeps the two sources in the same units. See _anytime_point().
+import os as _os, sys as _sys
+_sys.path.insert(0, _os.path.dirname(_os.path.abspath(__file__)))
+
 import json
 import os
 import sys
@@ -48,6 +53,56 @@ TEAM_ABBR = {
 }
 
 
+
+# Anytime touchdown: turn a book price into an EXPECTED touchdown count.
+#
+# The board multiplies any_tds by 6 and its comment says the value is an expected
+# count, so a raw P(scores at least one) would understate every goal-line back who
+# can score twice. DraftKings already solves this -- it stores impliedProb AND the
+# converted xTD, and the app reads xTD -- so this source has to arrive in the same
+# units.
+#
+# The conversion itself is imported from fetch_dk_td_scorers rather than copied.
+# tests/td_conversion.test.py fits and guards the blend constant against live
+# Kalshi prices; a second implementation would escape that test and could drift
+# from the one it validates.
+def _anytime_point(price):
+    """American odds -> expected TDs, or None if the price is unusable."""
+    if price is None:
+        return None
+    try:
+        odds = float(price)
+    except (TypeError, ValueError):
+        return None
+    if odds == 0:
+        return None
+    # American odds to implied probability, including the book's vig.
+    prob = (-odds / (-odds + 100.0)) if odds < 0 else (100.0 / (odds + 100.0))
+    if not (0.0 < prob < 1.0):
+        return None
+    # Flat de-vig haircut. Anytime-TD is a set of independent yes/no bets rather
+    # than one exclusive market, so the board legitimately sums above 1.0 and
+    # normalising would be wrong; the observed hold on two-way NFL props is ~4-6%.
+    # This mirrors the constant in fetch_dk_td_scorers.py -- the one number
+    # duplicated between the two sources, so retuning it means editing both.
+    VIG = 0.94
+    try:
+        from fetch_dk_td_scorers import expected_tds
+    except ImportError:
+        # Should not happen -- the file sits beside this one and sys.path is set
+        # above -- but a missing import must not silently produce wrong units.
+        print("  WARNING: cannot import expected_tds; skipping anytime_td",
+              file=sys.stderr)
+        return None
+    # Convert, THEN de-vig, matching fetch_dk_td_scorers.py. The Poisson relation
+    # holds between a probability and a count, so the conversion takes the QUOTED
+    # probability and the vig is a haircut on the result. The other order also
+    # applies POISSON_SHARE to a de-vigged value when it was fitted on the raw
+    # one, which that file records as costing 0.12 of a fantasy point on
+    # goal-line backs.
+    return round(expected_tds(prob) * VIG, 4)
+
+
 def abbr(team: str) -> str:
     return TEAM_ABBR.get(team, (team or "")[:3].upper())
 
@@ -60,8 +115,10 @@ MAX_EVENTS = 20
 # the API sells no season-long player props (checked 2026-08/09).
 #
 # Billing is one credit per event PER MARKET, so the market list is the main
-# cost dial: 5 markets x 16 events = 80 credits a pull, which exhausts a
-# 500-credit month in six refreshes.
+# cost dial: 6 markets x 16 events = 96 credits a pull, which exhausts a
+# 500-credit month in five refreshes. On the 20K tier a real run measured 36
+# credits with five markets; the sixth takes that to roughly 43, or ~345 a week
+# across the eight scheduled runs.
 #
 # Measured against a complete pull (2026-09-06, 171 players) versus what Kalshi
 # already prices for the same slate, the marginal coverage each market buys is:
@@ -74,7 +131,7 @@ MAX_EVENTS = 20
 #
 # The default is every market. This was briefly trimmed to three when the free
 # 500-credit tier ran dry mid-pull, but the account is now on the 20K tier: a
-# five-market pull over sixteen games is 80 credits, which is 0.4% of a month.
+# six-market pull over sixteen games is 96 credits, which is 0.5% of a month.
 #
 # The trim had a real cost. Kalshi is the only other source for passing, and its
 # ladders are often a single rung -- Drake Maye's pass_yds came back as one
@@ -89,6 +146,21 @@ ALL_MARKETS = {
     "player_rush_yds":    "rush_yds",
     "player_reception_yds": "rec_yds",
     "player_receptions":  "receptions",
+    # Anytime touchdown. Added 2026-10-10 because the only other source for this
+    # stat is DraftKings, which cannot run unattended: the identical request
+    # returns 200 from a home connection and 403 from a GitHub runner, so it is
+    # IP-based blocking of datacenter ranges and no header change fixes it. That
+    # left the board with no touchdown prices for nine days at a stretch.
+    #
+    # NOTE: this is P(scores at least one TD), not an expected count -- the same
+    # quantity DraftKings posts. It must go through the same conversion before
+    # being multiplied by 6; see expected_tds() in fetch_dk_td_scorers.py and
+    # tests/td_conversion.test.py.
+    # Maps to any_tds, NOT a new key. The app stores oddsapi stat keys verbatim
+    # and computes points from `any_tds` (lineup/app.js does any_tds * 6), so a
+    # key of "anytime_td" would be carried into the row and then never read --
+    # present in the file, invisible on the board.
+    "player_anytime_td":  "any_tds",
 }
 
 DEFAULT_MARKETS = list(ALL_MARKETS)
@@ -236,10 +308,24 @@ def main() -> None:
                 for oc in (mkt.get("outcomes") or []):
                     player = (oc.get("description") or "").strip()
                     point = oc.get("point")
-                    if not player or point is None:
+                    if not player:
                         continue
-                    if (oc.get("name") or "").lower() != "over":
-                        continue
+                    oc_name = (oc.get("name") or "").lower()
+                    # Anytime TD is a yes/no market: no over/under number, and the
+                    # outcome is named "Yes" rather than "Over". Without this
+                    # branch the filters below drop every quote and the market
+                    # contributes nothing while the run still reports success.
+                    if stat == "any_tds":
+                        if oc_name != "yes":
+                            continue
+                        point = _anytime_point(oc.get("price"))
+                        if point is None:
+                            continue
+                    else:
+                        if point is None:
+                            continue
+                        if oc_name != "over":
+                            continue
                     rec = rows.setdefault((player, eid), {
                         "name": player,
                         "kickoff": kickoff,

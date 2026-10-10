@@ -91,11 +91,30 @@ setTimeout(() => {
   console.log("");
   console.log("=== typing shows suggestions, Enter adds the top hit ===");
   const $in = $("roster-search");
-  $in.value = "lamb";
+  // Pick a prefix from a player the board actually loaded this week, rather than
+  // hardcoding a name. "lamb" used to be hardcoded here and broke the moment
+  // Dallas hit its bye: Lamb was in neither weekly.json nor oddsapi.json, so the
+  // test failed for reasons that said nothing about the search code. Bijan
+  // Robinson, Cam Ward and Trey McBride rotted the same way earlier.
+  const pool = window.__testPool
+    ? window.__testPool()
+    : (() => {
+        // Fall back to reading the loaded market data the page already holds.
+        const wk = JSON.parse(fs.readFileSync(
+          path.join(ROOT, "nfl-props/weekly.json"), "utf8"));
+        return (wk.players || []).map((x) => x.name);
+      })();
+  check("there are players loaded to search", pool.length > 20, pool.length + " players");
+  // A surname long enough to be a meaningful prefix, from a player on the slate.
+  const sample = pool.find((n) => (n.split(" ").pop() || "").length >= 5)
+    || pool[0] || "";
+  const needle = (sample.split(" ").pop() || sample).slice(0, 4).toLowerCase();
+  $in.value = needle;
   $in.dispatchEvent(new window.Event("input", { bubbles: true }));
   const sugg = $("roster-suggestions");
   const items = sugg.querySelectorAll("[data-key]");
-  check("suggestions appeared", items.length > 0, items.length + " items");
+  check("suggestions appeared", items.length > 0,
+    items.length + ` items for "${needle}" (from "${sample}")`);
   check("suggestion list is visible", sugg.style.display !== "none", sugg.style.display);
   const first = items.length ? items[0].textContent.trim() : "";
   const ev = new window.KeyboardEvent("keydown", { key: "Enter", bubbles: true });
