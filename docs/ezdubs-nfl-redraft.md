@@ -82,10 +82,22 @@ rather than implying the numbers are complete, and it warns outright when the
 props describe a week that has already been played.
 
 One upstream caveat worth knowing: `dk_td.json` only refreshes from a **local**
-run, because DraftKings blocks GitHub Actions runners (403). It can therefore be
-staler than its siblings. The page handles this — it drops touchdown entries
-whose game is not on the current board, and the coverage banner says when the
-whole file has aged out — but a pull workflow will inherit whatever the source
+run, because DraftKings blocks GitHub Actions runners (403 — confirmed by the
+identical request returning 200 from a home connection and 403 from a runner, so
+it is the source IP, not the headers). It can therefore be staler than its
+siblings.
+
+Since 2026-10-10 that no longer costs the board the stat. The Odds API also
+carries `player_anytime_td` and runs fine on CI, so `oddsapi.json` supplies
+touchdown prices unattended and DraftKings is preferred only when someone has
+run it locally. Both arrive as an EXPECTED touchdown count rather than
+P(scores at least one), via the same conversion — see `expected_tds()` in
+`scripts/fetch_dk_td_scorers.py`, which `tests/td_conversion.test.py` checks
+against all 432 DraftKings prices.
+
+The page still handles a stale DraftKings file: it drops touchdown entries whose
+game is not on the current board, and says so rather than leaving the prices
+silently missing. A pull workflow will inherit whatever the source
 repo last committed.
 
 ## What the port changed in this repo
