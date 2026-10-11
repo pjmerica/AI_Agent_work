@@ -145,6 +145,77 @@ const TEAMS=["ARI","ATL","BAL","BUF","CAR","CHI","CIN","CLE","DAL","DEN","DET","
     mean(rows.map(r=>r.actual)).toFixed(2)+" vs "+mean(rows.map(r=>r.model)).toFixed(2));
   assert("no defense projects negative", rows.every(r=>r.model>0));
   console.log("");
+  // ---- the terms the component checks above do not cover -------------------
+  //
+  // dstPoints() hardcodes an interception/fumble split and four rare-event
+  // rates. Measured over the 2026 season to date (128 team-games):
+  //
+  //     int/fum split  0.619/0.381   model 0.58/0.42
+  //     def_td         0.0625/game   model 0.08    (8 events)
+  //     def_st_td      0.0078/game   model 0.04    (1 event)
+  //     safe           0.0078/game   model 0.035   (1 event)
+  //     blk_kick       0.0781/game   model 0.05    (10 events)
+  //
+  // Total effect is +0.27 fantasy points per defense per game and the terms
+  // partly cancel. None are retuned here: def_st_td and safe rest on one event
+  // each, with a standard error as large as the gap, so a new constant would be
+  // fitting noise. The split is worth zero points whenever interceptions and
+  // fumble recoveries pay the same, which is the default.
+  //
+  // These assert the constants stay defensible, so nobody can quietly put a 0.5
+  // def_td rate in and inflate every defense. Wide on purpose: they catch a
+  // mistake, not a drift.
+  const src2 = src;
+  const num = (re, what) => {
+    const m = src2.match(re);
+    if (!m) { assert("could not read " + what, false, String(re)); return null; }
+    return Number(m[1]);
+  };
+
+  const intShare = num(/const ints = vol\.takeaways \* ([\d.]+);/, "the interception share");
+  const fumShare = num(/const fums = vol\.takeaways \* ([\d.]+);/, "the fumble share");
+  if (intShare != null && fumShare != null) {
+    assert("the takeaway split sums to 1",
+      Math.abs(intShare + fumShare - 1) < 0.001,
+      `${intShare} + ${fumShare} = ${(intShare + fumShare).toFixed(3)}`);
+    // Interceptions outnumber fumble recoveries every season; measured 0.62 here.
+    assert("interceptions are the larger share, and plausibly so",
+      intShare > 0.5 && intShare < 0.72, String(intShare));
+  }
+
+  const defTd = num(/pts \+= ([\d.]+) \* n\("def_td", 6\);/, "the def_td rate");
+  const stTd = num(/pts \+= ([\d.]+) \* n\("def_st_td", 6\);/, "the def_st_td rate");
+  const safe = num(/pts \+= ([\d.]+) \* n\("safe", 2\)/, "the safety rate");
+  const blk = num(/pts \+= ([\d.]+) \* n\("blk_kick", 2\);/, "the blocked-kick rate");
+
+  // A defensive touchdown happens roughly once every 12-20 team-games. Anything
+  // outside this range is a typo, not a tuning choice.
+  if (defTd != null) {
+    assert("def_td rate is in the right order of magnitude",
+      defTd > 0.02 && defTd < 0.15, String(defTd));
+  }
+  if (stTd != null) {
+    assert("def_st_td rate is in the right order of magnitude",
+      stTd > 0.004 && stTd < 0.10, String(stTd));
+  }
+  if (safe != null) {
+    assert("safety rate is in the right order of magnitude",
+      safe > 0.004 && safe < 0.08, String(safe));
+  }
+  if (blk != null) {
+    assert("blocked-kick rate is in the right order of magnitude",
+      blk > 0.01 && blk < 0.15, String(blk));
+  }
+
+  // The four rare events together should never dominate a projection. At
+  // standard scoring they are worth well under a point; if a future edit makes
+  // them a large share, something is wrong.
+  if (defTd != null && stTd != null && safe != null && blk != null) {
+    const rarePts = defTd * 6 + stTd * 6 + safe * 2 * 0.5 + blk * 2;
+    assert("rare events contribute under 1.5 points combined",
+      rarePts < 1.5, `${rarePts.toFixed(3)} points`);
+  }
+
   console.log(fail?fail+" failed":"all checks passed");
   process.exit(fail?1:0);
 })();
