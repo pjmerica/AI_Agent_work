@@ -119,17 +119,17 @@ def nfl_dropdown(prefix: str, active: str | None) -> str:
     rd_active = active in PAGES
     btn_active = " has-active" if (bb_active or rd_active) else ""
     return f"""            <div class="nav-dd">
-                <button type="button" class="nav-dd-btn{btn_active}">NFL <span class="caret">▾</span></button>
+                <button type="button" class="nav-dd-btn{btn_active}">NFL <span class="caret" aria-hidden="true">▾</span></button>
                 <div class="nav-dd-menu">
                     <div class="nav-dd-sub">
-                        <button type="button" class="nav-dd-sub-btn{' has-active' if bb_active else ''}">Best Ball <span class="caret">▸</span></button>
+                        <button type="button" class="nav-dd-sub-btn{' has-active' if bb_active else ''}">Best Ball <span class="caret" aria-hidden="true">▸</span></button>
                         <div class="nav-dd-sub-menu">
                             <a href="{prefix}best-ball-prices/"{cls('best-ball-prices')}>Price Differences</a>
                             <a href="{prefix}best-ball-history/"{cls('best-ball-history')}>History Risers/Fallers</a>
                         </div>
                     </div>
                     <div class="nav-dd-sub">
-                        <button type="button" class="nav-dd-sub-btn{' has-active' if rd_active else ''}">Redraft/In-Season <span class="caret">▸</span></button>
+                        <button type="button" class="nav-dd-sub-btn{' has-active' if rd_active else ''}">Redraft/In-Season <span class="caret" aria-hidden="true">▸</span></button>
                         <div class="nav-dd-sub-menu">
                             <a href="{prefix}nfl-start-sit/"{cls('nfl-start-sit')}>Start/Sit</a>
                             <a href="{prefix}nfl-rooting/"{cls('nfl-rooting')}>Root For/Against</a>
@@ -209,7 +209,17 @@ def lift_nav(dest: Path) -> str | None:
                   donor.read_text(encoding="utf-8"))
     if not m:
         return None
-    return m.group(0).replace(' class="active"', "").replace(" has-active", "")
+    nav = m.group(0).replace(' class="active"', "").replace(" has-active", "")
+    # Repair carets missing aria-hidden before this nav is copied to every page.
+    #
+    # This script rewrites the donor page BEFORE lifting the nav from it, so a
+    # caret built without the attribute propagates to all eight pages. That
+    # happened on 2026-10-10: 24 carets lost aria-hidden and each page dropped
+    # from four marked carets to one. The caret is decoration beside a text label
+    # that is itself the control, so marking it hidden is what stops a screen
+    # reader announcing a bare glyph.
+    nav = re.sub(r'<span class="caret">', '<span class="caret" aria-hidden="true">', nav)
+    return nav
 
 
 def lift_style(dest: Path) -> str | None:
