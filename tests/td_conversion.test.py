@@ -62,9 +62,37 @@ dk_file = ROOT / "nfl-props" / "dk_td.json"
 if wk_file.exists() and dk_file.exists():
     wk = json.loads(wk_file.read_text(encoding="utf-8"))
     dkj = json.loads(dk_file.read_text(encoding="utf-8"))
+    # Only compare games that have NOT kicked off. A Kalshi market for a
+    # finished game resolves to the outcome rather than a probability, so
+    # comparing a pre-kickoff conversion against it asks "did he score?" and not
+    # "was the conversion right?". On a Monday that is most of the board: 275 of
+    # 302 rows on 2026-10-12, 95 of them visibly settled.
+    #
+    # Kickoff comes from gamelines.json, which carries real timestamps.
+    # weekly.json's own `kickoff` is a DAY CODE like "26OCT11" and must not be
+    # parsed as a date -- Date.parse and dateutil both accept it and return a
+    # date in 2011.
+    import datetime as _dt
+    _gl_file = ROOT / "nfl-props" / "gamelines.json"
+    _upcoming = set()
+    if _gl_file.exists():
+        _gl = json.loads(_gl_file.read_text(encoding="utf-8"))
+        _now = _dt.datetime.now(_dt.timezone.utc)
+        for _g in _gl.get("games", []):
+            _k = _g.get("kickoff")
+            if not _k:
+                continue
+            try:
+                _t = _dt.datetime.fromisoformat(str(_k).replace("Z", "+00:00"))
+            except ValueError:
+                continue
+            if _t > _now and _g.get("matchup"):
+                _upcoming.add(_g["matchup"])
+
     kal = {norm(p["name"]): p["stats"]["any_tds"]["line"]
            for p in wk["players"]
-           if (p.get("stats", {}).get("any_tds") or {}).get("line") is not None}
+           if (p.get("stats", {}).get("any_tds") or {}).get("line") is not None
+           and (not _upcoming or p.get("matchup") in _upcoming)}
     pairs = [(p["impliedProb"], p["xTD"], kal[norm(p["name"])])
              for p in dkj["players"] if norm(p["name"]) in kal]
 
