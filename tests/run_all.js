@@ -23,7 +23,14 @@ const ROOT = path.resolve(TESTS_DIR, "..");
 const offline = process.argv.includes("--offline");
 
 // These reach the live Sleeper / Pages endpoints.
-const NETWORK = new Set(["live_smoke.test.js", "kicker_model.test.js"]);
+const NETWORK = new Set([
+  "live_smoke.test.js",
+  "kicker_model.test.js",
+  // dst_model fetches Sleeper's state plus one stats call per completed week.
+  // It was missing here, so `--offline` -- which CI uses precisely so a third
+  // party being down cannot turn the build red -- still made 6+ live calls.
+  "dst_model.test.js",
+]);
 
 // Needs real Chrome, which not every machine has, and is slow because it launches
 // a browser per page per width. CI runs it as its own step with Chrome installed,

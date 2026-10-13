@@ -9,8 +9,10 @@ name: Tests
 # resolved by accident from a parent directory. Running it from a clean checkout
 # is what keeps that honest.
 #
-# --offline skips live_smoke.test.js, which hits the Sleeper API and the Pages
-# site. A third party being down should not turn this red.
+# --offline skips the three suites that reach a third party: live_smoke (the
+# Pages site) and the kicker/D-ST backtests (live Sleeper stats). A third party
+# being down should not turn this red. The two backtests still run, in their own
+# non-fatal step below, so they are not silently dropped.
 on:
   push:
     branches: [master]
@@ -18,6 +20,12 @@ on:
       - 'lineup/**'
       - 'nfl-props/**'
       - 'books/**'
+      # The suites import three scrapers directly -- collapse_guard covers the
+      # Kalshi and Odds API collapse floors, td_conversion the anytime-TD
+      # conversion. Without this path they were edited and pushed without ever
+      # running the tests that cover them, which is how this session changed
+      # fetch_oddsapi_weekly_props.py with no CI run against it.
+      - 'scripts/**'
       - 'tests/**'
       - 'package.json'
       - '.github/workflows/tests.yml'
@@ -52,3 +60,33 @@ jobs:
         run: node tests/mobile_layout.test.js
         env:
           CHROME_BIN: ${{ steps.chrome.outputs.chrome-path }}
+
+      # The model backtests read live Sleeper stats, so --offline leaves them
+      # out of the step above and they need their own. Non-fatal on purpose:
+      # Sleeper being unreachable is not a defect in this repo, and these two
+      # are the only suites that depend on a third party.
+      #
+      # They still speak up. dst_model exits 1 under CI when the stats exist but
+      # no game lines are posted, rather than skipping quietly -- a scheduled run
+      # that verifies nothing is the thing worth knowing about. Read the outcome
+      # in the summary below, because a red cross here does not fail the job.
+      - name: Backtest the kicker and D/ST models (non-fatal)
+        id: backtests
+        continue-on-error: true
+        run: |
+          node tests/kicker_model.test.js
+          node tests/dst_model.test.js
+
+      - name: Report the backtest outcome
+        if: always()
+        run: |
+          {
+            echo "### Model backtests"
+            echo ""
+            echo "outcome: \`${{ steps.backtests.outcome }}\`"
+            echo ""
+            if [ "${{ steps.backtests.outcome }}" != "success" ]; then
+              echo "Non-fatal, but worth a look: either Sleeper was unreachable"
+              echo "or a model baseline drifted. The step log has the numbers."
+            fi
+          } >> "$GITHUB_STEP_SUMMARY"

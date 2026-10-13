@@ -61,7 +61,16 @@ const TEAMS=["ARI","ATL","BAL","BUF","CAR","CHI","CIN","CLE","DAL","DEN","DET","
       if (j && Object.keys(j).length) weeks.push({week:w, stats:j});
     } catch { /* skip a week Sleeper will not serve */ }
   }
-  if (!weeks.length) { console.error("no completed weeks available"); process.exit(1); }
+  if (!weeks.length) {
+    // Distinguish "Sleeper is unreachable" from "the model is wrong". Exiting 1
+    // here turned a third-party outage into a red build -- the opposite of what
+    // tests.yml's --offline is for. There is nothing to verify either way, so
+    // this is a skip that names the reason; run_all's NETWORK set keeps it out
+    // of the offline run altogether.
+    console.log("SKIP: Sleeper returned no completed weeks (unreachable, or "
+      + "the season has not started) -- the DST model was NOT verified");
+    process.exit(0);
+  }
   console.log("backtesting "+season+" weeks 1-"+week+
               " ("+weeks.length+" completed), components vs pooled actuals");
   const st=weeks[weeks.length-1].stats;
