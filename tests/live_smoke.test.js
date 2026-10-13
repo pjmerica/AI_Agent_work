@@ -21,10 +21,38 @@ async function getText(url){
   return {ok:r.ok,status:r.status,text:buf.toString("utf8")};
 }
 const BASE="https://pjmerica.github.io/AI_Agent_work/";
+// Probe something the DATA renders, never static markup.
+//
+// lineup and board both counted ".view-tab", which is in index.html whether or
+// not a single byte of data arrived. Verified by stubbing every fetch to 404:
+// both still reported ok with nothing rendered. Only books caught it, because
+// it counts real table rows.
+//
+// Each probe below was chosen by measuring it BOTH ways -- live, and with every
+// fetch 404'd -- and keeping only the ones that collapse to zero without data:
+//
+//            selector                    live    no data
+//   books    table tbody tr               195  ->  0
+//   board    table tbody tr               424  ->  0
+//   lineup   .player-tag after demo click    9  ->  0
+//
+// Checkboxes looked like the obvious signal and are not: lineup goes 10 -> 9 and
+// board 6 -> 6, because most are static filter controls built unconditionally.
+//
+// lineup renders no rows on load (it needs a roster), so its probe clicks "load
+// example" first. Rows stay 0 there even with data once every game has kicked
+// off -- the Sit/Start tab withholds started players by design -- so it counts
+// the roster chips, which appear only if the player feed parsed.
 const PAGES=[
-  {name:"lineup", path:"lineup/", probe:(w)=>w.document.querySelectorAll(".view-tab").length},
-  {name:"books",  path:"books/",  probe:(w)=>w.document.querySelectorAll("table.board tbody tr").length},
-  {name:"board",  path:"nfl-props/", probe:(w)=>w.document.querySelectorAll(".view-tab").length},
+  {name:"lineup", path:"lineup/", probe:async(w)=>{
+     const d=w.document.getElementById("roster-demo");
+     if (d) { d.click(); await new Promise(r=>setTimeout(r,2500)); }
+     return w.document.querySelectorAll(".player-tag").length;
+   }},
+  {name:"books",  path:"books/",
+   probe:async(w)=>w.document.querySelectorAll("table.board tbody tr").length},
+  {name:"board",  path:"nfl-props/",
+   probe:async(w)=>w.document.querySelectorAll("table tbody tr").length},
 ];
 let failures=0;
 
@@ -56,12 +84,15 @@ let failures=0;
       window.document.body.appendChild(el);
     } catch(e){ console.log(p.name+": FATAL "+e.message); continue; }
     await new Promise(r=>setTimeout(r,3500));
-    let n=0; try{ n=p.probe(window); }catch(e){}
+    let n=0; try{ n=await p.probe(window); }catch(e){}
+    // Reported, not asserted: a stale-data note is information about the feed,
+    // not a defect in the page. It was computed and then never read at all.
     const stale=window.document.querySelectorAll(".stale-note").length;
     const ok = n > 0 && errors.length === 0;
     if (!ok) failures++;
     console.log((ok?"  ok    ":"  FAIL  ")+p.name.padEnd(8)+
-      "probe="+String(n).padStart(4)+"  errors="+errors.length);
+      "probe="+String(n).padStart(4)+"  errors="+errors.length+
+      (stale?"  stale-notes="+stale:""));
     errors.slice(0,3).forEach(e=>console.log("        "+e));
   }
   console.log("");
