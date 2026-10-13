@@ -39,8 +39,17 @@ on:
     - cron: '0 23 * * 4'     # Thu  7:00pm ET — before TNF; biggest jump of the week
     - cron: '0 14 * * 5'     # Fri 10:00am ET
     - cron: '0 14 * * 6'     # Sat 10:00am ET
-    - cron: '0 14 * * 0'     # Sun 10:00am ET — pre-kickoff
-    - cron: '0 16 * * 0'     # Sun 12:00pm ET — last look before the 1pm games
+    # Sunday is scheduled against MEASURED cron lag, not the nominal time.
+    # GitHub's free-tier scheduler ran these 38 min to 6.7 h late over 8 observed
+    # runs (median 3.8 h), so a slot needs hours of headroom, not one.
+    #
+    # The 1pm ET games kick off at 17:00 UTC (week 5's earliest was 17:02:30Z).
+    # Against the measured lag the old slots beat that in 3/8 (14:00) and 2/8
+    # (16:00) runs -- on 10-11 they fired at 18:35 and 19:46, i.e. 1.6 h and
+    # 2.8 h AFTER kickoff, so the "last look before the 1pm games" was a look at
+    # games already under way. 06:00 and 10:00 clear it in 8/8.
+    - cron: '0 6 * * 0'      # Sun ~2:00am ET nominal — early pass, lands pre-noon
+    - cron: '0 10 * * 0'     # Sun ~6:00am ET nominal — last look; 8/8 beat kickoff
   workflow_dispatch:   # also runnable by hand from the Actions UI
     inputs:
       multiweek:
