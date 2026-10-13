@@ -13,6 +13,26 @@ const ROOT = process.env.REPO_ROOT || process.cwd();
 const html = fs.readFileSync(path.join(ROOT, "lineup/index.html"), "utf8");
 const appSrc = fs.readFileSync(path.join(ROOT, "lineup/app.js"), "utf8");
 
+// Push every kickoff into the future, keeping the real prices, teams and
+// matchups. Nothing else about the data is touched.
+//
+// Without this the test is a calendar lottery. The Sit/Start tab now withholds
+// any player whose game has kicked off (kickoff_lock.test.js), so once the
+// week's last game ends the demo roster is entirely "already under way", the
+// slot table is correctly empty, and the two assertions that a <table> rendered
+// fail -- with nothing wrong in the page. That is what happened on 2026-10-13
+// with week 5 complete and week 6 lines not yet posted.
+//
+// Only the clock is faked, so this still exercises the real rendering path
+// rather than asserting against a fixture.
+function withFutureKickoffs(name, data) {
+  if (name !== "gamelines.json" || !data || !Array.isArray(data.games)) return data;
+  const soon = new Date(Date.now() + 3 * 24 * 3600 * 1000).toISOString();
+  return Object.assign({}, data, {
+    games: data.games.map((g) => Object.assign({}, g, { kickoff: soon })),
+  });
+}
+
 // Serve ../nfl-props/*.json off disk instead of over the network.
 const dataDir = path.join(ROOT, "nfl-props");
 function fakeFetch(url) {
@@ -21,7 +41,8 @@ function fakeFetch(url) {
   if (fs.existsSync(file)) {
     return Promise.resolve({
       ok: true, status: 200,
-      json: () => Promise.resolve(JSON.parse(fs.readFileSync(file, "utf8"))),
+      json: () => Promise.resolve(withFutureKickoffs(name,
+        JSON.parse(fs.readFileSync(file, "utf8")))),
     });
   }
   // Sleeper and anything else: not exercised here.

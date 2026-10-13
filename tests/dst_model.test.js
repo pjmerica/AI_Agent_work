@@ -77,7 +77,27 @@ const TEAMS=["ARI","ATL","BAL","BUF","CAR","CHI","CIN","CLE","DAL","DEN","DET","
       takeaways:(a.int||0)+(a.fum_rec||0),
       mSack:m.detail.sacks, mTO:m.detail.takeaways, mOpp:m.oppImplied});
   }
-  if (!rows.length) { console.log("no completed week "+week+" data"); return; }
+  if (!rows.length) {
+    // A bare `return` here exited 0 and the runner counted this as a passing
+    // suite having checked nothing. That happened on Tue 2026-10-13: week 5 was
+    // over, week 6 lines were not posted yet, so gamelines had zero upcoming
+    // games and dstPoints() returned null for every team.
+    //
+    // The component checks genuinely cannot run without a live game line, so
+    // this is a SKIP rather than a failure -- but it has to say so out loud, and
+    // it must not be indistinguishable from a clean run. Under CI it fails,
+    // because a scheduled run that silently verifies nothing is the thing worth
+    // knowing about.
+    const why = "no live game lines (week " + week + " stats exist, but "
+      + "gamelines has no upcoming games -- between slates)";
+    if (process.env.CI) {
+      console.error("FAIL: " + why + ". Refusing to report a pass.");
+      process.exit(1);
+    }
+    console.log("SKIP: " + why);
+    console.log("the DST components were NOT verified by this run");
+    process.exit(0);
+  }
 
   const mean=(xs)=>xs.reduce((a,b)=>a+b,0)/xs.length;
   const sd=(xs)=>{const m=mean(xs);return Math.sqrt(mean(xs.map(x=>(x-m)**2)));};
@@ -90,7 +110,10 @@ const TEAMS=["ARI","ATL","BAL","BUF","CAR","CHI","CIN","CLE","DAL","DEN","DET","
       Math.max(...v).toFixed(1).padStart(7));
   }
   console.log("");
-  console.log("component reality check (actual vs what the model assumes):");
+  // These are THIS WEEK'S teams-with-a-line only, which is a small and biased
+  // sample -- useful to eyeball, but the assertions below use the pooled league.
+  console.log("component reality check, week "+week+" subset only "+
+    "(assertions below use the pooled league):");
   console.log("  sacks      actual mean "+mean(rows.map(r=>r.sacks)).toFixed(2)+
     "   model mean "+mean(rows.map(r=>r.mSack)).toFixed(2));
   console.log("  takeaways  actual mean "+mean(rows.map(r=>r.takeaways)).toFixed(2)+
@@ -128,8 +151,32 @@ const TEAMS=["ARI","ATL","BAL","BUF","CAR","CHI","CIN","CLE","DAL","DEN","DET","
     else{fail++;console.log("  FAIL  "+label+(detail?"   -> "+detail:""));}
   };
   console.log("");
-  const aSack=mean(rows.map(r=>r.sacks)), mSack=mean(rows.map(r=>r.mSack));
-  const aTO=mean(rows.map(r=>r.takeaways)), mTO=mean(rows.map(r=>r.mTO));
+  // Actual rates come from the POOLED league, not from this week's subset of
+  // teams that happen to have a game line. Averaging only those teams, against a
+  // single week, is biased twice over: with 13 games on the board it reported
+  // 2.92 actual sacks against a 2.25 model mean, while the true league rate over
+  // 158 team-games is 2.25 -- exactly the model. SCORE_SD was already pooled for
+  // this reason; these two were not.
+  //
+  // The MODEL side still comes from teams with a line, because dstVolume() needs
+  // a spread to produce a number at all.
+  const pooledSacks=[], pooledTOs=[];
+  for (const wk of weeks) {
+    for (const t of TEAMS) {
+      const a=wk.stats[t];
+      if (!a || a.pts_allow==null) continue;
+      pooledSacks.push(a.sack||0);
+      pooledTOs.push((a.int||0)+(a.fum_rec||0));
+    }
+  }
+  const aSack=pooledSacks.length?mean(pooledSacks):mean(rows.map(r=>r.sacks));
+  const mSack=mean(rows.map(r=>r.mSack));
+  const aTO=pooledTOs.length?mean(pooledTOs):mean(rows.map(r=>r.takeaways));
+  const mTO=mean(rows.map(r=>r.mTO));
+  if (pooledSacks.length) {
+    console.log("  pooled over "+pooledSacks.length+" team-games: sacks "
+      +aSack.toFixed(2)+"  takeaways "+aTO.toFixed(2));
+  }
   // Pooled, not single-week: see the comment above the fetch loop.
   const aSD=sd(pooledPtsAllow.length ? pooledPtsAllow : rows.map(r=>r.ptsAllow));
   const modelSD=Number(src.match(/const SCORE_SD = ([\d.]+)/)[1]);

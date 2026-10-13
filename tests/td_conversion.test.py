@@ -89,17 +89,35 @@ if wk_file.exists() and dk_file.exists():
             if _t > _now and _g.get("matchup"):
                 _upcoming.add(_g["matchup"])
 
+    # No `not _upcoming or ...` escape hatch here. That fallback defeated the
+    # whole filter precisely when it mattered most: between slates NOTHING is
+    # upcoming, so it admitted the entire settled board, pushed the count past
+    # the 150-pair floor and asserted against markets that had already resolved.
+    # That is how this test failed on 2026-10-13 with 253 "pairs" -- not a model
+    # regression, a sample made of finished games.
+    #
+    # Letting the sample go to zero is correct: the thin-sample guard below then
+    # reports the numbers without asserting, which is the honest outcome when
+    # there is no unplayed game to measure against.
     kal = {norm(p["name"]): p["stats"]["any_tds"]["line"]
            for p in wk["players"]
            if (p.get("stats", {}).get("any_tds") or {}).get("line") is not None
-           and (not _upcoming or p.get("matchup") in _upcoming)}
+           and p.get("matchup") in _upcoming}
     pairs = [(p["impliedProb"], p["xTD"], kal[norm(p["name"])])
              for p in dkj["players"] if norm(p["name"]) in kal]
 
     print()
     print(f"=== against Kalshi, {len(pairs)} players priced by both ===")
     if len(pairs) < 20:
-        print("  (too few pairs to judge; skipping)")
+        # Say WHY, and distinguish "between slates" from "the match broke".
+        # A bare "skipping" reads like a pass, which is how a silently-empty
+        # sample survives unnoticed.
+        if not _upcoming:
+            print("  SKIP: no game has an upcoming kickoff (between slates) -- "
+                  "the Kalshi comparison was NOT run")
+        else:
+            print(f"  SKIP: only {len(pairs)} pairs across "
+                  f"{len(_upcoming)} upcoming game(s) -- not enough to judge")
     else:
         raw_mae = statistics.mean(abs(ip - k) for ip, _, k in pairs)
         new_mae = statistics.mean(abs(x - k) for _, x, k in pairs)
