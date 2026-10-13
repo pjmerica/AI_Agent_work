@@ -85,3 +85,21 @@ if (worstCase) {
   console.log("  optimizer: " + worstCase.got.toFixed(1) +
     "   true best: " + worstCase.want.toFixed(1));
 }
+
+// Assert, rather than only reporting. Without this the suite could not fail:
+// it computed the shortfall, printed it, and exited 0 -- so an optimizer that
+// started missing the true optimum would have been counted among the passing
+// suites with the evidence sitting in the log.
+//
+// bestLineupForSlots is exact, so the bar is exact: any shortfall is a bug, not
+// drift. The tolerance is only for float noise.
+let fail = 0;
+const assert = (label, cond, detail) => {
+  if (cond) { console.log("  ok    " + label); }
+  else { fail++; console.log("  FAIL  " + label + (detail ? "   -> " + detail : "")); }
+};
+console.log("");
+assert("the trials actually ran", trials > 0, trials + " trials");
+assert("the optimizer always finds the true optimum", mismatches === 0,
+  mismatches + " of " + trials + " missed, worst " + worst.toFixed(2) + " points");
+process.exit(fail ? 1 : 0);
