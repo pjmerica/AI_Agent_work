@@ -11,8 +11,10 @@ name: Tests
 #
 # --offline skips the three suites that reach a third party: live_smoke (the
 # Pages site) and the kicker/D-ST backtests (live Sleeper stats). A third party
-# being down should not turn this red. The two backtests still run, in their own
-# non-fatal step below, so they are not silently dropped.
+# being down should not turn this red. None of the three is silently dropped:
+# the backtests run in their own non-fatal step, and live_smoke runs in the
+# `live` job on a daily schedule, against the deployed site rather than this
+# checkout.
 on:
   push:
     branches: [master]
@@ -33,8 +35,19 @@ on:
     branches: [master]
   workflow_dispatch:
 
+  # Once a day, check the DEPLOYED site rather than the checkout. Deliberately
+  # not part of the push job: Pages publishes asynchronously, so running it there
+  # would probe the PREVIOUS deployment and report on code that is no longer
+  # live. A schedule also catches the failure this cannot otherwise see -- a data
+  # refresh that stops committing, leaving the pages serving stale or absent
+  # feeds while every push-triggered run stays green.
+  schedule:
+    - cron: '0 13 * * *'
+
 jobs:
   widgets:
+    # The checkout suites have nothing to say about a scheduled run.
+    if: github.event_name != 'schedule'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -90,3 +103,17 @@ jobs:
               echo "or a model baseline drifted. The step log has the numbers."
             fi
           } >> "$GITHUB_STEP_SUMMARY"
+
+  # Is the published site actually serving data? Each probe counts something only
+  # the feeds can render, so an empty board fails rather than passing on markup.
+  live:
+    if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: npm install --no-audit --no-fund
+      - name: Smoke-test the published pages
+        run: node tests/live_smoke.test.js
