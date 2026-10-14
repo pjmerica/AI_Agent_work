@@ -275,3 +275,32 @@ eventually. `dist/chart.umd.js` is the real published file: byte-identical to th
 npm tarball, already minified, and smaller.
 
 **`run_all.js`** — not a suite. See **Running** above.
+
+---
+
+## Reading the feeds before calling something a bug
+
+Two traps cost wrong diagnoses in one session. Both look like missing data and
+are not.
+
+**`weekly.json` is Kalshi-scoped, not the whole slate.** It is written by
+`fetch_kalshi_weekly_props.py`, and its `week` and `kickoffs` are derived from
+whichever markets Kalshi has listed (`kickoffs = sorted({r["kickoff"] ...})`).
+A game Kalshi has not opened is absent from it even when books are pricing that
+game heavily — on 2026-10-14, WAS@SF had 30 players and an 11-book gameline in
+`oddsapi.json` while `weekly.json` had none of them, and `kickoffs` listed only
+two of week 6's four game days. The pages read **both** feeds and merge them, so
+those players still appear. Judge coverage from `oddsapi.json` plus
+`gamelines.json`, never from `weekly.json` alone.
+
+**`gamelines.json` carries more than one week.** On 2026-10-14 it held 28 games:
+14 for week 6 and 14 for week 7, whose lines are posted long before any player
+props open. "28 upcoming games, 13 with players" is the normal mid-week state,
+not a 15-game hole. Split on kickoff date before computing coverage.
+
+**A player missing from the books board is usually the TD-only filter.**
+`hideTdOnly` defaults to `true` and `visibleRows` drops any row whose only
+consensus market is `any_tds`. On a Wednesday most of the board is TD-only — 330
+of 438 players on 2026-10-14 — so a star absent from `books/` is the expected
+state, not a scrape failure. Check the player's market list in `oddsapi.json`
+first. This is what made `books_interact.test.js` fail on a hardcoded name.
