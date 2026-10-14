@@ -49,15 +49,35 @@ setTimeout(async()=>{
   $("search").dispatchEvent(new window.Event("input",{bubbles:true}));
   const both=rows();
   check("TE + search narrows to few rows", both>0 && both<=3, both+" rows");
-  // Now a search that cannot match the position filter.
-  $("search").value="josh allen";
+  // Now a search that cannot match the position filter: a real QB, taken off
+  // the board for the same reason as above. This was hardcoded to "josh allen"
+  // -- directly against the comment four lines up -- and broke at the week 6
+  // rollover.
+  //
+  // He had not vanished from the data: he is in oddsapi.json priced by two
+  // books. But his ONLY market that week was any_tds, which makes him a
+  // "TD only" row, and the TD-only filter is on by default (hideTdOnly = true),
+  // so visibleRows drops him. The page was right; the test's assumption that a
+  // given name is always on the board was not. Whether a particular player has
+  // more than one market open is a property of the week, not of the code.
+  pb("QB").click();
+  $("search").value = "";
+  $("search").dispatchEvent(new window.Event("input",{bubbles:true}));
+  const qbName = (() => {
+    const e = window.document.querySelector("table.board tbody .col-player");
+    return e ? e.textContent.replace(/TD only/, "").trim().split(/\s+/).pop() : "";
+  })();
+  check("there is a QB on the board to search for", !!qbName, qbName || "(none)");
+  pb("TE").click();
+  $("search").value = qbName.toLowerCase();
   $("search").dispatchEvent(new window.Event("input",{bubbles:true}));
   check("QB name under TE filter yields nothing, with a message",
     rows()===0 && /No players match/i.test($("output").textContent),
     rows()+" rows: "+$("output").textContent.trim().slice(0,50));
   pb("ALL").click();
-  check("switching to ALL finds him again", rows()>0 && /Allen/i.test(first()),
-    first().slice(0,50));
+  check("switching to ALL finds him again",
+    rows()>0 && new RegExp(qbName, "i").test(first()),
+    "looking for "+qbName+" in: "+first().slice(0,50));
   $("search").value="";
   $("search").dispatchEvent(new window.Event("input",{bubbles:true}));
 
