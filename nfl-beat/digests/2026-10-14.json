@@ -1,15 +1,15 @@
 {
-  "generated": "2026-10-14T20:25:17.011827+00:00",
+  "generated": "2026-10-14T23:36:26.523958+00:00",
   "stats": {
-    "n_items": 620,
-    "n_players": 118,
-    "n_unpriced": 86,
+    "n_items": 613,
+    "n_players": 126,
+    "n_unpriced": 93,
     "by_source": {
       "Bluesky @minakimes.bsky.social": 33,
-      "Bluesky @rapsheet.bsky.social": 15,
+      "Bluesky @rapsheet.bsky.social": 13,
       "Bluesky @jourdanrodrigue.bsky.social": 5,
       "Bluesky @lateroundqb.bsky.social": 40,
-      "Bluesky @sethwalder.bsky.social": 6,
+      "Bluesky @sethwalder.bsky.social": 2,
       "Bluesky @nateatkins.bsky.social": 40,
       "Bluesky @ffnatejahnke.bsky.social": 29,
       "ProFootballTalk": 30,
@@ -18,7 +18,7 @@
       "PFF": 25,
       "Awful Announcing": 15,
       "SBN ARI": 10,
-      "SBN ATL": 9,
+      "SBN ATL": 10,
       "SBN BAL": 10,
       "SBN BUF": 10,
       "SBN CAR": 6,
@@ -29,15 +29,15 @@
       "SBN DEN": 10,
       "SBN DET": 10,
       "SBN GB": 10,
-      "SBN HOU": 7,
+      "SBN HOU": 6,
       "SBN IND": 10,
-      "SBN JAX": 7,
+      "SBN JAX": 6,
       "SBN KC": 10,
       "SBN LAC": 10,
       "SBN LAR": 10,
       "SBN LV": 10,
       "SBN MIA": 10,
-      "SBN MIN": 7,
+      "SBN MIN": 8,
       "SBN NE": 10,
       "SBN NO": 10,
       "SBN NYG": 10,
@@ -47,7 +47,7 @@
       "SBN SEA": 10,
       "SBN SF": 10,
       "SBN TB": 4,
-      "SBN TEN": 9,
+      "SBN TEN": 8,
       "SBN WAS": 10
     },
     "adp_latest": "2026-09-04",
@@ -56,6 +56,29 @@
     "history_days": 21
   },
   "players": [
+    {
+      "name": "Josh Oliver",
+      "pos": "TE",
+      "team": "MIN",
+      "adp": 216.0,
+      "adp_prior": 216.0,
+      "adp_move": 0.0,
+      "proj": null,
+      "sleeper_weight": 1.8,
+      "score": 11.7,
+      "unpriced": true,
+      "signals": [
+        "injury",
+        "out for"
+      ],
+      "items": [
+        {
+          "text": "Minnesota Vikings News and Links: What Moves Should The Vikings Make?. The Vikings have a bye this week as you all know. I believe the team always does self scouting and probably is looking for ways to improve the roster. The team has clearly had its fair share of injury already. Donovan Jackson and",
+          "url": "https://www.dailynorseman.com/minnesota-vikings-discussion-chat-message-board/100420/minnesota-vikings-news-and-links-what-moves-should-the-vikings-make",
+          "source": "SBN MIN"
+        }
+      ]
+    },
     {
       "name": "Tyler Huntley",
       "pos": "QB",
@@ -87,6 +110,54 @@
       ]
     },
     {
+      "name": "Matthew Hibner",
+      "pos": "",
+      "team": "",
+      "adp": null,
+      "adp_prior": null,
+      "adp_move": null,
+      "proj": null,
+      "sleeper_weight": 1.9,
+      "score": 9.88,
+      "unpriced": true,
+      "signals": [
+        "ahead of",
+        "injured",
+        "injury",
+        "limited"
+      ],
+      "items": [
+        {
+          "text": "Ravens list 19 players on 1st injury report of Week 6. The Baltimore Ravens listed a whopping 19 players on their first injury report of Week 6 ahead of next Sunday\u2019s matchup with the Cleveland Browns. However, only two injured Ravens missed today\u2019s practice entirely: quarterback Lamar Jackson and t",
+          "url": "https://www.baltimorebeatdown.com/baltimore-ravens-injuries/86464/ravens-list-19-players-on-1st-injury-report-of-week-6",
+          "source": "SBN BAL"
+        }
+      ]
+    },
+    {
+      "name": "Velus Jones Jr.",
+      "pos": "WR",
+      "team": "SEA",
+      "adp": 216.0,
+      "adp_prior": 216.0,
+      "adp_move": 0.0,
+      "proj": null,
+      "sleeper_weight": 1.8,
+      "score": 9.36,
+      "unpriced": true,
+      "signals": [
+        "ahead of",
+        "practice squad"
+      ],
+      "items": [
+        {
+          "text": "Seahawks shift Irv Charles to practice squad. With running back Zach Charbonnet (knee) expected to remain on the physically unable to perform list for the time being, the Seattle Seahawks added depth ahead of their Thursday night showdown against the Denver Broncos. The team announced they signed ru",
+          "url": "https://www.fieldgulls.com/seattle-seahawks-roster/177390/seahawks-roster-news-shift-irv-charles-to-practice-squad",
+          "source": "SBN SEA"
+        }
+      ]
+    },
+    {
       "name": "Brandon Aiyuk",
       "pos": "WR",
       "team": "SF",
@@ -105,103 +176,6 @@
           "text": "5 questions with Andrew York of Hogs Haven: How is Adam Peters viewed three years in?. The San Francisco 49ers face off with the Washington Commanders on Monday Night Football, and there is no shortage of storylines ahead of the primetime matchup. Remember Brandon Aiyuk? Yeah, he\u2019s still neither a C",
           "url": "https://www.ninersnation.com/san-francisco-49ers-analysis/164282/5-questions-with-andrew-york-of-hogs-haven-how-is-adam-peters-viewed-three-years-in",
           "source": "SBN SF"
-        }
-      ]
-    },
-    {
-      "name": "Brandin Cooks",
-      "pos": "WR",
-      "team": "FA",
-      "adp": 216.0,
-      "adp_prior": 216.0,
-      "adp_move": 0.0,
-      "proj": null,
-      "sleeper_weight": 1.8,
-      "score": 9.28,
-      "unpriced": true,
-      "signals": [
-        "injury",
-        "target share",
-        "targets"
-      ],
-      "items": [
-        {
-          "text": "3 trade targets at WR for the 49ers: A realistic, best-fit, and pipe dream. The San Francisco 49ers are hurting at the wide receiver position. Being down to Mike Evans and Brandin Cooks as your top two targets sounds better in 2018, but the 49ers found a way to survive in Seattle with the two vetera",
-          "url": "https://www.ninersnation.com/san-francisco-49ers-analysis/164240/3-trade-targets-at-wr-for-the-49ers-a-realistic-best-fit-and-pipe-dream",
-          "source": "SBN SF"
-        },
-        {
-          "text": "Mike Evans had a 37% target share against the Seahawks. That share was 44% after Deebo Samuel left the game in the third quarter \u2014 Evans ran 5 routes after Deebo left, and he saw a target on 4 of them. Brandin Cooks led the team in routes run after the Deebo injury.",
-          "url": "https://bsky.app/profile/lateroundqb.bsky.social/post/3mxomxxerdw2t",
-          "source": "Bluesky @lateroundqb.bsky.social"
-        }
-      ]
-    },
-    {
-      "name": "Chris Moore",
-      "pos": "WR",
-      "team": "BAL",
-      "adp": 216.0,
-      "adp_prior": 216.0,
-      "adp_move": 0.0,
-      "proj": null,
-      "sleeper_weight": 1.8,
-      "score": 9.108,
-      "unpriced": true,
-      "signals": [
-        "injured",
-        "released",
-        "surgery"
-      ],
-      "items": [
-        {
-          "text": "Ravens release WR Chris Moore with rookie Ja\u2019Kobi Lane nearing return. The Baltimore Ravens released veteran wide receiver Chris Moore on Tuesday, per a team announcement, likely clearing a roster spot for the return of third-round rookie Ja\u2019Kobi Lane from injured reserve. Lane fractured his wrist i",
-          "url": "https://www.baltimorebeatdown.com/baltimore-ravens-news/86395/ravens-release-wr-chris-moore-with-rookie-jakobi-lane-nearing-return",
-          "source": "SBN BAL"
-        }
-      ]
-    },
-    {
-      "name": "Tyson Bagent",
-      "pos": "QB",
-      "team": "CHI",
-      "adp": 216.0,
-      "adp_prior": 216.0,
-      "adp_move": 0.0,
-      "proj": null,
-      "sleeper_weight": 1.8,
-      "score": 9.108,
-      "unpriced": true,
-      "signals": [
-        "suspended"
-      ],
-      "items": [
-        {
-          "text": "Updated: Chicago Bears 53-Man Roster for 2026. Here is the Chicago Bears 53-man roster for the 2026 season, which we\u2019ll update as transactions are made. 10/13 UPDATES: The Bears activated defensive lineman Shemar Turner from the PUP list and placed defensive end Montez Sweat on the Reserve/Suspended",
-          "url": "https://www.windycitygridiron.com/chicago-bears-roster/24480928/chicago-bears-53-man-roster-injured-reserve-pup-cut-trade-release-waive",
-          "source": "SBN CHI"
-        }
-      ]
-    },
-    {
-      "name": "Case Keenum",
-      "pos": "QB",
-      "team": "CHI",
-      "adp": 216.0,
-      "adp_prior": 216.0,
-      "adp_move": 0.0,
-      "proj": null,
-      "sleeper_weight": 1.8,
-      "score": 9.108,
-      "unpriced": true,
-      "signals": [
-        "suspended"
-      ],
-      "items": [
-        {
-          "text": "Updated: Chicago Bears 53-Man Roster for 2026. Here is the Chicago Bears 53-man roster for the 2026 season, which we\u2019ll update as transactions are made. 10/13 UPDATES: The Bears activated defensive lineman Shemar Turner from the PUP list and placed defensive end Montez Sweat on the Reserve/Suspended",
-          "url": "https://www.windycitygridiron.com/chicago-bears-roster/24480928/chicago-bears-53-man-roster-injured-reserve-pup-cut-trade-release-waive",
-          "source": "SBN CHI"
         }
       ]
     },
@@ -228,6 +202,35 @@
       ]
     },
     {
+      "name": "Brandin Cooks",
+      "pos": "WR",
+      "team": "FA",
+      "adp": 216.0,
+      "adp_prior": 216.0,
+      "adp_move": 0.0,
+      "proj": null,
+      "sleeper_weight": 1.8,
+      "score": 8.23,
+      "unpriced": true,
+      "signals": [
+        "injury",
+        "target share",
+        "targets"
+      ],
+      "items": [
+        {
+          "text": "3 trade targets at WR for the 49ers: A realistic, best-fit, and pipe dream. The San Francisco 49ers are hurting at the wide receiver position. Being down to Mike Evans and Brandin Cooks as your top two targets sounds better in 2018, but the 49ers found a way to survive in Seattle with the two vetera",
+          "url": "https://www.ninersnation.com/san-francisco-49ers-analysis/164240/3-trade-targets-at-wr-for-the-49ers-a-realistic-best-fit-and-pipe-dream",
+          "source": "SBN SF"
+        },
+        {
+          "text": "Mike Evans had a 37% target share against the Seahawks. That share was 44% after Deebo Samuel left the game in the third quarter \u2014 Evans ran 5 routes after Deebo left, and he saw a target on 4 of them. Brandin Cooks led the team in routes run after the Deebo injury.",
+          "url": "https://bsky.app/profile/lateroundqb.bsky.social/post/3mxomxxerdw2t",
+          "source": "Bluesky @lateroundqb.bsky.social"
+        }
+      ]
+    },
+    {
       "name": "Tutu Atwell",
       "pos": "WR",
       "team": "LAR",
@@ -236,7 +239,7 @@
       "adp_move": 0.1,
       "proj": null,
       "sleeper_weight": 1.8,
-      "score": 9.056,
+      "score": 8.006,
       "unpriced": true,
       "signals": [
         "snap",
@@ -257,6 +260,96 @@
       ]
     },
     {
+      "name": "Chris Moore",
+      "pos": "WR",
+      "team": "BAL",
+      "adp": 216.0,
+      "adp_prior": 216.0,
+      "adp_move": 0.0,
+      "proj": null,
+      "sleeper_weight": 1.8,
+      "score": 7.92,
+      "unpriced": true,
+      "signals": [
+        "injured",
+        "released",
+        "surgery"
+      ],
+      "items": [
+        {
+          "text": "Ravens release WR Chris Moore with rookie Ja\u2019Kobi Lane nearing return. The Baltimore Ravens released veteran wide receiver Chris Moore on Tuesday, per a team announcement, likely clearing a roster spot for the return of third-round rookie Ja\u2019Kobi Lane from injured reserve. Lane fractured his wrist i",
+          "url": "https://www.baltimorebeatdown.com/baltimore-ravens-news/86395/ravens-release-wr-chris-moore-with-rookie-jakobi-lane-nearing-return",
+          "source": "SBN BAL"
+        }
+      ]
+    },
+    {
+      "name": "Tyson Bagent",
+      "pos": "QB",
+      "team": "CHI",
+      "adp": 216.0,
+      "adp_prior": 216.0,
+      "adp_move": 0.0,
+      "proj": null,
+      "sleeper_weight": 1.8,
+      "score": 7.92,
+      "unpriced": true,
+      "signals": [
+        "suspended"
+      ],
+      "items": [
+        {
+          "text": "Updated: Chicago Bears 53-Man Roster for 2026. Here is the Chicago Bears 53-man roster for the 2026 season, which we\u2019ll update as transactions are made. 10/13 UPDATES: The Bears activated defensive lineman Shemar Turner from the PUP list and placed defensive end Montez Sweat on the Reserve/Suspended",
+          "url": "https://www.windycitygridiron.com/chicago-bears-roster/24480928/chicago-bears-53-man-roster-injured-reserve-pup-cut-trade-release-waive",
+          "source": "SBN CHI"
+        }
+      ]
+    },
+    {
+      "name": "Case Keenum",
+      "pos": "QB",
+      "team": "CHI",
+      "adp": 216.0,
+      "adp_prior": 216.0,
+      "adp_move": 0.0,
+      "proj": null,
+      "sleeper_weight": 1.8,
+      "score": 7.92,
+      "unpriced": true,
+      "signals": [
+        "suspended"
+      ],
+      "items": [
+        {
+          "text": "Updated: Chicago Bears 53-Man Roster for 2026. Here is the Chicago Bears 53-man roster for the 2026 season, which we\u2019ll update as transactions are made. 10/13 UPDATES: The Bears activated defensive lineman Shemar Turner from the PUP list and placed defensive end Montez Sweat on the Reserve/Suspended",
+          "url": "https://www.windycitygridiron.com/chicago-bears-roster/24480928/chicago-bears-53-man-roster-injured-reserve-pup-cut-trade-release-waive",
+          "source": "SBN CHI"
+        }
+      ]
+    },
+    {
+      "name": "AJ Dillon",
+      "pos": "RB",
+      "team": "CAR",
+      "adp": 216.0,
+      "adp_prior": 216.0,
+      "adp_move": 0.0,
+      "proj": null,
+      "sleeper_weight": 1.8,
+      "score": 7.488,
+      "unpriced": true,
+      "signals": [
+        "did not practice"
+      ],
+      "items": [
+        {
+          "text": "QB Bryce Young a full participant; RT Monroe Freeling and RB AJ Dillon did not practice. The Panthers are returning from their off weeks, so they practiced Tuesday instead of Wednesday.",
+          "url": "https://www.nbcsports.com/nfl/profootballtalk/rumor-mill/news/qb-bryce-young-a-full-participant-rt-monroe-freeling-and-rb-aj-dillon-did-not-practice",
+          "source": "ProFootballTalk"
+        }
+      ]
+    },
+    {
       "name": "Tanner Hudson",
       "pos": "TE",
       "team": "CIN",
@@ -265,7 +358,7 @@
       "adp_move": 0.0,
       "proj": null,
       "sleeper_weight": 1.8,
-      "score": 8.424,
+      "score": 7.452,
       "unpriced": true,
       "signals": [
         "ir"
@@ -287,7 +380,7 @@
       "adp_move": 0.0,
       "proj": null,
       "sleeper_weight": 1.8,
-      "score": 8.424,
+      "score": 7.452,
       "unpriced": true,
       "signals": [
         "ir"
@@ -297,125 +390,6 @@
           "text": "Bengals News: Is it Jack Endries time?. With Tanner Hudson headed to IR and done for the season with a torn pec suffered in the Cincinnati Bengals\u2019 win over the Dolphins, the offense is down one reliable tight end who has proven to be a trusted safety valve for Joe Burrow. While there\u2019s no shortage ",
           "url": "https://www.cincyjungle.com/cincinnati-bengals-news/202264/jack-endries-time-tanner-hudson-torn-pec",
           "source": "SBN CIN"
-        }
-      ]
-    },
-    {
-      "name": "Shedeur Sanders",
-      "pos": "QB",
-      "team": "CLE",
-      "adp": 214.7,
-      "adp_prior": 215.0,
-      "adp_move": 0.3,
-      "proj": null,
-      "sleeper_weight": 1.8,
-      "score": 8.398,
-      "unpriced": true,
-      "signals": [
-        "ahead of",
-        "carries"
-      ],
-      "items": [
-        {
-          "text": "Shedeur Sanders just made a curious move that could signal a trade is coming in Cleveland. Sanders' decision to hire an agent comes as Cleveland carries four healthy quarterbacks and speculation builds",
-          "url": "https://www.cbssports.com/nfl/news/shedeur-sanders-trade-rumors-browns-qb-landing-spots/",
-          "source": "CBS Sports NFL"
-        },
-        {
-          "text": "NFL news, live updates: Lamar Jackson has 'real chance' to return Week 6, Caleb Williams to practice in full; Shedeur Sanders hires an agent. Follow along with the latest NFL news ahead of Week 6.",
-          "url": "https://sports.yahoo.com/nfl/live/nfl-news-injury-updates-live-week-6-152344178.html",
-          "source": "Yahoo NFL"
-        }
-      ]
-    },
-    {
-      "name": "Audric Estime",
-      "pos": "RB",
-      "team": "NO",
-      "adp": 216.0,
-      "adp_prior": 216.0,
-      "adp_move": 0.0,
-      "proj": null,
-      "sleeper_weight": 1.8,
-      "score": 8.28,
-      "unpriced": true,
-      "signals": [
-        "injury",
-        "ir"
-      ],
-      "items": [
-        {
-          "text": "Browns make 6 roster moves on Tuesday, including adding RB Audric Estime, placing RB on IR. The ever-changing Cleveland Browns roster, especially with lingering injury concerns, had a number of moves on Tuesday as part of Week 6 preparations for the Baltimore Ravens. On Monday, multiple reports came",
-          "url": "https://www.dawgsbynature.com/cleveland-browns-news/135108/browns-roster-raheim-sanders-audric-estime-devin-culp-vershon-lee",
-          "source": "SBN CLE"
-        }
-      ]
-    },
-    {
-      "name": "Jake Browning",
-      "pos": "QB",
-      "team": "FA",
-      "adp": 216.0,
-      "adp_prior": 216.0,
-      "adp_move": 0.0,
-      "proj": null,
-      "sleeper_weight": 1.8,
-      "score": 7.452,
-      "unpriced": true,
-      "signals": [
-        "ir",
-        "placed on"
-      ],
-      "items": [
-        {
-          "text": "Chargers sign former Bengals QB Jake Browning. With backup quarterback Trey Lance recently placed on IR, the Chargers are reinforcing their options behind Justin Herbert in case of an emergency. Per NFL insider Tom Pelissero, the Chargers signed former Bengals and Bucs quarterback Jake Browning. The",
-          "url": "https://www.boltsfromtheblue.com/los-angeles-chargers-roster/66274/chargers-workout-steelers-chiefs-wr-juju-smith-schuster",
-          "source": "SBN LAC"
-        }
-      ]
-    },
-    {
-      "name": "Brady Cook",
-      "pos": "QB",
-      "team": "FA",
-      "adp": 216.0,
-      "adp_prior": 216.0,
-      "adp_move": 0.0,
-      "proj": null,
-      "sleeper_weight": 1.8,
-      "score": 7.452,
-      "unpriced": true,
-      "signals": [
-        "practice squad",
-        "released"
-      ],
-      "items": [
-        {
-          "text": "Dolphins add Brady Cook to practice squad in bye week move. The Miami Dolphins have signed quarterback Brady Cook to their practice squad, days after releasing their third-string passer from the active roster. The move comes following the team\u2019s loss to the Cincinnati Bengals, dropping them to 0-5 o",
-          "url": "https://www.thephinsider.com/miami-dolphins-news/123764/dolphins-add-brady-cook-to-practice-squad-in-bye-week-move",
-          "source": "SBN MIA"
-        }
-      ]
-    },
-    {
-      "name": "Hassan Haskins",
-      "pos": "RB",
-      "team": "NE",
-      "adp": 216.0,
-      "adp_prior": 216.0,
-      "adp_move": 0.0,
-      "proj": null,
-      "sleeper_weight": 1.8,
-      "score": 7.452,
-      "unpriced": true,
-      "signals": [
-        "practice squad"
-      ],
-      "items": [
-        {
-          "text": "Patriots sign running back Hassan Haskins, cornerback D\u2019Shawn Jamison to practice squad. With TreVeyon Henderson expected to miss multiple weeks due to a high ankle sprain, a familiar face has returned to the ground game in Foxborough. The New England Patriots announced the addition of running back ",
-          "url": "https://www.patspulpit.com/new-england-patriots-news/140603/patriots-sign-hassan-haskins-dshawn-jamison-practice-squad-release-jose-ramirez",
-          "source": "SBN NE"
         }
       ]
     },
@@ -444,6 +418,29 @@
           "text": "Chargers running back snaps, rushes, and routes in Week 5:\n\nKimani Vidal: 26, 8, 11\nKeaton Mitchell: 21, 6, 10\nOmarion Hampton: 20, 14, 2",
           "url": "https://bsky.app/profile/lateroundqb.bsky.social/post/3mxomxxeqef2t",
           "source": "Bluesky @lateroundqb.bsky.social"
+        }
+      ]
+    },
+    {
+      "name": "Audric Estime",
+      "pos": "RB",
+      "team": "NO",
+      "adp": 216.0,
+      "adp_prior": 216.0,
+      "adp_move": 0.0,
+      "proj": null,
+      "sleeper_weight": 1.8,
+      "score": 7.2,
+      "unpriced": true,
+      "signals": [
+        "injury",
+        "ir"
+      ],
+      "items": [
+        {
+          "text": "Browns make 6 roster moves on Tuesday, including adding RB Audric Estime, placing RB on IR. The ever-changing Cleveland Browns roster, especially with lingering injury concerns, had a number of moves on Tuesday as part of Week 6 preparations for the Baltimore Ravens. On Monday, multiple reports came",
+          "url": "https://www.dawgsbynature.com/cleveland-browns-news/135108/browns-roster-raheim-sanders-audric-estime-devin-culp-vershon-lee",
+          "source": "SBN CLE"
         }
       ]
     },
@@ -494,24 +491,30 @@
       ]
     },
     {
-      "name": "Jameis Winston",
+      "name": "Daniel Jones",
       "pos": "QB",
-      "team": "NYG",
-      "adp": 215.9,
-      "adp_prior": 216.0,
-      "adp_move": 0.1,
+      "team": "IND",
+      "adp": 144.3,
+      "adp_prior": 146.0,
+      "adp_move": 1.7,
       "proj": null,
-      "sleeper_weight": 1.8,
-      "score": 7.2,
+      "sleeper_weight": 1.1,
+      "score": 6.901,
       "unpriced": true,
       "signals": [
-        "injury"
+        "injury",
+        "starter"
       ],
       "items": [
         {
-          "text": "The NY Giants may need to change how they think about offense. The New York Giants are 3-1-1 despite the Week 2 season-ending injury to starting quarterback Jaxson Dart. That injury brought veteran Jameis Winston onto the field and he became the Giants\u2019 full-time starting quarterback the next week a",
-          "url": "https://www.bigblueview.com/new-york-giants-analysis/175539/giants-may-need-to-change-how-they-think-about-offense",
-          "source": "SBN NYG"
+          "text": "ESPN writer believes Colts should play QB Anthony Richardson Sr.. According to ESPN\u2019s Ben Solak, the Indianapolis Colts, sitting at 2-3, should play primary backup quarterback Anthony Richardson Sr., given the underwhelming play of starter Daniel Jones through five games so far this season: I might ",
+          "url": "https://www.stampedeblue.com/indianapolis-colts-analysis/128727/espn-writer-believes-colts-should-play-qb-anthony-richardson-sr",
+          "source": "SBN IND"
+        },
+        {
+          "text": "Colts list Daniel Jones as full practice participant with ankle injury. Colts quarterback Daniel Jones landed on the team's injury report for the first time this season on Wednesday.",
+          "url": "https://www.nbcsports.com/nfl/profootballtalk/rumor-mill/news/colts-list-daniel-jones-as-full-practice-participant-with-ankle-injury",
+          "source": "ProFootballTalk"
         }
       ]
     },
@@ -527,31 +530,55 @@
       "score": 6.848,
       "unpriced": false,
       "signals": [
+        "injured",
         "injury",
+        "limited",
         "sidelined",
         "snap",
         "target share"
       ],
       "items": [
         {
+          "text": "Michael Penix rib injury update: Falcons QB should be \u2018good to play\u2019 vs. Bears. If you\u2019re like me, you watched the end of Ravens-Falcons on Sunday night with an overwhelming sense of dread. The moment Falcons QB Michael Penix Jr. pulled that towel over his head on the sideline as the Ravens rolled i",
+          "url": "https://www.thefalcoholic.com/atlanta-falcons-injuries/97288/michael-penix-rib-injury-update-chicago-bears-week-6",
+          "source": "SBN ATL"
+        },
+        {
           "text": "Falcons vs. Bears odds: Opening lines for Week 6 matchup. The Falcons fell short in overtime to a depleted but clearly still dangerous Ravens team in Week 5, ending their hot streak since Michael Penix Jr.\u2019s return. With Penix Jr. exiting the game with a rib injury\u2014which doesn\u2019t appear to be serious",
           "url": "https://www.thefalcoholic.com/atlanta-falcons-odds/97164/falcons-vs-bears-odds-week-6-opening-lines-point-spread-total",
           "source": "SBN ATL"
         },
         {
-          "text": "Falcons expect Michael Penix to practice Wednesday. Falcons quarterback Michael Penix was confident he avoided a serious rib injury when he was hurt on Sunday night and nothing's changed about that outlook in the last couple of days.",
-          "url": "https://www.nbcsports.com/nfl/profootballtalk/rumor-mill/news/falcons-expect-michael-penix-to-practice-wednesday",
-          "source": "ProFootballTalk"
-        },
-        {
-          "text": "Michael Penix should be \u2018good to play\u2019 vs. Bears despite rib injury. Fingers crossed this holds through the week, but Falcons quarterback Michael Penix does expect to play on Sunday vs. the Bears.",
-          "url": "https://sports.yahoo.com/articles/michael-penix-good-play-vs-201523641.html",
-          "source": "Yahoo NFL"
-        },
-        {
           "text": "Falcons' Michael Penix Jr. in line to start vs. Bears barring setbacks after rib injury, Kevin Stefanski says. Penix's rib issue sidelined him during overtime of a \"Sunday Night Football\" loss to the Baltimore Ravens last week.",
           "url": "https://sports.yahoo.com/nfl/article/falcons-michael-penix-jr-in-line-to-start-vs-bears-barring-setbacks-after-rib-injury-kevin-stefanski-says-200102180.html",
           "source": "Yahoo NFL"
+        },
+        {
+          "text": "In Weeks 1 and 2, without Michael Penix, Drake London had a 19% target share and 7.2 PPR points per game. Since then, his target share is 35%, and he's averaging 20.6 PPR points per game.",
+          "url": "https://bsky.app/profile/lateroundqb.bsky.social/post/3mxomxxere72t",
+          "source": "Bluesky @lateroundqb.bsky.social"
+        }
+      ]
+    },
+    {
+      "name": "Shedeur Sanders",
+      "pos": "QB",
+      "team": "CLE",
+      "adp": 214.7,
+      "adp_prior": 215.0,
+      "adp_move": 0.3,
+      "proj": null,
+      "sleeper_weight": 1.8,
+      "score": 6.739,
+      "unpriced": true,
+      "signals": [
+        "carries"
+      ],
+      "items": [
+        {
+          "text": "Shedeur Sanders just made a curious move that could signal a trade is coming in Cleveland. Sanders' decision to hire an agent comes as Cleveland carries four healthy quarterbacks and speculation builds",
+          "url": "https://www.cbssports.com/nfl/news/shedeur-sanders-trade-rumors-browns-qb-landing-spots/",
+          "source": "CBS Sports NFL"
         }
       ]
     },
@@ -579,6 +606,52 @@
       ]
     },
     {
+      "name": "Jake Browning",
+      "pos": "QB",
+      "team": "FA",
+      "adp": 216.0,
+      "adp_prior": 216.0,
+      "adp_move": 0.0,
+      "proj": null,
+      "sleeper_weight": 1.8,
+      "score": 6.48,
+      "unpriced": true,
+      "signals": [
+        "ir",
+        "placed on"
+      ],
+      "items": [
+        {
+          "text": "Chargers sign former Bengals QB Jake Browning. With backup quarterback Trey Lance recently placed on IR, the Chargers are reinforcing their options behind Justin Herbert in case of an emergency. Per NFL insider Tom Pelissero, the Chargers signed former Bengals and Bucs quarterback Jake Browning. The",
+          "url": "https://www.boltsfromtheblue.com/los-angeles-chargers-roster/66274/chargers-workout-steelers-chiefs-wr-juju-smith-schuster",
+          "source": "SBN LAC"
+        }
+      ]
+    },
+    {
+      "name": "Brady Cook",
+      "pos": "QB",
+      "team": "FA",
+      "adp": 216.0,
+      "adp_prior": 216.0,
+      "adp_move": 0.0,
+      "proj": null,
+      "sleeper_weight": 1.8,
+      "score": 6.48,
+      "unpriced": true,
+      "signals": [
+        "practice squad",
+        "released"
+      ],
+      "items": [
+        {
+          "text": "Dolphins add Brady Cook to practice squad in bye week move. The Miami Dolphins have signed quarterback Brady Cook to their practice squad, days after releasing their third-string passer from the active roster. The move comes following the team\u2019s loss to the Cincinnati Bengals, dropping them to 0-5 o",
+          "url": "https://www.thephinsider.com/miami-dolphins-news/123764/dolphins-add-brady-cook-to-practice-squad-in-bye-week-move",
+          "source": "SBN MIA"
+        }
+      ]
+    },
+    {
       "name": "Odell Beckham Jr.",
       "pos": "WR",
       "team": "NYG",
@@ -597,6 +670,28 @@
           "text": "Vikings Work Out Several Veteran Wide Receivers. On the heels of signing Odell Beckham Jr. to the practice squad last week, the Minnesota Vikings may be feeling the urge to add even more to their collection of veteran wide receivers, as they brought in a few more for a workout on Monday. The most pr",
           "url": "https://www.dailynorseman.com/minnesota-vikings-roster/100371/minnesota-vikings-work-out-veteran-wide-receivers-juju-smith-schuster",
           "source": "SBN MIN"
+        }
+      ]
+    },
+    {
+      "name": "Hassan Haskins",
+      "pos": "RB",
+      "team": "NE",
+      "adp": 216.0,
+      "adp_prior": 216.0,
+      "adp_move": 0.0,
+      "proj": null,
+      "sleeper_weight": 1.8,
+      "score": 6.48,
+      "unpriced": true,
+      "signals": [
+        "practice squad"
+      ],
+      "items": [
+        {
+          "text": "Patriots sign running back Hassan Haskins, cornerback D\u2019Shawn Jamison to practice squad. With TreVeyon Henderson expected to miss multiple weeks due to a high ankle sprain, a familiar face has returned to the ground game in Foxborough. The New England Patriots announced the addition of running back ",
+          "url": "https://www.patspulpit.com/new-england-patriots-news/140603/patriots-sign-hassan-haskins-dshawn-jamison-practice-squad-release-jose-ramirez",
+          "source": "SBN NE"
         }
       ]
     },
@@ -695,112 +790,61 @@
       ]
     },
     {
-      "name": "Tre Harris",
-      "pos": "WR",
-      "team": "LAC",
-      "adp": 159.8,
-      "adp_prior": 160.0,
-      "adp_move": 0.2,
+      "name": "Zach Charbonnet",
+      "pos": "RB",
+      "team": "SEA",
+      "adp": 165.8,
+      "adp_prior": 161.6,
+      "adp_move": -4.2,
       "proj": null,
       "sleeper_weight": 1.5,
-      "score": 5.781,
-      "unpriced": true,
+      "score": 5.752,
+      "unpriced": false,
       "signals": [
-        "hamstring",
+        "ahead of",
         "injury",
-        "questionable",
-        "snap",
-        "targets"
+        "practice squad"
       ],
       "items": [
         {
-          "text": "Chargers WR Tre\u2019 Harris suffers hamstring injury vs. Broncos. The Los Angeles Chargers continued to be stung by the injury bug in Week 5 against the Denver Broncos. Second-year wide receiver Tre\u2019 Harris is questionable to return to the game after suffering a hamstring injury. Before leaving the game",
-          "url": "https://www.boltsfromtheblue.com/los-angeles-chargers-injuries/66218/chargers-wr-tre-harris-suffers-hamstring-injury-vs-broncos",
-          "source": "SBN LAC"
+          "text": "Seahawks injury update: Drake Thomas, Zach Charbonnet out vs. Broncos. The curse of the short week has hit the Seattle Seahawks ahead of their Thursday night showdown with the Denver Broncos, as the team will be without one of their starting linebackers. Seahawks head coach Mike Macdonald ruled out ",
+          "url": "https://www.fieldgulls.com/seattle-seahawks-injury-report/177400/seahawks-broncos-injury-update-drake-thomas-zach-charbonnet-out",
+          "source": "SBN SEA"
         },
         {
-          "text": "Tre Harris was hurt against the Broncos. As a result, the Chargers had four players who ran more than 20 routes in Week 5, and he wasn't one of them. Those players were Marquez Valdes-Scantling, Theo Wease, Oronde Gadsden, and Charlie Kolar. Ladd McConkey didn't see a snap.",
-          "url": "https://bsky.app/profile/lateroundqb.bsky.social/post/3mxomxxeqeg2t",
-          "source": "Bluesky @lateroundqb.bsky.social"
+          "text": "Seahawks shift Irv Charles to practice squad. With running back Zach Charbonnet (knee) expected to remain on the physically unable to perform list for the time being, the Seattle Seahawks added depth ahead of their Thursday night showdown against the Denver Broncos. The team announced they signed ru",
+          "url": "https://www.fieldgulls.com/seattle-seahawks-roster/177390/seahawks-roster-news-shift-irv-charles-to-practice-squad",
+          "source": "SBN SEA"
         }
       ]
     },
     {
-      "name": "Daniel Jones",
-      "pos": "QB",
-      "team": "IND",
-      "adp": 144.3,
-      "adp_prior": 146.0,
-      "adp_move": 1.7,
-      "proj": null,
-      "sleeper_weight": 1.1,
-      "score": 5.566,
-      "unpriced": true,
-      "signals": [
-        "starter"
-      ],
-      "items": [
-        {
-          "text": "ESPN writer believes Colts should play QB Anthony Richardson Sr.. According to ESPN\u2019s Ben Solak, the Indianapolis Colts, sitting at 2-3, should play primary backup quarterback Anthony Richardson Sr., given the underwhelming play of starter Daniel Jones through five games so far this season: I might ",
-          "url": "https://www.stampedeblue.com/indianapolis-colts-analysis/128727/espn-writer-believes-colts-should-play-qb-anthony-richardson-sr",
-          "source": "SBN IND"
-        }
-      ]
-    },
-    {
-      "name": "C.J. Stroud",
-      "pos": "QB",
-      "team": "HOU",
-      "adp": 148.2,
-      "adp_prior": 146.5,
-      "adp_move": -1.7,
-      "proj": null,
-      "sleeper_weight": 1.1,
-      "score": 5.553,
-      "unpriced": true,
-      "signals": [
-        "snap",
-        "traded"
-      ],
-      "items": [
-        {
-          "text": "Bills at Rams Monday Night Football Discussion Thread. It was a real busy week in Texans land yesterday. The Texans finally got their first win of the season against north Alabama and barely a few scant hours later, the Texans traded for former Ohio State phenom, and C.J. Stroud teammate, WR Marvin ",
-          "url": "https://www.battleredblog.com/general/78183/bills-at-rams-monday-night-football-discussion-thread",
-          "source": "SBN HOU"
-        },
-        {
-          "text": "Houston Texans News: Monday October 12, 2026. Houston Texans News In beating Titans, C.J. Stroud makes a compelling case for Texans to pay him (Houston Chronicle) Houston Texans snap winless start with 26-3 victory over Tennessee Titans (KRIV Fox 26 Houston) Marvin Harrison Jr. trade: Cardinals send",
-          "url": "https://www.battleredblog.com/houston-texans-news/78180/houston-texans-news-monday-october-12-2026",
-          "source": "SBN HOU"
-        }
-      ]
-    },
-    {
-      "name": "Deebo Samuel",
+      "name": "Irvin Charles",
       "pos": "WR",
-      "team": "SF",
-      "adp": 129.6,
-      "adp_prior": 127.9,
-      "adp_move": -1.7,
+      "team": "SEA",
+      "adp": 216.0,
+      "adp_prior": 216.0,
+      "adp_move": 0.0,
       "proj": null,
-      "sleeper_weight": 1.1,
-      "score": 5.505,
+      "sleeper_weight": 1.8,
+      "score": 5.629,
       "unpriced": true,
       "signals": [
-        "hamstring",
-        "injury",
-        "target share"
+        "ahead of",
+        "injured",
+        "placed on",
+        "practice squad"
       ],
       "items": [
         {
-          "text": "What is the 49ers plan at receiver without Deebo Samuel?. The San Francisco 49ers lost another piece of their offensive core when Deebo Samuel went down with a hamstring injury against the Seattle Seahawks in Week 5. Samuel, 30, had been looking to hit the edge before pulling up and fumbling on a no",
-          "url": "https://www.ninersnation.com/san-francisco-49ers-news/164230/san-francisco-49ers-news-plan-receiver-without-deebo-samuel-mike-evans-kyle-shanahan",
-          "source": "SBN SF"
+          "text": "Seahawks shift Irv Charles to practice squad. With running back Zach Charbonnet (knee) expected to remain on the physically unable to perform list for the time being, the Seattle Seahawks added depth ahead of their Thursday night showdown against the Denver Broncos. The team announced they signed ru",
+          "url": "https://www.fieldgulls.com/seattle-seahawks-roster/177390/seahawks-roster-news-shift-irv-charles-to-practice-squad",
+          "source": "SBN SEA"
         },
         {
-          "text": "Mike Evans had a 37% target share against the Seahawks. That share was 44% after Deebo Samuel left the game in the third quarter \u2014 Evans ran 5 routes after Deebo left, and he saw a target on 4 of them. Brandin Cooks led the team in routes run after the Deebo injury.",
-          "url": "https://bsky.app/profile/lateroundqb.bsky.social/post/3mxomxxerdw2t",
-          "source": "Bluesky @lateroundqb.bsky.social"
+          "text": "Seahawks activate special teams ace Irv Charles onto 53-man roster. The Seattle Seahawks will have some reinforcements coming on special teams starting with this Thursday\u2019s critical road game at the Denver Broncos. On Tuesday, the team announced that wide receiver Irv Charles has been activated onto",
+          "url": "https://www.fieldgulls.com/seattle-seahawks-roster/177272/nfl-news-seahawks-activate-special-teams-ace-irv-charles-53-man-roster",
+          "source": "SBN SEA"
         }
       ]
     },
@@ -828,46 +872,30 @@
       ]
     },
     {
-      "name": "Jordan Watkins",
-      "pos": "WR",
-      "team": "SF",
-      "adp": 216.0,
-      "adp_prior": 216.0,
-      "adp_move": 0.0,
+      "name": "C.J. Stroud",
+      "pos": "QB",
+      "team": "HOU",
+      "adp": 148.2,
+      "adp_prior": 146.5,
+      "adp_move": -1.7,
       "proj": null,
-      "sleeper_weight": 1.8,
-      "score": 5.299,
+      "sleeper_weight": 1.1,
+      "score": 5.41,
       "unpriced": true,
       "signals": [
-        "targets"
+        "snap",
+        "traded"
       ],
       "items": [
         {
-          "text": "3 trade targets at WR for the 49ers: A realistic, best-fit, and pipe dream. The San Francisco 49ers are hurting at the wide receiver position. Being down to Mike Evans and Brandin Cooks as your top two targets sounds better in 2018, but the 49ers found a way to survive in Seattle with the two vetera",
-          "url": "https://www.ninersnation.com/san-francisco-49ers-analysis/164240/3-trade-targets-at-wr-for-the-49ers-a-realistic-best-fit-and-pipe-dream",
-          "source": "SBN SF"
-        }
-      ]
-    },
-    {
-      "name": "Jacob Cowing",
-      "pos": "WR",
-      "team": "SF",
-      "adp": 216.0,
-      "adp_prior": 216.0,
-      "adp_move": 0.0,
-      "proj": null,
-      "sleeper_weight": 1.8,
-      "score": 5.299,
-      "unpriced": true,
-      "signals": [
-        "targets"
-      ],
-      "items": [
+          "text": "Bills at Rams Monday Night Football Discussion Thread. It was a real busy week in Texans land yesterday. The Texans finally got their first win of the season against north Alabama and barely a few scant hours later, the Texans traded for former Ohio State phenom, and C.J. Stroud teammate, WR Marvin ",
+          "url": "https://www.battleredblog.com/general/78183/bills-at-rams-monday-night-football-discussion-thread",
+          "source": "SBN HOU"
+        },
         {
-          "text": "3 trade targets at WR for the 49ers: A realistic, best-fit, and pipe dream. The San Francisco 49ers are hurting at the wide receiver position. Being down to Mike Evans and Brandin Cooks as your top two targets sounds better in 2018, but the 49ers found a way to survive in Seattle with the two vetera",
-          "url": "https://www.ninersnation.com/san-francisco-49ers-analysis/164240/3-trade-targets-at-wr-for-the-49ers-a-realistic-best-fit-and-pipe-dream",
-          "source": "SBN SF"
+          "text": "Houston Texans News: Monday October 12, 2026. Houston Texans News In beating Titans, C.J. Stroud makes a compelling case for Texans to pay him (Houston Chronicle) Houston Texans snap winless start with 26-3 victory over Tennessee Titans (KRIV Fox 26 Houston) Marvin Harrison Jr. trade: Cardinals send",
+          "url": "https://www.battleredblog.com/houston-texans-news/78180/houston-texans-news-monday-october-12-2026",
+          "source": "SBN HOU"
         }
       ]
     },
@@ -1180,79 +1208,6 @@
       ]
     },
     {
-      "name": "Jared Goff",
-      "pos": "QB",
-      "team": "DET",
-      "adp": 111.7,
-      "adp_prior": 110.4,
-      "adp_move": -1.3,
-      "proj": null,
-      "sleeper_weight": 1.1,
-      "score": 5.034,
-      "unpriced": true,
-      "signals": [
-        "starter"
-      ],
-      "items": [
-        {
-          "text": "NFL quarterback rankings: Patrick Mahomes remains on top, Jared Goff rises. Patrick Mahomes remains PFF's top quarterback after the fifth week of the NFL season. Jared Goff climbs due to his care of the football, while Justin Herbert becomes the lowest-ranked starter.",
-          "url": "https://www.pff.com/news/nfl-quarterback-rankings/",
-          "source": "PFF"
-        }
-      ]
-    },
-    {
-      "name": "Kirk Cousins",
-      "pos": "QB",
-      "team": "LV",
-      "adp": 215.0,
-      "adp_prior": 215.3,
-      "adp_move": 0.3,
-      "proj": null,
-      "sleeper_weight": 1.8,
-      "score": 4.86,
-      "unpriced": true,
-      "signals": [
-        "injury"
-      ],
-      "items": [
-        {
-          "text": "Patriots injury analysis after Raiders win in Week 5. The New England Patriots have plenty to feel good about coming out of their win over the Las Vegas Raiders on Sunday. Their offense had its best day of the season, quarterback Drake Maye returned to his MVP form, and the defense had Kirk Cousins ",
-          "url": "https://www.patspulpit.com/new-england-patriots-injuries/140564/patriots-injury-analysis-raiders-nfl-week-5",
-          "source": "SBN NE"
-        }
-      ]
-    },
-    {
-      "name": "Omar Cooper Jr.",
-      "pos": "WR",
-      "team": "NYJ",
-      "adp": 176.1,
-      "adp_prior": 160.7,
-      "adp_move": -15.4,
-      "proj": null,
-      "sleeper_weight": 1.5,
-      "score": 4.852,
-      "unpriced": false,
-      "signals": [
-        "injured",
-        "injury",
-        "placed on"
-      ],
-      "items": [
-        {
-          "text": "Jets Injury Notes: AD Mitchell undergoes hand procedure, Omar Cooper Jr.'s practice window opened. Jets head coach Aaron Glenn provided a number of injury updates, including Adonai Mitchell getting a procedure done and the team opening up Omar Cooper Jr.'s practice window to return.",
-          "url": "https://sports.yahoo.com/articles/jets-injury-notes-ad-mitchell-172501805.html",
-          "source": "Yahoo NFL"
-        },
-        {
-          "text": "Omar Cooper set to return to practice this week for the Jets. First round rookie wide receiver Omar Cooper is returning to practice this week per Jets head coach Aaron Glenn. Cooper suffered a high ankle sprain in the team\u2019s Week 1 victory over the Tennessee Titans and was subsequently placed on inj",
-          "url": "https://www.ganggreennation.com/new-york-jets-injuries/97578/omar-cooper-set-to-return-to-practice-this-week-for-the-jets",
-          "source": "SBN NYJ"
-        }
-      ]
-    },
-    {
       "name": "Caleb Williams",
       "pos": "QB",
       "team": "CHI",
@@ -1261,7 +1216,7 @@
       "adp_move": -0.9,
       "proj": null,
       "sleeper_weight": 0.75,
-      "score": 4.836,
+      "score": 4.97,
       "unpriced": true,
       "signals": [
         "ahead of",
@@ -1270,37 +1225,174 @@
       ],
       "items": [
         {
+          "text": "Bears vs. Falcons Injury Report: Caleb Williams Full Participant. The Chicago Bears will take on the Atlanta Falcons this Sunday, and the teams have issued their first official injury reports for week six. The Bears did not hold a typical practice on Wednesday, so the initial report is based on a wa",
+          "url": "https://www.windycitygridiron.com/chicago-bears-injuries/125295/chicagobears-vs-falcons-injury-report-swift-and-monangai-dnp-ol-injuries",
+          "source": "SBN CHI"
+        },
+        {
           "text": "Updated: Chicago Bears 53-Man Roster for 2026. Here is the Chicago Bears 53-man roster for the 2026 season, which we\u2019ll update as transactions are made. 10/13 UPDATES: The Bears activated defensive lineman Shemar Turner from the PUP list and placed defensive end Montez Sweat on the Reserve/Suspended",
           "url": "https://www.windycitygridiron.com/chicago-bears-roster/24480928/chicago-bears-53-man-roster-injured-reserve-pup-cut-trade-release-waive",
           "source": "SBN CHI"
         },
         {
-          "text": "NFL Injury Report, Week 6: Latest news, updates, fantasy football analysis for A.J. Brown, Caleb Williams and more players. We go over the latest injury news and updates heading into Week 6, providing a list of players fantasy football managers will need to track.",
-          "url": "https://sports.yahoo.com/fantasy/article/nfl-injury-report-week-6-latest-news-updates-fantasy-football-analysis-for-aj-brown-caleb-williams-and-more-players-202323572.html",
+          "text": "NFL news, live updates: Lamar Jackson has 'real chance' to return, Caleb Williams listed as 'full participant' Wednesday; Marvin Harrison Jr. to make Texans debut in Week 6. Follow along with the latest NFL news ahead of Week 6.",
+          "url": "https://sports.yahoo.com/nfl/live/nfl-news-injury-updates-live-week-6-152344178.html",
           "source": "Yahoo NFL"
         },
         {
-          "text": "NFL news, live updates: Lamar Jackson has 'real chance' to return Week 6, Caleb Williams to practice in full; Shedeur Sanders hires an agent. Follow along with the latest NFL news ahead of Week 6.",
+          "text": "NFL Injury Report, Week 6: Latest news, updates, fantasy football analysis for A.J. Brown, Caleb Williams and more players. We go over the latest injury news and updates heading into Week 6, providing a list of players fantasy football managers will need to track.",
+          "url": "https://sports.yahoo.com/fantasy/article/nfl-injury-report-week-6-latest-news-updates-fantasy-football-analysis-for-aj-brown-caleb-williams-and-more-players-202323572.html",
+          "source": "Yahoo NFL"
+        }
+      ]
+    },
+    {
+      "name": "Tank Dell",
+      "pos": "WR",
+      "team": "HOU",
+      "adp": 202.6,
+      "adp_prior": 178.1,
+      "adp_move": -24.5,
+      "proj": null,
+      "sleeper_weight": 1.8,
+      "score": 4.68,
+      "unpriced": false,
+      "signals": [
+        "injury"
+      ],
+      "items": [
+        {
+          "text": "Texans WR Tank Dell a full practice participant for first time since 2024 season. Texans wide receiver Tank Dell has not played since a horrific knee injury in a Dec. 21, 2024, game against the Chiefs.",
+          "url": "https://www.nbcsports.com/nfl/profootballtalk/rumor-mill/news/texans-wr-tank-dell-a-full-practice-participant-for-first-time-since-2024-season",
+          "source": "ProFootballTalk"
+        }
+      ]
+    },
+    {
+      "name": "Jordan Watkins",
+      "pos": "WR",
+      "team": "SF",
+      "adp": 216.0,
+      "adp_prior": 216.0,
+      "adp_move": 0.0,
+      "proj": null,
+      "sleeper_weight": 1.8,
+      "score": 4.608,
+      "unpriced": true,
+      "signals": [
+        "targets"
+      ],
+      "items": [
+        {
+          "text": "3 trade targets at WR for the 49ers: A realistic, best-fit, and pipe dream. The San Francisco 49ers are hurting at the wide receiver position. Being down to Mike Evans and Brandin Cooks as your top two targets sounds better in 2018, but the 49ers found a way to survive in Seattle with the two vetera",
+          "url": "https://www.ninersnation.com/san-francisco-49ers-analysis/164240/3-trade-targets-at-wr-for-the-49ers-a-realistic-best-fit-and-pipe-dream",
+          "source": "SBN SF"
+        }
+      ]
+    },
+    {
+      "name": "Jacob Cowing",
+      "pos": "WR",
+      "team": "SF",
+      "adp": 216.0,
+      "adp_prior": 216.0,
+      "adp_move": 0.0,
+      "proj": null,
+      "sleeper_weight": 1.8,
+      "score": 4.608,
+      "unpriced": true,
+      "signals": [
+        "targets"
+      ],
+      "items": [
+        {
+          "text": "3 trade targets at WR for the 49ers: A realistic, best-fit, and pipe dream. The San Francisco 49ers are hurting at the wide receiver position. Being down to Mike Evans and Brandin Cooks as your top two targets sounds better in 2018, but the 49ers found a way to survive in Seattle with the two vetera",
+          "url": "https://www.ninersnation.com/san-francisco-49ers-analysis/164240/3-trade-targets-at-wr-for-the-49ers-a-realistic-best-fit-and-pipe-dream",
+          "source": "SBN SF"
+        }
+      ]
+    },
+    {
+      "name": "Marvin Harrison Jr.",
+      "pos": "WR",
+      "team": "ARI",
+      "adp": 65.0,
+      "adp_prior": 66.3,
+      "adp_move": 1.3,
+      "proj": null,
+      "sleeper_weight": 0.75,
+      "score": 4.517,
+      "unpriced": true,
+      "signals": [
+        "ahead of",
+        "snap",
+        "traded"
+      ],
+      "items": [
+        {
+          "text": "Deep dive into the Cardinals\u2019 trade of Marv Harrison. The Arizona Cardinals just traded WR Marvin Harrison, Jr. to the Houston Texans this past weekend. As part of the Cardinals fanbase, we have already heard this news. Harrison was taken with the fourth overall pick in the 2024 NFL Draft. Name a re",
+          "url": "https://www.revengeofthebirds.com/arizona-cardinals-news/95548/deep-dive-into-the-cardinals-trade-of-marv-harrison",
+          "source": "SBN ARI"
+        },
+        {
+          "text": "Bills at Rams Monday Night Football Discussion Thread. It was a real busy week in Texans land yesterday. The Texans finally got their first win of the season against north Alabama and barely a few scant hours later, the Texans traded for former Ohio State phenom, and C.J. Stroud teammate, WR Marvin ",
+          "url": "https://www.battleredblog.com/general/78183/bills-at-rams-monday-night-football-discussion-thread",
+          "source": "SBN HOU"
+        },
+        {
+          "text": "Grading the Marvin Harrison Jr. trade, and what is next for the Cardinals. Happy Wednesday one and all. The Arizona Cardinals are in the midst of\u2026 well a season. In that season they are 1-4, they look almost completely inept in every phase of the game and they have just traded the fourth overall pic",
+          "url": "https://www.revengeofthebirds.com/arizona-cardinals-news/95606/grading-the-marvin-harrison-jr-trade-and-what-is-next-for-the-cardinals",
+          "source": "SBN ARI"
+        },
+        {
+          "text": "NFL news, live updates: Lamar Jackson has 'real chance' to return, Caleb Williams listed as 'full participant' Wednesday; Marvin Harrison Jr. to make Texans debut in Week 6. Follow along with the latest NFL news ahead of Week 6.",
           "url": "https://sports.yahoo.com/nfl/live/nfl-news-injury-updates-live-week-6-152344178.html",
           "source": "Yahoo NFL"
         }
       ]
     },
     {
-      "name": "Justin Herbert",
-      "pos": "QB",
-      "team": "LAC",
-      "adp": 84.0,
-      "adp_prior": 83.7,
-      "adp_move": -0.3,
+      "name": "Jaylen Warren",
+      "pos": "RB",
+      "team": "PIT",
+      "adp": 69.1,
+      "adp_prior": 69.7,
+      "adp_move": 0.6,
       "proj": null,
       "sleeper_weight": 0.75,
-      "score": 4.698,
+      "score": 4.508,
       "unpriced": true,
       "signals": [
-        "ahead of",
-        "ir",
-        "placed on",
+        "breakout",
+        "injury",
+        "lead back",
+        "workload"
+      ],
+      "items": [
+        {
+          "text": "Rico Dowdle injury updates: Latest status on Steelers RB foot injury. Jaylen Warren has carried a heavy workload in Dowdle's absence. He'll remain the lead back but could use some support from his teammate.",
+          "url": "https://sports.yahoo.com/articles/rico-dowdle-injury-updates-latest-210517765.html",
+          "source": "Yahoo NFL"
+        },
+        {
+          "text": "Steelers RB Jaylen Warren named Week 5 AFC Offensive Player of the Week. The Pittsburgh Steelers improved to 3-2 this past weekend with a 34-22 victory over the Indianapolis Colts at Acrisure Stadium. The Steelers offense showed some serious big-play ability with touchdown plays of 80 and 50 yards i",
+          "url": "https://www.behindthesteelcurtain.com/pittsburgh-steelers-news/176252/steelers-rb-jaylen-warren-named-week-5-afc-offensive-player-of-the-week",
+          "source": "SBN PIT"
+        }
+      ]
+    },
+    {
+      "name": "Jared Goff",
+      "pos": "QB",
+      "team": "DET",
+      "adp": 111.7,
+      "adp_prior": 110.4,
+      "adp_move": -1.3,
+      "proj": null,
+      "sleeper_weight": 1.1,
+      "score": 4.453,
+      "unpriced": true,
+      "signals": [
         "starter"
       ],
       "items": [
@@ -1308,39 +1400,6 @@
           "text": "NFL quarterback rankings: Patrick Mahomes remains on top, Jared Goff rises. Patrick Mahomes remains PFF's top quarterback after the fifth week of the NFL season. Jared Goff climbs due to his care of the football, while Justin Herbert becomes the lowest-ranked starter.",
           "url": "https://www.pff.com/news/nfl-quarterback-rankings/",
           "source": "PFF"
-        },
-        {
-          "text": "Chargers sign former Bengals QB Jake Browning. With backup quarterback Trey Lance recently placed on IR, the Chargers are reinforcing their options behind Justin Herbert in case of an emergency. Per NFL insider Tom Pelissero, the Chargers signed former Bengals and Bucs quarterback Jake Browning. The",
-          "url": "https://www.boltsfromtheblue.com/los-angeles-chargers-roster/66274/chargers-workout-steelers-chiefs-wr-juju-smith-schuster",
-          "source": "SBN LAC"
-        },
-        {
-          "text": "Will Chargers trade Justin Herbert? Update on possibility of QB being dealt and possible landing spots. Herbert's name has started to circulate ahead of the NFL's trade deadline",
-          "url": "https://www.cbssports.com/nfl/news/will-chargers-trade-justin-herbert-possible-landing-spots/",
-          "source": "CBS Sports NFL"
-        }
-      ]
-    },
-    {
-      "name": "Germie Bernard",
-      "pos": "WR",
-      "team": "PIT",
-      "adp": 205.8,
-      "adp_prior": 202.6,
-      "adp_move": -3.2,
-      "proj": null,
-      "sleeper_weight": 1.8,
-      "score": 4.5,
-      "unpriced": false,
-      "signals": [
-        "injury",
-        "ir"
-      ],
-      "items": [
-        {
-          "text": "Steelers news: The time is now for Germie Bernard. The Pittsburgh Steelers are dealing with the injury bug. Specifically, the wide receiver room has been hit big time with the short-term IR trip for Michael Pittman Jr. and the news of a potential multi-week absence for Roman Wilson, who was primed t",
-          "url": "https://www.behindthesteelcurtain.com/pittsburgh-steelers-news/176190/steelers-news-the-time-is-now-for-germie-bernard",
-          "source": "SBN PIT"
         }
       ]
     },
@@ -1373,119 +1432,37 @@
       ]
     },
     {
-      "name": "Marvin Harrison Jr.",
-      "pos": "WR",
-      "team": "ARI",
-      "adp": 65.0,
-      "adp_prior": 66.3,
-      "adp_move": 1.3,
-      "proj": null,
-      "sleeper_weight": 0.75,
-      "score": 4.206,
-      "unpriced": true,
-      "signals": [
-        "snap",
-        "traded"
-      ],
-      "items": [
-        {
-          "text": "Deep dive into the Cardinals\u2019 trade of Marv Harrison. The Arizona Cardinals just traded WR Marvin Harrison, Jr. to the Houston Texans this past weekend. As part of the Cardinals fanbase, we have already heard this news. Harrison was taken with the fourth overall pick in the 2024 NFL Draft. Name a re",
-          "url": "https://www.revengeofthebirds.com/arizona-cardinals-news/95548/deep-dive-into-the-cardinals-trade-of-marv-harrison",
-          "source": "SBN ARI"
-        },
-        {
-          "text": "Bills at Rams Monday Night Football Discussion Thread. It was a real busy week in Texans land yesterday. The Texans finally got their first win of the season against north Alabama and barely a few scant hours later, the Texans traded for former Ohio State phenom, and C.J. Stroud teammate, WR Marvin ",
-          "url": "https://www.battleredblog.com/general/78183/bills-at-rams-monday-night-football-discussion-thread",
-          "source": "SBN HOU"
-        },
-        {
-          "text": "Grading the Marvin Harrison Jr. trade, and what is next for the Cardinals. Happy Wednesday one and all. The Arizona Cardinals are in the midst of\u2026 well a season. In that season they are 1-4, they look almost completely inept in every phase of the game and they have just traded the fourth overall pic",
-          "url": "https://www.revengeofthebirds.com/arizona-cardinals-news/95606/grading-the-marvin-harrison-jr-trade-and-what-is-next-for-the-cardinals",
-          "source": "SBN ARI"
-        },
-        {
-          "text": "Houston Texans News: Monday October 12, 2026. Houston Texans News In beating Titans, C.J. Stroud makes a compelling case for Texans to pay him (Houston Chronicle) Houston Texans snap winless start with 26-3 victory over Tennessee Titans (KRIV Fox 26 Houston) Marvin Harrison Jr. trade: Cardinals send",
-          "url": "https://www.battleredblog.com/houston-texans-news/78180/houston-texans-news-monday-october-12-2026",
-          "source": "SBN HOU"
-        }
-      ]
-    },
-    {
-      "name": "Drake Maye",
+      "name": "Justin Herbert",
       "pos": "QB",
-      "team": "NE",
-      "adp": 67.2,
-      "adp_prior": 67.1,
-      "adp_move": -0.1,
+      "team": "LAC",
+      "adp": 84.0,
+      "adp_prior": 83.7,
+      "adp_move": -0.3,
       "proj": null,
       "sleeper_weight": 0.75,
-      "score": 4.106,
+      "score": 4.156,
       "unpriced": true,
       "signals": [
         "ahead of",
-        "injury"
+        "ir",
+        "placed on",
+        "starter"
       ],
       "items": [
         {
-          "text": "Patriots injury analysis after Raiders win in Week 5. The New England Patriots have plenty to feel good about coming out of their win over the Las Vegas Raiders on Sunday. Their offense had its best day of the season, quarterback Drake Maye returned to his MVP form, and the defense had Kirk Cousins ",
-          "url": "https://www.patspulpit.com/new-england-patriots-injuries/140564/patriots-injury-analysis-raiders-nfl-week-5",
-          "source": "SBN NE"
-        },
-        {
-          "text": "New York Jets News: Gang Green Catches Break Before Patriots Game. Some may argue the New York Jets are catching the New England Patriots at a bad time. New England is coming off a beatdown of the Las Vegas Raiders, and Drake Maye has reset his factory settings to being a good quarterback. However, ",
-          "url": "https://www.ganggreennation.com/new-york-jets-news/97538/gang-green-catches-break-before-patriots-game",
-          "source": "SBN NYJ"
-        },
-        {
-          "text": "Fantasy Football Rankings: NFL Week 6. Nathan Jahnke's Week 6 fantasy football rankings for the 2026 NFL season provide PPR lineup guidance and player evaluations. Green Bay Packers wide receiver Christian Watson enters the week as a top-five option, while quarterback Drake Maye returns to must-star",
-          "url": "https://www.pff.com/news/fantasy-football-rankings-2026/",
+          "text": "NFL quarterback rankings: Patrick Mahomes remains on top, Jared Goff rises. Patrick Mahomes remains PFF's top quarterback after the fifth week of the NFL season. Jared Goff climbs due to his care of the football, while Justin Herbert becomes the lowest-ranked starter.",
+          "url": "https://www.pff.com/news/nfl-quarterback-rankings/",
           "source": "PFF"
-        }
-      ]
-    },
-    {
-      "name": "Patrick Herbert",
-      "pos": "TE",
-      "team": "LAC",
-      "adp": 216.0,
-      "adp_prior": 216.0,
-      "adp_move": 0.0,
-      "proj": null,
-      "sleeper_weight": 1.8,
-      "score": 4.099,
-      "unpriced": true,
-      "signals": [
-        "ir",
-        "placed on"
-      ],
-      "items": [
+        },
         {
           "text": "Chargers sign former Bengals QB Jake Browning. With backup quarterback Trey Lance recently placed on IR, the Chargers are reinforcing their options behind Justin Herbert in case of an emergency. Per NFL insider Tom Pelissero, the Chargers signed former Bengals and Bucs quarterback Jake Browning. The",
           "url": "https://www.boltsfromtheblue.com/los-angeles-chargers-roster/66274/chargers-workout-steelers-chiefs-wr-juju-smith-schuster",
           "source": "SBN LAC"
-        }
-      ]
-    },
-    {
-      "name": "Trey Lance",
-      "pos": "QB",
-      "team": "LAC",
-      "adp": 216.0,
-      "adp_prior": 216.0,
-      "adp_move": 0.0,
-      "proj": null,
-      "sleeper_weight": 1.8,
-      "score": 4.099,
-      "unpriced": true,
-      "signals": [
-        "ir",
-        "placed on"
-      ],
-      "items": [
+        },
         {
-          "text": "Chargers sign former Bengals QB Jake Browning. With backup quarterback Trey Lance recently placed on IR, the Chargers are reinforcing their options behind Justin Herbert in case of an emergency. Per NFL insider Tom Pelissero, the Chargers signed former Bengals and Bucs quarterback Jake Browning. The",
-          "url": "https://www.boltsfromtheblue.com/los-angeles-chargers-roster/66274/chargers-workout-steelers-chiefs-wr-juju-smith-schuster",
-          "source": "SBN LAC"
+          "text": "Will Chargers trade Justin Herbert? Update on possibility of QB being dealt and possible landing spots. Herbert's name has started to circulate ahead of the NFL's trade deadline",
+          "url": "https://www.cbssports.com/nfl/news/will-chargers-trade-justin-herbert-possible-landing-spots/",
+          "source": "CBS Sports NFL"
         }
       ]
     },
@@ -1503,6 +1480,7 @@
       "signals": [
         "ahead of",
         "injury",
+        "practice report",
         "sidelined",
         "snap",
         "snaps",
@@ -1519,6 +1497,11 @@
           "source": "SBN BAL"
         },
         {
+          "text": "Lamar Jackson officially DNP; S Kyle Hamilton fully participated Wednesday. The Ravens list a whopping 19 players on their practice report for Wednesday, including two players who were resting.",
+          "url": "https://www.nbcsports.com/nfl/profootballtalk/rumor-mill/news/lamar-jackson-officially-dnp-s-kyle-hamilton-fully-participated-wednesday",
+          "source": "ProFootballTalk"
+        },
+        {
           "text": "Browns, Ravens injury updates on Lamar Jackson, KC Concepcion, among others. The Cleveland Browns head into a big-time AFC North matchup with the Baltimore Ravens in Week 6, with injury concerns aplenty, including WR KC Concepcion. After what many fans believe was a dirty hit from S Minkah Fitzpatri",
           "url": "https://www.dawgsbynature.com/cleveland-browns-news/135196/browns-ravens-injury-updates-on-lamar-jackson-kc-concepcion-week-6",
           "source": "SBN CLE"
@@ -1527,11 +1510,6 @@
           "text": "Lamar Jackson remains out of practice Wednesday. Ravens head coach Jesse Minter called the quarterback day-to-day with an ankle injury.",
           "url": "https://www.nbcsports.com/nfl/profootballtalk/rumor-mill/news/lamar-jackson-remains-out-of-practice-wednesday",
           "source": "ProFootballTalk"
-        },
-        {
-          "text": "Lamar Jackson has 'realistic chance' to return vs. Browns in Week 6. Baltimore expects to know more by midweek as Jackson pushes to return from the ankle injury that sidelined him against Atlanta",
-          "url": "https://www.cbssports.com/nfl/news/lamar-jackson-injury-update-ravens-browns-week-6/",
-          "source": "CBS Sports NFL"
         }
       ]
     },
@@ -1560,53 +1538,24 @@
       ]
     },
     {
-      "name": "Joe Burrow",
+      "name": "Bryce Young",
       "pos": "QB",
-      "team": "CIN",
-      "adp": 68.2,
-      "adp_prior": 68.1,
-      "adp_move": -0.1,
+      "team": "CAR",
+      "adp": 167.1,
+      "adp_prior": 164.9,
+      "adp_move": -2.2,
       "proj": null,
-      "sleeper_weight": 0.75,
-      "score": 4.05,
-      "unpriced": true,
+      "sleeper_weight": 1.5,
+      "score": 3.9,
+      "unpriced": false,
       "signals": [
-        "ir",
-        "red zone"
+        "did not practice"
       ],
       "items": [
         {
-          "text": "Bengals News: Is it Jack Endries time?. With Tanner Hudson headed to IR and done for the season with a torn pec suffered in the Cincinnati Bengals\u2019 win over the Dolphins, the offense is down one reliable tight end who has proven to be a trusted safety valve for Joe Burrow. While there\u2019s no shortage ",
-          "url": "https://www.cincyjungle.com/cincinnati-bengals-news/202264/jack-endries-time-tanner-hudson-torn-pec",
-          "source": "SBN CIN"
-        },
-        {
-          "text": "Officials miss horrible late hit on Joe Burrow in win vs. Dolphins. Late in the Cincinnati Bengals\u2019 31-24 win over the Miami Dolphins, quarterback Joe Burrow was seen throwing his helmet when he came off the field after failing to score a touchdown in the red zone. Some thought the frustration came ",
-          "url": "https://www.cincyjungle.com/cincinnati-bengals-analysis/202173/officials-miss-late-hit-win-dolphins",
-          "source": "SBN CIN"
-        }
-      ]
-    },
-    {
-      "name": "Roman Wilson",
-      "pos": "WR",
-      "team": "PIT",
-      "adp": 216.0,
-      "adp_prior": 215.9,
-      "adp_move": -0.1,
-      "proj": null,
-      "sleeper_weight": 1.8,
-      "score": 3.96,
-      "unpriced": true,
-      "signals": [
-        "injury",
-        "ir"
-      ],
-      "items": [
-        {
-          "text": "Steelers news: The time is now for Germie Bernard. The Pittsburgh Steelers are dealing with the injury bug. Specifically, the wide receiver room has been hit big time with the short-term IR trip for Michael Pittman Jr. and the news of a potential multi-week absence for Roman Wilson, who was primed t",
-          "url": "https://www.behindthesteelcurtain.com/pittsburgh-steelers-news/176190/steelers-news-the-time-is-now-for-germie-bernard",
-          "source": "SBN PIT"
+          "text": "QB Bryce Young a full participant; RT Monroe Freeling and RB AJ Dillon did not practice. The Panthers are returning from their off weeks, so they practiced Tuesday instead of Wednesday.",
+          "url": "https://www.nbcsports.com/nfl/profootballtalk/rumor-mill/news/qb-bryce-young-a-full-participant-rt-monroe-freeling-and-rb-aj-dillon-did-not-practice",
+          "source": "ProFootballTalk"
         }
       ]
     },
@@ -1633,6 +1582,55 @@
       ]
     },
     {
+      "name": "Josh Downs",
+      "pos": "WR",
+      "team": "IND",
+      "adp": 84.0,
+      "adp_prior": 82.7,
+      "adp_move": -1.3,
+      "proj": null,
+      "sleeper_weight": 0.75,
+      "score": 3.9,
+      "unpriced": true,
+      "signals": [
+        "did not practice",
+        "hamstring",
+        "injury",
+        "limited",
+        "released"
+      ],
+      "items": [
+        {
+          "text": "Indianapolis Colts Injury Report: Week 6 Wednesday. The Indianapolis Colts today released their Wednesday injury report for Week 6 of the NFL season against the Tennessee Titans. Wide receiver Keenan Allen (rest) did not practice today. While running back Jonathan Taylor (rest) was limited. Both app",
+          "url": "https://www.stampedeblue.com/indianapolis-colts-injuries/128749/indianapolis-colts-injury-report-week-6-wednesday",
+          "source": "SBN IND"
+        }
+      ]
+    },
+    {
+      "name": "Deebo Samuel",
+      "pos": "WR",
+      "team": "SF",
+      "adp": 129.6,
+      "adp_prior": 127.9,
+      "adp_move": -1.7,
+      "proj": null,
+      "sleeper_weight": 1.1,
+      "score": 3.872,
+      "unpriced": true,
+      "signals": [
+        "injury",
+        "target share"
+      ],
+      "items": [
+        {
+          "text": "Mike Evans had a 37% target share against the Seahawks. That share was 44% after Deebo Samuel left the game in the third quarter \u2014 Evans ran 5 routes after Deebo left, and he saw a target on 4 of them. Brandin Cooks led the team in routes run after the Deebo injury.",
+          "url": "https://bsky.app/profile/lateroundqb.bsky.social/post/3mxomxxerdw2t",
+          "source": "Bluesky @lateroundqb.bsky.social"
+        }
+      ]
+    },
+    {
       "name": "Sam Darnold",
       "pos": "QB",
       "team": "SEA",
@@ -1655,6 +1653,108 @@
       ]
     },
     {
+      "name": "Drake Maye",
+      "pos": "QB",
+      "team": "NE",
+      "adp": 67.2,
+      "adp_prior": 67.1,
+      "adp_move": -0.1,
+      "proj": null,
+      "sleeper_weight": 0.75,
+      "score": 3.707,
+      "unpriced": true,
+      "signals": [
+        "ahead of",
+        "injury"
+      ],
+      "items": [
+        {
+          "text": "New York Jets News: Gang Green Catches Break Before Patriots Game. Some may argue the New York Jets are catching the New England Patriots at a bad time. New England is coming off a beatdown of the Las Vegas Raiders, and Drake Maye has reset his factory settings to being a good quarterback. However, ",
+          "url": "https://www.ganggreennation.com/new-york-jets-news/97538/gang-green-catches-break-before-patriots-game",
+          "source": "SBN NYJ"
+        },
+        {
+          "text": "Fantasy Football Rankings: NFL Week 6. Nathan Jahnke's Week 6 fantasy football rankings for the 2026 NFL season provide PPR lineup guidance and player evaluations. Green Bay Packers wide receiver Christian Watson enters the week as a top-five option, while quarterback Drake Maye returns to must-star",
+          "url": "https://www.pff.com/news/fantasy-football-rankings-2026/",
+          "source": "PFF"
+        }
+      ]
+    },
+    {
+      "name": "Joe Burrow",
+      "pos": "QB",
+      "team": "CIN",
+      "adp": 68.2,
+      "adp_prior": 68.1,
+      "adp_move": -0.1,
+      "proj": null,
+      "sleeper_weight": 0.75,
+      "score": 3.645,
+      "unpriced": true,
+      "signals": [
+        "ir",
+        "red zone"
+      ],
+      "items": [
+        {
+          "text": "Bengals News: Is it Jack Endries time?. With Tanner Hudson headed to IR and done for the season with a torn pec suffered in the Cincinnati Bengals\u2019 win over the Dolphins, the offense is down one reliable tight end who has proven to be a trusted safety valve for Joe Burrow. While there\u2019s no shortage ",
+          "url": "https://www.cincyjungle.com/cincinnati-bengals-news/202264/jack-endries-time-tanner-hudson-torn-pec",
+          "source": "SBN CIN"
+        },
+        {
+          "text": "Officials miss horrible late hit on Joe Burrow in win vs. Dolphins. Late in the Cincinnati Bengals\u2019 31-24 win over the Miami Dolphins, quarterback Joe Burrow was seen throwing his helmet when he came off the field after failing to score a touchdown in the red zone. Some thought the frustration came ",
+          "url": "https://www.cincyjungle.com/cincinnati-bengals-analysis/202173/officials-miss-late-hit-win-dolphins",
+          "source": "SBN CIN"
+        }
+      ]
+    },
+    {
+      "name": "Patrick Herbert",
+      "pos": "TE",
+      "team": "LAC",
+      "adp": 216.0,
+      "adp_prior": 216.0,
+      "adp_move": 0.0,
+      "proj": null,
+      "sleeper_weight": 1.8,
+      "score": 3.564,
+      "unpriced": true,
+      "signals": [
+        "ir",
+        "placed on"
+      ],
+      "items": [
+        {
+          "text": "Chargers sign former Bengals QB Jake Browning. With backup quarterback Trey Lance recently placed on IR, the Chargers are reinforcing their options behind Justin Herbert in case of an emergency. Per NFL insider Tom Pelissero, the Chargers signed former Bengals and Bucs quarterback Jake Browning. The",
+          "url": "https://www.boltsfromtheblue.com/los-angeles-chargers-roster/66274/chargers-workout-steelers-chiefs-wr-juju-smith-schuster",
+          "source": "SBN LAC"
+        }
+      ]
+    },
+    {
+      "name": "Trey Lance",
+      "pos": "QB",
+      "team": "LAC",
+      "adp": 216.0,
+      "adp_prior": 216.0,
+      "adp_move": 0.0,
+      "proj": null,
+      "sleeper_weight": 1.8,
+      "score": 3.564,
+      "unpriced": true,
+      "signals": [
+        "ir",
+        "placed on"
+      ],
+      "items": [
+        {
+          "text": "Chargers sign former Bengals QB Jake Browning. With backup quarterback Trey Lance recently placed on IR, the Chargers are reinforcing their options behind Justin Herbert in case of an emergency. Per NFL insider Tom Pelissero, the Chargers signed former Bengals and Bucs quarterback Jake Browning. The",
+          "url": "https://www.boltsfromtheblue.com/los-angeles-chargers-roster/66274/chargers-workout-steelers-chiefs-wr-juju-smith-schuster",
+          "source": "SBN LAC"
+        }
+      ]
+    },
+    {
       "name": "Kenyon Sadiq",
       "pos": "TE",
       "team": "NYJ",
@@ -1672,6 +1772,29 @@
         {
           "text": "The Jets need to rethink their tight end approach. Kenyon Sadiq was placed in the concussion protocol during the third quarter of the Jets\u2019 Week 5 win over the Cleveland Browns. The rookie tight end finished the game with only 13 snaps, 8 of which came on passing plays. Naturally you might look at t",
           "url": "https://www.ganggreennation.com/new-york-jets-analysis/97547/the-jets-need-to-rethink-their-tight-end-approach",
+          "source": "SBN NYJ"
+        }
+      ]
+    },
+    {
+      "name": "Omar Cooper Jr.",
+      "pos": "WR",
+      "team": "NYJ",
+      "adp": 176.1,
+      "adp_prior": 160.7,
+      "adp_move": -15.4,
+      "proj": null,
+      "sleeper_weight": 1.5,
+      "score": 3.291,
+      "unpriced": false,
+      "signals": [
+        "injured",
+        "placed on"
+      ],
+      "items": [
+        {
+          "text": "Omar Cooper set to return to practice this week for the Jets. First round rookie wide receiver Omar Cooper is returning to practice this week per Jets head coach Aaron Glenn. Cooper suffered a high ankle sprain in the team\u2019s Week 1 victory over the Tennessee Titans and was subsequently placed on inj",
+          "url": "https://www.ganggreennation.com/new-york-jets-injuries/97578/omar-cooper-set-to-return-to-practice-this-week-for-the-jets",
           "source": "SBN NYJ"
         }
       ]
@@ -1743,69 +1866,77 @@
       ]
     },
     {
-      "name": "Adonai Mitchell",
-      "pos": "WR",
-      "team": "NYJ",
-      "adp": 166.7,
-      "adp_prior": 172.5,
-      "adp_move": 5.8,
+      "name": "Jalen Hurts",
+      "pos": "QB",
+      "team": "PHI",
+      "adp": 73.0,
+      "adp_prior": 72.2,
+      "adp_move": -0.8,
       "proj": null,
-      "sleeper_weight": 1.5,
+      "sleeper_weight": 0.75,
       "score": 3.12,
-      "unpriced": false,
+      "unpriced": true,
       "signals": [
+        "ahead of",
         "injury"
       ],
       "items": [
         {
-          "text": "Jets Injury Notes: AD Mitchell undergoes hand procedure, Omar Cooper Jr.'s practice window opened. Jets head coach Aaron Glenn provided a number of injury updates, including Adonai Mitchell getting a procedure done and the team opening up Omar Cooper Jr.'s practice window to return.",
-          "url": "https://sports.yahoo.com/articles/jets-injury-notes-ad-mitchell-172501805.html",
+          "text": "Eagles Injury Report: Jalen Hurts, Saquon Barkley, and DeVonta Smith among 24 players listed. The latest news and updates ahead of Week 6.",
+          "url": "https://sports.yahoo.com/articles/eagles-injury-report-jalen-hurts-224453367.html",
           "source": "Yahoo NFL"
         }
       ]
     },
     {
-      "name": "Ja'Quinden Jackson",
-      "pos": "RB",
-      "team": "PHI",
-      "adp": 216.0,
-      "adp_prior": 216.0,
-      "adp_move": 0.0,
+      "name": "Ladd McConkey",
+      "pos": "WR",
+      "team": "LAC",
+      "adp": 33.5,
+      "adp_prior": 33.3,
+      "adp_move": -0.2,
       "proj": null,
-      "sleeper_weight": 1.8,
-      "score": 3.074,
+      "sleeper_weight": 0.5,
+      "score": 3.088,
       "unpriced": true,
       "signals": [
-        "training camp"
+        "hamstring",
+        "injury",
+        "limited",
+        "snap"
       ],
       "items": [
         {
-          "text": "Eagles host familiar running back on free agent visit [UPDATE]. The Philadelphia Eagles hosted running back Ja\u2019Quinden Jackson on a free agent visit at the Jefferson Health Training Complex, according to today\u2019s official NFL personnel notice. The Eagles signed Jackson to their 90-man roster on Augus",
-          "url": "https://www.bleedinggreennation.com/news/186808/eagles-host-familiar-running-back-on-free-agent-visit",
-          "source": "SBN PHI"
+          "text": "Chargers Injury Report: Ladd McConkey limited to begin Week 6. The Chargers opened the new week with 18 players on their injury report, not including veteran edge rusher Khalil Mack who took a veteran\u2019s rest day. Offensive tackle Joe Alt (neck), guard Kayode Awosika (fibula), cornerback Donte Jackso",
+          "url": "https://www.boltsfromtheblue.com/los-angeles-chargers-injuries/66291/chargers-injury-report-ladd-mcconkey-quentin-johnston",
+          "source": "SBN LAC"
+        },
+        {
+          "text": "Tre Harris was hurt against the Broncos. As a result, the Chargers had four players who ran more than 20 routes in Week 5, and he wasn't one of them. Those players were Marquez Valdes-Scantling, Theo Wease, Oronde Gadsden, and Charlie Kolar. Ladd McConkey didn't see a snap.",
+          "url": "https://bsky.app/profile/lateroundqb.bsky.social/post/3mxomxxeqeg2t",
+          "source": "Bluesky @lateroundqb.bsky.social"
         }
       ]
     },
     {
-      "name": "Irvin Charles",
+      "name": "Tre Harris",
       "pos": "WR",
-      "team": "SEA",
-      "adp": 216.0,
-      "adp_prior": 216.0,
-      "adp_move": 0.0,
+      "team": "LAC",
+      "adp": 159.8,
+      "adp_prior": 160.0,
+      "adp_move": 0.2,
       "proj": null,
-      "sleeper_weight": 1.8,
-      "score": 3.074,
+      "sleeper_weight": 1.5,
+      "score": 3.072,
       "unpriced": true,
       "signals": [
-        "injured",
-        "placed on"
+        "snap"
       ],
       "items": [
         {
-          "text": "Seahawks activate special teams ace Irv Charles onto 53-man roster. The Seattle Seahawks will have some reinforcements coming on special teams starting with this Thursday\u2019s critical road game at the Denver Broncos. On Tuesday, the team announced that wide receiver Irv Charles has been activated onto",
-          "url": "https://www.fieldgulls.com/seattle-seahawks-roster/177272/nfl-news-seahawks-activate-special-teams-ace-irv-charles-53-man-roster",
-          "source": "SBN SEA"
+          "text": "Tre Harris was hurt against the Broncos. As a result, the Chargers had four players who ran more than 20 routes in Week 5, and he wasn't one of them. Those players were Marquez Valdes-Scantling, Theo Wease, Oronde Gadsden, and Charlie Kolar. Ladd McConkey didn't see a snap.",
+          "url": "https://bsky.app/profile/lateroundqb.bsky.social/post/3mxomxxeqeg2t",
+          "source": "Bluesky @lateroundqb.bsky.social"
         }
       ]
     },
@@ -1911,6 +2042,54 @@
       ]
     },
     {
+      "name": "Keenan Allen",
+      "pos": "WR",
+      "team": "IND",
+      "adp": 154.6,
+      "adp_prior": 175.6,
+      "adp_move": 21.0,
+      "proj": null,
+      "sleeper_weight": 1.5,
+      "score": 2.681,
+      "unpriced": false,
+      "signals": [
+        "did not practice",
+        "hamstring",
+        "injury",
+        "limited",
+        "released"
+      ],
+      "items": [
+        {
+          "text": "Indianapolis Colts Injury Report: Week 6 Wednesday. The Indianapolis Colts today released their Wednesday injury report for Week 6 of the NFL season against the Tennessee Titans. Wide receiver Keenan Allen (rest) did not practice today. While running back Jonathan Taylor (rest) was limited. Both app",
+          "url": "https://www.stampedeblue.com/indianapolis-colts-injuries/128749/indianapolis-colts-injury-report-week-6-wednesday",
+          "source": "SBN IND"
+        }
+      ]
+    },
+    {
+      "name": "Ja'Quinden Jackson",
+      "pos": "RB",
+      "team": "PHI",
+      "adp": 216.0,
+      "adp_prior": 216.0,
+      "adp_move": 0.0,
+      "proj": null,
+      "sleeper_weight": 1.8,
+      "score": 2.673,
+      "unpriced": true,
+      "signals": [
+        "training camp"
+      ],
+      "items": [
+        {
+          "text": "Eagles host familiar running back on free agent visit [UPDATE]. The Philadelphia Eagles hosted running back Ja\u2019Quinden Jackson on a free agent visit at the Jefferson Health Training Complex, according to today\u2019s official NFL personnel notice. The Eagles signed Jackson to their 90-man roster on Augus",
+          "url": "https://www.bleedinggreennation.com/news/186808/eagles-host-familiar-running-back-on-free-agent-visit",
+          "source": "SBN PHI"
+        }
+      ]
+    },
+    {
       "name": "Michael Wilson",
       "pos": "WR",
       "team": "ARI",
@@ -1945,15 +2124,38 @@
       "unpriced": true,
       "signals": [
         "ahead of",
-        "hamstring",
-        "injury",
-        "training camp"
+        "injury"
       ],
       "items": [
         {
-          "text": "Chiefs\u2019 Josh Simmons to practice for the first time this season. During his Wednesday press conference ahead of the Kansas City Chiefs\u2019 Week 6 matchup against the Los Angeles Chargers, head coach Andy Reid shared a major injury update: left tackle Josh Simmons (Back) will return to the practice fiel",
-          "url": "https://www.arrowheadpride.com/kansas-city-chiefs-news/212990/chiefs-josh-simmons-practice-first-time-season",
+          "text": "Chiefs-Chargers Week 6 Wednesday injury report: Rashee Rice doesn\u2019t practice. Each practice day this season, the&#160;Kansas City Chiefs release an official injury report ahead of the next game. In Week 6, the Chiefs host the Los Angeles Chargers for a divisional matchup on Sunday afternoon. Here is",
+          "url": "https://www.arrowheadpride.com/kansas-city-chiefs-injuries/212998/chiefs-chargers-week-6-wednesday-injury-report-rashee-rice-doesnt-practice",
           "source": "SBN KC"
+        }
+      ]
+    },
+    {
+      "name": "Chris Olave",
+      "pos": "WR",
+      "team": "NO",
+      "adp": 26.5,
+      "adp_prior": 27.1,
+      "adp_move": 0.6,
+      "proj": null,
+      "sleeper_weight": 0.5,
+      "score": 2.6,
+      "unpriced": true,
+      "signals": [
+        "ahead of",
+        "did not practice",
+        "injury",
+        "limited"
+      ],
+      "items": [
+        {
+          "text": "Wednesday\u2019s Saints vs. Giants Injury Report: Chris Olave did not practice. The New Orleans Saints have just wrapped up their 1st practice ahead of their Week 6 matchup on the road against the New York Giants on Sunday, October 18 at MetLife Stadium. So, where do things stand following Wednesday\u2019s wo",
+          "url": "https://www.canalstreetchronicles.com/new-orleans-saints-injuries/116489/wednesdays-saints-vs-giants-injury-report-chris-olave-did-not-practice",
+          "source": "SBN NO"
         }
       ]
     },
@@ -2025,6 +2227,74 @@
           "text": "Matthew Stafford to Davante Adams at the goal line. Drink.\n\nAdams has three catches tonight. 22 yards. And two touchdowns.\n\nWe've got a penalty-filled barn-burner.\n\nRams 27, Bills 27 with 7:14 to go.",
           "url": "https://bsky.app/profile/nateatkins.bsky.social/post/3mxpzzlrfk22c",
           "source": "Bluesky @nateatkins.bsky.social"
+        }
+      ]
+    },
+    {
+      "name": "Quentin Johnston",
+      "pos": "WR",
+      "team": "LAC",
+      "adp": 70.7,
+      "adp_prior": 74.4,
+      "adp_move": 3.7,
+      "proj": null,
+      "sleeper_weight": 0.75,
+      "score": 2.409,
+      "unpriced": false,
+      "signals": [
+        "ahead of",
+        "injury",
+        "limited"
+      ],
+      "items": [
+        {
+          "text": "Los Angeles Chargers news: 4 Bolts named as potential trade candidates. Veteran edge rusher Khalil Mack is the most popular name being floated as a trade candidate ahead of this year\u2019s deadline. In a recent article from CBS Sports, there were three other Chargers named who could be on the move given",
+          "url": "https://www.boltsfromtheblue.com/los-angeles-chargers-news/66261/los-angeles-chargers-news-trade-candidates-khalil-mack-donte-jackson",
+          "source": "SBN LAC"
+        },
+        {
+          "text": "Chargers Injury Report: Ladd McConkey limited to begin Week 6. Chargers WRs Ladd McConkey and Quentin Johnston were limited to begin Week 6.",
+          "url": "https://sports.yahoo.com/articles/chargers-injury-report-ladd-mcconkey-223739375.html",
+          "source": "Yahoo NFL"
+        }
+      ]
+    },
+    {
+      "name": "A.J. Brown",
+      "pos": "WR",
+      "team": "NE",
+      "adp": 18.5,
+      "adp_prior": 18.8,
+      "adp_move": 0.3,
+      "proj": null,
+      "sleeper_weight": 0.3,
+      "score": 2.283,
+      "unpriced": true,
+      "signals": [
+        "injured",
+        "injury",
+        "limited"
+      ],
+      "items": [
+        {
+          "text": "Patriots open A.J. Brown\u2019s 21-day window to return from injured reserve. The New England Patriots set sights on the New York Jets with reinforcements from injured reserve. Head coach Mike Vrabel announced during his Wednesday press conference that the organization has opened the practice windows for",
+          "url": "https://www.patspulpit.com/new-england-patriots-news/140670/patriots-open-a-j-brown-marcus-bryant-21-day-return-window-injured-reserve-53-man-roster",
+          "source": "SBN NE"
+        },
+        {
+          "text": "A.J. Brown injury update: Patriots opening up WR's practice window with return imminent. Brown suffered a high ankle sprain in New England's season-opening loss to Seattle",
+          "url": "https://www.cbssports.com/nfl/news/a-j-brown-injury-update-new-england-patriots/",
+          "source": "CBS Sports NFL"
+        },
+        {
+          "text": "NFL Injury Report, Week 6: Latest news, updates, fantasy football analysis for A.J. Brown, Caleb Williams and more players. We go over the latest injury news and updates heading into Week 6, providing a list of players fantasy football managers will need to track.",
+          "url": "https://sports.yahoo.com/fantasy/article/nfl-injury-report-week-6-latest-news-updates-fantasy-football-analysis-for-aj-brown-caleb-williams-and-more-players-202323572.html",
+          "source": "Yahoo NFL"
+        },
+        {
+          "text": "A.J. Brown, TreVeyon Henderson, Will Campbell all limited in Wednesday's practice. A.J.",
+          "url": "https://www.nbcsports.com/nfl/profootballtalk/rumor-mill/news/a-j-brown-treveyon-henderson-will-campbell-all-limited-in-wednesdays-practice",
+          "source": "ProFootballTalk"
         }
       ]
     },
@@ -2136,15 +2406,43 @@
       ]
     },
     {
-      "name": "A.J. Brown",
-      "pos": "WR",
+      "name": "TreVeyon Henderson",
+      "pos": "RB",
       "team": "NE",
-      "adp": 18.5,
-      "adp_prior": 18.8,
-      "adp_move": 0.3,
+      "adp": 61.1,
+      "adp_prior": 57.5,
+      "adp_move": -3.6,
       "proj": null,
-      "sleeper_weight": 0.3,
-      "score": 2.135,
+      "sleeper_weight": 0.75,
+      "score": 2.107,
+      "unpriced": false,
+      "signals": [
+        "limited",
+        "practice squad"
+      ],
+      "items": [
+        {
+          "text": "Patriots sign running back Hassan Haskins, cornerback D\u2019Shawn Jamison to practice squad. With TreVeyon Henderson expected to miss multiple weeks due to a high ankle sprain, a familiar face has returned to the ground game in Foxborough. The New England Patriots announced the addition of running back ",
+          "url": "https://www.patspulpit.com/new-england-patriots-news/140603/patriots-sign-hassan-haskins-dshawn-jamison-practice-squad-release-jose-ramirez",
+          "source": "SBN NE"
+        },
+        {
+          "text": "A.J. Brown, TreVeyon Henderson, Will Campbell all limited in Wednesday's practice. A.J.",
+          "url": "https://www.nbcsports.com/nfl/profootballtalk/rumor-mill/news/a-j-brown-treveyon-henderson-will-campbell-all-limited-in-wednesdays-practice",
+          "source": "ProFootballTalk"
+        }
+      ]
+    },
+    {
+      "name": "DeVonta Smith",
+      "pos": "WR",
+      "team": "PHI",
+      "adp": 27.9,
+      "adp_prior": 27.7,
+      "adp_move": -0.2,
+      "proj": null,
+      "sleeper_weight": 0.5,
+      "score": 2.08,
       "unpriced": true,
       "signals": [
         "injured",
@@ -2152,83 +2450,9 @@
       ],
       "items": [
         {
-          "text": "Patriots open A.J. Brown\u2019s 21-day window to return from injured reserve. The New England Patriots set sights on the New York Jets with reinforcements from injured reserve. Head coach Mike Vrabel announced during his Wednesday press conference that the organization has opened the practice windows for",
-          "url": "https://www.patspulpit.com/new-england-patriots-news/140670/patriots-open-a-j-brown-marcus-bryant-21-day-return-window-injured-reserve-53-man-roster",
-          "source": "SBN NE"
-        },
-        {
-          "text": "A.J. Brown injury update: Patriots opening up WR's practice window with return imminent. Brown suffered a high ankle sprain in New England's season-opening loss to Seattle",
-          "url": "https://www.cbssports.com/nfl/news/a-j-brown-injury-update-new-england-patriots/",
-          "source": "CBS Sports NFL"
-        },
-        {
-          "text": "NFL Injury Report, Week 6: Latest news, updates, fantasy football analysis for A.J. Brown, Caleb Williams and more players. We go over the latest injury news and updates heading into Week 6, providing a list of players fantasy football managers will need to track.",
-          "url": "https://sports.yahoo.com/fantasy/article/nfl-injury-report-week-6-latest-news-updates-fantasy-football-analysis-for-aj-brown-caleb-williams-and-more-players-202323572.html",
-          "source": "Yahoo NFL"
-        }
-      ]
-    },
-    {
-      "name": "Bhayshul Tuten",
-      "pos": "RB",
-      "team": "JAX",
-      "adp": 49.8,
-      "adp_prior": 50.1,
-      "adp_move": 0.3,
-      "proj": null,
-      "sleeper_weight": 0.5,
-      "score": 2.08,
-      "unpriced": true,
-      "signals": [
-        "snap",
-        "wr1"
-      ],
-      "items": [
-        {
-          "text": "Mike Evans is defying age, injuries and a low snap share to deliver another fantasy football WR1 season. Scott Pianowski breaks down Mike Evans delivering again, Tucker Kraft's slow start and Bhayshul Tuten being ready for more.",
-          "url": "https://sports.yahoo.com/fantasy/article/mike-evans-is-defying-age-injuries-and-a-low-snap-share-to-deliver-another-fantasy-football-wr1-season-173257982.html",
-          "source": "Yahoo NFL"
-        }
-      ]
-    },
-    {
-      "name": "Mike Evans",
-      "pos": "WR",
-      "team": "SF",
-      "adp": 54.5,
-      "adp_prior": 49.6,
-      "adp_move": -4.9,
-      "proj": null,
-      "sleeper_weight": 0.5,
-      "score": 2.003,
-      "unpriced": false,
-      "signals": [
-        "injury",
-        "snap",
-        "target share",
-        "targets",
-        "wr1"
-      ],
-      "items": [
-        {
-          "text": "NFL insider on the 49ers&#8217; WR trade market: &#8216;The issue is the amount of roster spots you\u2019re allotting to the position\u2019. We spent Tuesday afternoon discussing potential trade targets for the San Francisco 49ers at wide receiver. Getting Mike Evans help feels like a priority. But the team h",
-          "url": "https://www.ninersnation.com/san-francisco-49ers-news/164275/nfl-insider-on-the-49ers-wr-trade-market-the-issue-is-the-amount-of-roster-spots-youre-allotting-to-the-position",
-          "source": "SBN SF"
-        },
-        {
-          "text": "Mike Evans is defying age, injuries and a low snap share to deliver another fantasy football WR1 season. Scott Pianowski breaks down Mike Evans delivering again, Tucker Kraft's slow start and Bhayshul Tuten being ready for more.",
-          "url": "https://sports.yahoo.com/fantasy/article/mike-evans-is-defying-age-injuries-and-a-low-snap-share-to-deliver-another-fantasy-football-wr1-season-173257982.html",
-          "source": "Yahoo NFL"
-        },
-        {
-          "text": "3 trade targets at WR for the 49ers: A realistic, best-fit, and pipe dream. The San Francisco 49ers are hurting at the wide receiver position. Being down to Mike Evans and Brandin Cooks as your top two targets sounds better in 2018, but the 49ers found a way to survive in Seattle with the two vetera",
-          "url": "https://www.ninersnation.com/san-francisco-49ers-analysis/164240/3-trade-targets-at-wr-for-the-49ers-a-realistic-best-fit-and-pipe-dream",
-          "source": "SBN SF"
-        },
-        {
-          "text": "Mike Evans had a 37% target share against the Seahawks. That share was 44% after Deebo Samuel left the game in the third quarter \u2014 Evans ran 5 routes after Deebo left, and he saw a target on 4 of them. Brandin Cooks led the team in routes run after the Deebo injury.",
-          "url": "https://bsky.app/profile/lateroundqb.bsky.social/post/3mxomxxerdw2t",
-          "source": "Bluesky @lateroundqb.bsky.social"
+          "text": "Eagles list 24 injured players, including DeVonta Smith, Saquon Barkley as DNP. The Eagles have 24 players on their injury report.",
+          "url": "https://www.nbcsports.com/nfl/profootballtalk/rumor-mill/news/eagles-list-24-injured-players-including-devonta-smith-saquon-barkley-as-dnp",
+          "source": "ProFootballTalk"
         }
       ]
     },
@@ -2328,91 +2552,60 @@
       ]
     },
     {
-      "name": "Quentin Johnston",
-      "pos": "WR",
-      "team": "LAC",
-      "adp": 70.7,
-      "adp_prior": 74.4,
-      "adp_move": 3.7,
+      "name": "Rico Dowdle",
+      "pos": "RB",
+      "team": "PIT",
+      "adp": 81.3,
+      "adp_prior": 84.4,
+      "adp_move": 3.1,
       "proj": null,
       "sleeper_weight": 0.75,
       "score": 1.95,
       "unpriced": false,
       "signals": [
-        "ahead of"
+        "injury",
+        "lead back",
+        "workload"
       ],
       "items": [
         {
-          "text": "Los Angeles Chargers news: 4 Bolts named as potential trade candidates. Veteran edge rusher Khalil Mack is the most popular name being floated as a trade candidate ahead of this year\u2019s deadline. In a recent article from CBS Sports, there were three other Chargers named who could be on the move given",
-          "url": "https://www.boltsfromtheblue.com/los-angeles-chargers-news/66261/los-angeles-chargers-news-trade-candidates-khalil-mack-donte-jackson",
-          "source": "SBN LAC"
+          "text": "Rico Dowdle injury updates: Latest status on Steelers RB foot injury. Jaylen Warren has carried a heavy workload in Dowdle's absence. He'll remain the lead back but could use some support from his teammate.",
+          "url": "https://sports.yahoo.com/articles/rico-dowdle-injury-updates-latest-210517765.html",
+          "source": "Yahoo NFL"
         }
       ]
     },
     {
-      "name": "TreVeyon Henderson",
-      "pos": "RB",
-      "team": "NE",
-      "adp": 61.1,
-      "adp_prior": 57.5,
-      "adp_move": -3.6,
-      "proj": null,
-      "sleeper_weight": 0.75,
-      "score": 1.941,
-      "unpriced": false,
-      "signals": [
-        "practice squad"
-      ],
-      "items": [
-        {
-          "text": "Patriots sign running back Hassan Haskins, cornerback D\u2019Shawn Jamison to practice squad. With TreVeyon Henderson expected to miss multiple weeks due to a high ankle sprain, a familiar face has returned to the ground game in Foxborough. The New England Patriots announced the addition of running back ",
-          "url": "https://www.patspulpit.com/new-england-patriots-news/140603/patriots-sign-hassan-haskins-dshawn-jamison-practice-squad-release-jose-ramirez",
-          "source": "SBN NE"
-        }
-      ]
-    },
-    {
-      "name": "Jaxson Dart",
-      "pos": "QB",
-      "team": "NYG",
-      "adp": 106.6,
-      "adp_prior": 102.2,
-      "adp_move": -4.4,
-      "proj": null,
-      "sleeper_weight": 0.75,
-      "score": 1.875,
-      "unpriced": false,
-      "signals": [
-        "injury"
-      ],
-      "items": [
-        {
-          "text": "The NY Giants may need to change how they think about offense. The New York Giants are 3-1-1 despite the Week 2 season-ending injury to starting quarterback Jaxson Dart. That injury brought veteran Jameis Winston onto the field and he became the Giants\u2019 full-time starting quarterback the next week a",
-          "url": "https://www.bigblueview.com/new-york-giants-analysis/175539/giants-may-need-to-change-how-they-think-about-offense",
-          "source": "SBN NYG"
-        }
-      ]
-    },
-    {
-      "name": "Michael Pittman Jr.",
+      "name": "Mike Evans",
       "pos": "WR",
-      "team": "PIT",
-      "adp": 102.8,
-      "adp_prior": 99.5,
-      "adp_move": -3.3,
+      "team": "SF",
+      "adp": 54.5,
+      "adp_prior": 49.6,
+      "adp_move": -4.9,
       "proj": null,
-      "sleeper_weight": 0.75,
-      "score": 1.875,
+      "sleeper_weight": 0.5,
+      "score": 1.864,
       "unpriced": false,
       "signals": [
         "injury",
-        "ir"
+        "target share",
+        "targets"
       ],
       "items": [
         {
-          "text": "Steelers news: The time is now for Germie Bernard. The Pittsburgh Steelers are dealing with the injury bug. Specifically, the wide receiver room has been hit big time with the short-term IR trip for Michael Pittman Jr. and the news of a potential multi-week absence for Roman Wilson, who was primed t",
-          "url": "https://www.behindthesteelcurtain.com/pittsburgh-steelers-news/176190/steelers-news-the-time-is-now-for-germie-bernard",
-          "source": "SBN PIT"
+          "text": "NFL insider on the 49ers&#8217; WR trade market: &#8216;The issue is the amount of roster spots you\u2019re allotting to the position\u2019. We spent Tuesday afternoon discussing potential trade targets for the San Francisco 49ers at wide receiver. Getting Mike Evans help feels like a priority. But the team h",
+          "url": "https://www.ninersnation.com/san-francisco-49ers-news/164275/nfl-insider-on-the-49ers-wr-trade-market-the-issue-is-the-amount-of-roster-spots-youre-allotting-to-the-position",
+          "source": "SBN SF"
+        },
+        {
+          "text": "3 trade targets at WR for the 49ers: A realistic, best-fit, and pipe dream. The San Francisco 49ers are hurting at the wide receiver position. Being down to Mike Evans and Brandin Cooks as your top two targets sounds better in 2018, but the 49ers found a way to survive in Seattle with the two vetera",
+          "url": "https://www.ninersnation.com/san-francisco-49ers-analysis/164240/3-trade-targets-at-wr-for-the-49ers-a-realistic-best-fit-and-pipe-dream",
+          "source": "SBN SF"
+        },
+        {
+          "text": "Mike Evans had a 37% target share against the Seahawks. That share was 44% after Deebo Samuel left the game in the third quarter \u2014 Evans ran 5 routes after Deebo left, and he saw a target on 4 of them. Brandin Cooks led the team in routes run after the Deebo injury.",
+          "url": "https://bsky.app/profile/lateroundqb.bsky.social/post/3mxomxxerdw2t",
+          "source": "Bluesky @lateroundqb.bsky.social"
         }
       ]
     },
@@ -2491,6 +2684,32 @@
       ]
     },
     {
+      "name": "Jonathan Taylor",
+      "pos": "RB",
+      "team": "IND",
+      "adp": 7.6,
+      "adp_prior": 7.7,
+      "adp_move": 0.1,
+      "proj": null,
+      "sleeper_weight": 0.3,
+      "score": 1.716,
+      "unpriced": true,
+      "signals": [
+        "did not practice",
+        "hamstring",
+        "injury",
+        "limited",
+        "released"
+      ],
+      "items": [
+        {
+          "text": "Indianapolis Colts Injury Report: Week 6 Wednesday. The Indianapolis Colts today released their Wednesday injury report for Week 6 of the NFL season against the Tennessee Titans. Wide receiver Keenan Allen (rest) did not practice today. While running back Jonathan Taylor (rest) was limited. Both app",
+          "url": "https://www.stampedeblue.com/indianapolis-colts-injuries/128749/indianapolis-colts-injury-report-week-6-wednesday",
+          "source": "SBN IND"
+        }
+      ]
+    },
+    {
       "name": "Dalton Kincaid",
       "pos": "TE",
       "team": "BUF",
@@ -2535,28 +2754,6 @@
       ]
     },
     {
-      "name": "Jaylen Warren",
-      "pos": "RB",
-      "team": "PIT",
-      "adp": 69.1,
-      "adp_prior": 69.7,
-      "adp_move": 0.6,
-      "proj": null,
-      "sleeper_weight": 0.75,
-      "score": 1.523,
-      "unpriced": true,
-      "signals": [
-        "breakout"
-      ],
-      "items": [
-        {
-          "text": "Steelers RB Jaylen Warren named Week 5 AFC Offensive Player of the Week. The Pittsburgh Steelers improved to 3-2 this past weekend with a 34-22 victory over the Indianapolis Colts at Acrisure Stadium. The Steelers offense showed some serious big-play ability with touchdown plays of 80 and 50 yards i",
-          "url": "https://www.behindthesteelcurtain.com/pittsburgh-steelers-news/176252/steelers-rb-jaylen-warren-named-week-5-afc-offensive-player-of-the-week",
-          "source": "SBN PIT"
-        }
-      ]
-    },
-    {
       "name": "Jeremiyah Love",
       "pos": "RB",
       "team": "ARI",
@@ -2575,28 +2772,6 @@
         {
           "text": "Jeremiyah Love out-snapped Tyler Allgeier 34 to 32 on Sunday, rushes were 12 to 3. Allgeier was used, once again, as their pass-protecting back: Love's last snap came with about 14 minutes left in the fourth quarter. Love has seen two targets over his last two games.",
           "url": "https://bsky.app/profile/lateroundqb.bsky.social/post/3mxomxxeqei2t",
-          "source": "Bluesky @lateroundqb.bsky.social"
-        }
-      ]
-    },
-    {
-      "name": "Ladd McConkey",
-      "pos": "WR",
-      "team": "LAC",
-      "adp": 33.5,
-      "adp_prior": 33.3,
-      "adp_move": -0.2,
-      "proj": null,
-      "sleeper_weight": 0.5,
-      "score": 1.44,
-      "unpriced": true,
-      "signals": [
-        "snap"
-      ],
-      "items": [
-        {
-          "text": "Tre Harris was hurt against the Broncos. As a result, the Chargers had four players who ran more than 20 routes in Week 5, and he wasn't one of them. Those players were Marquez Valdes-Scantling, Theo Wease, Oronde Gadsden, and Charlie Kolar. Ladd McConkey didn't see a snap.",
-          "url": "https://bsky.app/profile/lateroundqb.bsky.social/post/3mxomxxeqeg2t",
           "source": "Bluesky @lateroundqb.bsky.social"
         }
       ]
@@ -2624,46 +2799,24 @@
       ]
     },
     {
-      "name": "Jaxon Smith-Njigba",
-      "pos": "WR",
-      "team": "SEA",
-      "adp": 5.6,
-      "adp_prior": 5.5,
-      "adp_move": -0.1,
+      "name": "Mike Washington",
+      "pos": "RB",
+      "team": "LV",
+      "adp": 136.0,
+      "adp_prior": 177.7,
+      "adp_move": 41.7,
       "proj": null,
-      "sleeper_weight": 0.3,
-      "score": 1.404,
-      "unpriced": true,
-      "signals": [
-        "impressed"
-      ],
-      "items": [
-        {
-          "text": "Broncos News: Will Riley Moss play on Thursday?. With the Seahawks and Jaxon Smith-Njigba coming to town on Thursday, there\u2019s a glimmer of hope in Broncos Country that we may get one of our starting cornerbacks back. While I\u2019ve been very impressed by the work that Jahdae Barron and Kris Abrams-Drain",
-          "url": "https://www.milehighreport.com/denver-broncos-news/188861/broncos-news-will-riley-moss-play-on-thursday",
-          "source": "SBN DEN"
-        }
-      ]
-    },
-    {
-      "name": "Patrick Mahomes",
-      "pos": "QB",
-      "team": "KC",
-      "adp": 99.0,
-      "adp_prior": 96.7,
-      "adp_move": -2.3,
-      "proj": null,
-      "sleeper_weight": 0.75,
-      "score": 1.385,
+      "sleeper_weight": 1.1,
+      "score": 1.43,
       "unpriced": false,
       "signals": [
-        "starter"
+        "injured"
       ],
       "items": [
         {
-          "text": "NFL quarterback rankings: Patrick Mahomes remains on top, Jared Goff rises. Patrick Mahomes remains PFF's top quarterback after the fifth week of the NFL season. Jared Goff climbs due to his care of the football, while Justin Herbert becomes the lowest-ranked starter.",
-          "url": "https://www.pff.com/news/nfl-quarterback-rankings/",
-          "source": "PFF"
+          "text": "Will Klint Kubiak finally unleash Mike Washington Jr?. The Las Vegas Raiders rushing attack is hobbled by an injured Ashton Jeanty, with arguably a better option on the bench.",
+          "url": "https://sports.yahoo.com/articles/klint-kubiak-finally-unleash-mike-214200119.html",
+          "source": "Yahoo NFL"
         }
       ]
     },
@@ -2692,6 +2845,73 @@
           "text": "Falcons snap counts from a tough overtime loss to the Ravens. I\u2019m still dragging something fierce after three straight primetime games, but the snap counts must roll on, and so they shall. Offense LG Matthew Bergeron: 64 C Ryan Neuzil: 64 RG Chris Lindstrom: 64 RT Jawaan Taylor: 64 WR Drake London: ",
           "url": "https://www.thefalcoholic.com/atlanta-falcons-game-information/97224/falcons-snap-counts-from-a-tough-overtime-loss-to-the-ravens-olamide-zaccheaus-mike-ford",
           "source": "SBN ATL"
+        }
+      ]
+    },
+    {
+      "name": "Saquon Barkley",
+      "pos": "RB",
+      "team": "PHI",
+      "adp": 13.0,
+      "adp_prior": 13.7,
+      "adp_move": 0.7,
+      "proj": null,
+      "sleeper_weight": 0.3,
+      "score": 1.248,
+      "unpriced": true,
+      "signals": [
+        "injured",
+        "injury"
+      ],
+      "items": [
+        {
+          "text": "Eagles list 24 injured players, including DeVonta Smith, Saquon Barkley as DNP. The Eagles have 24 players on their injury report.",
+          "url": "https://www.nbcsports.com/nfl/profootballtalk/rumor-mill/news/eagles-list-24-injured-players-including-devonta-smith-saquon-barkley-as-dnp",
+          "source": "ProFootballTalk"
+        }
+      ]
+    },
+    {
+      "name": "Jaxon Smith-Njigba",
+      "pos": "WR",
+      "team": "SEA",
+      "adp": 5.6,
+      "adp_prior": 5.5,
+      "adp_move": -0.1,
+      "proj": null,
+      "sleeper_weight": 0.3,
+      "score": 1.242,
+      "unpriced": true,
+      "signals": [
+        "impressed"
+      ],
+      "items": [
+        {
+          "text": "Broncos News: Will Riley Moss play on Thursday?. With the Seahawks and Jaxon Smith-Njigba coming to town on Thursday, there\u2019s a glimmer of hope in Broncos Country that we may get one of our starting cornerbacks back. While I\u2019ve been very impressed by the work that Jahdae Barron and Kris Abrams-Drain",
+          "url": "https://www.milehighreport.com/denver-broncos-news/188861/broncos-news-will-riley-moss-play-on-thursday",
+          "source": "SBN DEN"
+        }
+      ]
+    },
+    {
+      "name": "Patrick Mahomes",
+      "pos": "QB",
+      "team": "KC",
+      "adp": 99.0,
+      "adp_prior": 96.7,
+      "adp_move": -2.3,
+      "proj": null,
+      "sleeper_weight": 0.75,
+      "score": 1.225,
+      "unpriced": false,
+      "signals": [
+        "starter"
+      ],
+      "items": [
+        {
+          "text": "NFL quarterback rankings: Patrick Mahomes remains on top, Jared Goff rises. Patrick Mahomes remains PFF's top quarterback after the fifth week of the NFL season. Jared Goff climbs due to his care of the football, while Justin Herbert becomes the lowest-ranked starter.",
+          "url": "https://www.pff.com/news/nfl-quarterback-rankings/",
+          "source": "PFF"
         }
       ]
     },
@@ -2769,6 +2989,34 @@
       ]
     },
     {
+      "name": "Ashton Jeanty",
+      "pos": "RB",
+      "team": "LV",
+      "adp": 16.4,
+      "adp_prior": 12.0,
+      "adp_move": -4.4,
+      "proj": null,
+      "sleeper_weight": 0.3,
+      "score": 1.1,
+      "unpriced": false,
+      "signals": [
+        "injured",
+        "snaps"
+      ],
+      "items": [
+        {
+          "text": "Darien Porter bounces back into key role. Here is a look at how the Las Vegas Raiders\u2019 2025 draft class fared in a 45-17 loss at the New England Patriots on Sunday and what to look for Sunday at home against the Buffalo Bills: Ashton Jeanty: The No. 6 overall draft pick played a season low 53 percen",
+          "url": "https://www.silverandblackpride.com/las-vegas-raiders-analysis/142765/raiders-darien-porterzeke-masses-cornerback",
+          "source": "SBN LV"
+        },
+        {
+          "text": "Will Klint Kubiak finally unleash Mike Washington Jr?. The Las Vegas Raiders rushing attack is hobbled by an injured Ashton Jeanty, with arguably a better option on the bench.",
+          "url": "https://sports.yahoo.com/articles/klint-kubiak-finally-unleash-mike-214200119.html",
+          "source": "Yahoo NFL"
+        }
+      ]
+    },
+    {
       "name": "Bijan Robinson",
       "pos": "RB",
       "team": "ATL",
@@ -2842,46 +3090,24 @@
       ]
     },
     {
-      "name": "Rhamondre Stevenson",
-      "pos": "RB",
-      "team": "NE",
-      "adp": 65.9,
-      "adp_prior": 70.3,
-      "adp_move": 4.4,
-      "proj": null,
-      "sleeper_weight": 0.75,
-      "score": 1.013,
-      "unpriced": false,
-      "signals": [
-        "injury"
-      ],
-      "items": [
-        {
-          "text": "Will Campbell injury update: Patriots OT receives positive news. The New England Patriots received positive news in the injury department. Starting left tackle Will Campbell avoided a major injury in his right knee on Sunday. According to The Ringer\u2019s Tom Pelissero, Campbell is now considered week-t",
-          "url": "https://www.patspulpit.com/new-england-patriots-injuries/140590/will-campbell-injury-update-patriots-ot-receives-positive-news",
-          "source": "SBN NE"
-        }
-      ]
-    },
-    {
-      "name": "Ashton Jeanty",
-      "pos": "RB",
-      "team": "LV",
-      "adp": 16.4,
-      "adp_prior": 12.0,
-      "adp_move": -4.4,
+      "name": "CeeDee Lamb",
+      "pos": "WR",
+      "team": "DAL",
+      "adp": 10.0,
+      "adp_prior": 9.7,
+      "adp_move": -0.3,
       "proj": null,
       "sleeper_weight": 0.3,
-      "score": 0.878,
-      "unpriced": false,
+      "score": 0.936,
+      "unpriced": true,
       "signals": [
-        "snaps"
+        "limited"
       ],
       "items": [
         {
-          "text": "Darien Porter bounces back into key role. Here is a look at how the Las Vegas Raiders\u2019 2025 draft class fared in a 45-17 loss at the New England Patriots on Sunday and what to look for Sunday at home against the Buffalo Bills: Ashton Jeanty: The No. 6 overall draft pick played a season low 53 percen",
-          "url": "https://www.silverandblackpride.com/las-vegas-raiders-analysis/142765/raiders-darien-porterzeke-masses-cornerback",
-          "source": "SBN LV"
+          "text": "CB Joey Porter Jr. limited Wednesday; WR CeeDee Lamb, LT Tyler Guyton full participants. The Cowboys had a mini-bye after losing to the Buccaneers last Thursday.",
+          "url": "https://www.nbcsports.com/nfl/profootballtalk/rumor-mill/news/cb-joey-porter-jr-limited-wednesday-wr-ceedee-lamb-lt-tyler-guyton-full-participants",
+          "source": "ProFootballTalk"
         }
       ]
     },
