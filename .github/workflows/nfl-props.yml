@@ -177,7 +177,25 @@ jobs:
                   nfl-props/gamelines.json \
                   nfl-props/sleeper_players.json
           git diff --staged --quiet || git commit -m "chore: refresh NFL projections [skip ci]"
-          git push
+          # Another workflow pushing to master mid-run rejects a bare push and
+          # the freshly scraped data dies with the runner. nfl-beat.yml already
+          # retried for this; these two did not, and a manual run of props and
+          # scrape together lost a complete props refresh (7 files, run
+          # 38509417273) to exactly that race. The data had been collected and
+          # committed -- only the push failed.
+          #
+          # These commits touch disjoint paths, so a rebase is safe: props owns
+          # nfl-props/, scrape owns arbitrage/.
+          for i in 1 2 3 4 5; do
+            if git push; then
+              echo "Pushed on attempt $i."
+              exit 0
+            fi
+            echo "Push attempt $i failed; rebasing on remote."
+            git pull --rebase --autostash origin master
+          done
+          echo "Push failed after 5 attempts." >&2
+          exit 1
 
       # Every scraper above is continue-on-error, so without this the job goes
       # green even when every source failed. That was survivable while runs were
