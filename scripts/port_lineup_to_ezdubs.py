@@ -40,6 +40,7 @@ Usage:
 from __future__ import annotations
 
 import argparse
+import hashlib
 import re
 import shutil
 import sys
@@ -55,14 +56,42 @@ PAGES = {
         "view": "sleeper",
         "nav": "Start/Sit",
         "data": "data/",          # owns the data directory
+        "h1": "NFL Start/Sit",
+        # {week} becomes the <span id="week-label"> that app.js fills in.
+        "subtitle": "Start/sit and waiver calls for {week}, priced off the "
+                    "betting markets instead of projections.",
+        "description": "Who to start this week, priced off betting markets "
+                       "instead of projections. Reads your Sleeper leagues.",
     },
     "nfl-rooting": {
         "title": "Root For / Against",
         "view": "rooting",
         "nav": "Root For/Against",
         "data": "../nfl-start-sit/data/",   # shares it
+        "h1": "Root For / Against",
+        "subtitle": "Which players to cheer for and against across all your "
+                    "Sleeper leagues, for {week}.",
+        "description": "Which players to root for and against across every one "
+                       "of your Sleeper leagues, priced off betting markets.",
     },
 }
+
+SITE = "https://ezdubsanalytics.com"
+
+# The <head> tags every other EZ Dubs page carries. These pages are rebuilt from
+# lineup/index.html on every port and carry_head_metas() keeps only
+# <meta http-equiv>, so tags added by hand in the destination were reverted.
+# Without them a shared link showed a bare title with no description or image,
+# and browsers 404'd on /favicon.ico. (2026-10-14)
+HEAD_TMPL = """
+  <meta name="description" content="{description}" />
+  <link rel="icon" href="/EDA.png" type="image/png" />
+  <meta property="og:title" content="{title} | EZ Dubs Analytics" />
+  <meta property="og:description" content="{description}" />
+  <meta property="og:url" content="{site}/dashboards/{slug}/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="{site}/EDA.png" />
+  <meta name="twitter:card" content="summary" />"""
 
 DATA_FILES = ["weekly.json", "oddsapi.json", "dk_td.json", "gamelines.json",
               "sleeper_players.json", "clay.json", "data.json"]
@@ -264,7 +293,22 @@ def drop_view(html: str, view: str) -> str:
     return html
 
 
-def build_page(slug: str, cfg: dict, nav: str, site_style: str) -> str:
+def asset_version(*paths: Path) -> str:
+    """Cache-bust tag from the content of the shared assets.
+
+    lineup/index.html hard-codes ?v=2026-10-01-tdonly, and app.js and style.css
+    changed four times after that without the tag moving, so a browser holding
+    an old copy had nothing telling it to refetch. A content hash moves exactly
+    when the files do, and a re-run with nothing changed leaves it alone.
+    """
+    h = hashlib.sha256()
+    for p in paths:
+        h.update(p.read_bytes().replace(b"\r\n", b"\n"))
+    return h.hexdigest()[:10]
+
+
+def build_page(slug: str, cfg: dict, nav: str, site_style: str,
+               version: str = "") -> str:
     """One page: site chrome + the lineup markup, pointed at the shared assets."""
     html = (SRC / "lineup" / "index.html").read_text(encoding="utf-8")
 
@@ -285,20 +329,38 @@ def build_page(slug: str, cfg: dict, nav: str, site_style: str) -> str:
     # Shared assets, one directory up.
     html = html.replace('href="style.css', f'href="../{SHARED}/style.css')
     html = html.replace('src="app.js', f'src="../{SHARED}/app.js')
+    if version:
+        html = re.sub(rf'(\.\./{SHARED}/(?:style\.css|app\.js))\?v=[^"]*',
+                      rf"\1?v={version}", html)
 
     # Links that assume the AI_Agent_Work layout.
     html = html.replace('<a href="../" class="back">&larr; Home</a>', "")
-    html = re.sub(
-        r"Sister pages: the\s*<a href=\"\.\./nfl-props/\"[^>]*>season draft board</a>\s*"
-        r"and\s*<a href=\"\.\./books/\"[^>]*>book-by-book projections</a>\.",
-        "Priced off the betting markets.", html, flags=re.S)
+
+    # Heading and subtitle, per page. The subtitle used to be patched by swapping
+    # its "Sister pages" sentence for "Priced off the betting markets.", which
+    # repeated the clause just before it, and both pages were headed "Lineup"
+    # rather than their nav names.
+    week = '<span id="week-label">this week</span>'
+    html, n_h1 = re.subn(r"<h1>Lineup</h1>", f"<h1>{cfg['h1']}</h1>", html, count=1)
+    html, n_sub = re.subn(
+        r'<p class="subtitle">[\s\S]*?</p>',
+        lambda _m: ('<p class="subtitle">\n        '
+                    + cfg["subtitle"].format(week=week) + "\n      </p>"),
+        html, count=1)
+    if not (n_h1 and n_sub):
+        sys.exit("lineup/index.html header changed shape (h1 or subtitle not "
+                 "found) -- fix build_page() before porting")
     html = html.replace(
         '<a href="../nfl-props/" style="color:#6a6a8a">draft board</a>',
         '<a href="../../" style="color:#6a6a8a">EZ Dubs Analytics</a>')
     html = re.sub(r'<a href="\.\./lineup/"[^>]*>lineup page</a>', "this page", html)
 
     html = html.replace("<title>Lineup — market-priced start/sit</title>",
-                        f"<title>{cfg['title']} · EZ Dubs Analytics</title>")
+                        f"<title>{cfg['title']} · EZ Dubs Analytics</title>"
+                        + HEAD_TMPL.format(title=cfg["title"], slug=slug, site=SITE,
+                                           description=cfg["description"]))
+    if 'name="description"' not in html:
+        sys.exit("lineup/index.html <title> changed -- head tags were not added")
 
     # Site chrome, then this page's own config.
     if site_style:
@@ -443,12 +505,13 @@ def main() -> None:
         sys.exit("DATA_DIR line not found in app.js -- fix this script first")
     (shared / "app.js").write_text(app, encoding="utf-8", newline="\n")
     shutil.copy2(SRC / "lineup" / "style.css", shared / "style.css")
+    version = asset_version(shared / "app.js", shared / "style.css")
 
     # --- the two pages -------------------------------------------------------
     for slug, cfg in PAGES.items():
         out = dest / "dashboards" / slug
         out.mkdir(parents=True, exist_ok=True)
-        html, _ = rewrite_nav(build_page(slug, cfg, nav, site_style or ""),
+        html, _ = rewrite_nav(build_page(slug, cfg, nav, site_style or "", version),
                               "../", slug)
         # The page is rebuilt from a template, so anything added to the
         # destination's <head> by hand would be silently dropped. That already
