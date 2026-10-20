@@ -219,7 +219,11 @@ def rewrite_nav(html: str, prefix: str, active: str | None) -> tuple[str, list[s
     else:
         notes.append("NFL/Best Ball dropdown not found -- CHECK BY HAND")
 
-    if ".nav-dd-sub" not in html:
+    # Since 2026-10-19 the nav CSS, submenu included, lives in the destination's
+    # shared assets/site.css rather than in each page. The submenu's classes
+    # appear in the markup as class="nav-dd-sub" (no dot), so without the
+    # second test this would paste SUB_CSS back into all eight pages.
+    if ".nav-dd-sub" not in html and "assets/site.css" not in html:
         # Append to the page's own <style>, which is where all its CSS lives.
         idx = html.rfind("</style>")
         if idx == -1:
@@ -252,12 +256,23 @@ def lift_nav(dest: Path) -> str | None:
 
 
 def lift_style(dest: Path) -> str | None:
-    """The donor page's <style> block, so a new page matches the site chrome."""
+    """The donor page's site-chrome styles, so a new page matches the site.
+
+    Since 2026-10-19 that is two things: the link to the shared
+    assets/site.css (reset, nav, submenu), then the page's own <style>. The link
+    must come too, or the NFL pages would be rebuilt with no nav styles at all.
+    The donor sits at the same depth as the NFL pages (dashboards/<slug>/), so
+    its relative href is right for them as is.
+    """
     donor = dest / "dashboards" / "arb-calculator" / "index.html"
     if not donor.exists():
         return None
-    m = re.search(r"<style>[\s\S]*?</style>", donor.read_text(encoding="utf-8"))
-    return m.group(0) if m else None
+    text = donor.read_text(encoding="utf-8")
+    m = re.search(r"<style>[\s\S]*?</style>", text)
+    if not m:
+        return None
+    link = re.search(r'<link rel="stylesheet" href="([^"]*assets/site\.css[^"]*)">', text)
+    return (f'<link rel="stylesheet" href="{link.group(1)}">\n' if link else "") + m.group(0)
 
 
 def drop_view(html: str, view: str) -> str:
