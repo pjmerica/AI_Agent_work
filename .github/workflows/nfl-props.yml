@@ -27,8 +27,8 @@ on:
   # Cost: one credit per market per event that has props posted; events with
   # none (next week's games, early in the week) cost nothing. Six markets over a
   # 13-14 game slate measured 78-84 credits a run in week 6 (2026-10-15..18),
-  # so eleven runs a week (three added on Sunday, 2026-10-20) is ~900/week,
-  # ~3,800/month, against the account's
+  # so eight runs a week is ~650/week, plus ~110 for the Sunday pre-kickoff
+  # chain (nfl-kickoff-refresh.yml), ~3,300/month, against the account's
   # 20,000/month (18,161 left on 10-18). The 36 measured on 10-06 was five
   # markets on a thinner board. A scheduled run
   # leaves `inputs` empty, so the multiweek step (gated on `if: inputs.multiweek`,
@@ -55,15 +55,8 @@ on:
     # games already under way. 06:00 and 10:00 clear it in 8/8.
     - cron: '0 6 * * 0'      # Sun ~2:00am ET nominal — early pass, lands pre-noon
     - cron: '0 10 * * 0'     # Sun ~6:00am ET nominal — last look; 8/8 beat kickoff
-    # Later Sunday passes (2026-10-20), so the 4pm and night games are priced off
-    # Sunday's lines rather than the morning's. Placed against the same 1.5-4.5 h
-    # lag: 13:00 lands ~14:30-17:30 UTC (some before the 1pm ET kickoff at 17:00),
-    # 16:00 lands ~17:30-20:30 (mostly before the 4:05/4:25pm games, 20:05 UTC),
-    # 19:00 lands ~20:30-23:30 (before Sunday night, 00:20 UTC). About 80 credits
-    # each, so ~1,000 a month more: ~3,800 of the 20,000 in all.
-    - cron: '0 13 * * 0'     # Sun  9:00am ET nominal — late-morning pass
-    - cron: '0 16 * * 0'     # Sun noon ET nominal — before the 4pm games
-    - cron: '0 19 * * 0'     # Sun  3:00pm ET nominal — before Sunday night
+    # Pre-kickoff refreshes (20 min before 1pm, 4pm and Sunday night) are not
+    # here: cron lag makes that timing impossible. See nfl-kickoff-refresh.yml.
   workflow_dispatch:   # also runnable by hand from the Actions UI
     inputs:
       multiweek:

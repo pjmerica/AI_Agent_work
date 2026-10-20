@@ -1,0 +1,134 @@
+name: NFL Kickoff Refresh
+
+# A props refresh 20 minutes before each Sunday kickoff window (1pm, 4:05/4:25,
+# Sunday night, plus a London game when there is one), so the EZ Dubs Start/Sit
+# page is priced off near-closing lines. Added 2026-10-20.
+#
+# Cron cannot do this: this account's scheduled runs start 1.5-4.5 h late. So
+# cron only STARTS the chain, early on Sunday; scripts/kickoff_wait.py then
+# sleeps the job until the next target, the job refreshes, and it dispatches
+# itself for the target after. A workflow_dispatch starts in seconds, and the
+# built-in token may dispatch a workflow in its own repo. A job is capped at
+# 6 h, so a long wait is a few hops of up to 5.5 h.
+#
+# Kickoff times come from nfl-props/gamelines.json, so the November clock
+# change, London games and flexed night games need no edits here.
+#
+# The kickoff lock (scripts/kickoff_lock.py) keeps every game already under way
+# on its pregame lines, so a refresh before the 4pm games re-prices only those
+# and the night game. Odds API cost is per game still to come: roughly 80
+# credits before 1pm, 25 before 4pm, 6 before Sunday night.
+#
+# The EZ Dubs mirror runs its own matching chain (its nfl-kickoff-mirror.yml),
+# waiting for this refresh to appear on Pages and copying it ~3 min later.
+
+on:
+  schedule:
+    - cron: '30 7 * * 0'    # Sun 3:30am ET nominal: starts the chain (lands ~9-12 UTC)
+    - cron: '30 12 * * 0'   # backup start in case the first is dropped; a duplicate
+                            # chain finds the refreshes already done and stops
+  workflow_dispatch:
+    inputs:
+      hop:
+        description: "Chain hop (set by the workflow itself; leave at 0)"
+        default: "0"
+      test_kickoffs:
+        description: "Testing only: comma-separated ISO kickoff times to add to the slate"
+        default: ""
+
+permissions:
+  contents: write
+  actions: write            # to dispatch the next hop
+
+# One chain at a time. A second start waits; GitHub keeps one waiting run and
+# a newer one replaces it, and whichever runs recomputes from the data.
+concurrency:
+  group: nfl-kickoff-refresh
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 355
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Wait for the next kickoff
+        id: wait
+        run: >
+          python scripts/kickoff_wait.py
+          --gamelines nfl-props/gamelines.json
+          --fresh-file nfl-props/weekly.json
+          --lead 20 --served-after 22
+          --extra-kickoffs "${{ inputs.test_kickoffs }}"
+
+      # The checkout is hours old after the wait. Scrape against the latest files,
+      # since the kickoff lock carries pregame rows forward from what is on disk.
+      - name: Update checkout
+        if: steps.wait.outputs.run == 'true'
+        run: git pull --rebase origin master
+
+      - name: Kalshi per-game props
+        if: steps.wait.outputs.run == 'true'
+        run: python scripts/fetch_kalshi_weekly_props.py
+        continue-on-error: true
+
+      - name: Odds API per-game props
+        if: steps.wait.outputs.run == 'true'
+        run: python scripts/fetch_oddsapi_weekly_props.py
+        env:
+          ODDS_API_KEY: ${{ secrets.ODDS_API_KEY }}
+        continue-on-error: true
+
+      - name: Game spreads and totals
+        if: steps.wait.outputs.run == 'true'
+        run: python scripts/fetch_game_lines.py
+        env:
+          ODDS_API_KEY: ${{ secrets.ODDS_API_KEY }}
+        continue-on-error: true
+
+      # Inactives are announced 90 minutes before kickoff, so the injury
+      # statuses in the player map are worth refreshing right up to it.
+      - name: Sleeper player map
+        if: steps.wait.outputs.run == 'true'
+        run: python scripts/build_sleeper_playermap.py
+        continue-on-error: true
+
+      - name: Commit and push
+        if: steps.wait.outputs.run == 'true'
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add nfl-props/weekly.json nfl-props/oddsapi.json \
+                  nfl-props/gamelines.json nfl-props/sleeper_players.json
+          if git diff --staged --quiet; then
+            echo "Nothing changed."
+            exit 0
+          fi
+          git commit -m "chore: kickoff refresh for ${{ steps.wait.outputs.kickoff }} [skip ci]"
+          # These are the freshest numbers there are, so a conflict with a
+          # concurrent nfl-props.yml run resolves in this run's favour
+          # (-X theirs: in a rebase, "theirs" is the commit being replayed).
+          for i in 1 2 3 4 5; do
+            if git push; then
+              echo "Pushed on attempt $i."
+              exit 0
+            fi
+            git rebase --abort 2>/dev/null || true
+            git pull --rebase -X theirs origin master || git rebase --abort || true
+          done
+          echo "Push failed after 5 attempts." >&2
+          exit 1
+
+      - name: Hand on to the next kickoff
+        if: always() && steps.wait.outputs.more == 'true' && fromJSON(inputs.hop || '0') < 12
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh workflow run nfl-kickoff-refresh.yml -R "${{ github.repository }}" \
+            -f hop=$(( ${{ inputs.hop || '0' }} + 1 ))             -f test_kickoffs="${{ inputs.test_kickoffs }}"
+          echo "Dispatched hop $(( ${{ inputs.hop || '0' }} + 1 ))."
