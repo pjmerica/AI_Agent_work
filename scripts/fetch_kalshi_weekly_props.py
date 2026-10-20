@@ -35,6 +35,7 @@ from fetch_kalshi_season_props import (  # noqa: E402
     API, build_ladder, enforce_monotonic, expected_from_ladder,
     http_get_json, lognormal_fit, median_from_ladder,
 )
+from kickoff_lock import kickoffs_by_matchup, lock_started, previous_rows  # noqa: E402
 
 OUT_FILE = Path(__file__).resolve().parent.parent / "nfl-props" / "weekly.json"
 
@@ -267,7 +268,19 @@ def main() -> None:
             }
         print(f"  {len(markets)} markets across {len(by_key)} player-games")
 
-    out = sorted(rows.values(), key=lambda r: (r["kickoff"] or "", r["name"]))
+    out = list(rows.values())
+    # Kickoff lock (2026-10-19): see scripts/kickoff_lock.py. A game under way is
+    # quoted LIVE, so its lines come from the previous file, never this run.
+    # Kalshi rows carry only a ticker date, so the kickoff TIME comes from the
+    # gamelines.json the previous run wrote (this run's is fetched later).
+    kick_map = kickoffs_by_matchup()
+    out, dropped, carried = lock_started(
+        out, previous_rows(OUT_FILE, "players"),
+        kickoff_of=lambda r: kick_map.get(r.get("matchup")),
+        key=lambda r: (r["name"], r["matchup"]))
+    if dropped or carried:
+        print(f"  kickoff lock: {dropped} live row(s) dropped, {carried} pregame row(s) kept")
+    out = sorted(out, key=lambda r: (r["kickoff"] or "", r["name"]))
     if not out:
         print("ERROR: no open per-game markets. The slate may have just closed.",
               file=sys.stderr)

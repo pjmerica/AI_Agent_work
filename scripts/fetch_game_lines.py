@@ -37,6 +37,9 @@ from urllib.error import HTTPError, URLError
 from urllib.parse import urlencode
 from urllib.request import Request, urlopen
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from kickoff_lock import lock_started, parse_ts, previous_rows  # noqa: E402
+
 OUT_FILE = Path(__file__).resolve().parent.parent / "nfl-props" / "gamelines.json"
 
 API = "https://api.the-odds-api.com/v4"
@@ -138,6 +141,17 @@ def main() -> None:
             },
             "bookCount": len(books),
         })
+
+    # Kickoff lock (2026-10-19): see scripts/kickoff_lock.py. A game under way is
+    # quoted LIVE -- a live total is what is left of a half-played game, and D/ST
+    # and K are scored off it -- so its line comes from the previous file.
+    games, dropped, carried = lock_started(
+        games, previous_rows(OUT_FILE, "games"),
+        kickoff_of=lambda g: parse_ts(g.get("kickoff")),
+        key=lambda g: g["matchup"])
+    if dropped or carried:
+        print(f"kickoff lock: {dropped} live game(s) dropped, {carried} pregame line(s) kept")
+    games.sort(key=lambda g: g.get("kickoff") or "")
 
     if not games:
         print("No game lines returned; keeping the existing file.", file=sys.stderr)

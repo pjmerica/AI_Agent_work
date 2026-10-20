@@ -28,11 +28,14 @@ import json
 import os
 import sys
 from collections import defaultdict
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from urllib.error import HTTPError, URLError
 from urllib.parse import urlencode
 from urllib.request import Request, urlopen
+
+from kickoff_lock import (kickoffs_by_matchup, lock_started,  # noqa: E402
+                          parse_ts, previous_rows)
 
 OUT_FILE = Path(__file__).resolve().parent.parent / "nfl-props" / "oddsapi.json"
 
@@ -281,6 +284,16 @@ def main() -> None:
     print(f"{len(events)} upcoming events offered by the API; "
           f"dates: {dict(sorted(by_date.items()))}")
 
+    # Kickoff lock (2026-10-19): see scripts/kickoff_lock.py. A game under way is
+    # quoted LIVE, so its lines come from the previous file, never this run.
+    # Started games are dropped BEFORE the cap: they sort first, so left in they
+    # would take slots from the games that still need pricing, and fetching them
+    # only buys live in-game numbers at full credit cost.
+    now = datetime.now(timezone.utc)
+    started = [e for e in events if (parse_ts(e.get("commence_time")) or now + timedelta(days=1)) <= now]
+    events = [e for e in events if e not in started]
+    if started:
+        print(f"skipping {len(started)} event(s) already under way (kickoff lock)")
     events = events[:MAX_EVENTS]
     # An upper bound: the API bills only markets it returns, so an event with no
     # props posted yet (next week's games) costs nothing. Week 6 runs printed
@@ -347,6 +360,7 @@ def main() -> None:
                     rec = rows.setdefault((player, eid), {
                         "name": player,
                         "kickoff": kickoff,
+                        "kickoffTime": ev.get("commence_time"),
                         "matchup": f"{abbr(away)}{abbr(home)}",
                         "matchupLong": f"{away} @ {home}",
                         "stats": {},
@@ -386,6 +400,13 @@ def main() -> None:
             }
         out.append({**rec, "stats": stats})
 
+    kick_map = kickoffs_by_matchup()
+    out, dropped, carried = lock_started(
+        out, previous_rows(OUT_FILE, "players"),
+        kickoff_of=lambda r: parse_ts(r.get("kickoffTime")) or kick_map.get(r.get("matchup")),
+        key=lambda r: (r["name"], r["matchup"]), now=now)
+    if dropped or carried:
+        print(f"kickoff lock: {dropped} live row(s) dropped, {carried} pregame row(s) kept")
     out.sort(key=lambda r: (r["kickoff"], r["name"]))
     stat_counts: dict[str, int] = {}
     for r in out:
@@ -405,7 +426,7 @@ def main() -> None:
                  "the median across books; min/max show the spread and `quotes` "
                  "keeps each book's own number."),
         "region": REGION,
-        "eventCount": len({k[1] for k in rows}),
+        "eventCount": len({r["matchup"] for r in out}),
         "playerGameCount": len(out),
         "statCounts": stat_counts,
         "bookCounts": books,
@@ -415,7 +436,7 @@ def main() -> None:
     }, indent=2), encoding="utf-8")
 
     print(f"\nWrote {OUT_FILE}")
-    print(f"  {len(out)} player-games across {len({k[1] for k in rows})} events "
+    print(f"  {len(out)} player-games across {len({r['matchup'] for r in out})} events "
           f"({failed} events had no props)")
     print(f"  books: {', '.join(sorted(books))}")
     print("  stat coverage - " + ", ".join(f"{k}:{v}" for k, v in sorted(stat_counts.items())))
