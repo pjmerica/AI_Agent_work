@@ -282,8 +282,11 @@ def main() -> None:
           f"dates: {dict(sorted(by_date.items()))}")
 
     events = events[:MAX_EVENTS]
+    # An upper bound: the API bills only markets it returns, so an event with no
+    # props posted yet (next week's games) costs nothing. Week 6 runs printed
+    # ~120 here and spent 78-84. The real spend is the quota line at the end.
     print(f"fetching {len(MARKETS)} market(s) for {len(events)} event(s) "
-          f"= ~{len(MARKETS) * len(events)} credits: {', '.join(MARKETS)}")
+          f"= at most {len(MARKETS) * len(events)} credits: {', '.join(MARKETS)}")
 
     rows: dict[tuple[str, str], dict] = {}
     books: dict[str, int] = {}

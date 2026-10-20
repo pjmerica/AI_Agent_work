@@ -24,7 +24,7 @@ import json
 import re
 import sys
 from collections import defaultdict
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from urllib.parse import urlencode
 from urllib.request import Request, urlopen
@@ -283,10 +283,34 @@ def main() -> None:
     # (observed 2026-09-06: Kyler Murray, an ARI QB, listed under GBMIN). We
     # cannot fix their data, but a player appearing in two different matchups
     # is detectable, so surface it rather than passing it off as fact.
-    seen: dict[str, set] = {}
+    #
+    # Only two matchups in the SAME week are a conflict (2026-10-19). Kalshi
+    # lists next Thursday's game before this Monday's is played, so a team in
+    # both shows up twice legitimately: week 6 flagged CHI and NE D/ST on every
+    # run because NE @ CHI (26OCT22) was already up beside their 26OCT18 games.
+    # A warning that always fires gets ignored, which defeats it.
+    #
+    # Same week means same NFL week, not a day gap: Sunday to a short-week
+    # Thursday is 4 days, but so is a Thursday-to-Monday misfile inside one
+    # slate. NFL weeks run Thursday to Monday with nothing on Tuesday or
+    # Wednesday, so each game is keyed to the Tuesday that opens its week.
+    def _nfl_week(k):
+        try:
+            d = datetime.strptime(k or "", "%y%b%d").date()
+        except ValueError:
+            return None
+        return d - timedelta(days=(d.weekday() - 1) % 7)   # Monday=0, so Tuesday=1
+    seen: dict[str, dict] = {}
     for r in out:
-        seen.setdefault(r["name"], set()).add(r["matchup"])
-    conflicts = sorted(n for n, ms in seen.items() if len(ms) > 1)
+        seen.setdefault(r["name"], {})[r["matchup"]] = _nfl_week(r["kickoff"])
+    def _same_week(games: dict) -> bool:
+        weeks = list(games.values())
+        if len(weeks) < 2:
+            return False
+        if any(w is None for w in weeks):
+            return True    # cannot tell; keep flagging, as before
+        return len(set(weeks)) < len(weeks)
+    conflicts = sorted(n for n, games in seen.items() if _same_week(games))
     if conflicts:
         print(f"  ! {len(conflicts)} player(s) appear in multiple matchups "
               f"(Kalshi ticker error): {', '.join(conflicts[:5])}")

@@ -24,8 +24,12 @@ on:
   # picking a better minute. workflow_dispatch is the only way to get a refresh
   # at a time you choose.
   #
-  # Cost: a single-week run measured 36 Odds API credits (19,920 -> 19,884 on
-  # 2026-10-06), so eight runs a week is ~290/week, ~1,250/month. A scheduled run
+  # Cost: one credit per market per event that has props posted; events with
+  # none (next week's games, early in the week) cost nothing. Six markets over a
+  # 13-14 game slate measured 78-84 credits a run in week 6 (2026-10-15..18),
+  # so eight runs a week is ~650/week, ~2,800/month, against the account's
+  # 20,000/month (18,161 left on 10-18). The 36 measured on 10-06 was five
+  # markets on a thinner board. A scheduled run
   # leaves `inputs` empty, so the multiweek step (gated on `if: inputs.multiweek`,
   # ~64 credits) stays manual-only and never fires on a schedule.
   #
@@ -112,7 +116,7 @@ jobs:
 
       # Multi-book per-game props. Needs ODDS_API_KEY (repo secret); the script
       # exits cleanly when it is absent. Player props bill one credit per event
-      # per market, so this is the expensive step on a 500/month free tier.
+      # per market, so this is the expensive step (~80 a run; see Cost above).
       # Free request: /v4/sports does not bill a credit but still returns the
       # quota headers, so this reports the real balance without spending one.
       - name: Report Odds API quota
