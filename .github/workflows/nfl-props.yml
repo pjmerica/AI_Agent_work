@@ -201,6 +201,41 @@ jobs:
           echo "Push failed after 5 attempts." >&2
           exit 1
 
+      # Start the EZ Dubs site's mirror as soon as this data is live, instead of
+      # waiting for its own cron. Its schedule is a guess against GitHub's 1.5-4.5
+      # hour cron lag, and on 2026-10-18 that guess left Start/Sit on Saturday's
+      # numbers at the Sunday 1pm kickoff while this run's data sat unmirrored.
+      #
+      # Needs EZDUBS_DISPATCH_TOKEN: a fine-grained token limited to
+      # pjmerica/ez-dubs-website with Actions read/write. Without it this step
+      # does nothing and the site's hourly Sunday slots still catch up.
+      #
+      # The mirror reads this repo's PAGES site, which redeploys a minute or two
+      # after the push, so dispatching straight away would just copy the old
+      # files. Wait until the published weekly.json carries this run's stamp.
+      - name: Tell the EZ Dubs site to mirror now
+        env:
+          GH_TOKEN: ${{ secrets.EZDUBS_DISPATCH_TOKEN }}
+        run: |
+          if [ -z "$GH_TOKEN" ]; then
+            echo "EZDUBS_DISPATCH_TOKEN not set; the site's scheduled mirror will pick this up."
+            exit 0
+          fi
+          want=$(python -c "import json;print(json.load(open('nfl-props/weekly.json')).get('lastUpdated',''))")
+          url="https://pjmerica.github.io/AI_Agent_work/nfl-props/weekly.json"
+          for i in $(seq 1 20); do
+            live=$(curl -s "$url?t=$(date +%s)" | python -c "import json,sys;print(json.load(sys.stdin).get('lastUpdated',''))" 2>/dev/null || true)
+            if [ -n "$want" ] && [ "$live" = "$want" ]; then
+              echo "Pages is serving this run's data ($want)."
+              break
+            fi
+            echo "Pages not updated yet (live '$live', want '$want'); waiting 30s."
+            sleep 30
+          done
+          gh workflow run nfl-data-pull.yml -R pjmerica/ez-dubs-website \
+            && echo "Started the site's mirror." \
+            || echo "::warning::Could not start the site's mirror; its schedule will catch up."
+
       # Every scraper above is continue-on-error, so without this the job goes
       # green even when every source failed. That was survivable while runs were
       # manual and watched; on a schedule it has to speak up.
