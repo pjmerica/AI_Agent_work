@@ -63,9 +63,14 @@ setTimeout(async()=>{
   pb("QB").click();
   $("search").value = "";
   $("search").dispatchEvent(new window.Event("input",{bubbles:true}));
+  // The FULL name, not the surname. Searching the surname alone broke in week 6
+  // (2026-10-19): the QB was Josh Allen, and "allen" under the TE filter
+  // correctly found Davis Allen, a Rams tight end. A surname shared across
+  // positions is a property of the week's board, same as above. The search
+  // matches a substring of the full name, so "josh allen" cannot hit him.
   const qbName = (() => {
     const e = window.document.querySelector("table.board tbody .col-player");
-    return e ? e.textContent.replace(/TD only/, "").trim().split(/\s+/).pop() : "";
+    return e ? e.textContent.replace(/TD only/, "").replace(/\s+/g, " ").trim() : "";
   })();
   check("there is a QB on the board to search for", !!qbName, qbName || "(none)");
   pb("TE").click();
