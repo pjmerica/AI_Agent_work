@@ -16,6 +16,10 @@ import re
 import sys
 import time
 from datetime import datetime, timezone
+
+import os as _os
+sys.path.insert(0, _os.path.dirname(_os.path.abspath(__file__)))
+from write_if_changed import refuse_collapse, write_json_if_changed  # noqa: E402
 from html.parser import HTMLParser
 from pathlib import Path
 from urllib.request import Request, urlopen
@@ -391,8 +395,15 @@ def main():
         "players": output_players,
     }
 
-    OUT_FILE.parent.mkdir(parents=True, exist_ok=True)
-    OUT_FILE.write_text(json.dumps(payload, indent=2), encoding="utf-8")
+    # Never replace a populated file with an empty or collapsed scrape.
+    why = refuse_collapse(OUT_FILE, payload)
+    if why:
+        print(f"WARNING: {why}; keeping the existing {OUT_FILE.name}.")
+        return
+    # Unchanged apart from the timestamp: keep the old file (see write_if_changed).
+    if not write_json_if_changed(OUT_FILE, payload):
+        print(f"{OUT_FILE.name} unchanged ({len(output_players)} players); left as is")
+        return
     print(f"\nWrote {OUT_FILE} ({len(output_players)} players)")
 
 
