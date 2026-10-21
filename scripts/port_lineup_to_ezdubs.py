@@ -255,6 +255,88 @@ def lift_nav(dest: Path) -> str | None:
     return nav
 
 
+def lift_footer(dest: Path) -> str:
+    """The donor page's site footer. Same depth as the NFL pages, so its
+    relative links are right for them as they are."""
+    donor = dest / "dashboards" / "arb-calculator" / "index.html"
+    if not donor.exists():
+        return ""
+    m = re.search(r'[ \t]*<footer class="site-footer">[\s\S]*?</footer>',
+                  donor.read_text(encoding="utf-8"))
+    return m.group(0) if m else ""
+
+
+# The NFL pages carry the lineup template's stylesheet, which is built for
+# AI_Agent_work's own page. Three things in it fight the EZ Dubs chrome
+# (2026-10-20):
+#  - body { padding: 40px 20px } pushed the site nav 40px down and in from the
+#    edges, so it was the only page whose nav was not flush;
+#  - its accent is AI_Agent_work's purple (now remapped by SITE_THEME); the
+#    active buttons keep white text from the template, which fails on the blue,
+#    so they get the site's dark text;
+#  - a generic .caret colour reached the site nav's dropdown carets.
+NFL_SITE_CSS = """<style>
+  /* EZ Dubs chrome for the NFL pages; added by port_lineup_to_ezdubs.py. */
+  body { padding: 0; }
+  .container { padding: 28px 20px 0; }
+  /* The donor's <style> brings the calculator's narrow, padded `main`; on these
+     pages it shrank the content under a wider header and opened a 40px gap. */
+  .container > main { max-width: none; margin: 0; padding: 0; }
+  @media (max-width: 720px) {
+    body { padding: 0; }
+    .container { padding: 20px 12px 0; }
+    .container > main { padding: 0; }
+  }
+  .site-nav .caret { color: inherit; }
+  .fmt-btn.active, .chip.active, .view-tab.active, .source-tab.active {
+    background: #4a9eff; border-color: #4a9eff; color: #0f1923;
+  }
+  .chip:hover, .player-tag:hover, #search:focus, #roster-input:focus,
+  #roster-search:focus, .h2h-picker input:focus, .roster-paste textarea:focus {
+    border-color: #4a9eff;
+  }
+  .delta-toggle input, .market-toggles input, .book-toggle-list input { accent-color: #4a9eff; }
+  .callout { border-left-color: #4a9eff; }
+  .sources-note { color: #7f8c99; font-size: 0.78rem; text-align: center; margin: 4px 0 8px; }
+</style>"""
+
+
+# The lineup stylesheet is AI_Agent_work's design: purple accent, near-black
+# panels, lavender greys. On EZ Dubs that made the NFL pages look like another
+# site (navy panels, blue accent, blue-grey text everywhere else). The port
+# writes a copy with these colours swapped for the site's. Semantic colours
+# (green/red/amber for good/bad/warning) are left alone. Every text colour was
+# re-checked against the new panels: the weakest is 5.14:1, above AA's 4.5.
+SITE_THEME = {
+    # panels and surfaces
+    "#0f0f13": "#0f1923", "#14141c": "#131f2c", "#15151f": "#14202d",
+    "#1a1a24": "#1a2634", "#1c1c2b": "#1b2836", "#1e1e2e": "#1e2d3d",
+    "#1f1f2c": "#1e2b39", "#21212e": "#202d3b", "#22223a": "#1c2a3d",
+    "#23232f": "#22303e", "#2a2a40": "#26364a", "#2e2e42": "#2a3a4a",
+    "#33334d": "#2f4258", "#3a3a4e": "#34465a",
+    # accent (purple -> the site's blue) and its tints
+    "#5b4cf5": "#4a9eff", "#8f84ff": "#7fb8ff", "#9b8cff": "#8cc0ff",
+    "#b9aeff": "#a8d0ff", "#c9c4ff": "#c4dcff",
+    # lavender greys -> the site's blue-greys
+    "#a0a0c0": "#99aabb", "#9a9ab0": "#94a3b3", "#9ca0bd": "#97a7b8",
+    "#8a8aa8": "#8a97a5", "#a8a8c0": "#a3b0bf", "#a0a0bc": "#9dabbb",
+    "#9a9ab8": "#97a6b7", "#b4b4d0": "#b0bccb", "#b8b8cc": "#b5c0cc",
+    "#c8c8dc": "#c3cdd8", "#c9c9dd": "#c4ced9", "#d4d4e8": "#cfd8e2",
+    "#d8d8e8": "#d3dbe4", "#e2e2f0": "#e0e0e0", "#f0f0f8": "#f0f2f5",
+    "#f0f0f5": "#f0f2f5",
+}
+
+
+def retheme_css(css: str) -> str:
+    out = re.sub(r"#[0-9a-fA-F]{6}\b",
+                 lambda m: SITE_THEME.get(m.group(0).lower(), m.group(0)), css)
+    # The accent also appears as translucent rgba() tints (panel washes, focus
+    # glows); keep each alpha, swap the purple for the site blue.
+    out = re.sub(r"rgba\(\s*91\s*,\s*76\s*,\s*245\s*,", "rgba(74, 158, 255,", out)
+    return ("/* Re-themed for EZ Dubs by scripts/port_lineup_to_ezdubs.py (SITE_THEME);\n"
+            "   the source is AI_Agent_work's lineup/style.css. */\n" + out)
+
+
 def lift_style(dest: Path) -> str | None:
     """The donor page's site-chrome styles, so a new page matches the site.
 
@@ -323,7 +405,7 @@ def asset_version(*paths: Path) -> str:
 
 
 def build_page(slug: str, cfg: dict, nav: str, site_style: str,
-               version: str = "") -> str:
+               version: str = "", footer: str = "") -> str:
     """One page: site chrome + the lineup markup, pointed at the shared assets."""
     html = (SRC / "lineup" / "index.html").read_text(encoding="utf-8")
 
@@ -365,10 +447,28 @@ def build_page(slug: str, cfg: dict, nav: str, site_style: str,
     if not (n_h1 and n_sub):
         sys.exit("lineup/index.html header changed shape (h1 or subtitle not "
                  "found) -- fix build_page() before porting")
-    html = html.replace(
-        '<a href="../nfl-props/" style="color:#6a6a8a">draft board</a>',
-        '<a href="../../" style="color:#6a6a8a">EZ Dubs Analytics</a>')
+    # The template's footer is a credits line ending "data shared with the
+    # <draft board link>". Rewriting that link (as this used to) made it read
+    # "data shared with the EZ Dubs Analytics", and the page had no site footer
+    # at all. Keep the useful part, which books the lines come from, as a note;
+    # the site footer goes in below, lifted from the donor page.
+    html, n_ft = re.subn(
+        r"<footer>\s*(Lines from[\s\S]*?Kalshi)\s*&middot;[\s\S]*?</footer>",
+        lambda m: '<p class="sources-note">' + " ".join(m.group(1).split()) + ".</p>",
+        html, count=1)
+    if not n_ft:
+        sys.exit("lineup/index.html footer changed shape -- fix build_page() before porting")
+    if footer:
+        html, n_sf = re.subn(r'(\n[ \t]*<script src="\.\./' + SHARED + r'/app\.js)',
+                             "\n" + footer + r"\1", html, count=1)
+        if not n_sf:
+            sys.exit("could not place the site footer before app.js -- fix build_page()")
     html = re.sub(r'<a href="\.\./lineup/"[^>]*>lineup page</a>', "this page", html)
+
+    # No em-dashes in EZ Dubs prose (a standing rule there). The template uses
+    # them as clause breaks, where a colon reads the same. Body text only.
+    head_end = html.index("<body")
+    html = html[:head_end] + html[head_end:].replace(" &mdash; ", ": ").replace(" — ", ": ")
 
     html = html.replace("<title>Lineup — market-priced start/sit</title>",
                         f"<title>{cfg['title']} · EZ Dubs Analytics</title>"
@@ -379,7 +479,7 @@ def build_page(slug: str, cfg: dict, nav: str, site_style: str,
 
     # Site chrome, then this page's own config.
     if site_style:
-        html = html.replace("</head>", site_style + "\n</head>", 1)
+        html = html.replace("</head>", site_style + "\n" + NFL_SITE_CSS + "\n</head>", 1)
     cfg_js = (f'  <script>window.LINEUP_DEFAULT_VIEW = "{cfg["view"]}";'
               f' window.LINEUP_DATA_DIR = "{cfg["data"]}";</script>\n')
     html = re.sub(r"(<body[^>]*>)",
@@ -519,14 +619,18 @@ def main() -> None:
     if app == before:
         sys.exit("DATA_DIR line not found in app.js -- fix this script first")
     (shared / "app.js").write_text(app, encoding="utf-8", newline="\n")
-    shutil.copy2(SRC / "lineup" / "style.css", shared / "style.css")
+    # Re-themed rather than copied verbatim (2026-10-20): see SITE_THEME.
+    (shared / "style.css").write_text(
+        retheme_css((SRC / "lineup" / "style.css").read_text(encoding="utf-8")),
+        encoding="utf-8", newline="\n")
     version = asset_version(shared / "app.js", shared / "style.css")
 
     # --- the two pages -------------------------------------------------------
     for slug, cfg in PAGES.items():
         out = dest / "dashboards" / slug
         out.mkdir(parents=True, exist_ok=True)
-        html, _ = rewrite_nav(build_page(slug, cfg, nav, site_style or "", version),
+        html, _ = rewrite_nav(build_page(slug, cfg, nav, site_style or "", version,
+                                         footer=lift_footer(dest)),
                               "../", slug)
         # The page is rebuilt from a template, so anything added to the
         # destination's <head> by hand would be silently dropped. That already

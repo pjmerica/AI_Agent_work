@@ -34,6 +34,18 @@ setTimeout(async()=>{
   $("roster-demo").click(); $("roster-demo").click();
   check("Load example three times = same board", txt()===once);
   const tags=$("roster-tags").querySelectorAll(".player-tag").length;
+  // A player who is on THIS week's board, for the duplicate check below. It was
+  // hard-coded to "Josh Allen", which broke on 2026-10-20 when the early week-7
+  // board did not list him yet -- the same rot books_interact.test.js hit. The
+  // example roster only chips players in the pool, so its first chip is real.
+  const firstChip=$("roster-tags").querySelector(".player-tag");
+  let boardName=firstChip ? firstChip.firstChild.textContent.trim() : "";
+  if(!boardName){
+    for(const f of ["oddsapi.json","weekly.json"]){
+      try{const d=JSON.parse(require("fs").readFileSync(require("path").join(dataDir,f),"utf8"));
+        if(d.players&&d.players.length){boardName=d.players[0].name;break;}}catch(e){}
+    }
+  }
   $("roster-demo").click();
   check("chip count does not grow", $("roster-tags").querySelectorAll(".player-tag").length===tags,
     tags+" then "+$("roster-tags").querySelectorAll(".player-tag").length);
@@ -51,7 +63,8 @@ setTimeout(async()=>{
     $in.dispatchEvent(new window.Event("input",{bubbles:true}));
     $in.dispatchEvent(new window.KeyboardEvent("keydown",{key:"Enter",bubbles:true}));
   };
-  add("Josh Allen"); add("Josh Allen");
+  check("there is a player on the board to add", !!boardName, boardName||"(none)");
+  add(boardName); add(boardName);
   check("duplicate not added twice",
     $("roster-tags").querySelectorAll(".player-tag").length===1,
     $("roster-tags").querySelectorAll(".player-tag").length+" chips");
