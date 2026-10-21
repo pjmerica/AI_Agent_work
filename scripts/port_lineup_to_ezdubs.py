@@ -452,10 +452,20 @@ def build_page(slug: str, cfg: dict, nav: str, site_style: str,
     # "data shared with the EZ Dubs Analytics", and the page had no site footer
     # at all. Keep the useful part, which books the lines come from, as a note;
     # the site footer goes in below, lifted from the donor page.
+    # The note goes inside <main> (2026-10-20): left where the footer was, it
+    # sat outside every landmark, which screen readers navigate by.
+    note = []
     html, n_ft = re.subn(
-        r"<footer>\s*(Lines from[\s\S]*?Kalshi)\s*&middot;[\s\S]*?</footer>",
-        lambda m: '<p class="sources-note">' + " ".join(m.group(1).split()) + ".</p>",
+        r"\s*<footer>\s*(Lines from[\s\S]*?Kalshi)\s*&middot;[\s\S]*?</footer>",
+        lambda m: note.append(" ".join(m.group(1).split())) or "",
         html, count=1)
+    if n_ft:
+        html, n_mn = re.subn(r"(\n[ \t]*</main>)",
+                             lambda m: ('\n      <p class="sources-note">'
+                                        + note[0] + '.</p>' + m.group(1)),
+                             html, count=1)
+        if not n_mn:
+            sys.exit("lineup/index.html has no </main> for the sources note -- fix build_page()")
     if not n_ft:
         sys.exit("lineup/index.html footer changed shape -- fix build_page() before porting")
     if footer:
