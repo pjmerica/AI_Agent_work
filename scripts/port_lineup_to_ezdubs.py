@@ -278,13 +278,17 @@ def lift_footer(dest: Path) -> str:
 NFL_SITE_CSS = """<style>
   /* EZ Dubs chrome for the NFL pages; added by port_lineup_to_ezdubs.py. */
   body { padding: 0; }
-  .container { padding: 28px 20px 0; }
+  /* The site's dashboard header standard (2026-10-21): 36px above the h1,
+     1.8rem/700, 1.5rem on a phone. The template's was 28px/22px. */
+  .container { padding: 36px 20px 0; }
+  header h1 { font-size: 1.8rem; }
   /* The donor's <style> brings the calculator's narrow, padded `main`; on these
      pages it shrank the content under a wider header and opened a 40px gap. */
   .container > main { max-width: none; margin: 0; padding: 0; }
   @media (max-width: 720px) {
     body { padding: 0; }
-    .container { padding: 20px 12px 0; }
+    .container { padding: 22px 12px 0; }
+    header h1 { font-size: 1.5rem; }
     .container > main { padding: 0; }
   }
   .site-nav .caret { color: inherit; }
