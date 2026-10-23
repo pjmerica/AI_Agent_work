@@ -281,15 +281,19 @@ NFL_SITE_CSS = """<style>
   /* The site's dashboard header standard (2026-10-21): 36px above the h1,
      1.8rem/700, 1.5rem on a phone. The template's was 28px/22px. */
   .container { padding: 36px 20px 0; }
-  header h1 { font-size: 1.8rem; }
-  /* The donor's <style> brings the calculator's narrow, padded `main`; on these
-     pages it shrank the content under a wider header and opened a 40px gap. */
-  .container > main { max-width: none; margin: 0; padding: 0; }
+  header h1 { font-size: 1.8rem; margin: 0 0 6px; letter-spacing: -0.01em; }
+  header .subtitle { color: #99aabb; font-size: 0.92rem; line-height: 1.5;
+                     margin-bottom: 22px; }
+  /* The boxed verdict panels. These used to arrive by accident with the
+     calculator's whole <style>; only its body and footer rules are lifted now
+     (chrome_rules, 2026-10-22), so the look is kept here on purpose. */
+  .verdict { background: #0f1923; border: 1px solid #1e2d3d; border-radius: 12px;
+             padding: 18px 22px; margin-bottom: 14px; }
   @media (max-width: 720px) {
     body { padding: 0; }
     .container { padding: 22px 12px 0; }
     header h1 { font-size: 1.5rem; }
-    .container > main { padding: 0; }
+    header .subtitle { font-size: 0.85rem; }
   }
   .site-nav .caret { color: inherit; }
   .fmt-btn.active, .chip.active, .view-tab.active, .source-tab.active {
@@ -354,11 +358,46 @@ def lift_style(dest: Path) -> str | None:
     if not donor.exists():
         return None
     text = donor.read_text(encoding="utf-8")
-    m = re.search(r"<style>[\s\S]*?</style>", text)
+    m = re.search(r"<style>([\s\S]*?)</style>", text)
     if not m:
         return None
     link = re.search(r'<link rel="stylesheet" href="([^"]*assets/site\.css[^"]*)">', text)
-    return (f'<link rel="stylesheet" href="{link.group(1)}">\n' if link else "") + m.group(0)
+    return ((f'<link rel="stylesheet" href="{link.group(1)}">\n' if link else "")
+            + "<style>\n" + chrome_rules(m.group(1)) + "\n    </style>")
+
+
+# Only these donor rules are site chrome. Until 2026-10-22 the calculator's
+# whole <style> came across, ~180 lines of it the calculator itself, and some
+# of its class names are lineup's too: its .verdict box (border, padding,
+# background) restyled every lineup verdict.
+CHROME_SELECTOR = re.compile(r"^\s*(body|\.site-footer)\b")
+
+
+def chrome_rules(css: str) -> str:
+    """The rules in `css` whose selectors are all site chrome (body, footer).
+
+    Walks top-level blocks by brace depth; an @media block keeps only its
+    chrome rules and is dropped if none are left. Comments are dropped.
+    """
+    out, i, n = [], 0, len(css)
+    while i < n:
+        j = css.find("{", i)
+        if j == -1:
+            break
+        head = re.sub(r"/\*[\s\S]*?\*/", "", css[i:j]).strip()
+        depth, k = 1, j + 1
+        while k < n and depth:
+            depth += {"{": 1, "}": -1}.get(css[k], 0)
+            k += 1
+        body = css[j + 1:k - 1]
+        if head.startswith("@media"):
+            inner = chrome_rules(body)
+            if inner.strip():
+                out.append(f"        {head} {{\n{inner}\n        }}")
+        elif all(CHROME_SELECTOR.match(sel) for sel in head.split(",")):
+            out.append(f"        {head} {{{body}}}")
+        i = k
+    return "\n".join(out)
 
 
 def drop_view(html: str, view: str) -> str:
