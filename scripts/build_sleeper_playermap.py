@@ -56,7 +56,15 @@ def main() -> None:
     for pid, v in players.items():
         pos = v.get("position")
         if pos not in KEEP_POS:
-            continue
+            # A two-way player's `position` is his primary one, but leagues
+            # roster him by fantasy_positions: Travis Hunter is "DB" with
+            # fantasy_positions ["DB", "WR"]. Filtering on `position` alone
+            # dropped him, and a roster carrying him showed "Unknown (12530)"
+            # (2026-10-25).
+            pos = next((fp for fp in (v.get("fantasy_positions") or [])
+                        if fp in KEEP_POS), None)
+            if pos is None:
+                continue
         team = v.get("team")
         # No team means a free agent or a retired player; neither can be started.
         # DEF entries carry the team code as their id, so keep those regardless.
