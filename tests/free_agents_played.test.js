@@ -21,7 +21,7 @@ const check = (label, cond, detail) => {
 
 // The real optimizer and the real freeAgentsFor; only the data access around
 // them is stubbed.
-function harness(pool, kickedOff) {
+function harness(pool, kickedOff, sidelined = new Set()) {
   const parts = [
     g(/const SLOT_ACCEPTS = \{[\s\S]*?\n  \};/),
     g(/function bestLineupForSlots\(players, slots\)[\s\S]*?\n  \}/),
@@ -35,9 +35,10 @@ function harness(pool, kickedOff) {
     const normPlayerName = (n) => n.toLowerCase();
     const specialPoints = () => null;
     const playerHasKickedOff = (p) => KICKED.has(p.name);
+    const sidelinedNames = () => SIDELINED;
   `;
-  return new Function("POOL", "KICKED",
-    stubs + parts + ";return { freeAgentsFor };")(pool, kickedOff);
+  return new Function("POOL", "KICKED", "SIDELINED",
+    stubs + parts + ";return { freeAgentsFor };")(pool, kickedOff, sidelined);
 }
 
 const pool = new Map([
@@ -65,6 +66,12 @@ console.log("=== no slot spent ===");
 const all = freeAgentsFor(lg, rostered, starters, ["QB", "WR"]);
 check("an open QB slot does get the QB", all.some((f) => f.name === "Josh Allen"),
   all.map((f) => f.name).join(", "));
+
+console.log("=== ruled-out free agent ===");
+const hurt = harness(pool, new Set(), new Set(["puka nacua|WR"]))
+  .freeAgentsFor(lg, rostered, starters, ["WR"]).map((f) => f.name);
+check("a free agent listed Out/IR is not offered", !hurt.includes("Puka Nacua"), hurt.join(", "));
+check("the healthy one still is", hurt.includes("Rome Odunze"), hurt.join(", "));
 
 console.log("=== every slot spent ===");
 check("nothing to offer", freeAgentsFor(lg, rostered, [], []).length === 0);
