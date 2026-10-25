@@ -69,5 +69,32 @@ check("an open QB slot does get the QB", all.some((f) => f.name === "Josh Allen"
 console.log("=== every slot spent ===");
 check("nothing to offer", freeAgentsFor(lg, rostered, [], []).length === 0);
 
+// spendSlots: which slots played starters hold. Shared by the lineup, the
+// free-agent list and the league-chip estimate (2026-10-24); the chip used to
+// drop the LAST n slots, so a played QB spent the DEF slot instead.
+const spendSlots = new Function([
+  g(/const SLOT_ACCEPTS = \{[\s\S]*?\n  \};/),
+  g(/function spendSlots\(slots, lockedStarters\)[\s\S]*?\n  \}/),
+].join("\n") + ";return spendSlots;")();
+const SL = ["QB", "RB", "WR", "FLEX", "DEF"];
+const openAfter = (locked) =>
+  spendSlots(SL, locked).freeSlots.map((f) => f.slot).join(",");
+
+console.log("=== spendSlots ===");
+const cases = [
+  ["a played QB spends the QB slot, not the last one",
+    [{ position: "QB", slotIndex: 0 }], "RB,WR,FLEX,DEF"],
+  ["a played WR in FLEX spends FLEX, leaving the WR slot open",
+    [{ position: "WR", slotIndex: 3 }], "QB,RB,WR,DEF"],
+  ["unknown slot falls back to the first one his position fits",
+    [{ position: "WR" }], "QB,RB,FLEX,DEF"],
+  ["a known slot is honoured before a fallback can take it",
+    [{ position: "WR" }, { position: "WR", slotIndex: 2 }], "QB,RB,DEF"],
+];
+for (const [label, locked, want] of cases) {
+  const got = openAfter(locked);
+  check(label, got === want, got);
+}
+
 console.log(`\n${failed ? failed + " failed" : "all passed"}`);
 process.exit(failed ? 1 : 0);
