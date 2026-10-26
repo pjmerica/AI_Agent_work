@@ -42,6 +42,7 @@ const WANTED = [
   /const DST_TEAM_ALIASES = \{[\s\S]*?\};/,
   /function teamKey\(t\)[\s\S]*?\n  \}/,
   /function shortMatchup\(m\)[\s\S]*?\n  \}/,
+  /function weekEndAfter\(now\)[\s\S]*?\n  \}/,
   /function buildSitStartPoolFull\(\)[\s\S]*?\n  \}/,
 ];
 

@@ -27,7 +27,10 @@ const appSrc = fs.readFileSync(path.join(ROOT, "lineup/app.js"), "utf8");
 // rather than asserting against a fixture.
 function withFutureKickoffs(name, data) {
   if (name !== "gamelines.json" || !data || !Array.isArray(data.games)) return data;
-  const soon = new Date(Date.now() + 3 * 24 * 3600 * 1000).toISOString();
+  // Ten minutes ahead, not days: the pool now drops games after the coming
+  // Tuesday's week cut (2026-10-26), and three days ahead of a Monday run
+  // lands in next week, which emptied the board. The run takes seconds.
+  const soon = new Date(Date.now() + 10 * 60 * 1000).toISOString();
   return Object.assign({}, data, {
     games: data.games.map((g) => Object.assign({}, g, { kickoff: soon })),
   });
