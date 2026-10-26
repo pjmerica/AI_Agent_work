@@ -93,7 +93,8 @@ HEAD_TMPL = """
   <meta property="og:image" content="{site}/EDA.png" />
   <meta name="twitter:card" content="summary" />"""
 
-DATA_FILES = ["weekly.json", "oddsapi.json", "dk_td.json", "gamelines.json",
+# dk_td.json is not ported: the lineup stopped reading it on 2026-10-26.
+DATA_FILES = ["weekly.json", "oddsapi.json", "gamelines.json",
               "sleeper_players.json", "clay.json", "data.json"]
 
 # Nested-submenu CSS. The repo's nav had one level; this adds a second without

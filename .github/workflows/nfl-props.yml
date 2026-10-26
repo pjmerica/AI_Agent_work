@@ -110,12 +110,12 @@ jobs:
         run: python scripts/fetch_kalshi_weekly_props.py
         continue-on-error: true
 
-      # DraftKings anytime-TD. Free, no key, but needs Origin+Referer headers
-      # or every request 403s. Covers 429 players to Kalshi's 236.
-      - name: Scrape DraftKings TD scorers
-        id: dk_td
-        run: python scripts/fetch_dk_td_scorers.py
-        continue-on-error: true
+      # DraftKings anytime-TD is no longer scraped here (2026-10-26). DraftKings
+      # 403s GitHub's runners, so this step only ever failed on CI and
+      # dk_td.json had sat since 10-01. The Odds API step below already carries
+      # DraftKings' anytime-TD quote, converted the same way. The script stays:
+      # fetch_oddsapi_weekly_props.py imports its expected_tds(), and a local
+      # run still works for the draft board.
 
       # Multi-book per-game props. Needs ODDS_API_KEY (repo secret); the script
       # exits cleanly when it is absent. Player props bill one credit per event
@@ -258,7 +258,6 @@ jobs:
             echo "| Odds API per-game | ${{ steps.oddsapi_weekly.outcome }} |"
             echo "| Game lines | ${{ steps.gamelines.outcome }} |"
             echo "| Sleeper player map | ${{ steps.playermap.outcome }} |"
-            echo "| DraftKings TD (often blocked on CI) | ${{ steps.dk_td.outcome }} |"
             echo ""
             echo "#### Data on disk after this run"
             echo ""
