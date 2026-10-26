@@ -59,7 +59,8 @@ setTimeout(async ()=>{
 
   console.log("");
   console.log("=== swap counts on chips ===");
-  const withBadge=chips.filter(c=>c.querySelector(".chip-count")||c.querySelector(".chip-ok"));
+  // A best-ball league shows "auto" instead: it has no lineup to set (2026-10-25).
+  const withBadge=chips.filter(c=>c.querySelector(".chip-count")||c.querySelector(".chip-ok")||c.querySelector(".chip-bb"));
   check("every chip shows a count or a tick", withBadge.length===chips.length,
     withBadge.length+" of "+chips.length);
 

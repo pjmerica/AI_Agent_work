@@ -188,6 +188,7 @@ setTimeout(async () => {
   console.log("");
   console.log("=== rows built on a projection are tagged ===");
   let sawTagged = false;
+  let sawProjChip = false;
   let mismatched = [];
   const labelWrong = [];
   const labelCounts = {};
@@ -225,6 +226,7 @@ setTimeout(async () => {
       // versa -- the row tag and the chips are derived separately, so they can
       // disagree.
       const hasProjChip = !!tr.querySelector(".market-chip.src-proj");
+      if (hasProjChip) sawProjChip = true;
       const hasAnyChip = !!tr.querySelector(".market-chip");
       if (hasAnyChip && tagged !== hasProjChip) {
         mismatched.push(nameCell.textContent.trim().slice(0, 28) +
@@ -232,7 +234,15 @@ setTimeout(async () => {
       }
     }
   }
-  check("at least one row carries the tag", sawTagged);
+  // Late in the week every rostered player can be fully priced, and then no
+  // row should be tagged: this failed on Sunday 2026-10-25 with nothing wrong.
+  // Require a tag only when some row is in fact built on a projection; the
+  // agreement check below still runs on every row either way.
+  if (sawProjChip) {
+    check("at least one row carries the tag", sawTagged);
+  } else {
+    console.log("  skip  no row on today's board is built on a projection");
+  }
   check("the row tag agrees with the chips on every row",
     mismatched.length === 0, mismatched.slice(0, 3).join(" | "));
   check('"TD ONLY" is only used where a TD really is the only priced stat',
