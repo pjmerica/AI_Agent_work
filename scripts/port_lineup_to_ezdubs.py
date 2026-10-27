@@ -339,6 +339,30 @@ NFL_SITE_CSS = """<style>
   @media (max-width: 600px) {
     .slot-table th, .slot-table td { padding-left: 8px; padding-right: 8px; }
   }
+  /* The template's outlined, filled panels become rules, as on the rest of the
+     site: the help disclosure, the book picker, the coverage note, the lineup
+     table and its section heads. */
+  .help { border: 0; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); background: transparent; }
+  .help > summary { padding: 10px 0; font-family: var(--display); font-weight: 700; font-size: 1rem;
+                    text-transform: uppercase; letter-spacing: 0.03em; color: var(--ink); }
+  .help-body { padding: 12px 0 14px; }
+  .market-toggles { background: transparent; border: 0; border-top: 1px solid var(--rule); padding: 12px 0 4px; }
+  .coverage-note { background: transparent; border: 0; border-top: 2px solid var(--rule); padding: 10px 0; }
+  .coverage-note.early { background: transparent; border-top-color: var(--amber); }
+  .table-wrap { background: transparent; border: 0; border-top: 2px solid var(--rule); }
+  .slot-table th, .rankings thead th { background: transparent; }
+  .slot-table th:first-child, .slot-table td:first-child { padding-left: 0; }
+  .slot-table th:last-child, .slot-table td:last-child { padding-right: 0; }
+  .locked-row td { background: transparent; }
+  .sitstart-total, .sitstart-section { background: transparent; padding-left: 0; padding-right: 0; }
+  /* On a phone the player cell ran to three lines: name, then a tag such as
+     PLAYED, then the team. The name (span.pname, from lineup/app.js) takes the
+     first line and the tags and team share the second. */
+  @media (max-width: 600px) {
+    .slot-table td.player-name .pname { display: block; }
+    .slot-table td.player-name .pname ~ .game-sub { display: inline; margin-left: 6px; }
+    .slot-table td.player-name .pname + span { margin-left: 0; }
+  }
 </style>"""
 
 
