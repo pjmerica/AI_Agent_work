@@ -276,72 +276,120 @@ def lift_footer(dest: Path) -> str:
 #    active buttons keep white text from the template, which fails on the blue,
 #    so they get the site's dark text;
 #  - a generic .caret colour reached the site nav's dropdown carets.
+#
+# Since the "Box Score" redesign (2026-10-26) the site is a light newsprint
+# page, so this block also sets the page's type: condensed capitals for the
+# heading and the buttons, serif body, square corners. The colours come from the
+# tokens in the destination's assets/site.css, which these pages link.
 NFL_SITE_CSS = """<style>
   /* EZ Dubs chrome for the NFL pages; added by port_lineup_to_ezdubs.py. */
-  body { padding: 0; }
-  /* The site's dashboard header standard (2026-10-21): 36px above the h1,
-     1.8rem/700, 1.5rem on a phone. The template's was 28px/22px. */
-  .container { padding: 36px 20px 0; }
-  header h1 { font-size: 1.8rem; margin: 0 0 6px; letter-spacing: -0.01em; }
-  header .subtitle { color: #99aabb; font-size: 0.92rem; line-height: 1.5;
-                     margin-bottom: 22px; }
-  /* The boxed verdict panels. These used to arrive by accident with the
-     calculator's whole <style>; only its body and footer rules are lifted now
-     (chrome_rules, 2026-10-22), so the look is kept here on purpose. */
-  .verdict { background: #0f1923; border: 1px solid #1e2d3d; border-radius: 12px;
-             padding: 18px 22px; margin-bottom: 14px; }
+  body { padding: 0; font-family: var(--serif); background: var(--paper); color: var(--ink); }
+  .container { padding: 36px 24px 0; }
+  header h1 {
+    font-family: var(--display); font-weight: 800; text-transform: uppercase;
+    font-size: clamp(2.4rem, 5vw, 3.4rem); line-height: 0.98; margin: 0 0 10px; color: var(--ink);
+  }
+  header .subtitle { color: var(--ink-2); font-size: 1.1rem; line-height: 1.55; margin-bottom: 22px; }
+  /* The verdict panels: a rule above, no box. Kept here on purpose since only
+     the calculator's body and footer rules are lifted (chrome_rules). */
+  .verdict { background: transparent; border: 0; border-top: 2px solid var(--rule);
+             border-radius: 0; padding: 14px 0; margin-bottom: 14px; }
+  /* Callouts lose the left-border box: rules above and below instead. */
+  .callout { background: transparent; border: 0; border-top: 1px solid var(--rule);
+             border-bottom: 1px solid var(--rule); border-radius: 0; padding: 12px 0;
+             color: var(--ink-2); font-size: 0.95rem; }
+  .callout strong { color: var(--ink); }
+  .callout-error { border-color: var(--red); color: var(--red); }
   @media (max-width: 720px) {
     body { padding: 0; }
-    .container { padding: 22px 12px 0; }
-    header h1 { font-size: 1.5rem; }
-    header .subtitle { font-size: 0.85rem; }
+    .container { padding: 24px 16px 0; }
   }
   .site-nav .caret { color: inherit; }
+  .fmt-btn, .chip, .view-tab, .source-tab {
+    font-family: var(--display); font-weight: 700; font-size: 1rem;
+    text-transform: uppercase; letter-spacing: 0.03em;
+  }
   .fmt-btn.active, .chip.active, .view-tab.active, .source-tab.active {
-    background: #4a9eff; border-color: #4a9eff; color: #0f1923;
+    background: var(--ink); border-color: var(--ink); color: var(--paper);
   }
   .chip:hover, .player-tag:hover, #search:focus, #roster-input:focus,
   #roster-search:focus, .h2h-picker input:focus, .roster-paste textarea:focus {
-    border-color: #4a9eff;
+    border-color: var(--red);
   }
-  .delta-toggle input, .market-toggles input, .book-toggle-list input { accent-color: #4a9eff; }
-  .callout { border-left-color: #4a9eff; }
-  .sources-note { color: #7f8c99; font-size: 0.78rem; text-align: center; margin: 4px 0 8px; }
+  .delta-toggle input, .market-toggles input, .book-toggle-list input { accent-color: var(--ink); }
+  table { font-variant-numeric: tabular-nums; }
+  .sources-note { font-family: var(--mono); color: var(--muted); font-size: 0.72rem; text-align: center; margin: 4px 0 8px; }
+  /* The template's bare footer rule centres its text; the site footer is left-aligned. */
+  .site-footer { text-align: left; font-size: 0.75rem; }
 </style>"""
 
 
 # The lineup stylesheet is AI_Agent_work's design: purple accent, near-black
-# panels, lavender greys. On EZ Dubs that made the NFL pages look like another
-# site (navy panels, blue accent, blue-grey text everywhere else). The port
-# writes a copy with these colours swapped for the site's. Semantic colours
-# (green/red/amber for good/bad/warning) are left alone. Every text colour was
-# re-checked against the new panels: the weakest is 5.14:1, above AA's 4.5.
+# panels, lavender greys. The port writes a copy with every colour swapped for
+# the EZ Dubs "Box Score" palette (2026-10-26; before that it was swapped for
+# the old navy theme). That palette is light, so this is an inversion, not a
+# tint: dark panels become paper, light text becomes ink, and the bright
+# green/red/amber that read on near-black become the darker shades that read
+# on paper. Every text colour here passes AA on the paper and the panel shade:
+# the weakest is the amber, 5.0:1 on #e9e4d8. The values match the tokens in
+# the destination's assets/site.css.
+PAPER, PANEL, SUNK = "#f3f0e8", "#efebe1", "#e9e4d8"
+INK, INK2, MUTED = "#1a1a1a", "#3a3833", "#4a4740"
+RULE, RULE_FAINT = "#8a8478", "#cfc8b8"
+RED, GREEN, AMBER, BLUE = "#b3261e", "#1d6b3a", "#865400", "#1f4e8c"
 SITE_THEME = {
-    # panels and surfaces
-    "#0f0f13": "#0f1923", "#14141c": "#131f2c", "#15151f": "#14202d",
-    "#1a1a24": "#1a2634", "#1c1c2b": "#1b2836", "#1e1e2e": "#1e2d3d",
-    "#1f1f2c": "#1e2b39", "#21212e": "#202d3b", "#22223a": "#1c2a3d",
-    "#23232f": "#22303e", "#2a2a40": "#26364a", "#2e2e42": "#2a3a4a",
-    "#33334d": "#2f4258", "#3a3a4e": "#34465a",
-    # accent (purple -> the site's blue) and its tints
-    "#5b4cf5": "#4a9eff", "#8f84ff": "#7fb8ff", "#9b8cff": "#8cc0ff",
-    "#b9aeff": "#a8d0ff", "#c9c4ff": "#c4dcff",
-    # lavender greys -> the site's blue-greys
-    "#a0a0c0": "#99aabb", "#9a9ab0": "#94a3b3", "#9ca0bd": "#97a7b8",
-    "#8a8aa8": "#8a97a5", "#a8a8c0": "#a3b0bf", "#a0a0bc": "#9dabbb",
-    "#9a9ab8": "#97a6b7", "#b4b4d0": "#b0bccb", "#b8b8cc": "#b5c0cc",
-    "#c8c8dc": "#c3cdd8", "#c9c9dd": "#c4ced9", "#d4d4e8": "#cfd8e2",
-    "#d8d8e8": "#d3dbe4", "#e2e2f0": "#e0e0e0", "#f0f0f8": "#f0f2f5",
-    "#f0f0f5": "#f0f2f5",
+    # page, panels and surfaces
+    "#0f0f13": PAPER, "#14141c": PANEL, "#15151f": PANEL, "#1a1a24": SUNK,
+    "#1c1c2b": SUNK, "#1e1e2e": SUNK, "#21212e": SUNK, "#23232f": SUNK,
+    # borders
+    "#2e2e42": RULE, "#33334d": RULE, "#3a3a4e": RULE, "#2a2a40": RULE,
+    "#1f1f2c": RULE_FAINT, "#22223a": RULE_FAINT,
+    # the purple accent fills active buttons (white text on it): ink.
+    # Its lighter tints are text: red, the site's one accent.
+    "#5b4cf5": INK, "#8f84ff": RED, "#9b8cff": RED, "#b9aeff": RED, "#c9c4ff": RED,
+    # light text -> ink; lavender greys -> the muted and second inks
+    "#fff": INK, "#ffffff": INK, "#f0f0f8": INK, "#f0f0f5": INK, "#e2e2f0": INK,
+    "#d8d8e8": INK2, "#d4d4e8": INK2, "#c8c8dc": INK2, "#c9c9dd": INK2,
+    "#b8b8cc": INK2, "#b4b4d0": INK2, "#b8c2cf": INK2, "#aab4bf": INK2, "#cdd8e6": INK2,
+    "#a0a0c0": MUTED, "#9a9ab0": MUTED, "#9ca0bd": MUTED, "#8a8aa8": MUTED,
+    "#9a9ab8": MUTED, "#a0a0bc": MUTED, "#a8a8c0": MUTED, "#8a97a5": MUTED, "#95a5a6": MUTED,
+    # semantic colours, darkened to read on paper
+    "#58d68d": GREEN, "#7fd6a0": GREEN, "#5fae7d": GREEN, "#2e7d4f": GREEN, "#3fa96a": GREEN,
+    "#eafff2": PAPER,
+    "#ff6b6b": RED, "#ff9b9b": RED, "#e8a0a0": RED, "#f0c4c4": RED, "#ffc9c9": RED, "#ff8f8f": RED,
+    "#f5b041": AMBER, "#e0c98a": AMBER, "#e8d5b0": AMBER, "#ddd0bb": AMBER, "#6b5326": AMBER,
+    "#2a2218": "#efe4c8",
+    "#78aaff": BLUE, "#5dade2": BLUE, "#a9c4ee": BLUE, "#bcd3f5": BLUE, "#9cc0f0": BLUE,
+}
+
+# Translucent rgba() tints (panel washes, focus glows, badge fills), by their
+# base colour. Each keeps its alpha; the base becomes the matching palette
+# colour, so a 0.08 purple wash becomes a 0.08 ink wash on paper.
+RGBA_THEME = {
+    (91, 76, 245): (26, 26, 26),                                     # purple accent -> ink
+    (46, 204, 113): (29, 107, 58), (88, 214, 141): (29, 107, 58),    # greens
+    (255, 107, 107): (179, 38, 30), (231, 76, 60): (179, 38, 30),    # reds
+    (232, 106, 92): (179, 38, 30),
+    (245, 176, 65): (134, 84, 0), (243, 156, 18): (134, 84, 0),      # ambers
+    (52, 152, 219): (31, 78, 140), (120, 170, 255): (31, 78, 140),   # blues
+    (108, 122, 137): (74, 71, 64), (160, 170, 190): (74, 71, 64),    # greys
+    (143, 168, 200): (74, 71, 64),
 }
 
 
 def retheme_css(css: str) -> str:
-    out = re.sub(r"#[0-9a-fA-F]{6}\b",
+    # 3-digit hex too: the template has #fff on dark panels, which would be
+    # invisible on paper if it were left alone.
+    out = re.sub(r"#(?:[0-9a-fA-F]{6}|[0-9a-fA-F]{3})\b",
                  lambda m: SITE_THEME.get(m.group(0).lower(), m.group(0)), css)
-    # The accent also appears as translucent rgba() tints (panel washes, focus
-    # glows); keep each alpha, swap the purple for the site blue.
-    out = re.sub(r"rgba\(\s*91\s*,\s*76\s*,\s*245\s*,", "rgba(74, 158, 255,", out)
+
+    def rgba(m: re.Match) -> str:
+        base = tuple(int(v) for v in m.group(1, 2, 3))
+        r, g, b = RGBA_THEME.get(base, base)
+        return f"rgba({r}, {g}, {b},"
+    out = re.sub(r"rgba\(\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)\s*,", rgba, out)
+    # Square corners, as on the rest of the site. Circles (50%) stay round.
+    out = re.sub(r"border-radius:\s*(?!50%)[^;]+;", "border-radius: 0;", out)
     return ("/* Re-themed for EZ Dubs by scripts/port_lineup_to_ezdubs.py (SITE_THEME);\n"
             "   the source is AI_Agent_work's lineup/style.css. */\n" + out)
 

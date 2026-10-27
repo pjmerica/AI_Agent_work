@@ -1141,3 +1141,10 @@ tr.row-nan:hover { opacity: 0.85; }
   color: #ffc9c9;
 }
 .coverage-note.stale-week strong { color: #ff8f8f; }
+
+/* Text colours app.js used to set inline (style="color:..."). As classes, a
+   stylesheet can restyle them: the EZ Dubs port re-themes these hexes for its
+   light page. Last in the file so they win over a parent rule like .verdict. */
+.c-dim { color: #8a97a5; }
+.c-good { color: #58d68d; }
+.c-warn { color: #f5b041; }
