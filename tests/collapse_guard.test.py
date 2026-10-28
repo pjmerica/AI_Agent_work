@@ -1,7 +1,7 @@
 """The scrapers must refuse to replace a full board with a collapsed one.
 
 Why this matters now: until 2026-10-06 every props refresh was triggered by hand
-and watched. It runs eight times a week unattended from 10-07, so a scrape that
+and watched. It runs unattended several times a week from 10-07, so a scrape that
 fails part-way -- a rate limit, a quota exhaustion, a timeout after the first page,
 an API shape change affecting one market -- would quietly overwrite a full slate
 with a stub, and the mirror job would carry that to the EZ Dubs site within hours.

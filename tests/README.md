@@ -133,6 +133,12 @@ Its thresholds are stated in fantasy points, not ratios. An early version
 demanded a 40% error reduction on goal-line backs and failed at 35%, which says
 nothing about whether the number is good enough — 0.23 points of error is.
 
+Every assertion against Kalshi waits for a full slate (150 pairs, 60 goal-line
+pairs). Early in the week only the few games already open are priced by both,
+which is a small and skewed sample; the systematic-bias check asserted on any
+20 pairs until 2026-10-27, when the new Tuesday run's 86 pairs read +0.057 and
+failed it. Below the minimum each number is printed as a note instead.
+
 **`dst_model.test.js`** — backtests the defense model against what defenses
 actually scored in a completed week. Kickers and defenses have no prop market,
 so they are priced off the game line, and that is a claim worth checking rather
@@ -191,6 +197,15 @@ other.
 
 Verified it detects drift: changing `GAMES_IN_SEASON` from 17 to 16 in one file
 alone surfaces as 106 players disagreeing.
+
+**`stale_week.test.js`** — runs `staleWeekState()` and `staleWeekBanner()` from
+both apps against fixed fixtures and a pinned clock. The banner tells a reader
+the props describe a week already played. Until 2026-10-27 it compared the last
+kickoff day in `weekly.json` with now, so the two D/ST lines Kalshi opens early
+for the next Thursday game made a finished week read as live and the banner
+never showed. It now judges each game (a game still to come only counts as
+live if it prices a player) and counts "finished N days ago" from the game's
+end. The old code fails three of its cases in each file.
 
 **`name_matching.test.js`** — five feeds spell players five ways and every join
 between them is on name, so this checks both failure directions.

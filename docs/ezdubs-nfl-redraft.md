@@ -67,14 +67,17 @@ books actually post, which is very uneven across the week:
 
 | ET | Why |
 |---|---|
+| Tue 6:00am | retires the finished week (Kalshi purges settled markets, so until a run after Monday night the files still describe games already played) |
 | Wed 10:00pm | books begin opening Sunday props |
 | Thu 10:00am, 3:00pm, 7:00pm | Thursday is the biggest jump of the week — week 3 went 99 to 183 player-games overnight. The 7pm run lands before TNF. |
 | Fri / Sat 10:00am | coverage fills in, lines move |
 | Sun 10:00am, 12:00pm | pre-kickoff, then a last look before the 1pm games |
 
-Nothing runs Monday or Tuesday: almost no Sunday props are posted that early, so
-a refresh then spends credits to learn nothing. A single-week run measured 36
-Odds API credits, so the eight runs come to roughly 1,250 a month.
+Until 2026-10-27 nothing ran Monday or Tuesday, on the theory that almost no
+Sunday props are posted that early. That left the finished week on the board
+until Wednesday night, and a Tuesday-evening run found plenty posted anyway
+(Kalshi 123 week-8 player-games, the Odds API 432). That run cost 59 Odds API
+credits; see the cost note in `nfl-props.yml` for the monthly total.
 
 This is why a midweek board legitimately shows part of the slate unpriced — a
 Tuesday pull of week 5 had 6 of 15 games with usable props. The page says so

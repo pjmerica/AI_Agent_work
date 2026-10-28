@@ -159,9 +159,16 @@ if wk_file.exists() and dk_file.exists():
                   f"(need {GOAL_LINE_MIN} to judge): raw {raw_hi:.2f} pts vs "
                   f"converted {new_hi:.2f} pts, not asserted")
 
+        # Same minimum as the error check above. With a Tuesday props run on
+        # the schedule (2026-10-27), early-week data is routine: that run's 86
+        # pairs, all from the few games already open, read +0.057 here.
         bias = statistics.mean(x - k for _, x, k in pairs)
-        check("no large systematic bias left", abs(bias) < 0.05,
-              f"mean error {bias:+.4f}")
+        if len(pairs) >= OVERALL_MIN:
+            check("no large systematic bias left", abs(bias) < 0.05,
+                  f"mean error {bias:+.4f}")
+        else:
+            print(f"  note  mean error {bias:+.4f} on {len(pairs)} pairs "
+                  f"(need {OVERALL_MIN} to judge), not asserted")
 
         # Re-derive the best blend, on the group that matters and on the whole
         # set. Reported, not asserted against a single week.

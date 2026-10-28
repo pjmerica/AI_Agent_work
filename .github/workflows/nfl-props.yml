@@ -6,11 +6,19 @@ on:
   # EDT = UTC-4; once EST returns in November each run lands an hour earlier in
   # ET, which does not matter for a morning refresh.
   #
-  # The cadence follows how books actually post, which is very uneven: almost
-  # nothing for Sunday is up on Monday or Tuesday, Wednesday evening is when it
-  # starts, and Thursday is the single biggest jump of the week (week 3 went 99
-  # to 183 player-games overnight). There is no point refreshing early in the
-  # week -- see the coverage note on the page.
+  # The cadence follows how books actually post, which is very uneven:
+  # Wednesday evening is when most Sunday props start, and Thursday is the
+  # single biggest jump of the week (week 3 went 99 to 183 player-games
+  # overnight).
+  #
+  # The Tuesday run is not for coverage, it retires the finished week. Kalshi
+  # purges settled markets, so until something runs after Monday night the
+  # files keep describing games already played, and with the first run on
+  # Wednesday night that meant two days of last week's lines on the board
+  # (2026-10-27: week 7 still up on Tuesday evening). A run dispatched that
+  # evening found more posted than this comment used to assume: Kalshi had
+  # 123 week-8 player-games across 13 games, the Odds API 432 across 14 events
+  # (57 credits, plus 2 for game lines).
   #
   # DO NOT TRUST THESE TIMES TO THE MINUTE. GitHub queues scheduled runs on free
   # tier and the delay is large: measured against this repo's own scrape.yml
@@ -27,8 +35,9 @@ on:
   # Cost: one credit per market per event that has props posted; events with
   # none (next week's games, early in the week) cost nothing. Six markets over a
   # 13-14 game slate measured 78-84 credits a run in week 6 (2026-10-15..18),
-  # so eight runs a week is ~650/week, plus ~110 for the Sunday pre-kickoff
-  # chain (nfl-kickoff-refresh.yml), ~3,300/month, against the account's
+  # so eight runs a week is ~650/week, plus ~60 for the Tuesday run and ~110
+  # for the Sunday pre-kickoff chain (nfl-kickoff-refresh.yml), ~3,550/month,
+  # against the account's
   # 20,000/month (18,161 left on 10-18). The 36 measured on 10-06 was five
   # markets on a thinner board. A scheduled run
   # leaves `inputs` empty, so the multiweek step (gated on `if: inputs.multiweek`,
@@ -38,6 +47,9 @@ on:
   # those two days move the least, because Thursday night is when the Sunday
   # props actually open.
   schedule:
+    # After Monday night's game ends (~04:00 UTC Tuesday). Lands mid-morning to
+    # early afternoon ET Tuesday with the usual lag; the site mirrors at 16:00.
+    - cron: '0 10 * * 2'     # Tue  6:00am ET — replace the finished week
     - cron: '0 2 * * 4'      # Wed 10:00pm ET — books start opening Sunday props
     - cron: '0 14 * * 4'     # Thu 10:00am ET — morning pass
     - cron: '0 19 * * 4'     # Thu  3:00pm ET — afternoon pass
