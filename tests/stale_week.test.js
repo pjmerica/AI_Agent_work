@@ -75,7 +75,15 @@ const CASES = [
     name: "finished week with two defense lines left over",
     at: "2026-10-28T00:30:00Z", weekly, gamelines,
     expect: (s, b) => s && s.leftover === 2 && /Apart from 2 defense lines/.test(b) &&
-                      /week 7/.test(b) && !/Every line below/.test(b),
+                      /week 7/.test(b) && !/Every line below/.test(b) &&
+                      // Monday night ended about 20 hours earlier.
+                      /finished yesterday/.test(b),
+  },
+  {
+    name: "three days on, it says so",
+    at: "2026-10-30T06:00:00Z", weekly: (() => { const w = clone(weekly); w.players = w.players.filter((p) => p.matchup !== "CARGB"); return w; })(),
+    gamelines,
+    expect: (s, b) => s && /finished 3 days ago/.test(b),
   },
   {
     name: "Monday before the late game: still live",

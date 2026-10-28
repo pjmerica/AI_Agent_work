@@ -572,9 +572,8 @@
       let g = games.get(key);
       if (!g) {
         const at = kickAt.get(p.matchup);
-        g = { day, over: isFinite(at) ? at + 4 * 3600 * 1000 <= now
-                                      : day + 36 * 3600 * 1000 <= now,
-              rows: 0, players: false };
+        const end = isFinite(at) ? at + 4 * 3600 * 1000 : day + 36 * 3600 * 1000;
+        g = { day, end, over: end <= now, rows: 0, players: false };
         games.set(key, g);
       }
       g.rows += 1;
@@ -588,6 +587,10 @@
     return {
       dataWeek: Number(wkd.week) || null,
       lastPropDay: Math.max.apply(null, played.map((g) => g.day)),
+      // When the last played game ended, for "finished yesterday". The day code
+      // alone is midnight UTC, which made a Monday night game read as two days
+      // ago by Tuesday evening.
+      finishedAt: Math.max.apply(null, played.map((g) => g.end)),
       nextKickoff: Math.min.apply(null, ahead),
       lastUpdated: wkd.lastUpdated || null,
       // Defense lines for a game still to come, which the banner must not
@@ -629,7 +632,7 @@
   function staleWeekBanner() {
     const s = staleWeekState();
     if (!s) return "";
-    const days = Math.round((Date.now() - s.lastPropDay) / 86400000);
+    const days = Math.round((Date.now() - (s.finishedAt || s.lastPropDay)) / 86400000);
     return '<div class="coverage-note stale-week">' +
       "<strong>" +
       (s.dataWeek ? "These prices are from week " + s.dataWeek + ", whose games "
