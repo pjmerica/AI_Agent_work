@@ -271,7 +271,9 @@ setTimeout(() => {
     }
   }
   // Classes the app only reads or toggles, or that come from shared markup.
-  const IGNORE = new Set(["hidden", "active", "chip", "view-tab"]);
+  // "pname" wraps a player's name so the EZ Dubs port's phone CSS can give it a
+  // line of its own; this page leaves it unstyled on purpose.
+  const IGNORE = new Set(["hidden", "active", "chip", "view-tab", "pname"]);
   const unstyled = [...emitted].filter((c) =>
     !IGNORE.has(c) && !css.includes("." + c));
   check("no chip/element class is missing from the stylesheet",

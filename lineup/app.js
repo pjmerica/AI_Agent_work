@@ -687,22 +687,52 @@
     const wkd = cache["weekly"];
     const gl = cache["gamelines"];
     if (!wkd || !gl || !Array.isArray(gl.games)) return null;
-    const codes = (wkd.kickoffs || []).map(parseKickCode).filter((d) => d);
-    if (!codes.length) return null;
     const now = Date.now();
-    // End of the last day the props cover. A game can run ~6h past midnight UTC
-    // kickoff, so allow a day before calling that slate finished.
-    const lastPropDay = Math.max.apply(null, codes) + 36 * 3600 * 1000;
-    if (lastPropDay > now) return null;          // props still describe live games
     const ahead = gl.games
       .filter((g) => g.kickoff && Date.parse(g.kickoff) > now)
       .map((g) => Date.parse(g.kickoff));
     if (!ahead.length) return null;              // nothing scheduled: offseason
+
+    // Group the props by game. A game is over 4h after its kickoff when
+    // gamelines has the time, else 36h after the start of its kickoff day (a
+    // game can run ~6h past midnight UTC).
+    //
+    // Judged per game, not by the last kickoff day, because Kalshi can open a
+    // game's markets early with only its two defense lines: on 2026-10-27
+    // weekly.json held week 7's 297 played rows plus CAR and GB D/ST for the
+    // Thursday after, and the old last-day test read that as a live week. A
+    // game still to come only counts as live if it prices a player.
+    const kickAt = new Map(gl.games.filter((g) => g.matchup && g.kickoff)
+      .map((g) => [g.matchup, Date.parse(g.kickoff)]));
+    const games = new Map();
+    for (const p of wkd.players || []) {
+      const day = parseKickCode(p.kickoff);
+      if (!day) continue;
+      const key = p.game || (p.kickoff + ":" + (p.matchup || ""));
+      let g = games.get(key);
+      if (!g) {
+        const at = kickAt.get(p.matchup);
+        g = { day, over: isFinite(at) ? at + 4 * 3600 * 1000 <= now
+                                      : day + 36 * 3600 * 1000 <= now,
+              rows: 0, players: false };
+        games.set(key, g);
+      }
+      g.rows += 1;
+      if (!/D\/ST$/i.test(String(p.name || "").trim())) g.players = true;
+    }
+    if (!games.size) return null;
+    const all = [...games.values()];
+    if (all.some((g) => !g.over && g.players)) return null;   // a live slate
+    const played = all.filter((g) => g.over);
+    if (!played.length) return null;
     return {
       dataWeek: Number(wkd.week) || null,
-      lastPropDay: Math.max.apply(null, codes),
+      lastPropDay: Math.max.apply(null, played.map((g) => g.day)),
       nextKickoff: Math.min.apply(null, ahead),
       lastUpdated: wkd.lastUpdated || null,
+      // Defense lines for a game still to come, which the banner must not
+      // call played.
+      leftover: all.filter((g) => !g.over).reduce((n, g) => n + g.rows, 0),
     };
   }
 
@@ -715,8 +745,13 @@
       (s.dataWeek ? "These prices are from week " + s.dataWeek + ", whose games "
                   : "These prices are for games that ") +
       "finished " + (days <= 1 ? "yesterday" : days + " days ago") +
-      ".</strong> Every line below is for a game already played, so none of it " +
-      "can set a lineup. The market data refreshes on a manual run: " +
+      ".</strong> " + (s.leftover
+        ? "Apart from " + s.leftover + " defense line" + (s.leftover === 1 ? "" : "s") +
+          " for a later game, every line below is for a game already played, " +
+          "so none of it can set a lineup. "
+        : "Every line below is for a game already played, so none of it " +
+          "can set a lineup. ") +
+      "The market data refreshes on a manual run: " +
       "until then this is a record of a past week, not a projection." +
       (s.lastUpdated
         ? ' <span class="coverage-sub">Last refreshed ' +
