@@ -205,7 +205,7 @@ setTimeout(async () => {
         sawTagged = true;
         const label = tagEl.textContent.trim();
         labelCounts[label] = (labelCounts[label] || 0) + 1;
-        // "TD ONLY" claims the touchdown is the single priced stat. The chips on
+        // "Only TD priced" claims the touchdown is the single priced stat. The chips on
         // the row say which stats came from a market, so they can check it.
         const chips = [...tr.querySelectorAll(".market-chip")];
         const marketChips = chips.filter((c) => !c.classList.contains("src-proj"));
@@ -213,13 +213,13 @@ setTimeout(async () => {
           .map((c) => (c.querySelector(".mk-label") || {}).textContent || "")
           .map((x) => x.trim());
         const onlyTd = labels.length === 1 && /td/i.test(labels[0]);
-        if (label === "TD ONLY" && labels.length && !onlyTd) {
+        if (/^only td priced/i.test(label) && labels.length && !onlyTd) {
           labelWrong.push(nameCell.textContent.trim().slice(0, 24) +
             " priced: " + labels.join("/"));
         }
-        if (label === "EST" && onlyTd) {
+        if (/^partly projected/i.test(label) && onlyTd) {
           labelWrong.push(nameCell.textContent.trim().slice(0, 24) +
-            " should read TD ONLY");
+            " should read Only TD priced");
         }
       }
       // Any tagged row must also show at least one projected chip, and vice
