@@ -77,6 +77,7 @@ PAGES = {
 }
 
 SITE = "https://ezdubsanalytics.com"
+NL = "\n"
 
 # The <head> tags every other EZ Dubs page carries. These pages are rebuilt from
 # lineup/index.html on every port and carry_head_metas() keeps only
@@ -90,8 +91,25 @@ HEAD_TMPL = """
   <meta property="og:description" content="{description}" />
   <meta property="og:url" content="{site}/dashboards/{slug}/" />
   <meta property="og:type" content="website" />
-  <meta property="og:image" content="{site}/EDA.png" />
-  <meta name="twitter:card" content="summary" />"""
+{image_tags}"""
+
+
+def preview_tags(dest: Path, slug: str) -> str:
+    """The page's link-preview image: a screenshot of it, from the destination's
+    scripts/render_previews.js (2026-11-03, the owner asked for every page's
+    shared link to show that page). Same tags and content-hash URL that script
+    writes, so a port and a re-shoot agree; the logo when there is no shot yet."""
+    shot = dest / "assets" / "previews" / f"{slug}.png"
+    if not shot.exists():
+        return ('  <meta property="og:image" content="' + SITE + '/EDA.png" />' + NL
+                + '  <meta name="twitter:card" content="summary" />')
+    img = f"{SITE}/assets/previews/{slug}.png?v={hashlib.sha256(shot.read_bytes()).hexdigest()[:10]}"
+    return NL.join([
+        f'  <meta property="og:image" content="{img}" />',
+        '  <meta property="og:image:width" content="1200" />',
+        '  <meta property="og:image:height" content="630" />',
+        '  <meta name="twitter:card" content="summary_large_image" />',
+        f'  <meta name="twitter:image" content="{img}" />'])
 
 # dk_td.json is not ported: the lineup stopped reading it on 2026-10-26.
 DATA_FILES = ["weekly.json", "oddsapi.json", "gamelines.json",
@@ -539,7 +557,7 @@ def asset_version(*paths: Path) -> str:
 
 
 def build_page(slug: str, cfg: dict, nav: str, site_style: str,
-               version: str = "", footer: str = "") -> str:
+               version: str = "", footer: str = "", image_tags: str = "") -> str:
     """One page: site chrome + the lineup markup, pointed at the shared assets."""
     html = (SRC / "lineup" / "index.html").read_text(encoding="utf-8")
 
@@ -617,7 +635,7 @@ def build_page(slug: str, cfg: dict, nav: str, site_style: str,
     html = html.replace("<title>Lineup — market-priced start/sit</title>",
                         f"<title>{cfg['title']} · EZ Dubs Analytics</title>"
                         + HEAD_TMPL.format(title=cfg["title"], slug=slug, site=SITE,
-                                           description=cfg["description"]))
+                                           description=cfg["description"], image_tags=image_tags))
     if 'name="description"' not in html:
         sys.exit("lineup/index.html <title> changed -- head tags were not added")
 
@@ -774,7 +792,8 @@ def main() -> None:
         out = dest / "dashboards" / slug
         out.mkdir(parents=True, exist_ok=True)
         html, _ = rewrite_nav(build_page(slug, cfg, nav, site_style or "", version,
-                                         footer=lift_footer(dest)),
+                                         footer=lift_footer(dest),
+                                         image_tags=preview_tags(dest, slug)),
                               "../", slug)
         # The page is rebuilt from a template, so anything added to the
         # destination's <head> by hand would be silently dropped. That already
