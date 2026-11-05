@@ -3711,8 +3711,18 @@
   // here, so unticking a venue left the number untouched. Same bug was fixed in
   // lineup/app.js; ported so the two do not disagree.
   function weeklyPoints(stats, format) {
+    const v = {};
+    for (const k of ["pass_yds", "pass_tds", "rush_yds", "rec_yds", "any_tds", "receptions"]) {
+      v[k] = lineUnderFilter(stats[k]);
+    }
+    return pointsFromLines(v, format);
+  }
+
+  // The scoring from plain numbers; the same split as lineup/app.js, which
+  // also scores single books with it (Book Spread).
+  function pointsFromLines(lines, format) {
     const g = (k) => {
-      const v = lineUnderFilter(stats[k]);
+      const v = lines[k];
       return v == null ? 0 : v;
     };
     let pts = 0;

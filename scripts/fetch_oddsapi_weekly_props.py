@@ -25,6 +25,7 @@ import os as _os, sys as _sys
 _sys.path.insert(0, _os.path.dirname(_os.path.abspath(__file__)))
 
 import json
+import math
 import os
 import sys
 from collections import defaultdict
@@ -104,6 +105,51 @@ def _anytime_point(price):
     # one, which that file records as costing 0.12 of a fantasy point on
     # goal-line backs.
     return round(expected_tds(prob) * VIG, 4)
+
+
+# Count stats: turn a book's over/under line AND its price into an EXPECTED count.
+#
+# Passing TDs and receptions are posted at half-point lines, and books pick
+# different main lines at very different prices: on 2026-11-05 DraftKings had
+# Dak Prescott at 2.5 passing TDs, over +155, and BetMGM at 1.5, over -250. As
+# raw lines those were a full touchdown (4 fantasy points) apart, but they are
+# nearly the same opinion: about 2.2 expected TDs either way. The raw line also
+# runs low as a projection for a skewed count (Justin Herbert's 0.5 at -250 is
+# ~1.3 expected TDs), which understated quarterbacks on Start/Sit. So each quote
+# becomes the Poisson mean that puts P(over) at the price's fair probability;
+# the posted line is kept as "posted". Yardage stays a line: those books agree
+# within a few yards and sit near even money.
+COUNT_STATS = {"pass_tds", "receptions"}
+HALF_HOLD = 0.0225   # half of a ~4.5% two-way hold, taken off the over side
+
+
+def _count_mean(line, price):
+    """(half-point line, American over price) -> expected count, or None."""
+    try:
+        line, odds = float(line), float(price)
+    except (TypeError, ValueError):
+        return None
+    if odds == 0 or line < 0 or line != int(line) + 0.5:
+        return None
+    prob = (-odds / (-odds + 100.0)) if odds < 0 else (100.0 / (odds + 100.0))
+    p_over = min(max(prob - HALF_HOLD, 0.01), 0.99)
+    k = int(line) + 1                       # "over 2.5" means at least 3
+
+    def p_at_least(lam):
+        term, cdf = math.exp(-lam), 0.0
+        for i in range(k):
+            cdf += term
+            term *= lam / (i + 1)
+        return 1.0 - cdf
+
+    lo, hi = 1e-4, 60.0
+    for _ in range(80):                     # P(X >= k) rises with lambda
+        mid = (lo + hi) / 2
+        if p_at_least(mid) < p_over:
+            lo = mid
+        else:
+            hi = mid
+    return round((lo + hi) / 2, 3)
 
 
 def abbr(team: str) -> str:
@@ -388,6 +434,12 @@ def main() -> None:
     for rec in rows.values():
         stats = {}
         for stat, quotes in rec["stats"].items():
+            if stat in COUNT_STATS:
+                # After the main-line pick above, which compares raw prices.
+                for q in quotes:
+                    mean = _count_mean(q["line"], q.get("odds"))
+                    if mean is not None:
+                        q["posted"], q["line"] = q["line"], mean
             lines = sorted(q["line"] for q in quotes)
             mid = lines[len(lines) // 2] if len(lines) % 2 else \
                 (lines[len(lines) // 2 - 1] + lines[len(lines) // 2]) / 2

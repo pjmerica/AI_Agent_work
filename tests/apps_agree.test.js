@@ -33,6 +33,7 @@ const WANTED = [
   /function altPlayerKey\(s\)[\s\S]*?\n  \}/,
   /function lineUnderFilter\(stat\)[\s\S]*?\n  \}/,
   /function weeklyPoints\(stats, format\)[\s\S]*?\n  \}/,
+  /function pointsFromLines\(lines, format\)[\s\S]*?\n  \}/,
   /function buildProjLookup\(data\)[\s\S]*?\n  \}/,
   /function lookupProj\(lut, name\)[\s\S]*?\n  \}/,
   /function lookupProjExact\(lut, name\)[\s\S]*?\n  \}/,

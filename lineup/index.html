@@ -24,6 +24,7 @@
       <button class="view-tab active" data-view="sitstart">Manual Roster</button>
       <button class="view-tab" data-view="sleeper">Sleeper Start/Sit</button>
       <button class="view-tab" data-view="rooting">Root For / Against</button>
+      <button class="view-tab" data-view="spread">Book Spread</button>
     </div>
 
     <main>
@@ -225,6 +226,53 @@
 
         <div id="rooting-output">
           <div class="empty">Enter a Sleeper username to see who to root for.</div>
+        </div>
+      </div>
+
+      <div id="spread-view" class="hidden">
+        <div class="callout">
+          <strong>Where the books disagree.</strong>
+          Each dot is one sportsbook's projection for the player, scored half-PPR
+          from that book's own lines. Players are sorted by the gap between the
+          lowest and the highest book, so the top of the list is where shopping
+          for a number matters most.
+        </div>
+
+        <div class="spread-controls">
+          <div class="spread-pos" role="group" aria-label="Position">
+            <button class="chip active" data-pos="ALL">All</button>
+            <button class="chip" data-pos="QB">QB</button>
+            <button class="chip" data-pos="RB">RB</button>
+            <button class="chip" data-pos="WR">WR</button>
+            <button class="chip" data-pos="TE">TE</button>
+          </div>
+          <label class="spread-pick">Highlight
+            <select id="spread-book"><option value="">No book</option></select>
+          </label>
+          <label class="spread-pick">
+            <input type="checkbox" id="spread-numbers" /> Show numbers
+          </label>
+        </div>
+
+        <details class="help">
+          <summary>How the dots are worked out</summary>
+          <div class="help-body">
+            <p>A book's dot uses every line that book posted for the player:
+            yardage, receptions, passing touchdowns and its anytime-touchdown
+            price, turned into expected touchdowns. Where a book posted no line
+            for a stat, the consensus (the median across books) stands in, so a
+            dot moves only on what that book actually priced.</p>
+
+            <p>The hollow dot is <strong>Kalshi</strong>, a prediction market
+            rather than a sportsbook. The thin mark is the consensus, and every
+            row uses the same scale, so a wide row really is a wider
+            disagreement. Only players priced by at least three sources, in games
+            that have not kicked off, are listed.</p>
+          </div>
+        </details>
+
+        <div id="spread-output">
+          <div class="empty">Loading this week's lines&hellip;</div>
         </div>
       </div>
     </main>

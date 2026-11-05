@@ -226,7 +226,8 @@ setTimeout(() => {
   console.log("");
   console.log("=== tab switching ===");
   const tabs = $("view-tabs").querySelectorAll(".view-tab");
-  check("three tabs", tabs.length === 3, tabs.length + "");
+  // Four since the Book Spread view (2026-11-05).
+  check("four tabs", tabs.length === 4, tabs.length + "");
   tabs[2].click();
   check("rooting view shown", !$("rooting-view").classList.contains("hidden"));
   check("sitstart view hidden", $("sitstart-view").classList.contains("hidden"));
@@ -282,7 +283,7 @@ setTimeout(() => {
   console.log("");
   console.log("=== help sections ===");
   const helps = window.document.querySelectorAll("details.help");
-  check("collapsible help blocks", helps.length === 3, helps.length + "");
+  check("collapsible help blocks", helps.length === 4, helps.length + "");
 
   console.log("");
   console.log("uncaught page errors: " + errors.length);
