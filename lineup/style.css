@@ -39,6 +39,10 @@ header h1 { font-size: 28px; font-weight: 700; color: #fff; }
   border-radius: 12px;
   padding: 5px;
   align-self: flex-start;
+  /* Four tabs since Book Spread (2026-11-05) are 377px in one row, wider than
+     a 360px phone; wrap rather than push the page sideways. */
+  flex-wrap: wrap;
+  max-width: 100%;
 }
 .view-tab {
   font-family: inherit;
