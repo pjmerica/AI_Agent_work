@@ -61,7 +61,9 @@ setTimeout(()=>{
       $("search").value = uniqueSurname.toLowerCase();
       $("search").dispatchEvent(new window.Event("input", { bubbles: true }));
       const hits = [...window.document.querySelectorAll("table.board tbody tr")]
-        .filter((tr) => new RegExp(uniqueSurname, "i")
+        // Whole word: "Maye" is also inside "Mayer" (Drake Maye and Michael
+        // Mayer were both on the week-10 board, 2026-11-10).
+        .filter((tr) => new RegExp("\\b" + uniqueSurname + "\\b", "i")
           .test(tr.querySelector(".col-player").textContent));
       check('"' + uniqueSurname + '" is a single row (TD-only ' +
         (hide ? "hidden" : "shown") + ")", hits.length === 1,
