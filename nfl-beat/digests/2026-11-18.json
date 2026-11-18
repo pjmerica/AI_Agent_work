@@ -1,27 +1,27 @@
 {
-  "generated": "2026-11-18T19:47:26.972326+00:00",
+  "generated": "2026-11-18T23:16:26.799396+00:00",
   "stats": {
-    "n_items": 652,
-    "n_players": 115,
-    "n_unpriced": 76,
+    "n_items": 616,
+    "n_players": 126,
+    "n_unpriced": 83,
     "by_source": {
-      "Bluesky @minakimes.bsky.social": 36,
-      "Bluesky @rapsheet.bsky.social": 14,
-      "Bluesky @jourdanrodrigue.bsky.social": 11,
+      "Bluesky @minakimes.bsky.social": 35,
+      "Bluesky @rapsheet.bsky.social": 11,
+      "Bluesky @jourdanrodrigue.bsky.social": 8,
       "Bluesky @lateroundqb.bsky.social": 39,
-      "Bluesky @sethwalder.bsky.social": 19,
-      "Bluesky @nateatkins.bsky.social": 31,
+      "Bluesky @sethwalder.bsky.social": 17,
+      "Bluesky @nateatkins.bsky.social": 10,
       "Bluesky @ffnatejahnke.bsky.social": 37,
       "ProFootballTalk": 30,
       "Yahoo NFL": 50,
       "CBS Sports NFL": 36,
       "PFF": 25,
       "Awful Announcing": 15,
-      "SBN ARI": 9,
-      "SBN ATL": 9,
+      "SBN ARI": 10,
+      "SBN ATL": 7,
       "SBN BAL": 10,
       "SBN BUF": 10,
-      "SBN CAR": 10,
+      "SBN CAR": 7,
       "SBN CHI": 10,
       "SBN CIN": 10,
       "SBN CLE": 10,
@@ -29,7 +29,7 @@
       "SBN DEN": 10,
       "SBN DET": 10,
       "SBN GB": 10,
-      "SBN HOU": 6,
+      "SBN HOU": 5,
       "SBN IND": 10,
       "SBN JAX": 10,
       "SBN KC": 10,
@@ -41,7 +41,7 @@
       "SBN NE": 10,
       "SBN NO": 10,
       "SBN NYG": 10,
-      "SBN NYJ": 9,
+      "SBN NYJ": 8,
       "SBN PHI": 10,
       "SBN PIT": 10,
       "SBN SEA": 10,
@@ -56,6 +56,38 @@
     "history_days": 21
   },
   "players": [
+    {
+      "name": "Jacoby Brissett",
+      "pos": "QB",
+      "team": "ARI",
+      "adp": 200.5,
+      "adp_prior": 199.4,
+      "adp_move": -1.1,
+      "proj": null,
+      "sleeper_weight": 1.8,
+      "score": 14.036,
+      "unpriced": true,
+      "signals": [
+        "injury",
+        "ir",
+        "snap",
+        "snaps",
+        "starter",
+        "surgery"
+      ],
+      "items": [
+        {
+          "text": "Cardinals QB Gardner Minshew update. The Arizona Cardinals have started three quarterbacks this season. After starter Jacoby Brissett was shipped off to Baltimore, the job was handed to Gardner Minshew. He lasted one full game. Minshew landed on IR and on Monday, he had surgery. &#160; RELATED: CARD",
+          "url": "https://www.revengeofthebirds.com/arizona-cardinals-injuries/97108/cardinals-qb-gardner-minshew-update",
+          "source": "SBN ARI"
+        },
+        {
+          "text": "Ravens Snap Count Analysis, Week 10: Run defense and run offense crater in fifth straight loss. Offense Jacoby Brissett\u2019s debut with the Ravens saw him play every offensive snap (69). He appeared to suffer a knee injury in the first quarter but shook it off and missed no plays. The entire starting o",
+          "url": "https://www.baltimorebeatdown.com/baltimore-ravens-analysis/87955/ravens-snap-count-analysis-week-10-run-defense-and-run-offense-crater-in-fifth-straight-loss",
+          "source": "SBN BAL"
+        }
+      ]
+    },
     {
       "name": "Tyrell Shavers",
       "pos": "WR",
@@ -104,53 +136,26 @@
       ]
     },
     {
-      "name": "Kyle McCord",
+      "name": "Gardner Minshew II",
       "pos": "QB",
-      "team": "MIA",
+      "team": "ARI",
       "adp": 216.0,
       "adp_prior": 216.0,
       "adp_move": 0.0,
       "proj": null,
       "sleeper_weight": 1.8,
-      "score": 10.358,
+      "score": 10.296,
       "unpriced": true,
       "signals": [
-        "snap"
-      ],
-      "items": [
-        {
-          "text": "Colts CB Justin Walley earns AFC Defensive Player of the Week honors after momentous strip-sack. On the opening snap of the second half against the Miami Dolphins, Indianapolis Colts cornerback Justin Walley disguised a nickel blitz to come screaming off the edge against an empty pocket. Dolphins qu",
-          "url": "https://www.stampedeblue.com/indianapolis-colts-news/130228/colts-cb-justin-walley-earns-afc-defensive-player-of-the-week-honors-after-momentous-strip-sack",
-          "source": "SBN IND"
-        },
-        {
-          "text": "Bills defense trending well against backup QBs last three weeks. The Buffalo Bills prepare to take on a divisional foe in the Miami Dolphins this week, and it will be the fourth straight game they will face a backup quarterback for at least a good portion of the game as Kyle McCord, former Syracuse ",
-          "url": "https://www.buffalorumblings.com/buffalo-bills-analysis/145571/bills-defense-trending-well-against-backup-qbs-last-three-weeks",
-          "source": "SBN BUF"
-        }
-      ]
-    },
-    {
-      "name": "Xavier Restrepo",
-      "pos": "WR",
-      "team": "TEN",
-      "adp": 216.0,
-      "adp_prior": 216.0,
-      "adp_move": 0.0,
-      "proj": null,
-      "sleeper_weight": 1.8,
-      "score": 10.35,
-      "unpriced": true,
-      "signals": [
-        "injured",
         "ir",
-        "promoted"
+        "starter",
+        "surgery"
       ],
       "items": [
         {
-          "text": "Titans place Wan\u2019Dale Robinson on IR; Promote Xavier Restrepo to roster. Ian Rapoport is reporting that the Tennessee Titans have placed wide receiver Wan\u2019Dale Robinson on injured reserve and promoted wide receiver Xavier Restrepo to the active roster: It has been a disappointing first season in Ten",
-          "url": "https://www.musiccitymiracles.com/tennessee-titans-injuries/67946/titans-place-wandale-robinson-on-ir-promote-xavier-restrepo-to-roster",
-          "source": "SBN TEN"
+          "text": "Cardinals QB Gardner Minshew update. The Arizona Cardinals have started three quarterbacks this season. After starter Jacoby Brissett was shipped off to Baltimore, the job was handed to Gardner Minshew. He lasted one full game. Minshew landed on IR and on Monday, he had surgery. &#160; RELATED: CARD",
+          "url": "https://www.revengeofthebirds.com/arizona-cardinals-injuries/97108/cardinals-qb-gardner-minshew-update",
+          "source": "SBN ARI"
         }
       ]
     },
@@ -178,9 +183,69 @@
       ]
     },
     {
-      "name": "Gardner Minshew II",
-      "pos": "QB",
-      "team": "ARI",
+      "name": "Cam Skattebo",
+      "pos": "",
+      "team": "",
+      "adp": null,
+      "adp_prior": null,
+      "adp_move": null,
+      "proj": null,
+      "sleeper_weight": 1.9,
+      "score": 10.073,
+      "unpriced": true,
+      "signals": [
+        "injury"
+      ],
+      "items": [
+        {
+          "text": "Cam Skattebo says he's done doing backflips after Aidan Hutchinson injury. Giants running back Cam Skattebo's penchant for backflips became a talking point during his recovery from last season's ankle injury, but he resumed doing them after touchdowns upon his return to action this fall.",
+          "url": "https://www.nbcsports.com/nfl/profootballtalk/rumor-mill/news/cam-skattebo-says-hes-done-doing-backflips-after-aidan-hutchinson-injury",
+          "source": "ProFootballTalk"
+        },
+        {
+          "text": "Cam Skattebo makes backflipping change in wake of Aidan Hutchinson\u2019s devastating injury. Cam Skattebo has been scared straight.",
+          "url": "https://sports.yahoo.com/articles/cam-skattebo-makes-backflipping-change-212917184.html",
+          "source": "Yahoo NFL"
+        }
+      ]
+    },
+    {
+      "name": "Roman Wilson",
+      "pos": "WR",
+      "team": "PIT",
+      "adp": 216.0,
+      "adp_prior": 215.9,
+      "adp_move": -0.1,
+      "proj": null,
+      "sleeper_weight": 1.8,
+      "score": 9.543,
+      "unpriced": true,
+      "signals": [
+        "injured",
+        "injury"
+      ],
+      "items": [
+        {
+          "text": "Roman Wilson full participant, Nick Herbig DNP in Steelers\u2019 latest injury report. Pittsburgh gets a mix of good and bad news in a longer than usual Wednesday injury report.",
+          "url": "https://sports.yahoo.com/articles/roman-wilson-full-participant-nick-223633506.html",
+          "source": "Yahoo NFL"
+        },
+        {
+          "text": "Steelers WRs Michael Pittman Jr., Roman Wilson take key step toward returning. The Pittsburgh Steelers also got positive news about the status of injured guard Mason McCormick.",
+          "url": "https://sports.yahoo.com/articles/steelers-wrs-michael-pittman-jr-205512116.html",
+          "source": "Yahoo NFL"
+        },
+        {
+          "text": "Steelers WR Roman Wilson trending towards playing vs. Eagles. The Pittsburgh Steelers may finally be getting one of their to receivers back in the lineup in Week 11. Mark Kaboly of the Pat McAfee Show reported on Tuesday morning that wide receiver Roman Wilson is trending toward coming off injured r",
+          "url": "https://www.behindthesteelcurtain.com/pittsburgh-steelers-news/178013/steelers-wr-roman-wilson-trending-towards-playing-vs-eagles",
+          "source": "SBN PIT"
+        }
+      ]
+    },
+    {
+      "name": "CJ Donaldson",
+      "pos": "RB",
+      "team": "NO",
       "adp": 216.0,
       "adp_prior": 216.0,
       "adp_move": 0.0,
@@ -189,14 +254,39 @@
       "score": 9.36,
       "unpriced": true,
       "signals": [
+        "ahead of",
         "injury",
-        "surgery"
+        "limited"
       ],
       "items": [
         {
-          "text": "Gardner Minshew had surgery to repair torn ligament in throwing elbow. Cardinals quarterback Gardner Minshew has had surgery to repair the elbow injury that ended his season.",
-          "url": "https://www.nbcsports.com/nfl/profootballtalk/rumor-mill/news/gardner-minshew-had-surgery-to-repair-torn-ligament-in-throwing-elbow",
-          "source": "ProFootballTalk"
+          "text": "Wednesday\u2019s Saints vs. Bears Injury Report: CJ Donaldson is back. The New Orleans Saints have just wrapped up the 1st practice ahead of their Week 11 road matchup at the Chicago Bears at Soldier Field. So, where do things stand following Wednesday\u2019s workout? Let\u2019s take a look at which Saints players",
+          "url": "https://www.canalstreetchronicles.com/new-orleans-saints-injuries/118077/wednesdays-saints-vs-panthers-injury-report-nfl-week-11",
+          "source": "SBN NO"
+        }
+      ]
+    },
+    {
+      "name": "Xavier Restrepo",
+      "pos": "WR",
+      "team": "TEN",
+      "adp": 216.0,
+      "adp_prior": 216.0,
+      "adp_move": 0.0,
+      "proj": null,
+      "sleeper_weight": 1.8,
+      "score": 9.0,
+      "unpriced": true,
+      "signals": [
+        "injured",
+        "ir",
+        "promoted"
+      ],
+      "items": [
+        {
+          "text": "Titans place Wan\u2019Dale Robinson on IR; Promote Xavier Restrepo to roster. Ian Rapoport is reporting that the Tennessee Titans have placed wide receiver Wan\u2019Dale Robinson on injured reserve and promoted wide receiver Xavier Restrepo to the active roster: It has been a disappointing first season in Ten",
+          "url": "https://www.musiccitymiracles.com/tennessee-titans-injuries/67946/titans-place-wandale-robinson-on-ir-promote-xavier-restrepo-to-roster",
+          "source": "SBN TEN"
         }
       ]
     },
@@ -224,6 +314,78 @@
       ]
     },
     {
+      "name": "Joe Milton",
+      "pos": "QB",
+      "team": "FA",
+      "adp": 216.0,
+      "adp_prior": 216.0,
+      "adp_move": 0.0,
+      "proj": null,
+      "sleeper_weight": 1.8,
+      "score": 8.657,
+      "unpriced": true,
+      "signals": [
+        "ones",
+        "out for"
+      ],
+      "items": [
+        {
+          "text": "NFL news, live updates: Woody Marks out for TNF, Joe Milton to start for Eagles in Week 11. Follow along with the latest NFL news heading into Week 11.",
+          "url": "https://sports.yahoo.com/nfl/live/nfl-news-injury-updates-131219200.html",
+          "source": "Yahoo NFL"
+        },
+        {
+          "text": "Sean Mannion to continue calling offensive plays for Eagles, Joe Milton to remain at QB. Eagles head coach Nick Sirianni said that the team would talk about changes to roles and responsibilities on the coaching staff during their bye week, but he said on Wednesday that they decided against any major",
+          "url": "https://www.nbcsports.com/nfl/profootballtalk/rumor-mill/news/sean-mannion-to-continue-calling-offensive-plays-for-eagles-joe-milton-to-remain-at-qb",
+          "source": "ProFootballTalk"
+        }
+      ]
+    },
+    {
+      "name": "Bub Means",
+      "pos": "WR",
+      "team": "FA",
+      "adp": 216.0,
+      "adp_prior": 216.0,
+      "adp_move": 0.0,
+      "proj": null,
+      "sleeper_weight": 1.8,
+      "score": 8.424,
+      "unpriced": true,
+      "signals": [
+        "practice squad"
+      ],
+      "items": [
+        {
+          "text": "Arizona Cardinals sign wide receiver Bub Means to practice squad. The Arizona Cardinals wide receiver room is depleted, so they have two choices. The Cardinals have decided to try both, and today they added another potential option in Bub Means. From the team. The Arizona Cardinals Football Club tod",
+          "url": "https://www.revengeofthebirds.com/arizona-cardinals-news/97115/arizona-cardinals-sign-wide-receiver-bub-means-to-practice-squad",
+          "source": "SBN ARI"
+        }
+      ]
+    },
+    {
+      "name": "Kyle McCord",
+      "pos": "QB",
+      "team": "MIA",
+      "adp": 216.0,
+      "adp_prior": 216.0,
+      "adp_move": 0.0,
+      "proj": null,
+      "sleeper_weight": 1.8,
+      "score": 8.424,
+      "unpriced": true,
+      "signals": [
+        "snap"
+      ],
+      "items": [
+        {
+          "text": "Colts CB Justin Walley earns AFC Defensive Player of the Week honors after momentous strip-sack. On the opening snap of the second half against the Miami Dolphins, Indianapolis Colts cornerback Justin Walley disguised a nickel blitz to come screaming off the edge against an empty pocket. Dolphins qu",
+          "url": "https://www.stampedeblue.com/indianapolis-colts-news/130228/colts-cb-justin-walley-earns-afc-defensive-player-of-the-week-honors-after-momentous-strip-sack",
+          "source": "SBN IND"
+        }
+      ]
+    },
+    {
       "name": "Brett Rypien",
       "pos": "QB",
       "team": "FA",
@@ -246,7 +408,7 @@
       ]
     },
     {
-      "name": "Quentin Skinner",
+      "name": "Xavier Gipson",
       "pos": "WR",
       "team": "FA",
       "adp": 216.0,
@@ -257,14 +419,35 @@
       "score": 8.424,
       "unpriced": true,
       "signals": [
-        "practice squad",
-        "released"
+        "practice squad"
       ],
       "items": [
         {
-          "text": "Eagles bring Quentin Skinner back on the practice squad. The Philadelphia Eagles signed free agent wide receiver Quentin Skinner to their practice squad, according to an official team announcement. Skinner previously signed to the Eagles\u2019 practice squad on October 28 before the team released him on ",
-          "url": "https://www.bleedinggreennation.com/news/190648/eagles-bring-quentin-skinner-back-on-the-practice-squad",
-          "source": "SBN PHI"
+          "text": "NY Giants bring return man they just cut back to practice squad. Charlie Jones, just dropped from the 53-man roster this week when Xavier Gipson was signed off the Philadelphi Eagles\u2019 practice squad, has been re-signed to the team\u2019s practice squad. Jones had a 10.0-yard average on 16 punt returns an",
+          "url": "https://www.bigblueview.com/new-york-giants-roster/180481/charlie-jones-signing-practice-squad-xavier-gipson-geno-vandemark",
+          "source": "SBN NYG"
+        }
+      ]
+    },
+    {
+      "name": "Charlie Jones",
+      "pos": "WR",
+      "team": "NYG",
+      "adp": 216.0,
+      "adp_prior": 216.0,
+      "adp_move": 0.0,
+      "proj": null,
+      "sleeper_weight": 1.8,
+      "score": 8.424,
+      "unpriced": true,
+      "signals": [
+        "practice squad"
+      ],
+      "items": [
+        {
+          "text": "NY Giants bring return man they just cut back to practice squad. Charlie Jones, just dropped from the 53-man roster this week when Xavier Gipson was signed off the Philadelphi Eagles\u2019 practice squad, has been re-signed to the team\u2019s practice squad. Jones had a 10.0-yard average on 16 punt returns an",
+          "url": "https://www.bigblueview.com/new-york-giants-roster/180481/charlie-jones-signing-practice-squad-xavier-gipson-geno-vandemark",
+          "source": "SBN NYG"
         }
       ]
     },
@@ -319,6 +502,52 @@
       ]
     },
     {
+      "name": "Caleb Lohner",
+      "pos": "TE",
+      "team": "DEN",
+      "adp": 216.0,
+      "adp_prior": 216.0,
+      "adp_move": 0.0,
+      "proj": null,
+      "sleeper_weight": 1.8,
+      "score": 7.488,
+      "unpriced": true,
+      "signals": [
+        "injured",
+        "ir"
+      ],
+      "items": [
+        {
+          "text": "Broncos activated TE Caleb Lohner from the IR. According to 9NEWS Denver\u2019s Mike Klis, the Denver Broncos have activated tight end Caleb Lohner from the injured reserve. Lohner will be at practice today, and this opens his 21-day practice window, during which the Broncos have to decide whether or not",
+          "url": "https://sports.yahoo.com/articles/broncos-activated-te-caleb-lohner-213724259.html",
+          "source": "Yahoo NFL"
+        }
+      ]
+    },
+    {
+      "name": "Quentin Skinner",
+      "pos": "WR",
+      "team": "FA",
+      "adp": 216.0,
+      "adp_prior": 216.0,
+      "adp_move": 0.0,
+      "proj": null,
+      "sleeper_weight": 1.8,
+      "score": 7.452,
+      "unpriced": true,
+      "signals": [
+        "practice squad",
+        "released"
+      ],
+      "items": [
+        {
+          "text": "Eagles bring Quentin Skinner back on the practice squad. The Philadelphia Eagles signed free agent wide receiver Quentin Skinner to their practice squad, according to an official team announcement. Skinner previously signed to the Eagles\u2019 practice squad on October 28 before the team released him on ",
+          "url": "https://www.bleedinggreennation.com/news/190648/eagles-bring-quentin-skinner-back-on-the-practice-squad",
+          "source": "SBN PHI"
+        }
+      ]
+    },
+    {
       "name": "David Njoku",
       "pos": "TE",
       "team": "LAC",
@@ -349,30 +578,6 @@
           "text": "Fantasy Football Recap to the Chargers and Ravens\n\n- Chargers adjust WR usage without Ladd McConkey\n- David Njoku returns from IR\n- Mark Andrews with a big game\n- Both teams adjust LB rotation\n\nwww.pff.com/news/nfl-wee...",
           "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3n2i7q2ol2s2x",
           "source": "Bluesky @ffnatejahnke.bsky.social"
-        }
-      ]
-    },
-    {
-      "name": "Jacoby Brissett",
-      "pos": "QB",
-      "team": "ARI",
-      "adp": 200.5,
-      "adp_prior": 199.4,
-      "adp_move": -1.1,
-      "proj": null,
-      "sleeper_weight": 1.8,
-      "score": 7.2,
-      "unpriced": true,
-      "signals": [
-        "injury",
-        "snap",
-        "snaps"
-      ],
-      "items": [
-        {
-          "text": "Ravens Snap Count Analysis, Week 10: Run defense and run offense crater in fifth straight loss. Offense Jacoby Brissett\u2019s debut with the Ravens saw him play every offensive snap (69). He appeared to suffer a knee injury in the first quarter but shook it off and missed no plays. The entire starting o",
-          "url": "https://www.baltimorebeatdown.com/baltimore-ravens-analysis/87955/ravens-snap-count-analysis-week-10-run-defense-and-run-offense-crater-in-fifth-straight-loss",
-          "source": "SBN BAL"
         }
       ]
     },
@@ -431,10 +636,9 @@
       "adp_move": -0.1,
       "proj": null,
       "sleeper_weight": 0.75,
-      "score": 7.133,
+      "score": 6.673,
       "unpriced": true,
       "signals": [
-        "acl",
         "injury",
         "out for",
         "targets"
@@ -456,9 +660,9 @@
           "source": "SBN NE"
         },
         {
-          "text": "NFL news, live updates: Aidan Hutchinson reportedly suffers torn ACL on sack celebration; Patriots QB Drake Maye out indefinitely with ankle injury. Follow along with the latest NFL news coming out of Week 10.",
-          "url": "https://sports.yahoo.com/nfl/live/nfl-news-injury-updates-131219200.html",
-          "source": "Yahoo NFL"
+          "text": "Chargers-Patriots in Week 12 flexed out of Sunday Night Football. Just like we all could have predicted, the Chargers\u2019 Sunday Night Football matchup against the Patriots has been flexed out of primetime by the NFL and replaced by Raiders-Browns. The Chargers and Patriots will now play at 1:05 p.m. T",
+          "url": "https://www.boltsfromtheblue.com/los-angeles-chargers-news/67158/chargers-patriots-in-week-12-flexed-out-of-sunday-night-football",
+          "source": "SBN LAC"
         }
       ]
     },
@@ -621,7 +825,9 @@
       "score": 6.213,
       "unpriced": true,
       "signals": [
+        "injured",
         "injury",
+        "ir",
         "out for",
         "snaps",
         "surgery"
@@ -633,9 +839,9 @@
           "source": "SBN MIN"
         },
         {
-          "text": "Jordan Addison to Have Thumb Surgery, Miss Several Weeks. As the Minnesota Vikings gear up for the stretch run of their 2026 season, they\u2019re going to be without their #2 wide receiver for the next few weeks, at the very least. At his Monday press conference, Vikings head coach Kevin O\u2019Connell announ",
-          "url": "https://www.dailynorseman.com/minnesota-vikings-injuries/101683/jordan-addison-to-have-thumb-surgery-miss-several-weeks",
-          "source": "SBN MIN"
+          "text": "Vikings won't put Jordan Addison on IR. When Vikings head coach Kevin O'Connell announced that wide receiver Jordan Addison needed thumb surgery earlier this week, he said that an injured reserve stint was a possibility.",
+          "url": "https://www.nbcsports.com/nfl/profootballtalk/rumor-mill/news/vikings-wont-put-jordan-addison-on-ir",
+          "source": "ProFootballTalk"
         },
         {
           "text": "Vikings sign WR Jeshaun Jones to active roster. The Vikings will be without Jordan Addison for the coming weeks because of a thumb injury and they added another wide receiver to their active roster on Wednesday.",
@@ -956,24 +1162,25 @@
       ]
     },
     {
-      "name": "Jaydon Blue",
-      "pos": "RB",
-      "team": "PHI",
-      "adp": 201.5,
-      "adp_prior": 172.2,
-      "adp_move": -29.3,
+      "name": "Fernando Mendoza",
+      "pos": "QB",
+      "team": "LV",
+      "adp": 194.9,
+      "adp_prior": 185.4,
+      "adp_move": -9.5,
       "proj": null,
       "sleeper_weight": 1.8,
-      "score": 4.658,
+      "score": 4.68,
       "unpriced": false,
       "signals": [
-        "practice squad"
+        "did not practice",
+        "injury"
       ],
       "items": [
         {
-          "text": "Eagles sign Jaydon Blue to the roster (once again), add practice squad DT. The Philadelphia Eagles officially announced two roster moves on Tuesday afternoon. Here\u2019s an overview: Let\u2019s sort through this news on a player-by-player basis. JAYDON BLUE Here\u2019s a recap of Blue\u2019s transactions with the Eagl",
-          "url": "https://www.bleedinggreennation.com/news/190598/eagles-sign-jaydon-blue-to-the-roster-once-again-add-practice-squad-dt",
-          "source": "SBN PHI"
+          "text": "Raiders provide crucial update on tight end Brock Bowers. Raiders tight end Brock Bowers, left, quarterback Fernando Mendoza, center, and coach Klint Kubiak stand together.Brock Bowers remains day-to-day with an ankle injury and did not practice Wednesday as the...",
+          "url": "https://sports.yahoo.com/articles/raiders-crucial-tight-end-brock-211500273.html",
+          "source": "Yahoo NFL"
         }
       ]
     },
@@ -1022,6 +1229,28 @@
       ]
     },
     {
+      "name": "Sean Mannion",
+      "pos": "QB",
+      "team": "FA",
+      "adp": 216.0,
+      "adp_prior": 216.0,
+      "adp_move": 0.0,
+      "proj": null,
+      "sleeper_weight": 1.8,
+      "score": 4.53,
+      "unpriced": true,
+      "signals": [
+        "ones"
+      ],
+      "items": [
+        {
+          "text": "Sean Mannion to continue calling offensive plays for Eagles, Joe Milton to remain at QB. Eagles head coach Nick Sirianni said that the team would talk about changes to roles and responsibilities on the coaching staff during their bye week, but he said on Wednesday that they decided against any major",
+          "url": "https://www.nbcsports.com/nfl/profootballtalk/rumor-mill/news/sean-mannion-to-continue-calling-offensive-plays-for-eagles-joe-milton-to-remain-at-qb",
+          "source": "ProFootballTalk"
+        }
+      ]
+    },
+    {
       "name": "Tre Harris",
       "pos": "WR",
       "team": "LAC",
@@ -1044,6 +1273,28 @@
       ]
     },
     {
+      "name": "Jaydon Blue",
+      "pos": "RB",
+      "team": "PHI",
+      "adp": 201.5,
+      "adp_prior": 172.2,
+      "adp_move": -29.3,
+      "proj": null,
+      "sleeper_weight": 1.8,
+      "score": 4.05,
+      "unpriced": false,
+      "signals": [
+        "practice squad"
+      ],
+      "items": [
+        {
+          "text": "Eagles sign Jaydon Blue to the roster (once again), add practice squad DT. The Philadelphia Eagles officially announced two roster moves on Tuesday afternoon. Here\u2019s an overview: Let\u2019s sort through this news on a player-by-player basis. JAYDON BLUE Here\u2019s a recap of Blue\u2019s transactions with the Eagl",
+          "url": "https://www.bleedinggreennation.com/news/190598/eagles-sign-jaydon-blue-to-the-roster-once-again-add-practice-squad-dt",
+          "source": "SBN PHI"
+        }
+      ]
+    },
+    {
       "name": "Germie Bernard",
       "pos": "WR",
       "team": "PIT",
@@ -1062,28 +1313,6 @@
           "text": "Germie Bernard had a 10% target share against the Bengals on Sunday night, his lowest target share since becoming a full-time player. His route share was 92%, so he was out there running routes. He hasn't hit 10+ PPR points in each of his last three games.",
           "url": "https://bsky.app/profile/lateroundqb.bsky.social/post/3n2gq54ztbt2h",
           "source": "Bluesky @lateroundqb.bsky.social"
-        }
-      ]
-    },
-    {
-      "name": "Dak Prescott",
-      "pos": "QB",
-      "team": "DAL",
-      "adp": 80.6,
-      "adp_prior": 80.2,
-      "adp_move": -0.4,
-      "proj": null,
-      "sleeper_weight": 0.75,
-      "score": 3.9,
-      "unpriced": true,
-      "signals": [
-        "ahead of"
-      ],
-      "items": [
-        {
-          "text": "49ers News: Justice for Fred Warner\u2019s forced fumble. 49ers minutia minute: Dak Prescott, Cowboys targeted Deommodore Lenoir 17 times (paywall)\u201cWarner led all tacklers with 11 and is tied for sixth in the NFL with 88. Three of the players ahead of him have played one more game. He did not, however, g",
-          "url": "https://www.ninersnation.com/san-francisco-49ers-news/165915/49ers-news-week-11-minnesota-vikings-altitude-mexico-city-nick-bosa",
-          "source": "SBN SF"
         }
       ]
     },
@@ -1150,8 +1379,8 @@
       ],
       "items": [
         {
-          "text": "Todd Bowles: Baker Mayfield's made progress, decision on playing to come on Friday. Buccaneers quarterback Baker Mayfield missed practice on Wednesday with a foot injury, but the team hasn't made a decision on his availability for Sunday's game against the Lions.",
-          "url": "https://www.nbcsports.com/nfl/profootballtalk/rumor-mill/news/todd-bowles-baker-mayfields-made-progress-decision-on-playing-to-come-on-friday",
+          "text": "Bucs' injury report confirms Baker Mayfield a non-participant Wednesday. Baker Mayfield was officially out of practice Wednesday.",
+          "url": "https://www.nbcsports.com/nfl/profootballtalk/rumor-mill/news/bucs-injury-report-confirms-baker-mayfield-a-non-participant-wednesday",
           "source": "ProFootballTalk"
         },
         {
@@ -1213,46 +1442,52 @@
       ]
     },
     {
-      "name": "Tyler Higbee",
-      "pos": "TE",
-      "team": "LAR",
-      "adp": 216.0,
-      "adp_prior": 216.0,
-      "adp_move": 0.0,
+      "name": "Woody Marks",
+      "pos": "RB",
+      "team": "HOU",
+      "adp": 135.9,
+      "adp_prior": 141.6,
+      "adp_move": 5.7,
       "proj": null,
-      "sleeper_weight": 1.8,
-      "score": 3.456,
-      "unpriced": true,
+      "sleeper_weight": 1.1,
+      "score": 3.516,
+      "unpriced": false,
       "signals": [
-        "explosive"
+        "injury",
+        "out for"
       ],
       "items": [
         {
-          "text": "Quite a drive.\n\n10 plays, 72 yards in 4:18. Matthew Stafford hit Tyler Higbee on a 2-yard touchdown with 1:06 left in the half.\n\nThey started with 6 OL, ran the ball with play-action rollouts. One explosive to Konata Mumpfield. Blake Corum was terrific.\n\nRams 10, Cardinals 6.",
-          "url": "https://bsky.app/profile/nateatkins.bsky.social/post/3n2f2joo45k2h",
-          "source": "Bluesky @nateatkins.bsky.social"
+          "text": "David Montgomery has no injury designation for Thursday; Woody Marks ruled out. The Texans ruled one running back out for Thursday night's game against the Colts, but they're set to get another one back in the lineup.",
+          "url": "https://www.nbcsports.com/nfl/profootballtalk/rumor-mill/news/david-montgomery-has-no-injury-designation-for-thursday-woody-marks-ruled-out",
+          "source": "ProFootballTalk"
+        },
+        {
+          "text": "NFL news, live updates: Woody Marks out for TNF, Joe Milton to start for Eagles in Week 11. Follow along with the latest NFL news heading into Week 11.",
+          "url": "https://sports.yahoo.com/nfl/live/nfl-news-injury-updates-131219200.html",
+          "source": "Yahoo NFL"
         }
       ]
     },
     {
-      "name": "Konata Mumpfield",
-      "pos": "WR",
-      "team": "LAR",
-      "adp": 216.0,
-      "adp_prior": 216.0,
-      "adp_move": 0.0,
+      "name": "Dak Prescott",
+      "pos": "QB",
+      "team": "DAL",
+      "adp": 80.6,
+      "adp_prior": 80.2,
+      "adp_move": -0.4,
       "proj": null,
-      "sleeper_weight": 1.8,
-      "score": 3.456,
+      "sleeper_weight": 0.75,
+      "score": 3.45,
       "unpriced": true,
       "signals": [
-        "explosive"
+        "ahead of"
       ],
       "items": [
         {
-          "text": "Quite a drive.\n\n10 plays, 72 yards in 4:18. Matthew Stafford hit Tyler Higbee on a 2-yard touchdown with 1:06 left in the half.\n\nThey started with 6 OL, ran the ball with play-action rollouts. One explosive to Konata Mumpfield. Blake Corum was terrific.\n\nRams 10, Cardinals 6.",
-          "url": "https://bsky.app/profile/nateatkins.bsky.social/post/3n2f2joo45k2h",
-          "source": "Bluesky @nateatkins.bsky.social"
+          "text": "49ers News: Justice for Fred Warner\u2019s forced fumble. 49ers minutia minute: Dak Prescott, Cowboys targeted Deommodore Lenoir 17 times (paywall)\u201cWarner led all tacklers with 11 and is tied for sixth in the NFL with 88. Three of the players ahead of him have played one more game. He did not, however, g",
+          "url": "https://www.ninersnation.com/san-francisco-49ers-news/165915/49ers-news-week-11-minnesota-vikings-altitude-mexico-city-nick-bosa",
+          "source": "SBN SF"
         }
       ]
     },
@@ -1399,48 +1634,6 @@
       ]
     },
     {
-      "name": "Blake Corum",
-      "pos": "RB",
-      "team": "LAR",
-      "adp": 85.6,
-      "adp_prior": 88.6,
-      "adp_move": 3.0,
-      "proj": null,
-      "sleeper_weight": 0.75,
-      "score": 3.208,
-      "unpriced": false,
-      "signals": [
-        "carries",
-        "depth chart",
-        "explosive",
-        "snap",
-        "snaps",
-        "target share"
-      ],
-      "items": [
-        {
-          "text": "RAMalytics: How will Rams deploy their new offensive wrinkle?. Sean McVay looked at the Los Angeles Rams\u2019 depth chart following their recent rash of injuries and said \u201cI\u2019m just going to put our best remaining players on the field.\u201d At times Sunday against the Arizona Cardinals, that meant deploying ",
-          "url": "https://www.turfshowtimes.com/los-angeles-rams-analysis/155370/rams-pony-personnel-corum-williams",
-          "source": "SBN LAR"
-        },
-        {
-          "text": "Blake Corum had a 50% snap share in Week 10, which was a career high. His 17 rush attempts tied a career high. His 13 routes run tied a career high. His 15% target share was a career high. His 20.9 PPR points was a season high.",
-          "url": "https://bsky.app/profile/lateroundqb.bsky.social/post/3n2gq54zscd2h",
-          "source": "Bluesky @lateroundqb.bsky.social"
-        },
-        {
-          "text": "Kyren Williams and Blake Corum played 18 offensive snaps together in Week 10. They didn't play together at all from Weeks 1-9.",
-          "url": "https://bsky.app/profile/lateroundqb.bsky.social/post/3n2gq54zscb2h",
-          "source": "Bluesky @lateroundqb.bsky.social"
-        },
-        {
-          "text": "Blake Corum looks terrific on this drive. Just patient and finding room once things looked bottled up. Not forcing anything.\n\nHe's all of a sudden up to 6.9 yards per carry. 6 carries for 46 yards on this drive alone.",
-          "url": "https://bsky.app/profile/nateatkins.bsky.social/post/3n2f2ejpmzc2h",
-          "source": "Bluesky @nateatkins.bsky.social"
-        }
-      ]
-    },
-    {
       "name": "Kyren Williams",
       "pos": "RB",
       "team": "LAR",
@@ -1504,29 +1697,6 @@
       ]
     },
     {
-      "name": "Geno Smith",
-      "pos": "QB",
-      "team": "NYJ",
-      "adp": 189.2,
-      "adp_prior": 193.3,
-      "adp_move": 4.1,
-      "proj": null,
-      "sleeper_weight": 1.5,
-      "score": 3.12,
-      "unpriced": false,
-      "signals": [
-        "injury",
-        "limited"
-      ],
-      "items": [
-        {
-          "text": "Geno Smith will be limited in Wednesday's practice. Jets quarterback Geno Smith avoided a major ankle injury in last Sunday's loss to the Bills, but his Week 11 status remains uncertain.",
-          "url": "https://www.nbcsports.com/nfl/profootballtalk/rumor-mill/news/geno-smith-will-be-limited-in-wednesdays-practice",
-          "source": "ProFootballTalk"
-        }
-      ]
-    },
-    {
       "name": "Tucker Kraft",
       "pos": "TE",
       "team": "GB",
@@ -1571,6 +1741,41 @@
       ]
     },
     {
+      "name": "Blake Corum",
+      "pos": "RB",
+      "team": "LAR",
+      "adp": 85.6,
+      "adp_prior": 88.6,
+      "adp_move": 3.0,
+      "proj": null,
+      "sleeper_weight": 0.75,
+      "score": 2.987,
+      "unpriced": false,
+      "signals": [
+        "depth chart",
+        "snap",
+        "snaps",
+        "target share"
+      ],
+      "items": [
+        {
+          "text": "RAMalytics: How will Rams deploy their new offensive wrinkle?. Sean McVay looked at the Los Angeles Rams\u2019 depth chart following their recent rash of injuries and said \u201cI\u2019m just going to put our best remaining players on the field.\u201d At times Sunday against the Arizona Cardinals, that meant deploying ",
+          "url": "https://www.turfshowtimes.com/los-angeles-rams-analysis/155370/rams-pony-personnel-corum-williams",
+          "source": "SBN LAR"
+        },
+        {
+          "text": "Blake Corum had a 50% snap share in Week 10, which was a career high. His 17 rush attempts tied a career high. His 13 routes run tied a career high. His 15% target share was a career high. His 20.9 PPR points was a season high.",
+          "url": "https://bsky.app/profile/lateroundqb.bsky.social/post/3n2gq54zscd2h",
+          "source": "Bluesky @lateroundqb.bsky.social"
+        },
+        {
+          "text": "Kyren Williams and Blake Corum played 18 offensive snaps together in Week 10. They didn't play together at all from Weeks 1-9.",
+          "url": "https://bsky.app/profile/lateroundqb.bsky.social/post/3n2gq54zscb2h",
+          "source": "Bluesky @lateroundqb.bsky.social"
+        }
+      ]
+    },
+    {
       "name": "Charlie Kolar",
       "pos": "TE",
       "team": "LAC",
@@ -1590,28 +1795,6 @@
           "text": "Chargers TE snap count after 3 drives\n\nCharlie Kolar 10\nDavid Njoku 5\nOronde Gadsden 3 (injured on the 9th play)\n\nOut of 15 plays",
           "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3n2hwokmpkk2x",
           "source": "Bluesky @ffnatejahnke.bsky.social"
-        }
-      ]
-    },
-    {
-      "name": "Roman Wilson",
-      "pos": "WR",
-      "team": "PIT",
-      "adp": 216.0,
-      "adp_prior": 215.9,
-      "adp_move": -0.1,
-      "proj": null,
-      "sleeper_weight": 1.8,
-      "score": 2.673,
-      "unpriced": true,
-      "signals": [
-        "injured"
-      ],
-      "items": [
-        {
-          "text": "Steelers WR Roman Wilson trending towards playing vs. Eagles. The Pittsburgh Steelers may finally be getting one of their to receivers back in the lineup in Week 11. Mark Kaboly of the Pat McAfee Show reported on Tuesday morning that wide receiver Roman Wilson is trending toward coming off injured r",
-          "url": "https://www.behindthesteelcurtain.com/pittsburgh-steelers-news/178013/steelers-wr-roman-wilson-trending-towards-playing-vs-eagles",
-          "source": "SBN PIT"
         }
       ]
     },
@@ -1686,6 +1869,29 @@
       ]
     },
     {
+      "name": "David Montgomery",
+      "pos": "RB",
+      "team": "HOU",
+      "adp": 46.7,
+      "adp_prior": 47.4,
+      "adp_move": 0.7,
+      "proj": null,
+      "sleeper_weight": 0.5,
+      "score": 2.6,
+      "unpriced": true,
+      "signals": [
+        "injury",
+        "out for"
+      ],
+      "items": [
+        {
+          "text": "David Montgomery has no injury designation for Thursday; Woody Marks ruled out. The Texans ruled one running back out for Thursday night's game against the Colts, but they're set to get another one back in the lineup.",
+          "url": "https://www.nbcsports.com/nfl/profootballtalk/rumor-mill/news/david-montgomery-has-no-injury-designation-for-thursday-woody-marks-ruled-out",
+          "source": "ProFootballTalk"
+        }
+      ]
+    },
+    {
       "name": "Mark Andrews",
       "pos": "TE",
       "team": "BAL",
@@ -1738,6 +1944,28 @@
           "text": "When Jake Ferguson exited last week's game, Brevyn Spann-Ford had about an 80% route share. In Week 10, his route share was 57%. He had just a 6% target share. No team has targeted tight ends at a lower rate this year than Dallas has.",
           "url": "https://bsky.app/profile/lateroundqb.bsky.social/post/3n2gq54ztbq2h",
           "source": "Bluesky @lateroundqb.bsky.social"
+        }
+      ]
+    },
+    {
+      "name": "T.J. Hockenson",
+      "pos": "TE",
+      "team": "MIN",
+      "adp": 168.3,
+      "adp_prior": 171.5,
+      "adp_move": 3.2,
+      "proj": null,
+      "sleeper_weight": 1.5,
+      "score": 2.34,
+      "unpriced": false,
+      "signals": [
+        "limited"
+      ],
+      "items": [
+        {
+          "text": "T.J. Hockenson, Andrew Van Ginkel listed as limited participants on Wednesday. Vikings tight end T.J.",
+          "url": "https://www.nbcsports.com/nfl/profootballtalk/rumor-mill/news/t-j-hockenson-andrew-van-ginkel-listed-as-limited-participants-on-wednesday",
+          "source": "ProFootballTalk"
         }
       ]
     },
@@ -1808,34 +2036,6 @@
       ]
     },
     {
-      "name": "Ladd McConkey",
-      "pos": "WR",
-      "team": "LAC",
-      "adp": 33.5,
-      "adp_prior": 33.3,
-      "adp_move": -0.2,
-      "proj": null,
-      "sleeper_weight": 0.5,
-      "score": 2.008,
-      "unpriced": true,
-      "signals": [
-        "ir",
-        "out for"
-      ],
-      "items": [
-        {
-          "text": "Chargers WR Ladd McConkey will not travel to Baltimore with the team and he has been ruled out for MNF.",
-          "url": "https://bsky.app/profile/rapsheet.bsky.social/post/3n2es2wx3pk2q",
-          "source": "Bluesky @rapsheet.bsky.social"
-        },
-        {
-          "text": "Fantasy Football Recap to the Chargers and Ravens\n\n- Chargers adjust WR usage without Ladd McConkey\n- David Njoku returns from IR\n- Mark Andrews with a big game\n- Both teams adjust LB rotation\n\nwww.pff.com/news/nfl-wee...",
-          "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3n2i7q2ol2s2x",
-          "source": "Bluesky @ffnatejahnke.bsky.social"
-        }
-      ]
-    },
-    {
       "name": "Tyler Allgeier",
       "pos": "RB",
       "team": "ARI",
@@ -1875,6 +2075,58 @@
         {
           "text": "Chargers halftime RB snap count\n\nOmarion Hampton 17\nKeaton Mitchell 11\nKimani Vidal 9\n\nOut of 32 plays",
           "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3n2hzpjwjos2x",
+          "source": "Bluesky @ffnatejahnke.bsky.social"
+        }
+      ]
+    },
+    {
+      "name": "Michael Pittman Jr.",
+      "pos": "WR",
+      "team": "PIT",
+      "adp": 102.8,
+      "adp_prior": 99.5,
+      "adp_move": -3.3,
+      "proj": null,
+      "sleeper_weight": 0.75,
+      "score": 1.95,
+      "unpriced": false,
+      "signals": [
+        "injured"
+      ],
+      "items": [
+        {
+          "text": "Steelers WRs Michael Pittman Jr., Roman Wilson take key step toward returning. The Pittsburgh Steelers also got positive news about the status of injured guard Mason McCormick.",
+          "url": "https://sports.yahoo.com/articles/steelers-wrs-michael-pittman-jr-205512116.html",
+          "source": "Yahoo NFL"
+        }
+      ]
+    },
+    {
+      "name": "Bhayshul Tuten",
+      "pos": "RB",
+      "team": "JAX",
+      "adp": 49.8,
+      "adp_prior": 50.1,
+      "adp_move": 0.3,
+      "proj": null,
+      "sleeper_weight": 0.5,
+      "score": 1.934,
+      "unpriced": true,
+      "signals": [
+        "injury",
+        "limited",
+        "snap",
+        "snaps"
+      ],
+      "items": [
+        {
+          "text": "Jaguars RBs Bhayshul Tuten, Chris Rodriguez were limited in practice Wednesday. The Jaguars listed their top two running backs as limited participants in practice on Wednesday.",
+          "url": "https://www.nbcsports.com/nfl/profootballtalk/rumor-mill/news/jaguars-rbs-bhayshul-tuten-chris-rodriguez-were-limited-in-practice-wednesday",
+          "source": "ProFootballTalk"
+        },
+        {
+          "text": "Fantasy Football recap to the first 8 games of the day\n\n- Two young receivers see a massive increase in snaps without needing an injury to a teammate\n- Bhayshul Tuten, Tony Pollard, Zach Charbonnet take a stronger hold of their backfields\n- Snap counts\n\nwww.pff.com/news/fantasy...",
+          "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3n2fconwijs2x",
           "source": "Bluesky @ffnatejahnke.bsky.social"
         }
       ]
@@ -1922,6 +2174,34 @@
           "text": "Falcons snap counts from another dreary Sunday against the Chiefs. It\u2019s snap counts time, whether you like it or not. Offense QB Michael Penix Jr.: 72 LT Jake Matthews: 72 LG Matthew Bergeron: 72 C Corey Levin: 72 RG Chris Lindstrom: 72 RT Jawaan Taylor: 72 WR Drake London: 59 TE Kyle Pitts: 55 WR J",
           "url": "https://www.thefalcoholic.com/atlanta-falcons-game-information/98454/falcons-snap-counts-from-another-dreary-sunday-against-the-chiefs-chris-blair-beaux-collins",
           "source": "SBN ATL"
+        }
+      ]
+    },
+    {
+      "name": "Kenneth Walker III",
+      "pos": "RB",
+      "team": "KC",
+      "adp": 13.8,
+      "adp_prior": 14.4,
+      "adp_move": 0.6,
+      "proj": null,
+      "sleeper_weight": 0.3,
+      "score": 1.871,
+      "unpriced": true,
+      "signals": [
+        "injury",
+        "out for"
+      ],
+      "items": [
+        {
+          "text": "Kenneth Walker won't practice Wednesday with groin injury. Kenneth Walker's groin injury will keep him out for at least another day.",
+          "url": "https://www.nbcsports.com/nfl/profootballtalk/rumor-mill/news/kenneth-walker-wont-practice-wednesday-with-groin-injury",
+          "source": "ProFootballTalk"
+        },
+        {
+          "text": "NFL Injury Report, Week 11: Latest news, updates for Kenneth Walker III, Brock Bowers and more players for fantasy football. We go over the Week 11 NFL Injury Report with latest news and updates, plus fantasy football analysis for key players.",
+          "url": "https://sports.yahoo.com/fantasy/article/nfl-injury-report-week-11-latest-news-updates-for-kenneth-walker-iii-brock-bowers-and-more-players-for-fantasy-football-224519099.html",
+          "source": "Yahoo NFL"
         }
       ]
     },
@@ -2106,6 +2386,50 @@
       ]
     },
     {
+      "name": "Chris Rodriguez",
+      "pos": "RB",
+      "team": "JAX",
+      "adp": 122.6,
+      "adp_prior": 126.3,
+      "adp_move": 3.7,
+      "proj": null,
+      "sleeper_weight": 1.1,
+      "score": 1.716,
+      "unpriced": false,
+      "signals": [
+        "limited"
+      ],
+      "items": [
+        {
+          "text": "Jaguars RBs Bhayshul Tuten, Chris Rodriguez were limited in practice Wednesday. The Jaguars listed their top two running backs as limited participants in practice on Wednesday.",
+          "url": "https://www.nbcsports.com/nfl/profootballtalk/rumor-mill/news/jaguars-rbs-bhayshul-tuten-chris-rodriguez-were-limited-in-practice-wednesday",
+          "source": "ProFootballTalk"
+        }
+      ]
+    },
+    {
+      "name": "Luther Burden III",
+      "pos": "WR",
+      "team": "CHI",
+      "adp": 43.7,
+      "adp_prior": 45.8,
+      "adp_move": 2.1,
+      "proj": null,
+      "sleeper_weight": 0.5,
+      "score": 1.69,
+      "unpriced": false,
+      "signals": [
+        "practice report"
+      ],
+      "items": [
+        {
+          "text": "Full practice for Luther Burden III. Bears WR Luther Burden III listed as full participant in estimated practice report",
+          "url": "https://sports.yahoo.com/articles/full-practice-luther-burden-iii-213050543.html",
+          "source": "Yahoo NFL"
+        }
+      ]
+    },
+    {
       "name": "Jordan Love",
       "pos": "QB",
       "team": "GB",
@@ -2128,24 +2452,36 @@
       ]
     },
     {
-      "name": "Kenneth Walker III",
-      "pos": "RB",
-      "team": "KC",
-      "adp": 13.8,
-      "adp_prior": 14.4,
-      "adp_move": 0.6,
+      "name": "Brock Bowers",
+      "pos": "TE",
+      "team": "LV",
+      "adp": 20.1,
+      "adp_prior": 20.1,
+      "adp_move": 0.0,
       "proj": null,
       "sleeper_weight": 0.3,
-      "score": 1.56,
+      "score": 1.59,
       "unpriced": true,
       "signals": [
-        "injury"
+        "did not practice",
+        "injury",
+        "target share"
       ],
       "items": [
         {
-          "text": "Andy Reid and Chiefs will be cautious with Kenneth Walker this week. To open his Wednesday press conference, Kansas City Chiefs head coach Andy Reid addressed the groin injury starting running back Kenneth Walker suffered Thursday last week, which forced him to miss the game against the Atlanta Falc",
-          "url": "https://www.arrowheadpride.com/kansas-city-chiefs-news/216853/andy-reid-chiefs-cautious-kenneth-walker-this-week",
-          "source": "SBN KC"
+          "text": "Raiders provide crucial update on tight end Brock Bowers. Raiders tight end Brock Bowers, left, quarterback Fernando Mendoza, center, and coach Klint Kubiak stand together.Brock Bowers remains day-to-day with an ankle injury and did not practice Wednesday as the...",
+          "url": "https://sports.yahoo.com/articles/raiders-crucial-tight-end-brock-211500273.html",
+          "source": "Yahoo NFL"
+        },
+        {
+          "text": "With Brock Bowers off the field in Week 10, Jalen Nailor led the Raiders with a 91% route share. Tre Tucker was next at 83%, and then Michael Mayer and Jack Bech were at 77% and 71%, respectively. Jack Bech led all of them with a 30% target share.",
+          "url": "https://bsky.app/profile/lateroundqb.bsky.social/post/3n2gq54zsbx2h",
+          "source": "Bluesky @lateroundqb.bsky.social"
+        },
+        {
+          "text": "NFL Injury Report, Week 11: Latest news, updates for Kenneth Walker III, Brock Bowers and more players for fantasy football. We go over the Week 11 NFL Injury Report with latest news and updates, plus fantasy football analysis for key players.",
+          "url": "https://sports.yahoo.com/fantasy/article/nfl-injury-report-week-11-latest-news-updates-for-kenneth-walker-iii-brock-bowers-and-more-players-for-fantasy-football-224519099.html",
+          "source": "Yahoo NFL"
         }
       ]
     },
@@ -2175,6 +2511,28 @@
       ]
     },
     {
+      "name": "Mike Evans",
+      "pos": "WR",
+      "team": "SF",
+      "adp": 54.5,
+      "adp_prior": 49.6,
+      "adp_move": -4.9,
+      "proj": null,
+      "sleeper_weight": 0.5,
+      "score": 1.463,
+      "unpriced": false,
+      "signals": [
+        "snap"
+      ],
+      "items": [
+        {
+          "text": "3 things to watch on Sunday: The Vikings&#8217; defense can be beaten on the ground. The San Francisco 49ers and Minnesota Vikings will do battle on Sunday Night Football in Mexico City, with both teams fighting for the number one seed in the NFC. The 49ers are looking to snap their dry spell agains",
+          "url": "https://www.ninersnation.com/san-francisco-49ers-analysis/165946/3-things-to-watch-on-sunday-the-vikings-defense-can-be-beaten-on-the-ground",
+          "source": "SBN SF"
+        }
+      ]
+    },
+    {
       "name": "Breece Hall",
       "pos": "RB",
       "team": "NYJ",
@@ -2193,6 +2551,28 @@
           "text": "Breece Hall played 8 more snaps than Braelon Allen in Week 10. The rush split was 11 to 8 in favor of Hall, and the route split was 21 to 18 in favor of Hall. Hall played 46% of their third downs, when that was 8% last week.",
           "url": "https://bsky.app/profile/lateroundqb.bsky.social/post/3n2gq54zsbs2h",
           "source": "Bluesky @lateroundqb.bsky.social"
+        }
+      ]
+    },
+    {
+      "name": "Ladd McConkey",
+      "pos": "WR",
+      "team": "LAC",
+      "adp": 33.5,
+      "adp_prior": 33.3,
+      "adp_move": -0.2,
+      "proj": null,
+      "sleeper_weight": 0.5,
+      "score": 1.44,
+      "unpriced": true,
+      "signals": [
+        "ir"
+      ],
+      "items": [
+        {
+          "text": "Fantasy Football Recap to the Chargers and Ravens\n\n- Chargers adjust WR usage without Ladd McConkey\n- David Njoku returns from IR\n- Mark Andrews with a big game\n- Both teams adjust LB rotation\n\nwww.pff.com/news/nfl-wee...",
+          "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3n2i7q2ol2s2x",
+          "source": "Bluesky @ffnatejahnke.bsky.social"
         }
       ]
     },
@@ -2241,28 +2621,6 @@
       ]
     },
     {
-      "name": "Keenan Allen",
-      "pos": "WR",
-      "team": "IND",
-      "adp": 154.6,
-      "adp_prior": 175.6,
-      "adp_move": 21.0,
-      "proj": null,
-      "sleeper_weight": 1.5,
-      "score": 1.38,
-      "unpriced": false,
-      "signals": [
-        "snaps"
-      ],
-      "items": [
-        {
-          "text": "Reviewing Keenan Allen\u2019s first game with the 49ers. When the San Francisco 49ers sent a sixth-round pick for veteran wide receiver Keenan Allen, the thoughts of the experienced receiver moving the chains and shaking free in a phone booth ran wild. Sunday was Allen\u2019s first action with the 49ers and o",
-          "url": "https://www.ninersnation.com/san-francisco-49ers-analysis/165887/reviewing-keenan-allens-first-game-with-the-49ers",
-          "source": "SBN SF"
-        }
-      ]
-    },
-    {
       "name": "Kaelon Black",
       "pos": "RB",
       "team": "SF",
@@ -2293,7 +2651,7 @@
       "adp_move": -0.1,
       "proj": null,
       "sleeper_weight": 0.75,
-      "score": 1.348,
+      "score": 1.326,
       "unpriced": true,
       "signals": [
         "riser",
@@ -2313,28 +2671,6 @@
       ]
     },
     {
-      "name": "Matthew Stafford",
-      "pos": "QB",
-      "team": "LAR",
-      "adp": 113.1,
-      "adp_prior": 109.6,
-      "adp_move": -3.5,
-      "proj": null,
-      "sleeper_weight": 1.1,
-      "score": 1.32,
-      "unpriced": false,
-      "signals": [
-        "explosive"
-      ],
-      "items": [
-        {
-          "text": "Quite a drive.\n\n10 plays, 72 yards in 4:18. Matthew Stafford hit Tyler Higbee on a 2-yard touchdown with 1:06 left in the half.\n\nThey started with 6 OL, ran the ball with play-action rollouts. One explosive to Konata Mumpfield. Blake Corum was terrific.\n\nRams 10, Cardinals 6.",
-          "url": "https://bsky.app/profile/nateatkins.bsky.social/post/3n2f2joo45k2h",
-          "source": "Bluesky @nateatkins.bsky.social"
-        }
-      ]
-    },
-    {
       "name": "Ja'Marr Chase",
       "pos": "WR",
       "team": "CIN",
@@ -2343,7 +2679,7 @@
       "adp_move": -0.1,
       "proj": null,
       "sleeper_weight": 0.3,
-      "score": 1.311,
+      "score": 1.302,
       "unpriced": true,
       "signals": [
         "climbing",
@@ -2359,52 +2695,6 @@
           "text": "NFL Week 10: The best players in every key metric. PFF's NFL Week 10 statistical leaders highlight standout performances across 19 metrics from the 2026 season. Joe Burrow led qualifying quarterbacks with a 92.5 passing grade, while Ja'Marr Chase paced receivers with 231 yards and Quinnen Williams r",
           "url": "https://www.pff.com/news/nfl-week-10-the-best-players-in-every-key-metric/",
           "source": "PFF"
-        }
-      ]
-    },
-    {
-      "name": "Bhayshul Tuten",
-      "pos": "RB",
-      "team": "JAX",
-      "adp": 49.8,
-      "adp_prior": 50.1,
-      "adp_move": 0.3,
-      "proj": null,
-      "sleeper_weight": 0.5,
-      "score": 1.28,
-      "unpriced": true,
-      "signals": [
-        "injury",
-        "snap",
-        "snaps"
-      ],
-      "items": [
-        {
-          "text": "Fantasy Football recap to the first 8 games of the day\n\n- Two young receivers see a massive increase in snaps without needing an injury to a teammate\n- Bhayshul Tuten, Tony Pollard, Zach Charbonnet take a stronger hold of their backfields\n- Snap counts\n\nwww.pff.com/news/fantasy...",
-          "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3n2fconwijs2x",
-          "source": "Bluesky @ffnatejahnke.bsky.social"
-        }
-      ]
-    },
-    {
-      "name": "Mike Evans",
-      "pos": "WR",
-      "team": "SF",
-      "adp": 54.5,
-      "adp_prior": 49.6,
-      "adp_move": -4.9,
-      "proj": null,
-      "sleeper_weight": 0.5,
-      "score": 1.25,
-      "unpriced": false,
-      "signals": [
-        "injury"
-      ],
-      "items": [
-        {
-          "text": "The 49ers are &#8216;hoping&#8217; Mike Evans returns to practice, but it&#8217;s &#8216;still too early&#8217; to tell. The only injury the San Francisco 49ers had in Week 10 was cornerback Renardo Green&#8217;s back injury. Kyle Shanahan said Green is day-to-day, and the team will further assess h",
-          "url": "https://www.ninersnation.com/san-francisco-49ers-injuries/165874/the-49ers-are-hoping-mike-evans-returns-to-practice-but-its-still-too-early-to-tell",
-          "source": "SBN SF"
         }
       ]
     },
@@ -2493,6 +2783,28 @@
           "text": "With Brock Bowers off the field in Week 10, Jalen Nailor led the Raiders with a 91% route share. Tre Tucker was next at 83%, and then Michael Mayer and Jack Bech were at 77% and 71%, respectively. Jack Bech led all of them with a 30% target share.",
           "url": "https://bsky.app/profile/lateroundqb.bsky.social/post/3n2gq54zsbx2h",
           "source": "Bluesky @lateroundqb.bsky.social"
+        }
+      ]
+    },
+    {
+      "name": "Keenan Allen",
+      "pos": "WR",
+      "team": "IND",
+      "adp": 154.6,
+      "adp_prior": 175.6,
+      "adp_move": 21.0,
+      "proj": null,
+      "sleeper_weight": 1.5,
+      "score": 1.2,
+      "unpriced": false,
+      "signals": [
+        "snaps"
+      ],
+      "items": [
+        {
+          "text": "Reviewing Keenan Allen\u2019s first game with the 49ers. When the San Francisco 49ers sent a sixth-round pick for veteran wide receiver Keenan Allen, the thoughts of the experienced receiver moving the chains and shaking free in a phone booth ran wild. Sunday was Allen\u2019s first action with the 49ers and o",
+          "url": "https://www.ninersnation.com/san-francisco-49ers-analysis/165887/reviewing-keenan-allens-first-game-with-the-49ers",
+          "source": "SBN SF"
         }
       ]
     },
@@ -2632,28 +2944,6 @@
         {
           "text": "George Pickens saw a 37% target share in Week 10, which equaled 18 targets. That's 5 more targets than he's had in any other game of his career, and it was also his highest target share by about 2 percentage points.",
           "url": "https://bsky.app/profile/lateroundqb.bsky.social/post/3n2gq54ztbp2h",
-          "source": "Bluesky @lateroundqb.bsky.social"
-        }
-      ]
-    },
-    {
-      "name": "Brock Bowers",
-      "pos": "TE",
-      "team": "LV",
-      "adp": 20.1,
-      "adp_prior": 20.1,
-      "adp_move": 0.0,
-      "proj": null,
-      "sleeper_weight": 0.3,
-      "score": 1.056,
-      "unpriced": true,
-      "signals": [
-        "target share"
-      ],
-      "items": [
-        {
-          "text": "With Brock Bowers off the field in Week 10, Jalen Nailor led the Raiders with a 91% route share. Tre Tucker was next at 83%, and then Michael Mayer and Jack Bech were at 77% and 71%, respectively. Jack Bech led all of them with a 30% target share.",
-          "url": "https://bsky.app/profile/lateroundqb.bsky.social/post/3n2gq54zsbx2h",
           "source": "Bluesky @lateroundqb.bsky.social"
         }
       ]
