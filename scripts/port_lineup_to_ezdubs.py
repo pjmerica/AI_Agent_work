@@ -86,6 +86,20 @@ PAGES = {
         "description": "NFL players ranked by how far apart the sportsbooks' "
                        "projections are, with a dot for every book.",
     },
+    # Every priced player's market lines and points, PPR / half / standard
+    # (2026-11-17).
+    "nfl-projections": {
+        "title": "Vegas Projections",
+        "view": "proj",
+        "nav": "Vegas Projections",
+        "data": "../nfl-start-sit/data/",   # shares it
+        "h1": "Vegas Projections",
+        "subtitle": "Every player with a betting line for {week}, and the "
+                    "fantasy points those lines imply.",
+        "description": "Every NFL player with a betting line this week, with "
+                       "the stat lines and fantasy points those lines imply in "
+                       "PPR, half PPR or standard.",
+    },
 }
 
 SITE = "https://ezdubsanalytics.com"
@@ -194,6 +208,7 @@ def nfl_dropdown(prefix: str, active: str | None) -> str:
                             <a href="{prefix}nfl-start-sit/"{cls('nfl-start-sit')}>Start/Sit</a>
                             <a href="{prefix}nfl-rooting/"{cls('nfl-rooting')}>Root For/Against</a>
                             <a href="{prefix}nfl-book-spread/"{cls('nfl-book-spread')}>Book Spread</a>
+                            <a href="{prefix}nfl-projections/"{cls('nfl-projections')}>Vegas Projections</a>
                         </div>
                     </div>
                 </div>
@@ -588,7 +603,7 @@ def build_page(slug: str, cfg: dict, nav: str, site_style: str,
     # guards every lookup, so the absent ids are not an error.
     html = re.sub(r'[ \t]*<div class="view-tabs" id="view-tabs">[\s\S]*?</div>\n',
                   "", html, count=1)
-    for view in ("sitstart", "sleeper", "rooting", "spread"):
+    for view in ("sitstart", "sleeper", "rooting", "spread", "proj"):
         if view == cfg["view"]:
             continue
         html = drop_view(html, view)

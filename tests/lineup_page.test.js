@@ -120,13 +120,21 @@ setTimeout(() => {
   // Dallas hit its bye: Lamb was in neither weekly.json nor oddsapi.json, so the
   // test failed for reasons that said nothing about the search code. Bijan
   // Robinson, Cam Ward and Trey McBride rotted the same way earlier.
+  //
+  // Only players the season projections also list: the search offers a player
+  // only once it knows his position, and that comes from clay.json or
+  // data.json. Anthony Gould, a backup receiver with a line but no projection,
+  // was the first long surname on the 2026-11-17 board, so "goul" correctly
+  // found nobody and three checks failed with the search working.
   const pool = window.__testPool
     ? window.__testPool()
     : (() => {
         // Fall back to reading the loaded market data the page already holds.
-        const wk = JSON.parse(fs.readFileSync(
-          path.join(ROOT, "nfl-props/weekly.json"), "utf8"));
-        return (wk.players || []).map((x) => x.name);
+        const read = (f) => JSON.parse(fs.readFileSync(path.join(ROOT, "nfl-props", f), "utf8"));
+        const projected = new Set([...(read("clay.json").players || []), ...(read("data.json").players || [])]
+          .filter((p) => p && p.position).map((p) => String(p.name).toLowerCase()));
+        return (read("weekly.json").players || []).map((x) => x.name)
+          .filter((n) => projected.has(n.toLowerCase()));
       })();
   check("there are players loaded to search", pool.length > 20, pool.length + " players");
   // A surname long enough to be a meaningful prefix, from a player on the slate.
@@ -226,8 +234,8 @@ setTimeout(() => {
   console.log("");
   console.log("=== tab switching ===");
   const tabs = $("view-tabs").querySelectorAll(".view-tab");
-  // Four since the Book Spread view (2026-11-05).
-  check("four tabs", tabs.length === 4, tabs.length + "");
+  // Five since the Vegas Projections view (2026-11-17); four since Book Spread.
+  check("five tabs", tabs.length === 5, tabs.length + "");
   tabs[2].click();
   check("rooting view shown", !$("rooting-view").classList.contains("hidden"));
   check("sitstart view hidden", $("sitstart-view").classList.contains("hidden"));
@@ -283,7 +291,7 @@ setTimeout(() => {
   console.log("");
   console.log("=== help sections ===");
   const helps = window.document.querySelectorAll("details.help");
-  check("collapsible help blocks", helps.length === 4, helps.length + "");
+  check("collapsible help blocks", helps.length === 5, helps.length + "");
 
   console.log("");
   console.log("uncaught page errors: " + errors.length);
