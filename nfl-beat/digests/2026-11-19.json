@@ -1,27 +1,27 @@
 {
-  "generated": "2026-11-19T02:12:00.908734+00:00",
+  "generated": "2026-11-19T19:47:50.275062+00:00",
   "stats": {
-    "n_items": 604,
-    "n_players": 126,
-    "n_unpriced": 83,
+    "n_items": 548,
+    "n_players": 89,
+    "n_unpriced": 60,
     "by_source": {
-      "Bluesky @minakimes.bsky.social": 36,
-      "Bluesky @rapsheet.bsky.social": 11,
-      "Bluesky @jourdanrodrigue.bsky.social": 6,
-      "Bluesky @lateroundqb.bsky.social": 39,
-      "Bluesky @sethwalder.bsky.social": 11,
-      "Bluesky @nateatkins.bsky.social": 8,
-      "Bluesky @ffnatejahnke.bsky.social": 35,
+      "Bluesky @minakimes.bsky.social": 33,
+      "Bluesky @rapsheet.bsky.social": 16,
+      "Bluesky @jourdanrodrigue.bsky.social": 4,
+      "Bluesky @lateroundqb.bsky.social": 3,
+      "Bluesky @sethwalder.bsky.social": 7,
+      "Bluesky @nateatkins.bsky.social": 7,
+      "Bluesky @ffnatejahnke.bsky.social": 32,
       "ProFootballTalk": 30,
-      "Yahoo NFL": 50,
+      "Yahoo NFL": 43,
       "CBS Sports NFL": 36,
       "PFF": 25,
       "Awful Announcing": 15,
-      "SBN ARI": 9,
+      "SBN ARI": 7,
       "SBN ATL": 7,
-      "SBN BAL": 9,
+      "SBN BAL": 10,
       "SBN BUF": 10,
-      "SBN CAR": 7,
+      "SBN CAR": 8,
       "SBN CHI": 10,
       "SBN CIN": 10,
       "SBN CLE": 10,
@@ -29,9 +29,9 @@
       "SBN DEN": 10,
       "SBN DET": 10,
       "SBN GB": 10,
-      "SBN HOU": 6,
+      "SBN HOU": 8,
       "SBN IND": 10,
-      "SBN JAX": 10,
+      "SBN JAX": 7,
       "SBN KC": 10,
       "SBN LAC": 10,
       "SBN LAR": 10,
@@ -41,12 +41,12 @@
       "SBN NE": 10,
       "SBN NO": 10,
       "SBN NYG": 10,
-      "SBN NYJ": 8,
+      "SBN NYJ": 5,
       "SBN PHI": 10,
       "SBN PIT": 10,
       "SBN SEA": 10,
       "SBN SF": 10,
-      "SBN TB": 6,
+      "SBN TB": 5,
       "SBN TEN": 10,
       "SBN WAS": 10
     },
@@ -57,31 +57,32 @@
   },
   "players": [
     {
-      "name": "Kirk Cousins",
-      "pos": "QB",
-      "team": "LV",
-      "adp": 215.0,
-      "adp_prior": 215.3,
-      "adp_move": 0.3,
+      "name": "Christian Kirk",
+      "pos": "WR",
+      "team": "SF",
+      "adp": 215.9,
+      "adp_prior": 215.7,
+      "adp_move": -0.2,
       "proj": null,
       "sleeper_weight": 1.8,
-      "score": 14.237,
+      "score": 14.456,
       "unpriced": true,
       "signals": [
-        "out for",
-        "snaps",
-        "traded"
+        "injured",
+        "injury",
+        "surgery",
+        "training camp"
       ],
       "items": [
         {
-          "text": "Vikes Views: Which WR will Step Up in Jordan Addison\u2019s Absence?. Minnesota Vikings WR 2 Jordan Addison is expected to be out for the next several weeks. It hasn\u2019t been the most productive season for Addison, but he has played a lot of snaps. Those snaps, along with new QB Kirk Cousins, will provide ",
-          "url": "https://www.dailynorseman.com/minnesota-vikings-discussion-chat-message-board/101769/vikes-views-which-wr-will-step-up-in-jordan-addisons-absence",
-          "source": "SBN MIN"
+          "text": "49ers injury news: Christian Kirk underwent meniscus surgery. In a surprise to nobody, it&#8217;s been a brutal year for the San Francisco 49ers on the injury front. They signed veteran wide receiver Christian Kirk this past offseason to add speed and stretch the field both vertically and horizontal",
+          "url": "https://www.ninersnation.com/san-francisco-49ers-injuries/165974/49ers-injury-news-christian-kirk-underwent-meniscus-surgery",
+          "source": "SBN SF"
         },
         {
-          "text": "Maxx Crosby drops NSFW reason why Raiders still believe in AFC playoff run this season. Maxx Crosby addresses reports that the Raiders are trading Kirk Cousins to start Fernando Mendoza.When the Raiders traded Kirk Cousins to the Vikings during the NFL trade deadline, the general...",
-          "url": "https://sports.yahoo.com/articles/maxx-crosby-drops-nsfw-reason-001550108.html",
-          "source": "Yahoo NFL"
+          "text": "49ers WR Christian Kirk had meniscus surgery. 49ers wide receiver Christian Kirk went on injured reserve because of a knee injury a couple of weeks ago and that injury has also led him to the operating room.",
+          "url": "https://www.nbcsports.com/nfl/profootballtalk/rumor-mill/news/49ers-wr-christian-kirk-had-meniscus-surgery",
+          "source": "ProFootballTalk"
         }
       ]
     },
@@ -94,7 +95,7 @@
       "adp_move": -1.1,
       "proj": null,
       "sleeper_weight": 1.8,
-      "score": 14.036,
+      "score": 12.578,
       "unpriced": true,
       "signals": [
         "injury",
@@ -118,6 +119,41 @@
       ]
     },
     {
+      "name": "Kirk Cousins",
+      "pos": "QB",
+      "team": "LV",
+      "adp": 215.0,
+      "adp_prior": 215.3,
+      "adp_move": 0.3,
+      "proj": null,
+      "sleeper_weight": 1.8,
+      "score": 12.319,
+      "unpriced": true,
+      "signals": [
+        "injury",
+        "out for",
+        "snaps",
+        "traded"
+      ],
+      "items": [
+        {
+          "text": "Vikes Views: Which WR will Step Up in Jordan Addison\u2019s Absence?. Minnesota Vikings WR 2 Jordan Addison is expected to be out for the next several weeks. It hasn\u2019t been the most productive season for Addison, but he has played a lot of snaps. Those snaps, along with new QB Kirk Cousins, will provide ",
+          "url": "https://www.dailynorseman.com/minnesota-vikings-discussion-chat-message-board/101769/vikes-views-which-wr-will-step-up-in-jordan-addisons-absence",
+          "source": "SBN MIN"
+        },
+        {
+          "text": "Kirk Cousins called Fernando Mendoza to \"debrief\" after rookie's first start. Quarterbacks Kirk Cousins and Fernando Mendoza are no longer teammates after the Raiders traded Cousins to the Vikings last week.",
+          "url": "https://www.nbcsports.com/nfl/profootballtalk/rumor-mill/news/kirk-cousins-called-fernando-mendoza-to-debrief-after-rookies-first-start",
+          "source": "ProFootballTalk"
+        },
+        {
+          "text": "Week 11 Super Bowl stock report: Kirk Cousins raises Vikings' ceiling, Drake Maye injury tanks Patriots. We assess the NFL title race after Week 10 and identify three upcoming games that could reshape the Super Bowl picture",
+          "url": "https://www.cbssports.com/nfl/news/week-11-super-bowl-stock-report-kirk-cousins-vikings-drake-maye-patriots/",
+          "source": "CBS Sports NFL"
+        }
+      ]
+    },
+    {
       "name": "Tyrell Shavers",
       "pos": "WR",
       "team": "BUF",
@@ -126,7 +162,7 @@
       "adp_move": 0.0,
       "proj": null,
       "sleeper_weight": 1.8,
-      "score": 13.104,
+      "score": 10.08,
       "unpriced": true,
       "signals": [
         "acl",
@@ -142,6 +178,57 @@
       ]
     },
     {
+      "name": "Xavier Gipson",
+      "pos": "WR",
+      "team": "FA",
+      "adp": 216.0,
+      "adp_prior": 216.0,
+      "adp_move": 0.0,
+      "proj": null,
+      "sleeper_weight": 1.8,
+      "score": 9.765,
+      "unpriced": true,
+      "signals": [
+        "practice squad",
+        "training camp"
+      ],
+      "items": [
+        {
+          "text": "NY Giants signed Xavier Gipson to provide \u2018spark\u2019 in return game. EAST RUTHERFORD, N.J. \u2014 The New York Giants signed Xavier Gipson off the Philadelphia Eagles\u2019 practice squad this week because they \u201cneed a spark\u201d in the kick return game, special teams coordinator Chris Horton said on Thursday. \u201cWhen",
+          "url": "https://www.bigblueview.com/new-york-giants-news/180544/ny-giants-signed-xavier-gipson-to-provide-spark-in-return-game",
+          "source": "SBN NYG"
+        },
+        {
+          "text": "NY Giants bring return man they just cut back to practice squad. Charlie Jones, just dropped from the 53-man roster this week when Xavier Gipson was signed off the Philadelphi Eagles\u2019 practice squad, has been re-signed to the team\u2019s practice squad. Jones had a 10.0-yard average on 16 punt returns an",
+          "url": "https://www.bigblueview.com/new-york-giants-roster/180481/charlie-jones-signing-practice-squad-xavier-gipson-geno-vandemark",
+          "source": "SBN NYG"
+        }
+      ]
+    },
+    {
+      "name": "Adam Randall",
+      "pos": "RB",
+      "team": "BAL",
+      "adp": 215.8,
+      "adp_prior": 215.7,
+      "adp_move": -0.1,
+      "proj": null,
+      "sleeper_weight": 1.8,
+      "score": 9.36,
+      "unpriced": true,
+      "signals": [
+        "injured",
+        "ir"
+      ],
+      "items": [
+        {
+          "text": "Ravens activate RB Adam Randall from injured reserve. The Baltimore Ravens activated running back Adam Randall from injured reserve on Wednesday, possibly positioning the sixth-round pick to make his NFL debut on Sunday against the Panthers. The Ravens now have four IR activations remaining with two",
+          "url": "https://www.baltimorebeatdown.com/baltimore-ravens-news/88012/ravens-activate-rb-adam-randall-from-injured-reserve",
+          "source": "SBN BAL"
+        }
+      ]
+    },
+    {
       "name": "Gardner Minshew II",
       "pos": "QB",
       "team": "ARI",
@@ -150,7 +237,7 @@
       "adp_move": 0.0,
       "proj": null,
       "sleeper_weight": 1.8,
-      "score": 10.296,
+      "score": 9.108,
       "unpriced": true,
       "signals": [
         "ir",
@@ -166,29 +253,6 @@
       ]
     },
     {
-      "name": "Eric Gray",
-      "pos": "RB",
-      "team": "FA",
-      "adp": 216.0,
-      "adp_prior": 216.0,
-      "adp_move": 0.0,
-      "proj": null,
-      "sleeper_weight": 1.8,
-      "score": 10.296,
-      "unpriced": true,
-      "signals": [
-        "practice squad",
-        "released"
-      ],
-      "items": [
-        {
-          "text": "NY Giants fill practice squad vacancy with recently-waived cornerback. The New York Giants are reportedly signing cornerback Nikko Reed, who was dropped from the 53-man roster on Monday, to their practice squad. Reed takes the place of running back Eric Gray, who was released from the practice squad",
-          "url": "https://www.bigblueview.com/new-york-giants-roster/180409/nikko-reed-signing-practice-squad-eric-gray-released",
-          "source": "SBN NYG"
-        }
-      ]
-    },
-    {
       "name": "Isaiah Hodgins",
       "pos": "WR",
       "team": "FA",
@@ -197,7 +261,7 @@
       "adp_move": 0.0,
       "proj": null,
       "sleeper_weight": 1.8,
-      "score": 10.296,
+      "score": 9.108,
       "unpriced": true,
       "signals": [
         "practice squad",
@@ -220,68 +284,22 @@
       "adp_move": null,
       "proj": null,
       "sleeper_weight": 1.9,
-      "score": 10.073,
+      "score": 9.042,
       "unpriced": true,
       "signals": [
-        "injury"
+        "injury",
+        "workload"
       ],
       "items": [
         {
-          "text": "Cam Skattebo says he's done doing backflips after Aidan Hutchinson injury. Giants running back Cam Skattebo's penchant for backflips became a talking point during his recovery from last season's ankle injury, but he resumed doing them after touchdowns upon his return to action this fall.",
-          "url": "https://www.nbcsports.com/nfl/profootballtalk/rumor-mill/news/cam-skattebo-says-hes-done-doing-backflips-after-aidan-hutchinson-injury",
-          "source": "ProFootballTalk"
+          "text": "Fantasy Football Week 11: Start \u2019em, sit \u2019em. Giants running back Cam Skattebo merits starting spots given his amplified workload in Week 10, while Mark Andrews owners should remain cautious despite a strong last game.",
+          "url": "https://www.pff.com/news/fantasy-football-week-11-start-em-sit-em/",
+          "source": "PFF"
         },
         {
           "text": "Giants' Cam Skattebo to halt backflip celebrations after Aidan Hutchinson jumping celebration injury. Hutchinson suffered a season-ending knee injury while jumping to celebrate a sack in Week 10",
           "url": "https://www.cbssports.com/nfl/news/giants-cam-skattebo-backflip-celebrations-aidan-hutchinson-injury/",
           "source": "CBS Sports NFL"
-        }
-      ]
-    },
-    {
-      "name": "Caleb Lohner",
-      "pos": "TE",
-      "team": "DEN",
-      "adp": 216.0,
-      "adp_prior": 216.0,
-      "adp_move": 0.0,
-      "proj": null,
-      "sleeper_weight": 1.8,
-      "score": 9.36,
-      "unpriced": true,
-      "signals": [
-        "injured",
-        "ir"
-      ],
-      "items": [
-        {
-          "text": "Broncos activated TE Caleb Lohner from the IR. According to 9NEWS Denver\u2019s Mike Klis, the Denver Broncos have activated tight end Caleb Lohner from the injured reserve. Lohner will be at practice today, and this opens his 21-day practice window, during which the Broncos have to decide whether or not",
-          "url": "https://www.milehighreport.com/denver-broncos-news/192351/broncos-activated-te-caleb-lohner-from-the-ir",
-          "source": "SBN DEN"
-        }
-      ]
-    },
-    {
-      "name": "CJ Donaldson",
-      "pos": "RB",
-      "team": "NO",
-      "adp": 216.0,
-      "adp_prior": 216.0,
-      "adp_move": 0.0,
-      "proj": null,
-      "sleeper_weight": 1.8,
-      "score": 9.36,
-      "unpriced": true,
-      "signals": [
-        "ahead of",
-        "injury",
-        "limited"
-      ],
-      "items": [
-        {
-          "text": "Wednesday\u2019s Saints vs. Bears Injury Report: CJ Donaldson is back. The New Orleans Saints have just wrapped up the 1st practice ahead of their Week 11 road matchup at the Chicago Bears at Soldier Field. So, where do things stand following Wednesday\u2019s workout? Let\u2019s take a look at which Saints players",
-          "url": "https://www.canalstreetchronicles.com/new-orleans-saints-injuries/118077/wednesdays-saints-vs-panthers-injury-report-nfl-week-11",
-          "source": "SBN NO"
         }
       ]
     },
@@ -310,140 +328,93 @@
       ]
     },
     {
-      "name": "Bub Means",
-      "pos": "WR",
-      "team": "FA",
+      "name": "Caleb Lohner",
+      "pos": "TE",
+      "team": "DEN",
       "adp": 216.0,
       "adp_prior": 216.0,
       "adp_move": 0.0,
       "proj": null,
       "sleeper_weight": 1.8,
-      "score": 8.424,
+      "score": 8.28,
       "unpriced": true,
       "signals": [
-        "practice squad"
+        "injured",
+        "ir"
       ],
       "items": [
         {
-          "text": "Arizona Cardinals sign wide receiver Bub Means to practice squad. The Arizona Cardinals wide receiver room is depleted, so they have two choices. The Cardinals have decided to try both, and today they added another potential option in Bub Means. From the team. The Arizona Cardinals Football Club tod",
-          "url": "https://www.revengeofthebirds.com/arizona-cardinals-news/97115/arizona-cardinals-sign-wide-receiver-bub-means-to-practice-squad",
-          "source": "SBN ARI"
+          "text": "Broncos activated TE Caleb Lohner from the IR. According to 9NEWS Denver\u2019s Mike Klis, the Denver Broncos have activated tight end Caleb Lohner from the injured reserve. Lohner will be at practice today, and this opens his 21-day practice window, during which the Broncos have to decide whether or not",
+          "url": "https://www.milehighreport.com/denver-broncos-news/192351/broncos-activated-te-caleb-lohner-from-the-ir",
+          "source": "SBN DEN"
         }
       ]
     },
     {
-      "name": "Kyle McCord",
+      "name": "CJ Donaldson",
+      "pos": "RB",
+      "team": "NO",
+      "adp": 216.0,
+      "adp_prior": 216.0,
+      "adp_move": 0.0,
+      "proj": null,
+      "sleeper_weight": 1.8,
+      "score": 8.28,
+      "unpriced": true,
+      "signals": [
+        "ahead of",
+        "injury",
+        "limited"
+      ],
+      "items": [
+        {
+          "text": "Wednesday\u2019s Saints vs. Bears Injury Report: CJ Donaldson is back. The New Orleans Saints have just wrapped up the 1st practice ahead of their Week 11 road matchup at the Chicago Bears at Soldier Field. So, where do things stand following Wednesday\u2019s workout? Let\u2019s take a look at which Saints players",
+          "url": "https://www.canalstreetchronicles.com/new-orleans-saints-injuries/118077/wednesdays-saints-vs-panthers-injury-report-nfl-week-11",
+          "source": "SBN NO"
+        }
+      ]
+    },
+    {
+      "name": "Russell Wilson",
       "pos": "QB",
-      "team": "MIA",
+      "team": "FA",
       "adp": 216.0,
       "adp_prior": 216.0,
       "adp_move": 0.0,
       "proj": null,
       "sleeper_weight": 1.8,
-      "score": 8.424,
+      "score": 8.237,
       "unpriced": true,
       "signals": [
-        "snap"
+        "starter"
       ],
       "items": [
         {
-          "text": "Colts CB Justin Walley earns AFC Defensive Player of the Week honors after momentous strip-sack. On the opening snap of the second half against the Miami Dolphins, Indianapolis Colts cornerback Justin Walley disguised a nickel blitz to come screaming off the edge against an empty pocket. Dolphins qu",
-          "url": "https://www.stampedeblue.com/indianapolis-colts-news/130228/colts-cb-justin-walley-earns-afc-defensive-player-of-the-week-honors-after-momentous-strip-sack",
-          "source": "SBN IND"
+          "text": "The Seahawks must put Drew Lock on the Russell Wilson plan. Drew Lock has outplayed Sam Darnold all season. With a bye week to decide, Mike Macdonald can do what Pete Carroll did in 2012 and give the job to the best quarterback, not the presumed starter.",
+          "url": "https://sports.yahoo.com/articles/seahawks-must-put-drew-lock-180000986.html",
+          "source": "Yahoo NFL"
         }
       ]
     },
     {
-      "name": "Brett Rypien",
+      "name": "Drew Lock",
       "pos": "QB",
-      "team": "FA",
+      "team": "SEA",
       "adp": 216.0,
       "adp_prior": 216.0,
       "adp_move": 0.0,
       "proj": null,
       "sleeper_weight": 1.8,
-      "score": 8.424,
+      "score": 8.237,
       "unpriced": true,
       "signals": [
-        "practice squad"
+        "starter"
       ],
       "items": [
         {
-          "text": "Raiders roster 2026: Get to know Brett Rypien. The Las Vegas Raider recently signed quarterback Brett Rypien to the practice squad recently. Let\u2019s take a closer look at Rypien: Size: 6-2, 212 pounds. NFL experience: The Raiders are the 12 program (He was with the Minnesota Vikings twice) he has been",
-          "url": "https://www.silverandblackpride.com/las-vegas-raiders-roster/146507/raiders-brett-rypien-practice-squad-quarterback",
-          "source": "SBN LV"
-        }
-      ]
-    },
-    {
-      "name": "Xavier Gipson",
-      "pos": "WR",
-      "team": "FA",
-      "adp": 216.0,
-      "adp_prior": 216.0,
-      "adp_move": 0.0,
-      "proj": null,
-      "sleeper_weight": 1.8,
-      "score": 8.424,
-      "unpriced": true,
-      "signals": [
-        "practice squad"
-      ],
-      "items": [
-        {
-          "text": "NY Giants bring return man they just cut back to practice squad. Charlie Jones, just dropped from the 53-man roster this week when Xavier Gipson was signed off the Philadelphi Eagles\u2019 practice squad, has been re-signed to the team\u2019s practice squad. Jones had a 10.0-yard average on 16 punt returns an",
-          "url": "https://www.bigblueview.com/new-york-giants-roster/180481/charlie-jones-signing-practice-squad-xavier-gipson-geno-vandemark",
-          "source": "SBN NYG"
-        }
-      ]
-    },
-    {
-      "name": "Charlie Jones",
-      "pos": "WR",
-      "team": "NYG",
-      "adp": 216.0,
-      "adp_prior": 216.0,
-      "adp_move": 0.0,
-      "proj": null,
-      "sleeper_weight": 1.8,
-      "score": 8.424,
-      "unpriced": true,
-      "signals": [
-        "practice squad"
-      ],
-      "items": [
-        {
-          "text": "NY Giants bring return man they just cut back to practice squad. Charlie Jones, just dropped from the 53-man roster this week when Xavier Gipson was signed off the Philadelphi Eagles\u2019 practice squad, has been re-signed to the team\u2019s practice squad. Jones had a 10.0-yard average on 16 punt returns an",
-          "url": "https://www.bigblueview.com/new-york-giants-roster/180481/charlie-jones-signing-practice-squad-xavier-gipson-geno-vandemark",
-          "source": "SBN NYG"
-        }
-      ]
-    },
-    {
-      "name": "Jack Bech",
-      "pos": "WR",
-      "team": "LV",
-      "adp": 215.6,
-      "adp_prior": 214.8,
-      "adp_move": -0.8,
-      "proj": null,
-      "sleeper_weight": 1.8,
-      "score": 8.007,
-      "unpriced": true,
-      "signals": [
-        "snaps",
-        "target share"
-      ],
-      "items": [
-        {
-          "text": "With Brock Bowers off the field in Week 10, Jalen Nailor led the Raiders with a 91% route share. Tre Tucker was next at 83%, and then Michael Mayer and Jack Bech were at 77% and 71%, respectively. Jack Bech led all of them with a 30% target share.",
-          "url": "https://bsky.app/profile/lateroundqb.bsky.social/post/3n2gq54zsbx2h",
-          "source": "Bluesky @lateroundqb.bsky.social"
-        },
-        {
-          "text": "Jack Bech not making impact after return. Here is a look at how the Las Vegas Raiders\u2019 2025 draft class fared in a home 21-13 loss to the Seattle Seahawks on Sunday and what to look for Sunday at the Denver Broncos. Ashton Jeanty: The No. 6 overall draft pick played 71 percent of the snaps, his most",
-          "url": "https://www.silverandblackpride.com/las-vegas-raiders-analysis/146488/raiders-jack-bech-wide-receiver",
-          "source": "SBN LV"
+          "text": "The Seahawks must put Drew Lock on the Russell Wilson plan. Drew Lock has outplayed Sam Darnold all season. With a bye week to decide, Mike Macdonald can do what Pete Carroll did in 2012 and give the job to the best quarterback, not the presumed starter.",
+          "url": "https://sports.yahoo.com/articles/seahawks-must-put-drew-lock-180000986.html",
+          "source": "Yahoo NFL"
         }
       ]
     },
@@ -471,46 +442,90 @@
       ]
     },
     {
-      "name": "Jeshaun Jones",
+      "name": "Bub Means",
       "pos": "WR",
-      "team": "MIN",
+      "team": "FA",
       "adp": 216.0,
       "adp_prior": 216.0,
       "adp_move": 0.0,
       "proj": null,
       "sleeper_weight": 1.8,
-      "score": 7.488,
+      "score": 7.452,
       "unpriced": true,
       "signals": [
-        "injury"
+        "practice squad"
       ],
       "items": [
         {
-          "text": "Vikings sign WR Jeshaun Jones to active roster. The Vikings will be without Jordan Addison for the coming weeks because of a thumb injury and they added another wide receiver to their active roster on Wednesday.",
-          "url": "https://www.nbcsports.com/nfl/profootballtalk/rumor-mill/news/vikings-sign-wr-jeshaun-jones-to-active-roster",
-          "source": "ProFootballTalk"
+          "text": "Arizona Cardinals sign wide receiver Bub Means to practice squad. The Arizona Cardinals wide receiver room is depleted, so they have two choices. The Cardinals have decided to try both, and today they added another potential option in Bub Means. From the team. The Arizona Cardinals Football Club tod",
+          "url": "https://www.revengeofthebirds.com/arizona-cardinals-news/97115/arizona-cardinals-sign-wide-receiver-bub-means-to-practice-squad",
+          "source": "SBN ARI"
         }
       ]
     },
     {
-      "name": "Roman Wilson",
+      "name": "Charlie Jones",
       "pos": "WR",
-      "team": "PIT",
+      "team": "NYG",
       "adp": 216.0,
-      "adp_prior": 215.9,
-      "adp_move": -0.1,
+      "adp_prior": 216.0,
+      "adp_move": 0.0,
       "proj": null,
       "sleeper_weight": 1.8,
-      "score": 7.488,
+      "score": 7.452,
       "unpriced": true,
       "signals": [
-        "injury"
+        "practice squad"
       ],
       "items": [
         {
-          "text": "Roman Wilson full participant, Nick Herbig DNP in Steelers\u2019 latest injury report. Pittsburgh gets a mix of good and bad news in a longer than usual Wednesday injury report.",
-          "url": "https://sports.yahoo.com/articles/roman-wilson-full-participant-nick-223633506.html",
-          "source": "Yahoo NFL"
+          "text": "NY Giants bring return man they just cut back to practice squad. Charlie Jones, just dropped from the 53-man roster this week when Xavier Gipson was signed off the Philadelphi Eagles\u2019 practice squad, has been re-signed to the team\u2019s practice squad. Jones had a 10.0-yard average on 16 punt returns an",
+          "url": "https://www.bigblueview.com/new-york-giants-roster/180481/charlie-jones-signing-practice-squad-xavier-gipson-geno-vandemark",
+          "source": "SBN NYG"
+        }
+      ]
+    },
+    {
+      "name": "Kyle McCord",
+      "pos": "QB",
+      "team": "MIA",
+      "adp": 216.0,
+      "adp_prior": 216.0,
+      "adp_move": 0.0,
+      "proj": null,
+      "sleeper_weight": 1.8,
+      "score": 6.48,
+      "unpriced": true,
+      "signals": [
+        "snap"
+      ],
+      "items": [
+        {
+          "text": "Colts CB Justin Walley earns AFC Defensive Player of the Week honors after momentous strip-sack. On the opening snap of the second half against the Miami Dolphins, Indianapolis Colts cornerback Justin Walley disguised a nickel blitz to come screaming off the edge against an empty pocket. Dolphins qu",
+          "url": "https://www.stampedeblue.com/indianapolis-colts-news/130228/colts-cb-justin-walley-earns-afc-defensive-player-of-the-week-honors-after-momentous-strip-sack",
+          "source": "SBN IND"
+        }
+      ]
+    },
+    {
+      "name": "Brett Rypien",
+      "pos": "QB",
+      "team": "FA",
+      "adp": 216.0,
+      "adp_prior": 216.0,
+      "adp_move": 0.0,
+      "proj": null,
+      "sleeper_weight": 1.8,
+      "score": 6.48,
+      "unpriced": true,
+      "signals": [
+        "practice squad"
+      ],
+      "items": [
+        {
+          "text": "Raiders roster 2026: Get to know Brett Rypien. The Las Vegas Raider recently signed quarterback Brett Rypien to the practice squad recently. Let\u2019s take a closer look at Rypien: Size: 6-2, 212 pounds. NFL experience: The Raiders are the 12 program (He was with the Minnesota Vikings twice) he has been",
+          "url": "https://www.silverandblackpride.com/las-vegas-raiders-roster/146507/raiders-brett-rypien-practice-squad-quarterback",
+          "source": "SBN LV"
         }
       ]
     },
@@ -523,7 +538,7 @@
       "adp_move": 0.0,
       "proj": null,
       "sleeper_weight": 1.8,
-      "score": 7.452,
+      "score": 6.48,
       "unpriced": true,
       "signals": [
         "practice squad",
@@ -538,6 +553,34 @@
       ]
     },
     {
+      "name": "Fernando Mendoza",
+      "pos": "QB",
+      "team": "LV",
+      "adp": 194.9,
+      "adp_prior": 185.4,
+      "adp_move": -9.5,
+      "proj": null,
+      "sleeper_weight": 1.8,
+      "score": 6.288,
+      "unpriced": false,
+      "signals": [
+        "snaps",
+        "traded"
+      ],
+      "items": [
+        {
+          "text": "Kirk Cousins called Fernando Mendoza to \"debrief\" after rookie's first start. Quarterbacks Kirk Cousins and Fernando Mendoza are no longer teammates after the Raiders traded Cousins to the Vikings last week.",
+          "url": "https://www.nbcsports.com/nfl/profootballtalk/rumor-mill/news/kirk-cousins-called-fernando-mendoza-to-debrief-after-rookies-first-start",
+          "source": "ProFootballTalk"
+        },
+        {
+          "text": "Fernando Mendoza needs a healthy Brock Bowers. Here is a look at how the Las Vegas Raiders\u2019 2024 draft class fared in a home 21-13 loss to the Seattle Seahawks on Sunday and what to look for Sunday at the Denver Broncos. Brock Bowers: The first-round pick played just 11 snaps after injuring his ankl",
+          "url": "https://www.silverandblackpride.com/las-vegas-raiders-analysis/146566/raiders-fernando-mendoza-brock-bowers-week-11-broncos",
+          "source": "SBN LV"
+        }
+      ]
+    },
+    {
       "name": "David Njoku",
       "pos": "TE",
       "team": "LAC",
@@ -546,7 +589,7 @@
       "adp_move": 0.8,
       "proj": null,
       "sleeper_weight": 1.8,
-      "score": 7.341,
+      "score": 5.872,
       "unpriced": true,
       "signals": [
         "injured",
@@ -572,52 +615,6 @@
       ]
     },
     {
-      "name": "Will Levis",
-      "pos": "QB",
-      "team": "FA",
-      "adp": 216.0,
-      "adp_prior": 216.0,
-      "adp_move": 0.0,
-      "proj": null,
-      "sleeper_weight": 1.8,
-      "score": 7.2,
-      "unpriced": true,
-      "signals": [
-        "injury",
-        "targets"
-      ],
-      "items": [
-        {
-          "text": "Patriots QB targets after Drake Maye injury include Will Levis, Jimmy Garoppolo. Following a potentially season-ending ankle fracture suffered by Drake Maye, the New England Patriots could find themselves in the quarterback market. Head coach Mike Vrabel indicated Monday that making an external addi",
-          "url": "https://www.patspulpit.com/new-england-patriots-analysis/144609/5-quarterbacks-patriots-could-targets-drake-maye",
-          "source": "SBN NE"
-        }
-      ]
-    },
-    {
-      "name": "Jimmy Garoppolo",
-      "pos": "QB",
-      "team": "FA",
-      "adp": 216.0,
-      "adp_prior": 216.0,
-      "adp_move": 0.0,
-      "proj": null,
-      "sleeper_weight": 1.8,
-      "score": 7.2,
-      "unpriced": true,
-      "signals": [
-        "injury",
-        "targets"
-      ],
-      "items": [
-        {
-          "text": "Patriots QB targets after Drake Maye injury include Will Levis, Jimmy Garoppolo. Following a potentially season-ending ankle fracture suffered by Drake Maye, the New England Patriots could find themselves in the quarterback market. Head coach Mike Vrabel indicated Monday that making an external addi",
-          "url": "https://www.patspulpit.com/new-england-patriots-analysis/144609/5-quarterbacks-patriots-could-targets-drake-maye",
-          "source": "SBN NE"
-        }
-      ]
-    },
-    {
       "name": "Drake Maye",
       "pos": "QB",
       "team": "NE",
@@ -626,104 +623,32 @@
       "adp_move": -0.1,
       "proj": null,
       "sleeper_weight": 0.75,
-      "score": 7.133,
+      "score": 5.706,
       "unpriced": true,
       "signals": [
         "injury",
-        "out for",
-        "surgery",
-        "targets"
+        "out for"
       ],
       "items": [
+        {
+          "text": "A.J. Brown injury update: New report adds information to Patriots WR\u2019s status. While Drake Maye\u2019s ankle injury dominated the headlines coming out of the New England Patriots\u2019 Week 10 game against the Detroit Lions, the star quarterback was not the only member unable to finish the game. Wide receiver",
+          "url": "https://www.patspulpit.com/new-england-patriots-injuries/144766/aj-brown-injury-update-new-report-hamstring",
+          "source": "SBN NE"
+        },
         {
           "text": "Patriots News: Never surrender!. With no official word yet on Drake Maye\u2019s status, I am fearing the worst &#8211; that he is out for the remaining seven games of the season, but we don\u2019t know for sure. The Patriots are into their Bye week, so no updates on the starting quarterback for their Week 12 ",
           "url": "https://www.patspulpit.com/new-england-patriots-news/144719/patriots-news-never-surrender",
           "source": "SBN NE"
         },
         {
-          "text": "NFL Week 11 Injury Report: Drake Maye likely done for season, surgery for Jordan Addison. Track the injuries to know around the NFL, all in one place.",
-          "url": "https://sports.yahoo.com/articles/nfl-week-11-injury-report-201706530.html",
-          "source": "Yahoo NFL"
+          "text": "Week 11 Super Bowl stock report: Kirk Cousins raises Vikings' ceiling, Drake Maye injury tanks Patriots. We assess the NFL title race after Week 10 and identify three upcoming games that could reshape the Super Bowl picture",
+          "url": "https://www.cbssports.com/nfl/news/week-11-super-bowl-stock-report-kirk-cousins-vikings-drake-maye-patriots/",
+          "source": "CBS Sports NFL"
         },
         {
-          "text": "Drake Maye injury: Everything we know about the Patriots QB\u2019s status. Their Week 10 game against the Detroit Lions was the worst-case scenario for the New England Patriots. Not only were they blown out with a final score of 35-10 to drop to 5-5 on the season, they also lost their starting quarterbac",
-          "url": "https://www.patspulpit.com/new-england-patriots-injuries/144491/drake-maye-injury-update-patriots-vs-lions",
-          "source": "SBN NE"
-        },
-        {
-          "text": "Drake Maye injury update: Patriots teammate drops hint about QB\u2019s outlook. If you were holding out hope that Drake Maye would still return this season, it might be time to adjust your expectations. For the first time since the New England Patriots starting quarterback suffered an ankle injury on Sun",
-          "url": "https://www.patspulpit.com/new-england-patriots-injuries/144724/drake-maye-injury-update-ankle-2026-outlook-recovery-kevin-byard",
-          "source": "SBN NE"
-        }
-      ]
-    },
-    {
-      "name": "Joe Milton",
-      "pos": "QB",
-      "team": "FA",
-      "adp": 216.0,
-      "adp_prior": 216.0,
-      "adp_move": 0.0,
-      "proj": null,
-      "sleeper_weight": 1.8,
-      "score": 7.101,
-      "unpriced": true,
-      "signals": [
-        "ones",
-        "out for"
-      ],
-      "items": [
-        {
-          "text": "NFL news, live updates: Woody Marks out for TNF, Joe Milton to start for Eagles in Week 11. Follow along with the latest NFL news heading into Week 11.",
-          "url": "https://sports.yahoo.com/nfl/live/nfl-news-injury-updates-131219200.html",
-          "source": "Yahoo NFL"
-        },
-        {
-          "text": "Sean Mannion to continue calling offensive plays for Eagles, Joe Milton to remain at QB. Eagles head coach Nick Sirianni said that the team would talk about changes to roles and responsibilities on the coaching staff during their bye week, but he said on Wednesday that they decided against any major",
-          "url": "https://www.nbcsports.com/nfl/profootballtalk/rumor-mill/news/sean-mannion-to-continue-calling-offensive-plays-for-eagles-joe-milton-to-remain-at-qb",
-          "source": "ProFootballTalk"
-        }
-      ]
-    },
-    {
-      "name": "Jordan Addison",
-      "pos": "WR",
-      "team": "MIN",
-      "adp": 88.8,
-      "adp_prior": 89.0,
-      "adp_move": 0.2,
-      "proj": null,
-      "sleeper_weight": 0.75,
-      "score": 6.673,
-      "unpriced": true,
-      "signals": [
-        "injured",
-        "injury",
-        "ir",
-        "out for",
-        "snaps",
-        "surgery"
-      ],
-      "items": [
-        {
-          "text": "Vikes Views: Which WR will Step Up in Jordan Addison\u2019s Absence?. Minnesota Vikings WR 2 Jordan Addison is expected to be out for the next several weeks. It hasn\u2019t been the most productive season for Addison, but he has played a lot of snaps. Those snaps, along with new QB Kirk Cousins, will provide ",
-          "url": "https://www.dailynorseman.com/minnesota-vikings-discussion-chat-message-board/101769/vikes-views-which-wr-will-step-up-in-jordan-addisons-absence",
-          "source": "SBN MIN"
-        },
-        {
-          "text": "Vikings won't put Jordan Addison on IR. When Vikings head coach Kevin O'Connell announced that wide receiver Jordan Addison needed thumb surgery earlier this week, he said that an injured reserve stint was a possibility.",
-          "url": "https://www.nbcsports.com/nfl/profootballtalk/rumor-mill/news/vikings-wont-put-jordan-addison-on-ir",
-          "source": "ProFootballTalk"
-        },
-        {
-          "text": "NFL Week 11 Injury Report: Drake Maye likely done for season, surgery for Jordan Addison. Track the injuries to know around the NFL, all in one place.",
-          "url": "https://sports.yahoo.com/articles/nfl-week-11-injury-report-201706530.html",
-          "source": "Yahoo NFL"
-        },
-        {
-          "text": "Vikings sign WR Jeshaun Jones to active roster. The Vikings will be without Jordan Addison for the coming weeks because of a thumb injury and they added another wide receiver to their active roster on Wednesday.",
-          "url": "https://www.nbcsports.com/nfl/profootballtalk/rumor-mill/news/vikings-sign-wr-jeshaun-jones-to-active-roster",
-          "source": "ProFootballTalk"
+          "text": "Chargers-Patriots in Week 12 flexed out of Sunday Night Football. Just like we all could have predicted, the Chargers\u2019 Sunday Night Football matchup against the Patriots has been flexed out of primetime by the NFL and replaced by Raiders-Browns. The Chargers and Patriots will now play at 1:05 p.m. T",
+          "url": "https://www.boltsfromtheblue.com/los-angeles-chargers-news/67158/chargers-patriots-in-week-12-flexed-out-of-sunday-night-football",
+          "source": "SBN LAC"
         }
       ]
     },
@@ -736,7 +661,7 @@
       "adp_move": 0.0,
       "proj": null,
       "sleeper_weight": 1.8,
-      "score": 6.606,
+      "score": 5.285,
       "unpriced": true,
       "signals": [
         "practice squad",
@@ -764,7 +689,7 @@
       "adp_move": 0.0,
       "proj": null,
       "sleeper_weight": 1.8,
-      "score": 6.606,
+      "score": 5.285,
       "unpriced": true,
       "signals": [
         "practice squad",
@@ -784,426 +709,61 @@
       ]
     },
     {
-      "name": "Brevyn Spann-Ford",
-      "pos": "TE",
-      "team": "DAL",
-      "adp": 216.0,
-      "adp_prior": 216.0,
-      "adp_move": 0.0,
-      "proj": null,
-      "sleeper_weight": 1.8,
-      "score": 6.336,
-      "unpriced": true,
-      "signals": [
-        "target share"
-      ],
-      "items": [
-        {
-          "text": "When Jake Ferguson exited last week's game, Brevyn Spann-Ford had about an 80% route share. In Week 10, his route share was 57%. He had just a 6% target share. No team has targeted tight ends at a lower rate this year than Dallas has.",
-          "url": "https://bsky.app/profile/lateroundqb.bsky.social/post/3n2gq54ztbq2h",
-          "source": "Bluesky @lateroundqb.bsky.social"
-        }
-      ]
-    },
-    {
-      "name": "Michael Mayer",
-      "pos": "TE",
-      "team": "LV",
-      "adp": 213.8,
-      "adp_prior": 214.3,
-      "adp_move": 0.5,
-      "proj": null,
-      "sleeper_weight": 1.8,
-      "score": 6.336,
-      "unpriced": true,
-      "signals": [
-        "target share"
-      ],
-      "items": [
-        {
-          "text": "With Brock Bowers off the field in Week 10, Jalen Nailor led the Raiders with a 91% route share. Tre Tucker was next at 83%, and then Michael Mayer and Jack Bech were at 77% and 71%, respectively. Jack Bech led all of them with a 30% target share.",
-          "url": "https://bsky.app/profile/lateroundqb.bsky.social/post/3n2gq54zsbx2h",
-          "source": "Bluesky @lateroundqb.bsky.social"
-        }
-      ]
-    },
-    {
-      "name": "Isaiah Williams",
-      "pos": "WR",
-      "team": "NYJ",
-      "adp": 216.0,
-      "adp_prior": 216.0,
-      "adp_move": 0.0,
-      "proj": null,
-      "sleeper_weight": 1.8,
-      "score": 6.336,
-      "unpriced": true,
-      "signals": [
-        "injury",
-        "snap",
-        "target share",
-        "targets"
-      ],
-      "items": [
-        {
-          "text": "Omar Cooper played one snap against the Bills before exiting with injury. Garrett Wilson and Adonai Mitchell combined for a 55% target share (14 targets for Wilson, 8 for Mitchell), while Isaiah Williams had 7 targets on a 77% route share.",
-          "url": "https://bsky.app/profile/lateroundqb.bsky.social/post/3n2gq54zsbt2h",
-          "source": "Bluesky @lateroundqb.bsky.social"
-        }
-      ]
-    },
-    {
-      "name": "Ty Johnson",
-      "pos": "RB",
-      "team": "BUF",
-      "adp": 215.9,
-      "adp_prior": 216.0,
-      "adp_move": 0.1,
-      "proj": null,
-      "sleeper_weight": 1.8,
-      "score": 6.336,
-      "unpriced": true,
-      "signals": [
-        "target share"
-      ],
-      "items": [
-        {
-          "text": "James Cook saw a 14% and 11% target share in Weeks 1 and 2, two games Ty Johnson missed. Since then, he's had just one game with a double-digit percentage target share, and it was 10%. He was at 5% in Week 10.",
-          "url": "https://bsky.app/profile/lateroundqb.bsky.social/post/3n2gq54zrci2h",
-          "source": "Bluesky @lateroundqb.bsky.social"
-        }
-      ]
-    },
-    {
-      "name": "Matt Hibner",
-      "pos": "",
-      "team": "",
-      "adp": null,
-      "adp_prior": null,
-      "adp_move": null,
-      "proj": null,
-      "sleeper_weight": 1.9,
-      "score": 5.472,
-      "unpriced": true,
-      "signals": [
-        "snap"
-      ],
-      "items": [
-        {
-          "text": "Ravens 1st half TE snap count\n\nMark Andrews 19\nMatt Hibner 8\nJosh Cuevas 8\nNick Vannett 4\n\nOut of 33 plays",
-          "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3n2hzoqltck2x",
-          "source": "Bluesky @ffnatejahnke.bsky.social"
-        }
-      ]
-    },
-    {
-      "name": "George Holani",
-      "pos": "RB",
-      "team": "SEA",
-      "adp": 213.2,
-      "adp_prior": 213.5,
-      "adp_move": 0.3,
-      "proj": null,
-      "sleeper_weight": 1.8,
-      "score": 5.184,
-      "unpriced": true,
-      "signals": [
-        "ir"
-      ],
-      "items": [
-        {
-          "text": "Seahawks RB George Holani suffered an MCL sprain and is considered to be week-to-week, sources say. Seattle has a bye coming, so the hope is he\u2019s not an IR candidate. But will evaluate it next week.",
-          "url": "https://bsky.app/profile/rapsheet.bsky.social/post/3n2hhhjko3k2g",
-          "source": "Bluesky @rapsheet.bsky.social"
-        }
-      ]
-    },
-    {
-      "name": "Ronnie Rivers",
-      "pos": "RB",
-      "team": "LAR",
-      "adp": 216.0,
-      "adp_prior": 216.0,
-      "adp_move": 0.0,
-      "proj": null,
-      "sleeper_weight": 1.8,
-      "score": 5.184,
-      "unpriced": true,
-      "signals": [
-        "snap",
-        "targets"
-      ],
-      "items": [
-        {
-          "text": "Before Ronnie Rivers' first snap (garbage time), the Rams backfield snap split was 38 to 37 in favor of Kyren Williams. Williams had 22 routes run to Corum's 13, and he had 5 targets to Corum's 4. Corum, though, had 2 goal-line rushes to Williams' 0.",
-          "url": "https://bsky.app/profile/lateroundqb.bsky.social/post/3n2gq54zscc2h",
-          "source": "Bluesky @lateroundqb.bsky.social"
-        }
-      ]
-    },
-    {
-      "name": "Reggie Virgil",
-      "pos": "WR",
-      "team": "ARI",
-      "adp": 216.0,
-      "adp_prior": 216.0,
-      "adp_move": 0.0,
-      "proj": null,
-      "sleeper_weight": 1.8,
-      "score": 5.184,
-      "unpriced": true,
-      "signals": [
-        "targets"
-      ],
-      "items": [
-        {
-          "text": "Simi Fehoko led Cardinals wide receivers with a 67% route share on Sunday. Reggie Virgil was at 50%. Devin Duvernay was at 33%. None of them saw more than 3 targets.",
-          "url": "https://bsky.app/profile/lateroundqb.bsky.social/post/3n2gq54zsc62h",
-          "source": "Bluesky @lateroundqb.bsky.social"
-        }
-      ]
-    },
-    {
-      "name": "Devin Duvernay",
-      "pos": "WR",
-      "team": "ARI",
-      "adp": 216.0,
-      "adp_prior": 216.0,
-      "adp_move": 0.0,
-      "proj": null,
-      "sleeper_weight": 1.8,
-      "score": 5.184,
-      "unpriced": true,
-      "signals": [
-        "targets"
-      ],
-      "items": [
-        {
-          "text": "Simi Fehoko led Cardinals wide receivers with a 67% route share on Sunday. Reggie Virgil was at 50%. Devin Duvernay was at 33%. None of them saw more than 3 targets.",
-          "url": "https://bsky.app/profile/lateroundqb.bsky.social/post/3n2gq54zsc62h",
-          "source": "Bluesky @lateroundqb.bsky.social"
-        }
-      ]
-    },
-    {
-      "name": "Simi Fehoko",
-      "pos": "WR",
-      "team": "ARI",
-      "adp": 216.0,
-      "adp_prior": 216.0,
-      "adp_move": 0.0,
-      "proj": null,
-      "sleeper_weight": 1.8,
-      "score": 5.184,
-      "unpriced": true,
-      "signals": [
-        "targets"
-      ],
-      "items": [
-        {
-          "text": "Simi Fehoko led Cardinals wide receivers with a 67% route share on Sunday. Reggie Virgil was at 50%. Devin Duvernay was at 33%. None of them saw more than 3 targets.",
-          "url": "https://bsky.app/profile/lateroundqb.bsky.social/post/3n2gq54zsc62h",
-          "source": "Bluesky @lateroundqb.bsky.social"
-        }
-      ]
-    },
-    {
-      "name": "Keandre Lambert-Smith",
-      "pos": "WR",
-      "team": "LAC",
-      "adp": 216.0,
-      "adp_prior": 216.0,
-      "adp_move": 0.0,
-      "proj": null,
-      "sleeper_weight": 1.8,
-      "score": 5.184,
-      "unpriced": true,
-      "signals": [
-        "snap"
-      ],
-      "items": [
-        {
-          "text": "Chargers halftime WR snap count\n\nTre' Harris 31\nQuentin Johnston 28\nDerius Davis 11\nTheo Wease Jr. 3\nKeAndre Lambert-Smith 1\n\nOut of 32 plays",
-          "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3n2hzqox2xk2x",
-          "source": "Bluesky @ffnatejahnke.bsky.social"
-        }
-      ]
-    },
-    {
-      "name": "Theo Wease Jr.",
-      "pos": "WR",
-      "team": "FA",
-      "adp": 216.0,
-      "adp_prior": 216.0,
-      "adp_move": 0.0,
-      "proj": null,
-      "sleeper_weight": 1.8,
-      "score": 5.184,
-      "unpriced": true,
-      "signals": [
-        "snap"
-      ],
-      "items": [
-        {
-          "text": "Chargers halftime WR snap count\n\nTre' Harris 31\nQuentin Johnston 28\nDerius Davis 11\nTheo Wease Jr. 3\nKeAndre Lambert-Smith 1\n\nOut of 32 plays",
-          "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3n2hzqox2xk2x",
-          "source": "Bluesky @ffnatejahnke.bsky.social"
-        }
-      ]
-    },
-    {
-      "name": "Derius Davis",
-      "pos": "WR",
-      "team": "LAC",
-      "adp": 216.0,
-      "adp_prior": 216.0,
-      "adp_move": 0.0,
-      "proj": null,
-      "sleeper_weight": 1.8,
-      "score": 5.184,
-      "unpriced": true,
-      "signals": [
-        "snap"
-      ],
-      "items": [
-        {
-          "text": "Chargers halftime WR snap count\n\nTre' Harris 31\nQuentin Johnston 28\nDerius Davis 11\nTheo Wease Jr. 3\nKeAndre Lambert-Smith 1\n\nOut of 32 plays",
-          "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3n2hzqox2xk2x",
-          "source": "Bluesky @ffnatejahnke.bsky.social"
-        }
-      ]
-    },
-    {
-      "name": "Kimani Vidal",
-      "pos": "RB",
-      "team": "LAC",
-      "adp": 206.5,
-      "adp_prior": 206.8,
-      "adp_move": 0.3,
-      "proj": null,
-      "sleeper_weight": 1.8,
-      "score": 5.184,
-      "unpriced": true,
-      "signals": [
-        "snap"
-      ],
-      "items": [
-        {
-          "text": "Chargers halftime RB snap count\n\nOmarion Hampton 17\nKeaton Mitchell 11\nKimani Vidal 9\n\nOut of 32 plays",
-          "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3n2hzpjwjos2x",
-          "source": "Bluesky @ffnatejahnke.bsky.social"
-        }
-      ]
-    },
-    {
-      "name": "Josh Cuevas",
-      "pos": "TE",
-      "team": "BAL",
-      "adp": 216.0,
-      "adp_prior": 216.0,
-      "adp_move": 0.0,
-      "proj": null,
-      "sleeper_weight": 1.8,
-      "score": 5.184,
-      "unpriced": true,
-      "signals": [
-        "snap"
-      ],
-      "items": [
-        {
-          "text": "Ravens 1st half TE snap count\n\nMark Andrews 19\nMatt Hibner 8\nJosh Cuevas 8\nNick Vannett 4\n\nOut of 33 plays",
-          "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3n2hzoqltck2x",
-          "source": "Bluesky @ffnatejahnke.bsky.social"
-        }
-      ]
-    },
-    {
-      "name": "Devontez Walker",
-      "pos": "WR",
-      "team": "BAL",
-      "adp": 216.0,
-      "adp_prior": 216.0,
-      "adp_move": 0.0,
-      "proj": null,
-      "sleeper_weight": 1.8,
-      "score": 5.184,
-      "unpriced": true,
-      "signals": [
-        "snap"
-      ],
-      "items": [
-        {
-          "text": "Ravens 1st half WR snap count\n\nZay Flowers 31\nRashod Bateman 31\nJa'Kobi Lane 24\nChris Moore 2\nDevontez Walker 2\n\nOut of 33 plays",
-          "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3n2hznbwvuk2x",
-          "source": "Bluesky @ffnatejahnke.bsky.social"
-        }
-      ]
-    },
-    {
-      "name": "Fernando Mendoza",
+      "name": "Sam Darnold",
       "pos": "QB",
-      "team": "LV",
-      "adp": 194.9,
-      "adp_prior": 185.4,
-      "adp_move": -9.5,
+      "team": "SEA",
+      "adp": 143.8,
+      "adp_prior": 142.5,
+      "adp_move": -1.3,
       "proj": null,
-      "sleeper_weight": 1.8,
-      "score": 5.148,
-      "unpriced": false,
+      "sleeper_weight": 1.1,
+      "score": 5.034,
+      "unpriced": true,
       "signals": [
-        "traded"
+        "starter"
       ],
       "items": [
         {
-          "text": "Maxx Crosby drops NSFW reason why Raiders still believe in AFC playoff run this season. Maxx Crosby addresses reports that the Raiders are trading Kirk Cousins to start Fernando Mendoza.When the Raiders traded Kirk Cousins to the Vikings during the NFL trade deadline, the general...",
-          "url": "https://sports.yahoo.com/articles/maxx-crosby-drops-nsfw-reason-001550108.html",
+          "text": "The Seahawks must put Drew Lock on the Russell Wilson plan. Drew Lock has outplayed Sam Darnold all season. With a bye week to decide, Mike Macdonald can do what Pete Carroll did in 2012 and give the job to the best quarterback, not the presumed starter.",
+          "url": "https://sports.yahoo.com/articles/seahawks-must-put-drew-lock-180000986.html",
           "source": "Yahoo NFL"
         }
       ]
     },
     {
-      "name": "Behren Morton",
-      "pos": "",
-      "team": "",
-      "adp": null,
-      "adp_prior": null,
-      "adp_move": null,
+      "name": "Jordan Addison",
+      "pos": "WR",
+      "team": "MIN",
+      "adp": 88.8,
+      "adp_prior": 89.0,
+      "adp_move": 0.2,
       "proj": null,
-      "sleeper_weight": 1.9,
-      "score": 5.13,
+      "sleeper_weight": 0.75,
+      "score": 4.779,
       "unpriced": true,
       "signals": [
+        "injured",
         "injury",
-        "targets"
+        "ir",
+        "out for",
+        "snaps",
+        "surgery"
       ],
       "items": [
         {
-          "text": "Patriots QB targets after Drake Maye injury include Will Levis, Jimmy Garoppolo. Following a potentially season-ending ankle fracture suffered by Drake Maye, the New England Patriots could find themselves in the quarterback market. Head coach Mike Vrabel indicated Monday that making an external addi",
-          "url": "https://www.patspulpit.com/new-england-patriots-analysis/144609/5-quarterbacks-patriots-could-targets-drake-maye",
-          "source": "SBN NE"
-        }
-      ]
-    },
-    {
-      "name": "Tommy DeVito",
-      "pos": "QB",
-      "team": "NE",
-      "adp": 216.0,
-      "adp_prior": 216.0,
-      "adp_move": 0.0,
-      "proj": null,
-      "sleeper_weight": 1.8,
-      "score": 4.86,
-      "unpriced": true,
-      "signals": [
-        "injury",
-        "targets"
-      ],
-      "items": [
+          "text": "Vikes Views: Which WR will Step Up in Jordan Addison\u2019s Absence?. Minnesota Vikings WR 2 Jordan Addison is expected to be out for the next several weeks. It hasn\u2019t been the most productive season for Addison, but he has played a lot of snaps. Those snaps, along with new QB Kirk Cousins, will provide ",
+          "url": "https://www.dailynorseman.com/minnesota-vikings-discussion-chat-message-board/101769/vikes-views-which-wr-will-step-up-in-jordan-addisons-absence",
+          "source": "SBN MIN"
+        },
         {
-          "text": "Patriots QB targets after Drake Maye injury include Will Levis, Jimmy Garoppolo. Following a potentially season-ending ankle fracture suffered by Drake Maye, the New England Patriots could find themselves in the quarterback market. Head coach Mike Vrabel indicated Monday that making an external addi",
-          "url": "https://www.patspulpit.com/new-england-patriots-analysis/144609/5-quarterbacks-patriots-could-targets-drake-maye",
-          "source": "SBN NE"
+          "text": "Jordan Addison to Avoid IR; Vikings Make Several Other Moves. The Minnesota Vikings made a handful of roster moves on Wednesday, and also got some very positive news about one of their best wide receivers. Jordan Addison had surgery to correct the thumb injury we mentioned on Monday, and it turns ou",
+          "url": "https://www.dailynorseman.com/minnesota-vikings-roster/101817/jordan-addison-to-avoid-ir-minnesota-vikings-roster-moves",
+          "source": "SBN MIN"
+        },
+        {
+          "text": "No IR for Jordan Addison, per coach Kevin O\u2019Connell.",
+          "url": "https://bsky.app/profile/rapsheet.bsky.social/post/3n2mch3a3kk23",
+          "source": "Bluesky @rapsheet.bsky.social"
         }
       ]
     },
@@ -1252,37 +812,104 @@
       ]
     },
     {
-      "name": "Sean Mannion",
-      "pos": "QB",
-      "team": "FA",
+      "name": "Jack Bech",
+      "pos": "WR",
+      "team": "LV",
+      "adp": 215.6,
+      "adp_prior": 214.8,
+      "adp_move": -0.8,
+      "proj": null,
+      "sleeper_weight": 1.8,
+      "score": 4.608,
+      "unpriced": true,
+      "signals": [
+        "snaps"
+      ],
+      "items": [
+        {
+          "text": "Jack Bech not making impact after return. Here is a look at how the Las Vegas Raiders\u2019 2025 draft class fared in a home 21-13 loss to the Seattle Seahawks on Sunday and what to look for Sunday at the Denver Broncos. Ashton Jeanty: The No. 6 overall draft pick played 71 percent of the snaps, his most",
+          "url": "https://www.silverandblackpride.com/las-vegas-raiders-analysis/146488/raiders-jack-bech-wide-receiver",
+          "source": "SBN LV"
+        }
+      ]
+    },
+    {
+      "name": "Roman Wilson",
+      "pos": "WR",
+      "team": "PIT",
+      "adp": 216.0,
+      "adp_prior": 215.9,
+      "adp_move": -0.1,
+      "proj": null,
+      "sleeper_weight": 1.8,
+      "score": 4.554,
+      "unpriced": true,
+      "signals": [
+        "ahead of",
+        "injury"
+      ],
+      "items": [
+        {
+          "text": "Roman Wilson full participant, Nick Herbig DNP in Steelers\u2019 latest injury report. The Steelers had a mix of good and bad news on their Wednesday injury report ahead of a Week 11 clash with the Eagles in Philadelphia. Wednesday was headlined by the Steelers opening the 21-day return windows for wide ",
+          "url": "https://www.behindthesteelcurtain.com/pittsburgh-steelers-injuries/178095/roman-wilson-full-participant-nick-herbig-dnp-in-steelers-latest-injury-report-michael-pittman-gennings-dunker-deshon-elliott-week-11-eagles-roster-news",
+          "source": "SBN PIT"
+        }
+      ]
+    },
+    {
+      "name": "Matt Hibner",
+      "pos": "",
+      "team": "",
+      "adp": null,
+      "adp_prior": null,
+      "adp_move": null,
+      "proj": null,
+      "sleeper_weight": 1.9,
+      "score": 4.378,
+      "unpriced": true,
+      "signals": [
+        "snap"
+      ],
+      "items": [
+        {
+          "text": "Ravens 1st half TE snap count\n\nMark Andrews 19\nMatt Hibner 8\nJosh Cuevas 8\nNick Vannett 4\n\nOut of 33 plays",
+          "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3n2hzoqltck2x",
+          "source": "Bluesky @ffnatejahnke.bsky.social"
+        }
+      ]
+    },
+    {
+      "name": "George Holani",
+      "pos": "RB",
+      "team": "SEA",
+      "adp": 213.2,
+      "adp_prior": 213.5,
+      "adp_move": 0.3,
+      "proj": null,
+      "sleeper_weight": 1.8,
+      "score": 4.147,
+      "unpriced": true,
+      "signals": [
+        "ir"
+      ],
+      "items": [
+        {
+          "text": "Seahawks RB George Holani suffered an MCL sprain and is considered to be week-to-week, sources say. Seattle has a bye coming, so the hope is he\u2019s not an IR candidate. But will evaluate it next week.",
+          "url": "https://bsky.app/profile/rapsheet.bsky.social/post/3n2hhhjko3k2g",
+          "source": "Bluesky @rapsheet.bsky.social"
+        }
+      ]
+    },
+    {
+      "name": "Keandre Lambert-Smith",
+      "pos": "WR",
+      "team": "LAC",
       "adp": 216.0,
       "adp_prior": 216.0,
       "adp_move": 0.0,
       "proj": null,
       "sleeper_weight": 1.8,
-      "score": 4.53,
-      "unpriced": true,
-      "signals": [
-        "ones"
-      ],
-      "items": [
-        {
-          "text": "Sean Mannion to continue calling offensive plays for Eagles, Joe Milton to remain at QB. Eagles head coach Nick Sirianni said that the team would talk about changes to roles and responsibilities on the coaching staff during their bye week, but he said on Wednesday that they decided against any major",
-          "url": "https://www.nbcsports.com/nfl/profootballtalk/rumor-mill/news/sean-mannion-to-continue-calling-offensive-plays-for-eagles-joe-milton-to-remain-at-qb",
-          "source": "ProFootballTalk"
-        }
-      ]
-    },
-    {
-      "name": "Tre Harris",
-      "pos": "WR",
-      "team": "LAC",
-      "adp": 159.8,
-      "adp_prior": 160.0,
-      "adp_move": 0.2,
-      "proj": null,
-      "sleeper_weight": 1.5,
-      "score": 4.32,
+      "score": 4.147,
       "unpriced": true,
       "signals": [
         "snap"
@@ -1291,6 +918,116 @@
         {
           "text": "Chargers halftime WR snap count\n\nTre' Harris 31\nQuentin Johnston 28\nDerius Davis 11\nTheo Wease Jr. 3\nKeAndre Lambert-Smith 1\n\nOut of 32 plays",
           "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3n2hzqox2xk2x",
+          "source": "Bluesky @ffnatejahnke.bsky.social"
+        }
+      ]
+    },
+    {
+      "name": "Theo Wease Jr.",
+      "pos": "WR",
+      "team": "FA",
+      "adp": 216.0,
+      "adp_prior": 216.0,
+      "adp_move": 0.0,
+      "proj": null,
+      "sleeper_weight": 1.8,
+      "score": 4.147,
+      "unpriced": true,
+      "signals": [
+        "snap"
+      ],
+      "items": [
+        {
+          "text": "Chargers halftime WR snap count\n\nTre' Harris 31\nQuentin Johnston 28\nDerius Davis 11\nTheo Wease Jr. 3\nKeAndre Lambert-Smith 1\n\nOut of 32 plays",
+          "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3n2hzqox2xk2x",
+          "source": "Bluesky @ffnatejahnke.bsky.social"
+        }
+      ]
+    },
+    {
+      "name": "Derius Davis",
+      "pos": "WR",
+      "team": "LAC",
+      "adp": 216.0,
+      "adp_prior": 216.0,
+      "adp_move": 0.0,
+      "proj": null,
+      "sleeper_weight": 1.8,
+      "score": 4.147,
+      "unpriced": true,
+      "signals": [
+        "snap"
+      ],
+      "items": [
+        {
+          "text": "Chargers halftime WR snap count\n\nTre' Harris 31\nQuentin Johnston 28\nDerius Davis 11\nTheo Wease Jr. 3\nKeAndre Lambert-Smith 1\n\nOut of 32 plays",
+          "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3n2hzqox2xk2x",
+          "source": "Bluesky @ffnatejahnke.bsky.social"
+        }
+      ]
+    },
+    {
+      "name": "Kimani Vidal",
+      "pos": "RB",
+      "team": "LAC",
+      "adp": 206.5,
+      "adp_prior": 206.8,
+      "adp_move": 0.3,
+      "proj": null,
+      "sleeper_weight": 1.8,
+      "score": 4.147,
+      "unpriced": true,
+      "signals": [
+        "snap"
+      ],
+      "items": [
+        {
+          "text": "Chargers halftime RB snap count\n\nOmarion Hampton 17\nKeaton Mitchell 11\nKimani Vidal 9\n\nOut of 32 plays",
+          "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3n2hzpjwjos2x",
+          "source": "Bluesky @ffnatejahnke.bsky.social"
+        }
+      ]
+    },
+    {
+      "name": "Josh Cuevas",
+      "pos": "TE",
+      "team": "BAL",
+      "adp": 216.0,
+      "adp_prior": 216.0,
+      "adp_move": 0.0,
+      "proj": null,
+      "sleeper_weight": 1.8,
+      "score": 4.147,
+      "unpriced": true,
+      "signals": [
+        "snap"
+      ],
+      "items": [
+        {
+          "text": "Ravens 1st half TE snap count\n\nMark Andrews 19\nMatt Hibner 8\nJosh Cuevas 8\nNick Vannett 4\n\nOut of 33 plays",
+          "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3n2hzoqltck2x",
+          "source": "Bluesky @ffnatejahnke.bsky.social"
+        }
+      ]
+    },
+    {
+      "name": "Devontez Walker",
+      "pos": "WR",
+      "team": "BAL",
+      "adp": 216.0,
+      "adp_prior": 216.0,
+      "adp_move": 0.0,
+      "proj": null,
+      "sleeper_weight": 1.8,
+      "score": 4.147,
+      "unpriced": true,
+      "signals": [
+        "snap"
+      ],
+      "items": [
+        {
+          "text": "Ravens 1st half WR snap count\n\nZay Flowers 31\nRashod Bateman 31\nJa'Kobi Lane 24\nChris Moore 2\nDevontez Walker 2\n\nOut of 33 plays",
+          "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3n2hznbwvuk2x",
           "source": "Bluesky @ffnatejahnke.bsky.social"
         }
       ]
@@ -1318,294 +1055,107 @@
       ]
     },
     {
-      "name": "Germie Bernard",
+      "name": "Josh Downs",
       "pos": "WR",
-      "team": "PIT",
-      "adp": 205.8,
-      "adp_prior": 202.6,
-      "adp_move": -3.2,
-      "proj": null,
-      "sleeper_weight": 1.8,
-      "score": 3.96,
-      "unpriced": false,
-      "signals": [
-        "target share"
-      ],
-      "items": [
-        {
-          "text": "Germie Bernard had a 10% target share against the Bengals on Sunday night, his lowest target share since becoming a full-time player. His route share was 92%, so he was out there running routes. He hasn't hit 10+ PPR points in each of his last three games.",
-          "url": "https://bsky.app/profile/lateroundqb.bsky.social/post/3n2gq54ztbt2h",
-          "source": "Bluesky @lateroundqb.bsky.social"
-        }
-      ]
-    },
-    {
-      "name": "Baker Mayfield",
-      "pos": "QB",
-      "team": "TB",
-      "adp": 124.1,
-      "adp_prior": 122.0,
-      "adp_move": -2.1,
-      "proj": null,
-      "sleeper_weight": 1.1,
-      "score": 3.915,
-      "unpriced": false,
-      "signals": [
-        "ahead of",
-        "injured",
-        "injury"
-      ],
-      "items": [
-        {
-          "text": "Bucs' injury report confirms Baker Mayfield a non-participant Wednesday. Baker Mayfield was officially out of practice Wednesday.",
-          "url": "https://www.nbcsports.com/nfl/profootballtalk/rumor-mill/news/bucs-injury-report-confirms-baker-mayfield-a-non-participant-wednesday",
-          "source": "ProFootballTalk"
-        },
-        {
-          "text": "NFL Week 11 injury report: Latest update on Chiefs' Kenneth Walker III; Lions' Kerby Joseph practices fully. Get the latest Week 11 injury updates on Kenneth Walker III, Kerby Joseph, Baker Mayfield, Mike Evans and other notable NFL players",
-          "url": "https://www.cbssports.com/nfl/news/nfl-week-11-injury-report-chiefs-kenneth-walker-iii-lions-kerby-joseph/",
-          "source": "CBS Sports NFL"
-        },
-        {
-          "text": "Should Baker Mayfield sit if he\u2019s hurt?. Tampa Bay fans caught wind of a story line they have become all too familiar with in 2026\u2014 Baker Mayfield is hurt. Even worse than Mayfield being injured, the injury does have the potential to make him miss time, namely this week\u2019s game against the Detroit Li",
-          "url": "https://www.bucsnation.com/general/69804/should-baker-mayfield-sit-if-hes-hurt",
-          "source": "SBN TB"
-        },
-        {
-          "text": "Tampa Bay Buccaneers news: Bucs QB Baker Mayfield could miss time with another injury. The Tampa Bay Buccaneers could make a quarterback change ahead of Week 11 against the Detroit Lions, as Baker Mayfield has not fully recovered from the bumps and bruises he suffered against the Chicago Bears befor",
-          "url": "https://www.bucsnation.com/tampa-bay-buccaneers-news/69792/tampa-bay-buccaneers-news-bucs-qb-baker-mayfield-could-miss-time-with-another-injury",
-          "source": "SBN TB"
-        }
-      ]
-    },
-    {
-      "name": "Carnell Tate",
-      "pos": "WR",
-      "team": "TEN",
-      "adp": 63.2,
-      "adp_prior": 61.8,
-      "adp_move": -1.4,
+      "team": "IND",
+      "adp": 84.0,
+      "adp_prior": 82.7,
+      "adp_move": -1.3,
       "proj": null,
       "sleeper_weight": 0.75,
-      "score": 3.9,
+      "score": 3.51,
       "unpriced": true,
       "signals": [
-        "injury"
+        "snaps"
       ],
       "items": [
         {
-          "text": "Carnell Tate injury update: Titans rookie WR will practice today. Carnell Tate has missed the Tennessee Titans&#8217; last two games with a shoulder injury he suffered in the loss to the Cleveland Browns. Robert Saleh said today that the rookie wide receiver will practice today. It sounds like he ha",
-          "url": "https://www.musiccitymiracles.com/tennessee-titans-injuries/67966/carnell-tate-injury-update-titans-rookie-wr-will-practice-today",
-          "source": "SBN TEN"
+          "text": "Andy Reid defends Xavier Worthy\u2019s lack of production. There was a lot to like about the Kansas City Chiefs\u2019 offense immediately after trading for wide receiver Josh Downs. The 35-13 beatdown against the Atlanta Falcons in Week 10 showcased Downs and other receivers stepping up. However, it was a qui",
+          "url": "https://www.arrowheadpride.com/kansas-city-chiefs-news/216909/andy-reid-defends-xavier-worthys-lack-production",
+          "source": "SBN KC"
         }
       ]
     },
     {
-      "name": "George Kittle",
-      "pos": "TE",
-      "team": "SF",
-      "adp": 112.0,
-      "adp_prior": 113.8,
-      "adp_move": 1.8,
-      "proj": null,
-      "sleeper_weight": 1.1,
-      "score": 3.872,
-      "unpriced": true,
-      "signals": [
-        "target share",
-        "targets"
-      ],
-      "items": [
-        {
-          "text": "In Keenan Allen's debut with the 49ers, he had a 57% route share, which was third-highest among San Francisco wide receivers. He still was second on the team with 7 targets (George Kittle had 9) and a 25% target share.",
-          "url": "https://bsky.app/profile/lateroundqb.bsky.social/post/3n2gq54ztbm2h",
-          "source": "Bluesky @lateroundqb.bsky.social"
-        }
-      ]
-    },
-    {
-      "name": "Oronde Gadsden II",
-      "pos": "TE",
+      "name": "Tre Harris",
+      "pos": "WR",
       "team": "LAC",
-      "adp": 204.8,
-      "adp_prior": 173.0,
-      "adp_move": -31.8,
+      "adp": 159.8,
+      "adp_prior": 160.0,
+      "adp_move": 0.2,
       "proj": null,
-      "sleeper_weight": 1.8,
-      "score": 3.6,
-      "unpriced": false,
-      "signals": [
-        "injured",
-        "snap"
-      ],
-      "items": [
-        {
-          "text": "Chargers TE snap count after 3 drives\n\nCharlie Kolar 10\nDavid Njoku 5\nOronde Gadsden 3 (injured on the 9th play)\n\nOut of 15 plays",
-          "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3n2hwokmpkk2x",
-          "source": "Bluesky @ffnatejahnke.bsky.social"
-        }
-      ]
-    },
-    {
-      "name": "Wan'Dale Robinson",
-      "pos": "WR",
-      "team": "TEN",
-      "adp": 115.6,
-      "adp_prior": 111.7,
-      "adp_move": -3.9,
-      "proj": null,
-      "sleeper_weight": 1.1,
-      "score": 3.575,
-      "unpriced": false,
-      "signals": [
-        "injury",
-        "out for"
-      ],
-      "items": [
-        {
-          "text": "Wan'Dale Robinson out for season with ankle injury. The Titans will not have one of their key receivers for the rest of 2026.",
-          "url": "https://www.nbcsports.com/nfl/profootballtalk/rumor-mill/news/wandale-robinson-out-for-season-with-ankle-injury",
-          "source": "ProFootballTalk"
-        }
-      ]
-    },
-    {
-      "name": "Dak Prescott",
-      "pos": "QB",
-      "team": "DAL",
-      "adp": 80.6,
-      "adp_prior": 80.2,
-      "adp_move": -0.4,
-      "proj": null,
-      "sleeper_weight": 0.75,
-      "score": 3.45,
+      "sleeper_weight": 1.5,
+      "score": 3.456,
       "unpriced": true,
       "signals": [
-        "ahead of"
-      ],
-      "items": [
-        {
-          "text": "49ers News: Justice for Fred Warner\u2019s forced fumble. 49ers minutia minute: Dak Prescott, Cowboys targeted Deommodore Lenoir 17 times (paywall)\u201cWarner led all tacklers with 11 and is tied for sixth in the NFL with 88. Three of the players ahead of him have played one more game. He did not, however, g",
-          "url": "https://www.ninersnation.com/san-francisco-49ers-news/165915/49ers-news-week-11-minnesota-vikings-altitude-mexico-city-nick-bosa",
-          "source": "SBN SF"
-        }
-      ]
-    },
-    {
-      "name": "Woody Marks",
-      "pos": "RB",
-      "team": "HOU",
-      "adp": 135.9,
-      "adp_prior": 141.6,
-      "adp_move": 5.7,
-      "proj": null,
-      "sleeper_weight": 1.1,
-      "score": 3.431,
-      "unpriced": false,
-      "signals": [
-        "injury",
-        "out for"
-      ],
-      "items": [
-        {
-          "text": "David Montgomery has no injury designation for Thursday; Woody Marks ruled out. The Texans ruled one running back out for Thursday night's game against the Colts, but they're set to get another one back in the lineup.",
-          "url": "https://www.nbcsports.com/nfl/profootballtalk/rumor-mill/news/david-montgomery-has-no-injury-designation-for-thursday-woody-marks-ruled-out",
-          "source": "ProFootballTalk"
-        },
-        {
-          "text": "NFL news, live updates: Woody Marks out for TNF, Joe Milton to start for Eagles in Week 11. Follow along with the latest NFL news heading into Week 11.",
-          "url": "https://sports.yahoo.com/nfl/live/nfl-news-injury-updates-131219200.html",
-          "source": "Yahoo NFL"
-        }
-      ]
-    },
-    {
-      "name": "Jalen Nailor",
-      "pos": "WR",
-      "team": "LV",
-      "adp": 157.3,
-      "adp_prior": 147.9,
-      "adp_move": -9.4,
-      "proj": null,
-      "sleeper_weight": 1.5,
-      "score": 3.3,
-      "unpriced": false,
-      "signals": [
-        "target share"
-      ],
-      "items": [
-        {
-          "text": "With Brock Bowers off the field in Week 10, Jalen Nailor led the Raiders with a 91% route share. Tre Tucker was next at 83%, and then Michael Mayer and Jack Bech were at 77% and 71%, respectively. Jack Bech led all of them with a 30% target share.",
-          "url": "https://bsky.app/profile/lateroundqb.bsky.social/post/3n2gq54zsbx2h",
-          "source": "Bluesky @lateroundqb.bsky.social"
-        }
-      ]
-    },
-    {
-      "name": "Omar Cooper Jr.",
-      "pos": "WR",
-      "team": "NYJ",
-      "adp": 176.1,
-      "adp_prior": 160.7,
-      "adp_move": -15.4,
-      "proj": null,
-      "sleeper_weight": 1.5,
-      "score": 3.3,
-      "unpriced": false,
-      "signals": [
-        "injury",
-        "snap",
-        "target share",
-        "targets"
-      ],
-      "items": [
-        {
-          "text": "Omar Cooper played one snap against the Bills before exiting with injury. Garrett Wilson and Adonai Mitchell combined for a 55% target share (14 targets for Wilson, 8 for Mitchell), while Isaiah Williams had 7 targets on a 77% route share.",
-          "url": "https://bsky.app/profile/lateroundqb.bsky.social/post/3n2gq54zsbt2h",
-          "source": "Bluesky @lateroundqb.bsky.social"
-        }
-      ]
-    },
-    {
-      "name": "Rashod Bateman",
-      "pos": "WR",
-      "team": "BAL",
-      "adp": 210.7,
-      "adp_prior": 206.3,
-      "adp_move": -4.4,
-      "proj": null,
-      "sleeper_weight": 1.8,
-      "score": 3.24,
-      "unpriced": false,
-      "signals": [
         "snap"
       ],
       "items": [
         {
-          "text": "Ravens 1st half WR snap count\n\nZay Flowers 31\nRashod Bateman 31\nJa'Kobi Lane 24\nChris Moore 2\nDevontez Walker 2\n\nOut of 33 plays",
-          "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3n2hznbwvuk2x",
+          "text": "Chargers halftime WR snap count\n\nTre' Harris 31\nQuentin Johnston 28\nDerius Davis 11\nTheo Wease Jr. 3\nKeAndre Lambert-Smith 1\n\nOut of 32 plays",
+          "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3n2hzqox2xk2x",
           "source": "Bluesky @ffnatejahnke.bsky.social"
         }
       ]
     },
     {
-      "name": "Justice Hill",
-      "pos": "RB",
-      "team": "BAL",
-      "adp": 212.0,
-      "adp_prior": 214.1,
-      "adp_move": 2.1,
+      "name": "Dontayvion Wicks",
+      "pos": "WR",
+      "team": "PHI",
+      "adp": 157.6,
+      "adp_prior": 164.2,
+      "adp_move": 6.6,
       "proj": null,
-      "sleeper_weight": 1.8,
-      "score": 3.24,
+      "sleeper_weight": 1.5,
+      "score": 3.45,
       "unpriced": false,
       "signals": [
-        "snap"
+        "injury"
       ],
       "items": [
         {
-          "text": "Ravens 1st half RB snap count\n\nJustice Hill 22 (11 from the 2 minute drill)\nDerrick Henry 12\n\nOut of 33 plays",
-          "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3n2hzm7bnrk2x",
+          "text": "Eagles Injury Report: DeVonta Smith and Dontayvion Wicks return to practice. The Philadelphia Eagles issued their first official injury report of the week on Wednesday in advance of their Week 11 game against the Pittsburgh Steelers. The Eagles listed one player under DID NOT PARTICIPATE: Zack Baun.",
+          "url": "https://www.bleedinggreennation.com/philadelphia-eagles-injuries/190653/eagles-injury-report-devonta-smith-and-dontayvion-wicks-return-to-practice",
+          "source": "SBN PHI"
+        }
+      ]
+    },
+    {
+      "name": "Mark Andrews",
+      "pos": "TE",
+      "team": "BAL",
+      "adp": 135.6,
+      "adp_prior": 132.6,
+      "adp_move": -3.0,
+      "proj": null,
+      "sleeper_weight": 1.1,
+      "score": 3.28,
+      "unpriced": false,
+      "signals": [
+        "injury",
+        "ir",
+        "snap",
+        "workload"
+      ],
+      "items": [
+        {
+          "text": "Fantasy Football Week 11: Start \u2019em, sit \u2019em. Giants running back Cam Skattebo merits starting spots given his amplified workload in Week 10, while Mark Andrews owners should remain cautious despite a strong last game.",
+          "url": "https://www.pff.com/news/fantasy-football-week-11-start-em-sit-em/",
+          "source": "PFF"
+        },
+        {
+          "text": "While it would have been nice to know the details about Mark Andrews broken hand, he has been on the injury report every week with a hand injury with full participation each day.",
+          "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3n2hxtfiokc2x",
+          "source": "Bluesky @ffnatejahnke.bsky.social"
+        },
+        {
+          "text": "Fantasy Football Recap to the Chargers and Ravens\n\n- Chargers adjust WR usage without Ladd McConkey\n- David Njoku returns from IR\n- Mark Andrews with a big game\n- Both teams adjust LB rotation\n\nwww.pff.com/news/nfl-wee...",
+          "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3n2i7q2ol2s2x",
+          "source": "Bluesky @ffnatejahnke.bsky.social"
+        },
+        {
+          "text": "Ravens 1st half TE snap count\n\nMark Andrews 19\nMatt Hibner 8\nJosh Cuevas 8\nNick Vannett 4\n\nOut of 33 plays",
+          "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3n2hzoqltck2x",
           "source": "Bluesky @ffnatejahnke.bsky.social"
         }
       ]
@@ -1633,185 +1183,95 @@
       ]
     },
     {
-      "name": "Kyren Williams",
-      "pos": "RB",
-      "team": "LAR",
-      "adp": 31.2,
-      "adp_prior": 31.0,
-      "adp_move": -0.2,
-      "proj": null,
-      "sleeper_weight": 0.5,
-      "score": 3.186,
-      "unpriced": true,
-      "signals": [
-        "depth chart",
-        "snap",
-        "snaps",
-        "targets"
-      ],
-      "items": [
-        {
-          "text": "RAMalytics: How will Rams deploy their new offensive wrinkle?. Sean McVay looked at the Los Angeles Rams\u2019 depth chart following their recent rash of injuries and said \u201cI\u2019m just going to put our best remaining players on the field.\u201d At times Sunday against the Arizona Cardinals, that meant deploying ",
-          "url": "https://www.turfshowtimes.com/los-angeles-rams-analysis/155370/rams-pony-personnel-corum-williams",
-          "source": "SBN LAR"
-        },
-        {
-          "text": "Before Ronnie Rivers' first snap (garbage time), the Rams backfield snap split was 38 to 37 in favor of Kyren Williams. Williams had 22 routes run to Corum's 13, and he had 5 targets to Corum's 4. Corum, though, had 2 goal-line rushes to Williams' 0.",
-          "url": "https://bsky.app/profile/lateroundqb.bsky.social/post/3n2gq54zscc2h",
-          "source": "Bluesky @lateroundqb.bsky.social"
-        },
-        {
-          "text": "Kyren Williams and Blake Corum played 18 offensive snaps together in Week 10. They didn't play together at all from Weeks 1-9.",
-          "url": "https://bsky.app/profile/lateroundqb.bsky.social/post/3n2gq54zscb2h",
-          "source": "Bluesky @lateroundqb.bsky.social"
-        }
-      ]
-    },
-    {
-      "name": "Braelon Allen",
-      "pos": "RB",
-      "team": "NYJ",
-      "adp": 180.7,
-      "adp_prior": 193.9,
-      "adp_move": 13.2,
-      "proj": null,
-      "sleeper_weight": 1.5,
-      "score": 3.158,
-      "unpriced": false,
-      "signals": [
-        "breakout",
-        "snaps"
-      ],
-      "items": [
-        {
-          "text": "The Jets Need To Reimagine Their Running Back Usage. I\u2019ll start this article with a shameless pat on the back. Despite me getting numerous things wrong throughout the years (likely more wrong than right), one thing I\u2019ve been very happy to see develop is the breakout of Braelon Allen. Now, for those ",
-          "url": "https://www.ganggreennation.com/new-york-jets-analysis/98657/the-jets-need-to-reimagine-their-running-back-usage",
-          "source": "SBN NYJ"
-        },
-        {
-          "text": "Breece Hall played 8 more snaps than Braelon Allen in Week 10. The rush split was 11 to 8 in favor of Hall, and the route split was 21 to 18 in favor of Hall. Hall played 46% of their third downs, when that was 8% last week.",
-          "url": "https://bsky.app/profile/lateroundqb.bsky.social/post/3n2gq54zsbs2h",
-          "source": "Bluesky @lateroundqb.bsky.social"
-        }
-      ]
-    },
-    {
-      "name": "Geno Smith",
+      "name": "Baker Mayfield",
       "pos": "QB",
-      "team": "NYJ",
-      "adp": 189.2,
-      "adp_prior": 193.3,
-      "adp_move": 4.1,
+      "team": "TB",
+      "adp": 124.1,
+      "adp_prior": 122.0,
+      "adp_move": -2.1,
       "proj": null,
-      "sleeper_weight": 1.5,
-      "score": 3.12,
+      "sleeper_weight": 1.1,
+      "score": 3.224,
       "unpriced": false,
       "signals": [
-        "injury",
-        "limited"
+        "injured",
+        "injury"
       ],
       "items": [
         {
-          "text": "Geno Smith plans to play against Chargers despite lingering ankle injury. Jets QB Geno Smith was limited in practice with an ankle injury but expects to start Sunday against the Los Angeles Chargers.",
-          "url": "https://sports.yahoo.com/articles/geno-smith-plans-play-against-002220361.html",
-          "source": "Yahoo NFL"
-        }
-      ]
-    },
-    {
-      "name": "Ladd McConkey",
-      "pos": "WR",
-      "team": "LAC",
-      "adp": 33.5,
-      "adp_prior": 33.3,
-      "adp_move": -0.2,
-      "proj": null,
-      "sleeper_weight": 0.5,
-      "score": 3.088,
-      "unpriced": true,
-      "signals": [
-        "injury",
-        "ir",
-        "limited",
-        "sidelined"
-      ],
-      "items": [
-        {
-          "text": "Chargers-Jets Injury Report: Ladd McConkey returns to practice. After backs spasms kept sidelined for the past two games, wide receiver Ladd McConkey returned to practice on Wednesday but participated in a limited fashion. He was one of five players who logged limited practices, joining cornerback D",
-          "url": "https://www.boltsfromtheblue.com/los-angeles-chargers-injuries/67196/chargers-jets-injury-report-ladd-mcconkey-charlie-kolar",
-          "source": "SBN LAC"
+          "text": "NFL Week 11 injury report: Latest update on Chiefs' Kenneth Walker III; Lions' Kerby Joseph practices fully. Get the latest Week 11 injury updates on Kenneth Walker III, Kerby Joseph, Baker Mayfield, Mike Evans and other notable NFL players",
+          "url": "https://www.cbssports.com/nfl/news/nfl-week-11-injury-report-chiefs-kenneth-walker-iii-lions-kerby-joseph/",
+          "source": "CBS Sports NFL"
         },
         {
-          "text": "Fantasy Football Recap to the Chargers and Ravens\n\n- Chargers adjust WR usage without Ladd McConkey\n- David Njoku returns from IR\n- Mark Andrews with a big game\n- Both teams adjust LB rotation\n\nwww.pff.com/news/nfl-wee...",
-          "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3n2i7q2ol2s2x",
-          "source": "Bluesky @ffnatejahnke.bsky.social"
+          "text": "Should Baker Mayfield sit if he\u2019s hurt?. Tampa Bay fans caught wind of a story line they have become all too familiar with in 2026\u2014 Baker Mayfield is hurt. Even worse than Mayfield being injured, the injury does have the potential to make him miss time, namely this week\u2019s game against the Detroit Li",
+          "url": "https://www.bucsnation.com/general/69804/should-baker-mayfield-sit-if-hes-hurt",
+          "source": "SBN TB"
+        },
+        {
+          "text": "Buccaneers at Lions: Initial injury report for Week 11. The Tampa Bay Buccaneers returned from their bye week and began preparations for their Week 11 matchup against the Detroit Lions on Wednesday, with much of the attention surrounding the health of quarterback Baker Mayfield. Tampa Bay listed six",
+          "url": "https://www.bucsnation.com/tampa-bay-buccaneers-injuries/69846/buccaneers-lions-initial-injury-report-nfl-week-11",
+          "source": "SBN TB"
         }
       ]
     },
     {
-      "name": "Michael Wilson",
+      "name": "Lamar Jackson",
+      "pos": "QB",
+      "team": "BAL",
+      "adp": 57.4,
+      "adp_prior": 56.2,
+      "adp_move": -1.2,
+      "proj": null,
+      "sleeper_weight": 0.5,
+      "score": 3.021,
+      "unpriced": true,
+      "signals": [
+        "injured",
+        "ir"
+      ],
+      "items": [
+        {
+          "text": "Ravens discussion: Marlon Humphrey can\u2019t leave Baltimore soon enough. The Baltimore Ravens are having a miserable season. Lamar Jackson is injured. The team is losing. Fans are not happy. So when a longtime Raven, a supposed leader, a former first-round pick on a $100 million contract says that the ",
+          "url": "https://www.baltimorebeatdown.com/baltimore-ravens-discussion/88005/ravens-discussion-marlon-humphrey-cant-leave-baltimore-soon-enough",
+          "source": "SBN BAL"
+        },
+        {
+          "text": "Ravens activate RB Adam Randall from injured reserve. The Baltimore Ravens activated running back Adam Randall from injured reserve on Wednesday, possibly positioning the sixth-round pick to make his NFL debut on Sunday against the Panthers. The Ravens now have four IR activations remaining with two",
+          "url": "https://www.baltimorebeatdown.com/baltimore-ravens-news/88012/ravens-activate-rb-adam-randall-from-injured-reserve",
+          "source": "SBN BAL"
+        }
+      ]
+    },
+    {
+      "name": "Carnell Tate",
       "pos": "WR",
-      "team": "ARI",
-      "adp": 91.2,
-      "adp_prior": 90.8,
-      "adp_move": -0.4,
+      "team": "TEN",
+      "adp": 63.2,
+      "adp_prior": 61.8,
+      "adp_move": -1.4,
       "proj": null,
       "sleeper_weight": 0.75,
       "score": 3.0,
       "unpriced": true,
       "signals": [
-        "out for"
+        "injury"
       ],
       "items": [
         {
-          "text": "With Michael Wilson now out for the year, the Cardinals ran 47% of their offensive plays out of 13 personnel on Sunday. That was the most 13 personnel they played all season.",
-          "url": "https://bsky.app/profile/lateroundqb.bsky.social/post/3n2gq54zsc72h",
-          "source": "Bluesky @lateroundqb.bsky.social"
+          "text": "Carnell Tate injury update: Titans rookie WR will practice today. Carnell Tate has missed the Tennessee Titans&#8217; last two games with a shoulder injury he suffered in the loss to the Cleveland Browns. Robert Saleh said today that the rookie wide receiver will practice today. It sounds like he ha",
+          "url": "https://www.musiccitymiracles.com/tennessee-titans-injuries/67966/carnell-tate-injury-update-titans-rookie-wr-will-practice-today",
+          "source": "SBN TEN"
         }
       ]
     },
     {
-      "name": "Blake Corum",
-      "pos": "RB",
-      "team": "LAR",
-      "adp": 85.6,
-      "adp_prior": 88.6,
-      "adp_move": 3.0,
-      "proj": null,
-      "sleeper_weight": 0.75,
-      "score": 2.987,
-      "unpriced": false,
-      "signals": [
-        "depth chart",
-        "snap",
-        "snaps",
-        "target share"
-      ],
-      "items": [
-        {
-          "text": "RAMalytics: How will Rams deploy their new offensive wrinkle?. Sean McVay looked at the Los Angeles Rams\u2019 depth chart following their recent rash of injuries and said \u201cI\u2019m just going to put our best remaining players on the field.\u201d At times Sunday against the Arizona Cardinals, that meant deploying ",
-          "url": "https://www.turfshowtimes.com/los-angeles-rams-analysis/155370/rams-pony-personnel-corum-williams",
-          "source": "SBN LAR"
-        },
-        {
-          "text": "Blake Corum had a 50% snap share in Week 10, which was a career high. His 17 rush attempts tied a career high. His 13 routes run tied a career high. His 15% target share was a career high. His 20.9 PPR points was a season high.",
-          "url": "https://bsky.app/profile/lateroundqb.bsky.social/post/3n2gq54zscd2h",
-          "source": "Bluesky @lateroundqb.bsky.social"
-        },
-        {
-          "text": "Kyren Williams and Blake Corum played 18 offensive snaps together in Week 10. They didn't play together at all from Weeks 1-9.",
-          "url": "https://bsky.app/profile/lateroundqb.bsky.social/post/3n2gq54zscb2h",
-          "source": "Bluesky @lateroundqb.bsky.social"
-        }
-      ]
-    },
-    {
-      "name": "Charlie Kolar",
+      "name": "Oronde Gadsden II",
       "pos": "TE",
       "team": "LAC",
-      "adp": 208.8,
-      "adp_prior": 213.5,
-      "adp_move": 4.7,
+      "adp": 204.8,
+      "adp_prior": 173.0,
+      "adp_move": -31.8,
       "proj": null,
       "sleeper_weight": 1.8,
       "score": 2.88,
@@ -1829,71 +1289,32 @@
       ]
     },
     {
-      "name": "Zach Charbonnet",
-      "pos": "RB",
-      "team": "SEA",
-      "adp": 165.8,
-      "adp_prior": 161.6,
-      "adp_move": -4.2,
-      "proj": null,
-      "sleeper_weight": 1.5,
-      "score": 2.7,
-      "unpriced": false,
-      "signals": [
-        "snaps"
-      ],
-      "items": [
-        {
-          "text": "Zach Charbonnet played 40 offensive snaps to Jadarian Price's 15 on Sunday. The rush split was 20 to 9, and Charbs ran 12 routes to Price's 6. Charbonnet had 9.6 expected PPR points to Price's 6.3.",
-          "url": "https://bsky.app/profile/lateroundqb.bsky.social/post/3n2gq54zsbz2h",
-          "source": "Bluesky @lateroundqb.bsky.social"
-        }
-      ]
-    },
-    {
-      "name": "A.J. Barner",
-      "pos": "TE",
-      "team": "SEA",
-      "adp": 173.5,
-      "adp_prior": 178.6,
-      "adp_move": 5.1,
-      "proj": null,
-      "sleeper_weight": 1.5,
-      "score": 2.64,
-      "unpriced": false,
-      "signals": [
-        "target share"
-      ],
-      "items": [
-        {
-          "text": "AJ Barner was second on the Seahawks with an 82% route share on Sunday. He's seen between a 14% and 20% target share in all but one game over his last eight.",
-          "url": "https://bsky.app/profile/lateroundqb.bsky.social/post/3n2gq54zsby2h",
-          "source": "Bluesky @lateroundqb.bsky.social"
-        }
-      ]
-    },
-    {
-      "name": "Adonai Mitchell",
+      "name": "Ladd McConkey",
       "pos": "WR",
-      "team": "NYJ",
-      "adp": 166.7,
-      "adp_prior": 172.5,
-      "adp_move": 5.8,
+      "team": "LAC",
+      "adp": 33.5,
+      "adp_prior": 33.3,
+      "adp_move": -0.2,
       "proj": null,
-      "sleeper_weight": 1.5,
-      "score": 2.64,
-      "unpriced": false,
+      "sleeper_weight": 0.5,
+      "score": 2.708,
+      "unpriced": true,
       "signals": [
         "injury",
-        "snap",
-        "target share",
-        "targets"
+        "ir",
+        "limited",
+        "sidelined"
       ],
       "items": [
         {
-          "text": "Omar Cooper played one snap against the Bills before exiting with injury. Garrett Wilson and Adonai Mitchell combined for a 55% target share (14 targets for Wilson, 8 for Mitchell), while Isaiah Williams had 7 targets on a 77% route share.",
-          "url": "https://bsky.app/profile/lateroundqb.bsky.social/post/3n2gq54zsbt2h",
-          "source": "Bluesky @lateroundqb.bsky.social"
+          "text": "Chargers-Jets Injury Report: Ladd McConkey returns to practice. After backs spasms kept sidelined for the past two games, wide receiver Ladd McConkey returned to practice on Wednesday but participated in a limited fashion. He was one of five players who logged limited practices, joining cornerback D",
+          "url": "https://www.boltsfromtheblue.com/los-angeles-chargers-injuries/67196/chargers-jets-injury-report-ladd-mcconkey-charlie-kolar",
+          "source": "SBN LAC"
+        },
+        {
+          "text": "Fantasy Football Recap to the Chargers and Ravens\n\n- Chargers adjust WR usage without Ladd McConkey\n- David Njoku returns from IR\n- Mark Andrews with a big game\n- Both teams adjust LB rotation\n\nwww.pff.com/news/nfl-wee...",
+          "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3n2i7q2ol2s2x",
+          "source": "Bluesky @ffnatejahnke.bsky.social"
         }
       ]
     },
@@ -1920,59 +1341,164 @@
       ]
     },
     {
-      "name": "David Montgomery",
-      "pos": "RB",
-      "team": "HOU",
-      "adp": 46.7,
-      "adp_prior": 47.4,
-      "adp_move": 0.7,
-      "proj": null,
-      "sleeper_weight": 0.5,
-      "score": 2.6,
-      "unpriced": true,
-      "signals": [
-        "injury",
-        "out for"
-      ],
-      "items": [
-        {
-          "text": "David Montgomery has no injury designation for Thursday; Woody Marks ruled out. The Texans ruled one running back out for Thursday night's game against the Colts, but they're set to get another one back in the lineup.",
-          "url": "https://www.nbcsports.com/nfl/profootballtalk/rumor-mill/news/david-montgomery-has-no-injury-designation-for-thursday-woody-marks-ruled-out",
-          "source": "ProFootballTalk"
-        }
-      ]
-    },
-    {
-      "name": "Mark Andrews",
-      "pos": "TE",
+      "name": "Rashod Bateman",
+      "pos": "WR",
       "team": "BAL",
-      "adp": 135.6,
-      "adp_prior": 132.6,
-      "adp_move": -3.0,
+      "adp": 210.7,
+      "adp_prior": 206.3,
+      "adp_move": -4.4,
       "proj": null,
-      "sleeper_weight": 1.1,
-      "score": 2.596,
+      "sleeper_weight": 1.8,
+      "score": 2.592,
       "unpriced": false,
       "signals": [
-        "injury",
-        "ir",
         "snap"
       ],
       "items": [
         {
-          "text": "While it would have been nice to know the details about Mark Andrews broken hand, he has been on the injury report every week with a hand injury with full participation each day.",
-          "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3n2hxtfiokc2x",
+          "text": "Ravens 1st half WR snap count\n\nZay Flowers 31\nRashod Bateman 31\nJa'Kobi Lane 24\nChris Moore 2\nDevontez Walker 2\n\nOut of 33 plays",
+          "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3n2hznbwvuk2x",
           "source": "Bluesky @ffnatejahnke.bsky.social"
+        }
+      ]
+    },
+    {
+      "name": "Justice Hill",
+      "pos": "RB",
+      "team": "BAL",
+      "adp": 212.0,
+      "adp_prior": 214.1,
+      "adp_move": 2.1,
+      "proj": null,
+      "sleeper_weight": 1.8,
+      "score": 2.592,
+      "unpriced": false,
+      "signals": [
+        "snap"
+      ],
+      "items": [
+        {
+          "text": "Ravens 1st half RB snap count\n\nJustice Hill 22 (11 from the 2 minute drill)\nDerrick Henry 12\n\nOut of 33 plays",
+          "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3n2hzm7bnrk2x",
+          "source": "Bluesky @ffnatejahnke.bsky.social"
+        }
+      ]
+    },
+    {
+      "name": "Charlie Kolar",
+      "pos": "TE",
+      "team": "LAC",
+      "adp": 208.8,
+      "adp_prior": 213.5,
+      "adp_move": 4.7,
+      "proj": null,
+      "sleeper_weight": 1.8,
+      "score": 2.304,
+      "unpriced": false,
+      "signals": [
+        "injured",
+        "snap"
+      ],
+      "items": [
+        {
+          "text": "Chargers TE snap count after 3 drives\n\nCharlie Kolar 10\nDavid Njoku 5\nOronde Gadsden 3 (injured on the 9th play)\n\nOut of 15 plays",
+          "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3n2hwokmpkk2x",
+          "source": "Bluesky @ffnatejahnke.bsky.social"
+        }
+      ]
+    },
+    {
+      "name": "DeVonta Smith",
+      "pos": "WR",
+      "team": "PHI",
+      "adp": 27.9,
+      "adp_prior": 27.7,
+      "adp_move": -0.2,
+      "proj": null,
+      "sleeper_weight": 0.5,
+      "score": 2.3,
+      "unpriced": true,
+      "signals": [
+        "injury"
+      ],
+      "items": [
+        {
+          "text": "Eagles Injury Report: DeVonta Smith and Dontayvion Wicks return to practice. The Philadelphia Eagles issued their first official injury report of the week on Wednesday in advance of their Week 11 game against the Pittsburgh Steelers. The Eagles listed one player under DID NOT PARTICIPATE: Zack Baun.",
+          "url": "https://www.bleedinggreennation.com/philadelphia-eagles-injuries/190653/eagles-injury-report-devonta-smith-and-dontayvion-wicks-return-to-practice",
+          "source": "SBN PHI"
+        }
+      ]
+    },
+    {
+      "name": "Jordyn Tyson",
+      "pos": "WR",
+      "team": "NO",
+      "adp": 103.0,
+      "adp_prior": 83.6,
+      "adp_move": -19.4,
+      "proj": null,
+      "sleeper_weight": 0.75,
+      "score": 2.3,
+      "unpriced": false,
+      "signals": [
+        "best player",
+        "impressed"
+      ],
+      "items": [
+        {
+          "text": "Saints Rookie Report: Week 10 review vs. the Panthers. The New Orleans Saints rookies had a chance to make a big impact against the Carolina Panthers, but only one player did.&#160; WR Jordyn Tyson Well, let\u2019s start with the one player. Jordyn Tyson was arguably the best player on the field every ti",
+          "url": "https://www.canalstreetchronicles.com/new-orleans-saints-roster/118197/saints-rookie-report-nfl-week-10-review-vs-the-panthers",
+          "source": "SBN NO"
         },
         {
-          "text": "Fantasy Football Recap to the Chargers and Ravens\n\n- Chargers adjust WR usage without Ladd McConkey\n- David Njoku returns from IR\n- Mark Andrews with a big game\n- Both teams adjust LB rotation\n\nwww.pff.com/news/nfl-wee...",
-          "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3n2i7q2ol2s2x",
-          "source": "Bluesky @ffnatejahnke.bsky.social"
-        },
+          "text": "Saints power rankings: NFL Week 10. A bad loss, but it was so close that it could only cause a minor drop in the rankings. NFL.com &#8211; 25 (-2) \u201cThe Saints seem like a directionless outfit. It\u2019s not Tyler Shough\u2019s fault; he\u2019s done a solid job for the most part this season. Rookie Jordyn Tyson has",
+          "url": "https://www.canalstreetchronicles.com/nfl-power-rankings/118126/saints-power-rankings-nfl-week-10",
+          "source": "SBN NO"
+        }
+      ]
+    },
+    {
+      "name": "Woody Marks",
+      "pos": "RB",
+      "team": "HOU",
+      "adp": 135.9,
+      "adp_prior": 141.6,
+      "adp_move": 5.7,
+      "proj": null,
+      "sleeper_weight": 1.1,
+      "score": 2.288,
+      "unpriced": false,
+      "signals": [
+        "ahead of",
+        "injury"
+      ],
+      "items": [
         {
-          "text": "Ravens 1st half TE snap count\n\nMark Andrews 19\nMatt Hibner 8\nJosh Cuevas 8\nNick Vannett 4\n\nOut of 33 plays",
-          "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3n2hzoqltck2x",
-          "source": "Bluesky @ffnatejahnke.bsky.social"
+          "text": "Are Woody Marks and David Montgomery playing tonight? Texans' rushing attack short-handed vs. Colts. Both of Houston's two RBs are on the injury report ahead of the Week 11 matchup against Indy",
+          "url": "https://www.cbssports.com/nfl/news/are-woody-marks-and-david-montgomery-playing-tonight-texans-rushing-attack-short-handed-vs-colts/",
+          "source": "CBS Sports NFL"
+        }
+      ]
+    },
+    {
+      "name": "Xavier Worthy",
+      "pos": "WR",
+      "team": "KC",
+      "adp": 108.1,
+      "adp_prior": 105.4,
+      "adp_move": -2.7,
+      "proj": null,
+      "sleeper_weight": 1.1,
+      "score": 2.288,
+      "unpriced": false,
+      "signals": [
+        "snaps"
+      ],
+      "items": [
+        {
+          "text": "Andy Reid defends Xavier Worthy\u2019s lack of production. There was a lot to like about the Kansas City Chiefs\u2019 offense immediately after trading for wide receiver Josh Downs. The 35-13 beatdown against the Atlanta Falcons in Week 10 showcased Downs and other receivers stepping up. However, it was a qui",
+          "url": "https://www.arrowheadpride.com/kansas-city-chiefs-news/216909/andy-reid-defends-xavier-worthys-lack-production",
+          "source": "SBN KC"
         }
       ]
     },
@@ -1985,7 +1511,7 @@
       "adp_move": -3.3,
       "proj": null,
       "sleeper_weight": 0.75,
-      "score": 2.438,
+      "score": 2.156,
       "unpriced": false,
       "signals": [
         "ahead of",
@@ -2000,24 +1526,25 @@
       ]
     },
     {
-      "name": "Jake Ferguson",
-      "pos": "TE",
-      "team": "DAL",
-      "adp": 137.0,
-      "adp_prior": 134.0,
-      "adp_move": -3.0,
+      "name": "David Montgomery",
+      "pos": "RB",
+      "team": "HOU",
+      "adp": 46.7,
+      "adp_prior": 47.4,
+      "adp_move": 0.7,
       "proj": null,
-      "sleeper_weight": 1.1,
-      "score": 2.42,
-      "unpriced": false,
+      "sleeper_weight": 0.5,
+      "score": 2.08,
+      "unpriced": true,
       "signals": [
-        "target share"
+        "ahead of",
+        "injury"
       ],
       "items": [
         {
-          "text": "When Jake Ferguson exited last week's game, Brevyn Spann-Ford had about an 80% route share. In Week 10, his route share was 57%. He had just a 6% target share. No team has targeted tight ends at a lower rate this year than Dallas has.",
-          "url": "https://bsky.app/profile/lateroundqb.bsky.social/post/3n2gq54ztbq2h",
-          "source": "Bluesky @lateroundqb.bsky.social"
+          "text": "Are Woody Marks and David Montgomery playing tonight? Texans' rushing attack short-handed vs. Colts. Both of Houston's two RBs are on the injury report ahead of the Week 11 matchup against Indy",
+          "url": "https://www.cbssports.com/nfl/news/are-woody-marks-and-david-montgomery-playing-tonight-texans-rushing-attack-short-handed-vs-colts/",
+          "source": "CBS Sports NFL"
         }
       ]
     },
@@ -2030,7 +1557,7 @@
       "adp_move": 3.2,
       "proj": null,
       "sleeper_weight": 1.5,
-      "score": 2.34,
+      "score": 2.07,
       "unpriced": false,
       "signals": [
         "limited"
@@ -2044,141 +1571,24 @@
       ]
     },
     {
-      "name": "DK Metcalf",
-      "pos": "WR",
-      "team": "PIT",
-      "adp": 74.9,
-      "adp_prior": 74.8,
-      "adp_move": -0.1,
-      "proj": null,
-      "sleeper_weight": 0.75,
-      "score": 2.16,
-      "unpriced": true,
-      "signals": [
-        "targets"
-      ],
-      "items": [
-        {
-          "text": "DK Metcalf had 6 targets against the Bengals, and 5 of them were on 15+ air yard throws. That was by far his highest rate of the season in a game \u2014 his previous 15+ air yard rate high was 60% back in Week 1.",
-          "url": "https://bsky.app/profile/lateroundqb.bsky.social/post/3n2gq54ztbu2h",
-          "source": "Bluesky @lateroundqb.bsky.social"
-        }
-      ]
-    },
-    {
-      "name": "Jaylen Warren",
+      "name": "Braelon Allen",
       "pos": "RB",
-      "team": "PIT",
-      "adp": 69.1,
-      "adp_prior": 69.7,
-      "adp_move": 0.6,
+      "team": "NYJ",
+      "adp": 180.7,
+      "adp_prior": 193.9,
+      "adp_move": 13.2,
       "proj": null,
-      "sleeper_weight": 0.75,
-      "score": 2.16,
-      "unpriced": true,
-      "signals": [
-        "snaps"
-      ],
-      "items": [
-        {
-          "text": "Rico Dowdle played 6 more snaps than Jaylen Warren on Sunday night, and he ran 6 more routes. That's the first time Dowdle's out-snapped Warren since Week 1.",
-          "url": "https://bsky.app/profile/lateroundqb.bsky.social/post/3n2gq54ztbs2h",
-          "source": "Bluesky @lateroundqb.bsky.social"
-        }
-      ]
-    },
-    {
-      "name": "Jalon Daniels",
-      "pos": "QB",
-      "team": "TB",
-      "adp": 216.0,
-      "adp_prior": 216.0,
-      "adp_move": 0.0,
-      "proj": null,
-      "sleeper_weight": 1.8,
-      "score": 2.138,
-      "unpriced": true,
-      "signals": [
-        "ahead of",
-        "injury"
-      ],
-      "items": [
-        {
-          "text": "Tampa Bay Buccaneers news: Bucs QB Baker Mayfield could miss time with another injury. The Tampa Bay Buccaneers could make a quarterback change ahead of Week 11 against the Detroit Lions, as Baker Mayfield has not fully recovered from the bumps and bruises he suffered against the Chicago Bears befor",
-          "url": "https://www.bucsnation.com/tampa-bay-buccaneers-news/69792/tampa-bay-buccaneers-news-bucs-qb-baker-mayfield-could-miss-time-with-another-injury",
-          "source": "SBN TB"
-        }
-      ]
-    },
-    {
-      "name": "Tyler Allgeier",
-      "pos": "RB",
-      "team": "ARI",
-      "adp": 138.7,
-      "adp_prior": 141.6,
-      "adp_move": 2.9,
-      "proj": null,
-      "sleeper_weight": 1.1,
-      "score": 1.98,
+      "sleeper_weight": 1.5,
+      "score": 2.062,
       "unpriced": false,
       "signals": [
-        "snaps"
+        "breakout"
       ],
       "items": [
         {
-          "text": "Tyler Allgeier played 15 snaps to Bam Knight's 19 in Week 10. They both had 5 rushes, and neither player reached 20 rushing yards.",
-          "url": "https://bsky.app/profile/lateroundqb.bsky.social/post/3n2gq54zsc42h",
-          "source": "Bluesky @lateroundqb.bsky.social"
-        }
-      ]
-    },
-    {
-      "name": "Keaton Mitchell",
-      "pos": "RB",
-      "team": "LAC",
-      "adp": 132.5,
-      "adp_prior": 129.7,
-      "adp_move": -2.8,
-      "proj": null,
-      "sleeper_weight": 1.1,
-      "score": 1.98,
-      "unpriced": false,
-      "signals": [
-        "snap"
-      ],
-      "items": [
-        {
-          "text": "Chargers halftime RB snap count\n\nOmarion Hampton 17\nKeaton Mitchell 11\nKimani Vidal 9\n\nOut of 32 plays",
-          "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3n2hzpjwjos2x",
-          "source": "Bluesky @ffnatejahnke.bsky.social"
-        }
-      ]
-    },
-    {
-      "name": "Kenneth Walker III",
-      "pos": "RB",
-      "team": "KC",
-      "adp": 13.8,
-      "adp_prior": 14.4,
-      "adp_move": 0.6,
-      "proj": null,
-      "sleeper_weight": 0.3,
-      "score": 1.927,
-      "unpriced": true,
-      "signals": [
-        "injury",
-        "out for"
-      ],
-      "items": [
-        {
-          "text": "Kenneth Walker won't practice Wednesday with groin injury. Kenneth Walker's groin injury will keep him out for at least another day.",
-          "url": "https://www.nbcsports.com/nfl/profootballtalk/rumor-mill/news/kenneth-walker-wont-practice-wednesday-with-groin-injury",
-          "source": "ProFootballTalk"
-        },
-        {
-          "text": "NFL Week 11 injury report: Latest update on Chiefs' Kenneth Walker III; Lions' Kerby Joseph practices fully. Get the latest Week 11 injury updates on Kenneth Walker III, Kerby Joseph, Baker Mayfield, Mike Evans and other notable NFL players",
-          "url": "https://www.cbssports.com/nfl/news/nfl-week-11-injury-report-chiefs-kenneth-walker-iii-lions-kerby-joseph/",
-          "source": "CBS Sports NFL"
+          "text": "The Jets Need To Reimagine Their Running Back Usage. I\u2019ll start this article with a shameless pat on the back. Despite me getting numerous things wrong throughout the years (likely more wrong than right), one thing I\u2019ve been very happy to see develop is the breakout of Braelon Allen. Now, for those ",
+          "url": "https://www.ganggreennation.com/new-york-jets-analysis/98657/the-jets-need-to-reimagine-their-running-back-usage",
+          "source": "SBN NYJ"
         }
       ]
     },
@@ -2205,158 +1615,48 @@
       ]
     },
     {
-      "name": "Tetairoa Mcmillan",
+      "name": "Wan'Dale Robinson",
       "pos": "WR",
-      "team": "CAR",
-      "adp": 41.1,
-      "adp_prior": 40.2,
-      "adp_move": -0.9,
+      "team": "TEN",
+      "adp": 115.6,
+      "adp_prior": 111.7,
+      "adp_move": -3.9,
       "proj": null,
-      "sleeper_weight": 0.5,
-      "score": 1.84,
-      "unpriced": true,
-      "signals": [
-        "climbing"
-      ],
-      "items": [
-        {
-          "text": "NFL Wide Receiver Rankings: Jaxon Smith-Njigba remains No. 1, Ja\u2019Marr Chase keeps climbing. The NFL wide receiver rankings entering Week 11 of the 2026 season feature Jaxon Smith-Njigba at No. 1, followed by Ja'Marr Chase and CeeDee Lamb. Amon-Ra St. Brown moves into the top 10, while Tetairoa McMil",
-          "url": "https://www.pff.com/news/nfl-wide-receiver-rankings/",
-          "source": "PFF"
-        }
-      ]
-    },
-    {
-      "name": "Mike Evans",
-      "pos": "WR",
-      "team": "SF",
-      "adp": 54.5,
-      "adp_prior": 49.6,
-      "adp_move": -4.9,
-      "proj": null,
-      "sleeper_weight": 0.5,
-      "score": 1.833,
+      "sleeper_weight": 1.1,
+      "score": 1.891,
       "unpriced": false,
       "signals": [
-        "injury",
-        "snap"
+        "injured",
+        "ir",
+        "promoted"
       ],
       "items": [
         {
-          "text": "3 things to watch on Sunday: The Vikings&#8217; defense can be beaten on the ground. The San Francisco 49ers and Minnesota Vikings will do battle on Sunday Night Football in Mexico City, with both teams fighting for the number one seed in the NFC. The 49ers are looking to snap their dry spell agains",
-          "url": "https://www.ninersnation.com/san-francisco-49ers-analysis/165946/3-things-to-watch-on-sunday-the-vikings-defense-can-be-beaten-on-the-ground",
-          "source": "SBN SF"
-        },
-        {
-          "text": "NFL Week 11 injury report: Latest update on Chiefs' Kenneth Walker III; Lions' Kerby Joseph practices fully. Get the latest Week 11 injury updates on Kenneth Walker III, Kerby Joseph, Baker Mayfield, Mike Evans and other notable NFL players",
-          "url": "https://www.cbssports.com/nfl/news/nfl-week-11-injury-report-chiefs-kenneth-walker-iii-lions-kerby-joseph/",
-          "source": "CBS Sports NFL"
+          "text": "Titans place Wan\u2019Dale Robinson on IR; Promote Xavier Restrepo to roster. Ian Rapoport is reporting that the Tennessee Titans have placed wide receiver Wan\u2019Dale Robinson on injured reserve and promoted wide receiver Xavier Restrepo to the active roster: It has been a disappointing first season in Ten",
+          "url": "https://www.musiccitymiracles.com/tennessee-titans-injuries/67946/titans-place-wandale-robinson-on-ir-promote-xavier-restrepo-to-roster",
+          "source": "SBN TEN"
         }
       ]
     },
     {
-      "name": "Jordyn Tyson",
-      "pos": "WR",
-      "team": "NO",
-      "adp": 103.0,
-      "adp_prior": 83.6,
-      "adp_move": -19.4,
-      "proj": null,
-      "sleeper_weight": 0.75,
-      "score": 1.826,
-      "unpriced": false,
-      "signals": [
-        "impressed",
-        "targets"
-      ],
-      "items": [
-        {
-          "text": "Saints vs. Panthers: The good, the bad, and the ugly in Week 10. The Good: Jordyn Tyson The Saints rookie wide receiver caught 11 of 13 targets for 80 yards in just his second career game. He made a great diving catch over the middle to move the chains and also had some tough catches in traffic. Had",
-          "url": "https://www.canalstreetchronicles.com/new-orleans-saints-analysis/118060/saints-vs-panthers-the-good-the-bad-and-the-ugly-in-nfl-week-10",
-          "source": "SBN NO"
-        },
-        {
-          "text": "Saints power rankings: NFL Week 10. A bad loss, but it was so close that it could only cause a minor drop in the rankings. NFL.com &#8211; 25 (-2) \u201cThe Saints seem like a directionless outfit. It\u2019s not Tyler Shough\u2019s fault; he\u2019s done a solid job for the most part this season. Rookie Jordyn Tyson has",
-          "url": "https://www.canalstreetchronicles.com/nfl-power-rankings/118126/saints-power-rankings-nfl-week-10",
-          "source": "SBN NO"
-        }
-      ]
-    },
-    {
-      "name": "Omarion Hampton",
-      "pos": "RB",
-      "team": "LAC",
-      "adp": 15.8,
-      "adp_prior": 16.5,
-      "adp_move": 0.7,
-      "proj": null,
-      "sleeper_weight": 0.3,
-      "score": 1.788,
-      "unpriced": true,
-      "signals": [
-        "committee",
-        "lead back",
-        "snap",
-        "touches"
-      ],
-      "items": [
-        {
-          "text": "Los Angeles Chargers news: Bolts\u2019 commitment to Omarion Hampton apparent in 1st win. The Chargers began the season with Omarion Hampton as their lead back, but the second-year runner lost two fumbles in as many games to start the campaign and that quickly led the Bolts to a three-headed committee fo",
-          "url": "https://www.boltsfromtheblue.com/los-angeles-chargers-news/67089/los-angeles-chargers-news-omarion-hampton-jim-harbaugh-ravens",
-          "source": "SBN LAC"
-        },
-        {
-          "text": "Chargers halftime RB snap count\n\nOmarion Hampton 17\nKeaton Mitchell 11\nKimani Vidal 9\n\nOut of 32 plays",
-          "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3n2hzpjwjos2x",
-          "source": "Bluesky @ffnatejahnke.bsky.social"
-        }
-      ]
-    },
-    {
-      "name": "Trey McBride",
-      "pos": "TE",
-      "team": "ARI",
-      "adp": 30.1,
-      "adp_prior": 29.4,
-      "adp_move": -0.7,
+      "name": "Josh Allen",
+      "pos": "QB",
+      "team": "BUF",
+      "adp": 37.7,
+      "adp_prior": 36.7,
+      "adp_move": -1.0,
       "proj": null,
       "sleeper_weight": 0.5,
-      "score": 1.76,
+      "score": 1.846,
       "unpriced": true,
       "signals": [
-        "target share",
-        "targets"
+        "breakout"
       ],
       "items": [
         {
-          "text": "Trey McBride had a 28% target share on Sunday, but given the number of plays the Cardinals ran, that resulted in just 5 targets. That's his lowest target total in a game since Week 16 of the 2024 season. McBride's 7.6 expected PPR points was by far a season low.",
-          "url": "https://bsky.app/profile/lateroundqb.bsky.social/post/3n2gq54zsc52h",
-          "source": "Bluesky @lateroundqb.bsky.social"
-        }
-      ]
-    },
-    {
-      "name": "Garrett Wilson",
-      "pos": "WR",
-      "team": "NYJ",
-      "adp": 38.8,
-      "adp_prior": 39.1,
-      "adp_move": 0.3,
-      "proj": null,
-      "sleeper_weight": 0.5,
-      "score": 1.76,
-      "unpriced": true,
-      "signals": [
-        "injury",
-        "snap",
-        "target share",
-        "targets"
-      ],
-      "items": [
-        {
-          "text": "Omar Cooper played one snap against the Bills before exiting with injury. Garrett Wilson and Adonai Mitchell combined for a 55% target share (14 targets for Wilson, 8 for Mitchell), while Isaiah Williams had 7 targets on a 77% route share.",
-          "url": "https://bsky.app/profile/lateroundqb.bsky.social/post/3n2gq54zsbt2h",
-          "source": "Bluesky @lateroundqb.bsky.social"
+          "text": "A study on the impact of Josh Allen\u2019s interceptions. Josh Allen is universally regarded as an elite NFL quarterback, but that doesn\u2019t mean he\u2019s immune to criticism. And when Allen criticism arises, it tends to be centered around his interceptions. From his breakout 2020 campaign through 2023, Allen ",
+          "url": "https://www.buffalorumblings.com/buffalo-bills-analysis/145574/study-on-the-impact-of-josh-allens-interceptions-buffalo-bills",
+          "source": "SBN BUF"
         }
       ]
     },
@@ -2383,120 +1683,159 @@
       ]
     },
     {
-      "name": "James Cook",
-      "pos": "RB",
-      "team": "BUF",
-      "adp": 9.6,
-      "adp_prior": 10.1,
-      "adp_move": 0.5,
+      "name": "A.J. Brown",
+      "pos": "WR",
+      "team": "NE",
+      "adp": 18.5,
+      "adp_prior": 18.8,
+      "adp_move": 0.3,
       "proj": null,
       "sleeper_weight": 0.3,
-      "score": 1.722,
+      "score": 1.754,
       "unpriced": true,
       "signals": [
-        "carries",
-        "target share"
+        "injury",
+        "snap"
       ],
       "items": [
         {
-          "text": "Examining Buffalo Bills run heaviness in first half of 2026 season. The Buffalo Bills have loved running the football thus far in the 2026 season. James Cook has the second-most carries in the NFL right now at 187. As a team, the Bills are the current owners of the second-highest first-down designed",
-          "url": "https://www.buffalorumblings.com/buffalo-bills-analysis/145665/examining-buffalo-bills-run-heaviness-in-first-half-of-2026-season",
-          "source": "SBN BUF"
+          "text": "A.J. Brown injury update: New report adds information to Patriots WR\u2019s status. While Drake Maye\u2019s ankle injury dominated the headlines coming out of the New England Patriots\u2019 Week 10 game against the Detroit Lions, the star quarterback was not the only member unable to finish the game. Wide receiver",
+          "url": "https://www.patspulpit.com/new-england-patriots-injuries/144766/aj-brown-injury-update-new-report-hamstring",
+          "source": "SBN NE"
         },
         {
-          "text": "James Cook saw a 14% and 11% target share in Weeks 1 and 2, two games Ty Johnson missed. Since then, he's had just one game with a double-digit percentage target share, and it was 10%. He was at 5% in Week 10.",
-          "url": "https://bsky.app/profile/lateroundqb.bsky.social/post/3n2gq54zrci2h",
-          "source": "Bluesky @lateroundqb.bsky.social"
+          "text": "Patriots vs. Lions snap counts from Week 10. Halfway through the 2026 season, the New England Patriots\u2019 trade for wide receiver A.J. Brown is not looking good. The 29-year-old has appeared in only four games so far, catching just 11 passes for 128 yards. Injuries have been the main reason for his la",
+          "url": "https://www.patspulpit.com/new-england-patriots-analysis/144648/patriots-vs-lions-snap-counts-week-10-aj-brown-drake-maye-christian-barmore",
+          "source": "SBN NE"
         }
       ]
     },
     {
-      "name": "Chris Rodriguez",
+      "name": "Omarion Hampton",
       "pos": "RB",
-      "team": "JAX",
-      "adp": 122.6,
-      "adp_prior": 126.3,
-      "adp_move": 3.7,
+      "team": "LAC",
+      "adp": 15.8,
+      "adp_prior": 16.5,
+      "adp_move": 0.7,
       "proj": null,
-      "sleeper_weight": 1.1,
-      "score": 1.716,
-      "unpriced": false,
-      "signals": [
-        "limited"
-      ],
-      "items": [
-        {
-          "text": "Jaguars RBs Bhayshul Tuten, Chris Rodriguez were limited in practice Wednesday. The Jaguars listed their top two running backs as limited participants in practice on Wednesday.",
-          "url": "https://www.nbcsports.com/nfl/profootballtalk/rumor-mill/news/jaguars-rbs-bhayshul-tuten-chris-rodriguez-were-limited-in-practice-wednesday",
-          "source": "ProFootballTalk"
-        }
-      ]
-    },
-    {
-      "name": "Jordan Love",
-      "pos": "QB",
-      "team": "GB",
-      "adp": 115.9,
-      "adp_prior": 116.5,
-      "adp_move": 0.6,
-      "proj": null,
-      "sleeper_weight": 1.1,
-      "score": 1.602,
+      "sleeper_weight": 0.3,
+      "score": 1.754,
       "unpriced": true,
       "signals": [
-        "riser"
+        "committee",
+        "lead back",
+        "snap",
+        "touches"
       ],
       "items": [
         {
-          "text": "Week 11 QB Power Rankings: Patrick Mahomes a big riser, while Packers' Jordan Love plummets. Joe Burrow keeps the top spot, Patrick Mahomes is back in the top five and Jordan Love is one of the biggest fallers",
-          "url": "https://www.cbssports.com/nfl/news/nfl-week-11-qb-power-rankings-joe-burrow-patrick-mahomes-jordan-love/",
+          "text": "Los Angeles Chargers news: Bolts\u2019 commitment to Omarion Hampton apparent in 1st win. The Chargers began the season with Omarion Hampton as their lead back, but the second-year runner lost two fumbles in as many games to start the campaign and that quickly led the Bolts to a three-headed committee fo",
+          "url": "https://www.boltsfromtheblue.com/los-angeles-chargers-news/67089/los-angeles-chargers-news-omarion-hampton-jim-harbaugh-ravens",
+          "source": "SBN LAC"
+        },
+        {
+          "text": "Chargers halftime RB snap count\n\nOmarion Hampton 17\nKeaton Mitchell 11\nKimani Vidal 9\n\nOut of 32 plays",
+          "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3n2hzpjwjos2x",
+          "source": "Bluesky @ffnatejahnke.bsky.social"
+        }
+      ]
+    },
+    {
+      "name": "Mike Evans",
+      "pos": "WR",
+      "team": "SF",
+      "adp": 54.5,
+      "adp_prior": 49.6,
+      "adp_move": -4.9,
+      "proj": null,
+      "sleeper_weight": 0.5,
+      "score": 1.621,
+      "unpriced": false,
+      "signals": [
+        "injury",
+        "snap"
+      ],
+      "items": [
+        {
+          "text": "3 things to watch on Sunday: The Vikings&#8217; defense can be beaten on the ground. The San Francisco 49ers and Minnesota Vikings will do battle on Sunday Night Football in Mexico City, with both teams fighting for the number one seed in the NFC. The 49ers are looking to snap their dry spell agains",
+          "url": "https://www.ninersnation.com/san-francisco-49ers-analysis/165946/3-things-to-watch-on-sunday-the-vikings-defense-can-be-beaten-on-the-ground",
+          "source": "SBN SF"
+        },
+        {
+          "text": "NFL Week 11 injury report: Latest update on Chiefs' Kenneth Walker III; Lions' Kerby Joseph practices fully. Get the latest Week 11 injury updates on Kenneth Walker III, Kerby Joseph, Baker Mayfield, Mike Evans and other notable NFL players",
+          "url": "https://www.cbssports.com/nfl/news/nfl-week-11-injury-report-chiefs-kenneth-walker-iii-lions-kerby-joseph/",
           "source": "CBS Sports NFL"
         }
       ]
     },
     {
-      "name": "Bhayshul Tuten",
-      "pos": "RB",
-      "team": "JAX",
-      "adp": 49.8,
-      "adp_prior": 50.1,
-      "adp_move": 0.3,
+      "name": "Tetairoa Mcmillan",
+      "pos": "WR",
+      "team": "CAR",
+      "adp": 41.1,
+      "adp_prior": 40.2,
+      "adp_move": -0.9,
       "proj": null,
       "sleeper_weight": 0.5,
-      "score": 1.56,
+      "score": 1.6,
       "unpriced": true,
       "signals": [
-        "limited"
+        "climbing"
       ],
       "items": [
         {
-          "text": "Jaguars RBs Bhayshul Tuten, Chris Rodriguez were limited in practice Wednesday. The Jaguars listed their top two running backs as limited participants in practice on Wednesday.",
-          "url": "https://www.nbcsports.com/nfl/profootballtalk/rumor-mill/news/jaguars-rbs-bhayshul-tuten-chris-rodriguez-were-limited-in-practice-wednesday",
-          "source": "ProFootballTalk"
+          "text": "NFL Wide Receiver Rankings: Jaxon Smith-Njigba remains No. 1, Ja\u2019Marr Chase keeps climbing. The NFL wide receiver rankings entering Week 11 of the 2026 season feature Jaxon Smith-Njigba at No. 1, followed by Ja'Marr Chase and CeeDee Lamb. Amon-Ra St. Brown moves into the top 10, while Tetairoa McMil",
+          "url": "https://www.pff.com/news/nfl-wide-receiver-rankings/",
+          "source": "PFF"
         }
       ]
     },
     {
-      "name": "Travis Etienne Jr.",
+      "name": "Keaton Mitchell",
       "pos": "RB",
-      "team": "NO",
-      "adp": 39.6,
-      "adp_prior": 41.2,
-      "adp_move": 1.6,
+      "team": "LAC",
+      "adp": 132.5,
+      "adp_prior": 129.7,
+      "adp_move": -2.8,
       "proj": null,
-      "sleeper_weight": 0.5,
-      "score": 1.552,
+      "sleeper_weight": 1.1,
+      "score": 1.584,
+      "unpriced": false,
+      "signals": [
+        "snap"
+      ],
+      "items": [
+        {
+          "text": "Chargers halftime RB snap count\n\nOmarion Hampton 17\nKeaton Mitchell 11\nKimani Vidal 9\n\nOut of 32 plays",
+          "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3n2hzpjwjos2x",
+          "source": "Bluesky @ffnatejahnke.bsky.social"
+        }
+      ]
+    },
+    {
+      "name": "Kenneth Walker III",
+      "pos": "RB",
+      "team": "KC",
+      "adp": 13.8,
+      "adp_prior": 14.4,
+      "adp_move": 0.6,
+      "proj": null,
+      "sleeper_weight": 0.3,
+      "score": 1.511,
       "unpriced": true,
       "signals": [
-        "carries",
-        "hamstring",
         "injury"
       ],
       "items": [
         {
-          "text": "Travis Etienne Jr. looks to find his footing against Bears. Travis Etienne Jr. returned to action for the New Orleans Saints this past weekend, but his first game back did little to change the team&#8217;s run game issues. After missing five games with a hamstring injury, Etienne finished the 20-17 ",
-          "url": "https://www.canalstreetchronicles.com/new-orleans-saints-discussion/118136/saints-rb-travis-etienne-jr-looks-to-find-his-footing-against-bears",
-          "source": "SBN NO"
+          "text": "Andy Reid and Chiefs will be cautious with Kenneth Walker this week. To open his Wednesday press conference, Kansas City Chiefs head coach Andy Reid addressed the groin injury starting running back Kenneth Walker suffered Thursday last week, which forced him to miss the game against the Atlanta Falc",
+          "url": "https://www.arrowheadpride.com/kansas-city-chiefs-news/216853/andy-reid-chiefs-cautious-kenneth-walker-this-week",
+          "source": "SBN KC"
+        },
+        {
+          "text": "NFL Week 11 injury report: Latest update on Chiefs' Kenneth Walker III; Lions' Kerby Joseph practices fully. Get the latest Week 11 injury updates on Kenneth Walker III, Kerby Joseph, Baker Mayfield, Mike Evans and other notable NFL players",
+          "url": "https://www.cbssports.com/nfl/news/nfl-week-11-injury-report-chiefs-kenneth-walker-iii-lions-kerby-joseph/",
+          "source": "CBS Sports NFL"
         }
       ]
     },
@@ -2526,190 +1865,24 @@
       ]
     },
     {
-      "name": "Breece Hall",
-      "pos": "RB",
-      "team": "NYJ",
-      "adp": 30.1,
-      "adp_prior": 31.3,
-      "adp_move": 1.2,
-      "proj": null,
-      "sleeper_weight": 0.5,
-      "score": 1.44,
-      "unpriced": true,
-      "signals": [
-        "snaps"
-      ],
-      "items": [
-        {
-          "text": "Breece Hall played 8 more snaps than Braelon Allen in Week 10. The rush split was 11 to 8 in favor of Hall, and the route split was 21 to 18 in favor of Hall. Hall played 46% of their third downs, when that was 8% last week.",
-          "url": "https://bsky.app/profile/lateroundqb.bsky.social/post/3n2gq54zsbs2h",
-          "source": "Bluesky @lateroundqb.bsky.social"
-        }
-      ]
-    },
-    {
-      "name": "Zay Flowers",
-      "pos": "WR",
-      "team": "BAL",
-      "adp": 31.7,
-      "adp_prior": 30.9,
-      "adp_move": -0.8,
-      "proj": null,
-      "sleeper_weight": 0.5,
-      "score": 1.44,
-      "unpriced": true,
-      "signals": [
-        "snap"
-      ],
-      "items": [
-        {
-          "text": "Ravens 1st half WR snap count\n\nZay Flowers 31\nRashod Bateman 31\nJa'Kobi Lane 24\nChris Moore 2\nDevontez Walker 2\n\nOut of 33 plays",
-          "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3n2hznbwvuk2x",
-          "source": "Bluesky @ffnatejahnke.bsky.social"
-        }
-      ]
-    },
-    {
-      "name": "Kaelon Black",
-      "pos": "RB",
-      "team": "SF",
-      "adp": 179.7,
-      "adp_prior": 207.7,
-      "adp_move": 28.0,
-      "proj": null,
-      "sleeper_weight": 1.5,
-      "score": 1.35,
-      "unpriced": false,
-      "signals": [
-        "snap"
-      ],
-      "items": [
-        {
-          "text": "Kaelon Black has scored 10+ PPR points in two of his last three games after failing to reach more than 8 PPR points in each of his first six. His 42% snap share in Week 10 was his third-highest of his season. He's been over 8 expected PPR points just once this year, though.",
-          "url": "https://bsky.app/profile/lateroundqb.bsky.social/post/3n2gq54ztbo2h",
-          "source": "Bluesky @lateroundqb.bsky.social"
-        }
-      ]
-    },
-    {
-      "name": "Brock Bowers",
+      "name": "Travis Kelce",
       "pos": "TE",
-      "team": "LV",
-      "adp": 20.1,
-      "adp_prior": 20.1,
-      "adp_move": 0.0,
-      "proj": null,
-      "sleeper_weight": 0.3,
-      "score": 1.327,
-      "unpriced": true,
-      "signals": [
-        "injury",
-        "target share"
-      ],
-      "items": [
-        {
-          "text": "With Brock Bowers off the field in Week 10, Jalen Nailor led the Raiders with a 91% route share. Tre Tucker was next at 83%, and then Michael Mayer and Jack Bech were at 77% and 71%, respectively. Jack Bech led all of them with a 30% target share.",
-          "url": "https://bsky.app/profile/lateroundqb.bsky.social/post/3n2gq54zsbx2h",
-          "source": "Bluesky @lateroundqb.bsky.social"
-        },
-        {
-          "text": "NFL Injury Report, Week 11: Latest news, updates for Kenneth Walker III, Brock Bowers and more players for fantasy football. We go over the Week 11 NFL Injury Report with latest news and updates, plus fantasy football analysis for key players.",
-          "url": "https://sports.yahoo.com/fantasy/article/nfl-injury-report-week-11-latest-news-updates-for-kenneth-walker-iii-brock-bowers-and-more-players-for-fantasy-football-224519099.html",
-          "source": "Yahoo NFL"
-        }
-      ]
-    },
-    {
-      "name": "Joe Burrow",
-      "pos": "QB",
-      "team": "CIN",
-      "adp": 68.2,
-      "adp_prior": 68.1,
-      "adp_move": -0.1,
-      "proj": null,
-      "sleeper_weight": 0.75,
-      "score": 1.326,
-      "unpriced": true,
-      "signals": [
-        "riser",
-        "standout"
-      ],
-      "items": [
-        {
-          "text": "Week 11 QB Power Rankings: Patrick Mahomes a big riser, while Packers' Jordan Love plummets. Joe Burrow keeps the top spot, Patrick Mahomes is back in the top five and Jordan Love is one of the biggest fallers",
-          "url": "https://www.cbssports.com/nfl/news/nfl-week-11-qb-power-rankings-joe-burrow-patrick-mahomes-jordan-love/",
-          "source": "CBS Sports NFL"
-        },
-        {
-          "text": "NFL Week 10: The best players in every key metric. PFF's NFL Week 10 statistical leaders highlight standout performances across 19 metrics from the 2026 season. Joe Burrow led qualifying quarterbacks with a 92.5 passing grade, while Ja'Marr Chase paced receivers with 231 yards and Quinnen Williams r",
-          "url": "https://www.pff.com/news/nfl-week-10-the-best-players-in-every-key-metric/",
-          "source": "PFF"
-        }
-      ]
-    },
-    {
-      "name": "A.J. Brown",
-      "pos": "WR",
-      "team": "NE",
-      "adp": 18.5,
-      "adp_prior": 18.8,
-      "adp_move": 0.3,
-      "proj": null,
-      "sleeper_weight": 0.3,
-      "score": 1.242,
-      "unpriced": true,
-      "signals": [
-        "snap"
-      ],
-      "items": [
-        {
-          "text": "Patriots vs. Lions snap counts from Week 10. Halfway through the 2026 season, the New England Patriots\u2019 trade for wide receiver A.J. Brown is not looking good. The 29-year-old has appeared in only four games so far, catching just 11 passes for 128 yards. Injuries have been the main reason for his la",
-          "url": "https://www.patspulpit.com/new-england-patriots-analysis/144648/patriots-vs-lions-snap-counts-week-10-aj-brown-drake-maye-christian-barmore",
-          "source": "SBN NE"
-        }
-      ]
-    },
-    {
-      "name": "Tre Tucker",
-      "pos": "WR",
-      "team": "LV",
-      "adp": 147.5,
-      "adp_prior": 157.1,
-      "adp_move": 9.6,
+      "team": "KC",
+      "adp": 124.8,
+      "adp_prior": 122.8,
+      "adp_move": -2.0,
       "proj": null,
       "sleeper_weight": 1.1,
-      "score": 1.21,
+      "score": 1.251,
       "unpriced": false,
       "signals": [
-        "target share"
+        "injury"
       ],
       "items": [
         {
-          "text": "With Brock Bowers off the field in Week 10, Jalen Nailor led the Raiders with a 91% route share. Tre Tucker was next at 83%, and then Michael Mayer and Jack Bech were at 77% and 71%, respectively. Jack Bech led all of them with a 30% target share.",
-          "url": "https://bsky.app/profile/lateroundqb.bsky.social/post/3n2gq54zsbx2h",
-          "source": "Bluesky @lateroundqb.bsky.social"
-        }
-      ]
-    },
-    {
-      "name": "Keenan Allen",
-      "pos": "WR",
-      "team": "IND",
-      "adp": 154.6,
-      "adp_prior": 175.6,
-      "adp_move": 21.0,
-      "proj": null,
-      "sleeper_weight": 1.5,
-      "score": 1.2,
-      "unpriced": false,
-      "signals": [
-        "snaps"
-      ],
-      "items": [
-        {
-          "text": "Reviewing Keenan Allen\u2019s first game with the 49ers. When the San Francisco 49ers sent a sixth-round pick for veteran wide receiver Keenan Allen, the thoughts of the experienced receiver moving the chains and shaking free in a phone booth ran wild. Sunday was Allen\u2019s first action with the 49ers and o",
-          "url": "https://www.ninersnation.com/san-francisco-49ers-analysis/165887/reviewing-keenan-allens-first-game-with-the-49ers",
-          "source": "SBN SF"
+          "text": "Expect Travis Kelce to continue playing through his ankle injury. Most observers expect 2026 to be the final season for Kansas City Chiefs tight end Travis Kelce \u2014 who will likely then be a first-ballot Pro Football Hall of Fame selection. Unfortunately, our possible final months of watching the sta",
+          "url": "https://www.arrowheadpride.com/kansas-city-chiefs-news/216894/expect-travis-kelce-continue-playing-through-ankle-injury",
+          "source": "SBN KC"
         }
       ]
     },
@@ -2736,214 +1909,24 @@
       ]
     },
     {
-      "name": "Ja'Marr Chase",
+      "name": "Zay Flowers",
       "pos": "WR",
-      "team": "CIN",
-      "adp": 3.1,
-      "adp_prior": 3.0,
-      "adp_move": -0.1,
+      "team": "BAL",
+      "adp": 31.7,
+      "adp_prior": 30.9,
+      "adp_move": -0.8,
       "proj": null,
-      "sleeper_weight": 0.3,
-      "score": 1.158,
+      "sleeper_weight": 0.5,
+      "score": 1.152,
       "unpriced": true,
-      "signals": [
-        "climbing",
-        "standout"
-      ],
-      "items": [
-        {
-          "text": "NFL Wide Receiver Rankings: Jaxon Smith-Njigba remains No. 1, Ja\u2019Marr Chase keeps climbing. The NFL wide receiver rankings entering Week 11 of the 2026 season feature Jaxon Smith-Njigba at No. 1, followed by Ja'Marr Chase and CeeDee Lamb. Amon-Ra St. Brown moves into the top 10, while Tetairoa McMil",
-          "url": "https://www.pff.com/news/nfl-wide-receiver-rankings/",
-          "source": "PFF"
-        },
-        {
-          "text": "NFL Week 10: The best players in every key metric. PFF's NFL Week 10 statistical leaders highlight standout performances across 19 metrics from the 2026 season. Joe Burrow led qualifying quarterbacks with a 92.5 passing grade, while Ja'Marr Chase paced receivers with 231 yards and Quinnen Williams r",
-          "url": "https://www.pff.com/news/nfl-week-10-the-best-players-in-every-key-metric/",
-          "source": "PFF"
-        }
-      ]
-    },
-    {
-      "name": "Tyler Shough",
-      "pos": "QB",
-      "team": "NO",
-      "adp": 128.2,
-      "adp_prior": 126.1,
-      "adp_move": -2.1,
-      "proj": null,
-      "sleeper_weight": 1.1,
-      "score": 1.126,
-      "unpriced": false,
-      "signals": [
-        "impressed"
-      ],
-      "items": [
-        {
-          "text": "Saints power rankings: NFL Week 10. A bad loss, but it was so close that it could only cause a minor drop in the rankings. NFL.com &#8211; 25 (-2) \u201cThe Saints seem like a directionless outfit. It\u2019s not Tyler Shough\u2019s fault; he\u2019s done a solid job for the most part this season. Rookie Jordyn Tyson has",
-          "url": "https://www.canalstreetchronicles.com/nfl-power-rankings/118126/saints-power-rankings-nfl-week-10",
-          "source": "SBN NO"
-        }
-      ]
-    },
-    {
-      "name": "Jaxon Smith-Njigba",
-      "pos": "WR",
-      "team": "SEA",
-      "adp": 5.6,
-      "adp_prior": 5.5,
-      "adp_move": -0.1,
-      "proj": null,
-      "sleeper_weight": 0.3,
-      "score": 1.104,
-      "unpriced": true,
-      "signals": [
-        "climbing"
-      ],
-      "items": [
-        {
-          "text": "NFL Wide Receiver Rankings: Jaxon Smith-Njigba remains No. 1, Ja\u2019Marr Chase keeps climbing. The NFL wide receiver rankings entering Week 11 of the 2026 season feature Jaxon Smith-Njigba at No. 1, followed by Ja'Marr Chase and CeeDee Lamb. Amon-Ra St. Brown moves into the top 10, while Tetairoa McMil",
-          "url": "https://www.pff.com/news/nfl-wide-receiver-rankings/",
-          "source": "PFF"
-        }
-      ]
-    },
-    {
-      "name": "CeeDee Lamb",
-      "pos": "WR",
-      "team": "DAL",
-      "adp": 10.0,
-      "adp_prior": 9.7,
-      "adp_move": -0.3,
-      "proj": null,
-      "sleeper_weight": 0.3,
-      "score": 1.104,
-      "unpriced": true,
-      "signals": [
-        "climbing"
-      ],
-      "items": [
-        {
-          "text": "NFL Wide Receiver Rankings: Jaxon Smith-Njigba remains No. 1, Ja\u2019Marr Chase keeps climbing. The NFL wide receiver rankings entering Week 11 of the 2026 season feature Jaxon Smith-Njigba at No. 1, followed by Ja'Marr Chase and CeeDee Lamb. Amon-Ra St. Brown moves into the top 10, while Tetairoa McMil",
-          "url": "https://www.pff.com/news/nfl-wide-receiver-rankings/",
-          "source": "PFF"
-        }
-      ]
-    },
-    {
-      "name": "Amon-Ra St. Brown",
-      "pos": "WR",
-      "team": "DET",
-      "adp": 7.2,
-      "adp_prior": 7.1,
-      "adp_move": -0.1,
-      "proj": null,
-      "sleeper_weight": 0.3,
-      "score": 1.104,
-      "unpriced": true,
-      "signals": [
-        "climbing"
-      ],
-      "items": [
-        {
-          "text": "NFL Wide Receiver Rankings: Jaxon Smith-Njigba remains No. 1, Ja\u2019Marr Chase keeps climbing. The NFL wide receiver rankings entering Week 11 of the 2026 season feature Jaxon Smith-Njigba at No. 1, followed by Ja'Marr Chase and CeeDee Lamb. Amon-Ra St. Brown moves into the top 10, while Tetairoa McMil",
-          "url": "https://www.pff.com/news/nfl-wide-receiver-rankings/",
-          "source": "PFF"
-        }
-      ]
-    },
-    {
-      "name": "Rico Dowdle",
-      "pos": "RB",
-      "team": "PIT",
-      "adp": 81.3,
-      "adp_prior": 84.4,
-      "adp_move": 3.1,
-      "proj": null,
-      "sleeper_weight": 0.75,
-      "score": 1.08,
-      "unpriced": false,
-      "signals": [
-        "snaps"
-      ],
-      "items": [
-        {
-          "text": "Rico Dowdle played 6 more snaps than Jaylen Warren on Sunday night, and he ran 6 more routes. That's the first time Dowdle's out-snapped Warren since Week 1.",
-          "url": "https://bsky.app/profile/lateroundqb.bsky.social/post/3n2gq54ztbs2h",
-          "source": "Bluesky @lateroundqb.bsky.social"
-        }
-      ]
-    },
-    {
-      "name": "Quentin Johnston",
-      "pos": "WR",
-      "team": "LAC",
-      "adp": 70.7,
-      "adp_prior": 74.4,
-      "adp_move": 3.7,
-      "proj": null,
-      "sleeper_weight": 0.75,
-      "score": 1.08,
-      "unpriced": false,
       "signals": [
         "snap"
       ],
       "items": [
         {
-          "text": "Chargers halftime WR snap count\n\nTre' Harris 31\nQuentin Johnston 28\nDerius Davis 11\nTheo Wease Jr. 3\nKeAndre Lambert-Smith 1\n\nOut of 32 plays",
-          "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3n2hzqox2xk2x",
+          "text": "Ravens 1st half WR snap count\n\nZay Flowers 31\nRashod Bateman 31\nJa'Kobi Lane 24\nChris Moore 2\nDevontez Walker 2\n\nOut of 33 plays",
+          "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3n2hznbwvuk2x",
           "source": "Bluesky @ffnatejahnke.bsky.social"
-        }
-      ]
-    },
-    {
-      "name": "Ashton Jeanty",
-      "pos": "RB",
-      "team": "LV",
-      "adp": 16.4,
-      "adp_prior": 12.0,
-      "adp_move": -4.4,
-      "proj": null,
-      "sleeper_weight": 0.3,
-      "score": 1.077,
-      "unpriced": false,
-      "signals": [
-        "snap",
-        "snaps",
-        "target share"
-      ],
-      "items": [
-        {
-          "text": "Jack Bech not making impact after return. Here is a look at how the Las Vegas Raiders\u2019 2025 draft class fared in a home 21-13 loss to the Seattle Seahawks on Sunday and what to look for Sunday at the Denver Broncos. Ashton Jeanty: The No. 6 overall draft pick played 71 percent of the snaps, his most",
-          "url": "https://www.silverandblackpride.com/las-vegas-raiders-analysis/146488/raiders-jack-bech-wide-receiver",
-          "source": "SBN LV"
-        },
-        {
-          "text": "Ashton Jeanty had a 71% snap share against the Seahawks, his highest snap share since Week 3. He had a 15% target share \u2014 he's fallen below a 15% target share in just one game this year.",
-          "url": "https://bsky.app/profile/lateroundqb.bsky.social/post/3n2gq54zsbw2h",
-          "source": "Bluesky @lateroundqb.bsky.social"
-        }
-      ]
-    },
-    {
-      "name": "George Pickens",
-      "pos": "WR",
-      "team": "DAL",
-      "adp": 23.5,
-      "adp_prior": 23.2,
-      "adp_move": -0.3,
-      "proj": null,
-      "sleeper_weight": 0.3,
-      "score": 1.056,
-      "unpriced": true,
-      "signals": [
-        "target share",
-        "targets"
-      ],
-      "items": [
-        {
-          "text": "George Pickens saw a 37% target share in Week 10, which equaled 18 targets. That's 5 more targets than he's had in any other game of his career, and it was also his highest target share by about 2 percentage points.",
-          "url": "https://bsky.app/profile/lateroundqb.bsky.social/post/3n2gq54ztbp2h",
-          "source": "Bluesky @lateroundqb.bsky.social"
         }
       ]
     },
@@ -2970,6 +1953,160 @@
       ]
     },
     {
+      "name": "Brock Bowers",
+      "pos": "TE",
+      "team": "LV",
+      "adp": 20.1,
+      "adp_prior": 20.1,
+      "adp_move": 0.0,
+      "proj": null,
+      "sleeper_weight": 0.3,
+      "score": 0.998,
+      "unpriced": true,
+      "signals": [
+        "snaps"
+      ],
+      "items": [
+        {
+          "text": "Fernando Mendoza needs a healthy Brock Bowers. Here is a look at how the Las Vegas Raiders\u2019 2024 draft class fared in a home 21-13 loss to the Seattle Seahawks on Sunday and what to look for Sunday at the Denver Broncos. Brock Bowers: The first-round pick played just 11 snaps after injuring his ankl",
+          "url": "https://www.silverandblackpride.com/las-vegas-raiders-analysis/146566/raiders-fernando-mendoza-brock-bowers-week-11-broncos",
+          "source": "SBN LV"
+        }
+      ]
+    },
+    {
+      "name": "Ja'Marr Chase",
+      "pos": "WR",
+      "team": "CIN",
+      "adp": 3.1,
+      "adp_prior": 3.0,
+      "adp_move": -0.1,
+      "proj": null,
+      "sleeper_weight": 0.3,
+      "score": 0.96,
+      "unpriced": true,
+      "signals": [
+        "climbing"
+      ],
+      "items": [
+        {
+          "text": "NFL Wide Receiver Rankings: Jaxon Smith-Njigba remains No. 1, Ja\u2019Marr Chase keeps climbing. The NFL wide receiver rankings entering Week 11 of the 2026 season feature Jaxon Smith-Njigba at No. 1, followed by Ja'Marr Chase and CeeDee Lamb. Amon-Ra St. Brown moves into the top 10, while Tetairoa McMil",
+          "url": "https://www.pff.com/news/nfl-wide-receiver-rankings/",
+          "source": "PFF"
+        }
+      ]
+    },
+    {
+      "name": "Jaxon Smith-Njigba",
+      "pos": "WR",
+      "team": "SEA",
+      "adp": 5.6,
+      "adp_prior": 5.5,
+      "adp_move": -0.1,
+      "proj": null,
+      "sleeper_weight": 0.3,
+      "score": 0.96,
+      "unpriced": true,
+      "signals": [
+        "climbing"
+      ],
+      "items": [
+        {
+          "text": "NFL Wide Receiver Rankings: Jaxon Smith-Njigba remains No. 1, Ja\u2019Marr Chase keeps climbing. The NFL wide receiver rankings entering Week 11 of the 2026 season feature Jaxon Smith-Njigba at No. 1, followed by Ja'Marr Chase and CeeDee Lamb. Amon-Ra St. Brown moves into the top 10, while Tetairoa McMil",
+          "url": "https://www.pff.com/news/nfl-wide-receiver-rankings/",
+          "source": "PFF"
+        }
+      ]
+    },
+    {
+      "name": "CeeDee Lamb",
+      "pos": "WR",
+      "team": "DAL",
+      "adp": 10.0,
+      "adp_prior": 9.7,
+      "adp_move": -0.3,
+      "proj": null,
+      "sleeper_weight": 0.3,
+      "score": 0.96,
+      "unpriced": true,
+      "signals": [
+        "climbing"
+      ],
+      "items": [
+        {
+          "text": "NFL Wide Receiver Rankings: Jaxon Smith-Njigba remains No. 1, Ja\u2019Marr Chase keeps climbing. The NFL wide receiver rankings entering Week 11 of the 2026 season feature Jaxon Smith-Njigba at No. 1, followed by Ja'Marr Chase and CeeDee Lamb. Amon-Ra St. Brown moves into the top 10, while Tetairoa McMil",
+          "url": "https://www.pff.com/news/nfl-wide-receiver-rankings/",
+          "source": "PFF"
+        }
+      ]
+    },
+    {
+      "name": "Amon-Ra St. Brown",
+      "pos": "WR",
+      "team": "DET",
+      "adp": 7.2,
+      "adp_prior": 7.1,
+      "adp_move": -0.1,
+      "proj": null,
+      "sleeper_weight": 0.3,
+      "score": 0.96,
+      "unpriced": true,
+      "signals": [
+        "climbing"
+      ],
+      "items": [
+        {
+          "text": "NFL Wide Receiver Rankings: Jaxon Smith-Njigba remains No. 1, Ja\u2019Marr Chase keeps climbing. The NFL wide receiver rankings entering Week 11 of the 2026 season feature Jaxon Smith-Njigba at No. 1, followed by Ja'Marr Chase and CeeDee Lamb. Amon-Ra St. Brown moves into the top 10, while Tetairoa McMil",
+          "url": "https://www.pff.com/news/nfl-wide-receiver-rankings/",
+          "source": "PFF"
+        }
+      ]
+    },
+    {
+      "name": "Tyler Shough",
+      "pos": "QB",
+      "team": "NO",
+      "adp": 128.2,
+      "adp_prior": 126.1,
+      "adp_move": -2.1,
+      "proj": null,
+      "sleeper_weight": 1.1,
+      "score": 0.866,
+      "unpriced": false,
+      "signals": [
+        "impressed"
+      ],
+      "items": [
+        {
+          "text": "Saints power rankings: NFL Week 10. A bad loss, but it was so close that it could only cause a minor drop in the rankings. NFL.com &#8211; 25 (-2) \u201cThe Saints seem like a directionless outfit. It\u2019s not Tyler Shough\u2019s fault; he\u2019s done a solid job for the most part this season. Rookie Jordyn Tyson has",
+          "url": "https://www.canalstreetchronicles.com/nfl-power-rankings/118126/saints-power-rankings-nfl-week-10",
+          "source": "SBN NO"
+        }
+      ]
+    },
+    {
+      "name": "Quentin Johnston",
+      "pos": "WR",
+      "team": "LAC",
+      "adp": 70.7,
+      "adp_prior": 74.4,
+      "adp_move": 3.7,
+      "proj": null,
+      "sleeper_weight": 0.75,
+      "score": 0.864,
+      "unpriced": false,
+      "signals": [
+        "snap"
+      ],
+      "items": [
+        {
+          "text": "Chargers halftime WR snap count\n\nTre' Harris 31\nQuentin Johnston 28\nDerius Davis 11\nTheo Wease Jr. 3\nKeAndre Lambert-Smith 1\n\nOut of 32 plays",
+          "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3n2hzqox2xk2x",
+          "source": "Bluesky @ffnatejahnke.bsky.social"
+        }
+      ]
+    },
+    {
       "name": "Ja'Kobi Lane",
       "pos": "WR",
       "team": "BAL",
@@ -2978,7 +2115,7 @@
       "adp_move": 17.7,
       "proj": null,
       "sleeper_weight": 1.1,
-      "score": 0.99,
+      "score": 0.792,
       "unpriced": false,
       "signals": [
         "snap"
@@ -2988,56 +2125,6 @@
           "text": "Ravens 1st half WR snap count\n\nZay Flowers 31\nRashod Bateman 31\nJa'Kobi Lane 24\nChris Moore 2\nDevontez Walker 2\n\nOut of 33 plays",
           "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3n2hznbwvuk2x",
           "source": "Bluesky @ffnatejahnke.bsky.social"
-        }
-      ]
-    },
-    {
-      "name": "Derrick Henry",
-      "pos": "RB",
-      "team": "BAL",
-      "adp": 16.5,
-      "adp_prior": 17.1,
-      "adp_move": 0.6,
-      "proj": null,
-      "sleeper_weight": 0.3,
-      "score": 0.864,
-      "unpriced": true,
-      "signals": [
-        "snap"
-      ],
-      "items": [
-        {
-          "text": "Ravens 1st half RB snap count\n\nJustice Hill 22 (11 from the 2 minute drill)\nDerrick Henry 12\n\nOut of 33 plays",
-          "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3n2hzm7bnrk2x",
-          "source": "Bluesky @ffnatejahnke.bsky.social"
-        }
-      ]
-    },
-    {
-      "name": "Patrick Mahomes",
-      "pos": "QB",
-      "team": "KC",
-      "adp": 99.0,
-      "adp_prior": 96.7,
-      "adp_move": -2.3,
-      "proj": null,
-      "sleeper_weight": 0.75,
-      "score": 0.777,
-      "unpriced": false,
-      "signals": [
-        "climbing",
-        "riser"
-      ],
-      "items": [
-        {
-          "text": "Week 11 QB Power Rankings: Patrick Mahomes a big riser, while Packers' Jordan Love plummets. Joe Burrow keeps the top spot, Patrick Mahomes is back in the top five and Jordan Love is one of the biggest fallers",
-          "url": "https://www.cbssports.com/nfl/news/nfl-week-11-qb-power-rankings-joe-burrow-patrick-mahomes-jordan-love/",
-          "source": "CBS Sports NFL"
-        },
-        {
-          "text": "Prisco's NFL Week 11 Power Rankings: Patrick Mahomes returns to MVP form, which makes Chiefs scary. Pete Prisco shares his Week 11 Power Rankings for the 2026 NFL season, including the Chargers finally climbing out of the basement",
-          "url": "https://www.cbssports.com/nfl/news/priscos-nfl-week-11-power-rankings-patrick-mahomes-chiefs/",
-          "source": "CBS Sports NFL"
         }
       ]
     },
@@ -3086,24 +2173,46 @@
       ]
     },
     {
-      "name": "Parker Washington",
-      "pos": "WR",
-      "team": "JAX",
-      "adp": 54.3,
-      "adp_prior": 58.5,
-      "adp_move": 4.2,
+      "name": "Derrick Henry",
+      "pos": "RB",
+      "team": "BAL",
+      "adp": 16.5,
+      "adp_prior": 17.1,
+      "adp_move": 0.6,
       "proj": null,
-      "sleeper_weight": 0.5,
-      "score": 0.72,
-      "unpriced": false,
+      "sleeper_weight": 0.3,
+      "score": 0.691,
+      "unpriced": true,
       "signals": [
-        "best player"
+        "snap"
       ],
       "items": [
         {
-          "text": "Liam Coen: Parker Washington was \u2018the best player on the field\u2019 on Sunday. Look. Don\u2019t shoot the messenger. I know you already know this. But as somebody who covers the Jacksonville Jaguars, I wouldn\u2019t be doing my job if I didn\u2019t tell you what I saw when I watched them play. In Week 10 of the 2026 N",
-          "url": "https://www.bigcatcountry.com/jacksonville-jaguars-news/91485/liam-coen-parker-washington-best-player-on-field",
-          "source": "SBN JAX"
+          "text": "Ravens 1st half RB snap count\n\nJustice Hill 22 (11 from the 2 minute drill)\nDerrick Henry 12\n\nOut of 33 plays",
+          "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3n2hzm7bnrk2x",
+          "source": "Bluesky @ffnatejahnke.bsky.social"
+        }
+      ]
+    },
+    {
+      "name": "Ashton Jeanty",
+      "pos": "RB",
+      "team": "LV",
+      "adp": 16.4,
+      "adp_prior": 12.0,
+      "adp_move": -4.4,
+      "proj": null,
+      "sleeper_weight": 0.3,
+      "score": 0.675,
+      "unpriced": false,
+      "signals": [
+        "snaps"
+      ],
+      "items": [
+        {
+          "text": "Jack Bech not making impact after return. Here is a look at how the Las Vegas Raiders\u2019 2025 draft class fared in a home 21-13 loss to the Seattle Seahawks on Sunday and what to look for Sunday at the Denver Broncos. Ashton Jeanty: The No. 6 overall draft pick played 71 percent of the snaps, his most",
+          "url": "https://www.silverandblackpride.com/las-vegas-raiders-analysis/146488/raiders-jack-bech-wide-receiver",
+          "source": "SBN LV"
         }
       ]
     }
