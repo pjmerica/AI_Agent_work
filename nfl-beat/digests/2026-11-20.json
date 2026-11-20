@@ -1,26 +1,26 @@
 {
-  "generated": "2026-11-20T19:28:35.853200+00:00",
+  "generated": "2026-11-20T22:56:51.510350+00:00",
   "stats": {
-    "n_items": 523,
-    "n_players": 73,
-    "n_unpriced": 54,
+    "n_items": 552,
+    "n_players": 82,
+    "n_unpriced": 57,
     "by_source": {
-      "Bluesky @minakimes.bsky.social": 32,
-      "Bluesky @rapsheet.bsky.social": 19,
+      "Bluesky @minakimes.bsky.social": 30,
+      "Bluesky @rapsheet.bsky.social": 24,
       "Bluesky @jourdanrodrigue.bsky.social": 4,
       "Bluesky @lateroundqb.bsky.social": 5,
       "Bluesky @sethwalder.bsky.social": 1,
       "Bluesky @kevinseifert.bsky.social": 1,
-      "Bluesky @nateatkins.bsky.social": 16,
-      "Bluesky @ffnatejahnke.bsky.social": 27,
+      "Bluesky @nateatkins.bsky.social": 15,
+      "Bluesky @ffnatejahnke.bsky.social": 26,
       "ProFootballTalk": 30,
-      "Yahoo NFL": 18,
+      "Yahoo NFL": 48,
       "CBS Sports NFL": 36,
       "PFF": 25,
       "Awful Announcing": 15,
-      "SBN ARI": 7,
-      "SBN ATL": 7,
-      "SBN BAL": 8,
+      "SBN ARI": 6,
+      "SBN ATL": 6,
+      "SBN BAL": 9,
       "SBN BUF": 10,
       "SBN CAR": 7,
       "SBN CHI": 10,
@@ -32,9 +32,9 @@
       "SBN GB": 10,
       "SBN HOU": 10,
       "SBN IND": 10,
-      "SBN JAX": 8,
+      "SBN JAX": 7,
       "SBN KC": 10,
-      "SBN LAC": 6,
+      "SBN LAC": 5,
       "SBN LAR": 10,
       "SBN LV": 10,
       "SBN MIA": 10,
@@ -42,13 +42,13 @@
       "SBN NE": 10,
       "SBN NO": 10,
       "SBN NYG": 10,
-      "SBN NYJ": 5,
+      "SBN NYJ": 7,
       "SBN PHI": 10,
       "SBN PIT": 10,
       "SBN SEA": 10,
       "SBN SF": 10,
       "SBN TB": 6,
-      "SBN TEN": 10,
+      "SBN TEN": 9,
       "SBN WAS": 10
     },
     "adp_latest": "2026-09-04",
@@ -66,17 +66,23 @@
       "adp_move": -0.9,
       "proj": null,
       "sleeper_weight": 1.8,
-      "score": 10.35,
+      "score": 11.529,
       "unpriced": true,
       "signals": [
         "injury",
         "limited",
-        "out for"
+        "out for",
+        "questionable"
       ],
       "items": [
         {
           "text": "Mike Evans returns; Jordan James was added to the injury report. The San Francisco 49ers injury report is out for Thursday. There were several changes from Wednesday. Christian McCaffrey and Trent Williams practiced in full after a veteran&#8217;s day off. Cornerback Renardo Green also practiced in ",
           "url": "https://www.ninersnation.com/san-francisco-49ers-injuries/166005/mike-evans-returns-jordan-james-was-added-to-the-injury-report",
+          "source": "SBN SF"
+        },
+        {
+          "text": "49ers final injury report: Mike Evans is \u2018going in the right direction\u2019. San Francisco 49ers head coach Kyle Shanahan spoke about the final injury report on Friday. The team did not rule out any of the 53-man roster. There are nine players with questionable designations: WR Mike Evans (Achilles)LB D",
+          "url": "https://www.ninersnation.com/san-francisco-49ers-injuries/166044/49ers-final-injury-report-mike-evans-is-officially-questionable",
           "source": "SBN SF"
         }
       ]
@@ -127,6 +133,72 @@
       ]
     },
     {
+      "name": "Kirk Cousins",
+      "pos": "QB",
+      "team": "LV",
+      "adp": 215.0,
+      "adp_prior": 215.3,
+      "adp_move": 0.3,
+      "proj": null,
+      "sleeper_weight": 1.8,
+      "score": 10.296,
+      "unpriced": true,
+      "signals": [
+        "traded"
+      ],
+      "items": [
+        {
+          "text": "How the 49ers are uniquely equipped to beat the Vikings. The Week 11 NFL slate leaves a lot to be desired. Two games on the schedule involve playoff teams. The big one is an international outing between the Minnesota Vikings and the San Francisco 49ers. The Vikings saw their season circling the drai",
+          "url": "https://www.ninersnation.com/san-francisco-49ers-analysis/166002/how-the-49ers-are-uniquely-equipped-to-beat-the-vikings",
+          "source": "SBN SF"
+        }
+      ]
+    },
+    {
+      "name": "Treylon Burks",
+      "pos": "WR",
+      "team": "WAS",
+      "adp": 216.0,
+      "adp_prior": 216.0,
+      "adp_move": 0.0,
+      "proj": null,
+      "sleeper_weight": 1.8,
+      "score": 9.36,
+      "unpriced": true,
+      "signals": [
+        "injury"
+      ],
+      "items": [
+        {
+          "text": "Commanders vs. Bengals Friday injury report: Treylon Burks didn\u2019t work. The Commanders had an essentially clean injury report on Thursday, the start of their practice work leading up to Monday night\u2019s game against the Cincinnati Bengals. Friday\u2019s wasn\u2019t as pretty. Receiver Treylon Burks did not part",
+          "url": "https://www.hogshaven.com/washington-commanders-injuries/456350/commanders-bengals-injury-report-treylon-burks-rachaad-white-bill-croskey-merritt",
+          "source": "SBN WAS"
+        }
+      ]
+    },
+    {
+      "name": "David Blough",
+      "pos": "QB",
+      "team": "FA",
+      "adp": 216.0,
+      "adp_prior": 216.0,
+      "adp_move": 0.0,
+      "proj": null,
+      "sleeper_weight": 1.8,
+      "score": 9.36,
+      "unpriced": true,
+      "signals": [
+        "ahead of"
+      ],
+      "items": [
+        {
+          "text": "David Blough and Daronte Jones talk about stopping the Bengals. The Washington Commanders know they have a tall task ahead of them when Joe Burrow and the Cincinnati Bengals come to town on Monday night. Their offense has been on fire lately with help from the dynamic duo of WRs Ja&#8217;Marr Chase ",
+          "url": "https://www.hogshaven.com/pressers/454500/david-blough-and-daronte-jones-talk-about-stopping-the-bengals",
+          "source": "SBN WAS"
+        }
+      ]
+    },
+    {
       "name": "Daniel Jones",
       "pos": "QB",
       "team": "IND",
@@ -140,7 +212,9 @@
       "signals": [
         "injury",
         "released",
-        "starter"
+        "starter",
+        "traded",
+        "waived"
       ],
       "items": [
         {
@@ -149,19 +223,19 @@
           "source": "SBN NYG"
         },
         {
-          "text": "Colts release Daniel Jones as QB's Indy era ends with stunning thud. The Colts released starting quarterback Daniel Jones a day after he was benched during a loss to the Texans, ending a nightmare season with the team.",
-          "url": "https://sports.yahoo.com/articles/colts-release-daniel-jones-qbs-181651951.html",
+          "text": "After Daniel Jones' Colts release, four NFL landing spots for veteran QB. Daniel Jones, released by the Indianapolis Colts, could help a playoff contender or get a struggling team through 2026. Here are potential landing spots.",
+          "url": "https://sports.yahoo.com/articles/daniel-jones-colts-release-four-205144649.html",
           "source": "Yahoo NFL"
         },
         {
-          "text": "Any team putting in a claim for Daniel Jones will take about $2M in salary this year, plus, $10M+ guaranteed for injury next year. In other words, if you claim him, you assume you are paying him $10M in 2027.",
-          "url": "https://bsky.app/profile/rapsheet.bsky.social/post/3n2rci57qfk2j",
-          "source": "Bluesky @rapsheet.bsky.social"
+          "text": "Now what? Colts should have traded Daniel Jones when they had the chance. This move was nothing short of a stunner, if only from a financial standpoint. From a football standpoint, the Colts couldn't justify keeping Jones as QB1? Cutting him now, knowing what a hit they'd take? It almost feels perso",
+          "url": "https://sports.yahoo.com/nfl/article/now-what-colts-should-have-traded-daniel-jones-when-they-had-the-chance-204423803.html",
+          "source": "Yahoo NFL"
         },
         {
-          "text": "Colts release QB Daniel Jones. Colts avoid $10.51 million injury guarantee for 2027 by removing Jones from the roster.",
-          "url": "https://www.nbcsports.com/nfl/profootballtalk/rumor-mill/news/colts-release-qb-daniel-jones",
-          "source": "ProFootballTalk"
+          "text": "Daniel Jones released by Colts: Why QB's contract almost ensures he'll clear waivers, be free agent. Indianapolis waived Jones after the club's 26-3 loss to the Texans on Thursday night",
+          "url": "https://www.cbssports.com/nfl/news/daniel-jones-release-colts-why-qbs-contract-ensures-clear-waivers-free-agent/",
+          "source": "CBS Sports NFL"
         }
       ]
     },
@@ -212,30 +286,6 @@
       ]
     },
     {
-      "name": "Christian Kirk",
-      "pos": "WR",
-      "team": "SF",
-      "adp": 215.9,
-      "adp_prior": 215.7,
-      "adp_move": -0.2,
-      "proj": null,
-      "sleeper_weight": 1.8,
-      "score": 9.0,
-      "unpriced": true,
-      "signals": [
-        "injury",
-        "surgery",
-        "training camp"
-      ],
-      "items": [
-        {
-          "text": "49ers injury news: Christian Kirk underwent meniscus surgery. In a surprise to nobody, it&#8217;s been a brutal year for the San Francisco 49ers on the injury front. They signed veteran wide receiver Christian Kirk this past offseason to add speed and stretch the field both vertically and horizontal",
-          "url": "https://www.ninersnation.com/san-francisco-49ers-injuries/165974/49ers-injury-news-christian-kirk-underwent-meniscus-surgery",
-          "source": "SBN SF"
-        }
-      ]
-    },
-    {
       "name": "James Conner",
       "pos": "RB",
       "team": "ARI",
@@ -258,46 +308,25 @@
       ]
     },
     {
-      "name": "Nikko Remigio",
-      "pos": "WR",
-      "team": "KC",
+      "name": "Anthony Richardson",
+      "pos": "QB",
+      "team": "IND",
       "adp": 216.0,
       "adp_prior": 216.0,
       "adp_move": 0.0,
       "proj": null,
       "sleeper_weight": 1.8,
-      "score": 8.28,
+      "score": 8.237,
       "unpriced": true,
       "signals": [
-        "waived"
+        "released",
+        "starter"
       ],
       "items": [
         {
-          "text": "Dave Toub on Josh Downs: \u2018Right now, he\u2019s our punt returner\u2019. Shortly after the Kansas City Chiefs waived return specialist Nikko Remigio last week, the Houston Texans signed him to their active roster and trusted him to be the primary returner for their Week 10 game against the Cleveland Browns. In",
-          "url": "https://www.arrowheadpride.com/kansas-city-chiefs-news/216929/dave-toub-josh-downs-right-now-punt-returner",
-          "source": "SBN KC"
-        }
-      ]
-    },
-    {
-      "name": "Brandon Smith",
-      "pos": "WR",
-      "team": "PIT",
-      "adp": 216.0,
-      "adp_prior": 216.0,
-      "adp_move": 0.0,
-      "proj": null,
-      "sleeper_weight": 1.8,
-      "score": 8.28,
-      "unpriced": true,
-      "signals": [
-        "waived"
-      ],
-      "items": [
-        {
-          "text": "Steelers waive veteran WR. Pittsburgh has created another open spot on its 53-man roster, with the team announcing it has waived wide receiver Brandon Smith on Thursday. Smith has appeared in five games for the Steelers this season, recording four catches for 39 yards. His release seems to indicate ",
-          "url": "https://www.behindthesteelcurtain.com/pittsburgh-steelers-roster/178150/steelers-waive-veteran-wr-brandon-smith-roster-news-practice-squad-eagles-michael-pittman-roman-wilson",
-          "source": "SBN PIT"
+          "text": "Indianapolis Colts waive QB Daniel Jones after less than two seasons amid nightmare 2026. On Friday, the Colts released Daniel Jones just eight months after signing him to a two-year, $88 million extension. PFF metrics explain the context behind Jones' major struggles in 2026 as well as what we know",
+          "url": "https://www.pff.com/news/indianapolis-colts-release-qb-daniel-jones-after-less-than-two-seasons-amid-nightmare-2026/",
+          "source": "PFF"
         }
       ]
     },
@@ -399,28 +428,6 @@
       ]
     },
     {
-      "name": "Anthony Richardson",
-      "pos": "QB",
-      "team": "IND",
-      "adp": 216.0,
-      "adp_prior": 216.0,
-      "adp_move": 0.0,
-      "proj": null,
-      "sleeper_weight": 1.8,
-      "score": 7.286,
-      "unpriced": true,
-      "signals": [
-        "starter"
-      ],
-      "items": [
-        {
-          "text": "Shane Steichen on Daniel Jones remaining the starter: \"We'll evaluate everything\". Anthony Richardson could finally get a chance to show what he can do.",
-          "url": "https://www.nbcsports.com/nfl/profootballtalk/rumor-mill/news/shane-steichen-on-daniel-jones-being-the-starter-well-evaluate-everything",
-          "source": "ProFootballTalk"
-        }
-      ]
-    },
-    {
       "name": "Adam Randall",
       "pos": "RB",
       "team": "BAL",
@@ -444,9 +451,9 @@
       ]
     },
     {
-      "name": "Xavier Restrepo",
+      "name": "Nikko Remigio",
       "pos": "WR",
-      "team": "TEN",
+      "team": "KC",
       "adp": 216.0,
       "adp_prior": 216.0,
       "adp_move": 0.0,
@@ -455,15 +462,13 @@
       "score": 7.2,
       "unpriced": true,
       "signals": [
-        "injured",
-        "ir",
-        "promoted"
+        "waived"
       ],
       "items": [
         {
-          "text": "Titans place Wan\u2019Dale Robinson on IR; Promote Xavier Restrepo to roster. Ian Rapoport is reporting that the Tennessee Titans have placed wide receiver Wan\u2019Dale Robinson on injured reserve and promoted wide receiver Xavier Restrepo to the active roster: It has been a disappointing first season in Ten",
-          "url": "https://www.musiccitymiracles.com/tennessee-titans-injuries/67946/titans-place-wandale-robinson-on-ir-promote-xavier-restrepo-to-roster",
-          "source": "SBN TEN"
+          "text": "Dave Toub on Josh Downs: \u2018Right now, he\u2019s our punt returner\u2019. Shortly after the Kansas City Chiefs waived return specialist Nikko Remigio last week, the Houston Texans signed him to their active roster and trusted him to be the primary returner for their Week 10 game against the Cleveland Browns. In",
+          "url": "https://www.arrowheadpride.com/kansas-city-chiefs-news/216929/dave-toub-josh-downs-right-now-punt-returner",
+          "source": "SBN KC"
         }
       ]
     },
@@ -480,10 +485,10 @@
       "unpriced": true,
       "signals": [
         "acl",
-        "injured",
         "injury",
         "limited",
-        "out for"
+        "out for",
+        "surgery"
       ],
       "items": [
         {
@@ -497,37 +502,14 @@
           "source": "ProFootballTalk"
         },
         {
-          "text": "Patriots mailbag: What\u2019s wrong with the defense?. Behind back-to-back blowout losses and losing Drake Maye to injury, the New England Patriots season has quickly derailed over the last two weeks. Now, they have plenty questions to answers after a much needed bye week. So, let\u2019s get into some of thos",
-          "url": "https://www.patspulpit.com/new-england-patriots-analysis/144758/patriots-mailbag-defense-drake-maye-nfl-week-11-bye",
-          "source": "SBN NE"
+          "text": "Drake Maye has fractured right fibula, will not require surgery, per report. Maye's injury will sideline him deep into the season, if he is able to return at all, per the report",
+          "url": "https://www.cbssports.com/nfl/news/drake-maye-has-fractured-right-fibula-will-not-require-surgery-per-report/",
+          "source": "CBS Sports NFL"
         },
         {
           "text": "Drake Maye injury: Everything we know about the Patriots QB\u2019s status. Their Week 10 game against the Detroit Lions was the worst-case scenario for the New England Patriots. Not only were they blown out with a final score of 35-10 to drop to 5-5 on the season, they also lost their starting quarterbac",
           "url": "https://www.patspulpit.com/new-england-patriots-injuries/144491/drake-maye-injury-update-patriots-vs-lions",
           "source": "SBN NE"
-        }
-      ]
-    },
-    {
-      "name": "Sean Ryan",
-      "pos": "WR",
-      "team": "FA",
-      "adp": 216.0,
-      "adp_prior": 216.0,
-      "adp_move": 0.0,
-      "proj": null,
-      "sleeper_weight": 1.8,
-      "score": 7.038,
-      "unpriced": true,
-      "signals": [
-        "ahead of",
-        "injury"
-      ],
-      "items": [
-        {
-          "text": "Brock Bowers returns to practice, Matt Gay dealing with injury ahead of Las Vegas Raiders\u2019 Week 11 matchup against Denver Broncos. The Las Vegas Raiders received good news ahead of their Week 11 matchup against the Denver Broncos. ESPN\u2019s Ryan McFadden posted a video of tight end Brock Bowers in full",
-          "url": "https://www.silverandblackpride.com/las-vegas-raiders-injuries/146836/raiders-broncos-week-11-injury-report-brock-bowers-matt-gay",
-          "source": "SBN LV"
         }
       ]
     },
@@ -554,47 +536,25 @@
       ]
     },
     {
-      "name": "Kyle McCord",
+      "name": "Jimmy Garoppolo",
       "pos": "QB",
-      "team": "MIA",
-      "adp": 216.0,
-      "adp_prior": 216.0,
-      "adp_move": 0.0,
-      "proj": null,
-      "sleeper_weight": 1.8,
-      "score": 6.48,
-      "unpriced": true,
-      "signals": [
-        "snap"
-      ],
-      "items": [
-        {
-          "text": "Colts CB Justin Walley earns AFC Defensive Player of the Week honors after momentous strip-sack. On the opening snap of the second half against the Miami Dolphins, Indianapolis Colts cornerback Justin Walley disguised a nickel blitz to come screaming off the edge against an empty pocket. Dolphins qu",
-          "url": "https://www.stampedeblue.com/indianapolis-colts-news/130228/colts-cb-justin-walley-earns-afc-defensive-player-of-the-week-honors-after-momentous-strip-sack",
-          "source": "SBN IND"
-        }
-      ]
-    },
-    {
-      "name": "Xavier Gipson",
-      "pos": "WR",
       "team": "FA",
       "adp": 216.0,
       "adp_prior": 216.0,
       "adp_move": 0.0,
       "proj": null,
       "sleeper_weight": 1.8,
-      "score": 6.48,
+      "score": 6.318,
       "unpriced": true,
       "signals": [
-        "practice squad",
-        "training camp"
+        "injury",
+        "snaps"
       ],
       "items": [
         {
-          "text": "NY Giants signed Xavier Gipson to provide \u2018spark\u2019 in return game. EAST RUTHERFORD, N.J. \u2014 The New York Giants signed Xavier Gipson off the Philadelphia Eagles\u2019 practice squad this week because they \u201cneed a spark\u201d in the kick return game, special teams coordinator Chris Horton said on Thursday. \u201cWhen",
-          "url": "https://www.bigblueview.com/new-york-giants-news/180544/ny-giants-signed-xavier-gipson-to-provide-spark-in-return-game",
-          "source": "SBN NYG"
+          "text": "Jimmy Garoppolo\u2019s reunion may not be with the Rams. If the Los Angeles Rams lost Matthew Stafford for any amount of time this season, would you trust the current backup quarterback options? Would you feel any better if an experienced veteran, like Jimmy Garoppolo, could step in? There\u2019s nothing to i",
+          "url": "https://www.turfshowtimes.com/los-angeles-rams-analysis/155565/jimmy-garoppolo-retirement-rams-patriots",
+          "source": "SBN LAR"
         }
       ]
     },
@@ -617,6 +577,29 @@
           "text": "Colts halftime TE snap count\n\nTyler Warren 23\nDrew Ogletree 16\nPharaoh Brown 5\n\nOut of 31 plays",
           "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3n2plbyfirc2x",
           "source": "Bluesky @ffnatejahnke.bsky.social"
+        }
+      ]
+    },
+    {
+      "name": "Sean Ryan",
+      "pos": "WR",
+      "team": "FA",
+      "adp": 216.0,
+      "adp_prior": 216.0,
+      "adp_move": 0.0,
+      "proj": null,
+      "sleeper_weight": 1.8,
+      "score": 6.12,
+      "unpriced": true,
+      "signals": [
+        "ahead of",
+        "injury"
+      ],
+      "items": [
+        {
+          "text": "Brock Bowers returns to practice, Matt Gay dealing with injury ahead of Las Vegas Raiders\u2019 Week 11 matchup against Denver Broncos. The Las Vegas Raiders received good news ahead of their Week 11 matchup against the Denver Broncos. ESPN\u2019s Ryan McFadden posted a video of tight end Brock Bowers in full",
+          "url": "https://www.silverandblackpride.com/las-vegas-raiders-injuries/146836/raiders-broncos-week-11-injury-report-brock-bowers-matt-gay",
+          "source": "SBN LV"
         }
       ]
     },
@@ -841,6 +824,29 @@
       ]
     },
     {
+      "name": "Xavier Restrepo",
+      "pos": "WR",
+      "team": "TEN",
+      "adp": 216.0,
+      "adp_prior": 216.0,
+      "adp_move": 0.0,
+      "proj": null,
+      "sleeper_weight": 1.8,
+      "score": 5.76,
+      "unpriced": true,
+      "signals": [
+        "injured",
+        "promoted"
+      ],
+      "items": [
+        {
+          "text": "The Titans have promoted WR Xavier Restrepo to the team\u2019s 53-man roster and placed WR Wan\u2019Dale Robinson on Injured Reserve.",
+          "url": "https://bsky.app/profile/rapsheet.bsky.social/post/3n2kbrvbdu22b",
+          "source": "Bluesky @rapsheet.bsky.social"
+        }
+      ]
+    },
+    {
       "name": "Cam Skattebo",
       "pos": "",
       "team": "",
@@ -885,6 +891,28 @@
       ]
     },
     {
+      "name": "Sione Vaki",
+      "pos": "RB",
+      "team": "DET",
+      "adp": 216.0,
+      "adp_prior": 216.0,
+      "adp_move": 0.0,
+      "proj": null,
+      "sleeper_weight": 1.8,
+      "score": 5.242,
+      "unpriced": true,
+      "signals": [
+        "questionable"
+      ],
+      "items": [
+        {
+          "text": "D.J. Reed, Sione Vaki listed as questionable for the Lions. Lions cornerback D.J.",
+          "url": "https://www.nbcsports.com/nfl/profootballtalk/rumor-mill/news/d-j-reed-sione-vaki-listed-as-questionable-for-the-lions",
+          "source": "ProFootballTalk"
+        }
+      ]
+    },
+    {
       "name": "Roman Wilson",
       "pos": "WR",
       "team": "PIT",
@@ -893,83 +921,106 @@
       "adp_move": -0.1,
       "proj": null,
       "sleeper_weight": 1.8,
-      "score": 4.554,
+      "score": 5.242,
       "unpriced": true,
       "signals": [
-        "waived"
+        "questionable"
       ],
       "items": [
         {
-          "text": "Steelers waive veteran WR. Pittsburgh has created another open spot on its 53-man roster, with the team announcing it has waived wide receiver Brandon Smith on Thursday. Smith has appeared in five games for the Steelers this season, recording four catches for 39 yards. His release seems to indicate ",
-          "url": "https://www.behindthesteelcurtain.com/pittsburgh-steelers-roster/178150/steelers-waive-veteran-wr-brandon-smith-roster-news-practice-squad-eagles-michael-pittman-roman-wilson",
-          "source": "SBN PIT"
+          "text": "Roman Wilson, Michael Pittman Jr. questionable vs. Eagles. Six Steelers, nearly all starters, are questionable for Week 11\u2019s matchup in Philadelphia.",
+          "url": "https://sports.yahoo.com/articles/roman-wilson-michael-pittman-jr-203452218.html",
+          "source": "Yahoo NFL"
         }
       ]
     },
     {
-      "name": "Baker Mayfield",
-      "pos": "QB",
-      "team": "TB",
-      "adp": 124.1,
-      "adp_prior": 122.0,
-      "adp_move": -2.1,
+      "name": "Dontayvion Wicks",
+      "pos": "WR",
+      "team": "PHI",
+      "adp": 157.6,
+      "adp_prior": 164.2,
+      "adp_move": 6.6,
       "proj": null,
-      "sleeper_weight": 1.1,
-      "score": 4.03,
+      "sleeper_weight": 1.5,
+      "score": 3.9,
       "unpriced": false,
       "signals": [
+        "hamstring",
         "injury",
-        "limited",
-        "walkthrough"
+        "out for"
       ],
       "items": [
         {
-          "text": "Lions, Bucs injury report: QB Baker Mayfield returns to practice, feels \u2018ready\u2019 to play. The Detroit Lions (7-2) and the Tampa Bay Buccaneers (3-6) were back on the practice field Thursday, and with the Lions holding a walkthrough Wednesday, this was our first real look at where Detroit\u2019s players st",
-          "url": "https://www.prideofdetroit.com/detroit-lions-injuries/181766/lions-bucs-injury-report-qb-baker-mayfield-returns-to-practice-feels-ready-to-play",
-          "source": "SBN DET"
-        },
-        {
-          "text": "How to win, how to lose: Tampa Bay Buccaneers at Detroit Lions week 10 game preview. \u201cHey hey Tampa Bay,\u201d the Bucs know how to\u2026 Stay hurt. Tampa Bay is entering another important game against a very quality opponent and they will be dealing with another major injury. The Buccaneers, for the second t",
-          "url": "https://www.bucsnation.com/tampa-bay-buccaneers-game-information/69858/how-to-win-how-to-lose-tampa-bay-buccaneers-at-detroit-lions-week-10-game-preview",
-          "source": "SBN TB"
-        },
-        {
-          "text": "Buccaneers at Lions: Thursday injury report for Week 11. The Tampa Bay Buccaneers received some encouraging news Thursday as they continued preparations for their Week 11 matchup against the Detroit Lions. After missing Wednesday\u2019s practice, quarterback Baker Mayfield (foot/right thumb) returned to ",
-          "url": "https://www.bucsnation.com/tampa-bay-buccaneers-injuries/69872/buccaneers-lions-thursday-injury-report-nfl-week-11-baker-mayfield",
-          "source": "SBN TB"
-        },
-        {
-          "text": "Tampa Bay Buccaneers news: Bucs figuring out Baker Mayfield\u2019s status vs. Lions. The Tampa Bay Buccaneers are practicing for their Week 11 matchup as they face off against the Detroit Lions. The Buccaneers may or may not have quarterback Baker Mayfield under center for the game, as he has been limite",
-          "url": "https://www.bucsnation.com/tampa-bay-buccaneers-news/69867/tampa-bay-buccaneers-news-bucs-figuring-out-baker-mayfields-status-vs-lions",
-          "source": "SBN TB"
+          "text": "DeVonta Smith set to return; Zack Baun, Dontayvion Wicks ruled out for Eagles. DeVonta Smith has missed the last month with a hamstring injury, but the Eagles are set to have their top wideout back in the lineup against the Steelers on Sunday.",
+          "url": "https://www.nbcsports.com/nfl/profootballtalk/rumor-mill/news/devonta-smith-set-to-return-zack-baun-dontayvion-wicks-ruled-out-for-eagles",
+          "source": "ProFootballTalk"
         }
       ]
     },
     {
-      "name": "Josh Downs",
-      "pos": "WR",
-      "team": "IND",
-      "adp": 84.0,
-      "adp_prior": 82.7,
-      "adp_move": -1.3,
+      "name": "Geno Smith",
+      "pos": "QB",
+      "team": "NYJ",
+      "adp": 189.2,
+      "adp_prior": 193.3,
+      "adp_move": 4.1,
       "proj": null,
-      "sleeper_weight": 0.75,
-      "score": 3.936,
-      "unpriced": true,
+      "sleeper_weight": 1.5,
+      "score": 3.9,
+      "unpriced": false,
       "signals": [
-        "snaps",
-        "waived"
+        "injury"
       ],
       "items": [
         {
-          "text": "Dave Toub on Josh Downs: \u2018Right now, he\u2019s our punt returner\u2019. Shortly after the Kansas City Chiefs waived return specialist Nikko Remigio last week, the Houston Texans signed him to their active roster and trusted him to be the primary returner for their Week 10 game against the Cleveland Browns. In",
-          "url": "https://www.arrowheadpride.com/kansas-city-chiefs-news/216929/dave-toub-josh-downs-right-now-punt-returner",
-          "source": "SBN KC"
-        },
+          "text": "It looks like Geno Smith will start at QB for the Jets in Week 11. Jets quarterback Geno Smith twice left the team\u2019s Week 10 loss to the Buffalo Bills with an injury. His status has been up in the air through the week. While head coach Aaron Glenn did not guarantee Smith will start at quarterback, t",
+          "url": "https://www.ganggreennation.com/new-york-jets-news/98714/it-looks-like-geno-smith-will-start-at-qb-for-the-jets-in-week-11",
+          "source": "SBN NYJ"
+        }
+      ]
+    },
+    {
+      "name": "Joe Burrow",
+      "pos": "QB",
+      "team": "CIN",
+      "adp": 68.2,
+      "adp_prior": 68.1,
+      "adp_move": -0.1,
+      "proj": null,
+      "sleeper_weight": 0.75,
+      "score": 3.9,
+      "unpriced": true,
+      "signals": [
+        "ahead of"
+      ],
+      "items": [
         {
-          "text": "Andy Reid defends Xavier Worthy\u2019s lack of production. There was a lot to like about the Kansas City Chiefs\u2019 offense immediately after trading for wide receiver Josh Downs. The 35-13 beatdown against the Atlanta Falcons in Week 10 showcased Downs and other receivers stepping up. However, it was a qui",
-          "url": "https://www.arrowheadpride.com/kansas-city-chiefs-news/216909/andy-reid-defends-xavier-worthys-lack-production",
-          "source": "SBN KC"
+          "text": "David Blough and Daronte Jones talk about stopping the Bengals. The Washington Commanders know they have a tall task ahead of them when Joe Burrow and the Cincinnati Bengals come to town on Monday night. Their offense has been on fire lately with help from the dynamic duo of WRs Ja&#8217;Marr Chase ",
+          "url": "https://www.hogshaven.com/pressers/454500/david-blough-and-daronte-jones-talk-about-stopping-the-bengals",
+          "source": "SBN WAS"
+        }
+      ]
+    },
+    {
+      "name": "Isaiah Likely",
+      "pos": "TE",
+      "team": "NYG",
+      "adp": 127.0,
+      "adp_prior": 127.6,
+      "adp_move": 0.6,
+      "proj": null,
+      "sleeper_weight": 1.1,
+      "score": 3.861,
+      "unpriced": true,
+      "signals": [
+        "injury"
+      ],
+      "items": [
+        {
+          "text": "No NY Giants on final injury report for Week 11 Jacksonville game. The New York Giants do not have a single player with an injury designation for Sunday\u2019s key Week 11 game against the Jacksonville Jaguars. The Giants\u2019 final injury report looks like this: Out: NoneDoubtful: NoneQuestionable: None Tig",
+          "url": "https://www.bigblueview.com/new-york-giants-injuries/180669/no-ny-giants-on-final-injury-report-for-week-11-jacksonville-game",
+          "source": "SBN NYG"
         }
       ]
     },
@@ -1024,24 +1075,97 @@
       ]
     },
     {
-      "name": "Stefon Diggs",
-      "pos": "WR",
-      "team": "WAS",
-      "adp": 94.8,
-      "adp_prior": 96.4,
-      "adp_move": 1.6,
+      "name": "Kyle Monangai",
+      "pos": "RB",
+      "team": "CHI",
+      "adp": 112.7,
+      "adp_prior": 104.0,
+      "adp_move": -8.7,
       "proj": null,
-      "sleeper_weight": 0.75,
-      "score": 3.45,
-      "unpriced": true,
+      "sleeper_weight": 1.1,
+      "score": 3.558,
+      "unpriced": false,
       "signals": [
-        "injury"
+        "injury",
+        "questionable"
       ],
       "items": [
         {
-          "text": "Commanders vs. Bengals Thursday injury report: Lucas Patrick is back. Commanders receiver Stefon Diggs missed Thursday\u2019s practice, but his absence was not injury related. It was part of his veteran rest schedule. So Diggs was out\u2026and that\u2019s it. Everyone else on the active roster started practice pre",
-          "url": "https://www.hogshaven.com/washington-commanders-injuries/455165/commanders-vs-bengals-thursday-injury-report-lucas-patrick-is-back",
-          "source": "SBN WAS"
+          "text": "Injury updates:\n-- 49ers WR Mike Evans (Achilles) is questionable with a real chance to go.\n-- Bears RB Kyle Monangai is good to go, as is WR Luther Burden.",
+          "url": "https://bsky.app/profile/rapsheet.bsky.social/post/3n2reqljjpk2a",
+          "source": "Bluesky @rapsheet.bsky.social"
+        },
+        {
+          "text": "Bears vs. Saints Injury Report: Kyler Gordon out, but 2 players return. It&#8217;s two steps forward, one step back for the Chicago Bears injury report for this Sunday&#8217;s game against the New Orleans Saints. First, the good news: as expected, both running back Kyle Monangai and corner Malik Muh",
+          "url": "https://www.windycitygridiron.com/chicago-bears-injuries/127955/bears-vs-saints-injury-report-kyler-gordon-out-but-2-players-return-monangai-jeffery-simmons",
+          "source": "SBN CHI"
+        }
+      ]
+    },
+    {
+      "name": "Baker Mayfield",
+      "pos": "QB",
+      "team": "TB",
+      "adp": 124.1,
+      "adp_prior": 122.0,
+      "adp_move": -2.1,
+      "proj": null,
+      "sleeper_weight": 1.1,
+      "score": 3.505,
+      "unpriced": false,
+      "signals": [
+        "injury",
+        "limited",
+        "walkthrough"
+      ],
+      "items": [
+        {
+          "text": "Lions, Bucs injury report: QB Baker Mayfield returns to practice, feels \u2018ready\u2019 to play. The Detroit Lions (7-2) and the Tampa Bay Buccaneers (3-6) were back on the practice field Thursday, and with the Lions holding a walkthrough Wednesday, this was our first real look at where Detroit\u2019s players st",
+          "url": "https://www.prideofdetroit.com/detroit-lions-injuries/181766/lions-bucs-injury-report-qb-baker-mayfield-returns-to-practice-feels-ready-to-play",
+          "source": "SBN DET"
+        },
+        {
+          "text": "How to win, how to lose: Tampa Bay Buccaneers at Detroit Lions week 10 game preview. \u201cHey hey Tampa Bay,\u201d the Bucs know how to\u2026 Stay hurt. Tampa Bay is entering another important game against a very quality opponent and they will be dealing with another major injury. The Buccaneers, for the second t",
+          "url": "https://www.bucsnation.com/tampa-bay-buccaneers-game-information/69858/how-to-win-how-to-lose-tampa-bay-buccaneers-at-detroit-lions-week-10-game-preview",
+          "source": "SBN TB"
+        },
+        {
+          "text": "Buccaneers at Lions: Thursday injury report for Week 11. The Tampa Bay Buccaneers received some encouraging news Thursday as they continued preparations for their Week 11 matchup against the Detroit Lions. After missing Wednesday\u2019s practice, quarterback Baker Mayfield (foot/right thumb) returned to ",
+          "url": "https://www.bucsnation.com/tampa-bay-buccaneers-injuries/69872/buccaneers-lions-thursday-injury-report-nfl-week-11-baker-mayfield",
+          "source": "SBN TB"
+        },
+        {
+          "text": "Tampa Bay Buccaneers news: Bucs figuring out Baker Mayfield\u2019s status vs. Lions. The Tampa Bay Buccaneers are practicing for their Week 11 matchup as they face off against the Detroit Lions. The Buccaneers may or may not have quarterback Baker Mayfield under center for the game, as he has been limite",
+          "url": "https://www.bucsnation.com/tampa-bay-buccaneers-news/69867/tampa-bay-buccaneers-news-bucs-figuring-out-baker-mayfields-status-vs-lions",
+          "source": "SBN TB"
+        }
+      ]
+    },
+    {
+      "name": "Josh Downs",
+      "pos": "WR",
+      "team": "IND",
+      "adp": 84.0,
+      "adp_prior": 82.7,
+      "adp_move": -1.3,
+      "proj": null,
+      "sleeper_weight": 0.75,
+      "score": 3.486,
+      "unpriced": true,
+      "signals": [
+        "snaps",
+        "waived"
+      ],
+      "items": [
+        {
+          "text": "Dave Toub on Josh Downs: \u2018Right now, he\u2019s our punt returner\u2019. Shortly after the Kansas City Chiefs waived return specialist Nikko Remigio last week, the Houston Texans signed him to their active roster and trusted him to be the primary returner for their Week 10 game against the Cleveland Browns. In",
+          "url": "https://www.arrowheadpride.com/kansas-city-chiefs-news/216929/dave-toub-josh-downs-right-now-punt-returner",
+          "source": "SBN KC"
+        },
+        {
+          "text": "Andy Reid defends Xavier Worthy\u2019s lack of production. There was a lot to like about the Kansas City Chiefs\u2019 offense immediately after trading for wide receiver Josh Downs. The 35-13 beatdown against the Atlanta Falcons in Week 10 showcased Downs and other receivers stepping up. However, it was a qui",
+          "url": "https://www.arrowheadpride.com/kansas-city-chiefs-news/216909/andy-reid-defends-xavier-worthys-lack-production",
+          "source": "SBN KC"
         }
       ]
     },
@@ -1076,46 +1200,84 @@
       ]
     },
     {
-      "name": "Geno Smith",
+      "name": "Fernando Mendoza",
       "pos": "QB",
-      "team": "NYJ",
-      "adp": 189.2,
-      "adp_prior": 193.3,
-      "adp_move": 4.1,
+      "team": "LV",
+      "adp": 194.9,
+      "adp_prior": 185.4,
+      "adp_move": -9.5,
       "proj": null,
-      "sleeper_weight": 1.5,
-      "score": 3.12,
+      "sleeper_weight": 1.8,
+      "score": 3.276,
       "unpriced": false,
       "signals": [
-        "injury"
+        "questionable"
       ],
       "items": [
         {
-          "text": "It looks like Geno Smith will start at QB for the Jets in Week 11. Jets quarterback Geno Smith twice left the team\u2019s Week 10 loss to the Buffalo Bills with an injury. His status has been up in the air through the week. While head coach Aaron Glenn did not guarantee Smith will start at quarterback, t",
-          "url": "https://sports.yahoo.com/articles/looks-geno-smith-start-qb-184134125.html",
-          "source": "Yahoo NFL"
+          "text": "Brock Bowers, Matt Gay questionable for Raiders-Broncos. There\u2019s a chance quarterback Fernando Mendoza will have his top target for his second start.",
+          "url": "https://www.nbcsports.com/nfl/profootballtalk/rumor-mill/news/brock-bowers-matt-gay-questionable-for-raiders-broncos",
+          "source": "ProFootballTalk"
         }
       ]
     },
     {
-      "name": "Dontayvion Wicks",
+      "name": "DeVonta Smith",
       "pos": "WR",
       "team": "PHI",
-      "adp": 157.6,
-      "adp_prior": 164.2,
-      "adp_move": 6.6,
+      "adp": 27.9,
+      "adp_prior": 27.7,
+      "adp_move": -0.2,
       "proj": null,
-      "sleeper_weight": 1.5,
-      "score": 3.0,
-      "unpriced": false,
+      "sleeper_weight": 0.5,
+      "score": 3.255,
+      "unpriced": true,
       "signals": [
-        "injury"
+        "hamstring",
+        "injury",
+        "out for"
       ],
       "items": [
         {
-          "text": "Eagles Injury Report: DeVonta Smith and Dontayvion Wicks return to practice. The Philadelphia Eagles issued their first official injury report of the week on Wednesday in advance of their Week 11 game against the Pittsburgh Steelers. The Eagles listed one player under DID NOT PARTICIPATE: Zack Baun.",
-          "url": "https://www.bleedinggreennation.com/philadelphia-eagles-injuries/190653/eagles-injury-report-devonta-smith-and-dontayvion-wicks-return-to-practice",
+          "text": "DeVonta Smith set to return; Zack Baun, Dontayvion Wicks ruled out for Eagles. DeVonta Smith has missed the last month with a hamstring injury, but the Eagles are set to have their top wideout back in the lineup against the Steelers on Sunday.",
+          "url": "https://www.nbcsports.com/nfl/profootballtalk/rumor-mill/news/devonta-smith-set-to-return-zack-baun-dontayvion-wicks-ruled-out-for-eagles",
+          "source": "ProFootballTalk"
+        },
+        {
+          "text": "Eagles Injury Report: DeVonta Smith on track to play against Steelers. The Philadelphia Eagles issued their second official injury report of the week on Thursday in advance of their Week 11 game against the Pittsburgh Steelers. The Eagles listed one player under DID NOT PARTICIPATE: Zack Baun and Sm",
+          "url": "https://www.bleedinggreennation.com/philadelphia-eagles-injuries/190736/eagles-injury-report-devonta-smith-on-track-to-play-against-steelers",
           "source": "SBN PHI"
+        }
+      ]
+    },
+    {
+      "name": "Ladd McConkey",
+      "pos": "WR",
+      "team": "LAC",
+      "adp": 33.5,
+      "adp_prior": 33.3,
+      "adp_move": -0.2,
+      "proj": null,
+      "sleeper_weight": 0.5,
+      "score": 3.197,
+      "unpriced": true,
+      "signals": [
+        "injury",
+        "limited",
+        "out for",
+        "questionable",
+        "sidelined"
+      ],
+      "items": [
+        {
+          "text": "Chargers rule out LB Daiyan Henley, list WR Ladd McConkey as questionable. Chargers linebacker Daiyan Henley missed practice this week with knee soreness, and the team has ruled him out for Sunday's game against the Jets.",
+          "url": "https://www.nbcsports.com/nfl/profootballtalk/rumor-mill/news/chargers-rule-out-lb-daiyan-henley-list-wr-ladd-mcconkey-as-questionable",
+          "source": "ProFootballTalk"
+        },
+        {
+          "text": "Chargers-Jets Injury Report: Ladd McConkey returns to practice. After backs spasms kept sidelined for the past two games, wide receiver Ladd McConkey returned to practice on Wednesday but participated in a limited fashion. He was one of five players who logged limited practices, joining cornerback D",
+          "url": "https://www.boltsfromtheblue.com/los-angeles-chargers-injuries/67196/chargers-jets-injury-report-ladd-mcconkey-charlie-kolar",
+          "source": "SBN LAC"
         }
       ]
     },
@@ -1142,24 +1304,47 @@
       ]
     },
     {
-      "name": "Fernando Mendoza",
-      "pos": "QB",
-      "team": "LV",
-      "adp": 194.9,
-      "adp_prior": 185.4,
-      "adp_move": -9.5,
+      "name": "Stefon Diggs",
+      "pos": "WR",
+      "team": "WAS",
+      "adp": 94.8,
+      "adp_prior": 96.4,
+      "adp_move": 1.6,
       "proj": null,
-      "sleeper_weight": 1.8,
-      "score": 2.88,
-      "unpriced": false,
+      "sleeper_weight": 0.75,
+      "score": 3.0,
+      "unpriced": true,
       "signals": [
-        "snaps"
+        "injury"
       ],
       "items": [
         {
-          "text": "Fernando Mendoza needs a healthy Brock Bowers. Here is a look at how the Las Vegas Raiders\u2019 2024 draft class fared in a home 21-13 loss to the Seattle Seahawks on Sunday and what to look for Sunday at the Denver Broncos. Brock Bowers: The first-round pick played just 11 snaps after injuring his ankl",
-          "url": "https://www.silverandblackpride.com/las-vegas-raiders-analysis/146566/raiders-fernando-mendoza-brock-bowers-week-11-broncos",
-          "source": "SBN LV"
+          "text": "Commanders vs. Bengals Thursday injury report: Lucas Patrick is back. Commanders receiver Stefon Diggs missed Thursday\u2019s practice, but his absence was not injury related. It was part of his veteran rest schedule. So Diggs was out\u2026and that\u2019s it. Everyone else on the active roster started practice pre",
+          "url": "https://www.hogshaven.com/washington-commanders-injuries/455165/commanders-vs-bengals-thursday-injury-report-lucas-patrick-is-back",
+          "source": "SBN WAS"
+        }
+      ]
+    },
+    {
+      "name": "Rachaad White",
+      "pos": "RB",
+      "team": "WAS",
+      "adp": 119.3,
+      "adp_prior": 115.3,
+      "adp_move": -4.0,
+      "proj": null,
+      "sleeper_weight": 1.1,
+      "score": 2.86,
+      "unpriced": false,
+      "signals": [
+        "injury",
+        "limited"
+      ],
+      "items": [
+        {
+          "text": "Commanders add RB Rachaad White to the injury report as limited with a heel injury. The Commanders added running back Rachaad White to the injury report Friday.",
+          "url": "https://www.nbcsports.com/nfl/profootballtalk/rumor-mill/news/commanders-add-rb-rachaad-white-to-the-injury-report-as-limited-with-a-heel-injury",
+          "source": "ProFootballTalk"
         }
       ]
     },
@@ -1176,7 +1361,6 @@
       "unpriced": true,
       "signals": [
         "injured",
-        "injury",
         "ir",
         "placed on",
         "surgery",
@@ -1206,28 +1390,6 @@
       ]
     },
     {
-      "name": "Joe Burrow",
-      "pos": "QB",
-      "team": "CIN",
-      "adp": 68.2,
-      "adp_prior": 68.1,
-      "adp_move": -0.1,
-      "proj": null,
-      "sleeper_weight": 0.75,
-      "score": 2.76,
-      "unpriced": true,
-      "signals": [
-        "injury"
-      ],
-      "items": [
-        {
-          "text": "Joe Burrow on injury report, fully participates in practice despite illness. Bengals quarterback Joe Burrow landed on the team's first injury report of the week, but it doesn't look like anything that should interfere with his availability for Monday night's game against the Commanders.",
-          "url": "https://www.nbcsports.com/nfl/profootballtalk/rumor-mill/news/joe-burrow-on-injury-report-fully-participates-in-practice-despite-illness",
-          "source": "ProFootballTalk"
-        }
-      ]
-    },
-    {
       "name": "Jaxson Dart",
       "pos": "QB",
       "team": "NYG",
@@ -1251,32 +1413,24 @@
       ]
     },
     {
-      "name": "Michael Pittman Jr.",
+      "name": "Tee Higgins",
       "pos": "WR",
-      "team": "PIT",
-      "adp": 102.8,
-      "adp_prior": 99.5,
-      "adp_move": -3.3,
+      "team": "CIN",
+      "adp": 35.3,
+      "adp_prior": 34.7,
+      "adp_move": -0.6,
       "proj": null,
-      "sleeper_weight": 0.75,
-      "score": 2.544,
-      "unpriced": false,
+      "sleeper_weight": 0.5,
+      "score": 2.6,
+      "unpriced": true,
       "signals": [
-        "ahead of",
-        "injury",
-        "limited",
-        "waived"
+        "ahead of"
       ],
       "items": [
         {
-          "text": "Steelers waive veteran WR. Pittsburgh has created another open spot on its 53-man roster, with the team announcing it has waived wide receiver Brandon Smith on Thursday. Smith has appeared in five games for the Steelers this season, recording four catches for 39 yards. His release seems to indicate ",
-          "url": "https://www.behindthesteelcurtain.com/pittsburgh-steelers-roster/178150/steelers-waive-veteran-wr-brandon-smith-roster-news-practice-squad-eagles-michael-pittman-roman-wilson",
-          "source": "SBN PIT"
-        },
-        {
-          "text": "Nick Herbig misses another practice ahead of Steelers-Eagles matchup. Steelers outside linebacker Nick Herbig was a non-participant for the second straight practice per Pittsburgh\u2019s Thursday injury report as he deals with a hip/ribs injury, the team announced. However, both safety DeShon Elliott (kn",
-          "url": "https://www.behindthesteelcurtain.com/pittsburgh-steelers-injuries/178134/nick-herbig-misses-another-practice-ahead-of-steelers-eagles-matchup-injury-report-michael-pittman-deshon-elliott",
-          "source": "SBN PIT"
+          "text": "David Blough and Daronte Jones talk about stopping the Bengals. The Washington Commanders know they have a tall task ahead of them when Joe Burrow and the Cincinnati Bengals come to town on Monday night. Their offense has been on fire lately with help from the dynamic duo of WRs Ja&#8217;Marr Chase ",
+          "url": "https://www.hogshaven.com/pressers/454500/david-blough-and-daronte-jones-talk-about-stopping-the-bengals",
+          "source": "SBN WAS"
         }
       ]
     },
@@ -1321,6 +1475,53 @@
           "text": "Colts halftime TE snap count\n\nTyler Warren 23\nDrew Ogletree 16\nPharaoh Brown 5\n\nOut of 31 plays",
           "url": "https://bsky.app/profile/ffnatejahnke.bsky.social/post/3n2plbyfirc2x",
           "source": "Bluesky @ffnatejahnke.bsky.social"
+        }
+      ]
+    },
+    {
+      "name": "Michael Pittman Jr.",
+      "pos": "WR",
+      "team": "PIT",
+      "adp": 102.8,
+      "adp_prior": 99.5,
+      "adp_move": -3.3,
+      "proj": null,
+      "sleeper_weight": 0.75,
+      "score": 2.438,
+      "unpriced": false,
+      "signals": [
+        "ahead of",
+        "injury",
+        "questionable"
+      ],
+      "items": [
+        {
+          "text": "Roman Wilson, Michael Pittman Jr. questionable vs. Eagles. No Steelers are out, but six are listed as questionable ahead of Pittsburgh\u2019s Sunday clash against the Philadelphia Eagles. On Friday\u2019s injury report, the Steelers listed wide receivers Michael Pittman Jr. (foot). and Roman Wilson (hand), sa",
+          "url": "https://www.behindthesteelcurtain.com/pittsburgh-steelers-injuries/178215/roman-wilson-michael-pittman-jr-questionable-vs-eagles-week-11-injury-report-nick-herbig-deshon-elliott-gennings-dunker",
+          "source": "SBN PIT"
+        }
+      ]
+    },
+    {
+      "name": "Matthew Stafford",
+      "pos": "QB",
+      "team": "LAR",
+      "adp": 113.1,
+      "adp_prior": 109.6,
+      "adp_move": -3.5,
+      "proj": null,
+      "sleeper_weight": 1.1,
+      "score": 2.413,
+      "unpriced": false,
+      "signals": [
+        "injury",
+        "snaps"
+      ],
+      "items": [
+        {
+          "text": "Jimmy Garoppolo\u2019s reunion may not be with the Rams. If the Los Angeles Rams lost Matthew Stafford for any amount of time this season, would you trust the current backup quarterback options? Would you feel any better if an experienced veteran, like Jimmy Garoppolo, could step in? There\u2019s nothing to i",
+          "url": "https://www.turfshowtimes.com/los-angeles-rams-analysis/155565/jimmy-garoppolo-retirement-rams-patriots",
+          "source": "SBN LAR"
         }
       ]
     },
@@ -1410,24 +1611,37 @@
       ]
     },
     {
-      "name": "DeVonta Smith",
+      "name": "Mike Evans",
       "pos": "WR",
-      "team": "PHI",
-      "adp": 27.9,
-      "adp_prior": 27.7,
-      "adp_move": -0.2,
+      "team": "SF",
+      "adp": 54.5,
+      "adp_prior": 49.6,
+      "adp_move": -4.9,
       "proj": null,
       "sleeper_weight": 0.5,
-      "score": 2.3,
-      "unpriced": true,
+      "score": 2.29,
+      "unpriced": false,
       "signals": [
-        "injury"
+        "injury",
+        "limited",
+        "out for",
+        "questionable"
       ],
       "items": [
         {
-          "text": "Eagles Injury Report: DeVonta Smith on track to play against Steelers. The Philadelphia Eagles issued their second official injury report of the week on Thursday in advance of their Week 11 game against the Pittsburgh Steelers. The Eagles listed one player under DID NOT PARTICIPATE: Zack Baun and Sm",
-          "url": "https://www.bleedinggreennation.com/philadelphia-eagles-injuries/190736/eagles-injury-report-devonta-smith-on-track-to-play-against-steelers",
-          "source": "SBN PHI"
+          "text": "Mike Evans returns; Jordan James was added to the injury report. The San Francisco 49ers injury report is out for Thursday. There were several changes from Wednesday. Christian McCaffrey and Trent Williams practiced in full after a veteran&#8217;s day off. Cornerback Renardo Green also practiced in ",
+          "url": "https://www.ninersnation.com/san-francisco-49ers-injuries/166005/mike-evans-returns-jordan-james-was-added-to-the-injury-report",
+          "source": "SBN SF"
+        },
+        {
+          "text": "49ers final injury report: Mike Evans is \u2018going in the right direction\u2019. San Francisco 49ers head coach Kyle Shanahan spoke about the final injury report on Friday. The team did not rule out any of the 53-man roster. There are nine players with questionable designations: WR Mike Evans (Achilles)LB D",
+          "url": "https://www.ninersnation.com/san-francisco-49ers-injuries/166044/49ers-final-injury-report-mike-evans-is-officially-questionable",
+          "source": "SBN SF"
+        },
+        {
+          "text": "Mike Evans listed as questionable, 49ers to make decision on Saturday. The 49ers got wide receiver Mike Evans back at practice on Thursday and he could be back in the lineup against the Vikings on Sunday night.",
+          "url": "https://www.nbcsports.com/nfl/profootballtalk/rumor-mill/news/mike-evans-listed-as-questionable-49ers-to-make-decision-on-saturday",
+          "source": "ProFootballTalk"
         }
       ]
     },
@@ -1450,6 +1664,47 @@
           "text": "Revisiting 2026 NFL Draft: Were the Saints wise in taking a chance on injury-prone Jordyn Tyson?. New Orleans took a gamble on the explosive wideout at No. 8 overall, and his early impact alongside Tyler Shough is proving the top-10 talent was worth the durability concerns",
           "url": "https://www.cbssports.com/nfl/news/revisiting-2026-nfl-draft-saints-took-chance-on-jordyn-tyson/",
           "source": "CBS Sports NFL"
+        }
+      ]
+    },
+    {
+      "name": "A.J. Brown",
+      "pos": "WR",
+      "team": "NE",
+      "adp": 18.5,
+      "adp_prior": 18.8,
+      "adp_move": 0.3,
+      "proj": null,
+      "sleeper_weight": 0.3,
+      "score": 2.135,
+      "unpriced": true,
+      "signals": [
+        "hamstring",
+        "injury",
+        "limited",
+        "out for",
+        "sidelined"
+      ],
+      "items": [
+        {
+          "text": "A.J. Brown injury update: Patriots WR to miss multiple weeks. The hits keep on coming for the New England Patriots and their marquee offseason trade acquisition. Wide receiver A.J. Brown, who joined the team in a trade with the Philadelphia Eagles in April, is expected to be sidelined \u201cmultiple week",
+          "url": "https://www.patspulpit.com/new-england-patriots-injuries/144877/aj-brown-injury-update-patriots-wide-receiver-hamstring",
+          "source": "SBN NE"
+        },
+        {
+          "text": "Patriots' A.J. Brown reportedly expected to be out multiple weeks with hamstring injury. Brown has been limited to four games this season due to a high ankle sprain and strained knee.",
+          "url": "https://sports.yahoo.com/nfl/article/patriots-aj-brown-reportedly-expected-to-be-out-multiple-weeks-with-hamstring-injury-202125124.html",
+          "source": "Yahoo NFL"
+        },
+        {
+          "text": "Patriots finally get a Drake Maye injury update \u2014 and some bad A.J. Brown news. After several days of waiting for answers, we finally know the real nature of Drake Maye\u2019s injury.",
+          "url": "https://sports.yahoo.com/articles/patriots-finally-drake-maye-injury-200455340.html",
+          "source": "Yahoo NFL"
+        },
+        {
+          "text": "Report: A.J. Brown may not be on the field vs. Buffalo Bills again. The Buffalo Bills weren\u2019t able to beat the Patriots without A.J. Brown in Week 4, and they\u2019ll get another opportunity to do so in a few weeks inside Gillette Stadium. According to ESPN\u2019s Adam Schefter via Mike Reiss, Brown will be o",
+          "url": "https://www.buffalorumblings.com/buffalo-bills-news/145859/report-a-j-brown-may-not-be-on-field-vs-buffalo-bills-again",
+          "source": "SBN BUF"
         }
       ]
     },
@@ -1504,26 +1759,24 @@
       ]
     },
     {
-      "name": "Ladd McConkey",
-      "pos": "WR",
-      "team": "LAC",
-      "adp": 33.5,
-      "adp_prior": 33.3,
-      "adp_move": -0.2,
+      "name": "Dalton Kincaid",
+      "pos": "TE",
+      "team": "BUF",
+      "adp": 118.8,
+      "adp_prior": 122.8,
+      "adp_move": 4.0,
       "proj": null,
-      "sleeper_weight": 0.5,
-      "score": 2.0,
-      "unpriced": true,
+      "sleeper_weight": 1.1,
+      "score": 2.059,
+      "unpriced": false,
       "signals": [
-        "injury",
-        "limited",
-        "sidelined"
+        "targets"
       ],
       "items": [
         {
-          "text": "Chargers-Jets Injury Report: Ladd McConkey returns to practice. After backs spasms kept sidelined for the past two games, wide receiver Ladd McConkey returned to practice on Wednesday but participated in a limited fashion. He was one of five players who logged limited practices, joining cornerback D",
-          "url": "https://www.boltsfromtheblue.com/los-angeles-chargers-injuries/67196/chargers-jets-injury-report-ladd-mcconkey-charlie-kolar",
-          "source": "SBN LAC"
+          "text": "Dalton Kincaid doubtful for Week 11. One of Josh Allen's favprite targets could miss Week 11.",
+          "url": "https://sports.yahoo.com/articles/dalton-kincaid-doubtful-week-11-204741313.html",
+          "source": "Yahoo NFL"
         }
       ]
     },
@@ -1546,30 +1799,6 @@
           "text": "Fantasy Football Week 11: Start \u2019em, sit \u2019em. Giants running back Cam Skattebo merits starting spots given his amplified workload in Week 10, while Mark Andrews owners should remain cautious despite a strong last game.",
           "url": "https://www.pff.com/news/fantasy-football-week-11-start-em-sit-em/",
           "source": "PFF"
-        }
-      ]
-    },
-    {
-      "name": "Mike Evans",
-      "pos": "WR",
-      "team": "SF",
-      "adp": 54.5,
-      "adp_prior": 49.6,
-      "adp_move": -4.9,
-      "proj": null,
-      "sleeper_weight": 0.5,
-      "score": 1.797,
-      "unpriced": false,
-      "signals": [
-        "injury",
-        "limited",
-        "out for"
-      ],
-      "items": [
-        {
-          "text": "Mike Evans returns; Jordan James was added to the injury report. The San Francisco 49ers injury report is out for Thursday. There were several changes from Wednesday. Christian McCaffrey and Trent Williams practiced in full after a veteran&#8217;s day off. Cornerback Renardo Green also practiced in ",
-          "url": "https://www.ninersnation.com/san-francisco-49ers-injuries/166005/mike-evans-returns-jordan-james-was-added-to-the-injury-report",
-          "source": "SBN SF"
         }
       ]
     },
@@ -1672,12 +1901,13 @@
       "adp_move": 0.0,
       "proj": null,
       "sleeper_weight": 0.3,
-      "score": 1.518,
+      "score": 1.529,
       "unpriced": true,
       "signals": [
         "ahead of",
         "injury",
-        "snaps"
+        "limited",
+        "questionable"
       ],
       "items": [
         {
@@ -1686,55 +1916,59 @@
           "source": "SBN LV"
         },
         {
-          "text": "Fernando Mendoza needs a healthy Brock Bowers. Here is a look at how the Las Vegas Raiders\u2019 2024 draft class fared in a home 21-13 loss to the Seattle Seahawks on Sunday and what to look for Sunday at the Denver Broncos. Brock Bowers: The first-round pick played just 11 snaps after injuring his ankl",
-          "url": "https://www.silverandblackpride.com/las-vegas-raiders-analysis/146566/raiders-fernando-mendoza-brock-bowers-week-11-broncos",
+          "text": "Brock Bowers is questionable to play Sunday at Denver. Las Vegas Raiders star tight end Brock Bowers is questionable to play Sunday at the Denver Broncos, according to head coach Klint Kubiak. Bowers didn\u2019t practice Wednesday, but he was limited in practice on both Thursday and Friday. Kubiak said W",
+          "url": "https://www.silverandblackpride.com/las-vegas-raiders-news/146932/raiders-news-brock-bowers-questionable-play-week-11",
           "source": "SBN LV"
+        },
+        {
+          "text": "Brock Bowers, Matt Gay questionable for Raiders-Broncos. There\u2019s a chance quarterback Fernando Mendoza will have his top target for his second start.",
+          "url": "https://www.nbcsports.com/nfl/profootballtalk/rumor-mill/news/brock-bowers-matt-gay-questionable-for-raiders-broncos",
+          "source": "ProFootballTalk"
         }
       ]
     },
     {
-      "name": "Wan'Dale Robinson",
+      "name": "Luther Burden III",
       "pos": "WR",
-      "team": "TEN",
-      "adp": 115.6,
-      "adp_prior": 111.7,
-      "adp_move": -3.9,
+      "team": "CHI",
+      "adp": 43.7,
+      "adp_prior": 45.8,
+      "adp_move": 2.1,
       "proj": null,
-      "sleeper_weight": 1.1,
-      "score": 1.513,
+      "sleeper_weight": 0.5,
+      "score": 1.3,
       "unpriced": false,
       "signals": [
-        "injured",
-        "ir",
-        "promoted"
+        "injury",
+        "questionable"
       ],
       "items": [
         {
-          "text": "Titans place Wan\u2019Dale Robinson on IR; Promote Xavier Restrepo to roster. Ian Rapoport is reporting that the Tennessee Titans have placed wide receiver Wan\u2019Dale Robinson on injured reserve and promoted wide receiver Xavier Restrepo to the active roster: It has been a disappointing first season in Ten",
-          "url": "https://www.musiccitymiracles.com/tennessee-titans-injuries/67946/titans-place-wandale-robinson-on-ir-promote-xavier-restrepo-to-roster",
-          "source": "SBN TEN"
+          "text": "Injury updates:\n-- 49ers WR Mike Evans (Achilles) is questionable with a real chance to go.\n-- Bears RB Kyle Monangai is good to go, as is WR Luther Burden.",
+          "url": "https://bsky.app/profile/rapsheet.bsky.social/post/3n2reqljjpk2a",
+          "source": "Bluesky @rapsheet.bsky.social"
         }
       ]
     },
     {
-      "name": "A.J. Brown",
+      "name": "Jaylen Waddle",
       "pos": "WR",
-      "team": "NE",
-      "adp": 18.5,
-      "adp_prior": 18.8,
-      "adp_move": 0.3,
+      "team": "DEN",
+      "adp": 36.3,
+      "adp_prior": 38.3,
+      "adp_move": 2.0,
       "proj": null,
-      "sleeper_weight": 0.3,
-      "score": 1.2,
-      "unpriced": true,
+      "sleeper_weight": 0.5,
+      "score": 1.3,
+      "unpriced": false,
       "signals": [
         "injury"
       ],
       "items": [
         {
-          "text": "A.J. Brown injury update: New report adds information to Patriots WR\u2019s status. While Drake Maye\u2019s ankle injury dominated the headlines coming out of the New England Patriots\u2019 Week 10 game against the Detroit Lions, the star quarterback was not the only member unable to finish the game. Wide receiver",
-          "url": "https://www.patspulpit.com/new-england-patriots-injuries/144766/aj-brown-injury-update-new-report-hamstring",
-          "source": "SBN NE"
+          "text": "S Talanoa Hufanga, WR Jaylen Waddle, CB Riley Moss set to return Sunday. The Broncos' injury report Friday was not about who has a status, but who doesn't.",
+          "url": "https://www.nbcsports.com/nfl/profootballtalk/rumor-mill/news/s-talanoa-hufanga-wr-jaylen-waddle-cb-riley-moss-set-to-return-sunday",
+          "source": "ProFootballTalk"
         }
       ]
     },
@@ -1823,6 +2057,29 @@
           "text": "In Kansas City, Kenneth Walker III and the run game makes the Chiefs contenders again. One of the league's most explosive running backs has the Chiefs looking like their old Super Bowl-winning selves.",
           "url": "https://www.cbssports.com/nfl/news/in-kansas-city-kenneth-walker-iii-run-game-completely-transformed-chiefs-offense-super-bowl/",
           "source": "CBS Sports NFL"
+        }
+      ]
+    },
+    {
+      "name": "Tre Tucker",
+      "pos": "WR",
+      "team": "LV",
+      "adp": 147.5,
+      "adp_prior": 157.1,
+      "adp_move": 9.6,
+      "proj": null,
+      "sleeper_weight": 1.1,
+      "score": 0.885,
+      "unpriced": false,
+      "signals": [
+        "snap",
+        "snaps"
+      ],
+      "items": [
+        {
+          "text": "Raiders\u2019 Week 10 wide receiver snap and production review. The Las Vegas Raiders lost at home 21-13 to the Seattle Seahawks in Week 10. Let\u2019s review how their wide receivers fared: Tre Tucker Tucker played a season-high 88 percent of the snaps. He was targeted just twice and had one catch for nine y",
+          "url": "https://www.silverandblackpride.com/las-vegas-raiders-analysis/146500/raiders-week-10-wide-receiver-snap-production-review",
+          "source": "SBN LV"
         }
       ]
     }
