@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-19T21:57:51+00:00",
+  "lastUpdated": "2026-11-20T01:06:40+00:00",
   "season": "2026",
   "source": "Kalshi",
   "book": "Kalshi",
@@ -49,7 +49,7 @@
             {
               "strike": 999.5,
               "prob": 0.02,
-              "spread": 0.05,
+              "spread": 0.06,
               "confident": true,
               "openInterest": 2735.25
             },
@@ -139,7 +139,7 @@
             {
               "strike": 11.5,
               "prob": 0.01,
-              "spread": 0.79,
+              "spread": 0.8,
               "confident": false,
               "openInterest": 1224.52
             },
@@ -173,20 +173,20 @@
           "ladder": [
             {
               "strike": 749.5,
-              "prob": 0.805,
-              "spread": 0.05,
+              "prob": 0.81,
+              "spread": 0.06,
               "confident": true,
               "openInterest": 777.75
             }
           ],
           "median": null,
           "fit": {
-            "median": 1039.0,
+            "median": 1046.3,
             "sigma": 0.38,
             "points": 1,
             "assumedSigma": true
           },
-          "line": 1039.0,
+          "line": 1046.3,
           "lineSource": "assumed-sigma",
           "expected": null,
           "confidentRungs": 1,
@@ -244,7 +244,7 @@
           "ladder": [
             {
               "strike": 2999.5,
-              "prob": 0.755,
+              "prob": 0.775,
               "spread": 0.13,
               "confident": true,
               "openInterest": 2452.96
@@ -266,19 +266,19 @@
             {
               "strike": 4499.5,
               "prob": 0.01,
-              "spread": 0.05,
+              "spread": 0.06,
               "confident": true,
               "openInterest": 512.71
             }
           ],
-          "median": 3170.6,
+          "median": 3179.2,
           "fit": {
-            "median": 3515.6,
+            "median": 3568.7,
             "sigma": 0.23,
             "points": 1,
             "assumedSigma": true
           },
-          "line": 3170.6,
+          "line": 3179.2,
           "lineSource": "interpolated",
           "expected": null,
           "confidentRungs": 3,
@@ -322,23 +322,23 @@
           "ladder": [
             {
               "strike": 749.5,
-              "prob": 0.25,
-              "spread": 0.08,
-              "confident": true,
+              "prob": 0.45,
+              "spread": 0.38,
+              "confident": false,
               "openInterest": 2141.9
             }
           ],
           "median": null,
           "fit": {
-            "median": 584.0,
+            "median": 715.4,
             "sigma": 0.37,
             "points": 1,
             "assumedSigma": true
           },
-          "line": 584.0,
+          "line": 715.4,
           "lineSource": "assumed-sigma",
           "expected": null,
-          "confidentRungs": 1,
+          "confidentRungs": 0,
           "maxOpenInterest": 2141.9
         },
         "receptions": {
@@ -490,26 +490,26 @@
             },
             {
               "strike": 1249.5,
-              "prob": 0.73,
-              "spread": 0.22,
+              "prob": 0.74,
+              "spread": 0.2,
               "confident": true,
               "openInterest": 637.82
             },
             {
               "strike": 1499.5,
-              "prob": 0.23,
-              "spread": 0.12,
+              "prob": 0.245,
+              "spread": 0.11,
               "confident": true,
               "openInterest": 383.45
             }
           ],
-          "median": 1364.5,
+          "median": 1370.7,
           "fit": {
-            "median": 1319.4,
-            "sigma": 0.1993,
+            "median": 1328.3,
+            "sigma": 0.2034,
             "points": 3
           },
-          "line": 1364.5,
+          "line": 1370.7,
           "lineSource": "interpolated",
           "expected": null,
           "confidentRungs": 3,
@@ -556,8 +556,8 @@
             },
             {
               "strike": 9.5,
-              "prob": 0.785,
-              "spread": 0.09,
+              "prob": 0.79,
+              "spread": 0.1,
               "confident": true,
               "openInterest": 462.39
             },
@@ -579,7 +579,7 @@
           "median": 11.0,
           "fit": {
             "median": 10.9,
-            "sigma": 0.256,
+            "sigma": 0.2547,
             "points": 4
           },
           "line": 11.0,
@@ -605,7 +605,7 @@
             {
               "strike": 999.5,
               "prob": 0.08,
-              "spread": 0.26,
+              "spread": 0.53,
               "confident": false,
               "openInterest": 6524.17
             },
@@ -676,7 +676,7 @@
             {
               "strike": 15.5,
               "prob": 0.035,
-              "spread": 0.05,
+              "spread": 0.06,
               "confident": true,
               "openInterest": 208.91
             }
@@ -793,7 +793,7 @@
             {
               "strike": 19.5,
               "prob": 0.09,
-              "spread": 0.61,
+              "spread": 0.73,
               "confident": false,
               "openInterest": 254.27
             },
@@ -820,22 +820,22 @@
             },
             {
               "strike": 39.5,
-              "prob": 0.045,
-              "spread": 0.14,
-              "confident": true,
+              "prob": 0.01,
+              "spread": 0.54,
+              "confident": false,
               "openInterest": 342.51
             }
           ],
           "median": null,
           "fit": {
-            "median": 4.0,
-            "sigma": 1.267,
-            "points": 5
+            "median": 5.2,
+            "sigma": 1.0662,
+            "points": 4
           },
-          "line": 4.0,
+          "line": 5.2,
           "lineSource": "fitted",
           "expected": null,
-          "confidentRungs": 2,
+          "confidentRungs": 1,
           "maxOpenInterest": 342.51
         }
       }
@@ -925,30 +925,30 @@
             },
             {
               "strike": 1249.5,
-              "prob": 0.84,
-              "spread": 0.82,
+              "prob": 0.85,
+              "spread": 0.72,
               "confident": false,
-              "openInterest": 3036.94
+              "openInterest": 3064.44
             },
             {
               "strike": 1499.5,
               "prob": 0.63,
-              "spread": 0.36,
+              "spread": 0.39,
               "confident": false,
               "openInterest": 2568.6
             }
           ],
           "median": null,
           "fit": {
-            "median": 1683.2,
-            "sigma": 0.3196,
+            "median": 1687.6,
+            "sigma": 0.3178,
             "points": 3
           },
-          "line": 1683.2,
+          "line": 1687.6,
           "lineSource": "fitted",
-          "expected": 1430.2,
+          "expected": 1432.7,
           "confidentRungs": 1,
-          "maxOpenInterest": 3036.94
+          "maxOpenInterest": 3064.44
         },
         "rush_tds": {
           "ladder": [
@@ -969,7 +969,7 @@
             {
               "strike": 11.5,
               "prob": 0.23,
-              "spread": 0.34,
+              "spread": 0.36,
               "confident": false,
               "openInterest": 321.42
             },
@@ -1004,23 +1004,23 @@
           "ladder": [
             {
               "strike": 749.5,
-              "prob": 0.04,
-              "spread": 0.06,
-              "confident": true,
+              "prob": 0.07,
+              "spread": 0.53,
+              "confident": false,
               "openInterest": 282.07
             }
           ],
           "median": null,
           "fit": {
-            "median": 392.2,
+            "median": 434.1,
             "sigma": 0.37,
             "points": 1,
             "assumedSigma": true
           },
-          "line": 392.2,
+          "line": 434.1,
           "lineSource": "assumed-sigma",
           "expected": null,
-          "confidentRungs": 1,
+          "confidentRungs": 0,
           "maxOpenInterest": 282.07
         },
         "receptions": {
@@ -1069,16 +1069,16 @@
             },
             {
               "strike": 9.5,
-              "prob": 0.22,
-              "spread": 0.1,
+              "prob": 0.215,
+              "spread": 0.09,
               "confident": true,
-              "openInterest": 372.44
+              "openInterest": 376.44
             }
           ],
           "median": 6.8,
           "fit": {
             "median": 7.2,
-            "sigma": 0.2204,
+            "sigma": 0.22,
             "points": 3
           },
           "line": 6.8,
@@ -1103,8 +1103,8 @@
             },
             {
               "strike": 3499.5,
-              "prob": 0.3,
-              "spread": 0.1,
+              "prob": 0.255,
+              "spread": 0.17,
               "confident": true,
               "openInterest": 2980.65
             },
@@ -1123,13 +1123,13 @@
               "openInterest": 11828.17
             }
           ],
-          "median": 3258.5,
+          "median": 3233.2,
           "fit": {
-            "median": 3235.7,
-            "sigma": 0.1167,
+            "median": 3217.2,
+            "sigma": 0.1175,
             "points": 3
           },
-          "line": 3258.5,
+          "line": 3233.2,
           "lineSource": "interpolated",
           "expected": null,
           "confidentRungs": 4,
@@ -1154,7 +1154,7 @@
             {
               "strike": 29.5,
               "prob": 0.13,
-              "spread": 0.2,
+              "spread": 0.22,
               "confident": true,
               "openInterest": 78.74
             },
@@ -1195,7 +1195,7 @@
             {
               "strike": 999.5,
               "prob": 0.085,
-              "spread": 0.22,
+              "spread": 0.19,
               "confident": true,
               "openInterest": 749.12
             },
@@ -1287,23 +1287,23 @@
           "ladder": [
             {
               "strike": 749.5,
-              "prob": 0.04,
-              "spread": 0.06,
-              "confident": true,
+              "prob": 0.15,
+              "spread": 0.63,
+              "confident": false,
               "openInterest": 6.29
             }
           ],
           "median": null,
           "fit": {
-            "median": 392.2,
+            "median": 510.8,
             "sigma": 0.37,
             "points": 1,
             "assumedSigma": true
           },
-          "line": 392.2,
+          "line": 510.8,
           "lineSource": "assumed-sigma",
           "expected": null,
-          "confidentRungs": 1,
+          "confidentRungs": 0,
           "maxOpenInterest": 6.29
         },
         "receptions": {
@@ -1338,36 +1338,32 @@
           "ladder": [
             {
               "strike": 749.5,
-              "prob": 0.04,
-              "spread": 0.06,
-              "confident": true,
+              "prob": 0.01,
+              "spread": 0.52,
+              "confident": false,
               "openInterest": 459.7
             },
             {
               "strike": 999.5,
-              "prob": 0.035,
+              "prob": 0.01,
               "spread": 0.07,
               "confident": true,
               "openInterest": 992.54
             },
             {
               "strike": 1249.5,
-              "prob": 0.035,
+              "prob": 0.01,
               "spread": 0.8,
               "confident": false,
               "openInterest": 29.9
             }
           ],
           "median": null,
-          "fit": {
-            "median": 0.0,
-            "sigma": 6.5247,
-            "points": 3
-          },
-          "line": 0.0,
-          "lineSource": "fitted",
+          "fit": null,
+          "line": null,
+          "lineSource": null,
           "expected": null,
-          "confidentRungs": 2,
+          "confidentRungs": 1,
           "maxOpenInterest": 992.54
         },
         "receptions": {
@@ -1458,8 +1454,8 @@
             },
             {
               "strike": 999.5,
-              "prob": 0.675,
-              "spread": 0.15,
+              "prob": 0.64,
+              "spread": 0.08,
               "confident": true,
               "openInterest": 7295.56
             },
@@ -1478,15 +1474,15 @@
               "openInterest": 92.0
             }
           ],
-          "median": 1130.1,
+          "median": 1116.2,
           "fit": {
-            "median": 1082.7,
-            "sigma": 0.2566,
+            "median": 1076.0,
+            "sigma": 0.26,
             "points": 4
           },
-          "line": 1130.1,
+          "line": 1116.2,
           "lineSource": "interpolated",
-          "expected": 1060.8,
+          "expected": 1052.1,
           "confidentRungs": 2,
           "maxOpenInterest": 7295.56
         },
@@ -1537,8 +1533,8 @@
             },
             {
               "strike": 9.5,
-              "prob": 0.41,
-              "spread": 0.06,
+              "prob": 0.395,
+              "spread": 0.09,
               "confident": true,
               "openInterest": 3308.57
             },
@@ -1550,13 +1546,13 @@
               "openInterest": 559.55
             }
           ],
-          "median": 9.2,
+          "median": 9.1,
           "fit": {
-            "median": 10.0,
-            "sigma": 0.155,
+            "median": 9.9,
+            "sigma": 0.1529,
             "points": 3
           },
-          "line": 9.2,
+          "line": 9.1,
           "lineSource": "interpolated",
           "expected": 9.7,
           "confidentRungs": 1,
@@ -1579,14 +1575,14 @@
             {
               "strike": 3499.5,
               "prob": 0.83,
-              "spread": 0.81,
+              "spread": 0.95,
               "confident": false,
               "openInterest": 1267.88
             },
             {
               "strike": 3999.5,
               "prob": 0.75,
-              "spread": 0.34,
+              "spread": 0.29,
               "confident": false,
               "openInterest": 1961.33
             },
@@ -1662,23 +1658,23 @@
           "ladder": [
             {
               "strike": 2999.5,
-              "prob": 0.92,
-              "spread": 0.08,
-              "confident": true,
+              "prob": 0.97,
+              "spread": 0.66,
+              "confident": false,
               "openInterest": 1526.86
             },
             {
               "strike": 3499.5,
-              "prob": 0.745,
-              "spread": 0.19,
+              "prob": 0.74,
+              "spread": 0.2,
               "confident": true,
               "openInterest": 1298.37
             },
             {
               "strike": 3999.5,
-              "prob": 0.705,
-              "spread": 0.19,
-              "confident": true,
+              "prob": 0.58,
+              "spread": 0.33,
+              "confident": false,
               "openInterest": 1688.46
             },
             {
@@ -1689,16 +1685,16 @@
               "openInterest": 415.65
             }
           ],
-          "median": 4184.2,
+          "median": 4092.5,
           "fit": {
-            "median": 3942.1,
-            "sigma": 0.1568,
+            "median": 3937.6,
+            "sigma": 0.1427,
             "points": 4
           },
-          "line": 4184.2,
+          "line": 4092.5,
           "lineSource": "interpolated",
-          "expected": 3789.5,
-          "confidentRungs": 4,
+          "expected": 3887.0,
+          "confidentRungs": 2,
           "maxOpenInterest": 1688.46
         },
         "pass_tds": {
@@ -1746,9 +1742,9 @@
           "ladder": [
             {
               "strike": 999.5,
-              "prob": 0.815,
-              "spread": 0.17,
-              "confident": true,
+              "prob": 0.9,
+              "spread": 0.63,
+              "confident": false,
               "openInterest": 2211.8
             },
             {
@@ -1761,14 +1757,14 @@
           ],
           "median": null,
           "fit": {
-            "median": 1382.3,
-            "sigma": 0.3617,
+            "median": 1329.7,
+            "sigma": 0.2227,
             "points": 2
           },
-          "line": 1382.3,
+          "line": 1329.7,
           "lineSource": "fitted",
-          "expected": null,
-          "confidentRungs": 2,
+          "expected": 1164.6,
+          "confidentRungs": 1,
           "maxOpenInterest": 2211.8
         },
         "rush_tds": {
@@ -1818,23 +1814,23 @@
           "ladder": [
             {
               "strike": 749.5,
-              "prob": 0.04,
-              "spread": 0.06,
-              "confident": true,
+              "prob": 0.08,
+              "spread": 0.83,
+              "confident": false,
               "openInterest": 106.34
             }
           ],
           "median": null,
           "fit": {
-            "median": 392.2,
+            "median": 445.6,
             "sigma": 0.37,
             "points": 1,
             "assumedSigma": true
           },
-          "line": 392.2,
+          "line": 445.6,
           "lineSource": "assumed-sigma",
           "expected": null,
-          "confidentRungs": 1,
+          "confidentRungs": 0,
           "maxOpenInterest": 106.34
         },
         "receptions": {
@@ -1917,15 +1913,15 @@
             },
             {
               "strike": 3499.5,
-              "prob": 0.74,
-              "spread": 0.29,
-              "confident": false,
+              "prob": 0.58,
+              "spread": 0.22,
+              "confident": true,
               "openInterest": 4514.22
             },
             {
               "strike": 3999.5,
-              "prob": 0.14,
-              "spread": 0.16,
+              "prob": 0.13,
+              "spread": 0.14,
               "confident": true,
               "openInterest": 31391.14
             },
@@ -1937,16 +1933,16 @@
               "openInterest": 7715.67
             }
           ],
-          "median": 3699.5,
+          "median": 3588.4,
           "fit": {
-            "median": 3631.4,
-            "sigma": 0.1126,
+            "median": 3575.9,
+            "sigma": 0.1181,
             "points": 4
           },
-          "line": 3699.5,
+          "line": 3588.4,
           "lineSource": "interpolated",
-          "expected": 3495.8,
-          "confidentRungs": 3,
+          "expected": 3410.8,
+          "confidentRungs": 4,
           "maxOpenInterest": 31391.14
         },
         "pass_tds": {
@@ -1961,7 +1957,7 @@
             {
               "strike": 24.5,
               "prob": 0.01,
-              "spread": 0.84,
+              "spread": 0.83,
               "confident": false,
               "openInterest": 1003.99
             },
@@ -2038,8 +2034,8 @@
           "ladder": [
             {
               "strike": 5.5,
-              "prob": 0.715,
-              "spread": 0.13,
+              "prob": 0.71,
+              "spread": 0.14,
               "confident": true,
               "openInterest": 184.96
             },
@@ -2053,7 +2049,7 @@
             {
               "strike": 9.5,
               "prob": 0.18,
-              "spread": 0.12,
+              "spread": 0.14,
               "confident": true,
               "openInterest": 1869.89
             },
@@ -2075,7 +2071,7 @@
           "median": 6.5,
           "fit": {
             "median": 6.6,
-            "sigma": 0.4076,
+            "sigma": 0.4108,
             "points": 5
           },
           "line": 6.5,
@@ -2093,8 +2089,8 @@
           "ladder": [
             {
               "strike": 2999.5,
-              "prob": 0.625,
-              "spread": 0.11,
+              "prob": 0.63,
+              "spread": 0.12,
               "confident": true,
               "openInterest": 200.62
             },
@@ -2120,13 +2116,13 @@
               "openInterest": 0.0
             }
           ],
-          "median": 3136.9,
+          "median": 3140.8,
           "fit": {
-            "median": 3104.4,
-            "sigma": 0.1735,
+            "median": 3109.9,
+            "sigma": 0.1723,
             "points": 4
           },
-          "line": 3136.9,
+          "line": 3140.8,
           "lineSource": "interpolated",
           "expected": null,
           "confidentRungs": 4,
@@ -2184,33 +2180,33 @@
             },
             {
               "strike": 999.5,
-              "prob": 0.17,
-              "spread": 0.16,
+              "prob": 0.165,
+              "spread": 0.15,
               "confident": true,
               "openInterest": 1607.62
             },
             {
               "strike": 1249.5,
-              "prob": 0.17,
+              "prob": 0.165,
               "spread": 0.75,
               "confident": false,
               "openInterest": 95.0
             },
             {
               "strike": 1499.5,
-              "prob": 0.17,
+              "prob": 0.165,
               "spread": 0.85,
               "confident": false,
               "openInterest": 0.0
             }
           ],
-          "median": 859.7,
+          "median": 858.7,
           "fit": {
-            "median": 926.1,
-            "sigma": 0.2996,
+            "median": 923.8,
+            "sigma": 0.296,
             "points": 4
           },
-          "line": 859.7,
+          "line": 858.7,
           "lineSource": "interpolated",
           "expected": null,
           "confidentRungs": 1,
@@ -2419,8 +2415,8 @@
             },
             {
               "strike": 999.5,
-              "prob": 0.22,
-              "spread": 0.08,
+              "prob": 0.21,
+              "spread": 0.06,
               "confident": true,
               "openInterest": 1861.23
             },
@@ -2439,13 +2435,13 @@
               "openInterest": 183.0
             }
           ],
-          "median": 871.1,
+          "median": 868.9,
           "fit": {
-            "median": 882.9,
-            "sigma": 0.265,
+            "median": 881.5,
+            "sigma": 0.2642,
             "points": 4
           },
-          "line": 871.1,
+          "line": 868.9,
           "lineSource": "interpolated",
           "expected": null,
           "confidentRungs": 3,
@@ -2512,23 +2508,23 @@
           "ladder": [
             {
               "strike": 749.5,
-              "prob": 0.035,
-              "spread": 0.07,
-              "confident": true,
+              "prob": 0.85,
+              "spread": 0.47,
+              "confident": false,
               "openInterest": 646.27
             }
           ],
           "median": null,
           "fit": {
-            "median": 383.4,
+            "median": 1099.8,
             "sigma": 0.37,
             "points": 1,
             "assumedSigma": true
           },
-          "line": 383.4,
+          "line": 1099.8,
           "lineSource": "assumed-sigma",
           "expected": null,
-          "confidentRungs": 1,
+          "confidentRungs": 0,
           "maxOpenInterest": 646.27
         },
         "receptions": {
@@ -2563,14 +2559,14 @@
           "ladder": [
             {
               "strike": 749.5,
-              "prob": 0.965,
-              "spread": 0.07,
+              "prob": 0.88,
+              "spread": 0.24,
               "confident": true,
               "openInterest": 1388.33
             },
             {
               "strike": 999.5,
-              "prob": 0.9,
+              "prob": 0.88,
               "spread": 0.08,
               "confident": true,
               "openInterest": 1541.35
@@ -2592,13 +2588,13 @@
           ],
           "median": 1308.0,
           "fit": {
-            "median": 1238.3,
-            "sigma": 0.225,
+            "median": 1198.3,
+            "sigma": 0.2484,
             "points": 4
           },
           "line": 1308.0,
           "lineSource": "interpolated",
-          "expected": 1256.4,
+          "expected": null,
           "confidentRungs": 3,
           "maxOpenInterest": 1541.35
         },
@@ -2656,8 +2652,8 @@
             },
             {
               "strike": 9.5,
-              "prob": 0.08,
-              "spread": 0.12,
+              "prob": 0.075,
+              "spread": 0.11,
               "confident": true,
               "openInterest": 870.32
             },
@@ -2679,7 +2675,7 @@
           "median": null,
           "fit": {
             "median": 3.0,
-            "sigma": 0.7478,
+            "sigma": 0.752,
             "points": 5
           },
           "line": 3.0,
@@ -2776,23 +2772,23 @@
           "ladder": [
             {
               "strike": 749.5,
-              "prob": 0.21,
-              "spread": 0.12,
-              "confident": true,
+              "prob": 0.07,
+              "spread": 0.69,
+              "confident": false,
               "openInterest": 672.44
             }
           ],
           "median": null,
           "fit": {
-            "median": 556.1,
+            "median": 434.1,
             "sigma": 0.37,
             "points": 1,
             "assumedSigma": true
           },
-          "line": 556.1,
+          "line": 434.1,
           "lineSource": "assumed-sigma",
           "expected": null,
-          "confidentRungs": 1,
+          "confidentRungs": 0,
           "maxOpenInterest": 672.44
         },
         "receptions": {
@@ -2856,7 +2852,7 @@
             {
               "strike": 749.5,
               "prob": 0.93,
-              "spread": 0.65,
+              "spread": 0.66,
               "confident": false,
               "openInterest": 1248.17
             }
@@ -2999,8 +2995,8 @@
             },
             {
               "strike": 7.5,
-              "prob": 0.135,
-              "spread": 0.07,
+              "prob": 0.14,
+              "spread": 0.08,
               "confident": true,
               "openInterest": 2400.4
             },
@@ -3022,7 +3018,7 @@
           "median": null,
           "fit": {
             "median": 3.7,
-            "sigma": 0.7264,
+            "sigma": 0.73,
             "points": 4
           },
           "line": 3.7,
@@ -3040,10 +3036,10 @@
           "ladder": [
             {
               "strike": 749.5,
-              "prob": 0.705,
-              "spread": 0.11,
-              "confident": true,
-              "openInterest": 3982.07
+              "prob": 0.65,
+              "spread": 0.34,
+              "confident": false,
+              "openInterest": 4005.05
             },
             {
               "strike": 999.5,
@@ -3060,16 +3056,16 @@
               "openInterest": 3880.31
             }
           ],
-          "median": 833.5,
+          "median": 817.1,
           "fit": {
-            "median": 823.0,
-            "sigma": 0.2007,
+            "median": 802.8,
+            "sigma": 0.2166,
             "points": 3
           },
-          "line": 833.5,
+          "line": 817.1,
           "lineSource": "interpolated",
           "expected": null,
-          "confidentRungs": 3,
+          "confidentRungs": 2,
           "maxOpenInterest": 6753.19
         },
         "receptions": {
@@ -3127,8 +3123,8 @@
             },
             {
               "strike": 9.5,
-              "prob": 0.165,
-              "spread": 0.21,
+              "prob": 0.16,
+              "spread": 0.22,
               "confident": true,
               "openInterest": 203.67
             }
@@ -3136,7 +3132,7 @@
           "median": 6.1,
           "fit": {
             "median": 6.0,
-            "sigma": 0.4844,
+            "sigma": 0.4751,
             "points": 3
           },
           "line": 6.1,
@@ -3154,9 +3150,9 @@
           "ladder": [
             {
               "strike": 749.5,
-              "prob": 0.715,
-              "spread": 0.13,
-              "confident": true,
+              "prob": 0.62,
+              "spread": 0.75,
+              "confident": false,
               "openInterest": 572.19
             },
             {
@@ -3174,53 +3170,48 @@
               "openInterest": 21.0
             }
           ],
-          "median": 839.1,
+          "median": 808.9,
           "fit": {
-            "median": 852.1,
-            "sigma": 0.2259,
+            "median": 812.8,
+            "sigma": 0.2653,
             "points": 3
           },
-          "line": 839.1,
+          "line": 808.9,
           "lineSource": "interpolated",
           "expected": null,
-          "confidentRungs": 2,
+          "confidentRungs": 1,
           "maxOpenInterest": 1887.42
         },
         "receptions": {
           "ladder": [
             {
               "strike": 74.5,
-              "prob": 0.025,
-              "spread": 0.01,
-              "confident": true,
+              "prob": 0.02,
+              "spread": 0.83,
+              "confident": false,
               "openInterest": 5.54
             },
             {
               "strike": 99.5,
-              "prob": 0.025,
+              "prob": 0.02,
               "spread": 0.82,
               "confident": false,
               "openInterest": 0.01
             },
             {
               "strike": 119.5,
-              "prob": 0.025,
+              "prob": 0.02,
               "spread": 0.85,
               "confident": false,
               "openInterest": 0.0
             }
           ],
           "median": null,
-          "fit": {
-            "median": 38.2,
-            "sigma": 0.47,
-            "points": 3,
-            "assumedSigma": true
-          },
-          "line": 38.2,
-          "lineSource": "assumed-sigma",
+          "fit": null,
+          "line": null,
+          "lineSource": null,
           "expected": null,
-          "confidentRungs": 1,
+          "confidentRungs": 0,
           "maxOpenInterest": 5.54
         },
         "rec_tds": {
@@ -3268,8 +3259,8 @@
           "ladder": [
             {
               "strike": 2999.5,
-              "prob": 0.96,
-              "spread": 0.06,
+              "prob": 0.955,
+              "spread": 0.07,
               "confident": true,
               "openInterest": 1221.19
             },
@@ -3297,13 +3288,13 @@
           ],
           "median": 4450.2,
           "fit": {
-            "median": 4560.4,
-            "sigma": 0.2062,
+            "median": 4559.0,
+            "sigma": 0.2088,
             "points": 4
           },
           "line": 4450.2,
           "lineSource": "interpolated",
-          "expected": 4224.5,
+          "expected": 4208.3,
           "confidentRungs": 4,
           "maxOpenInterest": 4117.68
         },
@@ -3312,15 +3303,15 @@
             {
               "strike": 24.5,
               "prob": 0.94,
-              "spread": 0.75,
+              "spread": 0.76,
               "confident": false,
               "openInterest": 406.99
             },
             {
               "strike": 29.5,
-              "prob": 0.63,
-              "spread": 0.29,
-              "confident": false,
+              "prob": 0.705,
+              "spread": 0.25,
+              "confident": true,
               "openInterest": 267.55
             },
             {
@@ -3338,16 +3329,16 @@
               "openInterest": 1735.85
             }
           ],
-          "median": 31.5,
+          "median": 32.0,
           "fit": {
-            "median": 31.5,
-            "sigma": 0.166,
+            "median": 31.8,
+            "sigma": 0.163,
             "points": 4
           },
-          "line": 31.5,
+          "line": 32.0,
           "lineSource": "interpolated",
-          "expected": 30.5,
-          "confidentRungs": 2,
+          "expected": 30.9,
+          "confidentRungs": 3,
           "maxOpenInterest": 1735.85
         }
       }
@@ -3359,10 +3350,10 @@
           "ladder": [
             {
               "strike": 2999.5,
-              "prob": 0.345,
-              "spread": 0.13,
-              "confident": true,
-              "openInterest": 886.42
+              "prob": 0.84,
+              "spread": 0.52,
+              "confident": false,
+              "openInterest": 895.7
             },
             {
               "strike": 3499.5,
@@ -3386,16 +3377,16 @@
               "openInterest": 107.0
             }
           ],
-          "median": null,
+          "median": 3229.2,
           "fit": {
-            "median": 2670.5,
-            "sigma": 0.2474,
+            "median": 3308.7,
+            "sigma": 0.1163,
             "points": 4
           },
-          "line": 2670.5,
-          "lineSource": "fitted",
+          "line": 3229.2,
+          "lineSource": "interpolated",
           "expected": null,
-          "confidentRungs": 3,
+          "confidentRungs": 2,
           "maxOpenInterest": 1804.44
         },
         "pass_tds": {
@@ -3511,7 +3502,7 @@
             {
               "strike": 999.5,
               "prob": 0.01,
-              "spread": 0.27,
+              "spread": 0.28,
               "confident": false,
               "openInterest": 431.75
             },
@@ -3594,7 +3585,7 @@
             {
               "strike": 9.5,
               "prob": 0.01,
-              "spread": 0.15,
+              "spread": 0.11,
               "confident": true,
               "openInterest": 529.79
             },
@@ -3675,14 +3666,14 @@
             {
               "strike": 9.5,
               "prob": 0.02,
-              "spread": 0.85,
+              "spread": 0.86,
               "confident": false,
               "openInterest": 1176.7
             },
             {
               "strike": 11.5,
               "prob": 0.02,
-              "spread": 0.2,
+              "spread": 0.19,
               "confident": true,
               "openInterest": 1087.66
             },
@@ -3724,7 +3715,7 @@
             {
               "strike": 999.5,
               "prob": 0.01,
-              "spread": 0.42,
+              "spread": 0.43,
               "confident": false,
               "openInterest": 558.33
             },
@@ -3775,7 +3766,7 @@
             {
               "strike": 9.5,
               "prob": 0.025,
-              "spread": 0.21,
+              "spread": 0.2,
               "confident": true,
               "openInterest": 469.42
             },
@@ -3999,9 +3990,9 @@
             {
               "strike": 9.5,
               "prob": 0.01,
-              "spread": 0.19,
+              "spread": 0.21,
               "confident": true,
-              "openInterest": 1120.25
+              "openInterest": 1120.24
             },
             {
               "strike": 11.5,
@@ -4086,23 +4077,23 @@
           "ladder": [
             {
               "strike": 749.5,
-              "prob": 0.735,
-              "spread": 0.11,
-              "confident": true,
+              "prob": 0.82,
+              "spread": 0.75,
+              "confident": false,
               "openInterest": 2925.71
             }
           ],
           "median": null,
           "fit": {
-            "median": 945.6,
+            "median": 1051.6,
             "sigma": 0.37,
             "points": 1,
             "assumedSigma": true
           },
-          "line": 945.6,
+          "line": 1051.6,
           "lineSource": "assumed-sigma",
           "expected": null,
-          "confidentRungs": 1,
+          "confidentRungs": 0,
           "maxOpenInterest": 2925.71
         },
         "receptions": {
@@ -4151,10 +4142,10 @@
             },
             {
               "strike": 1249.5,
-              "prob": 0.36,
-              "spread": 0.06,
+              "prob": 0.32,
+              "spread": 0.22,
               "confident": true,
-              "openInterest": 1445.86
+              "openInterest": 1448.86
             },
             {
               "strike": 1499.5,
@@ -4164,17 +4155,17 @@
               "openInterest": 806.8
             }
           ],
-          "median": 1182.2,
+          "median": 1169.1,
           "fit": {
-            "median": 1207.9,
-            "sigma": 0.1691,
+            "median": 1201.1,
+            "sigma": 0.1661,
             "points": 3
           },
-          "line": 1182.2,
+          "line": 1169.1,
           "lineSource": "interpolated",
-          "expected": 1197.0,
+          "expected": 1187.0,
           "confidentRungs": 1,
-          "maxOpenInterest": 1445.86
+          "maxOpenInterest": 1448.86
         },
         "rush_tds": {
           "ladder": [
@@ -4349,7 +4340,7 @@
             {
               "strike": 9.5,
               "prob": 0.03,
-              "spread": 0.15,
+              "spread": 0.2,
               "confident": true,
               "openInterest": 173.0
             },
@@ -4397,7 +4388,7 @@
             {
               "strike": 3499.5,
               "prob": 0.08,
-              "spread": 0.39,
+              "spread": 0.31,
               "confident": false,
               "openInterest": 1243.32
             },
@@ -4775,14 +4766,14 @@
           "ladder": [
             {
               "strike": 19.5,
-              "prob": 0.07,
-              "spread": 0.14,
+              "prob": 0.065,
+              "spread": 0.13,
               "confident": true,
               "openInterest": 60.06
             },
             {
               "strike": 24.5,
-              "prob": 0.07,
+              "prob": 0.065,
               "spread": 0.75,
               "confident": false,
               "openInterest": 0.0
@@ -4790,12 +4781,12 @@
           ],
           "median": null,
           "fit": {
-            "median": 15.6,
+            "median": 15.4,
             "sigma": 0.23,
             "points": 2,
             "assumedSigma": true
           },
-          "line": 15.6,
+          "line": 15.4,
           "lineSource": "assumed-sigma",
           "expected": null,
           "confidentRungs": 1,
@@ -4876,15 +4867,15 @@
           "ladder": [
             {
               "strike": 749.5,
-              "prob": 0.93,
-              "spread": 0.08,
-              "confident": true,
+              "prob": 0.85,
+              "spread": 0.83,
+              "confident": false,
               "openInterest": 300.0
             },
             {
               "strike": 999.5,
-              "prob": 0.565,
-              "spread": 0.09,
+              "prob": 0.57,
+              "spread": 0.08,
               "confident": true,
               "openInterest": 2172.05
             },
@@ -4903,16 +4894,16 @@
               "openInterest": 417.58
             }
           ],
-          "median": 1035.2,
+          "median": 1037.5,
           "fit": {
-            "median": 1014.2,
-            "sigma": 0.2021,
+            "median": 981.1,
+            "sigma": 0.2276,
             "points": 4
           },
-          "line": 1035.2,
+          "line": 1037.5,
           "lineSource": "interpolated",
-          "expected": 990.8,
-          "confidentRungs": 4,
+          "expected": null,
+          "confidentRungs": 3,
           "maxOpenInterest": 2172.05
         },
         "receptions": {
@@ -4920,7 +4911,7 @@
             {
               "strike": 74.5,
               "prob": 0.85,
-              "spread": 0.81,
+              "spread": 0.82,
               "confident": false,
               "openInterest": 35.61
             },
@@ -4970,7 +4961,7 @@
             {
               "strike": 9.5,
               "prob": 0.14,
-              "spread": 0.54,
+              "spread": 0.53,
               "confident": false,
               "openInterest": 946.53
             },
@@ -5011,7 +5002,7 @@
             {
               "strike": 2999.5,
               "prob": 0.85,
-              "spread": 0.44,
+              "spread": 0.37,
               "confident": false,
               "openInterest": 4547.93
             },
@@ -5025,7 +5016,7 @@
             {
               "strike": 3999.5,
               "prob": 0.06,
-              "spread": 0.68,
+              "spread": 0.74,
               "confident": false,
               "openInterest": 5558.98
             },
@@ -5087,23 +5078,23 @@
           "ladder": [
             {
               "strike": 749.5,
-              "prob": 0.905,
-              "spread": 0.09,
-              "confident": true,
+              "prob": 0.78,
+              "spread": 0.44,
+              "confident": false,
               "openInterest": 1707.6
             }
           ],
           "median": null,
           "fit": {
-            "median": 1217.2,
+            "median": 997.4,
             "sigma": 0.37,
             "points": 1,
             "assumedSigma": true
           },
-          "line": 1217.2,
+          "line": 997.4,
           "lineSource": "assumed-sigma",
           "expected": null,
-          "confidentRungs": 1,
+          "confidentRungs": 0,
           "maxOpenInterest": 1707.6
         },
         "receptions": {
@@ -5138,43 +5129,44 @@
           "ladder": [
             {
               "strike": 749.5,
-              "prob": 0.945,
-              "spread": 0.05,
-              "confident": true,
+              "prob": 0.03,
+              "spread": 0.82,
+              "confident": false,
               "openInterest": 416.32
             },
             {
               "strike": 999.5,
-              "prob": 0.75,
+              "prob": 0.03,
               "spread": 0.08,
               "confident": true,
               "openInterest": 886.98
             },
             {
               "strike": 1249.5,
-              "prob": 0.3,
+              "prob": 0.03,
               "spread": 0.32,
               "confident": false,
               "openInterest": 1243.76
             },
             {
               "strike": 1499.5,
-              "prob": 0.045,
+              "prob": 0.03,
               "spread": 0.09,
               "confident": true,
               "openInterest": 246.54
             }
           ],
-          "median": 1138.4,
+          "median": null,
           "fit": {
-            "median": 1091.4,
-            "sigma": 0.2061,
-            "points": 4
+            "median": 542.7,
+            "sigma": 0.37,
+            "points": 4,
+            "assumedSigma": true
           },
-          "line": 1138.4,
-          "lineSource": "interpolated",
-          "expected": 1100.2,
-          "confidentRungs": 3,
+          "line": 542.7,
+          "lineSource": "assumed-sigma",
+          "expected": null,
+          "confidentRungs": 2,
           "maxOpenInterest": 1243.76
         },
         "receptions": {
@@ -5232,8 +5224,8 @@
             },
             {
               "strike": 9.5,
-              "prob": 0.3,
-              "spread": 0.1,
+              "prob": 0.33,
+              "spread": 0.16,
               "confident": true,
               "openInterest": 324.09
             },
@@ -5252,15 +5244,15 @@
               "openInterest": 0.0
             }
           ],
-          "median": 8.7,
+          "median": 8.8,
           "fit": {
             "median": 8.4,
-            "sigma": 0.2574,
+            "sigma": 0.258,
             "points": 5
           },
-          "line": 8.7,
+          "line": 8.8,
           "lineSource": "interpolated",
-          "expected": 8.3,
+          "expected": 8.4,
           "confidentRungs": 3,
           "maxOpenInterest": 473.75
         }
@@ -5437,9 +5429,9 @@
           "ladder": [
             {
               "strike": 749.5,
-              "prob": 0.93,
-              "spread": 0.08,
-              "confident": true,
+              "prob": 0.85,
+              "spread": 0.94,
+              "confident": false,
               "openInterest": 2937.02
             },
             {
@@ -5457,16 +5449,16 @@
               "openInterest": 0.0
             }
           ],
-          "median": 900.9,
+          "median": 888.4,
           "fit": {
-            "median": 974.2,
-            "sigma": 0.1777,
+            "median": 942.3,
+            "sigma": 0.2209,
             "points": 3
           },
-          "line": 900.9,
+          "line": 888.4,
           "lineSource": "interpolated",
-          "expected": 923.3,
-          "confidentRungs": 1,
+          "expected": null,
+          "confidentRungs": 0,
           "maxOpenInterest": 2937.02
         },
         "receptions": {
@@ -5617,21 +5609,21 @@
             },
             {
               "strike": 1499.5,
-              "prob": 0.545,
-              "spread": 0.09,
+              "prob": 0.55,
+              "spread": 0.1,
               "confident": true,
               "openInterest": 1090.98
             }
           ],
           "median": null,
           "fit": {
-            "median": 1569.9,
-            "sigma": 0.2448,
+            "median": 1575.4,
+            "sigma": 0.2472,
             "points": 3
           },
-          "line": 1569.9,
+          "line": 1575.4,
           "lineSource": "fitted",
-          "expected": 1422.7,
+          "expected": 1423.9,
           "confidentRungs": 3,
           "maxOpenInterest": 1090.98
         },
@@ -5646,19 +5638,19 @@
             },
             {
               "strike": 119.5,
-              "prob": 0.21,
-              "spread": 0.79,
+              "prob": 0.47,
+              "spread": 0.77,
               "confident": false,
               "openInterest": 140.99
             }
           ],
-          "median": 109.4,
+          "median": 117.6,
           "fit": {
-            "median": 108.9,
-            "sigma": 0.1148,
+            "median": 117.6,
+            "sigma": 0.2119,
             "points": 2
           },
-          "line": 109.4,
+          "line": 117.6,
           "lineSource": "interpolated",
           "expected": null,
           "confidentRungs": 1,
@@ -5675,14 +5667,14 @@
             },
             {
               "strike": 9.5,
-              "prob": 0.83,
-              "spread": 0.06,
+              "prob": 0.835,
+              "spread": 0.05,
               "confident": true,
               "openInterest": 920.87
             },
             {
               "strike": 11.5,
-              "prob": 0.52,
+              "prob": 0.53,
               "spread": 0.14,
               "confident": true,
               "openInterest": 490.91
@@ -5817,7 +5809,7 @@
             {
               "strike": 999.5,
               "prob": 0.01,
-              "spread": 0.61,
+              "spread": 0.3,
               "confident": false,
               "openInterest": 2287.9
             },
@@ -5860,8 +5852,8 @@
             },
             {
               "strike": 9.5,
-              "prob": 0.035,
-              "spread": 0.07,
+              "prob": 0.04,
+              "spread": 0.08,
               "confident": true,
               "openInterest": 685.56
             },
@@ -5882,11 +5874,11 @@
           ],
           "median": null,
           "fit": {
-            "median": 0.4,
-            "sigma": 1.9216,
+            "median": 0.3,
+            "sigma": 2.1254,
             "points": 5
           },
-          "line": 0.4,
+          "line": 0.3,
           "lineSource": "fitted",
           "expected": null,
           "confidentRungs": 3,
@@ -5901,8 +5893,8 @@
           "ladder": [
             {
               "strike": 999.5,
-              "prob": 0.935,
-              "spread": 0.09,
+              "prob": 0.9,
+              "spread": 0.16,
               "confident": true,
               "openInterest": 1007.38
             },
@@ -5923,13 +5915,13 @@
           ],
           "median": null,
           "fit": {
-            "median": 2149.3,
-            "sigma": 0.4839,
+            "median": 2253.7,
+            "sigma": 0.5632,
             "points": 3
           },
-          "line": 2149.3,
+          "line": 2253.7,
           "lineSource": "fitted",
-          "expected": 1463.9,
+          "expected": 1424.6,
           "confidentRungs": 2,
           "maxOpenInterest": 2463.1
         },
@@ -6165,10 +6157,10 @@
             },
             {
               "strike": 1249.5,
-              "prob": 0.82,
-              "spread": 0.06,
+              "prob": 0.8,
+              "spread": 0.1,
               "confident": true,
-              "openInterest": 665.1
+              "openInterest": 665.14
             },
             {
               "strike": 1499.5,
@@ -6180,13 +6172,13 @@
           ],
           "median": null,
           "fit": {
-            "median": 2134.9,
-            "sigma": 0.5593,
+            "median": 2058.3,
+            "sigma": 0.5355,
             "points": 3
           },
-          "line": 2134.9,
+          "line": 2058.3,
           "lineSource": "fitted",
-          "expected": 1420.2,
+          "expected": 1415.2,
           "confidentRungs": 3,
           "maxOpenInterest": 731.43
         },
@@ -6202,29 +6194,29 @@
             {
               "strike": 11.5,
               "prob": 0.935,
-              "spread": 0.87,
+              "spread": 0.86,
               "confident": false,
               "openInterest": 198.56
             },
             {
               "strike": 13.5,
               "prob": 0.63,
-              "spread": 0.36,
+              "spread": 0.42,
               "confident": false,
               "openInterest": 54.0
             },
             {
               "strike": 15.5,
-              "prob": 0.26,
-              "spread": 0.06,
+              "prob": 0.255,
+              "spread": 0.07,
               "confident": true,
               "openInterest": 260.0
             }
           ],
           "median": 14.2,
           "fit": {
-            "median": 14.0,
-            "sigma": 0.1869,
+            "median": 13.9,
+            "sigma": 0.1856,
             "points": 4
           },
           "line": 14.2,
@@ -6237,20 +6229,20 @@
           "ladder": [
             {
               "strike": 749.5,
-              "prob": 0.04,
-              "spread": 0.06,
+              "prob": 0.105,
+              "spread": 0.19,
               "confident": true,
               "openInterest": 395.42
             }
           ],
           "median": null,
           "fit": {
-            "median": 392.2,
+            "median": 471.3,
             "sigma": 0.37,
             "points": 1,
             "assumedSigma": true
           },
-          "line": 392.2,
+          "line": 471.3,
           "lineSource": "assumed-sigma",
           "expected": null,
           "confidentRungs": 1,
@@ -6283,9 +6275,9 @@
           "ladder": [
             {
               "strike": 749.5,
-              "prob": 0.89,
-              "spread": 0.14,
-              "confident": true,
+              "prob": 0.85,
+              "spread": 0.94,
+              "confident": false,
               "openInterest": 394.2
             },
             {
@@ -6303,16 +6295,16 @@
               "openInterest": 2076.15
             }
           ],
-          "median": 946.5,
+          "median": 941.8,
           "fit": {
-            "median": 969.7,
-            "sigma": 0.218,
+            "median": 954.3,
+            "sigma": 0.2395,
             "points": 3
           },
-          "line": 946.5,
+          "line": 941.8,
           "lineSource": "interpolated",
           "expected": null,
-          "confidentRungs": 2,
+          "confidentRungs": 1,
           "maxOpenInterest": 2076.15
         },
         "receptions": {
@@ -6396,9 +6388,9 @@
           "ladder": [
             {
               "strike": 2999.5,
-              "prob": 0.94,
-              "spread": 0.06,
-              "confident": true,
+              "prob": 0.9,
+              "spread": 0.77,
+              "confident": false,
               "openInterest": 656.91
             },
             {
@@ -6425,14 +6417,14 @@
           ],
           "median": 4499.5,
           "fit": {
-            "median": 4577.1,
-            "sigma": 0.2514,
+            "median": 4585.8,
+            "sigma": 0.2762,
             "points": 4
           },
           "line": 4499.5,
           "lineSource": "interpolated",
-          "expected": 4109.5,
-          "confidentRungs": 4,
+          "expected": 3979.6,
+          "confidentRungs": 3,
           "maxOpenInterest": 2089.23
         },
         "pass_tds": {
@@ -6558,16 +6550,16 @@
             },
             {
               "strike": 15.5,
-              "prob": 0.22,
-              "spread": 0.14,
+              "prob": 0.19,
+              "spread": 0.08,
               "confident": true,
               "openInterest": 1099.73
             }
           ],
           "median": 14.0,
           "fit": {
-            "median": 13.4,
-            "sigma": 0.2188,
+            "median": 13.3,
+            "sigma": 0.208,
             "points": 4
           },
           "line": 14.0,
@@ -6585,8 +6577,8 @@
           "ladder": [
             {
               "strike": 1249.5,
-              "prob": 0.945,
-              "spread": 0.05,
+              "prob": 0.95,
+              "spread": 0.06,
               "confident": true,
               "openInterest": 496.83
             },
@@ -6600,13 +6592,13 @@
           ],
           "median": null,
           "fit": {
-            "median": 40009.5,
-            "sigma": 2.1689,
+            "median": 12393.6,
+            "sigma": 1.3949,
             "points": 2
           },
-          "line": 40009.5,
+          "line": 12393.6,
           "lineSource": "fitted",
-          "expected": 1532.7,
+          "expected": 1539.5,
           "confidentRungs": 2,
           "maxOpenInterest": 1298.47
         },
@@ -6731,7 +6723,7 @@
             {
               "strike": 29.5,
               "prob": 0.01,
-              "spread": 0.74,
+              "spread": 0.75,
               "confident": false,
               "openInterest": 0.0
             }
@@ -6848,7 +6840,7 @@
             {
               "strike": 29.5,
               "prob": 0.06,
-              "spread": 0.72,
+              "spread": 0.73,
               "confident": false,
               "openInterest": 24.27
             },
@@ -7008,20 +7000,20 @@
           "ladder": [
             {
               "strike": 749.5,
-              "prob": 0.95,
-              "spread": 0.04,
+              "prob": 0.945,
+              "spread": 0.05,
               "confident": true,
               "openInterest": 763.16
             }
           ],
           "median": null,
           "fit": {
-            "median": 1400.3,
+            "median": 1375.7,
             "sigma": 0.38,
             "points": 1,
             "assumedSigma": true
           },
-          "line": 1400.3,
+          "line": 1375.7,
           "lineSource": "assumed-sigma",
           "expected": null,
           "confidentRungs": 1,
@@ -7221,23 +7213,23 @@
           "ladder": [
             {
               "strike": 749.5,
-              "prob": 0.045,
-              "spread": 0.05,
-              "confident": true,
+              "prob": 0.2,
+              "spread": 0.82,
+              "confident": false,
               "openInterest": 262.17
             }
           ],
           "median": null,
           "fit": {
-            "median": 400.3,
+            "median": 548.9,
             "sigma": 0.37,
             "points": 1,
             "assumedSigma": true
           },
-          "line": 400.3,
+          "line": 548.9,
           "lineSource": "assumed-sigma",
           "expected": null,
-          "confidentRungs": 1,
+          "confidentRungs": 0,
           "maxOpenInterest": 262.17
         },
         "receptions": {
@@ -7329,21 +7321,21 @@
             },
             {
               "strike": 39.5,
-              "prob": 0.775,
-              "spread": 0.13,
+              "prob": 0.745,
+              "spread": 0.07,
               "confident": true,
               "openInterest": 5791.85
             }
           ],
           "median": null,
           "fit": {
-            "median": 47.6,
-            "sigma": 0.2788,
+            "median": 46.2,
+            "sigma": 0.2611,
             "points": 3
           },
-          "line": 47.6,
+          "line": 46.2,
           "lineSource": "fitted",
-          "expected": 38.8,
+          "expected": 38.7,
           "confidentRungs": 2,
           "maxOpenInterest": 5791.85
         }
@@ -7356,7 +7348,7 @@
           "ladder": [
             {
               "strike": 749.5,
-              "prob": 0.19,
+              "prob": 0.2,
               "spread": 0.14,
               "confident": true,
               "openInterest": 72.93
@@ -7364,12 +7356,12 @@
           ],
           "median": null,
           "fit": {
-            "median": 536.9,
+            "median": 544.3,
             "sigma": 0.38,
             "points": 1,
             "assumedSigma": true
           },
-          "line": 536.9,
+          "line": 544.3,
           "lineSource": "assumed-sigma",
           "expected": null,
           "confidentRungs": 1,
@@ -7420,15 +7412,15 @@
           "ladder": [
             {
               "strike": 749.5,
-              "prob": 0.955,
-              "spread": 0.05,
+              "prob": 0.95,
+              "spread": 0.06,
               "confident": true,
               "openInterest": 370.0
             },
             {
               "strike": 999.5,
-              "prob": 0.685,
-              "spread": 0.19,
+              "prob": 0.69,
+              "spread": 0.2,
               "confident": true,
               "openInterest": 594.41
             },
@@ -7447,15 +7439,15 @@
               "openInterest": 346.85
             }
           ],
-          "median": 1161.8,
+          "median": 1163.3,
           "fit": {
-            "median": 1139.7,
-            "sigma": 0.246,
+            "median": 1138.0,
+            "sigma": 0.25,
             "points": 4
           },
-          "line": 1161.8,
+          "line": 1163.3,
           "lineSource": "interpolated",
-          "expected": 1136.4,
+          "expected": 1133.3,
           "confidentRungs": 3,
           "maxOpenInterest": 655.25
         },
@@ -7478,7 +7470,7 @@
             {
               "strike": 13.5,
               "prob": 0.51,
-              "spread": 0.73,
+              "spread": 0.35,
               "confident": false,
               "openInterest": 201.0
             },
@@ -7506,23 +7498,18 @@
           "ladder": [
             {
               "strike": 749.5,
-              "prob": 0.035,
-              "spread": 0.07,
-              "confident": true,
+              "prob": 0.01,
+              "spread": 0.85,
+              "confident": false,
               "openInterest": 588.46
             }
           ],
           "median": null,
-          "fit": {
-            "median": 383.4,
-            "sigma": 0.37,
-            "points": 1,
-            "assumedSigma": true
-          },
-          "line": 383.4,
-          "lineSource": "assumed-sigma",
+          "fit": null,
+          "line": null,
+          "lineSource": null,
           "expected": null,
-          "confidentRungs": 1,
+          "confidentRungs": 0,
           "maxOpenInterest": 588.46
         },
         "receptions": {
@@ -7616,9 +7603,9 @@
           "ladder": [
             {
               "strike": 2999.5,
-              "prob": 0.96,
-              "spread": 0.06,
-              "confident": true,
+              "prob": 0.99,
+              "spread": 0.4,
+              "confident": false,
               "openInterest": 1099.63
             },
             {
@@ -7630,29 +7617,29 @@
             },
             {
               "strike": 3999.5,
-              "prob": 0.735,
-              "spread": 0.25,
-              "confident": true,
+              "prob": 0.49,
+              "spread": 0.29,
+              "confident": false,
               "openInterest": 5982.79
             },
             {
               "strike": 4499.5,
-              "prob": 0.715,
+              "prob": 0.49,
               "spread": 0.21,
               "confident": true,
               "openInterest": 1427.5
             }
           ],
-          "median": null,
+          "median": 3988.3,
           "fit": {
-            "median": 5028.4,
-            "sigma": 0.2733,
-            "points": 4
+            "median": 4228.9,
+            "sigma": 0.125,
+            "points": 3
           },
-          "line": 5028.4,
-          "lineSource": "fitted",
-          "expected": 4312.0,
-          "confidentRungs": 4,
+          "line": 3988.3,
+          "lineSource": "interpolated",
+          "expected": 4174.5,
+          "confidentRungs": 2,
           "maxOpenInterest": 5982.79
         },
         "pass_tds": {
@@ -7666,7 +7653,7 @@
             },
             {
               "strike": 29.5,
-              "prob": 0.62,
+              "prob": 0.63,
               "spread": 0.04,
               "confident": true,
               "openInterest": 726.5
@@ -7679,13 +7666,13 @@
               "openInterest": 196.82
             }
           ],
-          "median": 30.9,
+          "median": 31.0,
           "fit": {
             "median": 30.2,
-            "sigma": 0.1698,
+            "sigma": 0.1691,
             "points": 3
           },
-          "line": 30.9,
+          "line": 31.0,
           "lineSource": "interpolated",
           "expected": null,
           "confidentRungs": 2,
@@ -7908,10 +7895,10 @@
           "ladder": [
             {
               "strike": 749.5,
-              "prob": 0.075,
-              "spread": 0.07,
+              "prob": 0.08,
+              "spread": 0.08,
               "confident": true,
-              "openInterest": 652.6
+              "openInterest": 651.6
             },
             {
               "strike": 999.5,
@@ -7930,16 +7917,16 @@
           ],
           "median": null,
           "fit": {
-            "median": 433.7,
+            "median": 439.4,
             "sigma": 0.38,
             "points": 1,
             "assumedSigma": true
           },
-          "line": 433.7,
+          "line": 439.4,
           "lineSource": "assumed-sigma",
           "expected": null,
           "confidentRungs": 1,
-          "maxOpenInterest": 652.6
+          "maxOpenInterest": 651.6
         },
         "rush_tds": {
           "ladder": [
@@ -8025,21 +8012,21 @@
             },
             {
               "strike": 9.5,
-              "prob": 0.03,
-              "spread": 0.84,
-              "confident": false,
+              "prob": 0.075,
+              "spread": 0.15,
+              "confident": true,
               "openInterest": 23.3
             },
             {
               "strike": 11.5,
-              "prob": 0.03,
+              "prob": 0.075,
               "spread": 0.96,
               "confident": false,
               "openInterest": 122.99
             },
             {
               "strike": 13.5,
-              "prob": 0.03,
+              "prob": 0.075,
               "spread": 0.98,
               "confident": false,
               "openInterest": 0.0
@@ -8047,14 +8034,14 @@
           ],
           "median": 6.6,
           "fit": {
-            "median": 7.5,
-            "sigma": 0.1915,
+            "median": 7.8,
+            "sigma": 0.2057,
             "points": 5
           },
           "line": 6.6,
           "lineSource": "interpolated",
-          "expected": 6.8,
-          "confidentRungs": 0,
+          "expected": 7.1,
+          "confidentRungs": 1,
           "maxOpenInterest": 369.12
         },
         "rec_yds": {
@@ -8163,7 +8150,7 @@
             {
               "strike": 24.5,
               "prob": 0.02,
-              "spread": 0.66,
+              "spread": 0.68,
               "confident": false,
               "openInterest": 133.87
             },
@@ -8288,7 +8275,7 @@
               "prob": 0.23,
               "spread": 0.02,
               "confident": true,
-              "openInterest": 1109.81
+              "openInterest": 1109.93
             },
             {
               "strike": 11.5,
@@ -8315,7 +8302,7 @@
           "lineSource": "interpolated",
           "expected": null,
           "confidentRungs": 4,
-          "maxOpenInterest": 1109.81
+          "maxOpenInterest": 1109.93
         }
       }
     },
@@ -8377,7 +8364,7 @@
           "ladder": [
             {
               "strike": 749.5,
-              "prob": 0.13,
+              "prob": 0.14,
               "spread": 0.14,
               "confident": true,
               "openInterest": 468.91
@@ -8385,12 +8372,12 @@
           ],
           "median": null,
           "fit": {
-            "median": 488.5,
+            "median": 497.1,
             "sigma": 0.38,
             "points": 1,
             "assumedSigma": true
           },
-          "line": 488.5,
+          "line": 497.1,
           "lineSource": "assumed-sigma",
           "expected": null,
           "confidentRungs": 1,
@@ -8556,10 +8543,10 @@
           "ladder": [
             {
               "strike": 999.5,
-              "prob": 0.91,
-              "spread": 0.08,
+              "prob": 0.89,
+              "spread": 0.04,
               "confident": true,
-              "openInterest": 5310.32
+              "openInterest": 5310.33
             },
             {
               "strike": 1249.5,
@@ -8578,15 +8565,15 @@
           ],
           "median": 1440.3,
           "fit": {
-            "median": 1444.1,
-            "sigma": 0.2475,
+            "median": 1441.0,
+            "sigma": 0.2596,
             "points": 3
           },
           "line": 1440.3,
           "lineSource": "interpolated",
-          "expected": 1323.3,
+          "expected": null,
           "confidentRungs": 1,
-          "maxOpenInterest": 5310.32
+          "maxOpenInterest": 5310.33
         },
         "rush_tds": {
           "ladder": [
@@ -8693,9 +8680,9 @@
           "ladder": [
             {
               "strike": 749.5,
-              "prob": 0.035,
-              "spread": 0.07,
-              "confident": true,
+              "prob": 0.26,
+              "spread": 0.85,
+              "confident": false,
               "openInterest": 91.41
             },
             {
@@ -8715,15 +8702,14 @@
           ],
           "median": null,
           "fit": {
-            "median": 500.4,
-            "sigma": 0.37,
-            "points": 3,
-            "assumedSigma": true
+            "median": 601.5,
+            "sigma": 0.3418,
+            "points": 3
           },
-          "line": 500.4,
-          "lineSource": "assumed-sigma",
+          "line": 601.5,
+          "lineSource": "fitted",
           "expected": null,
-          "confidentRungs": 2,
+          "confidentRungs": 1,
           "maxOpenInterest": 91.41
         },
         "receptions": {
@@ -8808,8 +8794,8 @@
           "ladder": [
             {
               "strike": 2999.5,
-              "prob": 0.92,
-              "spread": 0.06,
+              "prob": 0.905,
+              "spread": 0.09,
               "confident": true,
               "openInterest": 1232.12
             },
@@ -8837,13 +8823,13 @@
           ],
           "median": 4243.8,
           "fit": {
-            "median": 4143.1,
-            "sigma": 0.1941,
+            "median": 4134.4,
+            "sigma": 0.1986,
             "points": 4
           },
           "line": 4243.8,
           "lineSource": "interpolated",
-          "expected": 3894.5,
+          "expected": 3845.8,
           "confidentRungs": 4,
           "maxOpenInterest": 1232.12
         }
@@ -8920,23 +8906,23 @@
           "ladder": [
             {
               "strike": 749.5,
-              "prob": 0.05,
-              "spread": 0.06,
-              "confident": true,
+              "prob": 0.09,
+              "spread": 0.45,
+              "confident": false,
               "openInterest": 247.31
             }
           ],
           "median": null,
           "fit": {
-            "median": 407.8,
+            "median": 456.4,
             "sigma": 0.37,
             "points": 1,
             "assumedSigma": true
           },
-          "line": 407.8,
+          "line": 456.4,
           "lineSource": "assumed-sigma",
           "expected": null,
-          "confidentRungs": 1,
+          "confidentRungs": 0,
           "maxOpenInterest": 247.31
         },
         "receptions": {
@@ -9209,23 +9195,23 @@
           "ladder": [
             {
               "strike": 749.5,
-              "prob": 0.04,
-              "spread": 0.06,
-              "confident": true,
+              "prob": 0.07,
+              "spread": 0.83,
+              "confident": false,
               "openInterest": 32.0
             }
           ],
           "median": null,
           "fit": {
-            "median": 392.2,
+            "median": 434.1,
             "sigma": 0.37,
             "points": 1,
             "assumedSigma": true
           },
-          "line": 392.2,
+          "line": 434.1,
           "lineSource": "assumed-sigma",
           "expected": null,
-          "confidentRungs": 1,
+          "confidentRungs": 0,
           "maxOpenInterest": 32.0
         },
         "receptions": {
@@ -9275,7 +9261,7 @@
             {
               "strike": 1249.5,
               "prob": 0.02,
-              "spread": 0.85,
+              "spread": 0.83,
               "confident": false,
               "openInterest": 2994.31
             },
@@ -9454,8 +9440,8 @@
             },
             {
               "strike": 39.5,
-              "prob": 0.005,
-              "spread": 0.01,
+              "prob": 0.01,
+              "spread": 0.02,
               "confident": true,
               "openInterest": 68.6
             }
@@ -9469,7 +9455,7 @@
           },
           "line": 22.1,
           "lineSource": "interpolated",
-          "expected": 21.9,
+          "expected": 22.0,
           "confidentRungs": 3,
           "maxOpenInterest": 460.08
         },
@@ -9551,10 +9537,10 @@
             },
             {
               "strike": 999.5,
-              "prob": 0.685,
-              "spread": 0.09,
+              "prob": 0.68,
+              "spread": 0.08,
               "confident": true,
-              "openInterest": 4769.8
+              "openInterest": 4768.86
             },
             {
               "strike": 1249.5,
@@ -9564,17 +9550,17 @@
               "openInterest": 1495.61
             }
           ],
-          "median": 1108.3,
+          "median": 1106.6,
           "fit": {
-            "median": 1074.2,
-            "sigma": 0.2703,
+            "median": 1073.1,
+            "sigma": 0.271,
             "points": 3
           },
-          "line": 1108.3,
+          "line": 1106.6,
           "lineSource": "interpolated",
           "expected": null,
           "confidentRungs": 2,
-          "maxOpenInterest": 4769.8
+          "maxOpenInterest": 4768.86
         },
         "receptions": {
           "ladder": [
@@ -9693,21 +9679,21 @@
           "ladder": [
             {
               "strike": 74.5,
-              "prob": 0.09,
-              "spread": 0.18,
+              "prob": 0.1,
+              "spread": 0.2,
               "confident": true,
               "openInterest": 185.0
             },
             {
               "strike": 99.5,
-              "prob": 0.09,
+              "prob": 0.1,
               "spread": 0.5,
               "confident": false,
               "openInterest": 1.01
             },
             {
               "strike": 119.5,
-              "prob": 0.09,
+              "prob": 0.1,
               "spread": 0.85,
               "confident": false,
               "openInterest": 0.0
@@ -9715,12 +9701,12 @@
           ],
           "median": null,
           "fit": {
-            "median": 51.1,
+            "median": 52.6,
             "sigma": 0.47,
             "points": 3,
             "assumedSigma": true
           },
-          "line": 51.1,
+          "line": 52.6,
           "lineSource": "assumed-sigma",
           "expected": null,
           "confidentRungs": 1,
@@ -9771,9 +9757,9 @@
           "ladder": [
             {
               "strike": 749.5,
-              "prob": 0.95,
-              "spread": 0.06,
-              "confident": true,
+              "prob": 0.97,
+              "spread": 0.26,
+              "confident": false,
               "openInterest": 1035.07
             },
             {
@@ -9786,28 +9772,28 @@
             {
               "strike": 1249.5,
               "prob": 0.36,
-              "spread": 0.29,
+              "spread": 0.28,
               "confident": false,
               "openInterest": 714.87
             },
             {
               "strike": 1499.5,
-              "prob": 0.08,
-              "spread": 0.14,
+              "prob": 0.085,
+              "spread": 0.13,
               "confident": true,
               "openInterest": 760.83
             }
           ],
           "median": 1173.4,
           "fit": {
-            "median": 1136.6,
-            "sigma": 0.2171,
+            "median": 1150.4,
+            "sigma": 0.2079,
             "points": 4
           },
           "line": 1173.4,
           "lineSource": "interpolated",
-          "expected": 1145.8,
-          "confidentRungs": 3,
+          "expected": 1164.5,
+          "confidentRungs": 2,
           "maxOpenInterest": 8945.15
         },
         "receptions": {
@@ -9851,7 +9837,7 @@
             {
               "strike": 5.5,
               "prob": 0.85,
-              "spread": 0.61,
+              "spread": 0.65,
               "confident": false,
               "openInterest": 44.52
             },
@@ -10123,7 +10109,7 @@
             {
               "strike": 9.5,
               "prob": 0.07,
-              "spread": 0.14,
+              "spread": 0.19,
               "confident": true,
               "openInterest": 1689.82
             }
@@ -10236,7 +10222,7 @@
             {
               "strike": 29.5,
               "prob": 0.51,
-              "spread": 0.31,
+              "spread": 0.27,
               "confident": false,
               "openInterest": 109.34
             },
@@ -10482,7 +10468,7 @@
             {
               "strike": 999.5,
               "prob": 0.07,
-              "spread": 0.19,
+              "spread": 0.18,
               "confident": true,
               "openInterest": 3776.67
             },
@@ -10562,7 +10548,7 @@
             {
               "strike": 9.5,
               "prob": 0.05,
-              "spread": 0.14,
+              "spread": 0.12,
               "confident": true,
               "openInterest": 1362.59
             }
@@ -10653,7 +10639,7 @@
             {
               "strike": 749.5,
               "prob": 0.875,
-              "spread": 0.09,
+              "spread": 0.11,
               "confident": true,
               "openInterest": 1017.04
             },
@@ -10752,7 +10738,7 @@
             },
             {
               "strike": 11.5,
-              "prob": 0.15,
+              "prob": 0.14,
               "spread": 0.14,
               "confident": true,
               "openInterest": 10.96
@@ -10768,7 +10754,7 @@
           "median": 8.5,
           "fit": {
             "median": 8.1,
-            "sigma": 0.335,
+            "sigma": 0.3325,
             "points": 5
           },
           "line": 8.5,
@@ -10787,7 +10773,7 @@
             {
               "strike": 749.5,
               "prob": 0.35,
-              "spread": 0.54,
+              "spread": 0.65,
               "confident": false,
               "openInterest": 17.16
             }
@@ -10844,8 +10830,8 @@
             },
             {
               "strike": 999.5,
-              "prob": 0.17,
-              "spread": 0.22,
+              "prob": 0.145,
+              "spread": 0.19,
               "confident": true,
               "openInterest": 3777.23
             },
@@ -10864,13 +10850,13 @@
               "openInterest": 864.74
             }
           ],
-          "median": 832.8,
+          "median": 828.8,
           "fit": {
-            "median": 827.2,
-            "sigma": 0.3018,
+            "median": 824.9,
+            "sigma": 0.2964,
             "points": 4
           },
-          "line": 832.8,
+          "line": 828.8,
           "lineSource": "interpolated",
           "expected": null,
           "confidentRungs": 2,
@@ -10890,13 +10876,13 @@
               "prob": 0.325,
               "spread": 0.05,
               "confident": true,
-              "openInterest": 1584.34
+              "openInterest": 1584.41
             },
             {
               "strike": 9.5,
-              "prob": 0.12,
-              "spread": 0.34,
-              "confident": false,
+              "prob": 0.095,
+              "spread": 0.19,
+              "confident": true,
               "openInterest": 955.73
             },
             {
@@ -10923,14 +10909,14 @@
           ],
           "median": 6.9,
           "fit": {
-            "median": 7.4,
-            "sigma": 0.3276,
+            "median": 7.3,
+            "sigma": 0.3219,
             "points": 6
           },
           "line": 6.9,
           "lineSource": "interpolated",
           "expected": null,
-          "confidentRungs": 1,
+          "confidentRungs": 2,
           "maxOpenInterest": 1814.73
         }
       }
@@ -11100,23 +11086,23 @@
           "ladder": [
             {
               "strike": 749.5,
-              "prob": 0.035,
-              "spread": 0.07,
-              "confident": true,
+              "prob": 0.41,
+              "spread": 0.75,
+              "confident": false,
               "openInterest": 12.67
             }
           ],
           "median": null,
           "fit": {
-            "median": 383.4,
+            "median": 689.0,
             "sigma": 0.37,
             "points": 1,
             "assumedSigma": true
           },
-          "line": 383.4,
+          "line": 689.0,
           "lineSource": "assumed-sigma",
           "expected": null,
-          "confidentRungs": 1,
+          "confidentRungs": 0,
           "maxOpenInterest": 12.67
         },
         "receptions": {
@@ -11201,14 +11187,14 @@
             },
             {
               "strike": 24.5,
-              "prob": 0.92,
+              "prob": 0.58,
               "spread": 0.26,
               "confident": false,
               "openInterest": 429.86
             },
             {
               "strike": 29.5,
-              "prob": 0.6,
+              "prob": 0.58,
               "spread": 0.2,
               "confident": true,
               "openInterest": 118.98
@@ -11222,21 +11208,21 @@
             },
             {
               "strike": 39.5,
-              "prob": 0.035,
-              "spread": 0.07,
+              "prob": 0.07,
+              "spread": 0.14,
               "confident": true,
               "openInterest": 927.93
             }
           ],
-          "median": 30.7,
+          "median": 30.5,
           "fit": {
-            "median": 29.1,
-            "sigma": 0.1849,
+            "median": 28.0,
+            "sigma": 0.2377,
             "points": 5
           },
-          "line": 30.7,
+          "line": 30.5,
           "lineSource": "interpolated",
-          "expected": 29.2,
+          "expected": 27.5,
           "confidentRungs": 4,
           "maxOpenInterest": 927.93
         }
@@ -11249,8 +11235,8 @@
           "ladder": [
             {
               "strike": 999.5,
-              "prob": 0.245,
-              "spread": 0.09,
+              "prob": 0.225,
+              "spread": 0.05,
               "confident": true,
               "openInterest": 4917.97
             },
@@ -11271,12 +11257,12 @@
           ],
           "median": null,
           "fit": {
-            "median": 774.2,
+            "median": 755.8,
             "sigma": 0.37,
             "points": 1,
             "assumedSigma": true
           },
-          "line": 774.2,
+          "line": 755.8,
           "lineSource": "assumed-sigma",
           "expected": null,
           "confidentRungs": 1,
@@ -11326,7 +11312,7 @@
             {
               "strike": 9.5,
               "prob": 0.01,
-              "spread": 0.19,
+              "spread": 0.21,
               "confident": true,
               "openInterest": 420.04
             },
@@ -11420,8 +11406,8 @@
             },
             {
               "strike": 999.5,
-              "prob": 0.08,
-              "spread": 0.14,
+              "prob": 0.085,
+              "spread": 0.15,
               "confident": true,
               "openInterest": 1423.6
             },
@@ -11433,13 +11419,13 @@
               "openInterest": 585.18
             }
           ],
-          "median": 785.2,
+          "median": 785.6,
           "fit": {
-            "median": 779.9,
-            "sigma": 0.2512,
+            "median": 779.1,
+            "sigma": 0.2556,
             "points": 3
           },
-          "line": 785.2,
+          "line": 785.6,
           "lineSource": "interpolated",
           "expected": null,
           "confidentRungs": 1,
@@ -11543,7 +11529,7 @@
             {
               "strike": 9.5,
               "prob": 0.02,
-              "spread": 0.35,
+              "spread": 0.34,
               "confident": false,
               "openInterest": 79.44
             },
@@ -11578,7 +11564,7 @@
             {
               "strike": 999.5,
               "prob": 0.11,
-              "spread": 0.36,
+              "spread": 0.32,
               "confident": false,
               "openInterest": 4120.04
             },
@@ -11639,7 +11625,7 @@
             {
               "strike": 5.5,
               "prob": 0.35,
-              "spread": 0.39,
+              "spread": 0.59,
               "confident": false,
               "openInterest": 51.0
             },
@@ -11815,8 +11801,8 @@
           "ladder": [
             {
               "strike": 749.5,
-              "prob": 0.9,
-              "spread": 0.12,
+              "prob": 0.895,
+              "spread": 0.13,
               "confident": true,
               "openInterest": 612.84
             },
@@ -11835,15 +11821,15 @@
               "openInterest": 605.68
             }
           ],
-          "median": 982.1,
+          "median": 981.9,
           "fit": {
-            "median": 983.7,
-            "sigma": 0.2121,
+            "median": 983.3,
+            "sigma": 0.2166,
             "points": 2
           },
-          "line": 982.1,
+          "line": 981.9,
           "lineSource": "interpolated",
-          "expected": 907.1,
+          "expected": null,
           "confidentRungs": 1,
           "maxOpenInterest": 1548.16
         },
@@ -12026,19 +12012,19 @@
             },
             {
               "strike": 29.5,
-              "prob": 0.065,
-              "spread": 0.13,
+              "prob": 0.115,
+              "spread": 0.23,
               "confident": true,
               "openInterest": 39.0
             }
           ],
           "median": null,
           "fit": {
-            "median": 20.2,
-            "sigma": 0.2508,
+            "median": 19.6,
+            "sigma": 0.3401,
             "points": 3
           },
-          "line": 20.2,
+          "line": 19.6,
           "lineSource": "fitted",
           "expected": null,
           "confidentRungs": 1,
@@ -12060,26 +12046,26 @@
             },
             {
               "strike": 999.5,
-              "prob": 0.075,
-              "spread": 0.13,
+              "prob": 0.07,
+              "spread": 0.12,
               "confident": true,
               "openInterest": 69.25
             },
             {
               "strike": 1249.5,
-              "prob": 0.075,
+              "prob": 0.07,
               "spread": 0.25,
               "confident": true,
               "openInterest": 258.23
             }
           ],
-          "median": 802.7,
+          "median": 802.3,
           "fit": {
-            "median": 801.8,
-            "sigma": 0.2307,
+            "median": 800.7,
+            "sigma": 0.2259,
             "points": 3
           },
-          "line": 802.7,
+          "line": 802.3,
           "lineSource": "interpolated",
           "expected": null,
           "confidentRungs": 3,
@@ -12126,7 +12112,7 @@
             {
               "strike": 5.5,
               "prob": 0.44,
-              "spread": 0.36,
+              "spread": 0.37,
               "confident": false,
               "openInterest": 553.67
             },
@@ -12223,8 +12209,8 @@
             },
             {
               "strike": 9.5,
-              "prob": 0.21,
-              "spread": 0.1,
+              "prob": 0.235,
+              "spread": 0.13,
               "confident": true,
               "openInterest": 840.66
             },
@@ -12253,7 +12239,7 @@
           "median": 6.9,
           "fit": {
             "median": 7.1,
-            "sigma": 0.4348,
+            "sigma": 0.4358,
             "points": 6
           },
           "line": 6.9,
@@ -12266,20 +12252,20 @@
           "ladder": [
             {
               "strike": 749.5,
-              "prob": 0.035,
-              "spread": 0.07,
+              "prob": 0.045,
+              "spread": 0.09,
               "confident": true,
               "openInterest": 664.72
             }
           ],
           "median": null,
           "fit": {
-            "median": 383.4,
+            "median": 400.3,
             "sigma": 0.37,
             "points": 1,
             "assumedSigma": true
           },
-          "line": 383.4,
+          "line": 400.3,
           "lineSource": "assumed-sigma",
           "expected": null,
           "confidentRungs": 1,
@@ -12352,15 +12338,15 @@
           "ladder": [
             {
               "strike": 999.5,
-              "prob": 0.885,
-              "spread": 0.03,
+              "prob": 0.89,
+              "spread": 0.02,
               "confident": true,
               "openInterest": 2483.62
             },
             {
               "strike": 1249.5,
-              "prob": 0.715,
-              "spread": 0.25,
+              "prob": 0.72,
+              "spread": 0.24,
               "confident": true,
               "openInterest": 47.1
             },
@@ -12372,13 +12358,13 @@
               "openInterest": 89.49
             }
           ],
-          "median": 1355.9,
+          "median": 1357.3,
           "fit": {
-            "median": 1310.4,
-            "sigma": 0.1909,
+            "median": 1312.8,
+            "sigma": 0.1886,
             "points": 3
           },
-          "line": 1355.9,
+          "line": 1357.3,
           "lineSource": "interpolated",
           "expected": null,
           "confidentRungs": 3,
@@ -12388,8 +12374,8 @@
           "ladder": [
             {
               "strike": 74.5,
-              "prob": 0.805,
-              "spread": 0.07,
+              "prob": 0.81,
+              "spread": 0.06,
               "confident": true,
               "openInterest": 23.0
             },
@@ -12408,13 +12394,13 @@
               "openInterest": 0.0
             }
           ],
-          "median": 84.9,
+          "median": 85.0,
           "fit": {
-            "median": 85.7,
-            "sigma": 0.1631,
+            "median": 85.9,
+            "sigma": 0.1618,
             "points": 3
           },
-          "line": 84.9,
+          "line": 85.0,
           "lineSource": "interpolated",
           "expected": null,
           "confidentRungs": 1,
@@ -12445,8 +12431,8 @@
             },
             {
               "strike": 13.5,
-              "prob": 0.075,
-              "spread": 0.13,
+              "prob": 0.07,
+              "spread": 0.12,
               "confident": true,
               "openInterest": 10.94
             }
@@ -12454,7 +12440,7 @@
           "median": 9.7,
           "fit": {
             "median": 8.7,
-            "sigma": 0.3162,
+            "sigma": 0.3095,
             "points": 4
           },
           "line": 9.7,
@@ -12472,28 +12458,28 @@
           "ladder": [
             {
               "strike": 749.5,
-              "prob": 0.005,
-              "spread": 0.01,
+              "prob": 0.01,
+              "spread": 0.02,
               "confident": true,
               "openInterest": 2279.13
             },
             {
               "strike": 999.5,
-              "prob": 0.005,
+              "prob": 0.01,
               "spread": 0.02,
               "confident": true,
               "openInterest": 2187.14
             },
             {
               "strike": 1249.5,
-              "prob": 0.005,
+              "prob": 0.01,
               "spread": 0.02,
               "confident": true,
               "openInterest": 436.79
             },
             {
               "strike": 1499.5,
-              "prob": 0.005,
+              "prob": 0.01,
               "spread": 0.02,
               "confident": true,
               "openInterest": 23.0
@@ -12587,9 +12573,9 @@
           "ladder": [
             {
               "strike": 749.5,
-              "prob": 0.945,
-              "spread": 0.05,
-              "confident": true,
+              "prob": 0.9,
+              "spread": 0.82,
+              "confident": false,
               "openInterest": 330.0
             },
             {
@@ -12616,14 +12602,14 @@
           ],
           "median": 1145.7,
           "fit": {
-            "median": 1115.1,
-            "sigma": 0.2133,
+            "median": 1097.0,
+            "sigma": 0.2271,
             "points": 4
           },
           "line": 1145.7,
           "lineSource": "interpolated",
-          "expected": 1117.7,
-          "confidentRungs": 3,
+          "expected": 1078.3,
+          "confidentRungs": 2,
           "maxOpenInterest": 2165.91
         },
         "receptions": {
@@ -12673,8 +12659,8 @@
             },
             {
               "strike": 7.5,
-              "prob": 0.155,
-              "spread": 0.13,
+              "prob": 0.15,
+              "spread": 0.12,
               "confident": true,
               "openInterest": 371.83
             },
@@ -12703,7 +12689,7 @@
           "median": null,
           "fit": {
             "median": 5.1,
-            "sigma": 0.512,
+            "sigma": 0.511,
             "points": 5
           },
           "line": 5.1,
@@ -12793,7 +12779,7 @@
             {
               "strike": 999.5,
               "prob": 0.01,
-              "spread": 0.43,
+              "spread": 0.31,
               "confident": false,
               "openInterest": 1770.52
             },
@@ -13132,8 +13118,8 @@
             },
             {
               "strike": 3499.5,
-              "prob": 0.925,
-              "spread": 0.05,
+              "prob": 0.93,
+              "spread": 0.07,
               "confident": true,
               "openInterest": 1399.83
             },
@@ -13146,19 +13132,19 @@
             },
             {
               "strike": 4499.5,
-              "prob": 0.255,
-              "spread": 0.13,
+              "prob": 0.25,
+              "spread": 0.14,
               "confident": true,
               "openInterest": 1473.67
             }
           ],
-          "median": 4233.2,
+          "median": 4230.7,
           "fit": {
-            "median": 4149.0,
-            "sigma": 0.1594,
+            "median": 4142.5,
+            "sigma": 0.1561,
             "points": 4
           },
-          "line": 4233.2,
+          "line": 4230.7,
           "lineSource": "interpolated",
           "expected": 3969.5,
           "confidentRungs": 4,
@@ -13168,28 +13154,28 @@
           "ladder": [
             {
               "strike": 24.5,
-              "prob": 0.92,
-              "spread": 0.1,
+              "prob": 0.915,
+              "spread": 0.11,
               "confident": true,
               "openInterest": 383.24
             },
             {
               "strike": 29.5,
               "prob": 0.71,
-              "spread": 0.6,
+              "spread": 0.51,
               "confident": false,
               "openInterest": 128.85
             }
           ],
           "median": null,
           "fit": {
-            "median": 33.3,
-            "sigma": 0.2181,
+            "median": 33.4,
+            "sigma": 0.2268,
             "points": 2
           },
-          "line": 33.3,
+          "line": 33.4,
           "lineSource": "fitted",
-          "expected": 28.4,
+          "expected": 28.3,
           "confidentRungs": 1,
           "maxOpenInterest": 383.24
         }
@@ -13209,8 +13195,8 @@
             },
             {
               "strike": 999.5,
-              "prob": 0.605,
-              "spread": 0.13,
+              "prob": 0.6,
+              "spread": 0.14,
               "confident": true,
               "openInterest": 1445.98
             },
@@ -13229,15 +13215,15 @@
               "openInterest": 52.22
             }
           ],
-          "median": 1050.5,
+          "median": 1048.5,
           "fit": {
-            "median": 1018.4,
-            "sigma": 0.194,
+            "median": 1017.6,
+            "sigma": 0.1943,
             "points": 4
           },
-          "line": 1050.5,
+          "line": 1048.5,
           "lineSource": "interpolated",
-          "expected": 1000.2,
+          "expected": 998.9,
           "confidentRungs": 3,
           "maxOpenInterest": 1445.98
         },
@@ -13252,19 +13238,19 @@
             },
             {
               "strike": 119.5,
-              "prob": 0.625,
-              "spread": 0.17,
+              "prob": 0.62,
+              "spread": 0.16,
               "confident": true,
               "openInterest": 284.75
             }
           ],
           "median": null,
           "fit": {
-            "median": 130.3,
-            "sigma": 0.271,
+            "median": 129.6,
+            "sigma": 0.2658,
             "points": 2
           },
-          "line": 130.3,
+          "line": 129.6,
           "lineSource": "fitted",
           "expected": null,
           "confidentRungs": 1,
@@ -13364,23 +13350,23 @@
           "ladder": [
             {
               "strike": 749.5,
-              "prob": 0.24,
-              "spread": 0.14,
-              "confident": true,
+              "prob": 0.75,
+              "spread": 0.57,
+              "confident": false,
               "openInterest": 1438.48
             }
           ],
           "median": null,
           "fit": {
-            "median": 577.1,
+            "median": 962.0,
             "sigma": 0.37,
             "points": 1,
             "assumedSigma": true
           },
-          "line": 577.1,
+          "line": 962.0,
           "lineSource": "assumed-sigma",
           "expected": null,
-          "confidentRungs": 1,
+          "confidentRungs": 0,
           "maxOpenInterest": 1438.48
         },
         "receptions": {
@@ -13415,7 +13401,7 @@
           "ladder": [
             {
               "strike": 749.5,
-              "prob": 0.3,
+              "prob": 0.28,
               "spread": 0.14,
               "confident": true,
               "openInterest": 53.0
@@ -13423,12 +13409,12 @@
           ],
           "median": null,
           "fit": {
-            "median": 614.1,
+            "median": 600.6,
             "sigma": 0.38,
             "points": 1,
             "assumedSigma": true
           },
-          "line": 614.1,
+          "line": 600.6,
           "lineSource": "assumed-sigma",
           "expected": null,
           "confidentRungs": 1,
@@ -13487,7 +13473,7 @@
             {
               "strike": 3499.5,
               "prob": 0.73,
-              "spread": 0.45,
+              "spread": 0.47,
               "confident": false,
               "openInterest": 2064.4
             },
@@ -13530,7 +13516,7 @@
             {
               "strike": 24.5,
               "prob": 0.51,
-              "spread": 0.38,
+              "spread": 0.39,
               "confident": false,
               "openInterest": 145.35
             }
@@ -13556,9 +13542,9 @@
           "ladder": [
             {
               "strike": 749.5,
-              "prob": 0.11,
-              "spread": 0.14,
-              "confident": true,
+              "prob": 0.2,
+              "spread": 0.55,
+              "confident": false,
               "openInterest": 1217.04
             },
             {
@@ -13578,14 +13564,14 @@
           ],
           "median": null,
           "fit": {
-            "median": 324.5,
-            "sigma": 0.6824,
+            "median": 530.0,
+            "sigma": 0.4117,
             "points": 3
           },
-          "line": 324.5,
+          "line": 530.0,
           "lineSource": "fitted",
           "expected": null,
-          "confidentRungs": 2,
+          "confidentRungs": 1,
           "maxOpenInterest": 1217.04
         },
         "receptions": {
@@ -13628,9 +13614,9 @@
           "ladder": [
             {
               "strike": 5.5,
-              "prob": 0.24,
-              "spread": 0.3,
-              "confident": false,
+              "prob": 0.21,
+              "spread": 0.24,
+              "confident": true,
               "openInterest": 185.33
             },
             {
@@ -13642,14 +13628,14 @@
             },
             {
               "strike": 9.5,
-              "prob": 0.125,
-              "spread": 0.21,
+              "prob": 0.12,
+              "spread": 0.2,
               "confident": true,
               "openInterest": 307.81
             },
             {
               "strike": 11.5,
-              "prob": 0.125,
+              "prob": 0.12,
               "spread": 0.85,
               "confident": false,
               "openInterest": 25.16
@@ -13657,14 +13643,14 @@
           ],
           "median": null,
           "fit": {
-            "median": 2.2,
-            "sigma": 1.3545,
+            "median": 2.0,
+            "sigma": 1.4247,
             "points": 4
           },
-          "line": 2.2,
+          "line": 2.0,
           "lineSource": "fitted",
           "expected": null,
-          "confidentRungs": 1,
+          "confidentRungs": 2,
           "maxOpenInterest": 498.21
         }
       }
@@ -13781,23 +13767,23 @@
           "ladder": [
             {
               "strike": 749.5,
-              "prob": 0.04,
-              "spread": 0.06,
-              "confident": true,
+              "prob": 0.03,
+              "spread": 0.83,
+              "confident": false,
               "openInterest": 302.74
             }
           ],
           "median": null,
           "fit": {
-            "median": 392.2,
+            "median": 373.7,
             "sigma": 0.37,
             "points": 1,
             "assumedSigma": true
           },
-          "line": 392.2,
+          "line": 373.7,
           "lineSource": "assumed-sigma",
           "expected": null,
-          "confidentRungs": 1,
+          "confidentRungs": 0,
           "maxOpenInterest": 302.74
         },
         "receptions": {
@@ -13904,7 +13890,7 @@
             {
               "strike": 999.5,
               "prob": 0.82,
-              "spread": 0.42,
+              "spread": 0.36,
               "confident": false,
               "openInterest": 3124.91
             },
@@ -13976,7 +13962,7 @@
             {
               "strike": 5.5,
               "prob": 0.42,
-              "spread": 0.58,
+              "spread": 0.59,
               "confident": false,
               "openInterest": 1204.06
             },
