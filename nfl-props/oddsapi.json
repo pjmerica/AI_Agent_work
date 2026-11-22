@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-22T17:32:59+00:00",
+  "lastUpdated": "2026-11-22T17:40:09+00:00",
   "season": "2026",
   "source": "The Odds API (per-game, multi-book)",
   "note": "Per-game player props aggregated across US sportsbooks. `line` is the median across books; min/max show the spread and `quotes` keeps each book's own number.",
@@ -17,16 +17,16 @@
   "bookCounts": {
     "draftkings": 765,
     "williamhill_us": 320,
-    "fanduel": 764,
+    "fanduel": 765,
     "betonlineag": 738,
     "betrivers": 664,
-    "betmgm": 712,
+    "betmgm": 713,
     "bovada": 764,
     "fanatics": 405,
     "circasports": 257
   },
-  "quotaRemaining": "17402",
-  "quotaUsed": "2598",
+  "quotaRemaining": "17328",
+  "quotaUsed": "2672",
   "players": [
     {
       "name": "AJ Dillon",
@@ -58,7 +58,7 @@
       "matchupLong": "Pittsburgh Steelers @ Philadelphia Eagles",
       "stats": {
         "any_tds": {
-          "line": 0.0531,
+          "line": 0.0503,
           "books": 9,
           "min": 0.0414,
           "max": 0.064,
@@ -75,8 +75,8 @@
             },
             {
               "book": "fanduel",
-              "line": 0.0531,
-              "odds": 1700
+              "line": 0.0503,
+              "odds": 1800
             },
             {
               "book": "betonlineag",
@@ -100,8 +100,8 @@
             },
             {
               "book": "fanatics",
-              "line": 0.0531,
-              "odds": 1700
+              "line": 0.0477,
+              "odds": 1900
             },
             {
               "book": "circasports",
@@ -114,7 +114,7 @@
           "line": 1.312,
           "books": 7,
           "min": 1.29,
-          "max": 1.321,
+          "max": 1.317,
           "quotes": [
             {
               "book": "draftkings",
@@ -124,8 +124,8 @@
             },
             {
               "book": "fanduel",
-              "line": 1.321,
-              "odds": 148,
+              "line": 1.312,
+              "odds": 150,
               "posted": 1.5
             },
             {
@@ -162,7 +162,7 @@
         },
         "pass_yds": {
           "line": 209.5,
-          "books": 7,
+          "books": 8,
           "min": 199.5,
           "max": 220.5,
           "quotes": [
@@ -197,8 +197,13 @@
               "odds": 110
             },
             {
-              "book": "circasports",
+              "book": "fanatics",
               "line": 210.5,
+              "odds": -110
+            },
+            {
+              "book": "circasports",
+              "line": 208.5,
               "odds": -110
             }
           ]
@@ -236,9 +241,9 @@
       "matchupLong": "Las Vegas Raiders @ Denver Broncos",
       "stats": {
         "any_tds": {
-          "line": 0.0547,
+          "line": 0.0533,
           "books": 8,
-          "min": 0.0477,
+          "min": 0.0414,
           "max": 0.1407,
           "quotes": [
             {
@@ -278,8 +283,8 @@
             },
             {
               "book": "fanatics",
-              "line": 0.0531,
-              "odds": 1700
+              "line": 0.0414,
+              "odds": 2200
             }
           ]
         }
@@ -516,7 +521,7 @@
     {
       "name": "Alvin Kamara",
       "kickoff": "2026-11-22",
-      "kickoffTime": "2026-11-22T18:00:00Z",
+      "kickoffTime": "2026-11-22T18:05:00Z",
       "matchup": "NOCHI",
       "matchupLong": "New Orleans Saints @ Chicago Bears",
       "stats": {
@@ -548,8 +553,8 @@
             },
             {
               "book": "betrivers",
-              "line": 0.2398,
-              "odds": 325
+              "line": 0.2367,
+              "odds": 330
             },
             {
               "book": "betmgm",
@@ -571,7 +576,7 @@
         "rec_yds": {
           "line": 12.5,
           "books": 6,
-          "min": 12.5,
+          "min": 11.5,
           "max": 13.5,
           "quotes": [
             {
@@ -591,8 +596,8 @@
             },
             {
               "book": "betrivers",
-              "line": 12.5,
-              "odds": -108
+              "line": 11.5,
+              "odds": -122
             },
             {
               "book": "betmgm",
@@ -607,7 +612,7 @@
           ]
         },
         "receptions": {
-          "line": 2.536,
+          "line": 2.55,
           "books": 6,
           "min": 2.526,
           "max": 2.632,
@@ -632,8 +637,8 @@
             },
             {
               "book": "betrivers",
-              "line": 2.536,
-              "odds": 105,
+              "line": 2.564,
+              "odds": 102,
               "posted": 2.5
             },
             {
@@ -750,7 +755,7 @@
       "matchupLong": "Tampa Bay Buccaneers @ Detroit Lions",
       "stats": {
         "any_tds": {
-          "line": 0.701,
+          "line": 0.6979,
           "books": 9,
           "min": 0.6498,
           "max": 0.7621,
@@ -792,8 +797,8 @@
             },
             {
               "book": "fanatics",
-              "line": 0.7279,
-              "odds": -145
+              "line": 0.6979,
+              "odds": -135
             },
             {
               "book": "circasports",
@@ -941,8 +946,8 @@
             },
             {
               "book": "fanatics",
-              "line": 0.0531,
-              "odds": 1700
+              "line": 0.0477,
+              "odds": 1900
             }
           ]
         }
@@ -1010,7 +1015,7 @@
         "any_tds": {
           "line": 0.0454,
           "books": 8,
-          "min": 0.0366,
+          "min": 0.0414,
           "max": 0.064,
           "quotes": [
             {
@@ -1040,13 +1045,13 @@
             },
             {
               "book": "betmgm",
-              "line": 0.0454,
-              "odds": 2000
+              "line": 0.0414,
+              "odds": 2200
             },
             {
               "book": "fanatics",
-              "line": 0.0366,
-              "odds": 2500
+              "line": 0.0414,
+              "odds": 2200
             },
             {
               "book": "bovada",
@@ -1067,7 +1072,7 @@
         "any_tds": {
           "line": 0.1223,
           "books": 3,
-          "min": 0.1223,
+          "min": 0.1148,
           "max": 0.1407,
           "quotes": [
             {
@@ -1082,8 +1087,8 @@
             },
             {
               "book": "fanatics",
-              "line": 0.1223,
-              "odds": 700
+              "line": 0.1148,
+              "odds": 750
             }
           ]
         }
@@ -1571,7 +1576,7 @@
           "line": 0.2011,
           "books": 3,
           "min": 0.1968,
-          "max": 0.2149,
+          "max": 0.2101,
           "quotes": [
             {
               "book": "fanduel",
@@ -1585,8 +1590,8 @@
             },
             {
               "book": "fanatics",
-              "line": 0.2149,
-              "odds": 370
+              "line": 0.2101,
+              "odds": 380
             }
           ]
         },
@@ -1651,25 +1656,25 @@
     {
       "name": "Barion Brown",
       "kickoff": "2026-11-22",
-      "kickoffTime": "2026-11-22T18:00:00Z",
+      "kickoffTime": "2026-11-22T18:05:00Z",
       "matchup": "NOCHI",
       "matchupLong": "New Orleans Saints @ Chicago Bears",
       "stats": {
         "any_tds": {
-          "line": 0.0497,
+          "line": 0.0531,
           "books": 8,
           "min": 0.0414,
-          "max": 0.0599,
+          "max": 0.064,
           "quotes": [
             {
               "book": "draftkings",
-              "line": 0.0454,
-              "odds": 2000
+              "line": 0.0414,
+              "odds": 2200
             },
             {
               "book": "williamhill_us",
-              "line": 0.0517,
-              "odds": 1750
+              "line": 0.0563,
+              "odds": 1600
             },
             {
               "book": "fanduel",
@@ -1678,8 +1683,8 @@
             },
             {
               "book": "betonlineag",
-              "line": 0.0477,
-              "odds": 1900
+              "line": 0.064,
+              "odds": 1400
             },
             {
               "book": "betrivers",
@@ -1688,13 +1693,13 @@
             },
             {
               "book": "betmgm",
-              "line": 0.0414,
-              "odds": 2200
+              "line": 0.0477,
+              "odds": 1900
             },
             {
               "book": "bovada",
-              "line": 0.0454,
-              "odds": 2000
+              "line": 0.0414,
+              "odds": 2200
             },
             {
               "book": "fanatics",
@@ -1715,7 +1720,7 @@
         "any_tds": {
           "line": 0.03455,
           "books": 8,
-          "min": 0.0263,
+          "min": 0.0306,
           "max": 0.0454,
           "quotes": [
             {
@@ -1755,8 +1760,8 @@
             },
             {
               "book": "fanatics",
-              "line": 0.0263,
-              "odds": 3500
+              "line": 0.0306,
+              "odds": 3000
             }
           ]
         }
@@ -1770,7 +1775,7 @@
       "matchupLong": "Pittsburgh Steelers @ Philadelphia Eagles",
       "stats": {
         "any_tds": {
-          "line": 0.0555,
+          "line": 0.0539,
           "books": 8,
           "min": 0.0531,
           "max": 0.0804,
@@ -1787,8 +1792,8 @@
             },
             {
               "book": "fanduel",
-              "line": 0.0563,
-              "odds": 1600
+              "line": 0.0531,
+              "odds": 1700
             },
             {
               "book": "betonlineag",
@@ -1884,7 +1889,7 @@
       "matchupLong": "Jacksonville Jaguars @ New York Giants",
       "stats": {
         "any_tds": {
-          "line": 0.6431,
+          "line": 0.6328,
           "books": 9,
           "min": 0.5901,
           "max": 0.6663,
@@ -1926,8 +1931,8 @@
             },
             {
               "book": "fanatics",
-              "line": 0.6498,
-              "odds": -120
+              "line": 0.6328,
+              "odds": -115
             },
             {
               "book": "circasports",
@@ -2113,8 +2118,8 @@
             },
             {
               "book": "fanatics",
-              "line": 0.2309,
-              "odds": 340
+              "line": 0.22,
+              "odds": 360
             },
             {
               "book": "circasports",
@@ -2127,7 +2132,7 @@
           "line": 1.85,
           "books": 8,
           "min": 1.766,
-          "max": 1.881,
+          "max": 1.911,
           "quotes": [
             {
               "book": "draftkings",
@@ -2167,8 +2172,8 @@
             },
             {
               "book": "fanatics",
-              "line": 1.881,
-              "odds": -140,
+              "line": 1.911,
+              "odds": -145,
               "posted": 1.5
             },
             {
@@ -2180,9 +2185,9 @@
           ]
         },
         "pass_yds": {
-          "line": 216.5,
-          "books": 7,
-          "min": 214.5,
+          "line": 216.0,
+          "books": 8,
+          "min": 210.5,
           "max": 226.5,
           "quotes": [
             {
@@ -2214,6 +2219,11 @@
               "book": "bovada",
               "line": 226.5,
               "odds": 110
+            },
+            {
+              "book": "fanatics",
+              "line": 210.5,
+              "odds": -120
             },
             {
               "book": "circasports",
@@ -2831,7 +2841,7 @@
       "matchupLong": "Tennessee Titans @ Dallas Cowboys",
       "stats": {
         "any_tds": {
-          "line": 0.26925,
+          "line": 0.2673,
           "books": 8,
           "min": 0.2563,
           "max": 0.288,
@@ -2873,8 +2883,8 @@
             },
             {
               "book": "fanatics",
-              "line": 0.2793,
-              "odds": 270
+              "line": 0.2673,
+              "odds": 285
             }
           ]
         },
@@ -2973,7 +2983,7 @@
           "line": 0.1464,
           "books": 8,
           "min": 0.1407,
-          "max": 0.1815,
+          "max": 0.2011,
           "quotes": [
             {
               "book": "draftkings",
@@ -2992,8 +3002,8 @@
             },
             {
               "book": "betonlineag",
-              "line": 0.1521,
-              "odds": 550
+              "line": 0.2011,
+              "odds": 400
             },
             {
               "book": "betrivers",
@@ -3198,8 +3208,8 @@
             },
             {
               "book": "fanatics",
-              "line": 0.2367,
-              "odds": 330
+              "line": 0.2309,
+              "odds": 340
             }
           ]
         },
@@ -3282,8 +3292,8 @@
             },
             {
               "book": "fanatics",
-              "line": 0.0741,
-              "odds": 1200
+              "line": 0.0804,
+              "odds": 1100
             }
           ]
         }
@@ -3292,7 +3302,7 @@
     {
       "name": "Bryce Lance",
       "kickoff": "2026-11-22",
-      "kickoffTime": "2026-11-22T18:00:00Z",
+      "kickoffTime": "2026-11-22T18:05:00Z",
       "matchup": "NOCHI",
       "matchupLong": "New Orleans Saints @ Chicago Bears",
       "stats": {
@@ -3391,8 +3401,8 @@
             },
             {
               "book": "fanatics",
-              "line": 0.1655,
-              "odds": 500
+              "line": 0.1585,
+              "odds": 525
             },
             {
               "book": "circasports",
@@ -3432,8 +3442,8 @@
             },
             {
               "book": "betrivers",
-              "line": 1.683,
-              "odds": -110,
+              "line": 1.653,
+              "odds": -106,
               "posted": 1.5
             },
             {
@@ -3444,8 +3454,8 @@
             },
             {
               "book": "fanatics",
-              "line": 1.753,
-              "odds": -120,
+              "line": 1.718,
+              "odds": -115,
               "posted": 1.5
             },
             {
@@ -3486,7 +3496,7 @@
             {
               "book": "betrivers",
               "line": 239.5,
-              "odds": -134
+              "odds": -129
             },
             {
               "book": "betmgm",
@@ -3668,15 +3678,15 @@
           ]
         },
         "rec_yds": {
-          "line": 15.0,
+          "line": 14.5,
           "books": 6,
           "min": 14.5,
           "max": 15.5,
           "quotes": [
             {
               "book": "draftkings",
-              "line": 15.5,
-              "odds": -107
+              "line": 14.5,
+              "odds": -117
             },
             {
               "book": "fanduel",
@@ -3856,30 +3866,30 @@
     {
       "name": "CJ Donaldson",
       "kickoff": "2026-11-22",
-      "kickoffTime": "2026-11-22T18:00:00Z",
+      "kickoffTime": "2026-11-22T18:05:00Z",
       "matchup": "NOCHI",
       "matchupLong": "New Orleans Saints @ Chicago Bears",
       "stats": {
         "any_tds": {
-          "line": 0.1023,
+          "line": 0.1067,
           "books": 8,
-          "min": 0.0879,
+          "min": 0.097,
           "max": 0.1308,
           "quotes": [
             {
               "book": "draftkings",
-              "line": 0.0879,
-              "odds": 1000
+              "line": 0.1023,
+              "odds": 850
             },
             {
               "book": "williamhill_us",
-              "line": 0.1023,
-              "odds": 850
+              "line": 0.1082,
+              "odds": 800
             },
             {
               "book": "fanduel",
-              "line": 0.1023,
-              "odds": 850
+              "line": 0.097,
+              "odds": 900
             },
             {
               "book": "betonlineag",
@@ -3898,13 +3908,13 @@
             },
             {
               "book": "bovada",
-              "line": 0.0879,
-              "odds": 1000
+              "line": 0.1052,
+              "odds": 825
             },
             {
               "book": "fanatics",
-              "line": 0.0923,
-              "odds": 950
+              "line": 0.097,
+              "odds": 900
             }
           ]
         }
@@ -3920,7 +3930,7 @@
         "any_tds": {
           "line": 0.0224,
           "books": 6,
-          "min": 0.0155,
+          "min": 0.0185,
           "max": 0.0381,
           "quotes": [
             {
@@ -3950,8 +3960,8 @@
             },
             {
               "book": "fanatics",
-              "line": 0.0155,
-              "odds": 6000
+              "line": 0.0185,
+              "odds": 5000
             }
           ]
         }
@@ -3965,7 +3975,7 @@
       "matchupLong": "Tampa Bay Buccaneers @ Detroit Lions",
       "stats": {
         "any_tds": {
-          "line": 0.2253,
+          "line": 0.2281,
           "books": 8,
           "min": 0.22,
           "max": 0.2494,
@@ -4007,8 +4017,8 @@
             },
             {
               "book": "fanatics",
-              "line": 0.22,
-              "odds": 360
+              "line": 0.2309,
+              "odds": 340
             }
           ]
         },
@@ -4175,7 +4185,7 @@
             {
               "book": "betrivers",
               "line": 47.5,
-              "odds": -121
+              "odds": -120
             },
             {
               "book": "betmgm",
@@ -4243,7 +4253,7 @@
     {
       "name": "Caleb Williams",
       "kickoff": "2026-11-22",
-      "kickoffTime": "2026-11-22T18:00:00Z",
+      "kickoffTime": "2026-11-22T18:05:00Z",
       "matchup": "NOCHI",
       "matchupLong": "New Orleans Saints @ Chicago Bears",
       "stats": {
@@ -4290,8 +4300,8 @@
             },
             {
               "book": "fanatics",
-              "line": 0.2673,
-              "odds": 285
+              "line": 0.2563,
+              "odds": 300
             },
             {
               "book": "circasports",
@@ -4301,10 +4311,10 @@
           ]
         },
         "pass_tds": {
-          "line": 2.195,
+          "line": 2.231,
           "books": 7,
           "min": 1.895,
-          "max": 2.261,
+          "max": 2.343,
           "quotes": [
             {
               "book": "draftkings",
@@ -4326,9 +4336,9 @@
             },
             {
               "book": "betrivers",
-              "line": 2.091,
-              "odds": 170,
-              "posted": 2.5
+              "line": 2.343,
+              "odds": -235,
+              "posted": 1.5
             },
             {
               "book": "betmgm",
@@ -4352,8 +4362,8 @@
         },
         "pass_yds": {
           "line": 240.5,
-          "books": 7,
-          "min": 236.5,
+          "books": 8,
+          "min": 235.5,
           "max": 250.5,
           "quotes": [
             {
@@ -4369,11 +4379,11 @@
             {
               "book": "betonlineag",
               "line": 240.5,
-              "odds": -116
+              "odds": -114
             },
             {
               "book": "betrivers",
-              "line": 236.5,
+              "line": 235.5,
               "odds": -115
             },
             {
@@ -4385,6 +4395,11 @@
               "book": "bovada",
               "line": 250.5,
               "odds": 110
+            },
+            {
+              "book": "fanatics",
+              "line": 240.5,
+              "odds": -110
             },
             {
               "book": "circasports",
@@ -4417,7 +4432,7 @@
             {
               "book": "betrivers",
               "line": 17.5,
-              "odds": -114
+              "odds": -115
             },
             {
               "book": "betmgm",
@@ -4516,7 +4531,7 @@
       "matchupLong": "Jacksonville Jaguars @ New York Giants",
       "stats": {
         "any_tds": {
-          "line": 0.5608,
+          "line": 0.5643,
           "books": 9,
           "min": 0.5437,
           "max": 0.6119,
@@ -4558,8 +4573,8 @@
             },
             {
               "book": "fanatics",
-              "line": 0.5608,
-              "odds": 105
+              "line": 0.5789,
+              "odds": 100
             },
             {
               "book": "circasports",
@@ -4610,7 +4625,7 @@
           "line": 2.447,
           "books": 7,
           "min": 2.439,
-          "max": 2.447,
+          "max": 2.49,
           "quotes": [
             {
               "book": "draftkings",
@@ -4650,8 +4665,8 @@
             },
             {
               "book": "fanatics",
-              "line": 2.447,
-              "odds": 115,
+              "line": 2.49,
+              "odds": 110,
               "posted": 2.5
             }
           ]
@@ -4850,7 +4865,7 @@
             {
               "book": "fanatics",
               "line": 240.5,
-              "odds": -115
+              "odds": -110
             },
             {
               "book": "circasports",
@@ -4964,7 +4979,7 @@
       "matchupLong": "Tennessee Titans @ Dallas Cowboys",
       "stats": {
         "any_tds": {
-          "line": 0.3757,
+          "line": 0.3681,
           "books": 9,
           "min": 0.3681,
           "max": 0.4091,
@@ -5006,8 +5021,8 @@
             },
             {
               "book": "fanatics",
-              "line": 0.3916,
-              "odds": 175
+              "line": 0.3681,
+              "odds": 190
             },
             {
               "book": "circasports",
@@ -5116,7 +5131,7 @@
           "line": 0.1655,
           "books": 3,
           "min": 0.1521,
-          "max": 0.1815,
+          "max": 0.1731,
           "quotes": [
             {
               "book": "draftkings",
@@ -5125,8 +5140,8 @@
             },
             {
               "book": "betmgm",
-              "line": 0.1815,
-              "odds": 450
+              "line": 0.1731,
+              "odds": 475
             },
             {
               "book": "fanatics",
@@ -5196,7 +5211,7 @@
         "any_tds": {
           "line": 0.0306,
           "books": 5,
-          "min": 0.0279,
+          "min": 0.0263,
           "max": 0.0366,
           "quotes": [
             {
@@ -5221,8 +5236,8 @@
             },
             {
               "book": "fanatics",
-              "line": 0.0306,
-              "odds": 3000
+              "line": 0.0263,
+              "odds": 3500
             }
           ]
         }
@@ -5332,7 +5347,7 @@
           ]
         },
         "receptions": {
-          "line": 7.481,
+          "line": 7.4725,
           "books": 6,
           "min": 7.337,
           "max": 7.9,
@@ -5351,8 +5366,8 @@
             },
             {
               "book": "betonlineag",
-              "line": 7.481,
-              "odds": 102,
+              "line": 7.464,
+              "odds": 103,
               "posted": 7.5
             },
             {
@@ -5478,7 +5493,7 @@
             {
               "book": "betrivers",
               "line": 13.5,
-              "odds": -120
+              "odds": -121
             },
             {
               "book": "betmgm",
@@ -5518,8 +5533,8 @@
             },
             {
               "book": "betrivers",
-              "line": 1.863,
-              "odds": -137,
+              "line": 1.875,
+              "odds": -139,
               "posted": 1.5
             },
             {
@@ -5541,12 +5556,12 @@
     {
       "name": "Chicago Bears D/ST",
       "kickoff": "2026-11-22",
-      "kickoffTime": "2026-11-22T18:00:00Z",
+      "kickoffTime": "2026-11-22T18:05:00Z",
       "matchup": "NOCHI",
       "matchupLong": "New Orleans Saints @ Chicago Bears",
       "stats": {
         "any_tds": {
-          "line": 0.22,
+          "line": 0.2149,
           "books": 3,
           "min": 0.1908,
           "max": 0.22,
@@ -5563,8 +5578,8 @@
             },
             {
               "book": "fanatics",
-              "line": 0.22,
-              "odds": 360
+              "line": 0.2149,
+              "odds": 370
             }
           ]
         }
@@ -5573,7 +5588,7 @@
     {
       "name": "Chicago Bears Defense",
       "kickoff": "2026-11-22",
-      "kickoffTime": "2026-11-22T18:00:00Z",
+      "kickoffTime": "2026-11-22T18:05:00Z",
       "matchup": "NOCHI",
       "matchupLong": "New Orleans Saints @ Chicago Bears",
       "stats": {
@@ -5607,7 +5622,7 @@
         "any_tds": {
           "line": 0.19695000000000001,
           "books": 8,
-          "min": 0.1908,
+          "min": 0.1815,
           "max": 0.2793,
           "quotes": [
             {
@@ -5647,8 +5662,8 @@
             },
             {
               "book": "fanatics",
-              "line": 0.1928,
-              "odds": 420
+              "line": 0.1815,
+              "odds": 450
             }
           ]
         },
@@ -5825,7 +5840,7 @@
           ]
         },
         "receptions": {
-          "line": 1.739,
+          "line": 1.725,
           "books": 5,
           "min": 1.711,
           "max": 1.753,
@@ -5844,8 +5859,8 @@
             },
             {
               "book": "betonlineag",
-              "line": 1.739,
-              "odds": -118,
+              "line": 1.725,
+              "odds": -116,
               "posted": 1.5
             },
             {
@@ -6090,15 +6105,15 @@
     {
       "name": "Chris Olave",
       "kickoff": "2026-11-22",
-      "kickoffTime": "2026-11-22T18:00:00Z",
+      "kickoffTime": "2026-11-22T18:05:00Z",
       "matchup": "NOCHI",
       "matchupLong": "New Orleans Saints @ Chicago Bears",
       "stats": {
         "any_tds": {
-          "line": 0.307,
+          "line": 0.2972,
           "books": 9,
-          "min": 0.288,
-          "max": 0.3474,
+          "min": 0.2793,
+          "max": 0.3409,
           "quotes": [
             {
               "book": "draftkings",
@@ -6122,8 +6137,8 @@
             },
             {
               "book": "betrivers",
-              "line": 0.3474,
-              "odds": 205
+              "line": 0.3409,
+              "odds": 210
             },
             {
               "book": "betmgm",
@@ -6137,8 +6152,8 @@
             },
             {
               "book": "fanatics",
-              "line": 0.307,
-              "odds": 240
+              "line": 0.2793,
+              "odds": 270
             },
             {
               "book": "circasports",
@@ -6171,7 +6186,7 @@
             {
               "book": "betrivers",
               "line": 69.5,
-              "odds": -117
+              "odds": -115
             },
             {
               "book": "betmgm",
@@ -6193,8 +6208,8 @@
         "receptions": {
           "line": 5.48,
           "books": 7,
-          "min": 5.466,
-          "max": 5.567,
+          "min": 5.439,
+          "max": 5.609,
           "quotes": [
             {
               "book": "draftkings",
@@ -6210,14 +6225,14 @@
             },
             {
               "book": "betonlineag",
-              "line": 5.494,
-              "odds": 103,
+              "line": 5.48,
+              "odds": 104,
               "posted": 5.5
             },
             {
               "book": "betrivers",
-              "line": 5.466,
-              "odds": 105,
+              "line": 5.439,
+              "odds": 107,
               "posted": 5.5
             },
             {
@@ -6234,8 +6249,8 @@
             },
             {
               "book": "fanatics",
-              "line": 5.538,
-              "odds": 100,
+              "line": 5.609,
+              "odds": -105,
               "posted": 5.5
             }
           ]
@@ -6292,8 +6307,8 @@
             },
             {
               "book": "fanatics",
-              "line": 0.2793,
-              "odds": 270
+              "line": 0.2673,
+              "odds": 285
             }
           ]
         },
@@ -6345,15 +6360,15 @@
       "matchupLong": "Baltimore Ravens @ Carolina Panthers",
       "stats": {
         "any_tds": {
-          "line": 0.7424,
+          "line": 0.7279,
           "books": 9,
           "min": 0.6979,
           "max": 0.7891,
           "quotes": [
             {
               "book": "draftkings",
-              "line": 0.7279,
-              "odds": -145
+              "line": 0.6979,
+              "odds": -135
             },
             {
               "book": "williamhill_us",
@@ -6372,8 +6387,8 @@
             },
             {
               "book": "betrivers",
-              "line": 0.7676,
-              "odds": -159
+              "line": 0.7481,
+              "odds": -152
             },
             {
               "book": "betmgm",
@@ -6382,8 +6397,8 @@
             },
             {
               "book": "fanatics",
-              "line": 0.7424,
-              "odds": -150
+              "line": 0.7279,
+              "odds": -145
             },
             {
               "book": "circasports",
@@ -6392,8 +6407,8 @@
             },
             {
               "book": "bovada",
-              "line": 0.7481,
-              "odds": -152
+              "line": 0.701,
+              "odds": -136
             }
           ]
         },
@@ -6421,7 +6436,7 @@
             {
               "book": "betrivers",
               "line": 19.5,
-              "odds": -132
+              "odds": -130
             },
             {
               "book": "betmgm",
@@ -6443,7 +6458,7 @@
         "receptions": {
           "line": 3.4450000000000003,
           "books": 6,
-          "min": 3.399,
+          "min": 3.372,
           "max": 3.509,
           "quotes": [
             {
@@ -6466,8 +6481,8 @@
             },
             {
               "book": "betrivers",
-              "line": 3.399,
-              "odds": -215,
+              "line": 3.372,
+              "odds": -210,
               "posted": 2.5
             },
             {
@@ -6508,7 +6523,7 @@
             {
               "book": "betrivers",
               "line": 75.5,
-              "odds": -120
+              "odds": -115
             },
             {
               "book": "betmgm",
@@ -6636,14 +6651,14 @@
     {
       "name": "Colston Loveland",
       "kickoff": "2026-11-22",
-      "kickoffTime": "2026-11-22T18:00:00Z",
+      "kickoffTime": "2026-11-22T18:05:00Z",
       "matchup": "NOCHI",
       "matchupLong": "New Orleans Saints @ Chicago Bears",
       "stats": {
         "any_tds": {
           "line": 0.47635000000000005,
           "books": 8,
-          "min": 0.4607,
+          "min": 0.4726,
           "max": 0.5437,
           "quotes": [
             {
@@ -6678,8 +6693,8 @@
             },
             {
               "book": "fanatics",
-              "line": 0.4607,
-              "odds": 140
+              "line": 0.4726,
+              "odds": 135
             },
             {
               "book": "circasports",
@@ -6712,7 +6727,7 @@
             {
               "book": "betrivers",
               "line": 48.5,
-              "odds": -120
+              "odds": -117
             },
             {
               "book": "betmgm",
@@ -6869,8 +6884,8 @@
             },
             {
               "book": "betrivers",
-              "line": 0.3916,
-              "odds": 175
+              "line": 0.3835,
+              "odds": 180
             },
             {
               "book": "betmgm",
@@ -6913,7 +6928,7 @@
             {
               "book": "betrivers",
               "line": 34.5,
-              "odds": -124
+              "odds": -120
             },
             {
               "book": "betmgm",
@@ -6936,7 +6951,7 @@
           "line": 3.356,
           "books": 7,
           "min": 3.193,
-          "max": 3.498,
+          "max": 3.455,
           "quotes": [
             {
               "book": "draftkings",
@@ -6958,8 +6973,8 @@
             },
             {
               "book": "betrivers",
-              "line": 3.498,
-              "odds": 106,
+              "line": 3.455,
+              "odds": 110,
               "posted": 3.5
             },
             {
@@ -6976,8 +6991,8 @@
             },
             {
               "book": "fanatics",
-              "line": 3.404,
-              "odds": 115,
+              "line": 3.356,
+              "odds": 120,
               "posted": 3.5
             }
           ]
@@ -7126,14 +7141,14 @@
     {
       "name": "D'Andre Swift",
       "kickoff": "2026-11-22",
-      "kickoffTime": "2026-11-22T18:00:00Z",
+      "kickoffTime": "2026-11-22T18:05:00Z",
       "matchup": "NOCHI",
       "matchupLong": "New Orleans Saints @ Chicago Bears",
       "stats": {
         "any_tds": {
           "line": 0.7565,
           "books": 9,
-          "min": 0.7424,
+          "min": 0.7279,
           "max": 0.7891,
           "quotes": [
             {
@@ -7148,8 +7163,8 @@
             },
             {
               "book": "fanduel",
-              "line": 0.7424,
-              "odds": -150
+              "line": 0.7279,
+              "odds": -145
             },
             {
               "book": "betonlineag",
@@ -7158,8 +7173,8 @@
             },
             {
               "book": "betrivers",
-              "line": 0.7676,
-              "odds": -159
+              "line": 0.7621,
+              "odds": -157
             },
             {
               "book": "betmgm",
@@ -7173,8 +7188,8 @@
             },
             {
               "book": "fanatics",
-              "line": 0.7838,
-              "odds": -165
+              "line": 0.7565,
+              "odds": -155
             },
             {
               "book": "circasports",
@@ -7207,7 +7222,7 @@
             {
               "book": "betrivers",
               "line": 14.5,
-              "odds": -114
+              "odds": -115
             },
             {
               "book": "betmgm",
@@ -7225,7 +7240,7 @@
           "line": 2.346,
           "books": 6,
           "min": 2.263,
-          "max": 2.368,
+          "max": 2.383,
           "quotes": [
             {
               "book": "draftkings",
@@ -7247,8 +7262,8 @@
             },
             {
               "book": "betrivers",
-              "line": 2.368,
-              "odds": 125,
+              "line": 2.383,
+              "odds": 123,
               "posted": 2.5
             },
             {
@@ -7325,7 +7340,7 @@
         "any_tds": {
           "line": 0.0231,
           "books": 7,
-          "min": 0.0231,
+          "min": 0.0206,
           "max": 0.0477,
           "quotes": [
             {
@@ -7360,8 +7375,8 @@
             },
             {
               "book": "fanatics",
-              "line": 0.0263,
-              "odds": 3500
+              "line": 0.0206,
+              "odds": 4500
             }
           ]
         }
@@ -7417,8 +7432,8 @@
             },
             {
               "book": "fanatics",
-              "line": 0.3757,
-              "odds": 185
+              "line": 0.3835,
+              "odds": 180
             },
             {
               "book": "circasports",
@@ -7721,8 +7736,8 @@
             },
             {
               "book": "fanatics",
-              "line": 0.1521,
-              "odds": 550
+              "line": 0.1585,
+              "odds": 525
             },
             {
               "book": "circasports",
@@ -7878,7 +7893,7 @@
       "matchupLong": "Tennessee Titans @ Dallas Cowboys",
       "stats": {
         "any_tds": {
-          "line": 0.1731,
+          "line": 0.1815,
           "books": 3,
           "min": 0.1407,
           "max": 0.1815,
@@ -7895,8 +7910,8 @@
             },
             {
               "book": "fanatics",
-              "line": 0.1731,
-              "odds": 475
+              "line": 0.1815,
+              "odds": 450
             }
           ]
         }
@@ -8023,7 +8038,7 @@
           ]
         },
         "receptions": {
-          "line": 3.721,
+          "line": 3.726,
           "books": 6,
           "min": 3.623,
           "max": 3.832,
@@ -8042,8 +8057,8 @@
             },
             {
               "book": "betonlineag",
-              "line": 3.7,
-              "odds": -112,
+              "line": 3.731,
+              "odds": -115,
               "posted": 3.5
             },
             {
@@ -8076,9 +8091,9 @@
       "matchupLong": "Las Vegas Raiders @ Denver Broncos",
       "stats": {
         "any_tds": {
-          "line": 0.0354,
+          "line": 0.037,
           "books": 2,
-          "min": 0.0231,
+          "min": 0.0263,
           "max": 0.0477,
           "quotes": [
             {
@@ -8088,8 +8103,8 @@
             },
             {
               "book": "fanatics",
-              "line": 0.0231,
-              "odds": 4000
+              "line": 0.0263,
+              "odds": 3500
             }
           ]
         }
@@ -8103,7 +8118,7 @@
       "matchupLong": "Tennessee Titans @ Dallas Cowboys",
       "stats": {
         "any_tds": {
-          "line": 0.1308,
+          "line": 0.12655,
           "books": 8,
           "min": 0.1223,
           "max": 0.1546,
@@ -8145,8 +8160,8 @@
             },
             {
               "book": "fanatics",
-              "line": 0.1308,
-              "odds": 650
+              "line": 0.1223,
+              "odds": 700
             }
           ]
         },
@@ -8381,7 +8396,7 @@
         "receptions": {
           "line": 1.6385,
           "books": 6,
-          "min": 1.615,
+          "min": 1.623,
           "max": 1.683,
           "quotes": [
             {
@@ -8398,8 +8413,8 @@
             },
             {
               "book": "betonlineag",
-              "line": 1.615,
-              "odds": -101,
+              "line": 1.631,
+              "odds": -103,
               "posted": 1.5
             },
             {
@@ -8781,7 +8796,7 @@
             {
               "book": "betrivers",
               "line": 25.5,
-              "odds": -132
+              "odds": -130
             },
             {
               "book": "betmgm",
@@ -8988,7 +9003,7 @@
           "line": 0.2598,
           "books": 8,
           "min": 0.2367,
-          "max": 0.2752,
+          "max": 0.2793,
           "quotes": [
             {
               "book": "draftkings",
@@ -9012,8 +9027,8 @@
             },
             {
               "book": "betrivers",
-              "line": 0.2752,
-              "odds": 275
+              "line": 0.2793,
+              "odds": 270
             },
             {
               "book": "betmgm",
@@ -9124,9 +9139,9 @@
       "matchupLong": "Tampa Bay Buccaneers @ Detroit Lions",
       "stats": {
         "any_tds": {
-          "line": 0.0563,
+          "line": 0.0599,
           "books": 7,
-          "min": 0.0531,
+          "min": 0.0563,
           "max": 0.064,
           "quotes": [
             {
@@ -9161,8 +9176,8 @@
             },
             {
               "book": "fanatics",
-              "line": 0.0531,
-              "odds": 1700
+              "line": 0.0599,
+              "odds": 1500
             }
           ]
         }
@@ -9218,8 +9233,8 @@
             },
             {
               "book": "fanatics",
-              "line": 0.2494,
-              "odds": 310
+              "line": 0.2563,
+              "odds": 300
             },
             {
               "book": "circasports",
@@ -9328,7 +9343,7 @@
           "line": 0.2055,
           "books": 3,
           "min": 0.1815,
-          "max": 0.22,
+          "max": 0.2149,
           "quotes": [
             {
               "book": "draftkings",
@@ -9342,8 +9357,8 @@
             },
             {
               "book": "fanatics",
-              "line": 0.22,
-              "odds": 360
+              "line": 0.2149,
+              "odds": 370
             }
           ]
         }
@@ -9438,13 +9453,13 @@
         "any_tds": {
           "line": 0.7131,
           "books": 9,
-          "min": 0.6498,
+          "min": 0.6564,
           "max": 0.7891,
           "quotes": [
             {
               "book": "draftkings",
-              "line": 0.7131,
-              "odds": -140
+              "line": 0.7279,
+              "odds": -145
             },
             {
               "book": "williamhill_us",
@@ -9463,8 +9478,8 @@
             },
             {
               "book": "betrivers",
-              "line": 0.6498,
-              "odds": -120
+              "line": 0.6564,
+              "odds": -122
             },
             {
               "book": "betmgm",
@@ -9483,8 +9498,8 @@
             },
             {
               "book": "bovada",
-              "line": 0.722,
-              "odds": -143
+              "line": 0.7366,
+              "odds": -148
             }
           ]
         },
@@ -9507,7 +9522,7 @@
             {
               "book": "betonlineag",
               "line": 8.5,
-              "odds": -114
+              "odds": -112
             },
             {
               "book": "betmgm",
@@ -9517,15 +9532,15 @@
             {
               "book": "bovada",
               "line": 8.5,
-              "odds": -115
+              "odds": -110
             }
           ]
         },
         "receptions": {
-          "line": 1.863,
+          "line": 1.85,
           "books": 5,
           "min": 1.85,
-          "max": 1.911,
+          "max": 1.869,
           "quotes": [
             {
               "book": "draftkings",
@@ -9541,8 +9556,8 @@
             },
             {
               "book": "betonlineag",
-              "line": 1.863,
-              "odds": -137,
+              "line": 1.85,
+              "odds": -135,
               "posted": 1.5
             },
             {
@@ -9553,8 +9568,8 @@
             },
             {
               "book": "bovada",
-              "line": 1.911,
-              "odds": -145,
+              "line": 1.85,
+              "odds": -135,
               "posted": 1.5
             }
           ]
@@ -9563,12 +9578,12 @@
           "line": 65.5,
           "books": 8,
           "min": 64.5,
-          "max": 68.5,
+          "max": 67.5,
           "quotes": [
             {
               "book": "draftkings",
-              "line": 68.5,
-              "odds": -110
+              "line": 67.5,
+              "odds": -114
             },
             {
               "book": "fanduel",
@@ -9583,7 +9598,7 @@
             {
               "book": "betrivers",
               "line": 64.5,
-              "odds": -122
+              "odds": -124
             },
             {
               "book": "betmgm",
@@ -9602,7 +9617,7 @@
             },
             {
               "book": "bovada",
-              "line": 68.5,
+              "line": 67.5,
               "odds": -115
             }
           ]
@@ -9617,7 +9632,7 @@
       "matchupLong": "Tampa Bay Buccaneers @ Detroit Lions",
       "stats": {
         "any_tds": {
-          "line": 0.1585,
+          "line": 0.1655,
           "books": 3,
           "min": 0.1521,
           "max": 0.1731,
@@ -9634,8 +9649,8 @@
             },
             {
               "book": "fanatics",
-              "line": 0.1585,
-              "odds": 525
+              "line": 0.1655,
+              "odds": 500
             }
           ]
         }
@@ -9671,14 +9686,14 @@
     {
       "name": "Devaughn Vele",
       "kickoff": "2026-11-22",
-      "kickoffTime": "2026-11-22T18:00:00Z",
+      "kickoffTime": "2026-11-22T18:05:00Z",
       "matchup": "NOCHI",
       "matchupLong": "New Orleans Saints @ Chicago Bears",
       "stats": {
         "any_tds": {
           "line": 0.162,
           "books": 8,
-          "min": 0.1521,
+          "min": 0.1461,
           "max": 0.1815,
           "quotes": [
             {
@@ -9718,8 +9733,8 @@
             },
             {
               "book": "fanatics",
-              "line": 0.1585,
-              "odds": 525
+              "line": 0.1461,
+              "odds": 575
             }
           ]
         },
@@ -9747,7 +9762,7 @@
             {
               "book": "betrivers",
               "line": 23.5,
-              "odds": -115
+              "odds": -114
             },
             {
               "book": "betmgm",
@@ -9765,7 +9780,7 @@
           "line": 2.317,
           "books": 6,
           "min": 2.257,
-          "max": 2.439,
+          "max": 2.431,
           "quotes": [
             {
               "book": "draftkings",
@@ -9787,8 +9802,8 @@
             },
             {
               "book": "betrivers",
-              "line": 2.439,
-              "odds": 116,
+              "line": 2.431,
+              "odds": 117,
               "posted": 2.5
             },
             {
@@ -10035,7 +10050,7 @@
             {
               "book": "fanatics",
               "line": 10.5,
-              "odds": -110
+              "odds": -120
             }
           ]
         }
@@ -10138,8 +10153,8 @@
             },
             {
               "book": "fanatics",
-              "line": 0.0366,
-              "odds": 2500
+              "line": 0.0414,
+              "odds": 2200
             }
           ]
         }
@@ -10254,9 +10269,9 @@
       "matchupLong": "Pittsburgh Steelers @ Philadelphia Eagles",
       "stats": {
         "any_tds": {
-          "line": 0.04455,
+          "line": 0.0477,
           "books": 8,
-          "min": 0.0366,
+          "min": 0.0414,
           "max": 0.064,
           "quotes": [
             {
@@ -10296,8 +10311,8 @@
             },
             {
               "book": "fanatics",
-              "line": 0.0366,
-              "odds": 2500
+              "line": 0.0477,
+              "odds": 1900
             }
           ]
         }
@@ -10362,7 +10377,7 @@
           "line": 43.5,
           "books": 7,
           "min": 43.5,
-          "max": 48.5,
+          "max": 45.5,
           "quotes": [
             {
               "book": "draftkings",
@@ -10391,8 +10406,8 @@
             },
             {
               "book": "bovada",
-              "line": 48.5,
-              "odds": 110
+              "line": 44.5,
+              "odds": -110
             },
             {
               "book": "circasports",
@@ -10497,8 +10512,8 @@
             },
             {
               "book": "fanatics",
-              "line": 0.097,
-              "odds": 900
+              "line": 0.0923,
+              "odds": 950
             }
           ]
         },
@@ -10676,7 +10691,7 @@
           "line": 0.3609,
           "books": 8,
           "min": 0.354,
-          "max": 0.3681,
+          "max": 0.3757,
           "quotes": [
             {
               "book": "draftkings",
@@ -10715,8 +10730,8 @@
             },
             {
               "book": "fanatics",
-              "line": 0.3681,
-              "odds": 190
+              "line": 0.3757,
+              "odds": 185
             }
           ]
         },
@@ -10859,8 +10874,8 @@
             },
             {
               "book": "fanatics",
-              "line": 0.8928,
-              "odds": -210
+              "line": 0.8817,
+              "odds": -205
             },
             {
               "book": "circasports",
@@ -11080,7 +11095,7 @@
             {
               "book": "betrivers",
               "line": 18.5,
-              "odds": -124
+              "odds": -125
             },
             {
               "book": "betmgm",
@@ -11365,8 +11380,8 @@
           ]
         },
         "pass_yds": {
-          "line": 172.0,
-          "books": 8,
+          "line": 172.5,
+          "books": 7,
           "min": 170.5,
           "max": 181.5,
           "quotes": [
@@ -11399,11 +11414,6 @@
               "book": "bovada",
               "line": 181.5,
               "odds": 110
-            },
-            {
-              "book": "fanatics",
-              "line": 170.5,
-              "odds": -115
             },
             {
               "book": "circasports",
@@ -11868,12 +11878,12 @@
           "line": 69.5,
           "books": 7,
           "min": 68.5,
-          "max": 73.5,
+          "max": 74.5,
           "quotes": [
             {
               "book": "draftkings",
-              "line": 68.5,
-              "odds": -114
+              "line": 69.5,
+              "odds": -110
             },
             {
               "book": "fanduel",
@@ -11897,7 +11907,7 @@
             },
             {
               "book": "bovada",
-              "line": 73.5,
+              "line": 74.5,
               "odds": 110
             },
             {
@@ -11911,7 +11921,7 @@
           "line": 5.494,
           "books": 7,
           "min": 5.466,
-          "max": 5.567,
+          "max": 5.609,
           "quotes": [
             {
               "book": "draftkings",
@@ -11951,8 +11961,8 @@
             },
             {
               "book": "fanatics",
-              "line": 5.538,
-              "odds": 100,
+              "line": 5.609,
+              "odds": -105,
               "posted": 5.5
             }
           ]
@@ -12009,8 +12019,8 @@
             },
             {
               "book": "fanatics",
-              "line": 0.2101,
-              "odds": 380
+              "line": 0.2011,
+              "odds": 400
             }
           ]
         },
@@ -12123,8 +12133,8 @@
             },
             {
               "book": "fanduel",
-              "line": 0.0279,
-              "odds": 3300
+              "line": 0.0263,
+              "odds": 3500
             },
             {
               "book": "betonlineag",
@@ -12343,7 +12353,7 @@
             {
               "book": "betonlineag",
               "line": 25.5,
-              "odds": -112
+              "odds": -115
             },
             {
               "book": "betmgm",
@@ -12405,7 +12415,7 @@
       "matchupLong": "Tennessee Titans @ Dallas Cowboys",
       "stats": {
         "any_tds": {
-          "line": 0.25285,
+          "line": 0.2494,
           "books": 8,
           "min": 0.2429,
           "max": 0.2712,
@@ -12447,8 +12457,8 @@
             },
             {
               "book": "fanatics",
-              "line": 0.2563,
-              "odds": 300
+              "line": 0.2494,
+              "odds": 310
             }
           ]
         },
@@ -12716,8 +12726,8 @@
             },
             {
               "book": "fanatics",
-              "line": 0.1308,
-              "odds": 650
+              "line": 0.1407,
+              "odds": 600
             }
           ]
         }
@@ -12763,8 +12773,8 @@
             },
             {
               "book": "fanatics",
-              "line": 0.0687,
-              "odds": 1300
+              "line": 0.0599,
+              "odds": 1500
             }
           ]
         }
@@ -12974,9 +12984,9 @@
       "matchupLong": "Jacksonville Jaguars @ New York Giants",
       "stats": {
         "any_tds": {
-          "line": 0.3288,
+          "line": 0.3231,
           "books": 9,
-          "min": 0.3176,
+          "min": 0.3122,
           "max": 0.3409,
           "quotes": [
             {
@@ -13016,8 +13026,8 @@
             },
             {
               "book": "fanatics",
-              "line": 0.3288,
-              "odds": 220
+              "line": 0.3122,
+              "odds": 235
             },
             {
               "book": "circasports",
@@ -13125,7 +13135,7 @@
         "any_tds": {
           "line": 0.1626,
           "books": 9,
-          "min": 0.1461,
+          "min": 0.1521,
           "max": 0.1815,
           "quotes": [
             {
@@ -13165,8 +13175,8 @@
             },
             {
               "book": "fanatics",
-              "line": 0.1461,
-              "odds": 575
+              "line": 0.1585,
+              "odds": 525
             },
             {
               "book": "circasports",
@@ -13233,7 +13243,7 @@
         },
         "pass_yds": {
           "line": 211.5,
-          "books": 7,
+          "books": 8,
           "min": 210.5,
           "max": 221.5,
           "quotes": [
@@ -13266,6 +13276,11 @@
               "book": "bovada",
               "line": 221.5,
               "odds": 110
+            },
+            {
+              "book": "fanatics",
+              "line": 210.5,
+              "odds": -115
             },
             {
               "book": "circasports",
@@ -13327,7 +13342,7 @@
       "matchupLong": "Las Vegas Raiders @ Denver Broncos",
       "stats": {
         "any_tds": {
-          "line": 0.2618,
+          "line": 0.2563,
           "books": 8,
           "min": 0.2494,
           "max": 0.2972,
@@ -13369,8 +13384,8 @@
             },
             {
               "book": "fanatics",
-              "line": 0.2793,
-              "odds": 270
+              "line": 0.2494,
+              "odds": 310
             }
           ]
         },
@@ -13471,7 +13486,7 @@
         },
         "rec_yds": {
           "line": 35.5,
-          "books": 6,
+          "books": 7,
           "min": 32.5,
           "max": 41.5,
           "quotes": [
@@ -13501,6 +13516,11 @@
               "odds": -135
             },
             {
+              "book": "fanatics",
+              "line": 35.5,
+              "odds": -110
+            },
+            {
               "book": "bovada",
               "line": 41.5,
               "odds": 110
@@ -13510,7 +13530,7 @@
         "receptions": {
           "line": 2.9475,
           "books": 6,
-          "min": 2.851,
+          "min": 2.891,
           "max": 3.17,
           "quotes": [
             {
@@ -13539,8 +13559,8 @@
             },
             {
               "book": "betmgm",
-              "line": 2.851,
-              "odds": -130,
+              "line": 2.891,
+              "odds": -135,
               "posted": 2.5
             },
             {
@@ -13736,8 +13756,8 @@
             },
             {
               "book": "fanatics",
-              "line": 0.097,
-              "odds": 900
+              "line": 0.0923,
+              "odds": 950
             }
           ]
         }
@@ -13751,7 +13771,7 @@
       "matchupLong": "Jacksonville Jaguars @ New York Giants",
       "stats": {
         "any_tds": {
-          "line": 0.1815,
+          "line": 0.1731,
           "books": 3,
           "min": 0.1655,
           "max": 0.1815,
@@ -13768,8 +13788,8 @@
             },
             {
               "book": "fanatics",
-              "line": 0.1815,
-              "odds": 450
+              "line": 0.1731,
+              "odds": 475
             }
           ]
         }
@@ -13867,15 +13887,15 @@
       "matchupLong": "Baltimore Ravens @ Carolina Panthers",
       "stats": {
         "any_tds": {
-          "line": 0.1223,
+          "line": 0.1308,
           "books": 9,
-          "min": 0.1148,
-          "max": 0.1308,
+          "min": 0.1223,
+          "max": 0.1356,
           "quotes": [
             {
               "book": "draftkings",
-              "line": 0.1148,
-              "odds": 750
+              "line": 0.1308,
+              "odds": 650
             },
             {
               "book": "williamhill_us",
@@ -13914,8 +13934,8 @@
             },
             {
               "book": "bovada",
-              "line": 0.1185,
-              "odds": 725
+              "line": 0.1356,
+              "odds": 625
             }
           ]
         },
@@ -13923,7 +13943,7 @@
           "line": 1.39,
           "books": 7,
           "min": 1.335,
-          "max": 1.47,
+          "max": 1.501,
           "quotes": [
             {
               "book": "draftkings",
@@ -13945,8 +13965,8 @@
             },
             {
               "book": "betrivers",
-              "line": 1.47,
-              "odds": 120,
+              "line": 1.501,
+              "odds": 115,
               "posted": 1.5
             },
             {
@@ -13970,15 +13990,15 @@
           ]
         },
         "pass_yds": {
-          "line": 229.5,
+          "line": 229.0,
           "books": 8,
           "min": 225.5,
-          "max": 241.5,
+          "max": 240.5,
           "quotes": [
             {
               "book": "draftkings",
-              "line": 231.5,
-              "odds": -111
+              "line": 230.5,
+              "odds": -113
             },
             {
               "book": "fanduel",
@@ -13993,17 +14013,17 @@
             {
               "book": "betrivers",
               "line": 233.5,
-              "odds": -129
+              "odds": -134
             },
             {
               "book": "betmgm",
-              "line": 231.5,
+              "line": 230.5,
               "odds": -115
             },
             {
               "book": "fanatics",
               "line": 225.5,
-              "odds": -115
+              "odds": -120
             },
             {
               "book": "circasports",
@@ -14012,7 +14032,7 @@
             },
             {
               "book": "bovada",
-              "line": 241.5,
+              "line": 240.5,
               "odds": 110
             }
           ]
@@ -14025,8 +14045,8 @@
           "quotes": [
             {
               "book": "draftkings",
-              "line": 5.5,
-              "odds": -117
+              "line": 6.5,
+              "odds": -105
             },
             {
               "book": "fanduel",
@@ -14041,7 +14061,7 @@
             {
               "book": "betrivers",
               "line": 5.5,
-              "odds": -115
+              "odds": -120
             },
             {
               "book": "betmgm",
@@ -14065,7 +14085,7 @@
     {
       "name": "Jahdae Walker",
       "kickoff": "2026-11-22",
-      "kickoffTime": "2026-11-22T18:00:00Z",
+      "kickoffTime": "2026-11-22T18:05:00Z",
       "matchup": "NOCHI",
       "matchupLong": "New Orleans Saints @ Chicago Bears",
       "stats": {
@@ -14097,8 +14117,8 @@
             },
             {
               "book": "betrivers",
-              "line": 0.084,
-              "odds": 1050
+              "line": 0.0804,
+              "odds": 1100
             },
             {
               "book": "betmgm",
@@ -14169,8 +14189,8 @@
             },
             {
               "book": "fanatics",
-              "line": 1.03,
-              "odds": -280
+              "line": 1.0639,
+              "odds": -300
             },
             {
               "book": "circasports",
@@ -14270,12 +14290,12 @@
           "line": 84.5,
           "books": 7,
           "min": 83.5,
-          "max": 87.5,
+          "max": 86.5,
           "quotes": [
             {
               "book": "draftkings",
-              "line": 87.5,
-              "odds": -111
+              "line": 84.5,
+              "odds": -114
             },
             {
               "book": "fanduel",
@@ -14299,7 +14319,7 @@
             },
             {
               "book": "bovada",
-              "line": 87.5,
+              "line": 84.5,
               "odds": -115
             },
             {
@@ -14440,8 +14460,8 @@
             },
             {
               "book": "fanatics",
-              "line": 0.307,
-              "odds": 240
+              "line": 0.3122,
+              "odds": 235
             }
           ]
         },
@@ -14542,15 +14562,15 @@
       "matchupLong": "Baltimore Ravens @ Carolina Panthers",
       "stats": {
         "any_tds": {
-          "line": 0.307,
+          "line": 0.302,
           "books": 9,
           "min": 0.2972,
           "max": 0.3288,
           "quotes": [
             {
               "book": "draftkings",
-              "line": 0.307,
-              "odds": 240
+              "line": 0.2972,
+              "odds": 250
             },
             {
               "book": "williamhill_us",
@@ -14569,8 +14589,8 @@
             },
             {
               "book": "betrivers",
-              "line": 0.3122,
-              "odds": 235
+              "line": 0.3176,
+              "odds": 230
             },
             {
               "book": "betmgm",
@@ -14589,8 +14609,8 @@
             },
             {
               "book": "bovada",
-              "line": 0.307,
-              "odds": 240
+              "line": 0.2972,
+              "odds": 250
             }
           ]
         },
@@ -14613,17 +14633,17 @@
             {
               "book": "betonlineag",
               "line": 43.5,
-              "odds": -112
+              "odds": -114
             },
             {
               "book": "betrivers",
               "line": 40.5,
-              "odds": -132
+              "odds": -137
             },
             {
               "book": "betmgm",
               "line": 43.5,
-              "odds": -111
+              "odds": -115
             },
             {
               "book": "circasports",
@@ -14638,9 +14658,9 @@
           ]
         },
         "receptions": {
-          "line": 3.7875,
+          "line": 3.808,
           "books": 6,
-          "min": 3.721,
+          "min": 3.762,
           "max": 3.88,
           "quotes": [
             {
@@ -14651,8 +14671,8 @@
             },
             {
               "book": "fanduel",
-              "line": 3.721,
-              "odds": -114,
+              "line": 3.803,
+              "odds": -122,
               "posted": 3.5
             },
             {
@@ -14663,8 +14683,8 @@
             },
             {
               "book": "betrivers",
-              "line": 3.721,
-              "odds": -114,
+              "line": 3.762,
+              "odds": -118,
               "posted": 3.5
             },
             {
@@ -15049,10 +15069,10 @@
       "matchupLong": "Miami Dolphins @ Buffalo Bills",
       "stats": {
         "any_tds": {
-          "line": 0.8587,
+          "line": 0.8468,
           "books": 9,
           "min": 0.7969,
-          "max": 0.9751,
+          "max": 0.9354,
           "quotes": [
             {
               "book": "draftkings",
@@ -15076,8 +15096,8 @@
             },
             {
               "book": "betrivers",
-              "line": 0.9751,
-              "odds": -250
+              "line": 0.9354,
+              "odds": -230
             },
             {
               "book": "betmgm",
@@ -15091,8 +15111,8 @@
             },
             {
               "book": "fanatics",
-              "line": 0.8587,
-              "odds": -195
+              "line": 0.8468,
+              "odds": -190
             },
             {
               "book": "circasports",
@@ -15140,7 +15160,7 @@
             {
               "book": "fanatics",
               "line": 10.5,
-              "odds": 105
+              "odds": 110
             }
           ]
         },
@@ -15218,7 +15238,7 @@
             {
               "book": "betrivers",
               "line": 94.5,
-              "odds": -118
+              "odds": -120
             },
             {
               "book": "betmgm",
@@ -15299,7 +15319,7 @@
       "matchupLong": "Tampa Bay Buccaneers @ Detroit Lions",
       "stats": {
         "any_tds": {
-          "line": 0.3348,
+          "line": 0.3288,
           "books": 9,
           "min": 0.3122,
           "max": 0.3409,
@@ -15341,8 +15361,8 @@
             },
             {
               "book": "fanatics",
-              "line": 0.3409,
-              "odds": 210
+              "line": 0.3288,
+              "odds": 220
             },
             {
               "book": "circasports",
@@ -15480,8 +15500,8 @@
             },
             {
               "book": "betmgm",
-              "line": 0.0619,
-              "odds": 1450
+              "line": 0.0662,
+              "odds": 1350
             },
             {
               "book": "bovada",
@@ -15504,7 +15524,7 @@
           "line": 2.122,
           "books": 8,
           "min": 1.968,
-          "max": 2.195,
+          "max": 2.148,
           "quotes": [
             {
               "book": "draftkings",
@@ -15544,8 +15564,8 @@
             },
             {
               "book": "fanatics",
-              "line": 2.195,
-              "odds": -200,
+              "line": 2.148,
+              "odds": -190,
               "posted": 1.5
             },
             {
@@ -15575,7 +15595,7 @@
             {
               "book": "betonlineag",
               "line": 255.5,
-              "odds": -106
+              "odds": -108
             },
             {
               "book": "betrivers",
@@ -15664,7 +15684,7 @@
       "matchupLong": "Tennessee Titans @ Dallas Cowboys",
       "stats": {
         "any_tds": {
-          "line": 0.9556,
+          "line": 0.9456,
           "books": 9,
           "min": 0.8928,
           "max": 1.072,
@@ -15706,8 +15726,8 @@
             },
             {
               "book": "fanatics",
-              "line": 0.9556,
-              "odds": -240
+              "line": 0.9354,
+              "odds": -230
             },
             {
               "book": "circasports",
@@ -15998,7 +16018,7 @@
       "matchupLong": "Las Vegas Raiders @ Denver Broncos",
       "stats": {
         "any_tds": {
-          "line": 0.3719,
+          "line": 0.3681,
           "books": 8,
           "min": 0.354,
           "max": 0.4282,
@@ -16040,8 +16060,8 @@
             },
             {
               "book": "fanatics",
-              "line": 0.3757,
-              "odds": 185
+              "line": 0.3681,
+              "odds": 190
             }
           ]
         },
@@ -16069,7 +16089,7 @@
             {
               "book": "betrivers",
               "line": 46.5,
-              "odds": -122
+              "odds": -124
             },
             {
               "book": "betmgm",
@@ -16092,7 +16112,7 @@
           "line": 4.0055,
           "books": 6,
           "min": 3.953,
-          "max": 4.153,
+          "max": 4.176,
           "quotes": [
             {
               "book": "draftkings",
@@ -16114,8 +16134,8 @@
             },
             {
               "book": "betrivers",
-              "line": 4.153,
-              "odds": -162,
+              "line": 4.176,
+              "odds": -165,
               "posted": 3.5
             },
             {
@@ -16305,7 +16325,7 @@
             {
               "book": "betrivers",
               "line": 63.5,
-              "odds": -114
+              "odds": -117
             },
             {
               "book": "betmgm",
@@ -16376,8 +16396,8 @@
             },
             {
               "book": "fanatics",
-              "line": 0.0923,
-              "odds": 950
+              "line": 0.097,
+              "odds": 900
             }
           ]
         },
@@ -16584,8 +16604,8 @@
             },
             {
               "book": "fanduel",
-              "line": 0.962,
-              "odds": -178,
+              "line": 0.955,
+              "odds": -176,
               "posted": 0.5
             },
             {
@@ -16628,7 +16648,7 @@
         },
         "pass_yds": {
           "line": 186.5,
-          "books": 8,
+          "books": 7,
           "min": 180.5,
           "max": 196.5,
           "quotes": [
@@ -16661,11 +16681,6 @@
               "book": "bovada",
               "line": 196.5,
               "odds": 110
-            },
-            {
-              "book": "fanatics",
-              "line": 185.5,
-              "odds": -120
             },
             {
               "book": "circasports",
@@ -16727,7 +16742,7 @@
       "matchupLong": "Baltimore Ravens @ Carolina Panthers",
       "stats": {
         "any_tds": {
-          "line": 0.1491,
+          "line": 0.1434,
           "books": 8,
           "min": 0.1223,
           "max": 0.1655,
@@ -16764,8 +16779,8 @@
             },
             {
               "book": "fanatics",
-              "line": 0.1585,
-              "odds": 525
+              "line": 0.1407,
+              "odds": 600
             },
             {
               "book": "bovada",
@@ -16935,7 +16950,7 @@
           "line": 3.6175,
           "books": 6,
           "min": 3.498,
-          "max": 3.721,
+          "max": 3.731,
           "quotes": [
             {
               "book": "draftkings",
@@ -16957,8 +16972,8 @@
             },
             {
               "book": "betrivers",
-              "line": 3.721,
-              "odds": -114,
+              "line": 3.731,
+              "odds": -115,
               "posted": 3.5
             },
             {
@@ -17023,7 +17038,7 @@
     {
       "name": "Jordyn Tyson",
       "kickoff": "2026-11-22",
-      "kickoffTime": "2026-11-22T18:00:00Z",
+      "kickoffTime": "2026-11-22T18:05:00Z",
       "matchup": "NOCHI",
       "matchupLong": "New Orleans Saints @ Chicago Bears",
       "stats": {
@@ -17040,8 +17055,8 @@
             },
             {
               "book": "williamhill_us",
-              "line": 0.2367,
-              "odds": 330
+              "line": 0.2429,
+              "odds": 320
             },
             {
               "book": "fanduel",
@@ -17050,13 +17065,13 @@
             },
             {
               "book": "betonlineag",
-              "line": 0.2398,
-              "odds": 325
+              "line": 0.2563,
+              "odds": 300
             },
             {
               "book": "betrivers",
-              "line": 0.2429,
-              "odds": 320
+              "line": 0.2398,
+              "odds": 325
             },
             {
               "book": "betmgm",
@@ -17070,8 +17085,8 @@
             },
             {
               "book": "fanatics",
-              "line": 0.2563,
-              "odds": 300
+              "line": 0.2367,
+              "odds": 330
             },
             {
               "book": "circasports",
@@ -17081,7 +17096,7 @@
           ]
         },
         "rec_yds": {
-          "line": 55.5,
+          "line": 56.5,
           "books": 7,
           "min": 52.5,
           "max": 61.5,
@@ -17098,13 +17113,13 @@
             },
             {
               "book": "betonlineag",
-              "line": 55.5,
-              "odds": -114
+              "line": 56.5,
+              "odds": -109
             },
             {
               "book": "betrivers",
               "line": 56.5,
-              "odds": -118
+              "odds": -114
             },
             {
               "book": "betmgm",
@@ -17127,7 +17142,7 @@
           "line": 5.335,
           "books": 6,
           "min": 5.216,
-          "max": 5.509,
+          "max": 5.48,
           "quotes": [
             {
               "book": "draftkings",
@@ -17149,8 +17164,8 @@
             },
             {
               "book": "betrivers",
-              "line": 5.509,
-              "odds": 102,
+              "line": 5.48,
+              "odds": 104,
               "posted": 5.5
             },
             {
@@ -17179,7 +17194,7 @@
         "any_tds": {
           "line": 0.8098,
           "books": 9,
-          "min": 0.722,
+          "min": 0.7565,
           "max": 0.8703,
           "quotes": [
             {
@@ -17204,8 +17219,8 @@
             },
             {
               "book": "betrivers",
-              "line": 0.722,
-              "odds": -143
+              "line": 0.7891,
+              "odds": -167
             },
             {
               "book": "betmgm",
@@ -17233,7 +17248,7 @@
           "line": 1.911,
           "books": 8,
           "min": 1.85,
-          "max": 1.996,
+          "max": 2.007,
           "quotes": [
             {
               "book": "draftkings",
@@ -17255,8 +17270,8 @@
             },
             {
               "book": "betrivers",
-              "line": 1.979,
-              "odds": -157,
+              "line": 2.007,
+              "odds": -162,
               "posted": 1.5
             },
             {
@@ -17287,7 +17302,7 @@
         },
         "pass_yds": {
           "line": 227.5,
-          "books": 8,
+          "books": 7,
           "min": 224.5,
           "max": 238.5,
           "quotes": [
@@ -17309,7 +17324,7 @@
             {
               "book": "betrivers",
               "line": 226.5,
-              "odds": -121
+              "odds": -124
             },
             {
               "book": "betmgm",
@@ -17320,11 +17335,6 @@
               "book": "bovada",
               "line": 238.5,
               "odds": 110
-            },
-            {
-              "book": "fanatics",
-              "line": 225.5,
-              "odds": -120
             },
             {
               "book": "circasports",
@@ -17357,7 +17367,7 @@
             {
               "book": "betrivers",
               "line": 24.5,
-              "odds": -118
+              "odds": -121
             },
             {
               "book": "bovada",
@@ -17381,7 +17391,7 @@
       "matchupLong": "Jacksonville Jaguars @ New York Giants",
       "stats": {
         "any_tds": {
-          "line": 0.1308,
+          "line": 0.13319999999999999,
           "books": 8,
           "min": 0.1223,
           "max": 0.1407,
@@ -17423,8 +17433,8 @@
             },
             {
               "book": "fanatics",
-              "line": 0.1223,
-              "odds": 700
+              "line": 0.1407,
+              "odds": 600
             }
           ]
         },
@@ -17520,7 +17530,7 @@
       "matchupLong": "Baltimore Ravens @ Carolina Panthers",
       "stats": {
         "any_tds": {
-          "line": 0.1067,
+          "line": 0.10375000000000001,
           "books": 8,
           "min": 0.0741,
           "max": 0.1082,
@@ -17557,8 +17567,8 @@
             },
             {
               "book": "fanatics",
-              "line": 0.1082,
-              "odds": 800
+              "line": 0.097,
+              "odds": 900
             },
             {
               "book": "bovada",
@@ -17727,7 +17737,7 @@
             },
             {
               "book": "circasports",
-              "line": 38.5,
+              "line": 39.5,
               "odds": -110
             }
           ]
@@ -17789,7 +17799,7 @@
           "line": 0.1223,
           "books": 9,
           "min": 0.1023,
-          "max": 0.1308,
+          "max": 0.1407,
           "quotes": [
             {
               "book": "draftkings",
@@ -17828,8 +17838,8 @@
             },
             {
               "book": "fanatics",
-              "line": 0.1308,
-              "odds": 650
+              "line": 0.1407,
+              "odds": 600
             },
             {
               "book": "circasports",
@@ -18036,15 +18046,15 @@
       "matchupLong": "Baltimore Ravens @ Carolina Panthers",
       "stats": {
         "any_tds": {
-          "line": 0.1815,
+          "line": 0.17980000000000002,
           "books": 8,
           "min": 0.1716,
-          "max": 0.2253,
+          "max": 0.2309,
           "quotes": [
             {
               "book": "draftkings",
-              "line": 0.1815,
-              "odds": 450
+              "line": 0.1731,
+              "odds": 475
             },
             {
               "book": "williamhill_us",
@@ -18063,8 +18073,8 @@
             },
             {
               "book": "betrivers",
-              "line": 0.2253,
-              "odds": 350
+              "line": 0.2309,
+              "odds": 340
             },
             {
               "book": "betmgm",
@@ -18078,8 +18088,8 @@
             },
             {
               "book": "bovada",
-              "line": 0.1851,
-              "odds": 440
+              "line": 0.1781,
+              "odds": 460
             }
           ]
         },
@@ -18178,7 +18188,7 @@
             {
               "book": "betrivers",
               "line": 11.5,
-              "odds": -120
+              "odds": -122
             },
             {
               "book": "betmgm",
@@ -18423,15 +18433,15 @@
     {
       "name": "Juwan Johnson",
       "kickoff": "2026-11-22",
-      "kickoffTime": "2026-11-22T18:00:00Z",
+      "kickoffTime": "2026-11-22T18:05:00Z",
       "matchup": "NOCHI",
       "matchupLong": "New Orleans Saints @ Chicago Bears",
       "stats": {
         "any_tds": {
-          "line": 0.1731,
+          "line": 0.1708,
           "books": 8,
           "min": 0.1655,
-          "max": 0.2055,
+          "max": 0.2011,
           "quotes": [
             {
               "book": "draftkings",
@@ -18445,8 +18455,8 @@
             },
             {
               "book": "fanduel",
-              "line": 0.1716,
-              "odds": 480
+              "line": 0.1685,
+              "odds": 490
             },
             {
               "book": "betonlineag",
@@ -18455,8 +18465,8 @@
             },
             {
               "book": "betrivers",
-              "line": 0.2055,
-              "odds": 390
+              "line": 0.2011,
+              "odds": 400
             },
             {
               "book": "betmgm",
@@ -18470,8 +18480,8 @@
             },
             {
               "book": "fanatics",
-              "line": 0.1731,
-              "odds": 475
+              "line": 0.1655,
+              "odds": 500
             }
           ]
         },
@@ -18499,7 +18509,7 @@
             {
               "book": "betrivers",
               "line": 20.5,
-              "odds": -118
+              "odds": -115
             },
             {
               "book": "betmgm",
@@ -18516,7 +18526,7 @@
         "receptions": {
           "line": 2.372,
           "books": 6,
-          "min": 2.346,
+          "min": 2.331,
           "max": 2.407,
           "quotes": [
             {
@@ -18533,14 +18543,14 @@
             },
             {
               "book": "betonlineag",
-              "line": 2.407,
-              "odds": 120,
+              "line": 2.391,
+              "odds": 122,
               "posted": 2.5
             },
             {
               "book": "betrivers",
-              "line": 2.368,
-              "odds": 125,
+              "line": 2.331,
+              "odds": 130,
               "posted": 2.5
             },
             {
@@ -18569,7 +18579,7 @@
         "any_tds": {
           "line": 0.1553,
           "books": 8,
-          "min": 0.1521,
+          "min": 0.1461,
           "max": 0.1908,
           "quotes": [
             {
@@ -18609,8 +18619,8 @@
             },
             {
               "book": "fanatics",
-              "line": 0.1521,
-              "odds": 550
+              "line": 0.1461,
+              "odds": 575
             }
           ]
         },
@@ -18712,14 +18722,14 @@
     {
       "name": "Kalif Raymond",
       "kickoff": "2026-11-22",
-      "kickoffTime": "2026-11-22T18:00:00Z",
+      "kickoffTime": "2026-11-22T18:05:00Z",
       "matchup": "NOCHI",
       "matchupLong": "New Orleans Saints @ Chicago Bears",
       "stats": {
         "any_tds": {
           "line": 0.2494,
           "books": 8,
-          "min": 0.2125,
+          "min": 0.2101,
           "max": 0.2563,
           "quotes": [
             {
@@ -18729,13 +18739,13 @@
             },
             {
               "book": "williamhill_us",
-              "line": 0.2563,
-              "odds": 300
+              "line": 0.2528,
+              "odds": 305
             },
             {
               "book": "fanduel",
-              "line": 0.2367,
-              "odds": 330
+              "line": 0.2253,
+              "odds": 350
             },
             {
               "book": "betonlineag",
@@ -18744,8 +18754,8 @@
             },
             {
               "book": "betrivers",
-              "line": 0.2125,
-              "odds": 375
+              "line": 0.2101,
+              "odds": 380
             },
             {
               "book": "betmgm",
@@ -18765,7 +18775,7 @@
           ]
         },
         "rec_yds": {
-          "line": 22.0,
+          "line": 21.5,
           "books": 6,
           "min": 20.5,
           "max": 22.5,
@@ -18783,12 +18793,12 @@
             {
               "book": "betonlineag",
               "line": 22.5,
-              "odds": -111
+              "odds": -110
             },
             {
               "book": "betrivers",
-              "line": 22.5,
-              "odds": -112
+              "line": 21.5,
+              "odds": -120
             },
             {
               "book": "betmgm",
@@ -18822,8 +18832,8 @@
             },
             {
               "book": "betonlineag",
-              "line": 2.526,
-              "odds": 106,
+              "line": 2.517,
+              "odds": 107,
               "posted": 2.5
             },
             {
@@ -18898,8 +18908,8 @@
             },
             {
               "book": "fanatics",
-              "line": 0.0306,
-              "odds": 3000
+              "line": 0.0263,
+              "odds": 3500
             }
           ]
         }
@@ -18916,7 +18926,7 @@
           "line": 0.1815,
           "books": 3,
           "min": 0.1521,
-          "max": 0.1928,
+          "max": 0.2011,
           "quotes": [
             {
               "book": "draftkings",
@@ -18930,8 +18940,8 @@
             },
             {
               "book": "fanatics",
-              "line": 0.1928,
-              "odds": 420
+              "line": 0.2011,
+              "odds": 400
             }
           ]
         }
@@ -19147,7 +19157,7 @@
             {
               "book": "betrivers",
               "line": 6.5,
-              "odds": -125
+              "odds": -127
             },
             {
               "book": "betmgm",
@@ -19252,7 +19262,7 @@
       "matchupLong": "Miami Dolphins @ Buffalo Bills",
       "stats": {
         "any_tds": {
-          "line": 0.09465,
+          "line": 0.0901,
           "books": 8,
           "min": 0.0804,
           "max": 0.1114,
@@ -19294,8 +19304,8 @@
             },
             {
               "book": "fanatics",
-              "line": 0.097,
-              "odds": 900
+              "line": 0.0879,
+              "odds": 1000
             }
           ]
         }
@@ -19363,7 +19373,7 @@
         "any_tds": {
           "line": 0.2281,
           "books": 8,
-          "min": 0.2253,
+          "min": 0.22,
           "max": 0.288,
           "quotes": [
             {
@@ -19378,8 +19388,8 @@
             },
             {
               "book": "fanduel",
-              "line": 0.2253,
-              "odds": 350
+              "line": 0.22,
+              "odds": 360
             },
             {
               "book": "betonlineag",
@@ -19719,8 +19729,8 @@
             },
             {
               "book": "fanatics",
-              "line": 0.2793,
-              "odds": 270
+              "line": 0.2673,
+              "odds": 285
             }
           ]
         },
@@ -19732,8 +19742,8 @@
           "quotes": [
             {
               "book": "draftkings",
-              "line": 29.5,
-              "odds": -115
+              "line": 30.5,
+              "odds": -109
             },
             {
               "book": "fanduel",
@@ -19743,7 +19753,7 @@
             {
               "book": "betonlineag",
               "line": 30.5,
-              "odds": -115
+              "odds": -112
             },
             {
               "book": "betrivers",
@@ -19757,8 +19767,8 @@
             },
             {
               "book": "bovada",
-              "line": 29.5,
-              "odds": -120
+              "line": 30.5,
+              "odds": -110
             },
             {
               "book": "circasports",
@@ -19986,8 +19996,8 @@
             },
             {
               "book": "fanatics",
-              "line": 0.3288,
-              "odds": 220
+              "line": 0.3409,
+              "odds": 210
             },
             {
               "book": "circasports",
@@ -20377,7 +20387,7 @@
           "line": 0.88,
           "books": 7,
           "min": 0.803,
-          "max": 0.988,
+          "max": 0.975,
           "quotes": [
             {
               "book": "draftkings",
@@ -20399,8 +20409,8 @@
             },
             {
               "book": "betrivers",
-              "line": 0.988,
-              "odds": -186,
+              "line": 0.975,
+              "odds": -182,
               "posted": 0.5
             },
             {
@@ -20425,7 +20435,7 @@
         },
         "pass_yds": {
           "line": 185.5,
-          "books": 7,
+          "books": 8,
           "min": 183.5,
           "max": 195.5,
           "quotes": [
@@ -20447,7 +20457,7 @@
             {
               "book": "betrivers",
               "line": 183.5,
-              "odds": -121
+              "odds": -118
             },
             {
               "book": "betmgm",
@@ -20460,6 +20470,11 @@
               "odds": 110
             },
             {
+              "book": "fanatics",
+              "line": 185.5,
+              "odds": -115
+            },
+            {
               "book": "circasports",
               "line": 188.5,
               "odds": -110
@@ -20469,7 +20484,7 @@
         "rush_yds": {
           "line": 5.5,
           "books": 6,
-          "min": 5.5,
+          "min": 4.5,
           "max": 6.5,
           "quotes": [
             {
@@ -20479,7 +20494,7 @@
             },
             {
               "book": "fanduel",
-              "line": 5.5,
+              "line": 4.5,
               "odds": -113
             },
             {
@@ -20509,14 +20524,14 @@
     {
       "name": "Kyle Monangai",
       "kickoff": "2026-11-22",
-      "kickoffTime": "2026-11-22T18:00:00Z",
+      "kickoffTime": "2026-11-22T18:05:00Z",
       "matchup": "NOCHI",
       "matchupLong": "New Orleans Saints @ Chicago Bears",
       "stats": {
         "any_tds": {
           "line": 0.4986,
           "books": 9,
-          "min": 0.4853,
+          "min": 0.4726,
           "max": 0.5128,
           "quotes": [
             {
@@ -20556,8 +20571,8 @@
             },
             {
               "book": "fanatics",
-              "line": 0.5128,
-              "odds": 120
+              "line": 0.4726,
+              "odds": 135
             },
             {
               "book": "circasports",
@@ -20672,7 +20687,7 @@
             {
               "book": "betrivers",
               "line": 47.5,
-              "odds": -115
+              "odds": -114
             },
             {
               "book": "betmgm",
@@ -20703,7 +20718,7 @@
         "any_tds": {
           "line": 0.0317,
           "books": 7,
-          "min": 0.0279,
+          "min": 0.0231,
           "max": 0.0477,
           "quotes": [
             {
@@ -20738,8 +20753,8 @@
             },
             {
               "book": "fanatics",
-              "line": 0.0306,
-              "odds": 3000
+              "line": 0.0231,
+              "odds": 4000
             }
           ]
         }
@@ -20886,7 +20901,7 @@
             {
               "book": "betrivers",
               "line": 38.5,
-              "odds": -124
+              "odds": -125
             },
             {
               "book": "betmgm",
@@ -20908,7 +20923,7 @@
         "receptions": {
           "line": 3.4925,
           "books": 6,
-          "min": 3.404,
+          "min": 3.435,
           "max": 3.577,
           "quotes": [
             {
@@ -20931,8 +20946,8 @@
             },
             {
               "book": "betrivers",
-              "line": 3.404,
-              "odds": 115,
+              "line": 3.435,
+              "odds": 112,
               "posted": 3.5
             },
             {
@@ -21060,8 +21075,8 @@
             },
             {
               "book": "fanatics",
-              "line": 0.0923,
-              "odds": 950
+              "line": 0.0879,
+              "odds": 1000
             }
           ]
         }
@@ -21075,9 +21090,9 @@
       "matchupLong": "Pittsburgh Steelers @ Philadelphia Eagles",
       "stats": {
         "any_tds": {
-          "line": 0.0263,
+          "line": 0.025500000000000002,
           "books": 8,
-          "min": 0.0231,
+          "min": 0.0206,
           "max": 0.0381,
           "quotes": [
             {
@@ -21087,13 +21102,13 @@
             },
             {
               "book": "williamhill_us",
-              "line": 0.0263,
-              "odds": 3500
+              "line": 0.0279,
+              "odds": 3300
             },
             {
               "book": "fanduel",
-              "line": 0.0231,
-              "odds": 4000
+              "line": 0.0206,
+              "odds": 4500
             },
             {
               "book": "betonlineag",
@@ -21117,8 +21132,8 @@
             },
             {
               "book": "fanatics",
-              "line": 0.0263,
-              "odds": 3500
+              "line": 0.0231,
+              "odds": 4000
             }
           ]
         }
@@ -21132,7 +21147,7 @@
       "matchupLong": "Las Vegas Raiders @ Denver Broncos",
       "stats": {
         "any_tds": {
-          "line": 0.0901,
+          "line": 0.0879,
           "books": 8,
           "min": 0.0454,
           "max": 0.097,
@@ -21174,8 +21189,8 @@
             },
             {
               "book": "fanatics",
-              "line": 0.0923,
-              "odds": 950
+              "line": 0.0879,
+              "odds": 1000
             }
           ]
         }
@@ -21300,14 +21315,14 @@
     {
       "name": "Luther Burden III",
       "kickoff": "2026-11-22",
-      "kickoffTime": "2026-11-22T18:00:00Z",
+      "kickoffTime": "2026-11-22T18:05:00Z",
       "matchup": "NOCHI",
       "matchupLong": "New Orleans Saints @ Chicago Bears",
       "stats": {
         "any_tds": {
           "line": 0.4607,
           "books": 9,
-          "min": 0.4428,
+          "min": 0.4385,
           "max": 0.4853,
           "quotes": [
             {
@@ -21332,8 +21347,8 @@
             },
             {
               "book": "betrivers",
-              "line": 0.4428,
-              "odds": 148
+              "line": 0.4385,
+              "odds": 150
             },
             {
               "book": "betmgm",
@@ -21381,7 +21396,7 @@
             {
               "book": "betrivers",
               "line": 57.5,
-              "odds": -117
+              "odds": -114
             },
             {
               "book": "betmgm",
@@ -21403,7 +21418,7 @@
         "receptions": {
           "line": 4.678,
           "books": 6,
-          "min": 4.616,
+          "min": 4.603,
           "max": 4.796,
           "quotes": [
             {
@@ -21426,8 +21441,8 @@
             },
             {
               "book": "betrivers",
-              "line": 4.616,
-              "odds": -105,
+              "line": 4.603,
+              "odds": -104,
               "posted": 4.5
             },
             {
@@ -21456,7 +21471,7 @@
         "any_tds": {
           "line": 0.1655,
           "books": 8,
-          "min": 0.1461,
+          "min": 0.1521,
           "max": 0.1815,
           "quotes": [
             {
@@ -21496,8 +21511,8 @@
             },
             {
               "book": "fanatics",
-              "line": 0.1461,
-              "odds": 575
+              "line": 0.1585,
+              "odds": 525
             }
           ]
         },
@@ -21559,8 +21574,8 @@
             },
             {
               "book": "betonlineag",
-              "line": 3.435,
-              "odds": 112,
+              "line": 3.424,
+              "odds": 113,
               "posted": 3.5
             },
             {
@@ -21997,7 +22012,7 @@
         "any_tds": {
           "line": 0.1833,
           "books": 8,
-          "min": 0.1655,
+          "min": 0.1685,
           "max": 0.2055,
           "quotes": [
             {
@@ -22037,13 +22052,13 @@
             },
             {
               "book": "fanatics",
-              "line": 0.1655,
-              "odds": 500
+              "line": 0.1731,
+              "odds": 475
             }
           ]
         },
         "rec_yds": {
-          "line": 33.5,
+          "line": 32.5,
           "books": 7,
           "min": 29.5,
           "max": 37.5,
@@ -22060,13 +22075,13 @@
             },
             {
               "book": "betonlineag",
-              "line": 33.5,
-              "odds": -111
+              "line": 32.5,
+              "odds": -116
             },
             {
               "book": "betrivers",
               "line": 29.5,
-              "odds": -124
+              "odds": -122
             },
             {
               "book": "betmgm",
@@ -22088,7 +22103,7 @@
         "receptions": {
           "line": 3.7365,
           "books": 6,
-          "min": 3.543,
+          "min": 3.52,
           "max": 3.803,
           "quotes": [
             {
@@ -22111,8 +22126,8 @@
             },
             {
               "book": "betrivers",
-              "line": 3.543,
-              "odds": 102,
+              "line": 3.52,
+              "odds": 104,
               "posted": 3.5
             },
             {
@@ -22161,8 +22176,8 @@
             },
             {
               "book": "betonlineag",
-              "line": 0.2563,
-              "odds": 300
+              "line": 0.2635,
+              "odds": 290
             },
             {
               "book": "betrivers",
@@ -22567,15 +22582,15 @@
       "matchupLong": "Baltimore Ravens @ Carolina Panthers",
       "stats": {
         "any_tds": {
-          "line": 0.07725,
+          "line": 0.0741,
           "books": 8,
           "min": 0.0599,
           "max": 0.0804,
           "quotes": [
             {
               "book": "draftkings",
-              "line": 0.0804,
-              "odds": 1100
+              "line": 0.0741,
+              "odds": 1200
             },
             {
               "book": "williamhill_us",
@@ -22609,21 +22624,21 @@
             },
             {
               "book": "bovada",
-              "line": 0.0804,
-              "odds": 1100
+              "line": 0.0741,
+              "odds": 1200
             }
           ]
         },
         "rec_yds": {
           "line": 3.5,
           "books": 4,
-          "min": 3.5,
+          "min": 2.5,
           "max": 3.5,
           "quotes": [
             {
               "book": "draftkings",
-              "line": 3.5,
-              "odds": -109
+              "line": 2.5,
+              "odds": -115
             },
             {
               "book": "fanduel",
@@ -22678,10 +22693,10 @@
       "matchupLong": "Miami Dolphins @ Buffalo Bills",
       "stats": {
         "any_tds": {
-          "line": 0.1223,
+          "line": 0.1264,
           "books": 3,
           "min": 0.1148,
-          "max": 0.1264,
+          "max": 0.1308,
           "quotes": [
             {
               "book": "draftkings",
@@ -22695,8 +22710,8 @@
             },
             {
               "book": "fanatics",
-              "line": 0.1223,
-              "odds": 700
+              "line": 0.1308,
+              "odds": 650
             }
           ]
         }
@@ -22774,8 +22789,8 @@
             },
             {
               "book": "fanatics",
-              "line": 0.1928,
-              "odds": 420
+              "line": 0.1815,
+              "odds": 450
             }
           ]
         },
@@ -23207,14 +23222,14 @@
     {
       "name": "New Orleans Saints D/ST",
       "kickoff": "2026-11-22",
-      "kickoffTime": "2026-11-22T18:00:00Z",
+      "kickoffTime": "2026-11-22T18:05:00Z",
       "matchup": "NOCHI",
       "matchupLong": "New Orleans Saints @ Chicago Bears",
       "stats": {
         "any_tds": {
           "line": 0.1308,
           "books": 3,
-          "min": 0.1223,
+          "min": 0.1308,
           "max": 0.1407,
           "quotes": [
             {
@@ -23229,8 +23244,8 @@
             },
             {
               "book": "fanatics",
-              "line": 0.1223,
-              "odds": 700
+              "line": 0.1308,
+              "odds": 650
             }
           ]
         }
@@ -23239,7 +23254,7 @@
     {
       "name": "New Orleans Saints Defense",
       "kickoff": "2026-11-22",
-      "kickoffTime": "2026-11-22T18:00:00Z",
+      "kickoffTime": "2026-11-22T18:05:00Z",
       "matchup": "NOCHI",
       "matchupLong": "New Orleans Saints @ Chicago Bears",
       "stats": {
@@ -23271,7 +23286,7 @@
       "matchupLong": "Jacksonville Jaguars @ New York Giants",
       "stats": {
         "any_tds": {
-          "line": 0.1461,
+          "line": 0.1521,
           "books": 3,
           "min": 0.1407,
           "max": 0.1521,
@@ -23288,8 +23303,8 @@
             },
             {
               "book": "fanatics",
-              "line": 0.1461,
-              "odds": 575
+              "line": 0.1521,
+              "odds": 550
             }
           ]
         }
@@ -23453,7 +23468,7 @@
     {
       "name": "Noah Fant",
       "kickoff": "2026-11-22",
-      "kickoffTime": "2026-11-22T18:00:00Z",
+      "kickoffTime": "2026-11-22T18:05:00Z",
       "matchup": "NOCHI",
       "matchupLong": "New Orleans Saints @ Chicago Bears",
       "stats": {
@@ -23506,7 +23521,7 @@
           ]
         },
         "rec_yds": {
-          "line": 7.5,
+          "line": 7.0,
           "books": 6,
           "min": 6.5,
           "max": 7.5,
@@ -23528,8 +23543,8 @@
             },
             {
               "book": "betrivers",
-              "line": 7.5,
-              "odds": -109
+              "line": 6.5,
+              "odds": -124
             },
             {
               "book": "betmgm",
@@ -23639,8 +23654,8 @@
             },
             {
               "book": "fanatics",
-              "line": 0.1655,
-              "odds": 500
+              "line": 0.1521,
+              "odds": 550
             }
           ]
         },
@@ -23736,7 +23751,7 @@
       "matchupLong": "Miami Dolphins @ Buffalo Bills",
       "stats": {
         "any_tds": {
-          "line": 0.5608,
+          "line": 0.5504,
           "books": 9,
           "min": 0.4385,
           "max": 0.5789,
@@ -23763,8 +23778,8 @@
             },
             {
               "book": "betrivers",
-              "line": 0.5372,
-              "odds": 112
+              "line": 0.5309,
+              "odds": 114
             },
             {
               "book": "betmgm",
@@ -23778,8 +23793,8 @@
             },
             {
               "book": "fanatics",
-              "line": 0.5608,
-              "odds": 105
+              "line": 0.5437,
+              "odds": 110
             },
             {
               "book": "circasports",
@@ -23883,7 +23898,7 @@
             {
               "book": "betonlineag",
               "line": 54.5,
-              "odds": -116
+              "odds": -118
             },
             {
               "book": "betrivers",
@@ -23903,7 +23918,7 @@
             {
               "book": "fanatics",
               "line": 55.5,
-              "odds": -115
+              "odds": -110
             },
             {
               "book": "circasports",
@@ -24161,12 +24176,12 @@
     {
       "name": "Oscar Delp",
       "kickoff": "2026-11-22",
-      "kickoffTime": "2026-11-22T18:00:00Z",
+      "kickoffTime": "2026-11-22T18:05:00Z",
       "matchup": "NOCHI",
       "matchupLong": "New Orleans Saints @ Chicago Bears",
       "stats": {
         "any_tds": {
-          "line": 0.0434,
+          "line": 0.0414,
           "books": 8,
           "min": 0.0366,
           "max": 0.0563,
@@ -24208,8 +24223,8 @@
             },
             {
               "book": "fanatics",
-              "line": 0.0477,
-              "odds": 1900
+              "line": 0.0366,
+              "odds": 2500
             }
           ]
         }
@@ -24223,7 +24238,7 @@
       "matchupLong": "Jacksonville Jaguars @ New York Giants",
       "stats": {
         "any_tds": {
-          "line": 0.4493,
+          "line": 0.456,
           "books": 9,
           "min": 0.4428,
           "max": 0.4853,
@@ -24265,8 +24280,8 @@
             },
             {
               "book": "fanatics",
-              "line": 0.4493,
-              "odds": 145
+              "line": 0.4607,
+              "odds": 140
             },
             {
               "book": "circasports",
@@ -24374,7 +24389,7 @@
         "any_tds": {
           "line": 0.2599,
           "books": 8,
-          "min": 0.2494,
+          "min": 0.2563,
           "max": 0.307,
           "quotes": [
             {
@@ -24414,8 +24429,8 @@
             },
             {
               "book": "fanatics",
-              "line": 0.2494,
-              "odds": 310
+              "line": 0.2563,
+              "odds": 300
             }
           ]
         },
@@ -24577,7 +24592,7 @@
             {
               "book": "betonlineag",
               "line": 22.5,
-              "odds": -112
+              "odds": -110
             },
             {
               "book": "betrivers",
@@ -24653,7 +24668,7 @@
           "line": 0.1626,
           "books": 9,
           "min": 0.1308,
-          "max": 0.1731,
+          "max": 0.1815,
           "quotes": [
             {
               "book": "draftkings",
@@ -24692,8 +24707,8 @@
             },
             {
               "book": "fanatics",
-              "line": 0.1655,
-              "odds": 500
+              "line": 0.1815,
+              "odds": 450
             },
             {
               "book": "circasports",
@@ -24797,7 +24812,7 @@
             {
               "book": "fanatics",
               "line": 245.5,
-              "odds": -120
+              "odds": -115
             },
             {
               "book": "circasports",
@@ -24861,7 +24876,7 @@
         "any_tds": {
           "line": 0.0328,
           "books": 8,
-          "min": 0.0279,
+          "min": 0.0263,
           "max": 0.0381,
           "quotes": [
             {
@@ -24901,8 +24916,8 @@
             },
             {
               "book": "fanatics",
-              "line": 0.0306,
-              "odds": 3000
+              "line": 0.0263,
+              "odds": 3500
             }
           ]
         }
@@ -24953,8 +24968,8 @@
             },
             {
               "book": "fanatics",
-              "line": 0.0804,
-              "odds": 1100
+              "line": 0.0741,
+              "odds": 1200
             }
           ]
         }
@@ -25074,10 +25089,10 @@
       "matchupLong": "Pittsburgh Steelers @ Philadelphia Eagles",
       "stats": {
         "any_tds": {
-          "line": 0.1815,
+          "line": 0.1908,
           "books": 3,
           "min": 0.1655,
-          "max": 0.1908,
+          "max": 0.1928,
           "quotes": [
             {
               "book": "draftkings",
@@ -25091,8 +25106,8 @@
             },
             {
               "book": "fanatics",
-              "line": 0.1815,
-              "odds": 450
+              "line": 0.1928,
+              "odds": 420
             }
           ]
         }
@@ -25314,8 +25329,8 @@
             },
             {
               "book": "fanatics",
-              "line": 0.0306,
-              "odds": 3000
+              "line": 0.0263,
+              "odds": 3500
             }
           ]
         }
@@ -25428,7 +25443,7 @@
           "line": 4.449,
           "books": 7,
           "min": 4.313,
-          "max": 4.551,
+          "max": 4.499,
           "quotes": [
             {
               "book": "draftkings",
@@ -25468,8 +25483,8 @@
             },
             {
               "book": "fanatics",
-              "line": 4.551,
-              "odds": 100,
+              "line": 4.486,
+              "odds": 105,
               "posted": 4.5
             }
           ]
@@ -25553,8 +25568,8 @@
             },
             {
               "book": "williamhill_us",
-              "line": 0.1815,
-              "odds": 450
+              "line": 0.1731,
+              "odds": 475
             },
             {
               "book": "fanduel",
@@ -25573,8 +25588,8 @@
             },
             {
               "book": "betmgm",
-              "line": 0.1731,
-              "odds": 475
+              "line": 0.1815,
+              "odds": 450
             },
             {
               "book": "fanatics",
@@ -25616,8 +25631,8 @@
             },
             {
               "book": "betmgm",
-              "line": 25.5,
-              "odds": -111
+              "line": 24.5,
+              "odds": -120
             },
             {
               "book": "bovada",
@@ -25730,13 +25745,13 @@
         "rush_yds": {
           "line": 18.5,
           "books": 5,
-          "min": 17.5,
+          "min": 18.5,
           "max": 18.5,
           "quotes": [
             {
               "book": "draftkings",
-              "line": 17.5,
-              "odds": -117
+              "line": 18.5,
+              "odds": -107
             },
             {
               "book": "fanduel",
@@ -25755,8 +25770,8 @@
             },
             {
               "book": "bovada",
-              "line": 17.5,
-              "odds": -120
+              "line": 18.5,
+              "odds": -110
             }
           ]
         }
@@ -25926,8 +25941,8 @@
             },
             {
               "book": "fanduel",
-              "line": 0.3176,
-              "odds": 230
+              "line": 0.307,
+              "odds": 240
             },
             {
               "book": "betonlineag",
@@ -25936,8 +25951,8 @@
             },
             {
               "book": "betrivers",
-              "line": 0.3409,
-              "odds": 210
+              "line": 0.3348,
+              "odds": 215
             },
             {
               "book": "betmgm",
@@ -25951,8 +25966,8 @@
             },
             {
               "book": "fanatics",
-              "line": 0.307,
-              "odds": 240
+              "line": 0.3122,
+              "odds": 235
             },
             {
               "book": "circasports",
@@ -26000,15 +26015,15 @@
           ]
         },
         "receptions": {
-          "line": 2.1555,
+          "line": 2.2015000000000002,
           "books": 6,
-          "min": 2.124,
+          "min": 2.148,
           "max": 2.263,
           "quotes": [
             {
               "book": "draftkings",
-              "line": 2.153,
-              "odds": -191,
+              "line": 2.148,
+              "odds": -190,
               "posted": 1.5
             },
             {
@@ -26019,9 +26034,9 @@
             },
             {
               "book": "betonlineag",
-              "line": 2.124,
-              "odds": -185,
-              "posted": 1.5
+              "line": 2.238,
+              "odds": 144,
+              "posted": 2.5
             },
             {
               "book": "betrivers",
@@ -26037,9 +26052,9 @@
             },
             {
               "book": "bovada",
-              "line": 2.148,
-              "odds": -190,
-              "posted": 1.5
+              "line": 2.231,
+              "odds": 145,
+              "posted": 2.5
             }
           ]
         },
@@ -26066,8 +26081,8 @@
             },
             {
               "book": "betrivers",
-              "line": 36.5,
-              "odds": -114
+              "line": 35.5,
+              "odds": -118
             },
             {
               "book": "betmgm",
@@ -26103,7 +26118,7 @@
         "any_tds": {
           "line": 0.0231,
           "books": 8,
-          "min": 0.0206,
+          "min": 0.0185,
           "max": 0.0279,
           "quotes": [
             {
@@ -26118,8 +26133,8 @@
             },
             {
               "book": "fanduel",
-              "line": 0.0206,
-              "odds": 4500
+              "line": 0.0185,
+              "odds": 5000
             },
             {
               "book": "betonlineag",
@@ -26143,8 +26158,8 @@
             },
             {
               "book": "fanatics",
-              "line": 0.0263,
-              "odds": 3500
+              "line": 0.0231,
+              "odds": 4000
             }
           ]
         }
@@ -26281,7 +26296,7 @@
             {
               "book": "betonlineag",
               "line": 20.5,
-              "odds": -116
+              "odds": -118
             },
             {
               "book": "betrivers",
@@ -26349,7 +26364,7 @@
     {
       "name": "Rome Odunze",
       "kickoff": "2026-11-22",
-      "kickoffTime": "2026-11-22T18:00:00Z",
+      "kickoffTime": "2026-11-22T18:05:00Z",
       "matchup": "NOCHI",
       "matchupLong": "New Orleans Saints @ Chicago Bears",
       "stats": {
@@ -26361,8 +26376,8 @@
           "quotes": [
             {
               "book": "draftkings",
-              "line": 0.3835,
-              "odds": 180
+              "line": 0.3757,
+              "odds": 185
             },
             {
               "book": "williamhill_us",
@@ -26371,8 +26386,8 @@
             },
             {
               "book": "fanduel",
-              "line": 0.3757,
-              "odds": 185
+              "line": 0.3916,
+              "odds": 175
             },
             {
               "book": "betonlineag",
@@ -26391,13 +26406,13 @@
             },
             {
               "book": "bovada",
-              "line": 0.3835,
-              "odds": 180
+              "line": 0.3757,
+              "odds": 185
             },
             {
               "book": "fanatics",
-              "line": 0.4184,
-              "odds": 160
+              "line": 0.4002,
+              "odds": 170
             },
             {
               "book": "circasports",
@@ -26410,12 +26425,12 @@
           "line": 45.5,
           "books": 7,
           "min": 44.5,
-          "max": 51.5,
+          "max": 50.5,
           "quotes": [
             {
               "book": "draftkings",
-              "line": 46.5,
-              "odds": -110
+              "line": 45.5,
+              "odds": -114
             },
             {
               "book": "fanduel",
@@ -26430,7 +26445,7 @@
             {
               "book": "betrivers",
               "line": 44.5,
-              "odds": -118
+              "odds": -115
             },
             {
               "book": "betmgm",
@@ -26439,7 +26454,7 @@
             },
             {
               "book": "bovada",
-              "line": 51.5,
+              "line": 50.5,
               "odds": 110
             },
             {
@@ -26450,7 +26465,7 @@
           ]
         },
         "receptions": {
-          "line": 3.232,
+          "line": 3.2279999999999998,
           "books": 6,
           "min": 3.113,
           "max": 3.25,
@@ -26475,8 +26490,8 @@
             },
             {
               "book": "betrivers",
-              "line": 3.25,
-              "odds": 132,
+              "line": 3.225,
+              "odds": 135,
               "posted": 3.5
             },
             {
@@ -26498,7 +26513,7 @@
     {
       "name": "Roschon Johnson",
       "kickoff": "2026-11-22",
-      "kickoffTime": "2026-11-22T18:00:00Z",
+      "kickoffTime": "2026-11-22T18:05:00Z",
       "matchup": "NOCHI",
       "matchupLong": "New Orleans Saints @ Chicago Bears",
       "stats": {
@@ -26510,8 +26525,8 @@
           "quotes": [
             {
               "book": "draftkings",
-              "line": 0.0563,
-              "odds": 1600
+              "line": 0.0599,
+              "odds": 1500
             },
             {
               "book": "williamhill_us",
@@ -26540,8 +26555,8 @@
             },
             {
               "book": "bovada",
-              "line": 0.0563,
-              "odds": 1600
+              "line": 0.0599,
+              "odds": 1500
             },
             {
               "book": "fanatics",
@@ -26560,7 +26575,7 @@
       "matchupLong": "Tennessee Titans @ Dallas Cowboys",
       "stats": {
         "any_tds": {
-          "line": 0.34814999999999996,
+          "line": 0.3547,
           "books": 8,
           "min": 0.3409,
           "max": 0.3835,
@@ -26602,8 +26617,8 @@
             },
             {
               "book": "fanatics",
-              "line": 0.3409,
-              "odds": 210
+              "line": 0.354,
+              "odds": 200
             }
           ]
         },
@@ -26646,7 +26661,7 @@
             {
               "book": "fanatics",
               "line": 40.5,
-              "odds": -115
+              "odds": -110
             }
           ]
         },
@@ -26699,7 +26714,7 @@
     {
       "name": "Salvon Ahmed",
       "kickoff": "2026-11-22",
-      "kickoffTime": "2026-11-22T18:00:00Z",
+      "kickoffTime": "2026-11-22T18:05:00Z",
       "matchup": "NOCHI",
       "matchupLong": "New Orleans Saints @ Chicago Bears",
       "stats": {
@@ -26741,8 +26756,8 @@
             },
             {
               "book": "fanatics",
-              "line": 0.0599,
-              "odds": 1500
+              "line": 0.0477,
+              "odds": 1900
             }
           ]
         }
@@ -26759,7 +26774,7 @@
           "line": 0.3409,
           "books": 9,
           "min": 0.3176,
-          "max": 0.354,
+          "max": 0.3409,
           "quotes": [
             {
               "book": "draftkings",
@@ -26778,8 +26793,8 @@
             },
             {
               "book": "betonlineag",
-              "line": 0.354,
-              "odds": 200
+              "line": 0.3409,
+              "odds": 210
             },
             {
               "book": "betrivers",
@@ -26911,7 +26926,7 @@
     {
       "name": "Sam Roush",
       "kickoff": "2026-11-22",
-      "kickoffTime": "2026-11-22T18:00:00Z",
+      "kickoffTime": "2026-11-22T18:05:00Z",
       "matchup": "NOCHI",
       "matchupLong": "New Orleans Saints @ Chicago Bears",
       "stats": {
@@ -26943,8 +26958,8 @@
             },
             {
               "book": "betrivers",
-              "line": 0.1148,
-              "odds": 750
+              "line": 0.1223,
+              "odds": 700
             },
             {
               "book": "betmgm",
@@ -27287,7 +27302,7 @@
       "matchupLong": "Tampa Bay Buccaneers @ Detroit Lions",
       "stats": {
         "any_tds": {
-          "line": 0.13574999999999998,
+          "line": 0.1308,
           "books": 8,
           "min": 0.1148,
           "max": 0.1731,
@@ -27304,8 +27319,8 @@
             },
             {
               "book": "fanduel",
-              "line": 0.1407,
-              "odds": 600
+              "line": 0.1308,
+              "odds": 650
             },
             {
               "book": "betonlineag",
@@ -27329,8 +27344,8 @@
             },
             {
               "book": "fanatics",
-              "line": 0.1308,
-              "odds": 650
+              "line": 0.1223,
+              "odds": 700
             }
           ]
         }
@@ -27621,7 +27636,7 @@
             {
               "book": "fanatics",
               "line": 15.5,
-              "odds": 105
+              "odds": 110
             }
           ]
         }
@@ -27652,7 +27667,7 @@
     {
       "name": "Stephen Carlson",
       "kickoff": "2026-11-22",
-      "kickoffTime": "2026-11-22T18:00:00Z",
+      "kickoffTime": "2026-11-22T18:05:00Z",
       "matchup": "NOCHI",
       "matchupLong": "New Orleans Saints @ Chicago Bears",
       "stats": {
@@ -27822,7 +27837,7 @@
         "any_tds": {
           "line": 0.0563,
           "books": 8,
-          "min": 0.0477,
+          "min": 0.0531,
           "max": 0.0771,
           "quotes": [
             {
@@ -27862,8 +27877,8 @@
             },
             {
               "book": "fanatics",
-              "line": 0.0477,
-              "odds": 1900
+              "line": 0.0531,
+              "odds": 1700
             }
           ]
         }
@@ -27976,8 +27991,8 @@
             },
             {
               "book": "fanatics",
-              "line": 0.0263,
-              "odds": 3500
+              "line": 0.0231,
+              "odds": 4000
             }
           ]
         }
@@ -28003,8 +28018,8 @@
             },
             {
               "book": "williamhill_us",
-              "line": 0.1308,
-              "odds": 650
+              "line": 0.1356,
+              "odds": 625
             },
             {
               "book": "fanduel",
@@ -28041,7 +28056,7 @@
         "rec_yds": {
           "line": 8.5,
           "books": 5,
-          "min": 6.5,
+          "min": 7.5,
           "max": 8.5,
           "quotes": [
             {
@@ -28051,8 +28066,8 @@
             },
             {
               "book": "fanduel",
-              "line": 6.5,
-              "odds": -120
+              "line": 7.5,
+              "odds": -122
             },
             {
               "book": "betonlineag",
@@ -28072,10 +28087,10 @@
           ]
         },
         "receptions": {
-          "line": 0.906,
-          "books": 4,
+          "line": 0.917,
+          "books": 5,
           "min": 0.877,
-          "max": 0.92,
+          "max": 0.941,
           "quotes": [
             {
               "book": "draftkings",
@@ -28085,14 +28100,20 @@
             },
             {
               "book": "fanduel",
-              "line": 0.92,
-              "odds": -166,
+              "line": 0.941,
+              "odds": -172,
               "posted": 0.5
             },
             {
               "book": "betonlineag",
-              "line": 0.913,
-              "odds": -164,
+              "line": 0.924,
+              "odds": -167,
+              "posted": 0.5
+            },
+            {
+              "book": "betmgm",
+              "line": 0.917,
+              "odds": -165,
               "posted": 0.5
             },
             {
@@ -28189,8 +28210,8 @@
             },
             {
               "book": "fanduel",
-              "line": 0.3835,
-              "odds": 180
+              "line": 0.3757,
+              "odds": 185
             },
             {
               "book": "betonlineag",
@@ -28248,7 +28269,7 @@
             {
               "book": "betrivers",
               "line": 62.5,
-              "odds": -132
+              "odds": -134
             },
             {
               "book": "betmgm",
@@ -28268,10 +28289,10 @@
           ]
         },
         "receptions": {
-          "line": 4.7955000000000005,
+          "line": 4.807,
           "books": 6,
           "min": 4.726,
-          "max": 4.905,
+          "max": 4.851,
           "quotes": [
             {
               "book": "draftkings",
@@ -28293,14 +28314,14 @@
             },
             {
               "book": "betrivers",
-              "line": 4.773,
-              "odds": -118,
+              "line": 4.807,
+              "odds": -121,
               "posted": 4.5
             },
             {
               "book": "betmgm",
-              "line": 4.905,
-              "odds": -130,
+              "line": 4.851,
+              "odds": -125,
               "posted": 4.5
             },
             {
@@ -28323,7 +28344,7 @@
         "any_tds": {
           "line": 0.1948,
           "books": 8,
-          "min": 0.1908,
+          "min": 0.1815,
           "max": 0.2253,
           "quotes": [
             {
@@ -28363,8 +28384,8 @@
             },
             {
               "book": "fanatics",
-              "line": 0.1928,
-              "odds": 420
+              "line": 0.1815,
+              "odds": 450
             }
           ]
         },
@@ -28754,7 +28775,7 @@
       "matchupLong": "Baltimore Ravens @ Carolina Panthers",
       "stats": {
         "any_tds": {
-          "line": 0.2056,
+          "line": 0.2101,
           "books": 8,
           "min": 0.1731,
           "max": 0.2253,
@@ -28791,8 +28812,8 @@
             },
             {
               "book": "fanatics",
-              "line": 0.2011,
-              "odds": 400
+              "line": 0.2101,
+              "odds": 380
             },
             {
               "book": "bovada",
@@ -28842,7 +28863,7 @@
         "receptions": {
           "line": 2.368,
           "books": 6,
-          "min": 2.353,
+          "min": 2.346,
           "max": 2.439,
           "quotes": [
             {
@@ -28865,8 +28886,8 @@
             },
             {
               "book": "betrivers",
-              "line": 2.368,
-              "odds": 125,
+              "line": 2.346,
+              "odds": 128,
               "posted": 2.5
             },
             {
@@ -28895,7 +28916,7 @@
         "any_tds": {
           "line": 0.6979,
           "books": 9,
-          "min": 0.6663,
+          "min": 0.6823,
           "max": 0.7366,
           "quotes": [
             {
@@ -28935,8 +28956,8 @@
             },
             {
               "book": "fanatics",
-              "line": 0.6663,
-              "odds": -125
+              "line": 0.6823,
+              "odds": -130
             },
             {
               "book": "circasports",
@@ -29075,25 +29096,25 @@
     {
       "name": "Travis Etienne Jr.",
       "kickoff": "2026-11-22",
-      "kickoffTime": "2026-11-22T18:00:00Z",
+      "kickoffTime": "2026-11-22T18:05:00Z",
       "matchup": "NOCHI",
       "matchupLong": "New Orleans Saints @ Chicago Bears",
       "stats": {
         "any_tds": {
-          "line": 0.3409,
+          "line": 0.3348,
           "books": 9,
           "min": 0.307,
-          "max": 0.4282,
+          "max": 0.4184,
           "quotes": [
             {
               "book": "draftkings",
-              "line": 0.3288,
-              "odds": 220
+              "line": 0.3348,
+              "odds": 215
             },
             {
               "book": "williamhill_us",
-              "line": 0.3409,
-              "odds": 210
+              "line": 0.3348,
+              "odds": 215
             },
             {
               "book": "fanduel",
@@ -29107,8 +29128,8 @@
             },
             {
               "book": "betrivers",
-              "line": 0.4282,
-              "odds": 155
+              "line": 0.4184,
+              "odds": 160
             },
             {
               "book": "betmgm",
@@ -29117,13 +29138,13 @@
             },
             {
               "book": "bovada",
-              "line": 0.3288,
-              "odds": 220
+              "line": 0.3348,
+              "odds": 215
             },
             {
               "book": "fanatics",
-              "line": 0.3409,
-              "odds": 210
+              "line": 0.3288,
+              "odds": 220
             },
             {
               "book": "circasports",
@@ -29156,7 +29177,7 @@
             {
               "book": "betrivers",
               "line": 13.5,
-              "odds": -118
+              "odds": -115
             },
             {
               "book": "betmgm",
@@ -29171,7 +29192,7 @@
           ]
         },
         "receptions": {
-          "line": 2.594,
+          "line": 2.6035,
           "books": 6,
           "min": 2.536,
           "max": 2.661,
@@ -29190,8 +29211,8 @@
             },
             {
               "book": "betonlineag",
-              "line": 2.594,
-              "odds": -101,
+              "line": 2.661,
+              "odds": -108,
               "posted": 2.5
             },
             {
@@ -29238,7 +29259,7 @@
             {
               "book": "betrivers",
               "line": 37.5,
-              "odds": -120
+              "odds": -117
             },
             {
               "book": "betmgm",
@@ -29267,9 +29288,9 @@
       "matchupLong": "Pittsburgh Steelers @ Philadelphia Eagles",
       "stats": {
         "any_tds": {
-          "line": 0.019549999999999998,
-          "books": 6,
-          "min": 0.0155,
+          "line": 0.0206,
+          "books": 7,
+          "min": 0.0124,
           "max": 0.0306,
           "quotes": [
             {
@@ -29281,6 +29302,11 @@
               "book": "williamhill_us",
               "line": 0.0206,
               "odds": 4500
+            },
+            {
+              "book": "fanduel",
+              "line": 0.0124,
+              "odds": 7500
             },
             {
               "book": "betonlineag",
@@ -29299,8 +29325,8 @@
             },
             {
               "book": "fanatics",
-              "line": 0.0155,
-              "odds": 6000
+              "line": 0.0206,
+              "odds": 4500
             }
           ]
         }
@@ -29449,7 +29475,7 @@
         "any_tds": {
           "line": 0.354,
           "books": 9,
-          "min": 0.3288,
+          "min": 0.3474,
           "max": 0.4091,
           "quotes": [
             {
@@ -29489,8 +29515,8 @@
             },
             {
               "book": "fanatics",
-              "line": 0.3288,
-              "odds": 220
+              "line": 0.354,
+              "odds": 200
             },
             {
               "book": "circasports",
@@ -29599,7 +29625,7 @@
           "line": 0.2712,
           "books": 9,
           "min": 0.2635,
-          "max": 0.3835,
+          "max": 0.3757,
           "quotes": [
             {
               "book": "draftkings",
@@ -29623,8 +29649,8 @@
             },
             {
               "book": "betrivers",
-              "line": 0.3835,
-              "odds": 180
+              "line": 0.3757,
+              "odds": 185
             },
             {
               "book": "betmgm",
@@ -29649,10 +29675,10 @@
           ]
         },
         "rec_yds": {
-          "line": 42.5,
+          "line": 43.5,
           "books": 7,
           "min": 38.5,
-          "max": 43.5,
+          "max": 48.5,
           "quotes": [
             {
               "book": "draftkings",
@@ -29666,13 +29692,13 @@
             },
             {
               "book": "betonlineag",
-              "line": 42.5,
-              "odds": -115
+              "line": 43.5,
+              "odds": -114
             },
             {
               "book": "betrivers",
               "line": 43.5,
-              "odds": -120
+              "odds": -117
             },
             {
               "book": "betmgm",
@@ -29686,13 +29712,13 @@
             },
             {
               "book": "bovada",
-              "line": 42.5,
-              "odds": -115
+              "line": 48.5,
+              "odds": 110
             }
           ]
         },
         "receptions": {
-          "line": 3.526,
+          "line": 3.498,
           "books": 6,
           "min": 3.414,
           "max": 3.566,
@@ -29711,14 +29737,14 @@
             },
             {
               "book": "betonlineag",
-              "line": 3.498,
-              "odds": 106,
+              "line": 3.487,
+              "odds": 107,
               "posted": 3.5
             },
             {
               "book": "betrivers",
-              "line": 3.543,
-              "odds": 102,
+              "line": 3.487,
+              "odds": 107,
               "posted": 3.5
             },
             {
@@ -29991,7 +30017,7 @@
         },
         "pass_yds": {
           "line": 240.5,
-          "books": 8,
+          "books": 7,
           "min": 229.5,
           "max": 250.5,
           "quotes": [
@@ -30024,11 +30050,6 @@
               "book": "bovada",
               "line": 250.5,
               "odds": 110
-            },
-            {
-              "book": "fanatics",
-              "line": 240.5,
-              "odds": -110
             },
             {
               "book": "circasports",
@@ -30234,7 +30255,7 @@
       "matchupLong": "Las Vegas Raiders @ Denver Broncos",
       "stats": {
         "any_tds": {
-          "line": 0.09465,
+          "line": 0.097,
           "books": 8,
           "min": 0.0879,
           "max": 0.1461,
@@ -30276,8 +30297,8 @@
             },
             {
               "book": "fanatics",
-              "line": 0.0923,
-              "odds": 950
+              "line": 0.097,
+              "odds": 900
             }
           ]
         }
@@ -30318,8 +30339,8 @@
             },
             {
               "book": "betrivers",
-              "line": 0.2149,
-              "odds": 370
+              "line": 0.22,
+              "odds": 360
             },
             {
               "book": "betmgm",
@@ -30419,7 +30440,7 @@
       "matchupLong": "Arizona Cardinals @ Kansas City Chiefs",
       "stats": {
         "any_tds": {
-          "line": 0.2528,
+          "line": 0.2563,
           "books": 9,
           "min": 0.228,
           "max": 0.3122,
@@ -30461,8 +30482,8 @@
             },
             {
               "book": "fanatics",
-              "line": 0.2494,
-              "odds": 310
+              "line": 0.2563,
+              "odds": 300
             },
             {
               "book": "circasports",
@@ -30608,13 +30629,13 @@
         "any_tds": {
           "line": 0.0434,
           "books": 8,
-          "min": 0.0366,
+          "min": 0.0414,
           "max": 0.0741,
           "quotes": [
             {
               "book": "draftkings",
-              "line": 0.0366,
-              "odds": 2500
+              "line": 0.0414,
+              "odds": 2200
             },
             {
               "book": "williamhill_us",
@@ -30643,8 +30664,8 @@
             },
             {
               "book": "bovada",
-              "line": 0.0366,
-              "odds": 2500
+              "line": 0.0414,
+              "odds": 2200
             },
             {
               "book": "fanatics",
@@ -30658,7 +30679,7 @@
     {
       "name": "Tyler Shough",
       "kickoff": "2026-11-22",
-      "kickoffTime": "2026-11-22T18:00:00Z",
+      "kickoffTime": "2026-11-22T18:05:00Z",
       "matchup": "NOCHI",
       "matchupLong": "New Orleans Saints @ Chicago Bears",
       "stats": {
@@ -30666,7 +30687,7 @@
           "line": 0.1851,
           "books": 9,
           "min": 0.1815,
-          "max": 0.2338,
+          "max": 0.2309,
           "quotes": [
             {
               "book": "draftkings",
@@ -30690,8 +30711,8 @@
             },
             {
               "book": "betrivers",
-              "line": 0.2338,
-              "odds": 335
+              "line": 0.2309,
+              "odds": 340
             },
             {
               "book": "betmgm",
@@ -30718,8 +30739,8 @@
         "pass_tds": {
           "line": 1.196,
           "books": 8,
-          "min": 1.192,
-          "max": 1.229,
+          "min": 1.175,
+          "max": 1.269,
           "quotes": [
             {
               "book": "draftkings",
@@ -30741,8 +30762,8 @@
             },
             {
               "book": "betrivers",
-              "line": 1.192,
-              "odds": 180,
+              "line": 1.175,
+              "odds": 185,
               "posted": 1.5
             },
             {
@@ -30759,8 +30780,8 @@
             },
             {
               "book": "fanatics",
-              "line": 1.229,
-              "odds": 170,
+              "line": 1.269,
+              "odds": 160,
               "posted": 1.5
             },
             {
@@ -30772,9 +30793,9 @@
           ]
         },
         "pass_yds": {
-          "line": 233.0,
-          "books": 8,
-          "min": 230.5,
+          "line": 232.5,
+          "books": 7,
+          "min": 231.5,
           "max": 242.5,
           "quotes": [
             {
@@ -30789,12 +30810,12 @@
             },
             {
               "book": "betonlineag",
-              "line": 233.5,
-              "odds": -114
+              "line": 232.5,
+              "odds": -115
             },
             {
               "book": "betrivers",
-              "line": 236.5,
+              "line": 234.5,
               "odds": -115
             },
             {
@@ -30806,11 +30827,6 @@
               "book": "bovada",
               "line": 242.5,
               "odds": 110
-            },
-            {
-              "book": "fanatics",
-              "line": 230.5,
-              "odds": -115
             },
             {
               "book": "circasports",
@@ -30843,7 +30859,7 @@
             {
               "book": "betrivers",
               "line": 18.5,
-              "odds": -120
+              "odds": -118
             },
             {
               "book": "betmgm",
@@ -31345,7 +31361,7 @@
             {
               "book": "fanatics",
               "line": 25.5,
-              "odds": -115
+              "odds": -110
             }
           ]
         },
@@ -31415,8 +31431,8 @@
             },
             {
               "book": "williamhill_us",
-              "line": 0.064,
-              "odds": 1400
+              "line": 0.0599,
+              "odds": 1500
             },
             {
               "book": "fanduel",
@@ -31450,20 +31466,20 @@
     {
       "name": "Zavion Thomas",
       "kickoff": "2026-11-22",
-      "kickoffTime": "2026-11-22T18:00:00Z",
+      "kickoffTime": "2026-11-22T18:05:00Z",
       "matchup": "NOCHI",
       "matchupLong": "New Orleans Saints @ Chicago Bears",
       "stats": {
         "any_tds": {
-          "line": 0.0901,
+          "line": 0.0879,
           "books": 8,
           "min": 0.0804,
           "max": 0.1082,
           "quotes": [
             {
               "book": "draftkings",
-              "line": 0.0923,
-              "odds": 950
+              "line": 0.0879,
+              "odds": 1000
             },
             {
               "book": "williamhill_us",
@@ -31492,8 +31508,8 @@
             },
             {
               "book": "bovada",
-              "line": 0.097,
-              "odds": 900
+              "line": 0.0879,
+              "odds": 1000
             },
             {
               "book": "fanatics",
@@ -31549,8 +31565,8 @@
             },
             {
               "book": "fanatics",
-              "line": 0.3757,
-              "odds": 185
+              "line": 0.3835,
+              "odds": 180
             },
             {
               "book": "circasports",
@@ -31565,9 +31581,9 @@
           ]
         },
         "rec_yds": {
-          "line": 69.5,
-          "books": 8,
-          "min": 65.5,
+          "line": 70.5,
+          "books": 7,
+          "min": 66.5,
           "max": 76.5,
           "quotes": [
             {
@@ -31594,11 +31610,6 @@
               "book": "betmgm",
               "line": 66.5,
               "odds": -115
-            },
-            {
-              "book": "fanatics",
-              "line": 65.5,
-              "odds": -135
             },
             {
               "book": "circasports",
@@ -35314,7 +35325,7 @@
           "line": 0.1115,
           "books": 8,
           "min": 0.1023,
-          "max": 0.1223,
+          "max": 0.1185,
           "quotes": [
             {
               "book": "draftkings",
@@ -35323,8 +35334,8 @@
             },
             {
               "book": "williamhill_us",
-              "line": 0.1223,
-              "odds": 700
+              "line": 0.1148,
+              "odds": 750
             },
             {
               "book": "fanduel",
@@ -35476,7 +35487,7 @@
         "any_tds": {
           "line": 0.6663,
           "books": 9,
-          "min": 0.6498,
+          "min": 0.6564,
           "max": 0.8372,
           "quotes": [
             {
@@ -35521,8 +35532,8 @@
             },
             {
               "book": "fanatics",
-              "line": 0.6498,
-              "odds": -120
+              "line": 0.6823,
+              "odds": -130
             }
           ]
         },
@@ -36291,8 +36302,8 @@
             },
             {
               "book": "fanatics",
-              "line": 0.7565,
-              "odds": -155
+              "line": 0.7838,
+              "odds": -165
             }
           ]
         },
@@ -36440,8 +36451,8 @@
             },
             {
               "book": "fanatics",
-              "line": 0.1308,
-              "odds": 650
+              "line": 0.1223,
+              "odds": 700
             }
           ]
         }
@@ -36458,7 +36469,7 @@
           "line": 0.4853,
           "books": 8,
           "min": 0.4493,
-          "max": 0.5128,
+          "max": 0.4986,
           "quotes": [
             {
               "book": "draftkings",
@@ -36497,8 +36508,8 @@
             },
             {
               "book": "fanatics",
-              "line": 0.5128,
-              "odds": 120
+              "line": 0.4986,
+              "odds": 125
             }
           ]
         }
@@ -37350,7 +37361,7 @@
         "any_tds": {
           "line": 0.3318,
           "books": 8,
-          "min": 0.307,
+          "min": 0.2972,
           "max": 0.4282,
           "quotes": [
             {
@@ -37390,8 +37401,8 @@
             },
             {
               "book": "fanatics",
-              "line": 0.307,
-              "odds": 240
+              "line": 0.2972,
+              "odds": 250
             }
           ]
         },
@@ -37720,7 +37731,7 @@
       "matchupLong": "Cincinnati Bengals @ Washington Commanders",
       "stats": {
         "any_tds": {
-          "line": 0.5974,
+          "line": 0.6083,
           "books": 9,
           "min": 0.5789,
           "max": 0.7101,
@@ -37767,8 +37778,8 @@
             },
             {
               "book": "fanatics",
-              "line": 0.5789,
-              "odds": 100
+              "line": 0.6154,
+              "odds": -110
             }
           ]
         },
