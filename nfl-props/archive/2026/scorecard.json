@@ -10,521 +10,570 @@
   7,
   8,
   9,
-  10
+  10,
+  11
  ],
  "stats": {
   "pass_yds": {
    "sources": [
     {
      "source": "fanatics",
-     "n": 133,
-     "mae": 55.51,
-     "vsConsensus": -0.3,
-     "bias": -0.823,
+     "n": 146,
+     "mae": 55.16,
+     "vsConsensus": -0.17,
+     "bias": -1.932,
      "ranked": true
     },
     {
      "source": "bovada",
-     "n": 274,
-     "mae": 58.5,
-     "vsConsensus": -0.1,
-     "bias": 6.369,
-     "ranked": true
-    },
-    {
-     "source": "consensus",
-     "n": 298,
-     "mae": 58.53,
-     "vsConsensus": 0.0,
-     "bias": -2.23,
-     "ranked": true
-    },
-    {
-     "source": "betonlineag",
-     "n": 296,
-     "mae": 58.47,
-     "vsConsensus": 0.02,
-     "bias": -1.774,
+     "n": 300,
+     "mae": 56.87,
+     "vsConsensus": -0.14,
+     "bias": 6.517,
      "ranked": true
     },
     {
      "source": "draftkings",
-     "n": 298,
-     "mae": 58.55,
-     "vsConsensus": 0.03,
-     "bias": -1.889,
+     "n": 324,
+     "mae": 57.05,
+     "vsConsensus": -0.0,
+     "bias": -1.883,
+     "ranked": true
+    },
+    {
+     "source": "consensus",
+     "n": 324,
+     "mae": 57.05,
+     "vsConsensus": 0.0,
+     "bias": -2.236,
+     "ranked": true
+    },
+    {
+     "source": "betonlineag",
+     "n": 322,
+     "mae": 56.99,
+     "vsConsensus": 0.02,
+     "bias": -1.829,
      "ranked": true
     },
     {
      "source": "fanduel",
-     "n": 297,
-     "mae": 58.58,
+     "n": 323,
+     "mae": 57.1,
      "vsConsensus": 0.08,
-     "bias": -2.163,
+     "bias": -2.231,
      "ranked": true
     },
     {
      "source": "kalshi",
-     "n": 293,
-     "mae": 58.67,
-     "vsConsensus": 0.12,
-     "bias": -2.875,
+     "n": 319,
+     "mae": 57.16,
+     "vsConsensus": 0.11,
+     "bias": -2.853,
      "ranked": true
     },
     {
      "source": "betmgm",
-     "n": 271,
-     "mae": 58.47,
-     "vsConsensus": 0.12,
-     "bias": -2.19,
+     "n": 297,
+     "mae": 56.88,
+     "vsConsensus": 0.13,
+     "bias": -2.204,
      "ranked": true
     },
     {
      "source": "betrivers",
-     "n": 296,
-     "mae": 58.5,
-     "vsConsensus": 0.17,
-     "bias": -3.821,
+     "n": 322,
+     "mae": 57.1,
+     "vsConsensus": 0.24,
+     "bias": -3.811,
      "ranked": true
+    },
+    {
+     "source": "circasports",
+     "n": 26,
+     "mae": 40.88,
+     "vsConsensus": 0.73,
+     "bias": -3.038,
+     "ranked": false
     }
    ],
-   "overRate": 0.53,
-   "overN": 298,
+   "overRate": 0.531,
+   "overN": 324,
    "openVsClose": {
-    "n": 298,
-    "open": 58.6896,
-    "close": 58.5252
+    "n": 324,
+    "open": 57.2469,
+    "close": 57.0509
    }
   },
   "pass_tds": {
    "sources": [
     {
      "source": "draftkings",
-     "n": 298,
+     "n": 324,
+     "mae": 0.89,
+     "vsConsensus": 0.0,
+     "bias": -0.084,
+     "ranked": true
+    },
+    {
+     "source": "fanduel",
+     "n": 323,
+     "mae": 0.89,
+     "vsConsensus": 0.0,
+     "bias": -0.091,
+     "ranked": true
+    },
+    {
+     "source": "betonlineag",
+     "n": 324,
+     "mae": 0.89,
+     "vsConsensus": 0.0,
+     "bias": -0.079,
+     "ranked": true
+    },
+    {
+     "source": "betrivers",
+     "n": 322,
+     "mae": 0.89,
+     "vsConsensus": 0.0,
+     "bias": -0.099,
+     "ranked": true
+    },
+    {
+     "source": "bovada",
+     "n": 296,
+     "mae": 0.91,
+     "vsConsensus": 0.0,
+     "bias": -0.101,
+     "ranked": true
+    },
+    {
+     "source": "consensus",
+     "n": 324,
+     "mae": 0.89,
+     "vsConsensus": 0.0,
+     "bias": -0.081,
+     "ranked": true
+    },
+    {
+     "source": "kalshi",
+     "n": 319,
+     "mae": 0.89,
+     "vsConsensus": 0.0,
+     "bias": -0.123,
+     "ranked": true
+    },
+    {
+     "source": "betmgm",
+     "n": 297,
      "mae": 0.9,
+     "vsConsensus": 0.0,
+     "bias": -0.106,
+     "ranked": true
+    },
+    {
+     "source": "fanatics",
+     "n": 135,
+     "mae": 0.92,
+     "vsConsensus": 0.0,
+     "bias": -0.111,
+     "ranked": true
+    },
+    {
+     "source": "circasports",
+     "n": 26,
+     "mae": 0.82,
+     "vsConsensus": 0.03,
+     "bias": -0.182,
+     "ranked": false
+    }
+   ],
+   "overRate": 0.446,
+   "overN": 323,
+   "openVsClose": {
+    "n": 324,
+    "open": 0.892,
+    "close": 0.8898
+   }
+  },
+  "rush_yds": {
+   "sources": [
+    {
+     "source": "circasports",
+     "n": 57,
+     "mae": 18.04,
+     "vsConsensus": -0.15,
+     "bias": -2.5,
+     "ranked": true
+    },
+    {
+     "source": "fanatics",
+     "n": 147,
+     "mae": 18.73,
+     "vsConsensus": -0.12,
+     "bias": -4.276,
+     "ranked": true
+    },
+    {
+     "source": "betmgm",
+     "n": 715,
+     "mae": 18.73,
+     "vsConsensus": -0.05,
+     "bias": -2.552,
+     "ranked": true
+    },
+    {
+     "source": "fanduel",
+     "n": 943,
+     "mae": 17.39,
+     "vsConsensus": -0.0,
+     "bias": -2.758,
+     "ranked": true
+    },
+    {
+     "source": "consensus",
+     "n": 954,
+     "mae": 17.37,
+     "vsConsensus": 0.0,
+     "bias": -2.612,
+     "ranked": true
+    },
+    {
+     "source": "betonlineag",
+     "n": 868,
+     "mae": 18.29,
+     "vsConsensus": 0.02,
+     "bias": -2.439,
+     "ranked": true
+    },
+    {
+     "source": "betrivers",
+     "n": 793,
+     "mae": 18.51,
+     "vsConsensus": 0.02,
+     "bias": -2.249,
+     "ranked": true
+    },
+    {
+     "source": "kalshi",
+     "n": 902,
+     "mae": 17.6,
+     "vsConsensus": 0.03,
+     "bias": -2.986,
+     "ranked": true
+    },
+    {
+     "source": "draftkings",
+     "n": 942,
+     "mae": 17.47,
+     "vsConsensus": 0.04,
+     "bias": -2.429,
+     "ranked": true
+    },
+    {
+     "source": "bovada",
+     "n": 841,
+     "mae": 17.9,
+     "vsConsensus": 0.11,
+     "bias": -2.272,
+     "ranked": true
+    }
+   ],
+   "overRate": 0.448,
+   "overN": 951,
+   "openVsClose": {
+    "n": 954,
+    "open": 17.7322,
+    "close": 17.3658
+   }
+  },
+  "rec_yds": {
+   "sources": [
+    {
+     "source": "circasports",
+     "n": 68,
+     "mae": 22.53,
+     "vsConsensus": -0.11,
+     "bias": 1.221,
+     "ranked": true
+    },
+    {
+     "source": "fanatics",
+     "n": 145,
+     "mae": 23.71,
+     "vsConsensus": -0.04,
+     "bias": -3.059,
+     "ranked": true
+    },
+    {
+     "source": "betmgm",
+     "n": 1657,
+     "mae": 20.56,
+     "vsConsensus": -0.01,
+     "bias": -4.268,
+     "ranked": true
+    },
+    {
+     "source": "draftkings",
+     "n": 1924,
+     "mae": 20.49,
+     "vsConsensus": 0.0,
+     "bias": -4.421,
+     "ranked": true
+    },
+    {
+     "source": "consensus",
+     "n": 1944,
+     "mae": 20.44,
+     "vsConsensus": 0.0,
+     "bias": -4.491,
+     "ranked": true
+    },
+    {
+     "source": "fanduel",
+     "n": 1922,
+     "mae": 20.48,
+     "vsConsensus": 0.02,
+     "bias": -4.684,
+     "ranked": true
+    },
+    {
+     "source": "betonlineag",
+     "n": 1845,
+     "mae": 20.75,
+     "vsConsensus": 0.02,
+     "bias": -4.574,
+     "ranked": true
+    },
+    {
+     "source": "betrivers",
+     "n": 1673,
+     "mae": 21.34,
+     "vsConsensus": 0.05,
+     "bias": -4.287,
+     "ranked": true
+    },
+    {
+     "source": "kalshi",
+     "n": 1852,
+     "mae": 20.68,
+     "vsConsensus": 0.06,
+     "bias": -4.821,
+     "ranked": true
+    },
+    {
+     "source": "bovada",
+     "n": 1771,
+     "mae": 20.82,
+     "vsConsensus": 0.13,
+     "bias": -3.608,
+     "ranked": true
+    }
+   ],
+   "overRate": 0.475,
+   "overN": 1937,
+   "openVsClose": {
+    "n": 1944,
+    "open": 20.5309,
+    "close": 20.4429
+   }
+  },
+  "receptions": {
+   "sources": [
+    {
+     "source": "draftkings",
+     "n": 1908,
+     "mae": 1.53,
      "vsConsensus": 0.0,
      "bias": -0.081,
      "ranked": true
     },
     {
      "source": "fanduel",
-     "n": 297,
-     "mae": 0.9,
-     "vsConsensus": 0.0,
-     "bias": -0.087,
+     "n": 1902,
+     "mae": 1.53,
+     "vsConsensus": -0.0,
+     "bias": -0.083,
      "ranked": true
     },
     {
      "source": "betonlineag",
-     "n": 298,
-     "mae": 0.9,
+     "n": 1837,
+     "mae": 1.54,
+     "vsConsensus": -0.0,
+     "bias": -0.088,
+     "ranked": true
+    },
+    {
+     "source": "bovada",
+     "n": 1752,
+     "mae": 1.53,
+     "vsConsensus": 0.0,
+     "bias": -0.047,
+     "ranked": true
+    },
+    {
+     "source": "consensus",
+     "n": 1936,
+     "mae": 1.52,
      "vsConsensus": 0.0,
      "bias": -0.075,
      "ranked": true
     },
     {
-     "source": "betrivers",
-     "n": 296,
-     "mae": 0.9,
-     "vsConsensus": 0.0,
-     "bias": -0.098,
-     "ranked": true
-    },
-    {
-     "source": "bovada",
-     "n": 270,
-     "mae": 0.92,
-     "vsConsensus": 0.0,
-     "bias": -0.101,
-     "ranked": true
-    },
-    {
-     "source": "consensus",
-     "n": 298,
-     "mae": 0.9,
-     "vsConsensus": 0.0,
-     "bias": -0.078,
-     "ranked": true
-    },
-    {
      "source": "kalshi",
-     "n": 294,
-     "mae": 0.9,
-     "vsConsensus": 0.0,
-     "bias": -0.121,
+     "n": 1707,
+     "mae": 1.49,
+     "vsConsensus": -0.0,
+     "bias": -0.132,
      "ranked": true
     },
     {
      "source": "betmgm",
-     "n": 272,
-     "mae": 0.9,
+     "n": 1568,
+     "mae": 1.53,
      "vsConsensus": -0.0,
-     "bias": -0.101,
+     "bias": -0.046,
      "ranked": true
     },
-    {
-     "source": "fanatics",
-     "n": 122,
-     "mae": 0.93,
-     "vsConsensus": 0.0,
-     "bias": -0.107,
-     "ranked": true
-    }
-   ],
-   "overRate": 0.444,
-   "overN": 297,
-   "openVsClose": {
-    "n": 298,
-    "open": 0.9005,
-    "close": 0.8984
-   }
-  },
-  "rush_yds": {
-   "sources": [
     {
      "source": "fanatics",
      "n": 134,
-     "mae": 18.95,
-     "vsConsensus": -0.07,
-     "bias": -5.246,
-     "ranked": true
-    },
-    {
-     "source": "betmgm",
-     "n": 650,
-     "mae": 18.78,
-     "vsConsensus": -0.03,
-     "bias": -2.44,
-     "ranked": true
-    },
-    {
-     "source": "fanduel",
-     "n": 869,
-     "mae": 17.37,
+     "mae": 1.66,
      "vsConsensus": -0.0,
-     "bias": -2.696,
-     "ranked": true
-    },
-    {
-     "source": "consensus",
-     "n": 879,
-     "mae": 17.35,
-     "vsConsensus": 0.0,
-     "bias": -2.537,
-     "ranked": true
-    },
-    {
-     "source": "betonlineag",
-     "n": 799,
-     "mae": 18.31,
-     "vsConsensus": 0.02,
-     "bias": -2.406,
+     "bias": -0.085,
      "ranked": true
     },
     {
      "source": "betrivers",
-     "n": 730,
-     "mae": 18.49,
-     "vsConsensus": 0.03,
-     "bias": -2.103,
-     "ranked": true
-    },
-    {
-     "source": "kalshi",
-     "n": 830,
-     "mae": 17.57,
-     "vsConsensus": 0.03,
-     "bias": -2.94,
-     "ranked": true
-    },
-    {
-     "source": "draftkings",
-     "n": 867,
-     "mae": 17.48,
-     "vsConsensus": 0.05,
-     "bias": -2.347,
-     "ranked": true
-    },
-    {
-     "source": "bovada",
-     "n": 767,
-     "mae": 17.93,
-     "vsConsensus": 0.12,
-     "bias": -2.191,
-     "ranked": true
-    }
-   ],
-   "overRate": 0.443,
-   "overN": 876,
-   "openVsClose": {
-    "n": 879,
-    "open": 17.7321,
-    "close": 17.3538
-   }
-  },
-  "rec_yds": {
-   "sources": [
-    {
-     "source": "fanatics",
-     "n": 132,
-     "mae": 24.11,
-     "vsConsensus": -0.09,
-     "bias": -4.348,
-     "ranked": true
-    },
-    {
-     "source": "betmgm",
-     "n": 1494,
-     "mae": 20.79,
-     "vsConsensus": -0.02,
-     "bias": -4.497,
-     "ranked": true
-    },
-    {
-     "source": "draftkings",
-     "n": 1755,
-     "mae": 20.69,
-     "vsConsensus": 0.0,
-     "bias": -4.615,
-     "ranked": true
-    },
-    {
-     "source": "consensus",
-     "n": 1774,
-     "mae": 20.62,
-     "vsConsensus": 0.0,
-     "bias": -4.647,
-     "ranked": true
-    },
-    {
-     "source": "fanduel",
-     "n": 1753,
-     "mae": 20.65,
-     "vsConsensus": 0.02,
-     "bias": -4.838,
-     "ranked": true
-    },
-    {
-     "source": "betonlineag",
-     "n": 1681,
-     "mae": 20.94,
-     "vsConsensus": 0.02,
-     "bias": -4.769,
-     "ranked": true
-    },
-    {
-     "source": "betrivers",
-     "n": 1529,
-     "mae": 21.53,
-     "vsConsensus": 0.04,
-     "bias": -4.479,
-     "ranked": true
-    },
-    {
-     "source": "kalshi",
-     "n": 1685,
-     "mae": 20.86,
-     "vsConsensus": 0.07,
-     "bias": -5.016,
-     "ranked": true
-    },
-    {
-     "source": "bovada",
-     "n": 1603,
-     "mae": 21.04,
-     "vsConsensus": 0.11,
-     "bias": -3.844,
-     "ranked": true
-    }
-   ],
-   "overRate": 0.476,
-   "overN": 1767,
-   "openVsClose": {
-    "n": 1774,
-    "open": 20.6801,
-    "close": 20.6167
-   }
-  },
-  "receptions": {
-   "sources": [
-    {
-     "source": "fanatics",
-     "n": 121,
-     "mae": 1.64,
-     "vsConsensus": -0.01,
-     "bias": -0.114,
-     "ranked": true
-    },
-    {
-     "source": "draftkings",
-     "n": 1738,
-     "mae": 1.54,
-     "vsConsensus": 0.0,
-     "bias": -0.087,
-     "ranked": true
-    },
-    {
-     "source": "fanduel",
-     "n": 1734,
-     "mae": 1.54,
-     "vsConsensus": -0.0,
-     "bias": -0.089,
-     "ranked": true
-    },
-    {
-     "source": "betonlineag",
-     "n": 1672,
-     "mae": 1.55,
-     "vsConsensus": -0.0,
-     "bias": -0.093,
-     "ranked": true
-    },
-    {
-     "source": "bovada",
-     "n": 1585,
-     "mae": 1.55,
-     "vsConsensus": 0.0,
-     "bias": -0.057,
-     "ranked": true
-    },
-    {
-     "source": "consensus",
-     "n": 1764,
-     "mae": 1.53,
-     "vsConsensus": 0.0,
-     "bias": -0.08,
-     "ranked": true
-    },
-    {
-     "source": "kalshi",
-     "n": 1539,
-     "mae": 1.49,
-     "vsConsensus": -0.0,
-     "bias": -0.137,
-     "ranked": true
-    },
-    {
-     "source": "betmgm",
-     "n": 1409,
-     "mae": 1.53,
-     "vsConsensus": -0.0,
-     "bias": -0.055,
-     "ranked": true
-    },
-    {
-     "source": "betrivers",
-     "n": 1501,
+     "n": 1640,
      "mae": 1.58,
      "vsConsensus": 0.01,
-     "bias": -0.037,
+     "bias": -0.022,
      "ranked": true
+    },
+    {
+     "source": "circasports",
+     "n": 8,
+     "mae": 1.86,
+     "vsConsensus": -0.04,
+     "bias": 1.016,
+     "ranked": false
     }
    ],
-   "overRate": 0.459,
-   "overN": 1763,
+   "overRate": 0.458,
+   "overN": 1935,
    "openVsClose": {
-    "n": 1764,
-    "open": 1.5346,
-    "close": 1.5312
+    "n": 1936,
+    "open": 1.5315,
+    "close": 1.5247
    }
   },
   "any_tds": {
    "sources": [
     {
+     "source": "circasports",
+     "n": 105,
+     "brier": 0.1687,
+     "vsConsensus": -0.0005,
+     "bias": 0.028,
+     "ranked": true
+    },
+    {
      "source": "draftkings",
-     "n": 2142,
-     "brier": 0.1168,
-     "vsConsensus": -0.0002,
-     "bias": 0.018,
+     "n": 2475,
+     "brier": 0.1161,
+     "vsConsensus": -0.0003,
+     "bias": 0.019,
      "ranked": true
     },
     {
      "source": "fanduel",
-     "n": 2307,
-     "brier": 0.1131,
-     "vsConsensus": -0.0002,
+     "n": 2665,
+     "brier": 0.1126,
+     "vsConsensus": -0.0001,
      "bias": 0.021,
      "ranked": true
     },
     {
      "source": "bovada",
-     "n": 2046,
-     "brier": 0.1153,
+     "n": 2400,
+     "brier": 0.1145,
      "vsConsensus": -0.0001,
-     "bias": 0.022,
+     "bias": 0.023,
      "ranked": true
     },
     {
      "source": "williamhill_us",
-     "n": 2135,
-     "brier": 0.1169,
-     "vsConsensus": -0.0,
-     "bias": 0.024,
+     "n": 2467,
+     "brier": 0.1164,
+     "vsConsensus": 0.0,
+     "bias": 0.025,
      "ranked": true
     },
     {
      "source": "consensus",
-     "n": 2330,
-     "brier": 0.1128,
+     "n": 2690,
+     "brier": 0.1126,
      "vsConsensus": 0.0,
      "bias": 0.026,
      "ranked": true
     },
     {
      "source": "betmgm",
-     "n": 1955,
-     "brier": 0.1241,
+     "n": 2273,
+     "brier": 0.1227,
      "vsConsensus": 0.0003,
-     "bias": 0.026,
-     "ranked": true
-    },
-    {
-     "source": "fanatics",
-     "n": 2128,
-     "brier": 0.1182,
-     "vsConsensus": 0.0004,
-     "bias": 0.024,
+     "bias": 0.028,
      "ranked": true
     },
     {
      "source": "betonlineag",
-     "n": 2078,
-     "brier": 0.1203,
-     "vsConsensus": 0.0005,
-     "bias": 0.033,
-     "ranked": true
-    },
-    {
-     "source": "betrivers",
-     "n": 2090,
-     "brier": 0.1209,
-     "vsConsensus": 0.0013,
+     "n": 2403,
+     "brier": 0.1191,
+     "vsConsensus": 0.0003,
      "bias": 0.034,
      "ranked": true
     },
     {
-     "source": "kalshi",
-     "n": 1894,
-     "brier": 0.1356,
-     "vsConsensus": 0.0035,
+     "source": "fanatics",
+     "n": 2459,
+     "brier": 0.1171,
+     "vsConsensus": 0.0003,
+     "bias": 0.024,
+     "ranked": true
+    },
+    {
+     "source": "betrivers",
+     "n": 2406,
+     "brier": 0.1197,
+     "vsConsensus": 0.0014,
      "bias": 0.036,
+     "ranked": true
+    },
+    {
+     "source": "kalshi",
+     "n": 2187,
+     "brier": 0.1348,
+     "vsConsensus": 0.0031,
+     "bias": 0.037,
      "ranked": true
     }
    ],
    "openVsClose": {
-    "n": 2330,
-    "open": 0.1153,
-    "close": 0.1128
+    "n": 2690,
+    "open": 0.1152,
+    "close": 0.1126
    },
    "calibration": {
     "consensus": {
-     "n": 2330,
+     "n": 2690,
      "avgProb": 0.184,
      "scoredRate": 0.158
     },
     "kalshi": {
-     "n": 1894,
-     "avgProb": 0.223,
+     "n": 2187,
+     "avgProb": 0.224,
      "scoredRate": 0.187
     }
    }
@@ -532,14 +581,14 @@
  },
  "games": {
   "total": {
-   "n": 118,
-   "mae": 10.18,
-   "overRate": 0.547
+   "n": 131,
+   "mae": 10.23,
+   "overRate": 0.543
   },
   "spread": {
-   "n": 118,
-   "mae": 9.06,
-   "homeCoverRate": 0.404
+   "n": 131,
+   "mae": 8.94,
+   "homeCoverRate": 0.441
   }
  },
  "note": "Written by scripts/score_lines_archive.py from the week files. mae/brier: error of each source's closing number; vsConsensus: that minus the books' consensus error on the same player-games (negative = closer). bias: average of number minus actual. Sources under 30 paired player-games are not ranked."
