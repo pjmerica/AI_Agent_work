@@ -1,10 +1,10 @@
 {
-  "lastUpdated": "2026-11-27T16:14:22.976Z",
+  "lastUpdated": "2026-11-28T01:10:03.784Z",
   "polymarketCount": 2045,
-  "predictitCount": 397,
+  "predictitCount": 396,
   "matchCount": 92,
-  "arbCleanCount": 47,
-  "arbFlaggedCount": 40,
+  "arbCleanCount": 49,
+  "arbFlaggedCount": 41,
   "matches": [
     {
       "polymarket": {
@@ -98,10 +98,10 @@
       "polymarket": {
         "platform": "Polymarket",
         "title": "Mike Johnson out as Speaker by December 31?",
-        "yesPrice": 0.13,
-        "noPrice": 0.87,
+        "yesPrice": 0.125,
+        "noPrice": 0.875,
         "url": "https://polymarket.com/event/mike-johnson-out-as-speaker-by-december-31",
-        "volume": 6968.124402999998
+        "volume": 7009.624402999999
       },
       "predictit": {
         "platform": "PredictIt",
@@ -113,13 +113,42 @@
       },
       "score": 38,
       "entities": 1,
-      "diff": 86,
+      "diff": 86.5,
       "partyFlipped": false,
       "arb": true,
       "suspicion": [
-        "return of 86.0% is too large to be real; these are probably different questions"
+        "return of 86.5% is too large to be real; these are probably different questions"
       ],
-      "arbProfit": 86,
+      "arbProfit": 86.5,
+      "buyYesOn": "Polymarket",
+      "buyNoOn": "PredictIt"
+    },
+    {
+      "polymarket": {
+        "platform": "Polymarket",
+        "title": "Will Ron DeSantis announce a presidential run before 2027?",
+        "yesPrice": 0.0195,
+        "noPrice": 0.9805,
+        "url": "https://polymarket.com/event/will-ron-desantis-announce-a-presidential-run-before-2027",
+        "volume": 17084.155291
+      },
+      "predictit": {
+        "platform": "PredictIt",
+        "title": "Will Ron DeSantis announce a run for President before June 2027?",
+        "yesPrice": 0.69,
+        "noPrice": 0.4,
+        "url": "https://www.predictit.org/markets/detail/9129/Will-Ron-DeSantis-announce-a-run-for-President-before-June-2027",
+        "volume": null
+      },
+      "score": 83,
+      "entities": 1,
+      "diff": 67.1,
+      "partyFlipped": false,
+      "arb": true,
+      "suspicion": [
+        "return of 67.0% is too large to be real; these are probably different questions"
+      ],
+      "arbProfit": 67,
       "buyYesOn": "Polymarket",
       "buyNoOn": "PredictIt"
     },
@@ -135,49 +164,50 @@
       "predictit": {
         "platform": "PredictIt",
         "title": "Will Democratic win the 2028 US presidential election?",
-        "yesPrice": 0.68,
+        "yesPrice": 0.67,
         "noPrice": 0.34,
         "url": "https://www.predictit.org/markets/detail/8181/Which-party-will-win-the-2028-US-presidential-election",
         "volume": null
       },
       "score": 57,
       "entities": 1,
-      "diff": 68,
+      "diff": 67,
       "partyFlipped": false,
       "arb": true,
       "suspicion": [
-        "return of 68.0% is too large to be real; these are probably different questions"
+        "return of 67.0% is too large to be real; these are probably different questions"
       ],
-      "arbProfit": 68,
+      "arbProfit": 67,
       "buyYesOn": "Polymarket",
       "buyNoOn": "PredictIt"
     },
     {
       "polymarket": {
         "platform": "Polymarket",
-        "title": "Will Ron DeSantis announce a presidential run before 2027?",
-        "yesPrice": 0.0185,
-        "noPrice": 0.9815,
-        "url": "https://polymarket.com/event/will-ron-desantis-announce-a-presidential-run-before-2027",
-        "volume": 17084.155291
+        "title": "Will Teddy Riner win the 2027 French presidential election?",
+        "yesPrice": 0.0035,
+        "noPrice": 0.9965,
+        "url": "https://polymarket.com/event/will-teddy-riner-win-the-2027-french-presidential-election",
+        "volume": 1590415.393747
       },
       "predictit": {
         "platform": "PredictIt",
-        "title": "Will Ron DeSantis announce a run for President before June 2027?",
-        "yesPrice": 0.69,
-        "noPrice": 0.49,
-        "url": "https://www.predictit.org/markets/detail/9129/Will-Ron-DeSantis-announce-a-run-for-President-before-June-2027",
+        "title": "Will Teddy Riner win the next French presidential election?",
+        "yesPrice": 0.64,
+        "noPrice": 0.99,
+        "url": "https://www.predictit.org/markets/detail/8766/Who-will-win-the-next-French-presidential-election",
         "volume": null
       },
-      "score": 83,
-      "entities": 1,
-      "diff": 67.2,
+      "score": 100,
+      "entities": 2,
+      "diff": 63.7,
       "partyFlipped": false,
       "arb": true,
       "suspicion": [
-        "return of 67.2% is too large to be real; these are probably different questions"
+        "return of 63.7% is too large to be real; these are probably different questions",
+        "one side asks who is NEXT or closest, a race between candidates; the other asks only whether it happens"
       ],
-      "arbProfit": 67.2,
+      "arbProfit": 63.7,
       "buyYesOn": "Polymarket",
       "buyNoOn": "PredictIt"
     },
@@ -188,13 +218,13 @@
         "yesPrice": 0.0135,
         "noPrice": 0.9865,
         "url": "https://polymarket.com/event/will-jon-ossoff-announce-a-presidential-run-before-2027",
-        "volume": 47474.16149299999
+        "volume": 47597.161492999985
       },
       "predictit": {
         "platform": "PredictIt",
         "title": "Will Jon Ossoff announce a run for President before 2028?",
         "yesPrice": 0.65,
-        "noPrice": 0.41,
+        "noPrice": 0.4,
         "url": "https://www.predictit.org/markets/detail/8570/Will-Jon-Ossoff-announce-a-run-for-President-before-2028",
         "volume": null
       },
@@ -214,39 +244,9 @@
     {
       "polymarket": {
         "platform": "Polymarket",
-        "title": "Will Teddy Riner win the 2027 French presidential election?",
-        "yesPrice": 0.005,
-        "noPrice": 0.995,
-        "url": "https://polymarket.com/event/will-teddy-riner-win-the-2027-french-presidential-election",
-        "volume": 1570280.1123169998
-      },
-      "predictit": {
-        "platform": "PredictIt",
-        "title": "Will Teddy Riner win the next French presidential election?",
-        "yesPrice": 0.64,
-        "noPrice": 0.99,
-        "url": "https://www.predictit.org/markets/detail/8766/Who-will-win-the-next-French-presidential-election",
-        "volume": null
-      },
-      "score": 100,
-      "entities": 2,
-      "diff": 63.5,
-      "partyFlipped": false,
-      "arb": true,
-      "suspicion": [
-        "return of 63.5% is too large to be real; these are probably different questions",
-        "one side asks who is NEXT or closest, a race between candidates; the other asks only whether it happens"
-      ],
-      "arbProfit": 63.5,
-      "buyYesOn": "Polymarket",
-      "buyNoOn": "PredictIt"
-    },
-    {
-      "polymarket": {
-        "platform": "Polymarket",
         "title": "Will Rebeca Grynspan be the next Secretary General of the United Nations?",
-        "yesPrice": 0.443,
-        "noPrice": 0.557,
+        "yesPrice": 0.4505,
+        "noPrice": 0.5495,
         "url": "https://polymarket.com/event/will-rebeca-grynspan-be-the-next-secretary-general-of-the-united-nations",
         "volume": 8548.845206
       },
@@ -260,13 +260,13 @@
       },
       "score": 86,
       "entities": 1,
-      "diff": 54.7,
+      "diff": 54,
       "partyFlipped": false,
       "arb": true,
       "suspicion": [
-        "return of 54.7% is too large to be real; these are probably different questions"
+        "return of 53.9% is too large to be real; these are probably different questions"
       ],
-      "arbProfit": 54.7,
+      "arbProfit": 54,
       "buyYesOn": "Polymarket",
       "buyNoOn": "PredictIt"
     },
@@ -277,7 +277,7 @@
         "yesPrice": 0.023,
         "noPrice": 0.977,
         "url": "https://polymarket.com/event/will-trump-endorse-jd-vance-for-president-before-2027",
-        "volume": 90594.643174
+        "volume": 90594.64317400001
       },
       "predictit": {
         "platform": "PredictIt",
@@ -307,25 +307,25 @@
         "yesPrice": 0.105,
         "noPrice": 0.895,
         "url": "https://polymarket.com/event/pedro-snchez-out-as-pm-of-spain-by-december-31-2026",
-        "volume": 586193.2813990001
+        "volume": 586403.565036
       },
       "predictit": {
         "platform": "PredictIt",
         "title": "Will Pedro Sánchez be the Prime Minister of Spain after the 2026 election?",
-        "yesPrice": 0.4,
+        "yesPrice": 0.39,
         "noPrice": 0.98,
         "url": "https://www.predictit.org/markets/detail/9119/Who-will-be-the-Prime-Minister-of-Spain-after-the-2026-election",
         "volume": null
       },
       "score": 38,
       "entities": 1,
-      "diff": 29.5,
+      "diff": 28.5,
       "partyFlipped": false,
       "arb": true,
       "suspicion": [
-        "return of 29.5% is too large to be real; these are probably different questions"
+        "return of 28.5% is too large to be real; these are probably different questions"
       ],
-      "arbProfit": 29.5,
+      "arbProfit": 28.5,
       "buyYesOn": "Polymarket",
       "buyNoOn": "PredictIt"
     },
@@ -333,10 +333,10 @@
       "polymarket": {
         "platform": "Polymarket",
         "title": "Will Tucker Carlson announce a presidential run before 2027?",
-        "yesPrice": 0.026,
-        "noPrice": 0.974,
+        "yesPrice": 0.0265,
+        "noPrice": 0.9735,
         "url": "https://polymarket.com/event/will-tucker-carlson-announce-a-presidential-run-before-2027",
-        "volume": 35478.605908000005
+        "volume": 35478.605908
       },
       "predictit": {
         "platform": "PredictIt",
@@ -426,7 +426,7 @@
         "yesPrice": 0.0015,
         "noPrice": 0.9985,
         "url": "https://polymarket.com/event/will-vivek-ramaswamy-win-the-2028-republican-presidential-nomination",
-        "volume": 17066140.035788998
+        "volume": 17066140.035789
       },
       "predictit": {
         "platform": "PredictIt",
@@ -452,10 +452,10 @@
       "polymarket": {
         "platform": "Polymarket",
         "title": "Will Marine Le Pen win the 2027 French presidential election?",
-        "yesPrice": 0.443,
-        "noPrice": 0.557,
+        "yesPrice": 0.4415,
+        "noPrice": 0.5585,
         "url": "https://polymarket.com/event/will-marine-le-pen-win-the-2027-french-presidential-election",
-        "volume": 6504804.698956001
+        "volume": 6536521.194279
       },
       "predictit": {
         "platform": "PredictIt",
@@ -467,14 +467,14 @@
       },
       "score": 100,
       "entities": 3,
-      "diff": 16.7,
+      "diff": 16.8,
       "partyFlipped": false,
       "arb": true,
       "suspicion": [
-        "return of 16.7% is too large to be real; these are probably different questions",
+        "return of 16.8% is too large to be real; these are probably different questions",
         "one side asks who is NEXT or closest, a race between candidates; the other asks only whether it happens"
       ],
-      "arbProfit": 16.7,
+      "arbProfit": 16.8,
       "buyYesOn": "Polymarket",
       "buyNoOn": "PredictIt"
     },
@@ -485,7 +485,7 @@
         "yesPrice": 0.0035,
         "noPrice": 0.9965,
         "url": "https://polymarket.com/event/will-ric-zemmour-win-the-2027-french-presidential-election",
-        "volume": 4160016.684901
+        "volume": 4160266.6849009995
       },
       "predictit": {
         "platform": "PredictIt",
@@ -514,7 +514,7 @@
         "yesPrice": 0.105,
         "noPrice": 0.895,
         "url": "https://polymarket.com/event/will-howard-lutnick-leave-the-trump-administration-before-2027",
-        "volume": 250131.102122
+        "volume": 250416.55930200004
       },
       "predictit": {
         "platform": "PredictIt",
@@ -533,6 +533,36 @@
         "deadline years do not overlap (2027 vs 2026)"
       ],
       "arbProfit": 9.5,
+      "buyYesOn": "Polymarket",
+      "buyNoOn": "PredictIt"
+    },
+    {
+      "polymarket": {
+        "platform": "Polymarket",
+        "title": "Will Andy Beshear announce a Presidential run before 2027?",
+        "yesPrice": 0.2125,
+        "noPrice": 0.7875,
+        "url": "https://polymarket.com/event/will-andy-beshear-announce-a-presidential-run-before-2027",
+        "volume": 44918.113413
+      },
+      "predictit": {
+        "platform": "PredictIt",
+        "title": "Will Andy Beshear — Which of these Democratic candidates will announce a 2028 POTUS run first?",
+        "yesPrice": 0.3,
+        "noPrice": 0.77,
+        "url": "https://www.predictit.org/markets/detail/8656/Which-of-these-Democratic-candidates-will-announce-a-2028-POTUS-run-first",
+        "volume": null
+      },
+      "score": 44,
+      "entities": 1,
+      "diff": 8.8,
+      "partyFlipped": false,
+      "arb": true,
+      "suspicion": [
+        "deadline years do not overlap (2027 vs 2028)",
+        "one side asks who is NEXT or closest, a race between candidates; the other asks only whether it happens"
+      ],
+      "arbProfit": 8.8,
       "buyYesOn": "Polymarket",
       "buyNoOn": "PredictIt"
     },
@@ -569,10 +599,10 @@
       "polymarket": {
         "platform": "Polymarket",
         "title": "Xi Jinping out before 2027?",
-        "yesPrice": 0.0145,
-        "noPrice": 0.9855,
+        "yesPrice": 0.014,
+        "noPrice": 0.986,
         "url": "https://polymarket.com/event/xi-jinping-out-before-2027",
-        "volume": 17537752.951137997
+        "volume": 17540218.561138
       },
       "predictit": {
         "platform": "PredictIt",
@@ -627,11 +657,41 @@
     {
       "polymarket": {
         "platform": "Polymarket",
+        "title": "Will J.B. Pritzker announce a Presidential run before 2027?",
+        "yesPrice": 0.0165,
+        "noPrice": 0.9835,
+        "url": "https://polymarket.com/event/will-jb-pritzker-announce-a-presidential-run-before-2027",
+        "volume": 21637.372729000002
+      },
+      "predictit": {
+        "platform": "PredictIt",
+        "title": "Will JB Pritzker — Which of these Democratic candidates will announce a 2028 POTUS run first?",
+        "yesPrice": 0.08,
+        "noPrice": 0.96,
+        "url": "https://www.predictit.org/markets/detail/8656/Which-of-these-Democratic-candidates-will-announce-a-2028-POTUS-run-first",
+        "volume": null
+      },
+      "score": 33,
+      "entities": 1,
+      "diff": 6.4,
+      "partyFlipped": false,
+      "arb": true,
+      "suspicion": [
+        "deadline years do not overlap (2027 vs 2028)",
+        "one side asks who is NEXT or closest, a race between candidates; the other asks only whether it happens"
+      ],
+      "arbProfit": 6.4,
+      "buyYesOn": "Polymarket",
+      "buyNoOn": "PredictIt"
+    },
+    {
+      "polymarket": {
+        "platform": "Polymarket",
         "title": "Will Andy Beshear win the 2028 US Presidential Election?",
         "yesPrice": 0.0175,
         "noPrice": 0.9825,
         "url": "https://polymarket.com/event/will-andy-beshear-win-the-2028-us-presidential-election",
-        "volume": 19572173.741299
+        "volume": 19572187.982357
       },
       "predictit": {
         "platform": "PredictIt",
@@ -654,100 +714,11 @@
     {
       "polymarket": {
         "platform": "Polymarket",
-        "title": "Will J.B. Pritzker announce a Presidential run before 2027?",
-        "yesPrice": 0.017,
-        "noPrice": 0.983,
-        "url": "https://polymarket.com/event/will-jb-pritzker-announce-a-presidential-run-before-2027",
-        "volume": 21637.372729000002
-      },
-      "predictit": {
-        "platform": "PredictIt",
-        "title": "Will JB Pritzker — Which of these Democratic candidates will announce a 2028 POTUS run first?",
-        "yesPrice": 0.08,
-        "noPrice": 0.96,
-        "url": "https://www.predictit.org/markets/detail/8656/Which-of-these-Democratic-candidates-will-announce-a-2028-POTUS-run-first",
-        "volume": null
-      },
-      "score": 33,
-      "entities": 1,
-      "diff": 6.3,
-      "partyFlipped": false,
-      "arb": true,
-      "suspicion": [
-        "deadline years do not overlap (2027 vs 2028)",
-        "one side asks who is NEXT or closest, a race between candidates; the other asks only whether it happens"
-      ],
-      "arbProfit": 6.3,
-      "buyYesOn": "Polymarket",
-      "buyNoOn": "PredictIt"
-    },
-    {
-      "polymarket": {
-        "platform": "Polymarket",
-        "title": "Will David Lisnard win the 2027 French presidential election?",
-        "yesPrice": 0.2395,
-        "noPrice": 0.7605,
-        "url": "https://polymarket.com/event/will-david-lisnard-win-the-2027-french-presidential-election",
-        "volume": 9257814.170282999
-      },
-      "predictit": {
-        "platform": "PredictIt",
-        "title": "Will David Lisnard win the next French presidential election?",
-        "yesPrice": 0.3,
-        "noPrice": 0.9,
-        "url": "https://www.predictit.org/markets/detail/8766/Who-will-win-the-next-French-presidential-election",
-        "volume": null
-      },
-      "score": 100,
-      "entities": 2,
-      "diff": 6.1,
-      "partyFlipped": false,
-      "arb": true,
-      "suspicion": [
-        "one side asks who is NEXT or closest, a race between candidates; the other asks only whether it happens"
-      ],
-      "arbProfit": 6.1,
-      "buyYesOn": "Polymarket",
-      "buyNoOn": "PredictIt"
-    },
-    {
-      "polymarket": {
-        "platform": "Polymarket",
-        "title": "Will Andy Beshear announce a Presidential run before 2027?",
-        "yesPrice": 0.241,
-        "noPrice": 0.759,
-        "url": "https://polymarket.com/event/will-andy-beshear-announce-a-presidential-run-before-2027",
-        "volume": 44838.113413
-      },
-      "predictit": {
-        "platform": "PredictIt",
-        "title": "Will Andy Beshear — Which of these Democratic candidates will announce a 2028 POTUS run first?",
-        "yesPrice": 0.3,
-        "noPrice": 0.77,
-        "url": "https://www.predictit.org/markets/detail/8656/Which-of-these-Democratic-candidates-will-announce-a-2028-POTUS-run-first",
-        "volume": null
-      },
-      "score": 44,
-      "entities": 1,
-      "diff": 5.9,
-      "partyFlipped": false,
-      "arb": true,
-      "suspicion": [
-        "deadline years do not overlap (2027 vs 2028)",
-        "one side asks who is NEXT or closest, a race between candidates; the other asks only whether it happens"
-      ],
-      "arbProfit": 5.9,
-      "buyYesOn": "Polymarket",
-      "buyNoOn": "PredictIt"
-    },
-    {
-      "polymarket": {
-        "platform": "Polymarket",
         "title": "Will Jean-Luc Mélenchon win the 2027 French presidential election?",
         "yesPrice": 0.145,
         "noPrice": 0.855,
         "url": "https://polymarket.com/event/will-jean-luc-mlenchon-win-the-2027-french-presidential-election",
-        "volume": 4412328.601766
+        "volume": 4429453.1747820005
       },
       "predictit": {
         "platform": "PredictIt",
@@ -768,6 +739,33 @@
       "arbProfit": 5.5,
       "buyYesOn": "Polymarket",
       "buyNoOn": "PredictIt"
+    },
+    {
+      "polymarket": {
+        "platform": "Polymarket",
+        "title": "Will J.D. Vance win the 2028 Republican presidential nomination?",
+        "yesPrice": 0.3235,
+        "noPrice": 0.6765,
+        "url": "https://polymarket.com/event/will-jd-vance-win-the-2028-republican-presidential-nomination",
+        "volume": 17692102.165129002
+      },
+      "predictit": {
+        "platform": "PredictIt",
+        "title": "Will JD Vance win the 2028 Republican presidential nomination?",
+        "yesPrice": 0.27,
+        "noPrice": 0.74,
+        "url": "https://www.predictit.org/markets/detail/8152/Who-will-win-the-2028-Republican-presidential-nomination",
+        "volume": null
+      },
+      "score": 83,
+      "entities": 2,
+      "diff": 5.4,
+      "partyFlipped": false,
+      "arb": true,
+      "suspicion": [],
+      "arbProfit": 5.4,
+      "buyYesOn": "PredictIt",
+      "buyNoOn": "Polymarket"
     },
     {
       "polymarket": {
@@ -805,7 +803,7 @@
         "yesPrice": 0.072,
         "noPrice": 0.928,
         "url": "https://polymarket.com/event/will-trump-pardon-elon-musk-before-2027",
-        "volume": 89270.525351
+        "volume": 89922.009604
       },
       "predictit": {
         "platform": "PredictIt",
@@ -830,40 +828,11 @@
     {
       "polymarket": {
         "platform": "Polymarket",
-        "title": "Will Marco Rubio leave the Trump administration before 2027?",
-        "yesPrice": 0.07,
-        "noPrice": 0.93,
-        "url": "https://polymarket.com/event/will-marco-rubio-leave-the-trump-administration-before-2027",
-        "volume": 315027.084526
-      },
-      "predictit": {
-        "platform": "PredictIt",
-        "title": "Will Marco Rubio leave office in 2026?",
-        "yesPrice": 0.02,
-        "noPrice": 0.99,
-        "url": "https://www.predictit.org/markets/detail/9089/Will-Marco-Rubio-leave-office-in-2026",
-        "volume": null
-      },
-      "score": 50,
-      "entities": 1,
-      "diff": 5,
-      "partyFlipped": false,
-      "arb": true,
-      "suspicion": [
-        "deadline years do not overlap (2027 vs 2026)"
-      ],
-      "arbProfit": 5,
-      "buyYesOn": "PredictIt",
-      "buyNoOn": "Polymarket"
-    },
-    {
-      "polymarket": {
-        "platform": "Polymarket",
         "title": "Will Andy Beshear win the 2028 Democratic presidential nomination?",
-        "yesPrice": 0.0325,
-        "noPrice": 0.9675,
+        "yesPrice": 0.033,
+        "noPrice": 0.967,
         "url": "https://polymarket.com/event/will-andy-beshear-win-the-2028-democratic-presidential-nomination-832",
-        "volume": 13762450.518828997
+        "volume": 13767077.788828999
       },
       "predictit": {
         "platform": "PredictIt",
@@ -875,40 +844,11 @@
       },
       "score": 100,
       "entities": 2,
-      "diff": 4.8,
+      "diff": 4.7,
       "partyFlipped": false,
       "arb": true,
       "suspicion": [],
       "arbProfit": 4.7,
-      "buyYesOn": "Polymarket",
-      "buyNoOn": "PredictIt"
-    },
-    {
-      "polymarket": {
-        "platform": "Polymarket",
-        "title": "Will Avigdor Lieberman be the next Prime Minister of Israel?",
-        "yesPrice": 0.0125,
-        "noPrice": 0.9875,
-        "url": "https://polymarket.com/event/will-avigdor-lieberman-be-the-next-prime-minister-of-israel",
-        "volume": 5950682.740414
-      },
-      "predictit": {
-        "platform": "PredictIt",
-        "title": "Will Avigdor Lieberman be the Prime Minister of Israel after the 2026 election?",
-        "yesPrice": 0.06,
-        "noPrice": 0.96,
-        "url": "https://www.predictit.org/markets/detail/8643/Who-will-be-the-Prime-Minister-of-Israel-after-the-2026-election",
-        "volume": null
-      },
-      "score": 83,
-      "entities": 1,
-      "diff": 4.8,
-      "partyFlipped": false,
-      "arb": true,
-      "suspicion": [
-        "one side asks who is NEXT or closest, a race between candidates; the other asks only whether it happens"
-      ],
-      "arbProfit": 4.8,
       "buyYesOn": "Polymarket",
       "buyNoOn": "PredictIt"
     },
@@ -952,7 +892,7 @@
         "platform": "PredictIt",
         "title": "Will Elissa Slotkin win the 2028 Democratic vice presidential nomination?",
         "yesPrice": 0.05,
-        "noPrice": 0.96,
+        "noPrice": 0.97,
         "url": "https://www.predictit.org/markets/detail/8799/Who-will-win-the-2028-Democratic-vice-presidential-nomination",
         "volume": null
       },
@@ -970,10 +910,10 @@
       "polymarket": {
         "platform": "Polymarket",
         "title": "Will Scott Bessent leave the Trump administration before 2027?",
-        "yesPrice": 0.055,
-        "noPrice": 0.945,
+        "yesPrice": 0.0535,
+        "noPrice": 0.9465,
         "url": "https://polymarket.com/event/will-scott-bessent-leave-the-trump-administration-before-2027",
-        "volume": 173957.19366499997
+        "volume": 174027.843665
       },
       "predictit": {
         "platform": "PredictIt",
@@ -985,13 +925,13 @@
       },
       "score": 38,
       "entities": 1,
-      "diff": 4.5,
+      "diff": 4.7,
       "partyFlipped": false,
       "arb": true,
       "suspicion": [
         "one side asks who is NEXT or closest, a race between candidates; the other asks only whether it happens"
       ],
-      "arbProfit": 4.5,
+      "arbProfit": 4.6,
       "buyYesOn": "Polymarket",
       "buyNoOn": "PredictIt"
     },
@@ -1026,8 +966,8 @@
       "polymarket": {
         "platform": "Polymarket",
         "title": "Will Kamala Harris announce a Presidential run before 2027?",
-        "yesPrice": 0.0375,
-        "noPrice": 0.9625,
+        "yesPrice": 0.037,
+        "noPrice": 0.963,
         "url": "https://polymarket.com/event/will-kamala-harris-announce-a-presidential-run-before-2027",
         "volume": 87014.490945
       },
@@ -1048,16 +988,45 @@
         "deadline years do not overlap (2027 vs 2028)",
         "one side asks who is NEXT or closest, a race between candidates; the other asks only whether it happens"
       ],
-      "arbProfit": 4.2,
+      "arbProfit": 4.3,
       "buyYesOn": "Polymarket",
       "buyNoOn": "PredictIt"
     },
     {
       "polymarket": {
         "platform": "Polymarket",
+        "title": "Will Marco Rubio leave the Trump administration before 2027?",
+        "yesPrice": 0.07,
+        "noPrice": 0.93,
+        "url": "https://polymarket.com/event/will-marco-rubio-leave-the-trump-administration-before-2027",
+        "volume": 315090.648342
+      },
+      "predictit": {
+        "platform": "PredictIt",
+        "title": "Will Marco Rubio leave office in 2026?",
+        "yesPrice": 0.03,
+        "noPrice": 0.98,
+        "url": "https://www.predictit.org/markets/detail/9089/Will-Marco-Rubio-leave-office-in-2026",
+        "volume": null
+      },
+      "score": 50,
+      "entities": 1,
+      "diff": 4,
+      "partyFlipped": false,
+      "arb": true,
+      "suspicion": [
+        "deadline years do not overlap (2027 vs 2026)"
+      ],
+      "arbProfit": 4,
+      "buyYesOn": "PredictIt",
+      "buyNoOn": "Polymarket"
+    },
+    {
+      "polymarket": {
+        "platform": "Polymarket",
         "title": "Will Lee Zeldin leave the Trump administration before 2027?",
-        "yesPrice": 0.058,
-        "noPrice": 0.942,
+        "yesPrice": 0.059,
+        "noPrice": 0.941,
         "url": "https://polymarket.com/event/will-lee-zeldin-leave-the-trump-administration-before-2027",
         "volume": 42305.08681200001
       },
@@ -1071,13 +1040,13 @@
       },
       "score": 38,
       "entities": 1,
-      "diff": 3.8,
+      "diff": 3.9,
       "partyFlipped": false,
       "arb": true,
       "suspicion": [
         "one side asks who is NEXT or closest, a race between candidates; the other asks only whether it happens"
       ],
-      "arbProfit": 3.8,
+      "arbProfit": 3.9,
       "buyYesOn": "PredictIt",
       "buyNoOn": "Polymarket"
     },
@@ -1085,10 +1054,10 @@
       "polymarket": {
         "platform": "Polymarket",
         "title": "Will Jordan Bardella win the 2027 French presidential election?",
-        "yesPrice": 0.0135,
-        "noPrice": 0.9865,
+        "yesPrice": 0.0125,
+        "noPrice": 0.9875,
         "url": "https://polymarket.com/event/will-jordan-bardella-win-the-2027-french-presidential-election",
-        "volume": 4183989.42628
+        "volume": 4202092.488589999
       },
       "predictit": {
         "platform": "PredictIt",
@@ -1100,6 +1069,64 @@
       },
       "score": 100,
       "entities": 2,
+      "diff": 3.8,
+      "partyFlipped": false,
+      "arb": true,
+      "suspicion": [
+        "one side asks who is NEXT or closest, a race between candidates; the other asks only whether it happens"
+      ],
+      "arbProfit": 3.8,
+      "buyYesOn": "Polymarket",
+      "buyNoOn": "PredictIt"
+    },
+    {
+      "polymarket": {
+        "platform": "Polymarket",
+        "title": "Will David Lisnard win the 2027 French presidential election?",
+        "yesPrice": 0.2615,
+        "noPrice": 0.7385,
+        "url": "https://polymarket.com/event/will-david-lisnard-win-the-2027-french-presidential-election",
+        "volume": 9305144.84619
+      },
+      "predictit": {
+        "platform": "PredictIt",
+        "title": "Will David Lisnard win the next French presidential election?",
+        "yesPrice": 0.3,
+        "noPrice": 0.9,
+        "url": "https://www.predictit.org/markets/detail/8766/Who-will-win-the-next-French-presidential-election",
+        "volume": null
+      },
+      "score": 100,
+      "entities": 2,
+      "diff": 3.8,
+      "partyFlipped": false,
+      "arb": true,
+      "suspicion": [
+        "one side asks who is NEXT or closest, a race between candidates; the other asks only whether it happens"
+      ],
+      "arbProfit": 3.8,
+      "buyYesOn": "Polymarket",
+      "buyNoOn": "PredictIt"
+    },
+    {
+      "polymarket": {
+        "platform": "Polymarket",
+        "title": "Will Avigdor Lieberman be the next Prime Minister of Israel?",
+        "yesPrice": 0.013,
+        "noPrice": 0.987,
+        "url": "https://polymarket.com/event/will-avigdor-lieberman-be-the-next-prime-minister-of-israel",
+        "volume": 5963934.080821999
+      },
+      "predictit": {
+        "platform": "PredictIt",
+        "title": "Will Avigdor Lieberman be the Prime Minister of Israel after the 2026 election?",
+        "yesPrice": 0.05,
+        "noPrice": 0.96,
+        "url": "https://www.predictit.org/markets/detail/8643/Who-will-be-the-Prime-Minister-of-Israel-after-the-2026-election",
+        "volume": null
+      },
+      "score": 83,
+      "entities": 1,
       "diff": 3.7,
       "partyFlipped": false,
       "arb": true,
@@ -1144,7 +1171,7 @@
         "yesPrice": 0.0065,
         "noPrice": 0.9935,
         "url": "https://polymarket.com/event/will-glenn-youngkin-win-the-2028-us-presidential-election",
-        "volume": 29134613.496512
+        "volume": 29134613.496512003
       },
       "predictit": {
         "platform": "PredictIt",
@@ -1171,7 +1198,7 @@
         "yesPrice": 0.0175,
         "noPrice": 0.9825,
         "url": "https://polymarket.com/event/will-jb-pritzker-win-the-2028-democratic-presidential-nomination-288",
-        "volume": 16124148.747048996
+        "volume": 16124160.950813
       },
       "predictit": {
         "platform": "PredictIt",
@@ -1194,36 +1221,9 @@
     {
       "polymarket": {
         "platform": "Polymarket",
-        "title": "Will J.D. Vance win the 2028 Republican presidential nomination?",
-        "yesPrice": 0.3215,
-        "noPrice": 0.6785,
-        "url": "https://polymarket.com/event/will-jd-vance-win-the-2028-republican-presidential-nomination",
-        "volume": 17691812.135077003
-      },
-      "predictit": {
-        "platform": "PredictIt",
-        "title": "Will JD Vance win the 2028 Republican presidential nomination?",
-        "yesPrice": 0.29,
-        "noPrice": 0.72,
-        "url": "https://www.predictit.org/markets/detail/8152/Who-will-win-the-2028-Republican-presidential-nomination",
-        "volume": null
-      },
-      "score": 83,
-      "entities": 2,
-      "diff": 3.2,
-      "partyFlipped": false,
-      "arb": true,
-      "suspicion": [],
-      "arbProfit": 3.2,
-      "buyYesOn": "PredictIt",
-      "buyNoOn": "Polymarket"
-    },
-    {
-      "polymarket": {
-        "platform": "Polymarket",
         "title": "Will John Ratcliffe leave the Trump administration before 2027?",
-        "yesPrice": 0.052,
-        "noPrice": 0.948,
+        "yesPrice": 0.053,
+        "noPrice": 0.947,
         "url": "https://polymarket.com/event/will-john-ratcliffe-leave-the-trump-administration-before-2027",
         "volume": 20278.49825
       },
@@ -1237,13 +1237,13 @@
       },
       "score": 38,
       "entities": 1,
-      "diff": 3.2,
+      "diff": 3.3,
       "partyFlipped": false,
       "arb": true,
       "suspicion": [
         "one side asks who is NEXT or closest, a race between candidates; the other asks only whether it happens"
       ],
-      "arbProfit": 3.2,
+      "arbProfit": 3.3,
       "buyYesOn": "PredictIt",
       "buyNoOn": "Polymarket"
     },
@@ -1251,10 +1251,10 @@
       "polymarket": {
         "platform": "Polymarket",
         "title": "Will Rahm Emanuel win the 2028 Democratic presidential nomination?",
-        "yesPrice": 0.01,
-        "noPrice": 0.99,
+        "yesPrice": 0.0105,
+        "noPrice": 0.9895,
         "url": "https://polymarket.com/event/will-rahm-emanuel-win-the-2028-democratic-presidential-nomination-299",
-        "volume": 15277739.167801999
+        "volume": 15277852.507801998
       },
       "predictit": {
         "platform": "PredictIt",
@@ -1266,7 +1266,7 @@
       },
       "score": 100,
       "entities": 2,
-      "diff": 3,
+      "diff": 2.9,
       "partyFlipped": false,
       "arb": true,
       "suspicion": [],
@@ -1277,65 +1277,11 @@
     {
       "polymarket": {
         "platform": "Polymarket",
-        "title": "Will Gavin Newsom win the 2028 US Presidential Election?",
-        "yesPrice": 0.0725,
-        "noPrice": 0.9275,
-        "url": "https://polymarket.com/event/will-gavin-newsom-win-the-2028-us-presidential-election",
-        "volume": 19386468.120479006
-      },
-      "predictit": {
-        "platform": "PredictIt",
-        "title": "Will Gavin Newsom win the 2028 US presidential election?",
-        "yesPrice": 0.1,
-        "noPrice": 0.91,
-        "url": "https://www.predictit.org/markets/detail/8171/Who-will-win-the-2028-US-presidential-election",
-        "volume": null
-      },
-      "score": 100,
-      "entities": 2,
-      "diff": 2.8,
-      "partyFlipped": false,
-      "arb": true,
-      "suspicion": [],
-      "arbProfit": 2.7,
-      "buyYesOn": "Polymarket",
-      "buyNoOn": "PredictIt"
-    },
-    {
-      "polymarket": {
-        "platform": "Polymarket",
-        "title": "Will Nikki Haley win the 2028 Republican presidential nomination?",
-        "yesPrice": 0.0035,
-        "noPrice": 0.9965,
-        "url": "https://polymarket.com/event/will-nikki-haley-win-the-2028-republican-presidential-nomination",
-        "volume": 11626461.201515999
-      },
-      "predictit": {
-        "platform": "PredictIt",
-        "title": "Will Nikki Haley win the 2028 Republican presidential primary in New Hampshire?",
-        "yesPrice": 0.03,
-        "noPrice": 0.98,
-        "url": "https://www.predictit.org/markets/detail/8357/Who-will-win-the-2028-Republican-presidential-primary-in-New-Hampshire",
-        "volume": null
-      },
-      "score": 63,
-      "entities": 1,
-      "diff": 2.7,
-      "partyFlipped": false,
-      "arb": true,
-      "suspicion": [],
-      "arbProfit": 2.7,
-      "buyYesOn": "Polymarket",
-      "buyNoOn": "PredictIt"
-    },
-    {
-      "polymarket": {
-        "platform": "Polymarket",
         "title": "Will Marjorie Taylor Greene win the 2028 Republican presidential nomination?",
         "yesPrice": 0.0035,
         "noPrice": 0.9965,
         "url": "https://polymarket.com/event/will-marjorie-taylor-greene-win-the-2028-republican-presidential-nomination",
-        "volume": 7112543.948265001
+        "volume": 7112543.948265
       },
       "predictit": {
         "platform": "PredictIt",
@@ -1358,17 +1304,17 @@
     {
       "polymarket": {
         "platform": "Polymarket",
-        "title": "Will Gavin Newsom win the 2028 Democratic presidential nomination?",
-        "yesPrice": 0.0935,
-        "noPrice": 0.9065,
-        "url": "https://polymarket.com/event/will-gavin-newsom-win-the-2028-democratic-presidential-nomination-568",
-        "volume": 28859427.672865998
+        "title": "Will Ro Khanna win the 2028 Democratic presidential nomination?",
+        "yesPrice": 0.014,
+        "noPrice": 0.986,
+        "url": "https://polymarket.com/event/will-ro-khanna-win-the-2028-democratic-presidential-nomination",
+        "volume": 12041076.791615
       },
       "predictit": {
         "platform": "PredictIt",
-        "title": "Will Gavin Newsom win the 2028 Democratic presidential nomination?",
-        "yesPrice": 0.12,
-        "noPrice": 0.89,
+        "title": "Will Ro Khanna win the 2028 Democratic presidential nomination?",
+        "yesPrice": 0.04,
+        "noPrice": 0.97,
         "url": "https://www.predictit.org/markets/detail/8153/Who-will-win-the-2028-Democratic-presidential-nomination",
         "volume": null
       },
@@ -1385,11 +1331,65 @@
     {
       "polymarket": {
         "platform": "Polymarket",
+        "title": "Will Donald Trump win the 2028 Republican presidential nomination?",
+        "yesPrice": 0.0045,
+        "noPrice": 0.9955,
+        "url": "https://polymarket.com/event/will-donald-trump-win-the-2028-republican-presidential-nomination",
+        "volume": 10061577.659440001
+      },
+      "predictit": {
+        "platform": "PredictIt",
+        "title": "Will Donald Trump win the 2028 Republican presidential nomination?",
+        "yesPrice": 0.03,
+        "noPrice": 0.98,
+        "url": "https://www.predictit.org/markets/detail/8152/Who-will-win-the-2028-Republican-presidential-nomination",
+        "volume": null
+      },
+      "score": 100,
+      "entities": 1,
+      "diff": 2.6,
+      "partyFlipped": false,
+      "arb": true,
+      "suspicion": [],
+      "arbProfit": 2.6,
+      "buyYesOn": "Polymarket",
+      "buyNoOn": "PredictIt"
+    },
+    {
+      "polymarket": {
+        "platform": "Polymarket",
+        "title": "Will Nikki Haley win the 2028 Republican presidential nomination?",
+        "yesPrice": 0.0045,
+        "noPrice": 0.9955,
+        "url": "https://polymarket.com/event/will-nikki-haley-win-the-2028-republican-presidential-nomination",
+        "volume": 11647814.531515999
+      },
+      "predictit": {
+        "platform": "PredictIt",
+        "title": "Will Nikki Haley win the 2028 Republican presidential primary in New Hampshire?",
+        "yesPrice": 0.03,
+        "noPrice": 0.98,
+        "url": "https://www.predictit.org/markets/detail/8357/Who-will-win-the-2028-Republican-presidential-primary-in-New-Hampshire",
+        "volume": null
+      },
+      "score": 63,
+      "entities": 1,
+      "diff": 2.6,
+      "partyFlipped": false,
+      "arb": true,
+      "suspicion": [],
+      "arbProfit": 2.6,
+      "buyYesOn": "Polymarket",
+      "buyNoOn": "PredictIt"
+    },
+    {
+      "polymarket": {
+        "platform": "Polymarket",
         "title": "Will Tucker Carlson win the 2028 US Presidential Election?",
         "yesPrice": 0.0155,
         "noPrice": 0.9845,
         "url": "https://polymarket.com/event/will-tucker-carlson-win-the-2028-us-presidential-election",
-        "volume": 14648721.752115002
+        "volume": 14648748.139981002
       },
       "predictit": {
         "platform": "PredictIt",
@@ -1413,10 +1413,10 @@
       "polymarket": {
         "platform": "Polymarket",
         "title": "Will Brian Kemp win the 2028 Republican presidential nomination?",
-        "yesPrice": 0.0155,
-        "noPrice": 0.9845,
+        "yesPrice": 0.015,
+        "noPrice": 0.985,
         "url": "https://polymarket.com/event/will-brian-kemp-win-the-2028-republican-presidential-nomination",
-        "volume": 18764717.447779
+        "volume": 18765989.521022998
       },
       "predictit": {
         "platform": "PredictIt",
@@ -1439,56 +1439,31 @@
     {
       "polymarket": {
         "platform": "Polymarket",
-        "title": "Supreme Court vacancy in 2026?",
-        "yesPrice": 0.052,
-        "noPrice": 0.948,
-        "url": "https://polymarket.com/event/supreme-court-vacancy-in-2026",
-        "volume": 35384.88271499999
+        "title": "Will Benjamin Netanyahu be the next Prime Minister of Israel?",
+        "yesPrice": 0.144,
+        "noPrice": 0.856,
+        "url": "https://polymarket.com/event/will-benjamin-netanyahu-be-the-next-prime-minister-of-israel",
+        "volume": 36621170.689727
       },
       "predictit": {
         "platform": "PredictIt",
-        "title": "Will there be a Supreme Court vacancy in 2026?",
-        "yesPrice": 0.03,
-        "noPrice": 0.99,
-        "url": "https://www.predictit.org/markets/detail/9060/Will-there-be-a-Supreme-Court-vacancy-in-2026",
+        "title": "Will Benjamin Netanyahu be the Prime Minister of Israel after the 2026 election?",
+        "yesPrice": 0.12,
+        "noPrice": 0.92,
+        "url": "https://www.predictit.org/markets/detail/8643/Who-will-be-the-Prime-Minister-of-Israel-after-the-2026-election",
         "volume": null
       },
-      "score": 75,
+      "score": 83,
       "entities": 1,
-      "diff": 2.2,
+      "diff": 2.4,
       "partyFlipped": false,
       "arb": true,
-      "suspicion": [],
-      "arbProfit": 2.2,
+      "suspicion": [
+        "one side asks who is NEXT or closest, a race between candidates; the other asks only whether it happens"
+      ],
+      "arbProfit": 2.4,
       "buyYesOn": "PredictIt",
       "buyNoOn": "Polymarket"
-    },
-    {
-      "polymarket": {
-        "platform": "Polymarket",
-        "title": "Will Jon Ossoff win the 2028 US Presidential Election?",
-        "yesPrice": 0.1585,
-        "noPrice": 0.8415,
-        "url": "https://polymarket.com/event/will-jon-ossoff-win-the-2028-us-presidential-election",
-        "volume": 7208835.897010001
-      },
-      "predictit": {
-        "platform": "PredictIt",
-        "title": "Will Jon Ossoff win the 2028 US presidential election?",
-        "yesPrice": 0.18,
-        "noPrice": 0.83,
-        "url": "https://www.predictit.org/markets/detail/8171/Who-will-win-the-2028-US-presidential-election",
-        "volume": null
-      },
-      "score": 100,
-      "entities": 2,
-      "diff": 2.1,
-      "partyFlipped": false,
-      "arb": true,
-      "suspicion": [],
-      "arbProfit": 2.1,
-      "buyYesOn": "Polymarket",
-      "buyNoOn": "PredictIt"
     },
     {
       "polymarket": {
@@ -1497,7 +1472,7 @@
         "yesPrice": 0.0205,
         "noPrice": 0.9795,
         "url": "https://polymarket.com/event/will-wes-moore-win-the-2028-democratic-presidential-nomination-714",
-        "volume": 18907783.502837997
+        "volume": 18907856.322838
       },
       "predictit": {
         "platform": "PredictIt",
@@ -1547,6 +1522,33 @@
     {
       "polymarket": {
         "platform": "Polymarket",
+        "title": "Will Gavin Newsom win the 2028 US Presidential Election?",
+        "yesPrice": 0.0705,
+        "noPrice": 0.9295,
+        "url": "https://polymarket.com/event/will-gavin-newsom-win-the-2028-us-presidential-election",
+        "volume": 19393246.867803004
+      },
+      "predictit": {
+        "platform": "PredictIt",
+        "title": "Will Gavin Newsom win the 2028 US presidential election?",
+        "yesPrice": 0.09,
+        "noPrice": 0.92,
+        "url": "https://www.predictit.org/markets/detail/8171/Who-will-win-the-2028-US-presidential-election",
+        "volume": null
+      },
+      "score": 100,
+      "entities": 2,
+      "diff": 2,
+      "partyFlipped": false,
+      "arb": true,
+      "suspicion": [],
+      "arbProfit": 1.9,
+      "buyYesOn": "Polymarket",
+      "buyNoOn": "PredictIt"
+    },
+    {
+      "polymarket": {
+        "platform": "Polymarket",
         "title": "Will Pete Hegseth win the 2028 US Presidential Election?",
         "yesPrice": 0.0005,
         "noPrice": 0.9995,
@@ -1574,23 +1576,50 @@
     {
       "polymarket": {
         "platform": "Polymarket",
-        "title": "Will Marco Rubio win the 2028 Republican presidential nomination?",
-        "yesPrice": 0.2405,
-        "noPrice": 0.7595,
-        "url": "https://polymarket.com/event/will-marco-rubio-win-the-2028-republican-presidential-nomination",
-        "volume": 12287833.234492
+        "title": "Supreme Court vacancy in 2026?",
+        "yesPrice": 0.05,
+        "noPrice": 0.95,
+        "url": "https://polymarket.com/event/supreme-court-vacancy-in-2026",
+        "volume": 35384.88271499999
       },
       "predictit": {
         "platform": "PredictIt",
-        "title": "Will Marco Rubio win the 2028 Republican presidential nomination?",
-        "yesPrice": 0.22,
-        "noPrice": 0.79,
-        "url": "https://www.predictit.org/markets/detail/8152/Who-will-win-the-2028-Republican-presidential-nomination",
+        "title": "Will there be a Supreme Court vacancy in 2026?",
+        "yesPrice": 0.03,
+        "noPrice": 0.99,
+        "url": "https://www.predictit.org/markets/detail/9060/Will-there-be-a-Supreme-Court-vacancy-in-2026",
+        "volume": null
+      },
+      "score": 75,
+      "entities": 1,
+      "diff": 2,
+      "partyFlipped": false,
+      "arb": true,
+      "suspicion": [],
+      "arbProfit": 2,
+      "buyYesOn": "PredictIt",
+      "buyNoOn": "Polymarket"
+    },
+    {
+      "polymarket": {
+        "platform": "Polymarket",
+        "title": "Will Jon Ossoff win the 2028 Democratic presidential nomination?",
+        "yesPrice": 0.2495,
+        "noPrice": 0.7505,
+        "url": "https://polymarket.com/event/will-jon-ossoff-win-the-2028-democratic-presidential-nomination-885",
+        "volume": 15384314.951876996
+      },
+      "predictit": {
+        "platform": "PredictIt",
+        "title": "Will Jon Ossoff win the 2028 Democratic presidential nomination?",
+        "yesPrice": 0.23,
+        "noPrice": 0.78,
+        "url": "https://www.predictit.org/markets/detail/8153/Who-will-win-the-2028-Democratic-presidential-nomination",
         "volume": null
       },
       "score": 100,
       "entities": 2,
-      "diff": 2,
+      "diff": 1.9,
       "partyFlipped": false,
       "arb": true,
       "suspicion": [],
@@ -1659,7 +1688,7 @@
         "yesPrice": 0.0405,
         "noPrice": 0.9595,
         "url": "https://polymarket.com/event/will-ron-desantis-win-the-2028-us-presidential-election",
-        "volume": 13228027.405579
+        "volume": 13229858.395578997
       },
       "predictit": {
         "platform": "PredictIt",
@@ -1709,83 +1738,29 @@
     {
       "polymarket": {
         "platform": "Polymarket",
-        "title": "Will Marco Rubio win the 2028 US Presidential Election?",
-        "yesPrice": 0.0825,
-        "noPrice": 0.9175,
-        "url": "https://polymarket.com/event/will-marco-rubio-win-the-2028-us-presidential-election",
-        "volume": 14036479.091527002
+        "title": "Will Gavin Newsom win the 2028 Democratic presidential nomination?",
+        "yesPrice": 0.0935,
+        "noPrice": 0.9065,
+        "url": "https://polymarket.com/event/will-gavin-newsom-win-the-2028-democratic-presidential-nomination-568",
+        "volume": 28859895.941802997
       },
       "predictit": {
         "platform": "PredictIt",
-        "title": "Will Marco Rubio win the 2028 US presidential election?",
-        "yesPrice": 0.1,
-        "noPrice": 0.91,
-        "url": "https://www.predictit.org/markets/detail/8171/Who-will-win-the-2028-US-presidential-election",
+        "title": "Will Gavin Newsom win the 2028 Democratic presidential nomination?",
+        "yesPrice": 0.11,
+        "noPrice": 0.9,
+        "url": "https://www.predictit.org/markets/detail/8153/Who-will-win-the-2028-Democratic-presidential-nomination",
         "volume": null
       },
       "score": 100,
       "entities": 2,
-      "diff": 1.8,
+      "diff": 1.7,
       "partyFlipped": false,
       "arb": true,
       "suspicion": [],
-      "arbProfit": 1.7,
+      "arbProfit": 1.6,
       "buyYesOn": "Polymarket",
       "buyNoOn": "PredictIt"
-    },
-    {
-      "polymarket": {
-        "platform": "Polymarket",
-        "title": "Will Alexandria Ocasio-Cortez win the 2028 Democratic presidential nomination?",
-        "yesPrice": 0.1775,
-        "noPrice": 0.8225,
-        "url": "https://polymarket.com/event/will-alexandria-ocasio-cortez-win-the-2028-democratic-presidential-nomination-653",
-        "volume": 16287418.217987005
-      },
-      "predictit": {
-        "platform": "PredictIt",
-        "title": "Will A. Ocasio-Cortez win the 2028 Democratic presidential nomination?",
-        "yesPrice": 0.16,
-        "noPrice": 0.85,
-        "url": "https://www.predictit.org/markets/detail/8153/Who-will-win-the-2028-Democratic-presidential-nomination",
-        "volume": null
-      },
-      "score": 86,
-      "entities": 1,
-      "diff": 1.7,
-      "partyFlipped": false,
-      "arb": true,
-      "suspicion": [],
-      "arbProfit": 1.7,
-      "buyYesOn": "PredictIt",
-      "buyNoOn": "Polymarket"
-    },
-    {
-      "polymarket": {
-        "platform": "Polymarket",
-        "title": "Will Jon Ossoff win the 2028 Democratic presidential nomination?",
-        "yesPrice": 0.237,
-        "noPrice": 0.763,
-        "url": "https://polymarket.com/event/will-jon-ossoff-win-the-2028-democratic-presidential-nomination-885",
-        "volume": 15378875.843675999
-      },
-      "predictit": {
-        "platform": "PredictIt",
-        "title": "Will Jon Ossoff win the 2028 Democratic presidential nomination?",
-        "yesPrice": 0.22,
-        "noPrice": 0.79,
-        "url": "https://www.predictit.org/markets/detail/8153/Who-will-win-the-2028-Democratic-presidential-nomination",
-        "volume": null
-      },
-      "score": 100,
-      "entities": 2,
-      "diff": 1.7,
-      "partyFlipped": false,
-      "arb": true,
-      "suspicion": [],
-      "arbProfit": 1.7,
-      "buyYesOn": "PredictIt",
-      "buyNoOn": "Polymarket"
     },
     {
       "polymarket": {
@@ -1794,7 +1769,7 @@
         "yesPrice": 0.0035,
         "noPrice": 0.9965,
         "url": "https://polymarket.com/event/will-ruben-gallego-win-the-2028-democratic-presidential-nomination",
-        "volume": 9528829.700607
+        "volume": 9529829.700606998
       },
       "predictit": {
         "platform": "PredictIt",
@@ -1817,38 +1792,11 @@
     {
       "polymarket": {
         "platform": "Polymarket",
-        "title": "Will Ro Khanna win the 2028 Democratic presidential nomination?",
-        "yesPrice": 0.0135,
-        "noPrice": 0.9865,
-        "url": "https://polymarket.com/event/will-ro-khanna-win-the-2028-democratic-presidential-nomination",
-        "volume": 12040885.012614999
-      },
-      "predictit": {
-        "platform": "PredictIt",
-        "title": "Will Ro Khanna win the 2028 Democratic presidential nomination?",
-        "yesPrice": 0.03,
-        "noPrice": 0.98,
-        "url": "https://www.predictit.org/markets/detail/8153/Who-will-win-the-2028-Democratic-presidential-nomination",
-        "volume": null
-      },
-      "score": 100,
-      "entities": 2,
-      "diff": 1.7,
-      "partyFlipped": false,
-      "arb": true,
-      "suspicion": [],
-      "arbProfit": 1.7,
-      "buyYesOn": "Polymarket",
-      "buyNoOn": "PredictIt"
-    },
-    {
-      "polymarket": {
-        "platform": "Polymarket",
         "title": "Will Alexandria Ocasio-Cortez win the 2028 US Presidential Election?",
         "yesPrice": 0.1065,
         "noPrice": 0.8935,
         "url": "https://polymarket.com/event/will-alexandria-ocasio-cortez-win-the-2028-us-presidential-election",
-        "volume": 14808640.720091
+        "volume": 14809474.000091003
       },
       "predictit": {
         "platform": "PredictIt",
@@ -1871,29 +1819,31 @@
     {
       "polymarket": {
         "platform": "Polymarket",
-        "title": "Will Kamala Harris win the 2028 Democratic presidential nomination?",
-        "yesPrice": 0.0445,
-        "noPrice": 0.9555,
-        "url": "https://polymarket.com/event/will-kamala-harris-win-the-2028-democratic-presidential-nomination-641",
-        "volume": 15181037.939471
+        "title": "Will Russell Vought leave the Trump administration before 2027?",
+        "yesPrice": 0.0375,
+        "noPrice": 0.9625,
+        "url": "https://polymarket.com/event/will-russell-vought-leave-the-trump-administration-before-2027",
+        "volume": 7267.496480000001
       },
       "predictit": {
         "platform": "PredictIt",
-        "title": "Will Kamala Harris win the 2028 Democratic presidential nomination?",
-        "yesPrice": 0.06,
-        "noPrice": 0.95,
-        "url": "https://www.predictit.org/markets/detail/8153/Who-will-win-the-2028-Democratic-presidential-nomination",
+        "title": "Will Russell Vought be the next Cabinet member to leave office?",
+        "yesPrice": 0.02,
+        "noPrice": 0.99,
+        "url": "https://www.predictit.org/markets/detail/8850/Who-will-be-the-next-Cabinet-member-to-leave-office",
         "volume": null
       },
-      "score": 100,
-      "entities": 2,
-      "diff": 1.6,
+      "score": 38,
+      "entities": 1,
+      "diff": 1.7,
       "partyFlipped": false,
       "arb": true,
-      "suspicion": [],
-      "arbProfit": 1.6,
-      "buyYesOn": "Polymarket",
-      "buyNoOn": "PredictIt"
+      "suspicion": [
+        "one side asks who is NEXT or closest, a race between candidates; the other asks only whether it happens"
+      ],
+      "arbProfit": 1.7,
+      "buyYesOn": "PredictIt",
+      "buyNoOn": "Polymarket"
     },
     {
       "polymarket": {
@@ -1902,7 +1852,7 @@
         "yesPrice": 0.034,
         "noPrice": 0.966,
         "url": "https://polymarket.com/event/will-pete-buttigieg-win-the-2028-us-presidential-election",
-        "volume": 8919124.399437997
+        "volume": 8919291.999437997
       },
       "predictit": {
         "platform": "PredictIt",
@@ -1929,7 +1879,7 @@
         "yesPrice": 0.0045,
         "noPrice": 0.9955,
         "url": "https://polymarket.com/event/will-gretchen-whitmer-win-the-2028-us-presidential-election",
-        "volume": 15912699.766513
+        "volume": 15912699.766513003
       },
       "predictit": {
         "platform": "PredictIt",
@@ -1941,33 +1891,6 @@
       },
       "score": 100,
       "entities": 2,
-      "diff": 1.6,
-      "partyFlipped": false,
-      "arb": true,
-      "suspicion": [],
-      "arbProfit": 1.6,
-      "buyYesOn": "Polymarket",
-      "buyNoOn": "PredictIt"
-    },
-    {
-      "polymarket": {
-        "platform": "Polymarket",
-        "title": "Will Donald Trump win the 2028 Republican presidential nomination?",
-        "yesPrice": 0.0045,
-        "noPrice": 0.9955,
-        "url": "https://polymarket.com/event/will-donald-trump-win-the-2028-republican-presidential-nomination",
-        "volume": 10061577.65944
-      },
-      "predictit": {
-        "platform": "PredictIt",
-        "title": "Will Donald Trump win the 2028 Republican presidential nomination?",
-        "yesPrice": 0.02,
-        "noPrice": 0.99,
-        "url": "https://www.predictit.org/markets/detail/8152/Who-will-win-the-2028-Republican-presidential-nomination",
-        "volume": null
-      },
-      "score": 100,
-      "entities": 1,
       "diff": 1.6,
       "partyFlipped": false,
       "arb": true,
@@ -2006,41 +1929,11 @@
     {
       "polymarket": {
         "platform": "Polymarket",
-        "title": "Will Mark Kelly announce a Presidential run before 2027?",
-        "yesPrice": 0.054,
-        "noPrice": 0.946,
-        "url": "https://polymarket.com/event/will-mark-kelly-announce-a-presidential-run-before-2027",
-        "volume": 16627.455500999997
-      },
-      "predictit": {
-        "platform": "PredictIt",
-        "title": "Will Mark Kelly — Which of these Democratic candidates will announce a 2028 POTUS run first?",
-        "yesPrice": 0.07,
-        "noPrice": 0.98,
-        "url": "https://www.predictit.org/markets/detail/8656/Which-of-these-Democratic-candidates-will-announce-a-2028-POTUS-run-first",
-        "volume": null
-      },
-      "score": 44,
-      "entities": 1,
-      "diff": 1.6,
-      "partyFlipped": false,
-      "arb": true,
-      "suspicion": [
-        "deadline years do not overlap (2027 vs 2028)",
-        "one side asks who is NEXT or closest, a race between candidates; the other asks only whether it happens"
-      ],
-      "arbProfit": 1.6,
-      "buyYesOn": "Polymarket",
-      "buyNoOn": "PredictIt"
-    },
-    {
-      "polymarket": {
-        "platform": "Polymarket",
         "title": "Will Pete Hegseth leave the Trump administration before 2027?",
         "yesPrice": 0.115,
         "noPrice": 0.885,
         "url": "https://polymarket.com/event/will-pete-hegseth-leave-the-trump-administration-before-2027",
-        "volume": 583440.413649
+        "volume": 583821.1661919999
       },
       "predictit": {
         "platform": "PredictIt",
@@ -2069,7 +1962,7 @@
         "yesPrice": 0.0565,
         "noPrice": 0.9435,
         "url": "https://polymarket.com/event/will-pete-buttigieg-win-the-2028-democratic-presidential-nomination-687",
-        "volume": 12852894.040114999
+        "volume": 12856763.657835
       },
       "predictit": {
         "platform": "PredictIt",
@@ -2092,11 +1985,65 @@
     {
       "polymarket": {
         "platform": "Polymarket",
+        "title": "Will Marco Rubio win the 2028 Republican presidential nomination?",
+        "yesPrice": 0.2345,
+        "noPrice": 0.7655,
+        "url": "https://polymarket.com/event/will-marco-rubio-win-the-2028-republican-presidential-nomination",
+        "volume": 12417476.848146
+      },
+      "predictit": {
+        "platform": "PredictIt",
+        "title": "Will Marco Rubio win the 2028 Republican presidential nomination?",
+        "yesPrice": 0.22,
+        "noPrice": 0.79,
+        "url": "https://www.predictit.org/markets/detail/8152/Who-will-win-the-2028-Republican-presidential-nomination",
+        "volume": null
+      },
+      "score": 100,
+      "entities": 2,
+      "diff": 1.4,
+      "partyFlipped": false,
+      "arb": true,
+      "suspicion": [],
+      "arbProfit": 1.4,
+      "buyYesOn": "PredictIt",
+      "buyNoOn": "Polymarket"
+    },
+    {
+      "polymarket": {
+        "platform": "Polymarket",
+        "title": "Will Kamala Harris win the 2028 Democratic presidential nomination?",
+        "yesPrice": 0.0465,
+        "noPrice": 0.9535,
+        "url": "https://polymarket.com/event/will-kamala-harris-win-the-2028-democratic-presidential-nomination-641",
+        "volume": 15183413.059471
+      },
+      "predictit": {
+        "platform": "PredictIt",
+        "title": "Will Kamala Harris win the 2028 Democratic presidential nomination?",
+        "yesPrice": 0.06,
+        "noPrice": 0.95,
+        "url": "https://www.predictit.org/markets/detail/8153/Who-will-win-the-2028-Democratic-presidential-nomination",
+        "volume": null
+      },
+      "score": 100,
+      "entities": 2,
+      "diff": 1.3,
+      "partyFlipped": false,
+      "arb": true,
+      "suspicion": [],
+      "arbProfit": 1.4,
+      "buyYesOn": "Polymarket",
+      "buyNoOn": "PredictIt"
+    },
+    {
+      "polymarket": {
+        "platform": "Polymarket",
         "title": "Will Gretchen Whitmer win the 2028 Democratic presidential nomination?",
         "yesPrice": 0.007,
         "noPrice": 0.993,
         "url": "https://polymarket.com/event/will-gretchen-whitmer-win-the-2028-democratic-presidential-nomination-676",
-        "volume": 12309858.637542998
+        "volume": 12310358.637542998
       },
       "predictit": {
         "platform": "PredictIt",
@@ -2123,7 +2070,7 @@
         "yesPrice": 0.0075,
         "noPrice": 0.9925,
         "url": "https://polymarket.com/event/will-corey-booker-win-the-2028-democratic-presidential-nomination-125",
-        "volume": 27035513.199116997
+        "volume": 27036013.199116997
       },
       "predictit": {
         "platform": "PredictIt",
@@ -2146,11 +2093,68 @@
     {
       "polymarket": {
         "platform": "Polymarket",
+        "title": "Will Mark Kelly announce a Presidential run before 2027?",
+        "yesPrice": 0.057,
+        "noPrice": 0.943,
+        "url": "https://polymarket.com/event/will-mark-kelly-announce-a-presidential-run-before-2027",
+        "volume": 16627.455500999997
+      },
+      "predictit": {
+        "platform": "PredictIt",
+        "title": "Will Mark Kelly — Which of these Democratic candidates will announce a 2028 POTUS run first?",
+        "yesPrice": 0.07,
+        "noPrice": 0.98,
+        "url": "https://www.predictit.org/markets/detail/8656/Which-of-these-Democratic-candidates-will-announce-a-2028-POTUS-run-first",
+        "volume": null
+      },
+      "score": 44,
+      "entities": 1,
+      "diff": 1.3,
+      "partyFlipped": false,
+      "arb": true,
+      "suspicion": [
+        "deadline years do not overlap (2027 vs 2028)",
+        "one side asks who is NEXT or closest, a race between candidates; the other asks only whether it happens"
+      ],
+      "arbProfit": 1.3,
+      "buyYesOn": "Polymarket",
+      "buyNoOn": "PredictIt"
+    },
+    {
+      "polymarket": {
+        "platform": "Polymarket",
+        "title": "Will Alexandria Ocasio-Cortez win the 2028 Democratic presidential nomination?",
+        "yesPrice": 0.1715,
+        "noPrice": 0.8285,
+        "url": "https://polymarket.com/event/will-alexandria-ocasio-cortez-win-the-2028-democratic-presidential-nomination-653",
+        "volume": 16291070.894206004
+      },
+      "predictit": {
+        "platform": "PredictIt",
+        "title": "Will A. Ocasio-Cortez win the 2028 Democratic presidential nomination?",
+        "yesPrice": 0.16,
+        "noPrice": 0.85,
+        "url": "https://www.predictit.org/markets/detail/8153/Who-will-win-the-2028-Democratic-presidential-nomination",
+        "volume": null
+      },
+      "score": 86,
+      "entities": 1,
+      "diff": 1.2,
+      "partyFlipped": false,
+      "arb": true,
+      "suspicion": [],
+      "arbProfit": 1.1,
+      "buyYesOn": "PredictIt",
+      "buyNoOn": "Polymarket"
+    },
+    {
+      "polymarket": {
+        "platform": "Polymarket",
         "title": "Will Kamala Harris win the 2028 US Presidential Election?",
         "yesPrice": 0.0285,
         "noPrice": 0.9715,
         "url": "https://polymarket.com/event/will-kamala-harris-win-the-2028-us-presidential-election",
-        "volume": 9988273.25846
+        "volume": 9991918.630102001
       },
       "predictit": {
         "platform": "PredictIt",
@@ -2173,11 +2177,65 @@
     {
       "polymarket": {
         "platform": "Polymarket",
+        "title": "Will Jon Ossoff win the 2028 US Presidential Election?",
+        "yesPrice": 0.1585,
+        "noPrice": 0.8415,
+        "url": "https://polymarket.com/event/will-jon-ossoff-win-the-2028-us-presidential-election",
+        "volume": 7208892.331221002
+      },
+      "predictit": {
+        "platform": "PredictIt",
+        "title": "Will Jon Ossoff win the 2028 US presidential election?",
+        "yesPrice": 0.17,
+        "noPrice": 0.84,
+        "url": "https://www.predictit.org/markets/detail/8171/Who-will-win-the-2028-US-presidential-election",
+        "volume": null
+      },
+      "score": 100,
+      "entities": 2,
+      "diff": 1.2,
+      "partyFlipped": false,
+      "arb": true,
+      "suspicion": [],
+      "arbProfit": 1.2,
+      "buyYesOn": "Polymarket",
+      "buyNoOn": "PredictIt"
+    },
+    {
+      "polymarket": {
+        "platform": "Polymarket",
+        "title": "Will Josh Shapiro win the 2028 Democratic presidential nomination?",
+        "yesPrice": 0.0615,
+        "noPrice": 0.9385,
+        "url": "https://polymarket.com/event/will-josh-shapiro-win-the-2028-democratic-presidential-nomination-977",
+        "volume": 11610207.833644003
+      },
+      "predictit": {
+        "platform": "PredictIt",
+        "title": "Will Josh Shapiro win the 2028 Democratic presidential nomination?",
+        "yesPrice": 0.05,
+        "noPrice": 0.96,
+        "url": "https://www.predictit.org/markets/detail/8153/Who-will-win-the-2028-Democratic-presidential-nomination",
+        "volume": null
+      },
+      "score": 100,
+      "entities": 2,
+      "diff": 1.1,
+      "partyFlipped": false,
+      "arb": true,
+      "suspicion": [],
+      "arbProfit": 1.1,
+      "buyYesOn": "PredictIt",
+      "buyNoOn": "Polymarket"
+    },
+    {
+      "polymarket": {
+        "platform": "Polymarket",
         "title": "Will Donald Trump Jr. win the 2028 Republican presidential nomination?",
         "yesPrice": 0.0095,
         "noPrice": 0.9905,
         "url": "https://polymarket.com/event/will-donald-trump-jr-win-the-2028-republican-presidential-nomination",
-        "volume": 9937743.440933
+        "volume": 9937743.440932997
       },
       "predictit": {
         "platform": "PredictIt",
@@ -2200,11 +2258,40 @@
     {
       "polymarket": {
         "platform": "Polymarket",
+        "title": "Will Naftali Bennett be the next Prime Minister of Israel?",
+        "yesPrice": 0.0095,
+        "noPrice": 0.9905,
+        "url": "https://polymarket.com/event/will-naftali-bennett-be-the-next-prime-minister-of-israel",
+        "volume": 6124198.913402999
+      },
+      "predictit": {
+        "platform": "PredictIt",
+        "title": "Will Naftali Bennett be the Prime Minister of Israel after the 2026 election?",
+        "yesPrice": 0.02,
+        "noPrice": 0.99,
+        "url": "https://www.predictit.org/markets/detail/8643/Who-will-be-the-Prime-Minister-of-Israel-after-the-2026-election",
+        "volume": null
+      },
+      "score": 83,
+      "entities": 1,
+      "diff": 1.1,
+      "partyFlipped": false,
+      "arb": true,
+      "suspicion": [
+        "one side asks who is NEXT or closest, a race between candidates; the other asks only whether it happens"
+      ],
+      "arbProfit": 1.1,
+      "buyYesOn": "Polymarket",
+      "buyNoOn": "PredictIt"
+    },
+    {
+      "polymarket": {
+        "platform": "Polymarket",
         "title": "Will JD Vance win the 2028 US Presidential Election?",
         "yesPrice": 0.1205,
         "noPrice": 0.8795,
         "url": "https://polymarket.com/event/will-jd-vance-win-the-2028-us-presidential-election",
-        "volume": 19568582.685843997
+        "volume": 19568694.975424998
       },
       "predictit": {
         "platform": "PredictIt",
@@ -2231,7 +2318,7 @@
         "yesPrice": 0.0105,
         "noPrice": 0.9895,
         "url": "https://polymarket.com/event/will-jb-pritzker-win-the-2028-us-presidential-election",
-        "volume": 13454130.504836999
+        "volume": 13454144.645544998
       },
       "predictit": {
         "platform": "PredictIt",
@@ -2254,38 +2341,9 @@
     {
       "polymarket": {
         "platform": "Polymarket",
-        "title": "Will Naftali Bennett be the next Prime Minister of Israel?",
-        "yesPrice": 0.01,
-        "noPrice": 0.99,
-        "url": "https://polymarket.com/event/will-naftali-bennett-be-the-next-prime-minister-of-israel",
-        "volume": 6117185.743403
-      },
-      "predictit": {
-        "platform": "PredictIt",
-        "title": "Will Naftali Bennett be the Prime Minister of Israel after the 2026 election?",
-        "yesPrice": 0.02,
-        "noPrice": 0.99,
-        "url": "https://www.predictit.org/markets/detail/8643/Who-will-be-the-Prime-Minister-of-Israel-after-the-2026-election",
-        "volume": null
-      },
-      "score": 83,
-      "entities": 1,
-      "diff": 1,
-      "partyFlipped": false,
-      "arb": true,
-      "suspicion": [
-        "one side asks who is NEXT or closest, a race between candidates; the other asks only whether it happens"
-      ],
-      "arbProfit": 1,
-      "buyYesOn": "Polymarket",
-      "buyNoOn": "PredictIt"
-    },
-    {
-      "polymarket": {
-        "platform": "Polymarket",
         "title": "Will Stephen Miller leave the Trump administration before 2027?",
-        "yesPrice": 0.0215,
-        "noPrice": 0.9785,
+        "yesPrice": 0.0205,
+        "noPrice": 0.9795,
         "url": "https://polymarket.com/event/will-stephen-miller-leave-the-trump-administration-before-2027",
         "volume": 81669.815192
       },
@@ -2305,7 +2363,7 @@
       "suspicion": [
         "deadline years do not overlap (2027 vs 2026)"
       ],
-      "arbProfit": 0.9,
+      "arbProfit": 1,
       "buyYesOn": "Polymarket",
       "buyNoOn": "PredictIt"
     },
@@ -2313,8 +2371,8 @@
       "polymarket": {
         "platform": "Polymarket",
         "title": "Will Gretchen Whitmer announce a Presidential run before 2027?",
-        "yesPrice": 0.028,
-        "noPrice": 0.972,
+        "yesPrice": 0.029,
+        "noPrice": 0.971,
         "url": "https://polymarket.com/event/will-gretchen-whitmer-announce-a-presidential-run-before-2027",
         "volume": 5155.846267000001
       },
@@ -2328,61 +2386,59 @@
       },
       "score": 44,
       "entities": 1,
-      "diff": 0.8,
+      "diff": 0.9,
       "partyFlipped": false,
       "arb": true,
       "suspicion": [
         "deadline years do not overlap (2027 vs 2028)",
         "one side asks who is NEXT or closest, a race between candidates; the other asks only whether it happens"
       ],
-      "arbProfit": 0.8,
+      "arbProfit": 0.9,
       "buyYesOn": "PredictIt",
       "buyNoOn": "Polymarket"
     },
     {
       "polymarket": {
         "platform": "Polymarket",
-        "title": "Will Russell Vought leave the Trump administration before 2027?",
-        "yesPrice": 0.0375,
-        "noPrice": 0.9625,
-        "url": "https://polymarket.com/event/will-russell-vought-leave-the-trump-administration-before-2027",
-        "volume": 7267.496480000001
+        "title": "Will Marco Rubio win the 2028 US Presidential Election?",
+        "yesPrice": 0.0825,
+        "noPrice": 0.9175,
+        "url": "https://polymarket.com/event/will-marco-rubio-win-the-2028-us-presidential-election",
+        "volume": 14036633.437049003
       },
       "predictit": {
         "platform": "PredictIt",
-        "title": "Will Russell Vought be the next Cabinet member to leave office?",
-        "yesPrice": 0.03,
-        "noPrice": 0.98,
-        "url": "https://www.predictit.org/markets/detail/8850/Who-will-be-the-next-Cabinet-member-to-leave-office",
+        "title": "Will Marco Rubio win the 2028 US presidential election?",
+        "yesPrice": 0.09,
+        "noPrice": 0.92,
+        "url": "https://www.predictit.org/markets/detail/8171/Who-will-win-the-2028-US-presidential-election",
         "volume": null
       },
-      "score": 38,
-      "entities": 1,
-      "diff": 0.8,
+      "score": 100,
+      "entities": 2,
+      "diff": 0.7,
       "partyFlipped": false,
       "arb": true,
-      "suspicion": [
-        "one side asks who is NEXT or closest, a race between candidates; the other asks only whether it happens"
-      ],
+      "suspicion": [],
       "arbProfit": 0.7,
-      "buyYesOn": "PredictIt",
-      "buyNoOn": "Polymarket"
+      "buyYesOn": "Polymarket",
+      "buyNoOn": "PredictIt"
     },
     {
       "polymarket": {
         "platform": "Polymarket",
-        "title": "Will Josh Shapiro win the 2028 US Presidential Election?",
-        "yesPrice": 0.034,
-        "noPrice": 0.966,
-        "url": "https://polymarket.com/event/will-josh-shapiro-win-the-2028-us-presidential-election",
-        "volume": 8258577.763129998
+        "title": "Will Trump meet with Kim Jong Un in 2026?",
+        "yesPrice": 0.0265,
+        "noPrice": 0.9735,
+        "url": "https://polymarket.com/event/will-trump-meet-with-kim-jong-un-in-2026",
+        "volume": 451932.639992
       },
       "predictit": {
         "platform": "PredictIt",
-        "title": "Will Josh Shapiro win the 2028 US presidential election?",
-        "yesPrice": 0.04,
-        "noPrice": 0.97,
-        "url": "https://www.predictit.org/markets/detail/8171/Who-will-win-the-2028-US-presidential-election",
+        "title": "Will Trump meet with Kim Jong Un in 2026?",
+        "yesPrice": 0.02,
+        "noPrice": 0.99,
+        "url": "https://www.predictit.org/markets/detail/9125/Will-Trump-meet-with-Kim-Jong-Un-in-2026",
         "volume": null
       },
       "score": 100,
@@ -2392,35 +2448,35 @@
       "arb": true,
       "suspicion": [],
       "arbProfit": 0.6,
-      "buyYesOn": "Polymarket",
-      "buyNoOn": "PredictIt"
+      "buyYesOn": "PredictIt",
+      "buyNoOn": "Polymarket"
     },
     {
       "polymarket": {
         "platform": "Polymarket",
-        "title": "Will Trump meet with Nicolás Maduro in 2026?",
-        "yesPrice": 0.014,
-        "noPrice": 0.986,
-        "url": "https://polymarket.com/event/will-trump-meet-with-nicols-maduro-in-2026",
-        "volume": 15640.712169999997
+        "title": "Will Raphael Warnock win the 2028 Democratic presidential nomination?",
+        "yesPrice": 0.0355,
+        "noPrice": 0.9645,
+        "url": "https://polymarket.com/event/will-raphael-warnock-win-the-2028-democratic-presidential-nomination-914",
+        "volume": 34863060.103498
       },
       "predictit": {
         "platform": "PredictIt",
-        "title": "Will Trump pardon Nicolás Maduro or commute his sentence in 2026?",
-        "yesPrice": 0.02,
-        "noPrice": 0.99,
-        "url": "https://www.predictit.org/markets/detail/8559/Will-Trump-pardon-Nicolás-Maduro-or-commute-his-sentence-in-2026",
+        "title": "Will Raphael Warnock win the 2028 Democratic presidential nomination?",
+        "yesPrice": 0.03,
+        "noPrice": 0.98,
+        "url": "https://www.predictit.org/markets/detail/8153/Who-will-win-the-2028-Democratic-presidential-nomination",
         "volume": null
       },
-      "score": 38,
-      "entities": 1,
-      "diff": 0.6,
+      "score": 100,
+      "entities": 2,
+      "diff": 0.5,
       "partyFlipped": false,
       "arb": true,
       "suspicion": [],
-      "arbProfit": 0.6,
-      "buyYesOn": "Polymarket",
-      "buyNoOn": "PredictIt"
+      "arbProfit": 0.5,
+      "buyYesOn": "PredictIt",
+      "buyNoOn": "Polymarket"
     },
     {
       "polymarket": {
@@ -2452,45 +2508,45 @@
     {
       "polymarket": {
         "platform": "Polymarket",
-        "title": "Will Raphael Warnock win the 2028 Democratic presidential nomination?",
-        "yesPrice": 0.035,
-        "noPrice": 0.965,
-        "url": "https://polymarket.com/event/will-raphael-warnock-win-the-2028-democratic-presidential-nomination-914",
-        "volume": 34862036.00349799
+        "title": "Will Trump meet with Nicolás Maduro in 2026?",
+        "yesPrice": 0.0145,
+        "noPrice": 0.9855,
+        "url": "https://polymarket.com/event/will-trump-meet-with-nicols-maduro-in-2026",
+        "volume": 15640.712169999997
       },
       "predictit": {
         "platform": "PredictIt",
-        "title": "Will Raphael Warnock win the 2028 Democratic presidential nomination?",
-        "yesPrice": 0.04,
-        "noPrice": 0.97,
-        "url": "https://www.predictit.org/markets/detail/8153/Who-will-win-the-2028-Democratic-presidential-nomination",
+        "title": "Will Trump pardon Nicolás Maduro or commute his sentence in 2026?",
+        "yesPrice": 0.02,
+        "noPrice": 0.99,
+        "url": "https://www.predictit.org/markets/detail/8559/Will-Trump-pardon-Nicolás-Maduro-or-commute-his-sentence-in-2026",
         "volume": null
       },
-      "score": 100,
-      "entities": 2,
+      "score": 38,
+      "entities": 1,
       "diff": 0.5,
       "partyFlipped": false,
-      "arb": false,
+      "arb": true,
       "suspicion": [],
-      "arbProfit": 0.5,
+      "arbProfit": 0.6,
       "buyYesOn": "Polymarket",
       "buyNoOn": "PredictIt"
     },
     {
       "polymarket": {
         "platform": "Polymarket",
-        "title": "Will Trump meet with Kim Jong Un in 2026?",
-        "yesPrice": 0.016,
-        "noPrice": 0.984,
-        "url": "https://polymarket.com/event/will-trump-meet-with-kim-jong-un-in-2026",
-        "volume": 450370.463628
+        "title": "Will Josh Shapiro win the 2028 US Presidential Election?",
+        "yesPrice": 0.034,
+        "noPrice": 0.966,
+        "url": "https://polymarket.com/event/will-josh-shapiro-win-the-2028-us-presidential-election",
+        "volume": 8258592.232007999
       },
       "predictit": {
         "platform": "PredictIt",
-        "title": "Will Trump meet with Kim Jong Un in 2026?",
-        "yesPrice": 0.02,
-        "noPrice": 0.99,
-        "url": "https://www.predictit.org/markets/detail/9125/Will-Trump-meet-with-Kim-Jong-Un-in-2026",
+        "title": "Will Josh Shapiro win the 2028 US presidential election?",
+        "yesPrice": 0.03,
+        "noPrice": 0.98,
+        "url": "https://www.predictit.org/markets/detail/8171/Who-will-win-the-2028-US-presidential-election",
         "volume": null
       },
       "score": 100,
@@ -2500,17 +2556,17 @@
       "arb": false,
       "suspicion": [],
       "arbProfit": 0.4,
-      "buyYesOn": "Polymarket",
-      "buyNoOn": "PredictIt"
+      "buyYesOn": "PredictIt",
+      "buyNoOn": "Polymarket"
     },
     {
       "polymarket": {
         "platform": "Polymarket",
         "title": "Will Ron DeSantis win the 2028 Republican presidential nomination?",
-        "yesPrice": 0.1575,
-        "noPrice": 0.8425,
+        "yesPrice": 0.1585,
+        "noPrice": 0.8415,
         "url": "https://polymarket.com/event/will-ron-desantis-win-the-2028-republican-presidential-nomination",
-        "volume": 17167262.875406
+        "volume": 17175992.525406003
       },
       "predictit": {
         "platform": "PredictIt",
@@ -2522,69 +2578,13 @@
       },
       "score": 100,
       "entities": 2,
-      "diff": 0.3,
+      "diff": 0.2,
       "partyFlipped": false,
       "arb": false,
       "suspicion": [],
-      "arbProfit": 0.3,
-      "buyYesOn": "Polymarket",
-      "buyNoOn": "PredictIt"
-    },
-    {
-      "polymarket": {
-        "platform": "Polymarket",
-        "title": "Will Benjamin Netanyahu be the next Prime Minister of Israel?",
-        "yesPrice": 0.1175,
-        "noPrice": 0.8825,
-        "url": "https://polymarket.com/event/will-benjamin-netanyahu-be-the-next-prime-minister-of-israel",
-        "volume": 36549705.35757
-      },
-      "predictit": {
-        "platform": "PredictIt",
-        "title": "Will Benjamin Netanyahu be the Prime Minister of Israel after the 2026 election?",
-        "yesPrice": 0.12,
-        "noPrice": 0.93,
-        "url": "https://www.predictit.org/markets/detail/8643/Who-will-be-the-Prime-Minister-of-Israel-after-the-2026-election",
-        "volume": null
-      },
-      "score": 83,
-      "entities": 1,
-      "diff": 0.3,
-      "partyFlipped": false,
-      "arb": false,
-      "suspicion": [
-        "one side asks who is NEXT or closest, a race between candidates; the other asks only whether it happens"
-      ],
       "arbProfit": 0.2,
       "buyYesOn": "Polymarket",
       "buyNoOn": "PredictIt"
-    },
-    {
-      "polymarket": {
-        "platform": "Polymarket",
-        "title": "Will Josh Shapiro win the 2028 Democratic presidential nomination?",
-        "yesPrice": 0.0605,
-        "noPrice": 0.9395,
-        "url": "https://polymarket.com/event/will-josh-shapiro-win-the-2028-democratic-presidential-nomination-977",
-        "volume": 11409168.834711002
-      },
-      "predictit": {
-        "platform": "PredictIt",
-        "title": "Will Josh Shapiro win the 2028 Democratic presidential nomination?",
-        "yesPrice": 0.06,
-        "noPrice": 0.95,
-        "url": "https://www.predictit.org/markets/detail/8153/Who-will-win-the-2028-Democratic-presidential-nomination",
-        "volume": null
-      },
-      "score": 100,
-      "entities": 2,
-      "diff": 0.1,
-      "partyFlipped": false,
-      "arb": false,
-      "suspicion": [],
-      "arbProfit": 0,
-      "buyYesOn": "PredictIt",
-      "buyNoOn": "Polymarket"
     }
   ]
 }
